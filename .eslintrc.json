@@ -2,9 +2,9 @@
   "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:@next/next/recommended"
+    "plugin:@next/next/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "settings": {
     "react": {
@@ -16,22 +16,22 @@
     "node": true,
     "es6": true
   },
-  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "plugins": ["react", "prettier", "@typescript-eslint"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "rules": {
     "react/prop-types": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
     "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/ban-ts-ignore": "off",
-    "react/react-in-jsx-scope": "off"
+    "@typescript-eslint/ban-ts-ignore": "off"
   },
   "globals": {
     "React": "writable"
