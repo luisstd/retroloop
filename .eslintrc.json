@@ -16,7 +16,6 @@
     "node": true,
     "es6": true
   },
-  "plugins": ["react", "prettier", "@typescript-eslint"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -24,15 +23,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "rules": {
-    "react/prop-types": "off",
-    "prettier/prettier": "error",
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/interface-name-prefix": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/ban-ts-ignore": "off"
-  },
+
   "globals": {
     "React": "writable"
   }
