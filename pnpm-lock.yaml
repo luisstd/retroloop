@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@logux/eslint-config': ^47.2.0
   '@next/eslint-plugin-next': ^12.2.3
+  '@prisma/client': ^4.2.1
   '@tabler/icons': ^1.82.0
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.3.0
@@ -24,7 +25,6 @@ specifiers:
   eslint-plugin-jsx-a11y: ^6.5.1
   eslint-plugin-next: ^0.0.0
   eslint-plugin-node: ^11.1.0
-  eslint-plugin-prefer-let: ^3.0.1
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-react: ^7.28.0
@@ -45,6 +45,7 @@ specifiers:
   zod: ^3.18.0
 
 dependencies:
+  '@prisma/client': 4.2.1_prisma@4.2.1
   '@tabler/icons': 1.82.0_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 9.27.0_@trpc+server@9.27.0
   '@trpc/next': 9.27.0_mvtpe6ve2rup7xmywn26mj63mu
@@ -76,7 +77,6 @@ devDependencies:
   eslint-plugin-jsx-a11y: 6.6.1_eslint@8.21.0
   eslint-plugin-next: 0.0.0
   eslint-plugin-node: 11.1.0_eslint@8.21.0
-  eslint-plugin-prefer-let: 3.0.1
   eslint-plugin-prettier: 4.2.1_h62lvancfh4b7r6zn2dgodrh5e
   eslint-plugin-promise: 6.0.0_eslint@8.21.0
   eslint-plugin-react: 7.30.1_eslint@8.21.0
@@ -886,10 +886,27 @@ packages:
       fastq: 1.13.0
     dev: true
 
+  /@prisma/client/4.2.1_prisma@4.2.1:
+    resolution: {integrity: sha512-PZBkY60+k5oix+e6IUfl3ub8TbRLNsPLdfWrdy2eh80WcHTaT+/UfvXf/B7gXedH7FRtbPFHZXk1hZenJiJZFQ==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.2.0-33.2920a97877e12e055c1333079b8d19cee7f33826
+      prisma: 4.2.1
+    dev: false
+
+  /@prisma/engines-version/4.2.0-33.2920a97877e12e055c1333079b8d19cee7f33826:
+    resolution: {integrity: sha512-tktkqdiwqE4QhmE088boPt+FwPj1Jub/zk+5F6sEfcRHzO5yz9jyMD5HFVtiwxZPLx/8Xg9ElnuTi8E5lWVQFQ==}
+    dev: false
+
   /@prisma/engines/4.2.1:
     resolution: {integrity: sha512-0KqBwREUOjBiHwITsQzw2DWfLHjntvbqzGRawj4sBMnIiL5CXwyDUKeHOwXzKMtNr1rEjxEsypM14g0CzLRK3g==}
     requiresBuild: true
-    dev: true
 
   /@sinclair/typebox/0.24.27:
     resolution: {integrity: sha512-K7C7IlQ3zLePEZleUN21ceBA2aLcMnLHTLph8QWk1JK37L90obdpY+QGY8bXMKxf1ht1Z0MNewvXxWv0oGDYFg==}
@@ -3984,7 +4001,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 4.2.1
-    dev: true
 
   /prompts/2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}

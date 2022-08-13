@@ -9,3 +9,82 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id              Int           @id @default(autoincrement())
+  createdAt       DateTime      @default(now())
+  email           String        @unique
+  name            String
+  role            String
+  Workspace       Workspace[]
+  Retrospective   Retrospective @relation(fields: [retrospectiveId], references: [id])
+  RetroItem       RetroItem[]
+  retrospectiveId Int
+  Invite          Invite[]
+}
+
+model Workspace {
+  id        Int             @id @default(autoincrement())
+  createdAt DateTime        @default(now())
+  owner     User            @relation(fields: [userId], references: [id])
+  retros    Retrospective[]
+  userId    Int
+  Link      Link[]
+}
+
+model Retrospective {
+  id              Int             @id @default(autoincrement())
+  createdAt       DateTime        @default(now())
+  name            String
+  date            DateTime
+  participants    User[]
+  link            String
+  items           RetroItem[]
+  itemCollections ItemColletion[]
+  Workspace       Workspace?      @relation(fields: [workspaceId], references: [id])
+  workspaceId     Int?
+  Invite          Invite[]
+  Link            Link[]
+}
+
+model RetroItem {
+  id              Int           @id @default(autoincrement())
+  createdAt       DateTime      @default(now())
+  content         String
+  author          User          @relation(fields: [userId], references: [id])
+  type            String
+  Retrospective   Retrospective @relation(fields: [retrospectiveId], references: [id])
+  userId          Int
+  ItemColletion   ItemColletion @relation(fields: [itemColletionId], references: [id])
+  retrospectiveId Int
+  itemColletionId Int
+}
+
+model ItemColletion {
+  id              Int           @id @default(autoincrement())
+  createdAt       DateTime      @default(now())
+  items           RetroItem[]
+  votes           Int
+  Retrospective   Retrospective @relation(fields: [retrospectiveId], references: [id])
+  retrospectiveId Int
+}
+
+model Invite {
+  id              Int           @id @default(autoincrement())
+  createdAt       DateTime      @default(now())
+  invitee         User          @relation(fields: [userId], references: [id])
+  retro           Retrospective @relation(fields: [retrospectiveId], references: [id])
+  userId          Int
+  retrospectiveId Int
+}
+
+model Link {
+  id              Int           @id @default(autoincrement())
+  createdAt       DateTime      @default(now())
+  url             String
+  retro           Retrospective @relation(fields: [retrospectiveId], references: [id])
+  workspace       Workspace     @relation(fields: [workspaceId], references: [id])
+  expiration      DateTime
+  retrospectiveId Int
+  workspaceId     Int
+}
