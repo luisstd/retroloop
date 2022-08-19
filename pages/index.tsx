@@ -4,8 +4,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { IconBrandGithub } from '@tabler/icons'
+import MenuBar from '../components/MenuBar'
 
-const Home: NextPage = () => (
+const Landingpage: NextPage = () => (
   <div>
     <Head>
       <title>Retroloop</title>
@@ -13,7 +14,9 @@ const Home: NextPage = () => (
       <link rel='icon' href='/favicon.ico' />
     </Head>
 
-    <main className='grid place-items-center h-screen'>
+    <MenuBar />
+
+    <main className='grid h-screen place-items-center'>
       <div className='grid place-items-center'>
         <Image src={'/retroloop-logo.png'} width={575} height={145}></Image>
         <Link href={'https://github.com/luisstd/retroloop'}>
@@ -26,4 +29,4 @@ const Home: NextPage = () => (
   </div>
 )
 
-export default Home
+export default Landingpage
