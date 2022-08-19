@@ -2,6 +2,11 @@ import { withTRPC } from '@trpc/next'
 import { AppProps } from 'next/app'
 import { AppRouter } from './api/trpc/trpc'
 
+import '@fontsource/space-mono/400.css'
+import '@fontsource/space-mono/400-italic.css'
+import '@fontsource/space-mono/700.css'
+import '@fontsource/space-mono/700-italic.css'
+
 import '../styles/globals.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
