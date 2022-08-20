@@ -17,6 +17,8 @@
     "@radix-ui/react-navigation-menu": "^1.0.0",
     "@stitches/react": "^1.2.8",
     "@tabler/icons": "^1.82.0",
+    "@tanstack/react-query": "^4.2.1",
+    "@tanstack/react-query-devtools": "^4.2.1",
     "@trpc/client": "^9.27.0",
     "@trpc/next": "^9.27.0",
     "@trpc/react": "^9.27.0",
@@ -25,6 +27,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-query": "3",
+    "superjson": "^1.9.1",
     "zod": "^3.18.0"
   },
   "devDependencies": {
