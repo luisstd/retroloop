@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import MenuBar from '../components/MenuBar'
-import RetroSection from '../components/RetroSection'
-import TeamSection from '../components/TeamSection'
+import MenuBar from '../../components/MenuBar'
+import RetroSection from '../../components/RetroSection'
+import TeamSection from '../../components/TeamSection'
 
 const Dashboard: NextPage = () => (
   <div>

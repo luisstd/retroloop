@@ -1,5 +1,6 @@
-import { IconChevronRight, IconPlus } from '@tabler/icons'
 import React from 'react'
+
+import { IconChevronRight, IconPlus } from '@tabler/icons'
 
 export default function RetroSection() {
   return (

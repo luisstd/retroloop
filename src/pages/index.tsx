@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { IconBrandGithub } from '@tabler/icons'
-import MenuBar from '../components/MenuBar'
+import MenuBar from '../../components/MenuBar'
 
 const Landingpage: NextPage = () => (
   <div>
