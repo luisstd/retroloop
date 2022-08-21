@@ -18,10 +18,10 @@ const Landingpage: NextPage = () => (
 
     <main className='grid h-screen place-items-center'>
       <div className='grid place-items-center'>
-        <Image src={'/retroloop-logo.png'} width={575} height={145}></Image>
+        <Image src={'/retroloop-logo.png'} width={575} height={145} className='rounded-lg' />
         <Link href={'https://github.com/luisstd/retroloop'}>
           <a rel='noopener noreferrer '>
-            <IconBrandGithub className='cursor-pointer' size={42}></IconBrandGithub>
+            <IconBrandGithub className='m-5 cursor-pointer' size={42} />
           </a>
         </Link>
       </div>
