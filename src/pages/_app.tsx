@@ -4,6 +4,7 @@ import { AppRouter } from '../server/router'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ThemeProvider } from 'next-themes'
 
 import '@fontsource/space-mono/400.css'
 import '@fontsource/space-mono/400-italic.css'
@@ -15,10 +16,12 @@ import '../styles/globals.css'
 const queryClient = new QueryClient()
 
 const App = ({ Component, pageProps }: AppProps) => (
-  <QueryClientProvider client={queryClient}>
-    <Component {...pageProps} />
-    <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+  <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
+    <QueryClientProvider client={queryClient}>
+      <Component {...pageProps} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </ThemeProvider>
 )
 
 function getBaseUrl() {
