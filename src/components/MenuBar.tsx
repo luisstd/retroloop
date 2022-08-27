@@ -29,7 +29,7 @@ export default function MenuBar() {
 
   return (
     <>
-      <NavigationMenu.Root className='flex items-center justify-between p-2 m-2 text-xl border-2 border-black rounded-md dark:border-neutral-200'>
+      <NavigationMenu.Root className='flex items-center justify-between p-2 m-5 text-xl border-2 border-black rounded-md dark:border-neutral-200'>
         <NavigationMenu.List className='flex items-center gap-2'>
           <NavigationMenu.Item>
             <IconInfinity size={40} />

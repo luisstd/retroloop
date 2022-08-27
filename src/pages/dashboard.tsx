@@ -12,8 +12,10 @@ const Dashboard: NextPage = () => (
       <meta name='description' content='Agile Retrospectives' />
       <link rel='icon' href='/favicon.ico' />
     </Head>
+
     <MenuBar />
-    <main className='grid h-screen col-span-2 row-span-2 m-2'>
+
+    <main className='grid h-screen col-span-2 row-span-2 m-5 max-w-screen-2xl'>
       <RetroSection />
 
       <TeamSection />
