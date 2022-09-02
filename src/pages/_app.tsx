@@ -5,6 +5,7 @@ import { AppRouter } from '../server/router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ThemeProvider } from 'next-themes'
+import superjson from 'superjson'
 
 import '@fontsource/space-mono/400.css'
 import '@fontsource/space-mono/400-italic.css'
@@ -38,21 +39,31 @@ function getBaseUrl() {
 }
 
 export default withTRPC<AppRouter>({
-  config() {
-    /**
-     * If you want to use SSR, you need to use the server's full URL
-     * @link https://trpc.io/docs/ssr
-     */
+  config({ ctx }) {
+    if (typeof window !== 'undefined') {
+      // during client requests
+      return {
+        transformer: superjson, // optional - adds superjson serialization
+        url: '/api/trpc',
+      }
+    }
+
+    // during SSR below
+    const ONE_DAY_SECONDS = 60 * 60 * 24
+    ctx?.res?.setHeader('Cache-Control', `s-maxage=1, stale-while-revalidate=${ONE_DAY_SECONDS}`)
+
+    const url = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}/api/trpc`
+      : 'http://localhost:3000/api/trpc'
+
     return {
-      url: `${getBaseUrl()}/api/trpc`,
-      /**
-       * @link https://react-query-v3.tanstack.com/reference/QueryClient
-       */
-      // queryClientConfig: { defaultOptions: { queries: { staleTime: 60 } } },
+      transformer: superjson, // optional - adds superjson serialization
+      url,
+      headers: {
+        // optional - inform server that it's an ssr request
+        'x-ssr': '1',
+      },
     }
   },
-  /**
-   * @link https://trpc.io/docs/ssr
-   */
-  ssr: true,
+  ssr: false,
 })(App)
