@@ -6,16 +6,18 @@ import RetroSection from '../components/RetroSection'
 import TeamSection from '../components/TeamSection'
 
 const Dashboard: NextPage = () => (
-  <div>
+  <div className='flex flex-col items-center'>
     <Head>
       <title>Dashboard</title>
       <meta name='description' content='Agile Retrospectives' />
       <link rel='icon' href='/favicon.ico' />
     </Head>
 
-    <MenuBar />
+    <div className='grid place-items-center'>
+      <MenuBar />
+    </div>
 
-    <main className='grid h-screen col-span-2 row-span-2 m-5 max-w-screen-2xl'>
+    <main className='grid w-screen h-screen mx-5 place-items-center max-w-screen-2xl'>
       <RetroSection />
 
       <TeamSection />

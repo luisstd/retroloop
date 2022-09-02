@@ -28,8 +28,8 @@ export default function MenuBar() {
   }
 
   return (
-    <>
-      <NavigationMenu.Root className='flex items-center justify-between p-2 m-5 text-xl border-2 border-black rounded-md dark:border-neutral-200'>
+    <div className='flex items-center w-screen max-w-screen-2xl'>
+      <NavigationMenu.Root className='flex items-center justify-between w-full p-2 m-5 text-xl border-2 border-black rounded-md dark:border-neutral-200 max-w-screen-2xl'>
         <NavigationMenu.List className='flex items-center gap-2'>
           <NavigationMenu.Item>
             <IconInfinity size={40} />
@@ -118,6 +118,6 @@ export default function MenuBar() {
         </div>
         <NavigationMenu.Viewport />
       </NavigationMenu.Root>
-    </>
+    </div>
   )
 }

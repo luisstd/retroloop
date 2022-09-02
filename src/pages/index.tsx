@@ -7,7 +7,7 @@ import { IconBrandGithub } from '@tabler/icons'
 import MenuBar from '../components/MenuBar'
 
 const Landingpage: NextPage = () => (
-  <div>
+  <div className='grid justify-center'>
     <Head>
       <title>Retroloop</title>
       <meta name='description' content='Agile Retrospectives' />
