@@ -22,7 +22,7 @@ export default function AddRetroDialog() {
         <Dialog.Content>
           <Dialog.Title>Test</Dialog.Title>
           <Dialog.Description>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you are done.
           </Dialog.Description>
           <fieldset>
             <label htmlFor='name'>Name</label>
