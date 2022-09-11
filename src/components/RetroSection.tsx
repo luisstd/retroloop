@@ -2,7 +2,7 @@ import React from 'react'
 
 import { IconChevronRight, IconPlus } from '@tabler/icons'
 
-import { trpc } from '../utils/trpc'
+import { trpc } from '@/utils/trpc'
 
 export default function RetroSection() {
   const retrospectives = trpc.useQuery(['retrospective.getAll'])
