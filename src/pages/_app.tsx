@@ -2,8 +2,8 @@ import { withTRPC } from '@trpc/next'
 import { AppProps } from 'next/app'
 import { AppRouter } from '@/server/router'
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { ThemeProvider } from 'next-themes'
 import superjson from 'superjson'
 
