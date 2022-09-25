@@ -21,8 +21,11 @@ export default function RetroSection() {
   return (
     <div className='flex items-center w-screen h-full max-w-screen-2xl'>
       <section className='w-full h-full p-10 mx-5 border-2 border-black rounded-md dark:border-neutral-200'>
-        <div className='flex justify-end w-full mb-10'>
-          <AddRetroDialog handleAddRetro={handleAddRetro} />
+        <div className='flex'>
+          <h2 className='p-5'>RETROS</h2>
+          <div className='flex justify-end w-full mb-10'>
+            <AddRetroDialog handleAddRetro={handleAddRetro} />
+          </div>
         </div>
         <div className='flex flex-row flex-wrap items-start gap-4'>
           {retrospectives.data &&
