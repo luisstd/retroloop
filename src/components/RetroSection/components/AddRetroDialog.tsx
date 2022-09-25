@@ -41,7 +41,7 @@ export default function AddRetroDialog(props: any) {
       <Dialog.Overlay className='fixed inset-0 z-20 bg-black/50' />
 
       <Dialog.Content className='fixed z-50 w-screen max-w-md p-5 bg-white border-2 border-black rounded-lg dark:border-neutral-200 top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 dark:bg-black dark:text-neutral-200 '>
-        <div className='flex flex-row items-start'>
+        <div className='flex flex-row items-start justify-between'>
           <Dialog.Title className='py-5 text-3xl italic font-bold '>
             Start a retrospective
           </Dialog.Title>
