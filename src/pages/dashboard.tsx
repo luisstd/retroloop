@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import MenuBar from '@/components/MenuBar'
 import RetroSection from '@/components/RetroSection/RetroSection'
-import TeamSection from '@/components/TeamSection'
+import TeamSection from '@/components/TeamSection/TeamSection'
 
 const Dashboard: NextPage = () => (
   <div className='flex flex-col items-center'>
@@ -17,7 +17,7 @@ const Dashboard: NextPage = () => (
       <MenuBar />
     </div>
 
-    <main className='grid w-screen h-screen mx-5 place-items-center max-w-screen-2xl'>
+    <main className='grid w-screen h-screen mx-5 mb-10 place-items-center max-w-screen-2xl'>
       <RetroSection />
 
       <TeamSection />
