@@ -16,7 +16,6 @@ export const retrospectiveRouter = createRouter()
     input: z.object({
       name: z.string(),
       date: z.date(),
-      link: z.string(),
     }),
     async resolve({ ctx, input }) {
       return await ctx.prisma.retrospective.create({ data: input })
