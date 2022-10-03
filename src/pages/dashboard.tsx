@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import MenuBar from '@/components/MenuBar'
+import MenuBar from '@/components/MenuBar/MenuBar'
 import RetroSection from '@/components/RetroSection/RetroSection'
 import TeamSection from '@/components/TeamSection/TeamSection'
 
