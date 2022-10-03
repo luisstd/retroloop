@@ -5,6 +5,7 @@ import { AppRouter } from '@/server/router'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { ThemeProvider } from 'next-themes'
+import { SessionProvider } from 'next-auth/react'
 import superjson from 'superjson'
 
 import '@fontsource/space-mono/400.css'
@@ -16,13 +17,15 @@ import '@/styles/globals.css'
 
 const queryClient = new QueryClient()
 
-const App = ({ Component, pageProps }: AppProps) => (
-  <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
-    <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  </ThemeProvider>
+const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => (
+  <SessionProvider session={session}>
+    <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </ThemeProvider>
+  </SessionProvider>
 )
 
 function getBaseUrl() {
