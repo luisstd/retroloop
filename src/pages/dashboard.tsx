@@ -13,9 +13,7 @@ const Dashboard: NextPage = () => (
       <link rel='icon' href='/favicon.ico' />
     </Head>
 
-    <div className='grid place-items-center'>
-      <MenuBar />
-    </div>
+    <MenuBar />
 
     <main className='grid w-screen h-screen mx-5 mb-10 place-items-center max-w-screen-2xl'>
       <RetroSection />
