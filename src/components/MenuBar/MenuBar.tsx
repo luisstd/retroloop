@@ -29,7 +29,7 @@ export default function MenuBar() {
 
           <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md hover:bg-neutral-100 dark:hover:text-black'>
             <IconDotsCircleHorizontal size={24} />
-            <NavigationMenu.Link>Settings</NavigationMenu.Link>
+            <NavigationMenu.Link href='/settings'>Settings</NavigationMenu.Link>
           </NavigationMenu.Item>
         </NavigationMenu.List>
 
