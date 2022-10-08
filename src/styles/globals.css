@@ -6,7 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Space Mono', monospace;
+  font-family: 'MonoLisa', 'Space Mono', monospace;
   @apply dark:bg-black dark:text-neutral-200 dark:border-neutral-200;
 }
 
