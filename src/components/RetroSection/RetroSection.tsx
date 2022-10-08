@@ -2,6 +2,7 @@ import React from 'react'
 
 import { trpc } from '@/utils/trpc'
 import { Retrospective } from '@prisma/client'
+import GridLoader from 'react-spinners/GridLoader'
 
 import AddRetroDialog from '@/components/RetroSection/components/AddRetroDialog'
 
@@ -27,6 +28,18 @@ export default function RetroSection() {
             <AddRetroDialog handleAddRetro={handleAddRetro} />
           </div>
         </div>
+
+        {retrospectives.isLoading && (
+          <div className='grid place-items-center'>
+            <GridLoader
+              color='black'
+              loading={retrospectives.isLoading}
+              size={15}
+              aria-label='Loading Spinner'
+            />
+          </div>
+        )}
+
         <div className='flex flex-row flex-wrap items-start gap-4'>
           {retrospectives.data &&
             retrospectives.data.map((retrospective: Retrospective) => (
