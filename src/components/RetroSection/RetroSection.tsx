@@ -5,8 +5,12 @@ import { Retrospective } from '@prisma/client'
 import GridLoader from 'react-spinners/GridLoader'
 
 import AddRetroDialog from '@/components/RetroSection/components/AddRetroDialog'
+import Link from 'next/link'
+import { useTheme } from 'next-themes'
 
 export default function RetroSection() {
+  const { resolvedTheme } = useTheme()
+
   const retrospectives = trpc.useQuery(['retrospective.getAll'])
 
   const mutation = trpc.useMutation(['retrospective.add'], {
@@ -32,7 +36,7 @@ export default function RetroSection() {
         {retrospectives.isLoading && (
           <div className='grid place-items-center'>
             <GridLoader
-              color='black'
+              color={resolvedTheme === 'light' ? 'black' : 'white'}
               loading={retrospectives.isLoading}
               size={15}
               aria-label='Loading Spinner'
@@ -43,16 +47,15 @@ export default function RetroSection() {
         <div className='flex flex-row flex-wrap items-start gap-4'>
           {retrospectives.data &&
             retrospectives.data.map((retrospective: Retrospective) => (
-              <div
-                key={retrospective.id}
-                className='grid row-start-2 gap-4 p-5 pb-0 mx-4 transition ease-in-out border-2 border-black rounded-md h-72 w-52 dark:border-neutral-200 auto-rows-min grid-col-1 hover:cursor-pointer hover:scale-105 min-w-min min-h-min'
-              >
-                <div className='grid auto-rows-auto place-items-start'>
-                  <h2 className='text-2xl font-bold text-left'>{retrospective.name}</h2>
-                  <p className='mt-2 text-lg '>{retrospective.date.toLocaleDateString()}</p>
+              <Link key={retrospective.id} href={'/retro'}>
+                <div className='grid row-start-2 gap-4 p-5 pb-0 mx-4 transition ease-in-out border-2 border-black rounded-md h-72 w-52 dark:border-neutral-200 auto-rows-min grid-col-1 hover:cursor-pointer hover:scale-105 min-w-min min-h-min'>
+                  <div className='grid auto-rows-auto place-items-start'>
+                    <h2 className='text-2xl font-bold text-left'>{retrospective.name}</h2>
+                    <p className='mt-2 text-lg '>{retrospective.date.toLocaleDateString()}</p>
+                  </div>
+                  <div className='row-start-3 h-28 retro-pattern'></div>
                 </div>
-                <div className='row-start-3 h-28 retro-pattern'></div>
-              </div>
+              </Link>
             ))}
         </div>
       </section>

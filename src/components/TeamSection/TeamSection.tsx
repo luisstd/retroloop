@@ -3,8 +3,11 @@ import { User } from '@prisma/client'
 
 import InviteUserDialog from '@/components/TeamSection/components/InviteUserDialog'
 import { GridLoader } from 'react-spinners'
+import { useTheme } from 'next-themes'
 
 export default function TeamSection() {
+  const { resolvedTheme } = useTheme()
+
   const users = trpc.useQuery(['user.getAll'])
 
   const mutation = trpc.useMutation(['user.add'], {
@@ -30,7 +33,7 @@ export default function TeamSection() {
         {users.isLoading && (
           <div className='grid place-items-center'>
             <GridLoader
-              color='black'
+              color={resolvedTheme === 'light' ? 'black' : 'white'}
               loading={users.isLoading}
               size={15}
               aria-label='Loading Spinner'
