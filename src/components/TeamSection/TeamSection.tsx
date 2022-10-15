@@ -8,16 +8,16 @@ import { useTheme } from 'next-themes'
 export default function TeamSection() {
   const { resolvedTheme } = useTheme()
 
-  const users = trpc.useQuery(['user.getAll'])
+  const users = trpc.user.getAll.useQuery()
 
-  const mutation = trpc.useMutation(['user.add'], {
+  const mutation = trpc.user.add.useMutation({
     onSuccess: async () => {
       users.refetch()
     },
   })
 
-  const handleAddUser = async (values: User) => {
-    mutation.mutate(values)
+  const handleAddUser = async (input: User) => {
+    mutation.mutate(input)
   }
 
   return (

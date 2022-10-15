@@ -11,16 +11,16 @@ import { useTheme } from 'next-themes'
 export default function RetroSection() {
   const { resolvedTheme } = useTheme()
 
-  const retrospectives = trpc.useQuery(['retrospective.getAll'])
+  const retrospectives = trpc.retrospective.getAll.useQuery()
 
-  const mutation = trpc.useMutation(['retrospective.add'], {
+  const mutation = trpc.retrospective.add.useMutation({
     onSuccess: async () => {
       retrospectives.refetch()
     },
   })
 
-  const handleAddRetro = async (values: Retrospective) => {
-    mutation.mutate(values)
+  const handleAddRetro = async (input: Retrospective) => {
+    mutation.mutate(input)
   }
 
   return (

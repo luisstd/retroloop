@@ -13,17 +13,16 @@ export const formatErrors = (
     })
     .filter(Boolean)
 
-if (_clientEnv.success === false) {
+if (!_clientEnv.success) {
   console.error('❌ Invalid environment variables:\n', ...formatErrors(_clientEnv.error.format()))
   throw new Error('Invalid environment variables')
 }
 
-/**
- * Validate that client-side environment variables are exposed to the client.
- */
 for (let key of Object.keys(_clientEnv.data)) {
   if (!key.startsWith('NEXT_PUBLIC_')) {
-    console.warn('❌ Invalid public environment variable name:', key)
+    console.warn(
+      `❌ Invalid public environment variable name: ${key}. It must begin with 'NEXT_PUBLIC_'`
+    )
 
     throw new Error('Invalid public environment variable name')
   }
