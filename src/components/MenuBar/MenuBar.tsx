@@ -6,6 +6,7 @@ import { IconInfinity, IconSquare, IconDotsCircleHorizontal } from '@tabler/icon
 import ThemeDropdown from '@/components/MenuBar/components/ThemeDropdown'
 import UserDropdown from '@/components/MenuBar/components/UserDropdown'
 import LoginButton from '@/components/MenuBar/components/LoginButton'
+import Link from 'next/link'
 
 export default function MenuBar() {
   const { data: session } = useSession()
@@ -29,7 +30,9 @@ export default function MenuBar() {
 
           <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md hover:bg-neutral-100 dark:hover:text-black'>
             <IconDotsCircleHorizontal size={24} />
-            <NavigationMenu.Link href='/settings'>Settings</NavigationMenu.Link>
+            <Link href={'/settings'}>
+              <NavigationMenu.Link className='cursor-pointer'>Settings</NavigationMenu.Link>
+            </Link>
           </NavigationMenu.Item>
         </NavigationMenu.List>
 
