@@ -10,6 +10,9 @@
     "lint": "next lint",
     "clean": "rm -rf node_modules && pnpm install && prisma generate"
   },
+  "lint-staged": {
+    "*": "pnpm lint"
+  },
   "dependencies": {
     "@fontsource/space-mono": "^4.5.10",
     "@headlessui/react": "^1.7.3",
@@ -72,6 +75,7 @@
     "eslint-plugin-unicorn": "^43.0.2",
     "husky": "^8.0.1",
     "jest": "^28.1.3",
+    "lint-staged": "^13.0.3",
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
