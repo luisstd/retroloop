@@ -80,6 +80,7 @@ model Retrospective {
   link            Link[]
   items           RetroItem[]
   participants    User[]
+  timerExpiration DateTime         @default(now())
   workspaceId     String?
 }
 

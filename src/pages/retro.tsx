@@ -8,7 +8,6 @@ import RetroView from '@/components/RetroView/RetroView'
 
 const Retro: NextPage = () => {
   const router = useRouter()
-  console.log(router.query.name)
 
   return (
     <div className='flex flex-col items-center'>
