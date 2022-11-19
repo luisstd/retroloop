@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react'
-
-import { IconAlarm, IconPlayerPause, IconPlayerPlay, IconRefresh } from '@tabler/icons'
 import { useTimer } from 'react-timer-hook'
 
-function RetroTimer({ expiryTimestamp, seconds, minutes, handleMinutes, handleTimer }: any) {
+import { IconAlarm, IconPlayerPause, IconPlayerPlay, IconRefresh } from '@tabler/icons'
+
+type RetroTimerProps = {
+  expiryTimestamp: Date
+  minutes: number
+  handleMinutes: (minutes: number) => void
+  handleTimer: (minutes: number) => void
+}
+
+function RetroTimer({ expiryTimestamp, minutes, handleMinutes, handleTimer }: RetroTimerProps) {
   const timer = useTimer({
     expiryTimestamp,
     autoStart: false,
@@ -20,6 +27,15 @@ function RetroTimer({ expiryTimestamp, seconds, minutes, handleMinutes, handleTi
   useEffect(() => {
     checkLength(timer.minutes) === 1 ? setMinutesSingleDigit(true) : setMinutesSingleDigit(false)
     checkLength(timer.seconds) === 1 ? setSecondsSingleDigit(true) : setSecondsSingleDigit(false)
+
+    const now = new Date()
+    const doesTimerExist: boolean = expiryTimestamp.getTime() > now.getTime()
+    doesTimerExist
+      ? () => {
+          handleTimer(minutes),
+            timer.minutes || timer.seconds ? timer.resume() : timer.restart(expiryTimestamp)
+        }
+      : null
   }, [timer.minutes, timer.seconds, expiryTimestamp])
 
   return timer ? (
@@ -36,7 +52,7 @@ function RetroTimer({ expiryTimestamp, seconds, minutes, handleMinutes, handleTi
             maxLength={2}
             size={2}
             placeholder='00'
-            onChange={(e) => handleMinutes(e.currentTarget.value)}
+            onChange={(e) => handleMinutes(Number(e.currentTarget.value))}
           />
         ) : (
           <span className='text-4xl'>
@@ -56,7 +72,7 @@ function RetroTimer({ expiryTimestamp, seconds, minutes, handleMinutes, handleTi
       {!timer.isRunning ? (
         <button
           onClick={() => {
-            handleTimer(seconds, minutes)
+            handleTimer(minutes)
             timer.minutes || timer.seconds ? timer.resume() : timer.restart(expiryTimestamp)
           }}
         >
