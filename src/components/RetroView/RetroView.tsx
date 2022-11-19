@@ -54,14 +54,14 @@ const RetroView = () => {
   return selectedRetro.isSuccess ? (
     <>
       <div className='flex items-center w-screen h-full max-w-screen-2xl'>
-        <section className='w-full h-screen p-10 mx-5 border-2 border-black rounded-md dark:border-neutral-200'>
+        <section className='w-full h-screen p-5 mx-5 border-2 border-black rounded-md dark:border-neutral-200'>
           <h2 className='p-5'>{selectedRetro.data?.name}</h2>
 
-          <div className='grid w-full h-full grid-cols-3 grid-rows-2 gap-5 place-items-center'>
-            <div className='col-start-1 row-start-1 p-10 border-2 border-black rounded-md dark:border-neutral-200'>
+          <div className='grid w-full grid-cols-3 gap-5 grid-rows-auto h-5/6 place-items-center'>
+            <div className='w-full col-start-1 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
               <PhaseIndicator />
             </div>
-            <div className='col-start-2 row-start-1 p-10 border-2 border-black rounded-md dark:border-neutral-200'>
+            <div className='col-start-2 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
               {expiryTimestamp ? (
                 <RetroTimer
                   expiryTimestamp={expiryTimestamp}
@@ -71,18 +71,18 @@ const RetroView = () => {
                 />
               ) : null}
             </div>
-            <div className='col-start-3 row-start-1 p-10 border-2 border-black rounded-md dark:border-neutral-200'>
+            <div className='w-full col-start-3 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
               <ActionButtons />
             </div>
 
-            <div className='col-start-1 row-start-2 p-10 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector />
+            <div className='w-full h-full col-start-1 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+              <ItemCollector title={'things that went well'} />
             </div>
-            <div className='col-start-2 row-start-2 p-10 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector />
+            <div className='w-full h-full col-start-2 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+              <ItemCollector title={'things that can be improved'} />
             </div>
-            <div className='col-start-3 row-start-2 p-10 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector />
+            <div className='w-full h-full col-start-3 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+              <ItemCollector title={'things to start doing'} />
             </div>
           </div>
         </section>
