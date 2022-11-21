@@ -85,15 +85,15 @@ model Retrospective {
 }
 
 model RetroItem {
-  id               String         @id @default(cuid())
-  createdAt        DateTime       @default(now())
+  id               String          @id @default(cuid())
+  createdAt        DateTime        @default(now())
   content          String
   type             String
-  itemCollection   ItemCollection @relation(fields: [itemCollectionId], references: [id])
-  retrospective    Retrospective  @relation(fields: [retrospectiveId], references: [id])
-  itemCollectionId String
+  itemCollection   ItemCollection? @relation(fields: [itemCollectionId], references: [id])
+  retrospective    Retrospective   @relation(fields: [retrospectiveId], references: [id])
+  itemCollectionId String?
   retrospectiveId  String
-  author           User?          @relation(fields: [userId], references: [id])
+  author           User?           @relation(fields: [userId], references: [id])
   userId           String?
 }
 
