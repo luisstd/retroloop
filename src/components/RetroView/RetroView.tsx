@@ -76,13 +76,17 @@ const RetroView = () => {
             </div>
 
             <div className='w-full h-full col-start-1 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector title={'things that went well'} />
+              <ItemCollector retroId={retroId} itemType='success' title={'things that went well'} />
             </div>
             <div className='w-full h-full col-start-2 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector title={'things that can be improved'} />
+              <ItemCollector
+                retroId={retroId}
+                itemType='improvement'
+                title={'things that can be improved'}
+              />
             </div>
             <div className='w-full h-full col-start-3 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector title={'things to start doing'} />
+              <ItemCollector retroId={retroId} itemType='action' title={'things to start doing'} />
             </div>
           </div>
         </section>
