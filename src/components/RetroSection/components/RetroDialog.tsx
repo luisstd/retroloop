@@ -5,8 +5,13 @@ import { IconMinimize, IconPlus } from '@tabler/icons'
 import { Transition } from '@headlessui/react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Field, Form, Formik } from 'formik'
+import { Retrospective } from '@prisma/client'
 
-export default function AddRetroDialog(props: any) {
+type RetroDialogProps = {
+  handleAddRetro: (input: Retrospective) => void
+}
+
+export default function RetroDialog(props: RetroDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -55,11 +60,15 @@ export default function AddRetroDialog(props: any) {
         {/* <Dialog.Description className=''>You can change this later</Dialog.Description> */}
         <Formik
           initialValues={{
+            id: '',
             name: '',
             date: new Date(),
             link: '',
+            createdAt: new Date(),
+            timerExpiration: new Date(),
+            workspaceId: null,
           }}
-          onSubmit={async (values) => {
+          onSubmit={(values) => {
             props.handleAddRetro(values)
             setIsOpen(false)
           }}

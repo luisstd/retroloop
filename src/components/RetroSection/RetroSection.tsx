@@ -19,7 +19,7 @@ export default function RetroSection() {
     },
   })
 
-  const handleAddRetro = async (input: Retrospective) => {
+  const handleAddRetro = (input: Retrospective) => {
     mutation.mutate(input)
   }
 
