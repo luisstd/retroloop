@@ -4,7 +4,7 @@ import { trpc } from '@/utils/trpc'
 import { Retrospective } from '@prisma/client'
 import GridLoader from 'react-spinners/GridLoader'
 
-import AddRetroDialog from '@/components/RetroSection/components/AddRetroDialog'
+import RetroDialog from '@/components/RetroSection/components/RetroDialog'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
@@ -29,7 +29,7 @@ export default function RetroSection() {
         <div className='flex'>
           <h2 className='p-5'>RETROS</h2>
           <div className='flex justify-end w-full mb-10'>
-            <AddRetroDialog handleAddRetro={handleAddRetro} />
+            <RetroDialog handleAddRetro={handleAddRetro} />
           </div>
         </div>
 
