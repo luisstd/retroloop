@@ -1,9 +1,9 @@
+import { IconBrandGithub } from '@tabler/icons'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { IconBrandGithub } from '@tabler/icons'
 import MenuBar from '@/components/MenuBar/MenuBar'
 
 const Landingpage: NextPage = () => (

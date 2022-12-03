@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { add } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
-import { trpc } from '@/utils/trpc'
-import { add } from 'date-fns'
+import React, { useEffect, useState } from 'react'
+import GridLoader from 'react-spinners/GridLoader'
 
-import PhaseIndicator from '@/components/RetroView/components/PhaseIndicator'
-import RetroTimer from '@/components/RetroView/components/RetroTimer'
 import ActionButtons from '@/components/RetroView/components/ActionButtons'
 import ItemCollector from '@/components/RetroView/components/ItemCollector'
-import GridLoader from 'react-spinners/GridLoader'
+import PhaseIndicator from '@/components/RetroView/components/PhaseIndicator'
+import RetroTimer from '@/components/RetroView/components/RetroTimer'
+import { trpc } from '@/utils/trpc'
 
 const RetroView = () => {
   const { resolvedTheme } = useTheme()

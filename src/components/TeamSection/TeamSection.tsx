@@ -1,9 +1,9 @@
-import { trpc } from '@/utils/trpc'
 import { User } from '@prisma/client'
+import { useTheme } from 'next-themes'
+import { GridLoader } from 'react-spinners'
 
 import InviteUserDialog from '@/components/TeamSection/components/InviteUserDialog'
-import { GridLoader } from 'react-spinners'
-import { useTheme } from 'next-themes'
+import { trpc } from '@/utils/trpc'
 
 export default function TeamSection() {
   const { resolvedTheme } = useTheme()

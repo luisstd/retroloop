@@ -1,12 +1,11 @@
+import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import { IconDotsCircleHorizontal, IconInfinity, IconSquare } from '@tabler/icons'
+import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { IconInfinity, IconSquare, IconDotsCircleHorizontal } from '@tabler/icons'
-
+import LoginButton from '@/components/MenuBar/components/LoginButton'
 import ThemeDropdown from '@/components/MenuBar/components/ThemeDropdown'
 import UserDropdown from '@/components/MenuBar/components/UserDropdown'
-import LoginButton from '@/components/MenuBar/components/LoginButton'
-import Link from 'next/link'
 
 export default function MenuBar() {
   const { data: session } = useSession()

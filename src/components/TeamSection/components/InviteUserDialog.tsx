@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-
-import { IconMinimize, IconPlus } from '@tabler/icons'
-
 import { Transition } from '@headlessui/react'
 import * as Dialog from '@radix-ui/react-dialog'
+import { IconMinimize, IconPlus } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
+import React, { useState } from 'react'
 
 export default function AddRetroDialog(props: any) {
   const [isOpen, setIsOpen] = useState(false)

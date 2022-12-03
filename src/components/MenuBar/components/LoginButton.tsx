@@ -1,6 +1,6 @@
 import { IconUserCircle } from '@tabler/icons'
-import { useSession, signIn } from 'next-auth/react'
 import Link from 'next/link'
+import { signIn, useSession } from 'next-auth/react'
 
 export default function Component() {
   const { data: session } = useSession()

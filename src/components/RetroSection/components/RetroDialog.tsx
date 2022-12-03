@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-
-import { IconMinimize, IconPlus } from '@tabler/icons'
-
 import { Transition } from '@headlessui/react'
-import * as Dialog from '@radix-ui/react-dialog'
-import { Field, Form, Formik } from 'formik'
 import { Retrospective } from '@prisma/client'
+import * as Dialog from '@radix-ui/react-dialog'
+import { IconMinimize, IconPlus } from '@tabler/icons'
+import { Field, Form, Formik } from 'formik'
+import React, { useState } from 'react'
 
 type RetroDialogProps = {
   handleAddRetro: (input: Retrospective) => void

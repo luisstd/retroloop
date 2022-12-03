@@ -1,12 +1,11 @@
-import React from 'react'
-
-import { trpc } from '@/utils/trpc'
 import { Retrospective } from '@prisma/client'
+import Link from 'next/link'
+import { useTheme } from 'next-themes'
+import React from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import RetroDialog from '@/components/RetroSection/components/RetroDialog'
-import Link from 'next/link'
-import { useTheme } from 'next-themes'
+import { trpc } from '@/utils/trpc'
 
 export default function RetroSection() {
   const { resolvedTheme } = useTheme()

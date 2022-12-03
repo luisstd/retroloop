@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { IconLanguage, IconLayoutKanban, IconUserCircle, IconUsers } from '@tabler/icons'
+import React, { useState } from 'react'
 
+import LanguageSettings from '@/components/SettingsSection/components/LanguageSettings'
 import ProfileSettings from '@/components/SettingsSection/components/ProfileSettings'
 import RetroSettings from '@/components/SettingsSection/components/RetroSettings'
 import TeamSettings from '@/components/SettingsSection/components/TeamSettings'
-import LanguageSettings from '@/components/SettingsSection/components/LanguageSettings'
 
 const SettingsSection = () => {
   const [section, setSection] = useState('profile')
