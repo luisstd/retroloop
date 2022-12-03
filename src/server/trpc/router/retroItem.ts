@@ -54,4 +54,11 @@ export const retroItemRouter = t.router({
         data: input,
       })
     }),
+  delete: t.procedure.input(z.string()).mutation(({ ctx, input }) => {
+    return ctx.prisma.retroItem.delete({
+      where: {
+        id: input,
+      },
+    })
+  }),
 })

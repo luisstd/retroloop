@@ -15,14 +15,24 @@ type ItemCollectorProps = {
 function ItemCollector({ title, retroId, itemType }: ItemCollectorProps) {
   const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retroId)
 
-  const mutation = trpc.retroItem.edit.useMutation({
+  const mutationEdit = trpc.retroItem.edit.useMutation({
+    onSuccess: () => {
+      retroItems.refetch()
+    },
+  })
+
+  const mutationDelete = trpc.retroItem.delete.useMutation({
     onSuccess: () => {
       retroItems.refetch()
     },
   })
 
   function handleEditRetroItem(input: RetroItem): void {
-    mutation.mutate(input)
+    mutationEdit.mutate(input)
+  }
+
+  function handleDeleteRetroItem(input: RetroItem['id']): void {
+    mutationDelete.mutate(input)
   }
 
   return (
@@ -45,7 +55,7 @@ function ItemCollector({ title, retroId, itemType }: ItemCollectorProps) {
 
                 <div className='flex items-start'>
                   <CommonEditDialog itemToEdit={item} editHandler={handleEditRetroItem} />
-                  <CommonDeleteDialog />
+                  <CommonDeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
                 </div>
               </li>
             ) : null
