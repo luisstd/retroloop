@@ -1,19 +1,29 @@
-import { RetroItem } from '@prisma/client'
-import { IconPlus } from '@tabler/icons'
+import { RetroItem, Retrospective } from '@prisma/client'
+import { useSession } from 'next-auth/react'
 import React from 'react'
 
 import CommonDeleteDialog from '@/components/common/CommonDeleteDialog'
 import CommonEditDialog from '@/components/common/CommonEditDialog'
+import RetroItemDialog from '@/components/RetroView/components/ItemCollector/components/RetroItemDialog'
 import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
   title: string
-  retroId: string
+  retrospective: Retrospective
   itemType: string
 }
 
-function ItemCollector({ title, retroId, itemType }: ItemCollectorProps) {
-  const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retroId)
+function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
+  const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
+  const { data: session } = useSession()
+
+  const userId = session?.user?.id
+
+  const mutationAdd = trpc.retroItem.add.useMutation({
+    onSuccess: () => {
+      retroItems.refetch()
+    },
+  })
 
   const mutationEdit = trpc.retroItem.edit.useMutation({
     onSuccess: () => {
@@ -27,6 +37,10 @@ function ItemCollector({ title, retroId, itemType }: ItemCollectorProps) {
     },
   })
 
+  function handleAddRetroItem(input: RetroItem): void {
+    mutationAdd.mutate(input)
+  }
+
   function handleEditRetroItem(input: RetroItem): void {
     mutationEdit.mutate(input)
   }
@@ -37,11 +51,16 @@ function ItemCollector({ title, retroId, itemType }: ItemCollectorProps) {
 
   return (
     <div className='w-full h-full'>
-      <div className='flex flex-row items-center justify-between pb-3 border-b-2 border-black dark:border-neutral-200'>
-        <h2 className='p-1 m-2 text-xl italic font-bold'>{title}</h2>
-        <div className='transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
-          <IconPlus size={40} className='p-1 rounded-md justify-self-center' />
-        </div>
+      <div className='flex flex-row items-center pb-3 border-b-2 border-black dark:border-neutral-200'>
+        <h2 className='p-1 m-2 mr-auto text-xl italic font-bold'>{title}</h2>
+        {userId ? (
+          <RetroItemDialog
+            retrospective={retrospective}
+            itemType={itemType}
+            userId={userId}
+            addHandler={handleAddRetroItem}
+          />
+        ) : null}
       </div>
       <ul>
         {retroItems.data &&

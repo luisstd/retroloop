@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import ActionButtons from '@/components/RetroView/components/ActionButtons'
-import ItemCollector from '@/components/RetroView/components/ItemCollector'
+import ItemCollector from '@/components/RetroView/components/ItemCollector/ItemCollector'
 import PhaseIndicator from '@/components/RetroView/components/PhaseIndicator'
 import RetroTimer from '@/components/RetroView/components/RetroTimer'
 import { trpc } from '@/utils/trpc'
@@ -75,19 +75,31 @@ const RetroView = () => {
               <ActionButtons />
             </div>
 
-            <div className='w-full h-full col-start-1 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector retroId={retroId} itemType='success' title={'things that went well'} />
-            </div>
-            <div className='w-full h-full col-start-2 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector
-                retroId={retroId}
-                itemType='improvement'
-                title={'things that can be improved'}
-              />
-            </div>
-            <div className='w-full h-full col-start-3 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ItemCollector retroId={retroId} itemType='action' title={'things to start doing'} />
-            </div>
+            {selectedRetro.data ? (
+              <>
+                <div className='w-full h-full col-start-1 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+                  <ItemCollector
+                    retrospective={selectedRetro.data}
+                    itemType='success'
+                    title={'things that went well'}
+                  />
+                </div>
+                <div className='w-full h-full col-start-2 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+                  <ItemCollector
+                    retrospective={selectedRetro.data}
+                    itemType='improvement'
+                    title={'things that can be improved'}
+                  />
+                </div>
+                <div className='w-full h-full col-start-3 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+                  <ItemCollector
+                    retrospective={selectedRetro.data}
+                    itemType='action'
+                    title={'things to start doing'}
+                  />
+                </div>
+              </>
+            ) : null}
           </div>
         </section>
       </div>
