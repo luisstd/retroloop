@@ -8,7 +8,7 @@ import RetroSection from '@/components/RetroSection/RetroSection'
 import TeamSection from '@/components/TeamSection/TeamSection'
 
 const Dashboard: NextPage = () => {
-  const { status } = useSession()
+  const { data: session, status } = useSession()
   return (
     <div className='flex flex-col items-center'>
       <Head>
@@ -19,9 +19,9 @@ const Dashboard: NextPage = () => {
 
       <MenuBar />
 
-      {status === 'authenticated' ? (
+      {status === 'authenticated' && session.user ? (
         <main className='grid w-screen h-screen mx-5 mb-10 place-items-center max-w-screen-2xl'>
-          <RetroSection />
+          <RetroSection userId={session.user.id} />
 
           <TeamSection />
         </main>

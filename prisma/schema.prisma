@@ -44,20 +44,19 @@ model VerificationToken {
 }
 
 model User {
-  id              String         @id @default(cuid())
-  createdAt       DateTime       @default(now())
-  email           String         @unique
-  emailVerified   DateTime?
-  name            String
-  role            String?
-  retrospective   Retrospective? @relation(fields: [retrospectiveId], references: [id])
-  Invite          Invite[]
-  RetroItem       RetroItem[]
-  Workspace       Workspace[]
-  image           String?
-  accounts        Account[]
-  sessions        Session[]
-  retrospectiveId String?
+  id             String          @id @default(cuid())
+  createdAt      DateTime        @default(now())
+  email          String          @unique
+  emailVerified  DateTime?
+  name           String
+  role           String?
+  retrospectives Retrospective[]
+  Invite         Invite[]
+  RetroItem      RetroItem[]
+  Workspace      Workspace[]
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
 }
 
 model Workspace {

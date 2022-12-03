@@ -3,8 +3,16 @@ import { z } from 'zod'
 import { t } from '../trpc'
 
 export const retrospectiveRouter = t.router({
-  getAll: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.retrospective.findMany()
+  getAll: t.procedure.input(z.string()).query(({ ctx, input }) => {
+    return ctx.prisma.retrospective.findMany({
+      where: {
+        participants: {
+          some: {
+            id: input,
+          },
+        },
+      },
+    })
   }),
   getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.retrospective.findUnique({

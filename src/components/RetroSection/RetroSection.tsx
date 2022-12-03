@@ -1,4 +1,4 @@
-import { Retrospective } from '@prisma/client'
+import { Retrospective, User } from '@prisma/client'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import React from 'react'
@@ -7,10 +7,14 @@ import GridLoader from 'react-spinners/GridLoader'
 import RetroDialog from '@/components/RetroSection/components/RetroDialog'
 import { trpc } from '@/utils/trpc'
 
-export default function RetroSection() {
+type RetroSectionProps = {
+  userId: User['id']
+}
+
+export default function RetroSection(props: RetroSectionProps) {
   const { resolvedTheme } = useTheme()
 
-  const retrospectives = trpc.retrospective.getAll.useQuery()
+  const retrospectives = trpc.retrospective.getAll.useQuery(props.userId)
 
   const mutation = trpc.retrospective.add.useMutation({
     onSuccess: async () => {
