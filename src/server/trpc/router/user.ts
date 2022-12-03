@@ -6,9 +6,6 @@ export const userRouter = t.router({
   getAll: t.procedure.query(({ ctx }) => {
     return ctx.prisma.user.findMany()
   }),
-  getFirst: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.user.findFirst()
-  }),
   add: t.procedure
     .input(
       z.object({

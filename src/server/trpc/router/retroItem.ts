@@ -6,9 +6,6 @@ export const retroItemRouter = t.router({
   getAll: t.procedure.query(({ ctx }) => {
     return ctx.prisma.retroItem.findMany()
   }),
-  getFirst: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.retroItem.findFirst()
-  }),
   getAllByRetroId: t.procedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.retroItem.findMany({
       where: {

@@ -6,9 +6,6 @@ export const retrospectiveRouter = t.router({
   getAll: t.procedure.query(({ ctx }) => {
     return ctx.prisma.retrospective.findMany()
   }),
-  getFirst: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.retrospective.findFirst()
-  }),
   getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.retrospective.findUnique({
       where: {
