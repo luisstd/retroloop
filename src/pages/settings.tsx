@@ -1,11 +1,14 @@
+import { IconFaceIdError } from '@tabler/icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
+import { useSession } from 'next-auth/react'
 import React from 'react'
 
 import MenuBar from '@/components/MenuBar/MenuBar'
 import SettingsSection from '@/components/SettingsSection/SettingsSection'
 
 const Settings: NextPage = () => {
+  const { status } = useSession()
   return (
     <div className='flex flex-col items-center'>
       <Head>
@@ -16,7 +19,14 @@ const Settings: NextPage = () => {
 
       <MenuBar />
 
-      <SettingsSection />
+      {status === 'authenticated' ? (
+        <SettingsSection />
+      ) : (
+        <div className='flex flex-col items-center'>
+          <IconFaceIdError size={122} className='m-5' />
+          <p className='text-xl'>Not authenticated, please log in first</p>
+        </div>
+      )}
     </div>
   )
 }
