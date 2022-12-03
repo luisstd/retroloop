@@ -29,9 +29,7 @@ export default function CommonEditDialog(props: EditDialogProps) {
           leave='ease-in duration-200'
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
-        >
-          <Dialog.Overlay className='fixed inset-0 z-20 bg-black/50' />
-        </Transition.Child>
+        ></Transition.Child>
         <Transition.Child
           enter='ease-out duration-300'
           enterFrom='opacity-0 scale-95'
@@ -41,6 +39,7 @@ export default function CommonEditDialog(props: EditDialogProps) {
           leaveTo='opacity-0 scale-95'
         ></Transition.Child>
       </Transition.Root>
+
       <Dialog.Overlay className='fixed inset-0 z-20 bg-black/50' />
 
       <Dialog.Content
