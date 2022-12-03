@@ -87,7 +87,7 @@ export default function RetroDialog(props: RetroDialogProps) {
             <div className='flex flex-row justify-end w-full'>
               <button
                 type='submit'
-                aria-label='Close'
+                aria-label='Start Retro'
                 className='p-1 m-2 mt-10 italic font-bold border-2 border-black rounded-md dark:border-neutral-200'
               >
                 Start Retro
