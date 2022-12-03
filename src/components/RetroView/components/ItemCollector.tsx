@@ -1,6 +1,10 @@
-import React from 'react'
-import { trpc } from '@/utils/trpc'
+import { RetroItem } from '@prisma/client'
 import { IconPlus } from '@tabler/icons'
+import React from 'react'
+
+import CommonDeleteDialog from '@/components/common/CommonDeleteDialog'
+import CommonEditDialog from '@/components/common/CommonEditDialog'
+import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
   title: string
@@ -10,7 +14,16 @@ type ItemCollectorProps = {
 
 function ItemCollector({ title, retroId, itemType }: ItemCollectorProps) {
   const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retroId)
-  console.log(retroItems.data)
+
+  const mutation = trpc.retroItem.edit.useMutation({
+    onSuccess: () => {
+      retroItems.refetch()
+    },
+  })
+
+  function handleEditRetroItem(input: RetroItem): void {
+    mutation.mutate(input)
+  }
 
   return (
     <div className='w-full h-full'>
@@ -25,10 +38,15 @@ function ItemCollector({ title, retroId, itemType }: ItemCollectorProps) {
           retroItems.data.map((item, index) =>
             item.type === itemType ? (
               <li
-                className='p-2 my-3 border-2 border-black rounded-md dark:border-neutral-200'
+                className='flex justify-between p-2 my-3 border-2 border-black rounded-md dark:border-neutral-200'
                 key={index}
               >
-                {item.content}
+                <p className='p-1'>{item.content}</p>
+
+                <div className='flex items-start'>
+                  <CommonEditDialog itemToEdit={item} editHandler={handleEditRetroItem} />
+                  <CommonDeleteDialog />
+                </div>
               </li>
             ) : null
           )}

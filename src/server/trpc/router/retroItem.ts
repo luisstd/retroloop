@@ -39,4 +39,19 @@ export const retroItemRouter = t.router({
     .mutation(({ ctx, input }) => {
       return ctx.prisma.retroItem.create({ data: input })
     }),
+  edit: t.procedure
+    .input(
+      z.object({
+        id: z.string(),
+        content: z.string(),
+      })
+    )
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.retroItem.update({
+        where: {
+          id: input.id,
+        },
+        data: input,
+      })
+    }),
 })
