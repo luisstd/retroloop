@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import Footer from '@/components/Footer/Footer'
 import MenuBar from '@/components/MenuBar/MenuBar'
 
 const Landingpage: NextPage = () => (
@@ -26,6 +27,8 @@ const Landingpage: NextPage = () => (
         </Link>
       </div>
     </main>
+
+    <Footer />
   </div>
 )
 
