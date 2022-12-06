@@ -1,7 +1,7 @@
 import { Transition } from '@headlessui/react'
 import * as AlertDialog from '@radix-ui/react-alert-dialog'
 import { IconTrash } from '@tabler/icons'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 type ItemToDelete = Record<string | number | symbol, unknown>
 

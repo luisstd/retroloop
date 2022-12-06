@@ -2,7 +2,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { IconDeviceLaptop, IconMoon, IconSun } from '@tabler/icons'
 import { useTheme } from 'next-themes'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function ThemeDropdown() {
   const [mounted, setMounted] = useState(false)

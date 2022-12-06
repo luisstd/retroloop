@@ -1,6 +1,5 @@
 import * as Label from '@radix-ui/react-label'
 import { Field, Form, Formik } from 'formik'
-import React from 'react'
 
 const RetroSettings = () => (
   <Formik

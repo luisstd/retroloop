@@ -1,6 +1,5 @@
 import { RetroItem, Retrospective } from '@prisma/client'
 import { useSession } from 'next-auth/react'
-import React from 'react'
 
 import CommonDeleteDialog from '@/components/common/CommonDeleteDialog'
 import CommonEditDialog from '@/components/common/CommonEditDialog'

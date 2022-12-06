@@ -2,7 +2,7 @@ import { Transition } from '@headlessui/react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPencil } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 type ItemToEdit = Record<string | number | symbol, unknown>
 

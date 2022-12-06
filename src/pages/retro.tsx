@@ -2,7 +2,6 @@ import { IconFaceIdError } from '@tabler/icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
-import React from 'react'
 
 import MenuBar from '@/components/MenuBar/MenuBar'
 import RetroView from '@/components/RetroView/RetroView'

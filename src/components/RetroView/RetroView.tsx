@@ -1,7 +1,7 @@
 import { add } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import ActionButtons from '@/components/RetroView/components/ActionButtons'

@@ -1,7 +1,6 @@
 import { Retrospective, User } from '@prisma/client'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import React from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import RetroDialog from '@/components/RetroSection/components/RetroDialog'

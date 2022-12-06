@@ -3,7 +3,7 @@ import { RetroItem, Retrospective } from '@prisma/client'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPlus } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 type RetroItemDialogProps = {
   itemType: string
