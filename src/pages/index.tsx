@@ -1,7 +1,6 @@
-import { IconBrandGithub } from '@tabler/icons'
+import { IconBrandGithub, IconInfinity } from '@tabler/icons'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import Footer from '@/components/Footer/Footer'
@@ -19,7 +18,10 @@ const Landingpage: NextPage = () => (
 
     <main className='grid h-screen place-items-center'>
       <div className='grid place-items-center'>
-        <Image src={'/retroloop-logo.png'} width={575} height={145} className='rounded-lg' />
+        <div className='flex items-center gap-5'>
+          <IconInfinity size={128} />
+          <span className='italic text-7xl'>retroloop</span>
+        </div>
         <Link href={'https://github.com/luisstd/retroloop'}>
           <a rel='noopener noreferrer '>
             <IconBrandGithub className='m-5 cursor-pointer' size={42} />
