@@ -9,6 +9,7 @@ type RetroItemDialogProps = {
   itemType: string
   userId: string
   retrospective: Retrospective
+  //TODO: fix typing
   addHandler: (input: any) => void
 }
 

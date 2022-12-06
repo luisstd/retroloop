@@ -7,6 +7,7 @@ type ItemToDelete = Record<string | number | symbol, unknown>
 
 type DeleteDialogProps = {
   itemToDelete: ItemToDelete
+  //TODO: fix typing
   deleteHandler: (input: any) => void
 }
 

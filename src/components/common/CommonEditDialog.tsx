@@ -8,6 +8,7 @@ type ItemToEdit = Record<string | number | symbol, unknown>
 
 type EditDialogProps = {
   itemToEdit: ItemToEdit
+  //TODO: fix typing
   editHandler: (input: any) => void
 }
 

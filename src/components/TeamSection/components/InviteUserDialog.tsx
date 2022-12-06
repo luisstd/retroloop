@@ -4,6 +4,7 @@ import { IconMinimize, IconPlus } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
 
+//TODO: fix typing
 export default function AddRetroDialog(props: any) {
   const [isOpen, setIsOpen] = useState(false)
 
