@@ -78,6 +78,7 @@ model Retrospective {
   itemCollections ItemCollection[]
   link            Link[]
   items           RetroItem[]
+  phase           String           @default("WRITING")
   participants    User[]
   timerExpiration DateTime         @default(now())
   workspaceId     String?

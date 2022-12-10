@@ -51,15 +51,15 @@ const RetroView = () => {
     updateTimer.refetch()
   }, [expiryTimestamp])
 
-  return selectedRetro.isSuccess ? (
+  return selectedRetro.data ? (
     <>
       <div className='flex items-center w-screen h-full max-w-screen-2xl'>
         <section className='w-full h-screen p-5 mx-5 border-2 border-black rounded-md dark:border-neutral-200'>
-          <h2 className='p-5'>{selectedRetro.data?.name}</h2>
+          <h2 className='p-5'>{selectedRetro.data.name}</h2>
 
           <div className='grid w-full grid-cols-3 gap-5 grid-rows-auto h-5/6 place-items-center'>
             <div className='w-full col-start-1 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <PhaseIndicator />
+              <PhaseIndicator phase={selectedRetro.data.phase} />
             </div>
             <div className='col-start-2 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
               {expiryTimestamp ? (
