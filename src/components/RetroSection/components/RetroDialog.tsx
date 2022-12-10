@@ -63,6 +63,7 @@ export default function RetroDialog(props: RetroDialogProps) {
             createdAt: new Date(),
             timerExpiration: new Date(),
             workspaceId: null,
+            phase: 'WRITING',
           }}
           onSubmit={(values) => {
             props.handleAddRetro(values)
