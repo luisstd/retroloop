@@ -51,7 +51,7 @@ function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
   return (
     <div className='w-full h-full'>
       <div className='flex flex-row items-center pb-3 border-b-2 border-black dark:border-neutral-200'>
-        <h2 className='p-1 m-2 mr-auto text-xl italic font-bold'>{title}</h2>
+        <h2 className='p-1 m-2 mr-auto text-xl font-bold'>{title}</h2>
         {userId ? (
           <RetroItemDialog
             retrospective={retrospective}
