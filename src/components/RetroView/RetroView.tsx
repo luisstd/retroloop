@@ -71,9 +71,7 @@ const RetroView = () => {
                 />
               ) : null}
             </div>
-            <div className='w-full col-start-3 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <ActionButtons />
-            </div>
+            <ActionButtons retrospective={selectedRetro} />
 
             {selectedRetro.data ? (
               <>

@@ -46,4 +46,19 @@ export const retrospectiveRouter = t.router({
     .mutation(({ ctx, input }) => {
       return ctx.prisma.retrospective.create({ data: input })
     }),
+  edit: t.procedure
+    .input(
+      z.object({
+        id: z.string(),
+        phase: z.string(),
+      })
+    )
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.retrospective.update({
+        where: {
+          id: input.id,
+        },
+        data: input,
+      })
+    }),
 })
