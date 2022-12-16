@@ -13,26 +13,30 @@ export default function MenuBar() {
     <div className='flex items-center w-screen max-w-screen-2xl'>
       <NavigationMenu.Root className='flex items-center justify-between w-full p-2 m-5 text-xl border-2 border-black rounded-md dark:border-neutral-200 max-w-screen-2xl'>
         <NavigationMenu.List className='flex items-center gap-2'>
-          <NavigationMenu.Item>
-            <IconInfinity size={40} />
-          </NavigationMenu.Item>
-          <NavigationMenu.Item className='text-3xl italic text-center'>
-            <NavigationMenu.Link href='/'>retroloop</NavigationMenu.Link>
-          </NavigationMenu.Item>
+          <Link href='/'>
+            <NavigationMenu.Item className='flex text-3xl italic text-center'>
+              <IconInfinity size={40} />
+              <NavigationMenu.Link className='px-2 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'>
+                retroloop
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </Link>
         </NavigationMenu.List>
 
         <NavigationMenu.List className='flex gap-6'>
-          <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md hover:bg-neutral-100 dark:hover:text-black'>
-            <IconSquare size={24} />
-            <NavigationMenu.Link href='/dashboard'>Dashboard</NavigationMenu.Link>
-          </NavigationMenu.Item>
+          <Link href='/dashboard'>
+            <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'>
+              <IconSquare size={24} />
+              <NavigationMenu.Link>Dashboard</NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </Link>
 
-          <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md hover:bg-neutral-100 dark:hover:text-black'>
-            <IconDotsCircleHorizontal size={24} />
-            <Link href={'/settings'}>
-              <NavigationMenu.Link className='cursor-pointer'>Settings</NavigationMenu.Link>
-            </Link>
-          </NavigationMenu.Item>
+          <Link href='/settings'>
+            <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'>
+              <IconDotsCircleHorizontal size={24} />
+              <NavigationMenu.Link>Settings</NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </Link>
         </NavigationMenu.List>
 
         <div className='flex gap-4'>
