@@ -16,7 +16,7 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
     <div className='flex justify-between gap-2'>
       {props.retrospective.phase === RetroPhase.WRITING ? (
         <div className='px-2 mx-2 text-xl '>01)Write</div>
-      ) : (
+      ) : props.retrospective.phase === RetroPhase.VOTING || RetroPhase.DISCUSSING ? (
         <div
           className='px-2 mx-2 text-xl text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
           onClick={() =>
@@ -25,11 +25,13 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
         >
           01)Write
         </div>
+      ) : (
+        <div className='px-2 mx-2 text-xl text-gray-500'>01)Write</div>
       )}
 
       {props.retrospective.phase === RetroPhase.VOTING ? (
         <div className='px-2 mx-2 text-xl'>02)Vote</div>
-      ) : (
+      ) : props.retrospective.phase === RetroPhase.DISCUSSING ? (
         <div
           className='px-2 mx-2 text-xl text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
           onClick={() =>
@@ -38,19 +40,14 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
         >
           02)Vote
         </div>
+      ) : (
+        <div className='px-2 mx-2 text-xl text-gray-500'>02)Vote</div>
       )}
 
       {props.retrospective.phase === RetroPhase.DISCUSSING ? (
         <div className='px-2 mx-2 text-xl'>03)Discuss</div>
       ) : (
-        <div
-          className='px-2 mx-2 text-xl text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
-          onClick={() =>
-            props.handleUpdateRetro({ ...props.retrospective, phase: RetroPhase.DISCUSSING })
-          }
-        >
-          03)Discuss
-        </div>
+        <div className='px-2 mx-2 text-xl text-gray-500'>03)Discuss</div>
       )}
     </div>
   )
