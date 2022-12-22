@@ -1,3 +1,4 @@
+import { Retrospective } from '@prisma/client'
 import { add } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
@@ -21,12 +22,22 @@ const RetroView = () => {
   const [minutes, setMinutes] = useState(0)
   const [expiryTimestamp, setExpiryTimeStamp] = useState(selectedRetro.data?.timerExpiration)
 
+  const editRetro = trpc.retrospective.edit.useMutation({
+    onSuccess: async () => {
+      selectedRetro.refetch()
+    },
+  })
+
+  const handleUpdateRetro = (input: Retrospective) => {
+    editRetro.mutate(input)
+  }
+
   const updateTimer = trpc.retrospective.updateTimer.useQuery({
     id: retroId,
     timerExpiration: expiryTimestamp,
   })
 
-  function handleTimer(minutes: number): void {
+  function handleUpdateTimer(minutes: number): void {
     const now: Date = new Date()
 
     const newExpiryTimestamp =
@@ -44,7 +55,7 @@ const RetroView = () => {
   }
 
   useEffect(() => {
-    handleTimer(minutes)
+    handleUpdateTimer(minutes)
   }, [minutes])
 
   useEffect(() => {
@@ -59,19 +70,25 @@ const RetroView = () => {
 
           <div className='grid w-full grid-cols-3 gap-5 grid-rows-auto h-5/6 place-items-center'>
             <div className='w-full col-start-1 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-              <PhaseIndicator phase={selectedRetro.data.phase} />
+              <PhaseIndicator
+                retrospective={selectedRetro.data}
+                handleUpdateRetro={handleUpdateRetro}
+              />
             </div>
             <div className='col-start-2 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
               {expiryTimestamp ? (
                 <RetroTimer
                   expiryTimestamp={expiryTimestamp}
-                  handleTimer={handleTimer}
+                  handleTimer={handleUpdateTimer}
                   handleMinutes={handleMinutes}
                   minutes={minutes}
                 />
               ) : null}
             </div>
-            <ActionButtons retrospective={selectedRetro} />
+            <ActionButtons
+              retrospective={selectedRetro.data}
+              handleUpdateRetro={handleUpdateRetro}
+            />
 
             {selectedRetro.data ? (
               <>

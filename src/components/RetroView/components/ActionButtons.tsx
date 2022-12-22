@@ -3,10 +3,9 @@ import * as Toast from '@radix-ui/react-toast'
 import { IconArrowRight, IconCopy } from '@tabler/icons'
 import { useState } from 'react'
 
-import { trpc } from '@/utils/trpc'
-
 type ActionButtonsProps = {
-  retrospective: any
+  retrospective: Retrospective
+  handleUpdateRetro: (input: Retrospective) => void
 }
 
 function ActionButtons(props: ActionButtonsProps) {
@@ -17,37 +16,27 @@ function ActionButtons(props: ActionButtonsProps) {
     setOpen(true)
   }
 
-  const mutation = trpc.retrospective.edit.useMutation({
-    onSuccess: async () => {
-      props.retrospective.refetch()
-    },
-  })
-
-  const handleUpdateRetro = (input: Retrospective) => {
-    mutation.mutate(input)
-  }
-
   function handleNextPhase() {
-    props.retrospective.data.phase === 'WRITING'
-      ? handleUpdateRetro({
-          ...props.retrospective.data,
-          id: props.retrospective.data.id,
+    props.retrospective.phase === 'WRITING'
+      ? props.handleUpdateRetro({
+          ...props.retrospective,
+          id: props.retrospective.id,
           phase: 'VOTING',
         })
       : null
 
-    props.retrospective.data.phase === 'VOTING'
-      ? handleUpdateRetro({
-          ...props.retrospective.data,
-          id: props.retrospective.data.id,
+    props.retrospective.phase === 'VOTING'
+      ? props.handleUpdateRetro({
+          ...props.retrospective,
+          id: props.retrospective.id,
           phase: 'DISCUSSING',
         })
       : null
 
-    props.retrospective.data.phase === 'DISCUSSING'
-      ? handleUpdateRetro({
-          ...props.retrospective.data,
-          id: props.retrospective.data.id,
+    props.retrospective.phase === 'DISCUSSING'
+      ? props.handleUpdateRetro({
+          ...props.retrospective,
+          id: props.retrospective.id,
           phase: 'DISCUSSING',
         })
       : null
