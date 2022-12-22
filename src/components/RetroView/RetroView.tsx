@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
+import VotingView from '@/components/RetroView/views/VotingPhase/VotingView'
 import WritingView from '@/components/RetroView/views/WritingPhase/WritingView'
 import { trpc } from '@/utils/trpc'
 
@@ -62,14 +63,20 @@ const RetroView = () => {
   return selectedRetro.data && expiryTimestamp ? (
     <>
       <div className='flex items-center w-screen h-full max-w-screen-2xl'>
-        <WritingView
-          selectedRetro={selectedRetro.data}
-          expiryTimestamp={expiryTimestamp}
-          minutes={minutes}
-          handleMinutes={handleMinutes}
-          handleUpdateRetro={handleUpdateRetro}
-          handleUpdateTimer={handleUpdateTimer}
-        />
+        {selectedRetro.data.phase === 'WRITING' ? (
+          <WritingView
+            selectedRetro={selectedRetro.data}
+            expiryTimestamp={expiryTimestamp}
+            minutes={minutes}
+            handleMinutes={handleMinutes}
+            handleUpdateRetro={handleUpdateRetro}
+            handleUpdateTimer={handleUpdateTimer}
+          />
+        ) : null}
+
+        {selectedRetro.data.phase === 'VOTING' ? (
+          <VotingView selectedRetro={selectedRetro.data} />
+        ) : null}
       </div>
     </>
   ) : (

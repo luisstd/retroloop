@@ -1,10 +1,10 @@
 import { Retrospective } from '@prisma/client'
 import React from 'react'
 
-import ActionButtons from '@/components/RetroView/views/WritingPhase/components/ActionButtons'
+import RetroTimer from '@/components/RetroView//components/RetroTimer'
+import ActionButtons from '@/components/RetroView/components/ActionButtons'
+import PhaseIndicator from '@/components/RetroView/components/PhaseIndicator'
 import ItemCollector from '@/components/RetroView/views/WritingPhase/components/ItemCollector/ItemCollector'
-import PhaseIndicator from '@/components/RetroView/views/WritingPhase/components/PhaseIndicator'
-import RetroTimer from '@/components/RetroView/views/WritingPhase/components/RetroTimer'
 
 type WritingViewProps = {
   selectedRetro: Retrospective
