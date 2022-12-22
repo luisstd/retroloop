@@ -1,9 +1,7 @@
 import { Retrospective } from '@prisma/client'
 import React from 'react'
 
-import RetroTimer from '@/components/RetroView//components/RetroTimer'
-import ActionButtons from '@/components/RetroView/components/ActionButtons'
-import PhaseIndicator from '@/components/RetroView/components/PhaseIndicator'
+import RetroActionBar from '@/components/RetroView/components/RetroActionBar'
 import ItemCollector from '@/components/RetroView/views/WritingPhase/components/ItemCollector/ItemCollector'
 
 type WritingViewProps = {
@@ -28,20 +26,14 @@ function WritingView({
       <h2 className='p-5'>{selectedRetro.name}</h2>
 
       <div className='grid w-full grid-cols-3 gap-5 grid-rows-auto h-5/6 place-items-center'>
-        <div className='w-full col-start-1 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-          <PhaseIndicator retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
-        </div>
-        <div className='col-start-2 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
-          {expiryTimestamp ? (
-            <RetroTimer
-              expiryTimestamp={expiryTimestamp}
-              handleTimer={handleUpdateTimer}
-              handleMinutes={handleMinutes}
-              minutes={minutes}
-            />
-          ) : null}
-        </div>
-        <ActionButtons retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+        <RetroActionBar
+          selectedRetro={selectedRetro}
+          expiryTimestamp={expiryTimestamp}
+          minutes={minutes}
+          handleMinutes={handleMinutes}
+          handleUpdateRetro={handleUpdateRetro}
+          handleUpdateTimer={handleUpdateTimer}
+        />
 
         {selectedRetro ? (
           <>

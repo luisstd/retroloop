@@ -75,7 +75,14 @@ const RetroView = () => {
         ) : null}
 
         {selectedRetro.data.phase === 'VOTING' ? (
-          <VotingView selectedRetro={selectedRetro.data} />
+          <VotingView
+            selectedRetro={selectedRetro.data}
+            expiryTimestamp={expiryTimestamp}
+            minutes={minutes}
+            handleMinutes={handleMinutes}
+            handleUpdateRetro={handleUpdateRetro}
+            handleUpdateTimer={handleUpdateTimer}
+          />
         ) : null}
       </div>
     </>
