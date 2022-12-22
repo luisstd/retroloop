@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
-import WritingView from '@/components/RetroView/views/WritingView'
+import WritingView from '@/components/RetroView/views/WritingPhase/WritingView'
 import { trpc } from '@/utils/trpc'
 
 const RetroView = () => {

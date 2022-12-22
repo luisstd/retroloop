@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react'
 
 import CommonDeleteDialog from '@/components/common/CommonDeleteDialog'
 import CommonEditDialog from '@/components/common/CommonEditDialog'
-import RetroItemDialog from '@/components/RetroView/components/ItemCollector/components/RetroItemDialog'
+import RetroItemDialog from '@/components/RetroView/views/WritingPhase/components/ItemCollector/components/RetroItemDialog'
 import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
