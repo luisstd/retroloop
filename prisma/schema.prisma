@@ -100,7 +100,7 @@ model RetroItem {
 model ItemCollection {
   id              String        @id @default(cuid())
   createdAt       DateTime      @default(now())
-  votes           Int
+  votes           Int?
   retrospective   Retrospective @relation(fields: [retrospectiveId], references: [id])
   items           RetroItem[]
   retrospectiveId String
