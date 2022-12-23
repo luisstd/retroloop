@@ -34,7 +34,8 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
 
       {props.retrospective.phase === RetroPhase.GROUPING ? (
         <div className='px-2 text-lg '>02)Group</div>
-      ) : props.retrospective.phase === RetroPhase.VOTING || RetroPhase.DISCUSSING ? (
+      ) : props.retrospective.phase !== RetroPhase.WRITING &&
+        (RetroPhase.VOTING || RetroPhase.DISCUSSING) ? (
         <div
           className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
           onClick={() =>
