@@ -24,7 +24,7 @@ function RetroActionBar({
 }: RetroActionBarProps) {
   return (
     <>
-      <div className='w-full col-start-1 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+      <div className='flex flex-row flex-wrap w-full p-5 border-2 border-black rounded-md dark:border-neutral-200'>
         <PhaseIndicator retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
       </div>
       <div className='col-start-2 row-start-1 p-5 border-2 border-black rounded-md dark:border-neutral-200'>

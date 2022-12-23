@@ -21,6 +21,14 @@ function ActionButtons(props: ActionButtonsProps) {
       ? props.handleUpdateRetro({
           ...props.retrospective,
           id: props.retrospective.id,
+          phase: 'GROUPING',
+        })
+      : null
+
+    props.retrospective.phase === 'GROUPING'
+      ? props.handleUpdateRetro({
+          ...props.retrospective,
+          id: props.retrospective.id,
           phase: 'VOTING',
         })
       : null
