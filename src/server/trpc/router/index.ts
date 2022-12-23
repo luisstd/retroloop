@@ -1,5 +1,6 @@
 // src/server/trpc/router/index.ts
 import { retroItemRouter } from '@/server/trpc/router/retroItem'
+import { retroItemCollectionRouter } from '@/server/trpc/router/retroItemCollection'
 import { retrospectiveRouter } from '@/server/trpc/router/retrospective'
 import { userRouter } from '@/server/trpc/router/user'
 
@@ -11,6 +12,7 @@ export const appRouter = t.router({
   user: userRouter,
   retrospective: retrospectiveRouter,
   retroItem: retroItemRouter,
+  retroItemCollection: retroItemCollectionRouter,
 })
 
 // export type definition of API
