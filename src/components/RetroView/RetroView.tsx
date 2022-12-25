@@ -75,7 +75,8 @@ const RetroView = () => {
           />
         ) : null}
 
-        {selectedRetro.data.phase === 'GROUPING' ? (
+        {/* Disabled for now */}
+        {/* {selectedRetro.data.phase === 'GROUPING' ? (
           <GroupingView
             selectedRetro={selectedRetro.data}
             expiryTimestamp={expiryTimestamp}
@@ -84,7 +85,7 @@ const RetroView = () => {
             handleUpdateRetro={handleUpdateRetro}
             handleUpdateTimer={handleUpdateTimer}
           />
-        ) : null}
+        ) : null} */}
 
         {selectedRetro.data.phase === 'VOTING' ? (
           <VotingView

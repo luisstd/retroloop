@@ -14,7 +14,7 @@ type PhaseIndicatorProps = {
 
 function PhaseIndicator(props: PhaseIndicatorProps) {
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between gap-2'>
       {props.retrospective.phase === RetroPhase.WRITING ? (
         <div className='px-2 text-lg '>01)Write</div>
       ) : props.retrospective.phase === RetroPhase.GROUPING ||
@@ -32,7 +32,8 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
         <div className='px-2 text-lg text-gray-500'>01)Write</div>
       )}
 
-      {props.retrospective.phase === RetroPhase.GROUPING ? (
+      {/* Disabled for now */}
+      {/* {props.retrospective.phase === RetroPhase.GROUPING ? (
         <div className='px-2 text-lg '>02)Group</div>
       ) : props.retrospective.phase !== RetroPhase.WRITING &&
         (RetroPhase.VOTING || RetroPhase.DISCUSSING) ? (
@@ -46,10 +47,10 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
         </div>
       ) : (
         <div className='px-2 text-lg text-gray-500'>02)Group</div>
-      )}
+      )} */}
 
       {props.retrospective.phase === RetroPhase.VOTING ? (
-        <div className='px-2 text-lg'>03)Vote</div>
+        <div className='px-2 text-lg'>02)Vote</div>
       ) : props.retrospective.phase === RetroPhase.DISCUSSING ? (
         <div
           className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
@@ -57,16 +58,15 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
             props.handleUpdateRetro({ ...props.retrospective, phase: RetroPhase.VOTING })
           }
         >
-          03)Vote
+          02)Vote
         </div>
       ) : (
-        <div className='px-2 text-lg text-gray-500'>03)Vote</div>
+        <div className='px-2 text-lg text-gray-500'>02)Vote</div>
       )}
-
       {props.retrospective.phase === RetroPhase.DISCUSSING ? (
-        <div className='px-2 text-lg'>04)Discuss</div>
+        <div className='px-2 text-lg'>03)Discuss</div>
       ) : (
-        <div className='px-2 text-lg text-gray-500'>04)Discuss</div>
+        <div className='px-2 text-lg text-gray-500'>03)Discuss</div>
       )}
     </div>
   )
