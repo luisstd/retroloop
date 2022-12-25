@@ -16,9 +16,9 @@ export default function RetroDialog(props: RetroDialogProps) {
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
         <div className='flex flex-row items-center transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
-          <h2 className='p-1 m-2 text-2xl italic font-bold'>Start Retro</h2>
+          <h2 className='p-2 text-lg italic font-bold '>Start Retro</h2>
 
-          <IconPlus size={40} className='p-1 m-2 rounded-md justify-self-center' />
+          <IconPlus size={32} className='p-1 rounded-md justify-self-center' />
         </div>
       </Dialog.Trigger>
       <Transition.Root show={isOpen}>
