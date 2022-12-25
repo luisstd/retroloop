@@ -19,7 +19,7 @@ export const retroItemRouter = t.router({
         content: z.string(),
         type: z.string(),
         retrospectiveId: z.string(),
-        itemCollectionId: z.string().optional().nullable(),
+        itemCollectionId: z.string().nullable(),
       })
     )
     .mutation(({ ctx, input }) => {
