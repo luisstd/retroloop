@@ -5,7 +5,6 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
-import GroupingView from '@/components/RetroView/views/GroupingPhase/GroupingView'
 import VotingView from '@/components/RetroView/views/VotingPhase/VotingView'
 import WritingView from '@/components/RetroView/views/WritingPhase/WritingView'
 import { trpc } from '@/utils/trpc'
