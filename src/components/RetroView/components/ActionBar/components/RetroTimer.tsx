@@ -38,7 +38,7 @@ function RetroTimer({ expiryTimestamp, minutes, handleMinutes, handleTimer }: Re
   }, [timer.minutes, timer.seconds, expiryTimestamp])
 
   return timer ? (
-    <div className='flex items-center justify-center h-16 gap-3'>
+    <div className='flex items-center justify-center gap-3'>
       <IconAlarm size={36} />
       <h1 className='text-2xl font-bold'>Timer</h1>
       <div className='flex gap-2 mx-2 text-2xl '>
