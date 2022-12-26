@@ -14,7 +14,7 @@ type PhaseIndicatorProps = {
 
 function PhaseIndicator(props: PhaseIndicatorProps) {
   return (
-    <div className='flex justify-between gap-2'>
+    <div className='flex flex-row justify-around w-full'>
       {props.retrospective.phase === RetroPhase.WRITING ? (
         <div className='px-2 text-lg '>01)Write</div>
       ) : props.retrospective.phase === RetroPhase.GROUPING ||

@@ -22,7 +22,7 @@ function VotingView({
   handleUpdateTimer,
 }: VotingViewProps) {
   return (
-    <section className='w-full h-screen p-5 mx-5 border-2 border-black rounded-md dark:border-neutral-200'>
+    <section className='w-full h-screen px-5 mx-5 border-2 border-black rounded-md dark:border-neutral-200'>
       <div className='grid w-full grid-cols-3 gap-5 grid-rows-auto h-5/6 place-items-center'>
         <RetroActionBar
           selectedRetro={selectedRetro}
