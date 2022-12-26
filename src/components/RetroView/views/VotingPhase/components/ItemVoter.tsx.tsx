@@ -1,9 +1,7 @@
 import { RetroItem, Retrospective } from '@prisma/client'
-import { IconThumbDown, IconThumbUp } from '@tabler/icons'
-import { useSession } from 'next-auth/react'
+import { IconThumbUp } from '@tabler/icons'
+import { useEffect, useState } from 'react'
 
-import CommonDeleteDialog from '@/components/common/CommonDeleteDialog'
-import CommonEditDialog from '@/components/common/CommonEditDialog'
 import { trpc } from '@/utils/trpc'
 
 type ItemVoterProps = {
@@ -14,9 +12,28 @@ type ItemVoterProps = {
 
 function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
   const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
-  const { data: session } = useSession()
 
-  const userId = session?.user?.id
+  const [sortedItems, setSortedItems] = useState(retroItems.data)
+
+  useEffect(() => {
+    sortItems()
+  }, [retroItems.data])
+
+  function sortItems(): void {
+    retroItems.data
+      ? setSortedItems(
+          [...retroItems.data].sort((a, b) => {
+            if (b.votes === null) {
+              return 1
+            }
+            if (a.votes === null) {
+              return -1
+            }
+            return b.votes - a.votes
+          })
+        )
+      : null
+  }
 
   const mutationEdit = trpc.retroItem.edit.useMutation({
     onSuccess: () => {
@@ -34,8 +51,8 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
         <h2 className='p-1 m-2 mr-auto text-xl font-bold'>{title}</h2>
       </div>
       <ul>
-        {retroItems.data &&
-          retroItems.data.map((item, index) =>
+        {sortedItems &&
+          sortedItems.map((item, index) =>
             item.type === itemType ? (
               <li
                 className='flex justify-between p-2 my-3 border-2 border-black rounded-md dark:border-neutral-200'
@@ -43,8 +60,20 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
               >
                 <p className='p-1'>{item.content}</p>
 
-                <div className='flex items-center mx-2'>
-                  <IconThumbUp size={28} />
+                <div className='flex items-center gap-2 text-lg font-bold'>
+                  {item.votes ? <span>+{item.votes}</span> : null}
+
+                  <div className='mx-1 transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
+                    <IconThumbUp
+                      size={26}
+                      className='p-1 rounded-md justify-self-center'
+                      onClick={() => {
+                        if (item && item.votes !== null) {
+                          handleEditRetroItem({ ...item, votes: item.votes + 1 })
+                        }
+                      }}
+                    />
+                  </div>
                 </div>
               </li>
             ) : null
