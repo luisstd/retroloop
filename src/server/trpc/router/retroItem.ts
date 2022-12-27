@@ -20,7 +20,6 @@ export const retroItemRouter = t.router({
         type: z.string(),
         retrospectiveId: z.string(),
         userId: z.string().nullable(),
-        itemCollectionId: z.string().nullable(),
         votes: z.number().nullable(),
       })
     )
@@ -35,7 +34,6 @@ export const retroItemRouter = t.router({
         type: z.string(),
         retrospectiveId: z.string(),
         userId: z.string().nullable(),
-        itemCollectionId: z.string().nullable(),
         votes: z.number().nullable(),
       })
     )
