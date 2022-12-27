@@ -57,10 +57,15 @@ export default function CommonEditDialog(props: EditDialogProps) {
           </Dialog.Close>
         </div>
         <Formik
-          initialValues={{
-            id: props.itemToEdit.id,
-            content: props.itemToEdit.content,
-          }}
+          initialValues={(() => {
+            const initialValues: ItemToEdit = {}
+
+            for (const key of Object.keys(props.itemToEdit)) {
+              initialValues[key] = key in props.itemToEdit ? props.itemToEdit[key] : ''
+            }
+
+            return initialValues
+          })()}
           onSubmit={(values) => {
             props.editHandler(values)
             setIsOpen(false)
