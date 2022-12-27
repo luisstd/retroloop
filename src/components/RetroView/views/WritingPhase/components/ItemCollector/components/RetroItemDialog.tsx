@@ -70,7 +70,7 @@ export default function RetroItemDialog(props: RetroItemDialogProps) {
             retrospectiveId: props.retrospective.id,
             itemCollectionId: null,
             userId: props.userId ? props.userId : '',
-            votes: null,
+            votes: 0,
           }}
           onSubmit={(values: RetroItem) => {
             props.addHandler(values)
