@@ -1,6 +1,7 @@
 import { Retrospective, User } from '@prisma/client'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import RetroDialog from '@/components/RetroSection/components/RetroDialog'
@@ -14,6 +15,28 @@ export default function RetroSection(props: RetroSectionProps) {
   const { resolvedTheme } = useTheme()
 
   const retrospectives = trpc.retrospective.getAll.useQuery(props.userId)
+
+  const [sortedRetros, setSortedRetros] = useState(retrospectives.data)
+
+  useEffect(() => {
+    sortItems()
+  }, [retrospectives.data])
+
+  function sortItems(): void {
+    retrospectives.data
+      ? setSortedRetros(
+          [...retrospectives.data].sort((a, b) => {
+            if (b.date === null) {
+              return 1
+            }
+            if (a.date === null) {
+              return -1
+            }
+            return b.date.getTime() - a.date.getTime()
+          })
+        )
+      : null
+  }
 
   const mutation = trpc.retrospective.add.useMutation({
     onSuccess: async () => {
@@ -47,8 +70,8 @@ export default function RetroSection(props: RetroSectionProps) {
         )}
 
         <div className='flex flex-row flex-wrap items-start gap-4'>
-          {retrospectives.data &&
-            retrospectives.data.map((retrospective: Retrospective) => (
+          {sortedRetros &&
+            sortedRetros.map((retrospective: Retrospective) => (
               <Link
                 key={retrospective.id}
                 href={{
