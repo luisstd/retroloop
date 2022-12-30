@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
+import DiscussingView from '@/components/RetroView/views/DiscussingPhase/DiscussingView'
 import VotingView from '@/components/RetroView/views/VotingPhase/VotingView'
 import WritingView from '@/components/RetroView/views/WritingPhase/WritingView'
 import { trpc } from '@/utils/trpc'
@@ -98,7 +99,7 @@ const RetroView = () => {
         ) : null}
 
         {selectedRetro.data.phase === 'DISCUSSING' ? (
-          <VotingView
+          <DiscussingView
             selectedRetro={selectedRetro.data}
             expiryTimestamp={expiryTimestamp}
             minutes={minutes}
