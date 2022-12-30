@@ -3,7 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
+  '@fontsource/ia-writer-mono': ^4.5.3
+  '@fontsource/ia-writer-quattro': ^4.5.3
+  '@fontsource/space-grotesk': ^4.5.10
   '@fontsource/space-mono': ^4.5.10
+  '@fontsource/spline-sans': ^4.5.12
+  '@fontsource/spline-sans-mono': ^4.5.1
   '@headlessui/react': ^1.7.3
   '@logux/eslint-config': ^47.2.0
   '@next-auth/prisma-adapter': ^1.0.5
@@ -75,7 +80,12 @@ specifiers:
   zod: ^3.19.1
 
 dependencies:
+  '@fontsource/ia-writer-mono': 4.5.3
+  '@fontsource/ia-writer-quattro': 4.5.3
+  '@fontsource/space-grotesk': 4.5.10
   '@fontsource/space-mono': 4.5.10
+  '@fontsource/spline-sans': 4.5.12
+  '@fontsource/spline-sans-mono': 4.5.1
   '@headlessui/react': 1.7.3_biqbaboplfbrettd7655fr4n2y
   '@next-auth/prisma-adapter': 1.0.5_f6johzj7om6s3zhjvbbzqeonqy
   '@prisma/client': 4.4.0_prisma@4.4.0
@@ -687,8 +697,28 @@ packages:
       - '@types/react'
     dev: false
 
+  /@fontsource/ia-writer-mono/4.5.3:
+    resolution: {integrity: sha512-/k0n7sRaiehoFZKzvcKV4CdxwFVO8cMb3VHBDnYZVw9vzBfO9lSk+DER/c56cQ3z85Us0wfMSuP9woqvDwSLaw==}
+    dev: false
+
+  /@fontsource/ia-writer-quattro/4.5.3:
+    resolution: {integrity: sha512-3TUpjflZ4vTVEy3rmnLGhyQGFLJUlVqqZ19/dVl8D4IPrxho4Lvgn54FiXarfnO++XjemUYXR79zjDnhrHkDbg==}
+    dev: false
+
+  /@fontsource/space-grotesk/4.5.10:
+    resolution: {integrity: sha512-Ua+3NeVpUbVrF4F0I5posgZ0/SvpX0ijmwU4MI43cormzOP6r6Z09+BWwhS85+wMJsM+ravc+65fa/rqAZQ3wg==}
+    dev: false
+
   /@fontsource/space-mono/4.5.10:
     resolution: {integrity: sha512-OTrWNdcPp01bZjEbSu52vMu9PaReUFylHAMI4lctKVbYUnm+e7a4eG6YcnRvDrJEMYHBDtEWLAsqGVldV5r1EQ==}
+    dev: false
+
+  /@fontsource/spline-sans-mono/4.5.1:
+    resolution: {integrity: sha512-l0NWH4vaoBKw2n54uyBDzwgAGYfqsuezirlVQMmNabLoKRctxqGL/qWJh/ZHh1sFgDVOQhzrIJrRxgWtM3e/kA==}
+    dev: false
+
+  /@fontsource/spline-sans/4.5.12:
+    resolution: {integrity: sha512-G/lLxdZJqKrmvmvpTo537dHWm1sWs4bKnbK9QLZuBZHeOW5yAk+aGt9++qDyvIdGtISATXqm4B4eNoIeZkxZug==}
     dev: false
 
   /@headlessui/react/1.7.3_biqbaboplfbrettd7655fr4n2y:

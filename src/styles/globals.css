@@ -6,7 +6,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
   @apply dark:bg-black dark:text-neutral-200 dark:border-neutral-200;
 }
 
