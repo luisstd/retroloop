@@ -28,7 +28,7 @@ function ItemSwitcher({
           </button>
         ) : (
           <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
-            <IconArrowLeft />
+            <IconArrowLeft className='opacity-0' />
             Previous
           </button>
         )}
@@ -43,7 +43,7 @@ function ItemSwitcher({
         ) : (
           <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
             Next
-            <IconArrowRight />
+            <IconArrowRight className='opacity-0' />
           </button>
         )}
       </div>
