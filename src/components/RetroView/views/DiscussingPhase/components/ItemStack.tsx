@@ -1,5 +1,5 @@
 import { RetroItem } from '@prisma/client'
-import { IconThumbUp } from '@tabler/icons'
+import { IconQuote, IconThumbUp } from '@tabler/icons'
 import { useEffect, useState } from 'react'
 
 type ItemStackProps = {
@@ -33,7 +33,7 @@ function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
   return (
     <>
       <div
-        className='relative flex flex-wrap items-center justify-center w-full gap-2'
+        className='relative flex flex-wrap items-center justify-center w-full gap-2 '
         style={{ flex: '1 1 auto' }}
       >
         {sortedItems.map((item, index) => (
@@ -42,14 +42,19 @@ function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               zIndex: `${index}`,
               transform: `translate(${index * -5}px,${index * -5}px)`,
             }}
-            className='absolute w-5/6 p-16 mx-12 text-lg text-center bg-white border-2 border-black rounded-md max-w-5/6 dark:bg-black dark:border-neutral-200'
+            className='absolute w-3/5 h-full p-10 text-lg text-center bg-white border-2 border-black rounded-md max-w-5/6 dark:bg-black dark:border-neutral-200'
             key={item.id}
           >
-            <div className='flex items-center gap-1'>
-              <div>{sortedItems[currentIndex].content}</div>
-              <div className='flex items-center gap-2 ml-5 text-4xl font-bold'>
+            <div className='flex items-center justify-center h-full gap-1 text-2xl text-center '>
+              <q className='font-bold text-left'>
+                <span className='mx-1 bg-white dark:bg-black'>
+                  {sortedItems[currentIndex].content}
+                </span>
+              </q>
+
+              <div className='flex items-baseline gap-2 ml-5 text-6xl font-bold max-w-min'>
                 +{sortedItems[currentIndex].votes}
-                <IconThumbUp size={32} />
+                <IconThumbUp size={50} />
               </div>
             </div>
           </div>
