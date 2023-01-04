@@ -12,7 +12,7 @@ const SettingsSection = () => {
 
   return (
     <main className='flex flex-col justify-around w-full gap-5 sm:flex-row max-w-screen-2xl'>
-      <aside className='p-5 mx-5 text-xl border-2 border-black rounded-md min-w-min sm:row-start-1 max-w-max dark:border-neutral-200'>
+      <aside className='p-5 mx-5 text-xl border-2 border-black rounded-md min-w-min max-w-max dark:border-neutral-200'>
         <NavigationMenu.Root orientation='vertical'>
           <NavigationMenu.List className='flex flex-row flex-wrap items-start justify-between gap-4 sm:flex-col sm:justify-start'>
             <NavigationMenu.Item className='flex items-center flex-grow-0 gap-2 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'>
@@ -44,7 +44,7 @@ const SettingsSection = () => {
         </NavigationMenu.Root>
       </aside>
 
-      <section className='flex-grow col-span-3 row-start-2 p-5 mx-5 text-xl border-2 border-black rounded-md min-w-min sm:row-start-2 md:row-start-1 dark:border-neutral-200'>
+      <section className='flex-grow p-5 mx-5 text-xl border-2 border-black rounded-md min-w-min dark:border-neutral-200'>
         {section === 'profile' && <ProfileSettings />}
         {section === 'retro' && <RetroSettings />}
         {section === 'team' && <TeamSettings />}
