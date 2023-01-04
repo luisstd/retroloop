@@ -19,8 +19,9 @@ const Landingpage: NextPage = () => (
     <main className='grid h-screen place-items-center'>
       <div className='grid place-items-center'>
         <div className='flex items-center gap-5'>
-          <IconInfinity size={128} />
-          <span className='italic text-7xl'>retroloop</span>
+          <IconInfinity className='sm:hidden' size={82} />
+          <IconInfinity className='hidden sm:block' size={128} />
+          <span className='text-5xl italic sm:text-7xl'>retroloop</span>
         </div>
         <Link href={'https://github.com/luisstd/retroloop'}>
           <a rel='noopener noreferrer '>
