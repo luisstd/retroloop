@@ -41,7 +41,7 @@ export default function MenuBar() {
           </Link>
         </NavigationMenu.List>
 
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
           <NavigationMenu.List className='flex gap-2 sm:hidden'>
             <NavigationDropdown />
           </NavigationMenu.List>
