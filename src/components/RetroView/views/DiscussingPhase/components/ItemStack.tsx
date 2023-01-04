@@ -1,5 +1,5 @@
 import { RetroItem } from '@prisma/client'
-import { IconQuote, IconThumbUp } from '@tabler/icons'
+import { IconThumbUp } from '@tabler/icons'
 import { useEffect, useState } from 'react'
 
 type ItemStackProps = {
