@@ -11,11 +11,11 @@ export default function AddRetroDialog(props: any) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <div className='flex flex-row items-center transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
+        <button className='flex flex-row items-center transition ease-in-out border-2 rounded-md w-fit hover:cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark dark:border-base-light'>
           <h2 className='p-2 text-lg italic font-bold'>Invite</h2>
 
           <IconPlus size={32} className='p-1 rounded-md justify-self-center' />
-        </div>
+        </button>
       </Dialog.Trigger>
       <Transition.Root show={isOpen}>
         <Transition.Child
@@ -25,9 +25,7 @@ export default function AddRetroDialog(props: any) {
           leave='ease-in duration-200'
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
-        >
-          <Dialog.Overlay className='fixed inset-0 z-20 bg-black/50' />
-        </Transition.Child>
+        ></Transition.Child>
         <Transition.Child
           enter='ease-out duration-300'
           enterFrom='opacity-0 scale-95'
@@ -37,9 +35,9 @@ export default function AddRetroDialog(props: any) {
           leaveTo='opacity-0 scale-95'
         ></Transition.Child>
       </Transition.Root>
-      <Dialog.Overlay className='fixed inset-0 z-20 bg-black/50' />
+      <Dialog.Overlay className='fixed inset-0 z-20 bg-base-dark/50' />
 
-      <Dialog.Content className='fixed z-50 w-screen max-w-md p-5 bg-white border-2 border-black rounded-lg dark:border-neutral-200 top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 dark:bg-black dark:text-neutral-200 '>
+      <Dialog.Content className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg border-base-dark bg-base-light dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:bg-base-dark dark:text-base-light'>
         <div className='flex flex-row items-start justify-between'>
           <Dialog.Title className='py-5 text-3xl italic font-bold '>Invite to team</Dialog.Title>
 
@@ -69,7 +67,7 @@ export default function AddRetroDialog(props: any) {
                 id='email'
                 name='email'
                 placeholder='example@email.com'
-                className='p-2 m-2 rounded-md outline-2 bg-neutral-100 dark:bg-neutral-700'
+                className='p-2 m-2 rounded-md outline-2 bg-neutral-300 dark:bg-neutral-700'
               />
             </fieldset>
 
@@ -77,7 +75,7 @@ export default function AddRetroDialog(props: any) {
               <button
                 type='submit'
                 aria-label='Close'
-                className='p-1 m-2 mt-10 italic font-bold border-2 border-black rounded-md dark:border-neutral-200'
+                className='p-1 m-2 mt-10 italic font-bold transition ease-in-out border-2 rounded-md bg-base-light dark:bg-base-dark hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointe'
               >
                 Send invite
               </button>

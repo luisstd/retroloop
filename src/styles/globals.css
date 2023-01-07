@@ -2,23 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
+* {
+  box-sizing: border-box;
+}
+
+html {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
-  @apply dark:bg-black dark:text-neutral-200 dark:border-neutral-200;
+}
+
+body {
+  @apply bg-base-light dark:bg-base-dark text-base-dark dark:text-base-light;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .retro-pattern {

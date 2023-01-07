@@ -42,12 +42,12 @@ function ThemeDropdown() {
               orientation='vertical'
               value={theme}
               aria-label='Dark/Light/System Mode Selection'
-              className='flex flex-col items-start w-full gap-1 pt-1 m-2 bg-white border-2 border-black rounded-md dark:bg-black dark:text-neutral-200 dark:border-neutral-200 '
+              className='flex flex-col items-start w-full gap-1 pt-1 m-2 border-2 rounded-md bg-base-light dark:bg-base-dark border-base-dark dark:border-base-light'
             >
               <ToggleGroup.Item
                 value='light'
                 onClick={() => setTheme('light')}
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-black ${
+                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
                   theme === 'light' ? 'font-bold' : 'font-normal'
                 }`}
               >
@@ -58,7 +58,7 @@ function ThemeDropdown() {
               <ToggleGroup.Item
                 value='dark'
                 onClick={() => setTheme('dark')}
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-black ${
+                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
                   theme === 'dark' ? 'font-bold' : 'font-normal'
                 }`}
               >
@@ -69,7 +69,7 @@ function ThemeDropdown() {
               <ToggleGroup.Item
                 value='system'
                 onClick={() => setTheme('system')}
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-black ${
+                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-hover-light dark:hover:bg-hover-dark hover:text-base-dark ${
                   theme === 'system' ? 'font-bold' : 'font-normal'
                 }`}
               >

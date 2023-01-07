@@ -18,7 +18,7 @@ export default function MenuBar() {
             <NavigationMenu.Item className='flex items-center text-2xl italic text-center sm:text-3xl'>
               <IconInfinity className='sm:hidden' size={28} />
               <IconInfinity className='hidden sm:block' size={40} />
-              <NavigationMenu.Link className='px-1 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'>
+              <NavigationMenu.Link className='px-1 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
                 retroloop
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -27,14 +27,14 @@ export default function MenuBar() {
 
         <NavigationMenu.List className='hidden gap-6 sm:flex'>
           <Link href='/dashboard'>
-            <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'>
+            <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
               <IconSquare size={24} />
               <NavigationMenu.Link>Dashboard</NavigationMenu.Link>
             </NavigationMenu.Item>
           </Link>
 
           <Link href='/settings'>
-            <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'>
+            <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
               <IconDotsCircleHorizontal size={24} />
               <NavigationMenu.Link>Settings</NavigationMenu.Link>
             </NavigationMenu.Item>
