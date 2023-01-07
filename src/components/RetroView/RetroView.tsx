@@ -63,7 +63,7 @@ const RetroView = () => {
 
   return selectedRetro.data && expiryTimestamp ? (
     <>
-      <div className='flex items-center w-screen h-full max-w-screen-2xl'>
+      <div className='flex items-center justify-center w-full h-full px-1 max-w-screen-2xl'>
         {selectedRetro.data.phase === 'WRITING' ? (
           <WritingView
             selectedRetro={selectedRetro.data}

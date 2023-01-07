@@ -33,7 +33,7 @@ function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
   return (
     <>
       <div
-        className='relative flex flex-wrap items-center justify-center w-full gap-2 '
+        className='relative flex flex-wrap items-center justify-center w-full gap-2 mx-5 my-32 lg:mx-0 lg:my-0'
         style={{ flex: '1 1 auto' }}
       >
         {sortedItems.map((item, index) => (
