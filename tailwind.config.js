@@ -6,11 +6,11 @@ module.exports = {
     extend: {
       colors: {
         base: {
-          light: 'rgba(229,229,229,1)',
+          light: 'rgba(245, 245, 245, 1)',
           dark: 'rgba(18,18,18,1)',
         },
         hover: {
-          light: 'rgba(209, 213, 219,0.5)',
+          light: 'rgba(209, 213, 219,0.4)',
           dark: 'rgba(229,229,229,1)',
         },
       },
