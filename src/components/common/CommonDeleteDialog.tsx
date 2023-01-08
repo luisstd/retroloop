@@ -17,9 +17,9 @@ export default function CommonDeleteDialog(props: DeleteDialogProps) {
   return (
     <AlertDialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialog.Trigger asChild>
-        <div className='transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
+        <button className='btn'>
           <IconTrash size={26} className='p-1 rounded-md justify-self-center' />
-        </div>
+        </button>
       </AlertDialog.Trigger>
       <Transition.Root show={isOpen}>
         <Transition.Child
@@ -40,9 +40,9 @@ export default function CommonDeleteDialog(props: DeleteDialogProps) {
         ></Transition.Child>
       </Transition.Root>
 
-      <AlertDialog.Overlay className='fixed inset-0 z-20 bg-black/5' />
+      <AlertDialog.Overlay className='fixed inset-0 z-20 bg-base-dark/50' />
 
-      <AlertDialog.Content className='fixed z-50 w-screen max-w-md p-5 bg-white border-2 border-black rounded-lg dark:border-neutral-200 top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 dark:bg-black dark:text-neutral-200'>
+      <AlertDialog.Content className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg border-base-dark bg-base-light dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:bg-base-dark dark:text-base-light'>
         <AlertDialog.Title className='py-5 text-3xl italic font-bold'>
           Are you absolutely sure?
         </AlertDialog.Title>
@@ -51,14 +51,12 @@ export default function CommonDeleteDialog(props: DeleteDialogProps) {
         </AlertDialog.Description>
         <div style={{ display: 'flex', gap: 25, justifyContent: 'flex-end' }}>
           <AlertDialog.Cancel asChild>
-            <button className='p-1 m-2 mt-10 italic font-bold border-2 border-black rounded-md dark:border-neutral-200'>
-              Cancel
-            </button>
+            <button className='px-2 py-1 m-2 mt-10 italic font-bold btn'>Cancel</button>
           </AlertDialog.Cancel>
           <AlertDialog.Action asChild>
             <button
               onClick={() => props.deleteHandler(props.itemToDelete.id)}
-              className='p-1 m-2 mt-10 italic font-bold bg-red-600 border-2 border-black rounded-md dark:border-neutral-200'
+              className='px-2 py-1 m-2 mt-10 italic font-bold bg-red-500 hover:border-red-400 hover:bg-red-400 dark:hover:bg-red-400 dark:hover:border-red-400 btn'
             >
               Yes, delete item
             </button>

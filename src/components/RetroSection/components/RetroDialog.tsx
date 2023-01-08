@@ -15,7 +15,7 @@ export default function RetroDialog(props: RetroDialogProps) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className='flex flex-row items-center transition ease-in-out border-2 rounded-md hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointer '>
+        <button className='flex flex-row items-center btn'>
           <h2 className='p-2 text-lg italic font-bold '>Start Retro</h2>
 
           <IconPlus size={32} className='p-1 rounded-md justify-self-center' />
@@ -48,7 +48,7 @@ export default function RetroDialog(props: RetroDialogProps) {
           </Dialog.Title>
 
           <Dialog.Close asChild className='inline-flex'>
-            <button aria-label='Close'>
+            <button className='border-none btn' aria-label='Close'>
               <IconMinimize />
             </button>
           </Dialog.Close>
@@ -78,7 +78,7 @@ export default function RetroDialog(props: RetroDialogProps) {
                 id='name'
                 name='name'
                 placeholder='Untitled Retro'
-                className='p-2 m-2 rounded-md outline-2 bg-neutral-300 dark:bg-neutral-700'
+                className='p-2 m-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700'
               />
             </fieldset>
 
@@ -86,7 +86,7 @@ export default function RetroDialog(props: RetroDialogProps) {
               <button
                 type='submit'
                 aria-label='Start Retro'
-                className='p-1 m-2 mt-10 italic font-bold transition ease-in-out border-2 rounded-md bg-base-light dark:bg-base-dark hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointer'
+                className='px-2 py-1 m-2 mt-10 italic font-bold btn'
               >
                 Start Retro
               </button>

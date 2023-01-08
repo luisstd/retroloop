@@ -20,10 +20,7 @@ function UserDropdown() {
               <strong>{session?.user?.name}</strong>
             </span>
 
-            <button
-              className='w-full p-1 m-2 italic font-bold transition ease-in-out border-2 rounded-md hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark dark:border-base-light hover:cursor-pointer'
-              onClick={() => signOut()}
-            >
+            <button className='px-2 py-1 m-2 italic font-bold btn' onClick={() => signOut()}>
               Logout
             </button>
           </DropdownMenu.Item>

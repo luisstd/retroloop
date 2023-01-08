@@ -47,7 +47,7 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
 
   return (
     <div className='w-full h-full'>
-      <div className='flex flex-row items-center pb-3 border-b-2 border-black dark:border-neutral-200'>
+      <div className='flex flex-row items-center pb-3 border-b-2 border-base-dark dark:border-base-light'>
         <h2 className='p-1 m-2 mr-auto text-xl font-bold'>{title}</h2>
       </div>
       <ul>
@@ -55,7 +55,7 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
           sortedItems.map((item, index) =>
             item.type === itemType ? (
               <li
-                className='flex justify-between p-2 my-3 border-2 border-black rounded-md dark:border-neutral-200'
+                className='flex justify-between p-2 my-3 border-2 rounded-md border-base-dark dark:border-base-light'
                 key={index}
               >
                 <p className='p-1'>{item.content}</p>
@@ -63,7 +63,7 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                 <div className='flex items-center gap-2 text-lg font-bold'>
                   {item.votes ? <span>+{item.votes}</span> : null}
 
-                  <div className='mx-1 transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
+                  <button className='mx-1 btn'>
                     <IconThumbUp
                       size={26}
                       className='p-1 rounded-md justify-self-center'
@@ -73,7 +73,7 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                         }
                       }}
                     />
-                  </div>
+                  </button>
                 </div>
               </li>
             ) : null

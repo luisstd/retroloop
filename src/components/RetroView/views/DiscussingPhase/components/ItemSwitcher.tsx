@@ -21,13 +21,13 @@ function ItemSwitcher({
         {currentIndex > 0 ? (
           <button
             onClick={handlePreviousItem}
-            className='flex flex-row items-center gap-2 px-5 py-2 text-lg transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'
+            className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'
           >
             <IconArrowLeft />
             Previous
           </button>
         ) : (
-          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
+          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'>
             <IconArrowLeft className='opacity-0' />
             Previous
           </button>
@@ -35,13 +35,13 @@ function ItemSwitcher({
         {currentIndex < retroItems.length - 1 ? (
           <button
             onClick={handleNextItem}
-            className='flex flex-row items-center gap-2 px-5 py-2 text-lg transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'
+            className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'
           >
             Next
             <IconArrowRight />
           </button>
         ) : (
-          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
+          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'>
             Next
             <IconArrowRight className='opacity-0' />
           </button>
@@ -49,7 +49,7 @@ function ItemSwitcher({
       </div>
       <div>
         <Link href={{ pathname: '/dashboard' }}>
-          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg transition ease-in-out border-2 border-black rounded-md w-fit dark:border-neutral-200 hover:scale-105 hover:cursor-pointer'>
+          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'>
             Finish Retro
             <IconChecks />
           </button>

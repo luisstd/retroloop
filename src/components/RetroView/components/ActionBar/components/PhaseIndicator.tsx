@@ -16,20 +16,20 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
   return (
     <div className='flex flex-row justify-around w-full'>
       {props.retrospective.phase === RetroPhase.WRITING ? (
-        <div className='px-2 text-lg '>01)Write</div>
+        <div className='px-2 text-lg '>01) Write</div>
       ) : props.retrospective.phase === RetroPhase.GROUPING ||
         RetroPhase.VOTING ||
         RetroPhase.DISCUSSING ? (
         <div
-          className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
+          className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:text-base-dark dark:hover:bg-hover-dark'
           onClick={() =>
             props.handleUpdateRetro({ ...props.retrospective, phase: RetroPhase.WRITING })
           }
         >
-          01)Write
+          01) Write
         </div>
       ) : (
-        <div className='px-2 text-lg text-gray-500'>01)Write</div>
+        <div className='px-2 text-lg text-gray-500'>01) Write</div>
       )}
 
       {/* Disabled for now */}
@@ -50,23 +50,23 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
       )} */}
 
       {props.retrospective.phase === RetroPhase.VOTING ? (
-        <div className='px-2 text-lg'>02)Vote</div>
+        <div className='px-2 text-lg'>02) Vote</div>
       ) : props.retrospective.phase === RetroPhase.DISCUSSING ? (
         <div
-          className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
+          className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:text-base-dark dark:hover:bg-hover-dark'
           onClick={() =>
             props.handleUpdateRetro({ ...props.retrospective, phase: RetroPhase.VOTING })
           }
         >
-          02)Vote
+          02) Vote
         </div>
       ) : (
-        <div className='px-2 text-lg text-gray-500'>02)Vote</div>
+        <div className='px-2 text-lg text-gray-500'>02) Vote</div>
       )}
       {props.retrospective.phase === RetroPhase.DISCUSSING ? (
-        <div className='px-2 text-lg'>03)Discuss</div>
+        <div className='px-2 text-lg'>03) Discuss</div>
       ) : (
-        <div className='px-2 text-lg text-gray-500'>03)Discuss</div>
+        <div className='px-2 text-lg text-gray-500'>03) Discuss</div>
       )}
     </div>
   )

@@ -45,7 +45,7 @@ function RetroTimer({ expiryTimestamp, minutes, handleMinutes, handleTimer }: Re
         {!timer.isRunning && !timer.minutes ? (
           <input
             type='number'
-            className='p-1 border-2 border-black rounded-md max-w-min dark:border-neutral-200'
+            className='p-1 border-2 rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark dark:border-base-light max-w-max'
             min={0}
             max={99}
             maxLength={2}

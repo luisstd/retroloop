@@ -19,8 +19,9 @@ const RetroSettings = () => (
         <Field
           id='name'
           name='name'
+          type='text'
           placeholder='Retrospective'
-          className='p-2 m-2 rounded-md outline-2 bg-neutral-100 dark:bg-neutral-700'
+          className='p-2 m-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700'
         />
       </fieldset>
 
@@ -31,8 +32,9 @@ const RetroSettings = () => (
         <Field
           id='date'
           name='date'
+          type='date'
           placeholder='12.09.2026'
-          className='p-2 m-2 rounded-md outline-2 bg-neutral-100 dark:bg-neutral-700'
+          className='p-2 m-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700'
         />
       </fieldset>
     </Form>

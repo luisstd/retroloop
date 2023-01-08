@@ -11,7 +11,7 @@ export default function AddRetroDialog(props: any) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className='flex flex-row items-center transition ease-in-out border-2 rounded-md w-fit hover:cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark dark:border-base-light'>
+        <button className='flex flex-row items-center btn'>
           <h2 className='p-2 text-lg italic font-bold'>Invite</h2>
 
           <IconPlus size={32} className='p-1 rounded-md justify-self-center' />
@@ -42,7 +42,7 @@ export default function AddRetroDialog(props: any) {
           <Dialog.Title className='py-5 text-3xl italic font-bold '>Invite to team</Dialog.Title>
 
           <Dialog.Close asChild className='inline-flex'>
-            <button aria-label='Close'>
+            <button className='border-none btn' aria-label='Close'>
               <IconMinimize />
             </button>
           </Dialog.Close>
@@ -67,7 +67,7 @@ export default function AddRetroDialog(props: any) {
                 id='email'
                 name='email'
                 placeholder='example@email.com'
-                className='p-2 m-2 rounded-md outline-2 bg-neutral-300 dark:bg-neutral-700'
+                className='p-2 m-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700'
               />
             </fieldset>
 
@@ -75,7 +75,7 @@ export default function AddRetroDialog(props: any) {
               <button
                 type='submit'
                 aria-label='Close'
-                className='p-1 m-2 mt-10 italic font-bold transition ease-in-out border-2 rounded-md bg-base-light dark:bg-base-dark hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointe'
+                className='px-1 py-1 m-2 mt-10 italic font-bold btn'
               >
                 Send invite
               </button>
