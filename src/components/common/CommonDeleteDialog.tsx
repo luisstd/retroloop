@@ -17,7 +17,7 @@ export default function CommonDeleteDialog(props: DeleteDialogProps) {
   return (
     <AlertDialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialog.Trigger asChild>
-        <button className='btn'>
+        <button className='mx-1 btn'>
           <IconTrash size={26} className='p-1 rounded-md justify-self-center' />
         </button>
       </AlertDialog.Trigger>

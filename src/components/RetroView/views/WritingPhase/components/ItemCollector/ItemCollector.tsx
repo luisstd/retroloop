@@ -71,7 +71,7 @@ function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
               >
                 <p className='p-1'>{item.content}</p>
 
-                <div className='flex items-start'>
+                <div className='flex flex-row items-center'>
                   <CommonEditDialog itemToEdit={item} editHandler={handleEditRetroItem} />
                   <CommonDeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
                 </div>

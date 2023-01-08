@@ -4,6 +4,9 @@
 
 * {
   box-sizing: border-box;
+  /*
+  @apply focus:outline-4 focus:outline-offset-0 focus:outline-indigo-800/90 focus:outline focus:border-transparent;
+  */
 }
 
 html {
@@ -22,7 +25,7 @@ a {
 }
 
 .btn {
-  @apply transition ease-in-out border-2 rounded-md hover:scale-105 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointer hover:border-hover-dark dark:hover:border-hover-light;
+  @apply transition ease-in-out border-2 rounded-md  hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointer hover:border-hover-dark dark:hover:border-hover-light;
 }
 
 .retro-pattern {
