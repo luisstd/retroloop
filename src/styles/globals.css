@@ -25,7 +25,7 @@ a {
 }
 
 .btn {
-  @apply transition ease-in-out border-2 rounded-md  hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointer hover:border-hover-dark dark:hover:border-hover-light;
+  @apply transition ease-in-out border-2 rounded-md  hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointer hover:border-hover-dark dark:hover:border-hover-light shadow-sm;
 }
 
 .retro-pattern {
