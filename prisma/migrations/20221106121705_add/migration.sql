@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Retrospective" ADD COLUMN     "timerExpiration" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
