@@ -1,3 +1,7 @@
+import {
+  RetrospectiveCreateInputObjectSchema,
+  RetrospectiveUpdateInputObjectSchema,
+} from 'prisma/generated/schemas'
 import { z } from 'zod'
 
 import { t } from '../trpc'
@@ -36,29 +40,15 @@ export const retrospectiveRouter = t.router({
         data: { timerExpiration: input.timerExpiration },
       })
     }),
-  add: t.procedure
-    .input(
-      z.object({
-        name: z.string(),
-        date: z.date(),
-      })
-    )
-    .mutation(({ ctx, input }) => {
-      return ctx.prisma.retrospective.create({ data: input })
-    }),
-  edit: t.procedure
-    .input(
-      z.object({
-        id: z.string(),
-        phase: z.string(),
-      })
-    )
-    .mutation(({ ctx, input }) => {
-      return ctx.prisma.retrospective.update({
-        where: {
-          id: input.id,
-        },
-        data: input,
-      })
-    }),
+  add: t.procedure.input(RetrospectiveCreateInputObjectSchema).mutation(({ ctx, input }) => {
+    return ctx.prisma.retrospective.create({ data: input })
+  }),
+  edit: t.procedure.input(RetrospectiveUpdateInputObjectSchema).mutation(({ ctx, input }) => {
+    return ctx.prisma.retrospective.update({
+      where: {
+        id: String(input.id),
+      },
+      data: input,
+    })
+  }),
 })
