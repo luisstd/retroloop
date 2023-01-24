@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
-import RetroDialog from '@/components/RetroSection/components/RetroDialog'
+import RetroDialog, { RetrospectiveInput } from '@/components/RetroSection/components/RetroDialog'
 import { trpc } from '@/utils/trpc'
 
 type RetroSectionProps = {
@@ -44,7 +44,7 @@ export default function RetroSection(props: RetroSectionProps) {
     },
   })
 
-  const handleAddRetro = (input: Retrospective) => {
+  const handleAddRetro = (input: RetrospectiveInput) => {
     mutation.mutate(input)
   }
 
