@@ -41,7 +41,20 @@ export const retrospectiveRouter = t.router({
       })
     }),
   add: t.procedure.input(RetrospectiveCreateInputObjectSchema).mutation(({ ctx, input }) => {
-    return ctx.prisma.retrospective.create({ data: input })
+    const userId = ctx.session?.user?.id
+
+    return ctx.prisma.retrospective.create({
+      data: {
+        ...input,
+        participants: {
+          connect: [
+            {
+              id: userId,
+            },
+          ],
+        },
+      },
+    })
   }),
   edit: t.procedure.input(RetrospectiveUpdateInputObjectSchema).mutation(({ ctx, input }) => {
     return ctx.prisma.retrospective.update({
