@@ -9,11 +9,17 @@ type RetroItemDialogProps = {
   itemType: string
   userId: string
   retrospective: Retrospective
-  //TODO: fix typing
-  addHandler: (input: any) => void
+  handleAddRetroItem: (input: RetroItemInput) => void
 }
 
-export default function RetroItemDialog(props: RetroItemDialogProps) {
+export type RetroItemInput = Omit<RetroItem, 'id' | 'createdAt' | 'itemCollectionId'>
+
+export default function RetroItemDialog({
+  itemType,
+  userId,
+  retrospective,
+  handleAddRetroItem,
+}: RetroItemDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -57,23 +63,20 @@ export default function RetroItemDialog(props: RetroItemDialogProps) {
           </Dialog.Close>
         </div>
         <Dialog.Description className='pb-2'>
-          {props.itemType === 'success' ? 'What went well?' : null}
-          {props.itemType === 'improvement' ? 'What could we improve?' : null}
-          {props.itemType === 'action' ? 'What should we start doing?' : null}
+          {itemType === 'success' ? 'What went well?' : null}
+          {itemType === 'improvement' ? 'What could we improve?' : null}
+          {itemType === 'action' ? 'What should we start doing?' : null}
         </Dialog.Description>
         <Formik
           initialValues={{
-            id: '',
-            createdAt: new Date(),
+            type: itemType ? itemType : '',
             content: '',
-            type: props.itemType ? props.itemType : '',
-            retrospectiveId: props.retrospective.id,
-            itemCollectionId: null,
-            userId: props.userId ? props.userId : '',
+            retrospectiveId: retrospective.id,
             votes: 0,
+            userId: userId ? userId : '',
           }}
-          onSubmit={(values: RetroItem) => {
-            props.addHandler(values)
+          onSubmit={(values: RetroItemInput) => {
+            handleAddRetroItem(values)
             setIsOpen(false)
           }}
         >
