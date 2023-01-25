@@ -13,7 +13,7 @@ type RetroDialogProps = {
 
 export type RetrospectiveInput = Omit<Retrospective, 'id' | 'createdAt' | 'workspaceId'>
 
-export default function RetroDialog(props: RetroDialogProps) {
+export default function RetroDialog({ handleAddRetro }: RetroDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -62,12 +62,11 @@ export default function RetroDialog(props: RetroDialogProps) {
           initialValues={{
             name: '',
             date: new Date(),
-            link: {},
             timerExpiration: new Date(),
             phase: 'WRITING',
           }}
-          onSubmit={(values) => {
-            props.handleAddRetro(values)
+          onSubmit={(values: RetrospectiveInput) => {
+            handleAddRetro(values)
             setIsOpen(false)
           }}
         >
