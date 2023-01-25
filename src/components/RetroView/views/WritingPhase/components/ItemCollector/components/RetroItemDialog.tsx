@@ -4,6 +4,9 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPlus } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
+import { toFormikValidationSchema } from 'zod-formik-adapter'
+
+import { RetroItemCreateInputSchema } from '@/schemas/retroItem'
 
 type RetroItemDialogProps = {
   itemType: string
@@ -68,6 +71,7 @@ export default function RetroItemDialog({
           {itemType === 'action' ? 'What should we start doing?' : null}
         </Dialog.Description>
         <Formik
+          validationSchema={toFormikValidationSchema(RetroItemCreateInputSchema)}
           initialValues={{
             type: itemType ? itemType : '',
             content: '',

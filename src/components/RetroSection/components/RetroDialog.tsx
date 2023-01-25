@@ -3,9 +3,10 @@ import { Retrospective } from '@prisma/client'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPlus } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
-import { RetrospectiveCreateInputObjectSchema } from 'prisma/generated/schemas'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
+
+import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
 
 type RetroDialogProps = {
   handleAddRetro: (input: RetrospectiveInput) => void
@@ -58,7 +59,7 @@ export default function RetroDialog({ handleAddRetro }: RetroDialogProps) {
           </Dialog.Close>
         </div>
         <Formik
-          validationSchema={toFormikValidationSchema(RetrospectiveCreateInputObjectSchema)}
+          validationSchema={toFormikValidationSchema(RetrospectiveCreateInputSchema)}
           initialValues={{
             name: '',
             date: new Date(),

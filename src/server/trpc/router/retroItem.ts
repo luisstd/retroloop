@@ -1,22 +1,8 @@
 import { z } from 'zod'
 
+import { RetroItemCreateInputSchema, RetroItemUpdateInputSchema } from '@/schemas/retroItem'
+
 import { t } from '../trpc'
-
-export const RetroItemCreateInputSchema = z.object({
-  content: z.string(),
-  type: z.string(),
-  retrospectiveId: z.string(),
-  votes: z.number().nullable(),
-})
-
-export const RetroItemUpdateInputSchema = z.object({
-  id: z.string(),
-  content: z.string(),
-  type: z.string(),
-  retrospectiveId: z.string(),
-  userId: z.string().nullable(),
-  votes: z.number().nullable(),
-})
 
 export const retroItemRouter = t.router({
   getAll: t.procedure.query(({ ctx }) => {
