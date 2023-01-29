@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const { withPlausibleProxy } = require('next-plausible')
+const { withSentryConfig } = require('@sentry/nextjs')
+
+const nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
   swcMinify: true,
-}
+})
 
-module.exports = nextConfig
+module.exports = withSentryConfig(nextConfig, { silent: true }, { hideSourcemaps: true })
