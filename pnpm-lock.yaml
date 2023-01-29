@@ -64,6 +64,7 @@ specifiers:
   lint-staged: ^13.1.0
   next: 12.2.5
   next-auth: ^4.18.8
+  next-plausible: ^3.7.1
   next-themes: ^0.2.1
   nodemailer: ^6.9.0
   pnpm: ^7.25.1
@@ -115,6 +116,7 @@ dependencies:
   formik: 2.2.9_react@18.2.0
   next: 12.2.5_pjwopsidmaokadturxaafygjp4
   next-auth: 4.18.8_vxkchiodyetm2cggo35nzsa7gm
+  next-plausible: 3.7.1_3xcjr4wz26biff45sz3jtokgje
   next-themes: 0.2.1_3xcjr4wz26biff45sz3jtokgje
   nodemailer: 6.9.0
   pnpm: 7.25.1
@@ -5359,6 +5361,18 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       uuid: 8.3.2
+    dev: false
+
+  /next-plausible/3.7.1_3xcjr4wz26biff45sz3jtokgje:
+    resolution: {integrity: sha512-I4WjbuXPfQ3ijbzOC1lv1GNx6TTV0ZevR6YYs5vGZIyMz0z4LuN68x08a+ag2XNb1yy9dA1NkwV2hPzbfx8Gtw==}
+    peerDependencies:
+      next: ^11.1.0 || ^12.0.0 || ^13.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      next: 12.2.5_pjwopsidmaokadturxaafygjp4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /next-themes/0.2.1_3xcjr4wz26biff45sz3jtokgje:

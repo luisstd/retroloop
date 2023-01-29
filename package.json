@@ -43,6 +43,7 @@
     "formik": "^2.2.9",
     "next": "12.2.5",
     "next-auth": "^4.18.8",
+    "next-plausible": "^3.7.1",
     "next-themes": "^0.2.1",
     "nodemailer": "^6.9.0",
     "pnpm": "^7.25.1",

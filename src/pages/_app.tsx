@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
+import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 
 import { trpc } from '@/utils/trpc'
@@ -25,7 +26,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => (
   <SessionProvider session={session}>
     <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+        <PlausibleProvider domain='retroloop.io' customDomain='stats.retroloop.io'>
+          <Component {...pageProps} />
+        </PlausibleProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>
