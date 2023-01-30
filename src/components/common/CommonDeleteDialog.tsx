@@ -3,12 +3,11 @@ import * as AlertDialog from '@radix-ui/react-alert-dialog'
 import { IconTrash } from '@tabler/icons'
 import { useState } from 'react'
 
-type ItemToDelete = Record<string | number | symbol, unknown>
+type ItemToDelete = { id: string; [key: string]: unknown }
 
 type DeleteDialogProps = {
   itemToDelete: ItemToDelete
-  //TODO: fix typing
-  deleteHandler: (input: any) => void
+  deleteHandler: (input: ItemToDelete['id']) => void
 }
 
 export default function CommonDeleteDialog(props: DeleteDialogProps) {

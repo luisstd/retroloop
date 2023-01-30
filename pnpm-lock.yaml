@@ -37,6 +37,7 @@ specifiers:
   '@trpc/next': ^10.9.0
   '@trpc/react-query': ^10.9.0
   '@trpc/server': ^10.9.0
+  '@types/lodash': ^4.14.191
   '@types/node': 18.0.3
   '@types/react': 18.0.15
   '@types/react-dom': 18.0.6
@@ -64,6 +65,7 @@ specifiers:
   husky: ^8.0.3
   jest: ^28.1.3
   lint-staged: ^13.1.0
+  lodash: ^4.17.21
   next: 12.2.5
   next-auth: ^4.18.8
   next-plausible: ^3.7.1
@@ -115,9 +117,11 @@ dependencies:
   '@trpc/next': 10.9.0_7inn26npjh2ex6ehqfiq5bxkjm
   '@trpc/react-query': 10.9.0_tf4jqwfcqwee5vnzk3toz74xta
   '@trpc/server': 10.9.0
+  '@types/lodash': 4.14.191
   add: 2.0.6
   date-fns: 2.29.3
   formik: 2.2.9_react@18.2.0
+  lodash: 4.17.21
   next: 12.2.5_pjwopsidmaokadturxaafygjp4
   next-auth: 4.18.8_vxkchiodyetm2cggo35nzsa7gm
   next-plausible: 3.7.1_3xcjr4wz26biff45sz3jtokgje
@@ -2358,6 +2362,10 @@ packages:
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
+    dev: false
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}

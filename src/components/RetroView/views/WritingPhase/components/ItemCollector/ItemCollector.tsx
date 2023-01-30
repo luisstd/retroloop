@@ -65,7 +65,7 @@ function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
       </div>
       <ul>
         {retroItems.data &&
-          retroItems.data.map((item, index) =>
+          retroItems.data.map((item: RetroItem, index: number) =>
             item.type === itemType ? (
               <li
                 className='flex justify-between p-2 my-3 border-2 rounded-md border-base-dark dark:border-base-light'
@@ -74,7 +74,10 @@ function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
                 <p className='p-1'>{item.content}</p>
 
                 <div className='flex flex-row items-center'>
-                  <CommonEditDialog itemToEdit={item} editHandler={handleEditRetroItem} />
+                  <CommonEditDialog
+                    itemToEdit={item}
+                    editHandler={(input) => handleEditRetroItem(input as RetroItem)}
+                  />
                   <CommonDeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
                 </div>
               </li>
