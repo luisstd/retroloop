@@ -2,7 +2,7 @@ import { User } from '@prisma/client'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 
-import InviteUserDialog from '@/components/TeamSection/components/InviteUserDialog'
+import InviteUserDialog, { UserInput } from '@/components/TeamSection/components/InviteUserDialog'
 import { trpc } from '@/utils/trpc'
 
 export default function TeamSection() {
@@ -16,7 +16,7 @@ export default function TeamSection() {
     },
   })
 
-  const handleAddUser = async (input: User) => {
+  const handleAddUser = async (input: UserInput) => {
     mutation.mutate(input)
   }
 
