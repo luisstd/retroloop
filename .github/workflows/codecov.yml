@@ -1,0 +1,18 @@
+name: 'Codecov Check'
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  codecov-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v3
+        with:
+          #files: ./coverage1.xml,./coverage2.xml # optional
+          #flags: unittests # optional
+          name: codecov-check # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
