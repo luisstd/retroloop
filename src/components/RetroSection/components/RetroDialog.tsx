@@ -20,7 +20,7 @@ export default function RetroDialog({ handleAddRetro }: RetroDialogProps) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className='flex flex-row items-center btn'>
+        <button className='relative flex flex-row items-center btn bg-base-light dark:bg-base-dark'>
           <h2 className='p-2 text-lg italic font-bold '>Start Retro</h2>
 
           <IconPlus size={32} className='p-1 rounded-md justify-self-center' />

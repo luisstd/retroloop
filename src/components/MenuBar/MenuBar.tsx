@@ -12,7 +12,7 @@ export default function MenuBar() {
   const { data: session } = useSession()
   return (
     <div className='flex items-center w-screen max-w-screen-2xl'>
-      <NavigationMenu.Root className='flex items-center justify-between w-full p-2 m-5 text-xl border-2 border-black rounded-md dark:border-neutral-200 max-w-screen-2xl'>
+      <NavigationMenu.Root className='relative flex items-center justify-between w-full p-2 m-5 text-xl border-2 border-black rounded-md dark:border-neutral-200 max-w-screen-2xl bg-base-light dark:bg-base-dark'>
         <NavigationMenu.List className='flex items-center gap-2'>
           <Link href='/'>
             <NavigationMenu.Item className='flex items-center text-2xl italic text-center sm:text-3xl'>
