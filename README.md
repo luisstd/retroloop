@@ -6,6 +6,8 @@
 <!-- PROJECT LOGO -->
 <div align="center">
 
+![CodeQL](https://github.com/luisstd/retroloop/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/luisstd/retroloop/badge)](https://www.codefactor.io/repository/github/luisstd/retroloop)
+
 <h3 align="center">
   <a href="https://retroloop.io" rel="noopener">retroloop.io</a>
 </h3>
