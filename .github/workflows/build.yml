@@ -70,8 +70,8 @@ jobs:
         run: test --parallel=5
 
   codecov:
-    - name: Code coverage
-      uses: codecov/codecov-action@v3
+    name: Code coverage
+    uses: codecov/codecov-action@v3
 
   build:
     name: Build
