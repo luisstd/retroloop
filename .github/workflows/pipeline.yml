@@ -128,4 +128,4 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: next build
+        run: pnpm build
