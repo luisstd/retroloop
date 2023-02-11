@@ -98,6 +98,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - uses: codecov/codecov-action@v3
+        with:
+          files: ./test/unit/coverage/coverage-final.json
 
   build:
     name: Build
