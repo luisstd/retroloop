@@ -24,7 +24,6 @@ specifiers:
   '@radix-ui/react-navigation-menu': ^1.1.1
   '@radix-ui/react-toast': ^1.1.2
   '@radix-ui/react-toggle-group': ^1.0.2
-  '@sentry/cli': ^2.11.0
   '@sentry/nextjs': ^7.34.0
   '@stitches/react': ^1.2.8
   '@tabler/icons': ^1.119.0
@@ -110,7 +109,6 @@ dependencies:
   '@radix-ui/react-navigation-menu': 1.1.1_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-toast': 1.1.2_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-toggle-group': 1.0.2_biqbaboplfbrettd7655fr4n2y
-  '@sentry/cli': 2.11.0
   '@sentry/nextjs': 7.34.0_next@12.2.5+react@18.2.0
   '@stitches/react': 1.2.8_react@18.2.0
   '@tabler/icons': 1.119.0_biqbaboplfbrettd7655fr4n2y
@@ -2092,22 +2090,6 @@ packages:
       mkdirp: 0.5.6
       node-fetch: 2.6.8
       npmlog: 4.1.2
-      progress: 2.0.3
-      proxy-from-env: 1.1.0
-      which: 2.0.2
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
-
-  /@sentry/cli/2.11.0:
-    resolution: {integrity: sha512-qfCf/R0VhmlWcdfu2rntejqbIgovx7FQTwFreQpbISlB/JS9xHF8KEEJXZTdDFoPCi2H9KHg4CPUsCNAKbAdMA==}
-    engines: {node: '>= 10'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      https-proxy-agent: 5.0.1
-      node-fetch: 2.6.8
       progress: 2.0.3
       proxy-from-env: 1.1.0
       which: 2.0.2
