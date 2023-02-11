@@ -1,4 +1,4 @@
-name: Build
+name: Pipeline
 on:
   push:
     branches:
@@ -36,7 +36,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: lint --parallel=5
+        run: pnpm lint --parallel=5
 
   vitest:
     name: Test
@@ -67,10 +67,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Run Vitest
-        run: test --parallel=5
+        run: pnpm test --parallel=5
 
   codecov:
-    name: Code coverage
+    name: Coverage
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
@@ -128,5 +128,4 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build
-        if: steps.cache-dist.outputs.cache-hit != 'true'
-        run: build
+        run: pnpm build
