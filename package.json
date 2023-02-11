@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint --fix ./",
     "test": "vitest --watch",
+    "coverage": "vitest run --coverage",
     "clean": "rimraf node_modules && pnpm install && prisma generate && pnpm lint"
   },
   "engines": {
@@ -35,7 +36,6 @@
     "@radix-ui/react-navigation-menu": "^1.1.1",
     "@radix-ui/react-toast": "^1.1.2",
     "@radix-ui/react-toggle-group": "^1.0.2",
-    "@sentry/cli": "^2.11.0",
     "@sentry/nextjs": "^7.34.0",
     "@stitches/react": "^1.2.8",
     "@tabler/icons": "^1.119.0",
@@ -79,6 +79,7 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
+    "@vitest/coverage-c8": "^0.28.4",
     "autoprefixer": "^10.4.13",
     "babel-jest": "^29.4.1",
     "eslint": "^8.32.0",
