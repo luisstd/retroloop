@@ -36,7 +36,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: pnpm lint --parallel=5
+        run: pnpm lint
 
   vitest:
     name: Test
