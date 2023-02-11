@@ -125,7 +125,7 @@ jobs:
           node-version: 18
           cache: 'pnpm'
 
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
 
       - name: Build
         run: pnpm build
