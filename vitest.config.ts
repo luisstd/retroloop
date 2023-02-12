@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     coverage: {
-      reporter: ['text', 'json', 'html'],
+      reporter: ['json'],
       reportsDirectory: './tests/unit/coverage',
     },
   },
