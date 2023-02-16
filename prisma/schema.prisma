@@ -48,7 +48,7 @@ model User {
   createdAt      DateTime        @default(now())
   email          String          @unique
   emailVerified  DateTime?
-  name           String
+  name           String?
   role           String?
   retrospectives Retrospective[]
   invite         Invite[]
