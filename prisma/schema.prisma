@@ -49,7 +49,7 @@ model User {
   email          String          @unique
   emailVerified  DateTime?
   name           String?
-  role           String?
+  role           String?         @default("USER")
   retrospectives Retrospective[]
   invite         Invite[]
   retroItem      RetroItem[]
