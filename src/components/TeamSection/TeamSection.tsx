@@ -2,7 +2,8 @@ import { User } from '@prisma/client'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 
-import InviteUserDialog, { UserInput } from '@/components/TeamSection/components/InviteUserDialog'
+import InviteUserDialog from '@/components/TeamSection/components/InviteUserDialog'
+import { UserInput } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 
 export default function TeamSection() {
