@@ -1,16 +1,20 @@
 import { Field, Form, Formik } from 'formik'
+import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import React from 'react'
-import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-import { UserSessionSchema } from '@/schemas/user'
 import { UserSession } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 
 function SignUpForm() {
   const { data } = useSession()
+  const router = useRouter()
 
-  const mutation = trpc.user.edit.useMutation({})
+  const mutation = trpc.user.edit.useMutation({
+    onSuccess: () => {
+      router.push('/')
+    },
+  })
 
   function handleSubmit(input: UserSession): void {
     mutation.mutate(input)
@@ -22,14 +26,15 @@ function SignUpForm() {
         <div className='flex flex-col items-center w-screen max-w-screen-2xl'>
           <h1 className='my-5 text-3xl italic font-bold'>Complete login</h1>
           <Formik
-            validationSchema={toFormikValidationSchema(UserSessionSchema)}
             initialValues={{
               id: data.user?.id || '',
               email: data.user?.email || '',
               name: data.user?.name || '',
               image: data.user?.image || '',
             }}
-            onSubmit={handleSubmit}
+            onSubmit={(values) => {
+              handleSubmit(values)
+            }}
           >
             <Form className='w-screen max-w-md p-5 border-2 rounded-lg border-base-dark bg-base-light dark:bg-base-dark dark:border-base-light dark:text-base-light'>
               <fieldset className='flex flex-col w-auto gap-4'>
