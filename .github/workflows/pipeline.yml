@@ -67,7 +67,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Run Vitest
-        run: pnpm test && pnpm coverage --parallel=5
+        run: pnpm test  --parallel=5
 
   codecov:
     name: Coverage
@@ -96,6 +96,9 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
+
+      - name: Generate coverage files
+        run: pnpm coverage --parallel=5
 
       - uses: codecov/codecov-action@v3
         with:
