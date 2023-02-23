@@ -29,6 +29,11 @@ export const userRouter = t.router({
     return ctx.prisma.user.create({ data: input })
   }),
   edit: t.procedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
-    return ctx.prisma.user.create({ data: input })
+    return ctx.prisma.user.update({
+      where: {
+        id: input.id,
+      },
+      data: input,
+    })
   }),
 })

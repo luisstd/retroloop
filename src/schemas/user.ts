@@ -7,6 +7,13 @@ export const UserCreateInputSchema = z.object({
 
 export const UserUpdateInputSchema = z.object({
   id: z.string(),
-  email: z.string(),
   name: z.string(),
+  email: z.string(),
+})
+
+export const UserSessionSchema = z.object({
+  id: z.string(),
+  email: z.string(),
+  name: z.string().nullable(),
+  image: z.string().nullable(),
 })
