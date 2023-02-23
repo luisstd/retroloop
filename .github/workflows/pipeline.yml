@@ -67,7 +67,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Run Vitest
-        run: pnpm test --parallel=5
+        run: pnpm test && pnpm coverage --parallel=5
 
   codecov:
     name: Coverage
