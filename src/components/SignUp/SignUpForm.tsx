@@ -3,7 +3,6 @@ import { IconUserCircle } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
-import React from 'react'
 
 import { UserSession } from '@/types/user'
 import { trpc } from '@/utils/trpc'

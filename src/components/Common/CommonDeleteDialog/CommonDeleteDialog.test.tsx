@@ -1,7 +1,7 @@
 import { render, RenderResult } from '@testing-library/react'
 import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 
-import CommonDeleteDialog from './CommonDeleteDialog'
+import CommonDeleteDialog from '@/components/Common/CommonDeleteDialog/CommonDeleteDialog'
 
 test('CommonDeleteDialog', () => {
   describe('CommonDeleteDialog', () => {
