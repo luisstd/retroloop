@@ -8,5 +8,5 @@ export const UserCreateInputSchema = z.object({
 export const UserUpdateInputSchema = z.object({
   id: z.string(),
   email: z.string(),
-  name: z.string().nullable(),
+  name: z.string(),
 })

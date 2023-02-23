@@ -1,4 +1,4 @@
-import { UserCreateInputSchema } from '@/schemas/user'
+import { UserCreateInputSchema, UserUpdateInputSchema } from '@/schemas/user'
 
 import { t } from '../trpc'
 
@@ -26,6 +26,9 @@ export const userRouter = t.router({
     })
   }),
   add: t.procedure.input(UserCreateInputSchema).mutation(({ ctx, input }) => {
+    return ctx.prisma.user.create({ data: input })
+  }),
+  edit: t.procedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
     return ctx.prisma.user.create({ data: input })
   }),
 })
