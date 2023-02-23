@@ -1,3 +1,5 @@
+import * as Avatar from '@radix-ui/react-avatar'
+import { IconUserCircle } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
@@ -36,8 +38,14 @@ function SignUpForm() {
               handleSubmit(values)
             }}
           >
-            <Form className='w-screen max-w-md p-5 border-2 rounded-lg border-base-dark bg-base-light dark:bg-base-dark dark:border-base-light dark:text-base-light'>
-              <fieldset className='flex flex-col w-auto gap-4'>
+            <Form className='flex flex-col items-center w-screen max-w-md gap-4 p-5 border-2 rounded-lg border-base-dark bg-base-light dark:bg-base-dark dark:border-base-light dark:text-base-light'>
+              <Avatar.Root className='hover:cursor-pointer'>
+                <Avatar.Image src={data.user?.image || ''} alt='User Avatar' />
+                <Avatar.Fallback delayMs={600}>
+                  <IconUserCircle size={72} />
+                </Avatar.Fallback>
+              </Avatar.Root>
+              <fieldset className='flex flex-col w-full gap-4'>
                 <label htmlFor='name' className='font-bold'>
                   Name
                 </label>
@@ -65,7 +73,6 @@ function SignUpForm() {
                   }  rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark min-h-min dark:border-base-light`}
                 />
               </fieldset>
-
               <div className='flex flex-row justify-end w-full'>
                 <button
                   type='submit'
