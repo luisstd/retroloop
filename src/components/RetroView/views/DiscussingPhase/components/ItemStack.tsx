@@ -15,19 +15,25 @@ function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
   }, [retroItems])
 
   function sortItems(): void {
-    retroItems
-      ? setSortedItems(
-          [...retroItems].sort((a, b) => {
-            if (b.votes === null) {
-              return 1
-            }
-            if (a.votes === null) {
-              return -1
-            }
-            return b.votes - a.votes
-          })
-        )
-      : null
+    if (retroItems) {
+      const sorted = [...retroItems].sort((a, b) => {
+        // If both items have non-null votes, sort by votes
+        if (a.votes !== null && b.votes !== null) {
+          return b.votes - a.votes
+        }
+        // If only one item has non-null votes, move it to the top
+        else if (a.votes !== null) {
+          return -1
+        } else if (b.votes !== null) {
+          return 1
+        }
+        // If both items have null votes, maintain original order
+        else {
+          return 0
+        }
+      })
+      setSortedItems(sorted)
+    }
   }
 
   return (
