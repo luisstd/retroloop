@@ -3,9 +3,16 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPlus } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
+import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-//TODO: fix typing
-export default function AddRetroDialog(props: any) {
+import { UserCreateInputSchema } from '@/schemas/user'
+import { UserInput } from '@/types/user'
+
+type InviteUserDialogProps = {
+  handleAddUser: (input: UserInput) => void
+}
+
+export default function InviteUserDialog(props: InviteUserDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -48,12 +55,14 @@ export default function AddRetroDialog(props: any) {
           </Dialog.Close>
         </div>
         <Formik
+          validationSchema={toFormikValidationSchema(UserCreateInputSchema)}
           initialValues={{
             email: '',
             name: '',
             role: '',
+            image: '',
           }}
-          onSubmit={async (values) => {
+          onSubmit={async (values: UserInput) => {
             props.handleAddUser(values)
             setIsOpen(false)
           }}

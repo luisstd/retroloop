@@ -5,9 +5,12 @@ import { useSession } from 'next-auth/react'
 
 import MenuBar from '@/components/MenuBar/MenuBar'
 import RetroView from '@/components/RetroView/RetroView'
+import SignUpForm from '@/components/SignUp/SignUpForm'
 
 const Retro: NextPage = () => {
-  const { status } = useSession()
+  const { data: session, status } = useSession()
+
+  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
     <div className='flex flex-col items-center'>
@@ -19,14 +22,14 @@ const Retro: NextPage = () => {
 
       <MenuBar />
 
-      {status === 'authenticated' ? (
-        <RetroView />
-      ) : (
+      {isSignedUp && session?.user ? <RetroView /> : <SignUpForm />}
+
+      {!isSignedUp && !session?.user ? (
         <div className='flex flex-col items-center'>
           <IconFaceIdError size={122} className='m-5' />
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
-      )}
+      ) : null}
     </div>
   )
 }

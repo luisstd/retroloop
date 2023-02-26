@@ -50,7 +50,7 @@ export default function RetroSection(props: RetroSectionProps) {
 
   return (
     <div className='flex items-center w-screen h-full max-w-screen-2xl'>
-      <section className='w-full h-full p-10 mx-5 border-2 border-black rounded-md dark:border-neutral-200'>
+      <section className='relative w-full h-full p-10 mx-5 border-2 rounded-md shadow-md border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
         <div className='flex flex-row items-baseline'>
           <h2 className='p-5 text-center'>RETROS</h2>
           <div className='flex justify-end w-full mb-10'>

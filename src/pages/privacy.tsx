@@ -520,7 +520,7 @@ const PrivacyPolicy: NextPage = () => {
         <p className='py-2'>
           Luis Steidle
           <br />
-          info@retroloop.io
+          info@mail.retroloop.io
         </p>
       </main>
 

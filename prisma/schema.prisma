@@ -48,8 +48,8 @@ model User {
   createdAt      DateTime        @default(now())
   email          String          @unique
   emailVerified  DateTime?
-  name           String
-  role           String?
+  name           String?
+  role           String?         @default("USER")
   retrospectives Retrospective[]
   invite         Invite[]
   retroItem      RetroItem[]

@@ -2,14 +2,12 @@ import { Transition } from '@headlessui/react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPencil } from '@tabler/icons'
 import { Field, Form, Formik } from 'formik'
+import cloneDeep from 'lodash/cloneDeep'
 import { useState } from 'react'
 
-type ItemToEdit = Record<string | number | symbol, unknown>
-
 type EditDialogProps = {
-  itemToEdit: ItemToEdit
-  //TODO: fix typing
-  editHandler: (input: any) => void
+  itemToEdit: Record<string, unknown>
+  editHandler: (input: unknown) => void
 }
 
 export default function CommonEditDialog(props: EditDialogProps) {
@@ -57,15 +55,7 @@ export default function CommonEditDialog(props: EditDialogProps) {
           </Dialog.Close>
         </div>
         <Formik
-          initialValues={(() => {
-            const initialValues: ItemToEdit = {}
-
-            for (const key of Object.keys(props.itemToEdit)) {
-              initialValues[key] = key in props.itemToEdit ? props.itemToEdit[key] : ''
-            }
-
-            return initialValues
-          })()}
+          initialValues={cloneDeep(props.itemToEdit)}
           onSubmit={(values) => {
             props.editHandler(values)
             setIsOpen(false)

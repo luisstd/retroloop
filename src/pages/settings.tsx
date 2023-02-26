@@ -5,9 +5,13 @@ import { useSession } from 'next-auth/react'
 
 import MenuBar from '@/components/MenuBar/MenuBar'
 import SettingsSection from '@/components/SettingsSection/SettingsSection'
+import SignUpForm from '@/components/SignUp/SignUpForm'
 
 const Settings: NextPage = () => {
-  const { status } = useSession()
+  const { data: session, status } = useSession()
+
+  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+
   return (
     <div className='flex flex-col items-center'>
       <Head>
@@ -18,14 +22,14 @@ const Settings: NextPage = () => {
 
       <MenuBar />
 
-      {status === 'authenticated' ? (
-        <SettingsSection />
-      ) : (
+      {isSignedUp && session?.user ? <SettingsSection /> : <SignUpForm />}
+
+      {!isSignedUp && !session?.user ? (
         <div className='flex flex-col items-center'>
           <IconFaceIdError size={122} className='m-5' />
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
-      )}
+      ) : null}
     </div>
   )
 }

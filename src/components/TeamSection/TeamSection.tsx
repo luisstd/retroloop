@@ -3,6 +3,7 @@ import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 
 import InviteUserDialog from '@/components/TeamSection/components/InviteUserDialog'
+import { UserInput } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 
 export default function TeamSection() {
@@ -16,13 +17,13 @@ export default function TeamSection() {
     },
   })
 
-  const handleAddUser = async (input: User) => {
+  const handleAddUser = async (input: UserInput) => {
     mutation.mutate(input)
   }
 
   return (
     <div className='flex items-center w-screen h-full max-w-screen-2xl'>
-      <section className='w-full h-full p-10 mx-5 mt-10 border-2 border-black rounded-md dark:border-neutral-200'>
+      <section className='relative w-full h-full p-10 mx-5 mt-10 border-2 rounded-md shadow-md border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
         <div className='flex flex-row items-baseline'>
           <h2 className='p-5 text-center'>TEAM</h2>
           <div className='flex justify-end w-full mb-10'>

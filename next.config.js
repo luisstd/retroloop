@@ -10,4 +10,8 @@ const nextConfig = withPlausibleProxy()({
   swcMinify: true,
 })
 
-module.exports = withSentryConfig(nextConfig, { silent: true }, { hideSourcemaps: true })
+module.exports = withSentryConfig(nextConfig, {
+  silent: true,
+  hideSourcemaps: true,
+  tunnel: '/sentry',
+})
