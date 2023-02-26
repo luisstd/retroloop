@@ -6,7 +6,7 @@ CREATE TABLE "Account" (
     "provider" TEXT NOT NULL,
     "providerAccountId" TEXT NOT NULL,
     "refresh_token" TEXT,
-    "refresh_token_expires_in" TEXT,
+    "refresh_token_expires_in" INTEGER,
     "access_token" TEXT,
     "expires_at" INTEGER,
     "token_type" TEXT,
@@ -40,8 +40,8 @@ CREATE TABLE "User" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "email" TEXT NOT NULL,
     "emailVerified" TIMESTAMP(3),
-    "name" TEXT NOT NULL,
-    "role" TEXT,
+    "name" TEXT,
+    "role" TEXT DEFAULT 'USER',
     "image" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
