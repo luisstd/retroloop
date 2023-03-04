@@ -11,7 +11,7 @@ specifiers:
   '@fontsource/spline-sans': ^4.5.14
   '@fontsource/spline-sans-mono': ^4.5.3
   '@headlessui/react': ^1.7.11
-  '@logux/eslint-config': ^48.0.0
+  '@logux/eslint-config': ^49.0.0
   '@next-auth/prisma-adapter': ^1.0.5
   '@next/eslint-plugin-next': ^12.3.4
   '@prisma/client': ^4.10.1
@@ -150,7 +150,7 @@ devDependencies:
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
   '@faker-js/faker': 7.6.0
-  '@logux/eslint-config': 48.0.0_t5fygbfy4w6fbyigvnzgnbcdn4
+  '@logux/eslint-config': 49.0.0_t5fygbfy4w6fbyigvnzgnbcdn4
   '@next/eslint-plugin-next': 12.3.4
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
   '@testing-library/jest-dom': 5.16.5
@@ -1301,14 +1301,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@logux/eslint-config/48.0.0_t5fygbfy4w6fbyigvnzgnbcdn4:
-    resolution: {integrity: sha512-4Lwgy14TmEbrp0Xsm7YjiptitLkigOAdqrnkYaNIgeMEe54hO6I99KueeS0348CFWqVAaV9g0eJQaPF6vCJGJg==}
+  /@logux/eslint-config/49.0.0_t5fygbfy4w6fbyigvnzgnbcdn4:
+    resolution: {integrity: sha512-5Aj1wytb+1oej3wLH8G7D35Glx88Iuj07JcVL3YruRhl4v7WZnF3w3RR3IVSQAvllQch4eemvHnLenrZ3PimFg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
-      eslint: ^8.27.0
+      eslint: ^8.35.0
       eslint-config-standard: ^17.0.0
-      eslint-plugin-import: ^2.26.0
-      eslint-plugin-n: ^15.5.0
+      eslint-plugin-import: ^2.27.5
+      eslint-plugin-n: ^15.6.1
       eslint-plugin-prefer-let: ^3.0.1
       eslint-plugin-promise: ^6.1.1
     dependencies:
