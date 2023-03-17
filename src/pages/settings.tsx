@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
 import MenuBar from '@/components/MenuBar/MenuBar'
-import SettingsSection from '@/components/SettingsSection/SettingsSection'
+import ProfileSection from '@/components/ProfileSection/ProfileSection'
 import SignUpForm from '@/components/SignUp/SignUpForm'
 
 const Settings: NextPage = () => {
@@ -22,7 +22,7 @@ const Settings: NextPage = () => {
 
       <MenuBar />
 
-      {isSignedUp && session?.user ? <SettingsSection /> : <SignUpForm />}
+      {isSignedUp && session?.user ? <ProfileSection /> : <SignUpForm />}
 
       {!isSignedUp && !session?.user ? (
         <div className='flex flex-col items-center'>
