@@ -1,4 +1,4 @@
-import { UserCreateInputSchema, UserUpdateInputSchema } from '@/schemas/user'
+import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/schemas/user'
 
 import { t } from '../trpc'
 
@@ -43,7 +43,7 @@ export const userRouter = t.router({
       data: input,
     })
   }),
-  delete: t.procedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
+  delete: t.procedure.input(UserSessionSchema).mutation(({ ctx, input }) => {
     return ctx.prisma.user.delete({
       where: {
         id: input.id,

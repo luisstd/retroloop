@@ -1,6 +1,8 @@
-import { User } from '@prisma/client'
-
-export type UserInput = Omit<User, 'id' | 'createdAt' | 'emailVerified'>
+export type UserUpdateInput = {
+  id: string
+  name: string
+  email: string
+}
 
 export type UserSession = {
   id: string
