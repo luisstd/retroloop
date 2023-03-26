@@ -1,4 +1,4 @@
-import { IconUserCircle } from '@tabler/icons'
+import { IconUserCircle } from '@tabler/icons-react'
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
 

@@ -1,5 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { IconDotsCircleHorizontal, IconInfinity, IconSquare } from '@tabler/icons'
+import { IconDotsCircleHorizontal, IconInfinity, IconSquare } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 

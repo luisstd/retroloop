@@ -1,6 +1,6 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { IconDotsCircleHorizontal, IconMenu, IconSquare } from '@tabler/icons'
+import { IconDotsCircleHorizontal, IconMenu, IconSquare } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 

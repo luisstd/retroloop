@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react'
 import * as Dialog from '@radix-ui/react-dialog'
-import { IconMinimize, IconPlus } from '@tabler/icons'
+import { IconMinimize, IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'

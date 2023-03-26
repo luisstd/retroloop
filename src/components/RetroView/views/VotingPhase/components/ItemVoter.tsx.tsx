@@ -1,5 +1,5 @@
 import { RetroItem, Retrospective } from '@prisma/client'
-import { IconThumbUp } from '@tabler/icons'
+import { IconThumbUp } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 
 import { trpc } from '@/utils/trpc'
