@@ -1,5 +1,6 @@
 import {
   IconAffiliate,
+  IconBrandGithub,
   IconBrandOpenSource,
   IconBulb,
   IconInfinity,
@@ -51,9 +52,10 @@ const Landingpage: NextPage = () => {
               </button>
             </Link>
 
-            <Link href={'https://retroloop.io/docs'}>
-              <button className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
-                Documentation
+            <Link href={'https://github.com/luisstd/retroloop'}>
+              <button className='flex items-center gap-2 p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
+                <IconBrandGithub size={24} />
+                Github
               </button>
             </Link>
           </div>
