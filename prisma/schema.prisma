@@ -93,7 +93,7 @@ model RetroItem {
   retrospective    Retrospective   @relation(fields: [retrospectiveId], references: [id])
   itemCollectionId String?
   retrospectiveId  String
-  votes            Int?
+  votes            Int
   author           User?           @relation(fields: [userId], references: [id])
   userId           String?
 }
