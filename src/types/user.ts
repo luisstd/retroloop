@@ -1,6 +1,10 @@
-import { User } from '@prisma/client'
+import { z } from 'zod'
 
-export type UserInput = Omit<User, 'id' | 'createdAt' | 'emailVerified'>
+import { UserCreateInputSchema, UserUpdateInputSchema } from '@/schemas/user'
+
+export type UserCreateInput = z.infer<typeof UserCreateInputSchema>
+
+export type UserUpdateInput = z.infer<typeof UserUpdateInputSchema>
 
 export type UserSession = {
   id: string

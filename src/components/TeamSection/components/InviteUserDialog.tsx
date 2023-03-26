@@ -6,10 +6,10 @@ import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { UserCreateInputSchema } from '@/schemas/user'
-import { UserInput } from '@/types/user'
+import { UserCreateInput } from '@/types/user'
 
 type InviteUserDialogProps = {
-  handleAddUser: (input: UserInput) => void
+  handleAddUser: (input: UserCreateInput) => void
 }
 
 export default function InviteUserDialog(props: InviteUserDialogProps) {
@@ -62,7 +62,7 @@ export default function InviteUserDialog(props: InviteUserDialogProps) {
             role: '',
             image: '',
           }}
-          onSubmit={async (values: UserInput) => {
+          onSubmit={async (values: UserCreateInput) => {
             props.handleAddUser(values)
             setIsOpen(false)
           }}

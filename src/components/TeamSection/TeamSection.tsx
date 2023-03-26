@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 
 import InviteUserDialog from '@/components/TeamSection/components/InviteUserDialog'
-import { UserInput } from '@/types/user'
+import { UserCreateInput } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 
 export default function TeamSection() {
@@ -17,7 +17,7 @@ export default function TeamSection() {
     },
   })
 
-  const handleAddUser = async (input: UserInput) => {
+  const handleAddUser = async (input: UserCreateInput) => {
     mutation.mutate(input)
   }
 

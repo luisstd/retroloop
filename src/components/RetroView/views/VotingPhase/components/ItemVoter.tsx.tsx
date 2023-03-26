@@ -68,9 +68,7 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                       size={26}
                       className='p-1 rounded-md justify-self-center'
                       onClick={() => {
-                        if (item && item.votes !== null) {
-                          handleEditRetroItem({ ...item, votes: item.votes + 1 })
-                        }
+                        handleEditRetroItem({ ...item, votes: item.votes + 1 })
                       }}
                     />
                   </button>

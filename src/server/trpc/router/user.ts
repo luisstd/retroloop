@@ -1,8 +1,15 @@
-import { UserCreateInputSchema, UserUpdateInputSchema } from '@/schemas/user'
+import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/schemas/user'
 
 import { t } from '../trpc'
 
 export const userRouter = t.router({
+  getLoggedIn: t.procedure.query(({ ctx }) => {
+    return ctx.prisma.user.findUnique({
+      where: {
+        id: ctx.session?.user?.id,
+      },
+    })
+  }),
   getAll: t.procedure.query(({ ctx }) => {
     return ctx.prisma.user.findMany({
       where: {
@@ -34,6 +41,13 @@ export const userRouter = t.router({
         id: input.id,
       },
       data: input,
+    })
+  }),
+  delete: t.procedure.input(UserSessionSchema).mutation(({ ctx, input }) => {
+    return ctx.prisma.user.delete({
+      where: {
+        id: input.id,
+      },
     })
   }),
 })
