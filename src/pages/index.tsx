@@ -4,11 +4,12 @@ import {
   IconBulb,
   IconInfinity,
   IconLogin,
-  IconRotate360,
+  IconRepeat,
   IconUsers,
 } from '@tabler/icons-react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
 import Footer from '@/components/Footer/Footer'
@@ -43,6 +44,19 @@ const Landingpage: NextPage = () => {
           <p className='text-2xl text-center'>
             Create a powerful feedback loop for continuous team improvement
           </p>
+          <div className='flex gap-4'>
+            <Link href={'/dashboard'}>
+              <button className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
+                Get started
+              </button>
+            </Link>
+
+            <Link href={'https://retroloop.io/docs'}>
+              <button className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
+                Documentation
+              </button>
+            </Link>
+          </div>
         </section>
 
         <section className='grid w-5/6 grid-cols-1 my-2 border-2 rounded-md shadow-md w grid-rows-auto md:grid-cols-2 md:w-11/12 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
@@ -55,11 +69,14 @@ const Landingpage: NextPage = () => {
               <h2 className='text-2xl font-bold md:text-4xl'>Simplify your retrospectives</h2>
             </div>
             <p className='my-5 text-lg'>
-              For teams of any size and projects in any domain, our retrospective tool makes it easy
-              to gather feedback, identify areas for improvement, and boost your team&apos;s
+              For teams of any size and projects in any domain, this retrospective tool makes it
+              easy to gather feedback, identify areas for improvement, and boost your team&apos;s
               performance.
             </p>
-            <button className='self-start p-2 font-bold btn'>Get started</button>
+
+            <Link href={'/dashboard'}>
+              <button className='self-start p-2 font-bold btn'>Start retrospective</button>
+            </Link>
           </div>
 
           <div className='flex flex-col items-center w-full gap-6 p-10 md:row-start-1 md:col-start-2'>
@@ -83,18 +100,18 @@ const Landingpage: NextPage = () => {
                 <h3 className='font-bold'>Open-source & self-hostable</h3>
               </div>
               <p>
-                Host the tool on your own infrastructure for added privacy and security, and benefit
-                from the open-source nature that allows for customization and contribution.
+                Host the tool on your own infrastructure and benefit from the open-source nature
+                that allows for customization and contribution.
               </p>
             </div>
 
             <div className='text-start'>
               <div className='flex items-center gap-2 mb-1'>
-                <IconRotate360 size={32} className='text-accent-light dark:text-accent-dark' />
+                <IconRepeat size={32} className='text-accent-light dark:text-accent-dark' />
                 <h3 className='font-bold'>Streamlined retrospectives</h3>
               </div>
               <p>
-                Our user-friendly interface makes it effortless to gather and organize feedback,
+                A user-friendly interface makes it effortless to gather and organize feedback,
                 ensuring your retrospectives are focused and productive.
               </p>
             </div>
@@ -114,7 +131,10 @@ const Landingpage: NextPage = () => {
               Leverage our retrospective tool to identify opportunities for growth, streamline
               processes, and foster a culture of continuous improvement.
             </p>
-            <button className='self-start p-2 font-bold btn'>Get started</button>
+
+            <Link href={'/dashboard'}>
+              <button className='self-start p-2 font-bold btn'>Invite team member</button>
+            </Link>
           </div>
 
           <div className='flex flex-col items-center col-start-1 row-start-2 gap-6 p-10 md:row-start-1'>
@@ -135,7 +155,7 @@ const Landingpage: NextPage = () => {
                 <h3 className='font-bold'>Built for modern teams</h3>
               </div>
               <p>
-                Our retrospective tool is designed to support the diverse needs of today&apos;s
+                This retrospective tool is designed to support the diverse needs of today&apos;s
                 agile teams, with a focus on simplicity, effectiveness, and collaboration.
               </p>
             </div>
