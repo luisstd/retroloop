@@ -1,6 +1,6 @@
 import { Retrospective } from '@prisma/client'
 import * as Toast from '@radix-ui/react-toast'
-import { IconArrowRight, IconCopy } from '@tabler/icons'
+import { IconArrowRight, IconCopy } from '@tabler/icons-react'
 import { useState } from 'react'
 
 type ActionButtonsProps = {

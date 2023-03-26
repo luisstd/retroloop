@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react'
 import * as Dialog from '@radix-ui/react-dialog'
-import { IconMinimize, IconPencil } from '@tabler/icons'
+import { IconMinimize, IconPencil } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import cloneDeep from 'lodash/cloneDeep'
 import { useState } from 'react'

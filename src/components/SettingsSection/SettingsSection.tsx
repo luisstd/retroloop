@@ -1,5 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { IconLanguage, IconLayoutKanban, IconUserCircle, IconUsers } from '@tabler/icons'
+import { IconLanguage, IconLayoutKanban, IconUserCircle, IconUsers } from '@tabler/icons-react'
 import { useState } from 'react'
 
 import LanguageSettings from '@/components/SettingsSection/components/LanguageSettings'

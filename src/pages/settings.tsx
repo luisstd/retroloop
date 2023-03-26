@@ -1,4 +1,4 @@
-import { IconFaceIdError } from '@tabler/icons'
+import { IconFaceIdError } from '@tabler/icons-react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'

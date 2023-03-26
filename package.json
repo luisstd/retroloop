@@ -43,7 +43,7 @@
     "@radix-ui/react-toggle-group": "^1.0.2",
     "@sentry/nextjs": "^7.38.0",
     "@stitches/react": "^1.2.8",
-    "@tabler/icons": "^1.119.0",
+    "@tabler/icons-react": "^2.11.0",
     "@tanstack/react-query": "^4.24.10",
     "@tanstack/react-query-devtools": "^4.24.10",
     "@trpc/client": "^10.12.0",

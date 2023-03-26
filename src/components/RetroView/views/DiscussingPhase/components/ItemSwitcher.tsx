@@ -1,5 +1,5 @@
 import { RetroItem } from '@prisma/client'
-import { IconArrowLeft, IconArrowRight, IconChecks } from '@tabler/icons'
+import { IconArrowLeft, IconArrowRight, IconChecks } from '@tabler/icons-react'
 import Link from 'next/link'
 
 type ItemSwitcherProps = {

@@ -1,5 +1,5 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import { IconUserCircle } from '@tabler/icons'
+import { IconUserCircle } from '@tabler/icons-react'
 import { signOut, useSession } from 'next-auth/react'
 
 function UserDropdown() {

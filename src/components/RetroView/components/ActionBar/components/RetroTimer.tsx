@@ -1,4 +1,4 @@
-import { IconAlarm, IconPlayerPause, IconPlayerPlay, IconRefresh } from '@tabler/icons'
+import { IconAlarm, IconPlayerPause, IconPlayerPlay, IconRefresh } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import { useTimer } from 'react-timer-hook'
 
