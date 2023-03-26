@@ -14,7 +14,7 @@ import Footer from '@/components/Footer/Footer'
 import MenuBar from '@/components/MenuBar/MenuBar'
 
 const Landingpage: NextPage = () => (
-  <div className='grid justify-center'>
+  <div className='grid justify-center landing-pattern dark:landing-pattern-dark'>
     <Head>
       <title>Retroloop</title>
       <meta name='description' content='Agile Retrospectives' />
@@ -23,12 +23,11 @@ const Landingpage: NextPage = () => (
 
     <MenuBar />
 
-    <main className='flex flex-col items-center h-screen landing-pattern dark:landing-pattern-dark'>
-      <section className='flex flex-col items-center gap-5 mb-20'>
+    <main className='flex flex-col items-center w-screen h-screen max-w-screen-2xl'>
+      <section className='flex flex-col items-center w-full row-start-1 gap-5 px-2 my-5 mb-20'>
         <div className='flex items-center gap-2'>
-          <IconInfinity className='sm:hidden' size={82} />
-          <IconInfinity className='hidden sm:block' size={128} />
-          <h1 className='text-5xl italic font-semibold sm:text-7xl'>retroloop</h1>
+          <IconInfinity size={72} />
+          <h1 className='text-5xl italic font-semibold'>retroloop</h1>
         </div>
         <span className='text-4xl font-medium text-center'>Agile retrospectives made easy</span>
         <p className='text-2xl text-center'>
@@ -36,14 +35,14 @@ const Landingpage: NextPage = () => (
         </p>
       </section>
 
-      <section className='grid w-5/6 my-2 border-2 rounded-md shadow-md md:grid-cols-2 md:w-4/6 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
-        <div className='flex flex-col col-start-1 gap-3 p-10'>
+      <section className='grid w-5/6 grid-cols-1 my-2 border-2 rounded-md shadow-md w grid-rows-auto md:grid-cols-2 md:w-11/12 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
+        <div className='flex flex-col w-full col-start-1 row-start-1 gap-3 p-10'>
           <h3 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
             A platform for effective retrospectives
           </h3>
-          <div className='flex items-center justify-center gap-2'>
-            <IconInfinity size={72} />
-            <h2 className='text-4xl font-bold'>Simplify your retrospectives</h2>
+          <div className='flex items-center gap-6 md:justify-start'>
+            <IconInfinity size={72} className='block md:hidden' />
+            <h2 className='text-2xl font-bold md:text-4xl'>Simplify your retrospectives</h2>
           </div>
           <p className='my-5 text-lg'>
             For teams of any size and projects in any domain, our retrospective tool makes it easy
@@ -53,8 +52,8 @@ const Landingpage: NextPage = () => (
           <button className='self-start p-2 font-bold btn'>Get started</button>
         </div>
 
-        <div className='flex flex-col items-center col-start-2 gap-3 p-10'>
-          <div className=' text-start m'>
+        <div className='flex flex-col items-center w-full gap-6 p-10 md:row-start-1 md:col-start-2'>
+          <div className='text-start'>
             <div className='flex items-center gap-2 mb-1'>
               <IconLogin size={32} className='text-accent-light dark:text-accent-dark' />
               <h3 className='font-bold'>Seamless login</h3>
@@ -68,7 +67,7 @@ const Landingpage: NextPage = () => (
           <div className='text-start'>
             <div className='flex items-center gap-2 mb-1'>
               <IconBrandOpenSource size={32} className='text-accent-light dark:text-accent-dark' />
-              <h3 className='font-bold'>Open-source & self-hosteable</h3>
+              <h3 className='font-bold'>Open-source & self-hostable</h3>
             </div>
             <p>
               Host the tool on your own infrastructure for added privacy and security, and benefit
@@ -89,14 +88,14 @@ const Landingpage: NextPage = () => (
         </div>
       </section>
 
-      <section className='grid w-5/6 my-2 border-2 rounded-md shadow-md md:grid-cols-2 md:w-4/6 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
-        <div className='flex flex-col col-start-2 gap-3 p-10'>
+      <section className='grid w-5/6 my-2 border-2 rounded-md shadow-md md:grid-cols-2 md:w-11/12 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
+        <div className='flex flex-col row-start-1 gap-3 p-10 md:col-start-2'>
           <h3 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
             A resource for continuous improvement
           </h3>
-          <div className='flex items-center justify-center gap-2'>
-            <IconInfinity size={72} />
-            <h2 className='text-4xl font-bold'>Maximize team growth</h2>
+          <div className='flex items-center justify-center gap-6 md:justify-start'>
+            <IconInfinity size={72} className='block md:hidden' />
+            <h2 className='text-2xl font-bold md:text-4xl'>Maximize team growth</h2>
           </div>
           <p className='my-5 text-lg'>
             Leverage our retrospective tool to identify opportunities for growth, streamline
@@ -105,7 +104,7 @@ const Landingpage: NextPage = () => (
           <button className='self-start p-2 font-bold btn'>Get started</button>
         </div>
 
-        <div className='flex flex-col items-center col-start-1 row-start-1 gap-3 p-10'>
+        <div className='flex flex-col items-center col-start-1 row-start-2 gap-6 p-10 md:row-start-1'>
           <div className=' text-start m'>
             <div className='flex items-center gap-2 mb-1'>
               <IconBulb size={32} className='text-accent-light dark:text-accent-dark' />
