@@ -15,9 +15,32 @@ const Retro: NextPage = () => {
   return (
     <div className='flex flex-col items-center'>
       <Head>
-        <title>Retrospective</title>
-        <meta name='description' content='Agile Retrospectives' />
         <link rel='icon' href='/favicon.ico' />
+
+        <title>Retroloop - Retrospective</title>
+
+        <meta name='title' content='Retroloop - Agile retrospectives made easy' />
+        <meta
+          name='description'
+          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+        />
+
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content='https://retroloop.io/' />
+        <meta property='og:title' content='Retroloop - Agile retrospectives made easy' />
+        <meta
+          property='og:description'
+          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+        />
+        <meta property='og:image' content='https://retroloop.io/preview.webp' />
+
+        <meta property='twitter:card' content='summary_large_image' />
+        <meta property='twitter:title' content='Retroloop - Agile retrospectives made easy' />
+        <meta
+          property='twitter:description'
+          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+        />
+        <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
 
       <MenuBar />

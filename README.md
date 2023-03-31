@@ -12,7 +12,7 @@
   <a href="https://retroloop.io" rel="noopener">retroloop.io</a>
 </h3>
 
-![Retroloop Logo](./public/retroloop-logo.png) <br />
+![Retroloop Logo](./public/logo.webp) <br />
 
   <p align="center">
 Retroloop is an easy to use tool for conducting agile retrospectives.

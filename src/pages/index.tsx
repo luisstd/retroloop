@@ -28,9 +28,32 @@ const Landingpage: NextPage = () => {
       }`}
     >
       <Head>
-        <title>Retroloop</title>
-        <meta name='description' content='Agile Retrospectives' />
         <link rel='icon' href='/favicon.ico' />
+
+        <title>Retroloop - Agile retrospectives made easy</title>
+
+        <meta name='title' content='Retroloop - Agile retrospectives made easy' />
+        <meta
+          name='description'
+          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+        />
+
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content='https://retroloop.io/' />
+        <meta property='og:title' content='Retroloop - Agile retrospectives made easy' />
+        <meta
+          property='og:description'
+          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+        />
+        <meta property='og:image' content='https://retroloop.io/preview.webp' />
+
+        <meta property='twitter:card' content='summary_large_image' />
+        <meta property='twitter:title' content='Retroloop - Agile retrospectives made easy' />
+        <meta
+          property='twitter:description'
+          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+        />
+        <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
 
       <MenuBar />
@@ -63,9 +86,9 @@ const Landingpage: NextPage = () => {
 
         <section className='grid w-5/6 grid-cols-1 my-2 border-2 rounded-md shadow-md w grid-rows-auto md:grid-cols-2 md:w-11/12 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
           <div className='flex flex-col w-full col-start-1 row-start-1 gap-3 p-10'>
-            <h3 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
+            <h2 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
               A platform for effective retrospectives
-            </h3>
+            </h2>
             <div className='flex items-center gap-6 md:justify-start'>
               <IconInfinity size={72} className='block md:hidden' />
               <h2 className='text-2xl font-bold md:text-4xl'>Simplify your retrospectives</h2>
@@ -122,9 +145,9 @@ const Landingpage: NextPage = () => {
 
         <section className='grid w-5/6 my-2 border-2 rounded-md shadow-md md:grid-cols-2 md:w-11/12 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
           <div className='flex flex-col row-start-1 gap-3 p-10 md:col-start-2'>
-            <h3 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
+            <h2 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
               A resource for continuous improvement
-            </h3>
+            </h2>
             <div className='flex items-center justify-center gap-6 md:justify-start'>
               <IconInfinity size={72} className='block md:hidden' />
               <h2 className='text-2xl font-bold md:text-4xl'>Maximize team growth</h2>

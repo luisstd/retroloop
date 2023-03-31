@@ -55,7 +55,7 @@ function ActionButtons(props: ActionButtonsProps) {
     <div className='flex'>
       <Toast.Provider swipeDirection='right'>
         <button className='btn' type='submit' aria-label='Start Retro' onClick={handleCopy}>
-          <div className='flex flex-row items-center gap-2 p-5 text-lg '>
+          <div className='flex flex-row items-center gap-2 p-5 text-lg shadow-md'>
             Copy Retro link
             <IconCopy />
           </div>
@@ -74,7 +74,7 @@ function ActionButtons(props: ActionButtonsProps) {
       </Toast.Provider>
 
       <button type='submit' aria-label='Start Retro' className='mx-2 btn' onClick={handleNextPhase}>
-        <div className='flex flex-row items-center gap-2 p-5 text-lg '>
+        <div className='flex flex-row items-center gap-2 p-5 text-lg shadow-md'>
           Next Phase
           <IconArrowRight />
         </div>
