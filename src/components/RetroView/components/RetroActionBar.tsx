@@ -24,11 +24,11 @@ function RetroActionBar({
 }: RetroActionBarProps) {
   return (
     <>
-      <div className='flex flex-row flex-wrap w-full p-5 mt-2 border-2 border-black rounded-md lg:mt-0 dark:border-neutral-200'>
+      <div className='flex flex-row flex-wrap w-full p-5 mt-2 border-2 rounded-md shadow-md border-base-dark lg:mt-0 dark:border-base-light'>
         <PhaseIndicator retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
       </div>
       {expiryTimestamp && selectedRetro.phase === 'WRITING' ? (
-        <div className='col-start-2 row-start-1 p-5 px-2 border-2 border-black rounded-md dark:border-neutral-200'>
+        <div className='col-start-2 row-start-1 p-5 px-2 border-2 rounded-md shadow-md border-base-dark dark:border-base-light'>
           <RetroTimer
             expiryTimestamp={expiryTimestamp}
             handleTimer={handleUpdateTimer}
