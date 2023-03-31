@@ -2,17 +2,14 @@ import { Transition } from '@headlessui/react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
+import { signIn } from 'next-auth/react'
 import { useState } from 'react'
-import { toFormikValidationSchema } from 'zod-formik-adapter'
-
-import { UserCreateInputSchema } from '@/schemas/user'
-import { UserCreateInput } from '@/types/user'
 
 type InviteUserDialogProps = {
-  handleAddUser: (input: UserCreateInput) => void
+  handleToastOpen: (value: boolean) => void
 }
 
-export default function InviteUserDialog(props: InviteUserDialogProps) {
+export default function InviteUserDialog({ handleToastOpen }: InviteUserDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -55,15 +52,12 @@ export default function InviteUserDialog(props: InviteUserDialogProps) {
           </Dialog.Close>
         </div>
         <Formik
-          validationSchema={toFormikValidationSchema(UserCreateInputSchema)}
           initialValues={{
             email: '',
-            name: '',
-            role: '',
-            image: '',
           }}
-          onSubmit={async (values: UserCreateInput) => {
-            props.handleAddUser(values)
+          onSubmit={(values) => {
+            signIn('email', { ...values, redirect: false })
+            handleToastOpen(true)
             setIsOpen(false)
           }}
         >
