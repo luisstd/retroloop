@@ -18,7 +18,7 @@ export default function MenuBar() {
             <NavigationMenu.Item className='flex items-center text-2xl italic text-center sm:text-3xl'>
               <IconInfinity className='sm:hidden' size={28} />
               <IconInfinity className='hidden sm:block' size={40} />
-              <NavigationMenu.Link className='px-1 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
+              <NavigationMenu.Link className='px-1 font-semibold transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
                 retroloop
               </NavigationMenu.Link>
             </NavigationMenu.Item>
