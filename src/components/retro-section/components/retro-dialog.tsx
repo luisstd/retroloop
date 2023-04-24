@@ -1,5 +1,4 @@
 import { Transition } from '@headlessui/react'
-import { Retrospective } from '@prisma/client'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
@@ -7,12 +6,11 @@ import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
+import { RetrospectiveCreateInput } from '@/types/retrospective'
 
 type RetroDialogProps = {
-  handleAddRetro: (input: RetrospectiveInput) => void
+  handleAddRetro: (input: RetrospectiveCreateInput) => void
 }
-
-export type RetrospectiveInput = Omit<Retrospective, 'id' | 'createdAt' | 'workspaceId'>
 
 export default function RetroDialog({ handleAddRetro }: RetroDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -66,7 +64,7 @@ export default function RetroDialog({ handleAddRetro }: RetroDialogProps) {
             timerExpiration: new Date(),
             phase: 'WRITING',
           }}
-          onSubmit={(values: RetrospectiveInput) => {
+          onSubmit={(values: RetrospectiveCreateInput) => {
             handleAddRetro(values)
             setIsOpen(false)
           }}

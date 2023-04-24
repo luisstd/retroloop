@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react'
-import { RetroItem, Retrospective } from '@prisma/client'
+import { Retrospective } from '@prisma/client'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconMinimize, IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
@@ -7,15 +7,14 @@ import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { RetroItemCreateInputSchema } from '@/schemas/retro-item'
+import { RetroItemCreateInput } from '@/types/retro-item'
 
 type RetroItemDialogProps = {
   itemType: string
   userId: string
   retrospective: Retrospective
-  handleAddRetroItem: (input: RetroItemInput) => void
+  handleAddRetroItem: (input: RetroItemCreateInput) => void
 }
-
-export type RetroItemInput = Omit<RetroItem, 'id' | 'createdAt' | 'itemCollectionId'>
 
 export default function RetroItemDialog({
   itemType,
@@ -79,7 +78,7 @@ export default function RetroItemDialog({
             votes: 0,
             userId: userId ? userId : '',
           }}
-          onSubmit={(values: RetroItemInput) => {
+          onSubmit={(values: RetroItemCreateInput) => {
             handleAddRetroItem(values)
             setIsOpen(false)
           }}
