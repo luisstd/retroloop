@@ -1,17 +1,17 @@
 import { render, RenderResult } from '@testing-library/react'
 import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 
-import CommonEditDialog from '@/components/Common/CommonEditDialog/CommonEditDialog'
+import CommonDeleteDialog from '@/components/Dialog/DeleteDialog/DeleteDialog'
 
-test('CommonEditDialog', () => {
-  describe('CommonEditDialog', () => {
+test('CommonDeleteDialog', () => {
+  describe('CommonDeleteDialog', () => {
     let DialogMounted: RenderResult
 
     beforeAll(() => {
       DialogMounted = render(
-        <CommonEditDialog
-          itemToEdit={{ id: '' }}
-          editHandler={(input) => {
+        <CommonDeleteDialog
+          itemToDelete={{ id: '' }}
+          deleteHandler={(input) => {
             expect(input)
           }}
         />

@@ -1,8 +1,8 @@
 import { RetroItem, Retrospective } from '@prisma/client'
 import { useSession } from 'next-auth/react'
 
-import CommonDeleteDialog from '@/components/Common/CommonDeleteDialog/CommonDeleteDialog'
-import CommonEditDialog from '@/components/Common/CommonEditDialog/CommonEditDialog'
+import DeleteDialog from '@/components/Dialog/DeleteDialog/DeleteDialog'
+import EditDialog from '@/components/Dialog/EditDialog/EditDialog'
 import RetroItemDialog, {
   RetroItemInput,
 } from '@/components/RetroView/views/WritingPhase/components/ItemCollector/components/RetroItemDialog'
@@ -74,11 +74,11 @@ function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
                 <p className='p-1'>{item.content}</p>
 
                 <div className='flex flex-row items-center'>
-                  <CommonEditDialog
+                  <EditDialog
                     itemToEdit={item}
                     editHandler={(input) => handleEditRetroItem(input as RetroItem)}
                   />
-                  <CommonDeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
+                  <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
                 </div>
               </li>
             ) : null
