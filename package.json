@@ -16,8 +16,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "engines": {
-    "node": ">=18",
-    "pnpm": ">=8"
+    "node": ">=18"
   },
   "dependencies": {
     "@fontsource/ia-writer-mono": "^4.5.3",
