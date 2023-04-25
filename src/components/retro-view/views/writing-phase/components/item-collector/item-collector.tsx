@@ -3,9 +3,8 @@ import { useSession } from 'next-auth/react'
 
 import DeleteDialog from '@/components/dialog/delete-dialog/delete-dialog'
 import EditDialog from '@/components/dialog/edit-dialog/edit-dialog'
-import RetroItemDialog, {
-  RetroItemInput,
-} from '@/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
+import RetroItemDialog from '@/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
+import { RetroItemCreateInput } from '@/types/retro-item'
 import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
@@ -38,7 +37,7 @@ function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
     },
   })
 
-  function handleAddRetroItem(input: RetroItemInput): void {
+  function handleAddRetroItem(input: RetroItemCreateInput): void {
     mutationAdd.mutate(input)
   }
 
