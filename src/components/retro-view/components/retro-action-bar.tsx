@@ -1,4 +1,5 @@
 import { Retrospective } from '@prisma/client'
+import { useState } from 'react'
 
 import ActionButtons from '@/components/retro-view/components/action-bar/components/action-buttons'
 import PhaseIndicator from '@/components/retro-view/components/action-bar/components/phase-indicator'
@@ -10,6 +11,8 @@ type RetroActionBarProps = {
 }
 
 function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
+  const [currentRetro, setCurrentRetro] = useState(selectedRetro)
+
   const { refetch: refetchRetro } = trpc.retrospective.getById.useQuery(selectedRetro.id)
 
   const { mutate: updateRetro } = trpc.retrospective.edit.useMutation({
@@ -19,6 +22,7 @@ function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
   })
 
   function handleUpdateRetro(input: Retrospective) {
+    setCurrentRetro(input)
     updateRetro(input)
   }
 
@@ -29,7 +33,7 @@ function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
       </div>
       {selectedRetro.phase === 'WRITING' ? (
         <div className='col-start-2 row-start-1 p-5 px-2 border-2 rounded-md shadow-md border-base-dark dark:border-base-light'>
-          <RetroTimer selectedRetro={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+          <RetroTimer selectedRetro={currentRetro} handleUpdateRetro={handleUpdateRetro} />
         </div>
       ) : (
         <div className='col-start-2 row-start-1 p-5 rounded-md dark:border-neutral-200'></div>

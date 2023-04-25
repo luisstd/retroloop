@@ -11,6 +11,8 @@ type RetroTimerProps = {
 
 function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
   const [minutes, setMinutes] = useState(0)
+  const [timerStarted, setTimerStarted] = useState(false)
+
   const [isSecondsSingleDigit, setSecondsSingleDigit] = useState(false)
   const [isMinutesSingleDigit, setMinutesSingleDigit] = useState(false)
 
@@ -24,7 +26,7 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
     return timeUnit.toString().length
   }
 
-  function handleUpdateTimer(minutes: number): void {
+  function updateTimer(minutes: number): void {
     const now: Date = new Date()
 
     const newExpiryTimestamp =
@@ -38,6 +40,16 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
       ...selectedRetro,
       timerExpiration: newExpiryTimestamp,
     })
+
+    setTimerStarted(true)
+  }
+
+  function resumeTimer(): void {
+    timer.minutes || timer.seconds ? timer.resume() : timer.restart(selectedRetro.timerExpiration)
+  }
+
+  function onStartTimer(): void {
+    updateTimer(minutes)
   }
 
   useEffect(() => {
@@ -45,73 +57,75 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
     checkLength(timer.seconds) === 1 ? setSecondsSingleDigit(true) : setSecondsSingleDigit(false)
   }, [timer.minutes, timer.seconds])
 
-  return timer ? (
-    <div className='flex items-center justify-center gap-3'>
-      <IconAlarm size={36} />
+  useEffect(() => {
+    if (timerStarted && !timer.isRunning) {
+      resumeTimer()
+      setTimerStarted(false)
+    }
+  }, [timerStarted, timer.isRunning, resumeTimer])
 
-      <h1 className='text-2xl font-bold'>Timer</h1>
+  return (
+    <>
+      <div className='flex items-center justify-center gap-3'>
+        <IconAlarm size={36} />
 
-      <div className='flex gap-2 mx-2 text-2xl '>
-        {!timer.isRunning && !timer.minutes ? (
-          <input
-            type='number'
-            className='p-1 border-2 rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark dark:border-base-light max-w-max'
-            min={0}
-            max={99}
-            maxLength={2}
-            size={2}
-            placeholder='00'
-            onChange={(e) => setMinutes(Number(e.currentTarget.value))}
-          />
+        <h1 className='text-2xl font-bold'>Timer</h1>
+
+        <div className='flex gap-2 mx-2 text-2xl '>
+          {!timer.isRunning && !timer.minutes ? (
+            <input
+              type='number'
+              className='p-1 border-2 rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark dark:border-base-light max-w-max'
+              min={0}
+              max={99}
+              maxLength={2}
+              size={2}
+              placeholder='00'
+              onChange={(e) => setMinutes(Number(e.currentTarget.value))}
+            />
+          ) : (
+            <span className='text-4xl'>
+              {isMinutesSingleDigit ? 0 : null}
+              {timer.minutes}:
+            </span>
+          )}
+          {!timer.isRunning && !timer.minutes ? (
+            <span className='self-center'>min</span>
+          ) : (
+            <span className='text-4xl'>
+              {isSecondsSingleDigit ? 0 : null}
+              {timer.seconds}
+            </span>
+          )}
+        </div>
+
+        {!timer.isRunning ? (
+          <button onClick={onStartTimer}>
+            <IconPlayerPlay size={36} />
+          </button>
         ) : (
-          <span className='text-4xl'>
-            {isMinutesSingleDigit ? 0 : null}
-            {timer.minutes}:
-          </span>
+          <button onClick={timer.pause}>
+            <IconPlayerPause size={36} onClick={timer.pause} />
+          </button>
         )}
-        {!timer.isRunning && !timer.minutes ? (
-          <span className='self-center'>min</span>
-        ) : (
-          <span className='text-4xl'>
-            {isSecondsSingleDigit ? 0 : null}
-            {timer.seconds}
-          </span>
-        )}
-      </div>
 
-      {!timer.isRunning ? (
         <button
           onClick={() => {
-            handleUpdateTimer(minutes)
-            timer.minutes || timer.seconds
-              ? timer.resume()
-              : timer.restart(selectedRetro.timerExpiration)
+            const time = new Date()
+
+            handleUpdateRetro({
+              ...selectedRetro,
+              timerExpiration: new Date(),
+            })
+
+            timer.restart(time)
           }}
         >
-          <IconPlayerPlay size={36} />
+          <IconRefresh size={34} />
         </button>
-      ) : (
-        <button onClick={timer.pause}>
-          <IconPlayerPause size={36} onClick={timer.pause} />
-        </button>
-      )}
-
-      <button
-        onClick={() => {
-          const time = new Date()
-
-          handleUpdateRetro({
-            ...selectedRetro,
-            timerExpiration: new Date(),
-          })
-
-          timer.restart(time)
-        }}
-      >
-        <IconRefresh size={34} />
-      </button>
-    </div>
-  ) : null
+      </div>
+    </>
+  )
 }
 
 export default RetroTimer
