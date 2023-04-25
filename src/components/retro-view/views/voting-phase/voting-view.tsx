@@ -1,37 +1,17 @@
 import { Retrospective } from '@prisma/client'
-import React from 'react'
 
 import RetroActionBar from '@/components/retro-view/components/retro-action-bar'
 import ItemVoter from '@/components/retro-view/views/voting-phase/components/item-voter'
 
 type VotingViewProps = {
   selectedRetro: Retrospective
-  expiryTimestamp: Date
-  minutes: number
-  handleMinutes: (minutes: number) => void
-  handleUpdateRetro: (input: Retrospective) => void
-  handleUpdateTimer: (minutes: number) => void
 }
 
-function VotingView({
-  selectedRetro,
-  expiryTimestamp,
-  minutes,
-  handleMinutes,
-  handleUpdateRetro,
-  handleUpdateTimer,
-}: VotingViewProps) {
+function VotingView({ selectedRetro }: VotingViewProps) {
   return (
     <section className='w-full px-5 pb-2 mx-5 border-2 border-black rounded-md lg:h-screen min-h-min dark:border-neutral-200'>
       <div className='flex flex-col w-full grid-cols-3 gap-5 lg:grid grid-rows-auto h-5/6 place-items-center'>
-        <RetroActionBar
-          selectedRetro={selectedRetro}
-          expiryTimestamp={expiryTimestamp}
-          minutes={minutes}
-          handleMinutes={handleMinutes}
-          handleUpdateRetro={handleUpdateRetro}
-          handleUpdateTimer={handleUpdateTimer}
-        />
+        <RetroActionBar selectedRetro={selectedRetro} />
 
         {selectedRetro ? (
           <>

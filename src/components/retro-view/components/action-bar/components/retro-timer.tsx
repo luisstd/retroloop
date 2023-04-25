@@ -1,17 +1,17 @@
+import { Retrospective } from '@prisma/client'
 import { IconAlarm, IconPlayerPause, IconPlayerPlay, IconRefresh } from '@tabler/icons-react'
+import { add } from 'date-fns'
 import { useEffect, useState } from 'react'
 import { useTimer } from 'react-timer-hook'
 
 type RetroTimerProps = {
-  expiryTimestamp: Date
-  minutes: number
-  handleMinutes: (minutes: number) => void
-  handleTimer: (minutes: number) => void
+  selectedRetro: Retrospective
+  handleUpdateRetro: (input: Retrospective) => void
 }
 
-function RetroTimer({ expiryTimestamp, minutes, handleMinutes, handleTimer }: RetroTimerProps) {
+function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
   const timer = useTimer({
-    expiryTimestamp,
+    expiryTimestamp: selectedRetro.timerExpiration,
     autoStart: false,
     onExpire: () => console.warn('onExpire called'),
   })
@@ -20,22 +20,47 @@ function RetroTimer({ expiryTimestamp, minutes, handleMinutes, handleTimer }: Re
     return timeUnit.toString().length
   }
 
+  function handleUpdateTimer(minutes: number): void {
+    const now: Date = new Date()
+    const newExpiryTimestamp =
+      selectedRetro && selectedRetro.timerExpiration.getTime() > now.getTime()
+        ? selectedRetro.timerExpiration
+        : add(now, {
+            minutes: minutes,
+          })
+
+    selectedRetro
+      ? handleUpdateRetro({
+          ...selectedRetro,
+          timerExpiration: newExpiryTimestamp,
+        })
+      : null
+  }
+
+  const [minutes, setMinutes] = useState(0)
+
   const [isSecondsSingleDigit, setSecondsSingleDigit] = useState(false)
   const [isMinutesSingleDigit, setMinutesSingleDigit] = useState(false)
+
+  function handleMinutes(minutes: number): void {
+    setMinutes(minutes)
+  }
 
   useEffect(() => {
     checkLength(timer.minutes) === 1 ? setMinutesSingleDigit(true) : setMinutesSingleDigit(false)
     checkLength(timer.seconds) === 1 ? setSecondsSingleDigit(true) : setSecondsSingleDigit(false)
 
     const now = new Date()
-    const doesTimerExist: boolean = expiryTimestamp.getTime() > now.getTime()
+    const doesTimerExist: boolean = selectedRetro.timerExpiration.getTime() > now.getTime()
     doesTimerExist
       ? () => {
-          handleTimer(minutes),
-            timer.minutes || timer.seconds ? timer.resume() : timer.restart(expiryTimestamp)
+          handleUpdateTimer(minutes),
+            timer.minutes || timer.seconds
+              ? timer.resume()
+              : timer.restart(selectedRetro.timerExpiration)
         }
       : null
-  }, [timer.minutes, timer.seconds, expiryTimestamp])
+  }, [timer.minutes, timer.seconds, selectedRetro.timerExpiration])
 
   return timer ? (
     <div className='flex items-center justify-center gap-3'>
@@ -71,8 +96,10 @@ function RetroTimer({ expiryTimestamp, minutes, handleMinutes, handleTimer }: Re
       {!timer.isRunning ? (
         <button
           onClick={() => {
-            handleTimer(minutes)
-            timer.minutes || timer.seconds ? timer.resume() : timer.restart(expiryTimestamp)
+            handleUpdateTimer(minutes)
+            timer.minutes || timer.seconds
+              ? timer.resume()
+              : timer.restart(selectedRetro.timerExpiration)
           }}
         >
           <IconPlayerPlay size={36} />
