@@ -10,9 +10,13 @@ type RetroTimerProps = {
 }
 
 function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
+  const [minutes, setMinutes] = useState(0)
+  const [isSecondsSingleDigit, setSecondsSingleDigit] = useState(false)
+  const [isMinutesSingleDigit, setMinutesSingleDigit] = useState(false)
+
   const timer = useTimer({
     expiryTimestamp: selectedRetro.timerExpiration,
-    autoStart: false,
+    autoStart: true,
     onExpire: () => console.warn('onExpire called'),
   })
 
@@ -22,50 +26,31 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
 
   function handleUpdateTimer(minutes: number): void {
     const now: Date = new Date()
+
     const newExpiryTimestamp =
-      selectedRetro && selectedRetro.timerExpiration.getTime() > now.getTime()
+      selectedRetro.timerExpiration.getTime() > now.getTime()
         ? selectedRetro.timerExpiration
         : add(now, {
             minutes: minutes,
           })
 
-    selectedRetro
-      ? handleUpdateRetro({
-          ...selectedRetro,
-          timerExpiration: newExpiryTimestamp,
-        })
-      : null
-  }
-
-  const [minutes, setMinutes] = useState(0)
-
-  const [isSecondsSingleDigit, setSecondsSingleDigit] = useState(false)
-  const [isMinutesSingleDigit, setMinutesSingleDigit] = useState(false)
-
-  function handleMinutes(minutes: number): void {
-    setMinutes(minutes)
+    handleUpdateRetro({
+      ...selectedRetro,
+      timerExpiration: newExpiryTimestamp,
+    })
   }
 
   useEffect(() => {
     checkLength(timer.minutes) === 1 ? setMinutesSingleDigit(true) : setMinutesSingleDigit(false)
     checkLength(timer.seconds) === 1 ? setSecondsSingleDigit(true) : setSecondsSingleDigit(false)
-
-    const now = new Date()
-    const doesTimerExist: boolean = selectedRetro.timerExpiration.getTime() > now.getTime()
-    doesTimerExist
-      ? () => {
-          handleUpdateTimer(minutes),
-            timer.minutes || timer.seconds
-              ? timer.resume()
-              : timer.restart(selectedRetro.timerExpiration)
-        }
-      : null
-  }, [timer.minutes, timer.seconds, selectedRetro.timerExpiration])
+  }, [timer.minutes, timer.seconds])
 
   return timer ? (
     <div className='flex items-center justify-center gap-3'>
       <IconAlarm size={36} />
+
       <h1 className='text-2xl font-bold'>Timer</h1>
+
       <div className='flex gap-2 mx-2 text-2xl '>
         {!timer.isRunning && !timer.minutes ? (
           <input
@@ -76,7 +61,7 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
             maxLength={2}
             size={2}
             placeholder='00'
-            onChange={(e) => handleMinutes(Number(e.currentTarget.value))}
+            onChange={(e) => setMinutes(Number(e.currentTarget.value))}
           />
         ) : (
           <span className='text-4xl'>
@@ -93,6 +78,7 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
           </span>
         )}
       </div>
+
       {!timer.isRunning ? (
         <button
           onClick={() => {
@@ -109,9 +95,16 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
           <IconPlayerPause size={36} onClick={timer.pause} />
         </button>
       )}
+
       <button
         onClick={() => {
           const time = new Date()
+
+          handleUpdateRetro({
+            ...selectedRetro,
+            timerExpiration: new Date(),
+          })
+
           timer.restart(time)
         }}
       >
