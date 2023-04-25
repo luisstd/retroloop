@@ -18,7 +18,7 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
 
   const timer = useTimer({
     expiryTimestamp: selectedRetro.timerExpiration,
-    autoStart: true,
+    autoStart: selectedRetro.timerExpiration.getTime() > new Date().getTime(),
     onExpire: () => console.warn('onExpire called'),
   })
 
