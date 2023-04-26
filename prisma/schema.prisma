@@ -94,6 +94,7 @@ model RetroItem {
   itemCollectionId String?
   retrospectiveId  String
   votes            Int
+  voters           String[]        @default([])
   author           User?           @relation(fields: [userId], references: [id])
   userId           String?
 }

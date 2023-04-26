@@ -76,6 +76,7 @@ export default function RetroItemDialog({
             content: '',
             retrospectiveId: retrospective.id,
             votes: 0,
+            voters: [],
             userId: userId ? userId : '',
           }}
           onSubmit={(values: RetroItemCreateInput) => {

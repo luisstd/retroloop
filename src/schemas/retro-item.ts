@@ -5,6 +5,7 @@ export const RetroItemCreateInputSchema = z.object({
   type: z.string(),
   retrospectiveId: z.string(),
   votes: z.number(),
+  voters: z.array(z.string()),
 })
 
 export const RetroItemUpdateInputSchema = z.object({
@@ -14,4 +15,5 @@ export const RetroItemUpdateInputSchema = z.object({
   retrospectiveId: z.string(),
   userId: z.string().nullable(),
   votes: z.number(),
+  voters: z.array(z.string()),
 })
