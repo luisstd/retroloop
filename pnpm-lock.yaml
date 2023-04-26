@@ -125,8 +125,8 @@ dependencies:
     specifier: ^6.9.1
     version: 6.9.1
   pnpm:
-    specifier: ^8.3.1
-    version: 8.3.1
+    specifier: ^7.32.2
+    version: 7.32.2
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -2567,7 +2567,7 @@ packages:
       '@babel/types': 7.21.4
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
-      '@types/babel__traverse': 7.18.3
+      '@types/babel__traverse': 7.18.4
     dev: true
 
   /@types/babel__generator@7.6.4:
@@ -2583,8 +2583,8 @@ packages:
       '@babel/types': 7.21.4
     dev: true
 
-  /@types/babel__traverse@7.18.3:
-    resolution: {integrity: sha512-1kbcJ40lLB7MHsj39U4Sh1uTd2E7rLEa79kmDpI6cy+XiXsteB3POdQomoq4FxszMrO3ZYchkhYJw7A2862b3w==}
+  /@types/babel__traverse@7.18.4:
+    resolution: {integrity: sha512-TLG7CsGZZmX9aDF78UuJxnNTfQyRUFU0OYIVyIblr0/wd/HvsIo8wmuB90CszeD2MtLLAE9Tt4cWvk+KVkyGIw==}
     dependencies:
       '@babel/types': 7.21.4
     dev: true
@@ -3259,7 +3259,7 @@ packages:
       '@babel/template': 7.20.7
       '@babel/types': 7.21.4
       '@types/babel__core': 7.20.0
-      '@types/babel__traverse': 7.18.3
+      '@types/babel__traverse': 7.18.4
     dev: true
 
   /babel-preset-current-node-syntax@1.0.1(@babel/core@7.21.4):
@@ -3327,7 +3327,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001481
-      electron-to-chromium: 1.4.371
+      electron-to-chromium: 1.4.372
       node-releases: 2.0.10
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
 
@@ -3916,8 +3916,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium@1.4.371:
-    resolution: {integrity: sha512-jlBzY4tFcJaiUjzhRTCWAqRvTO/fWzjA3Bls0mykzGZ7zvcMP7h05W6UcgzfT9Ca1SW2xyKDOFRyI0pQeRNZGw==}
+  /electron-to-chromium@1.4.372:
+    resolution: {integrity: sha512-MrlFq/j+TYHOjeWsWGYfzevc25HNeJdsF6qaLFrqBTRWZQtWkb1myq/Q2veLWezVaa5OcSZ99CFwTT4aF4Mung==}
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -5692,7 +5692,7 @@ packages:
       '@jest/expect-utils': 29.5.0
       '@jest/transform': 29.5.0
       '@jest/types': 29.5.0
-      '@types/babel__traverse': 7.18.3
+      '@types/babel__traverse': 7.18.4
       '@types/prettier': 2.7.2
       babel-preset-current-node-syntax: 1.0.1(@babel/core@7.21.4)
       chalk: 4.1.2
@@ -6339,7 +6339,7 @@ packages:
       next: 12.3.4(@babel/core@7.21.4)(react-dom@18.2.0)(react@18.2.0)
       nodemailer: 6.9.1
       oauth: 0.9.15
-      openid-client: 5.4.1
+      openid-client: 5.4.2
       preact: 10.13.2
       preact-render-to-string: 5.2.6(preact@10.13.2)
       react: 18.2.0
@@ -6566,8 +6566,8 @@ packages:
       es-abstract: 1.21.2
     dev: true
 
-  /oidc-token-hash@5.0.2:
-    resolution: {integrity: sha512-U91Ba78GtVBxcExLI7U+hC2AwJQqXQEW/D3fjmJC4hhSVIgdl954KO4Gu95WqAlgDKJdLATxkmuxraWLT0fVRQ==}
+  /oidc-token-hash@5.0.3:
+    resolution: {integrity: sha512-IF4PcGgzAr6XXSff26Sk/+P4KZFJVuHAJZj3wgO3vX2bMdNVp/QXTP3P7CEm9V1IdG8lDLY3HhiqpsE/nOwpPw==}
     engines: {node: ^10.13.0 || >=12.0.0}
     dev: false
 
@@ -6590,13 +6590,13 @@ packages:
       mimic-fn: 4.0.0
     dev: true
 
-  /openid-client@5.4.1:
-    resolution: {integrity: sha512-z19tZRY1CvpDf9L8nFyv5LW3CWoRDuz8EdmUFyouUrf5FDZitaJ8C+tIHF6WnjA2DPG4Fu2JWkNjexNzLWjh3Q==}
+  /openid-client@5.4.2:
+    resolution: {integrity: sha512-lIhsdPvJ2RneBm3nGBBhQchpe3Uka//xf7WPHTIglery8gnckvW7Bd9IaQzekzXJvWthCMyi/xVEyGW0RFPytw==}
     dependencies:
       jose: 4.14.1
       lru-cache: 6.0.0
       object-hash: 2.2.0
-      oidc-token-hash: 5.0.2
+      oidc-token-hash: 5.0.3
     dev: false
 
   /optionator@0.8.3:
@@ -6781,9 +6781,9 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pnpm@8.3.1:
-    resolution: {integrity: sha512-0mT2ZAv08J3nz8xUdWhRW88GE89IWgPo/xZhb6acQXK2+aCikl7kT7Bg31ZcnJqOrwYXSed68xjLd/ZoSnBR8w==}
-    engines: {node: '>=16.14'}
+  /pnpm@7.32.2:
+    resolution: {integrity: sha512-PfosE4b8keWHVrO+z4d+ncIIQK9ypTAdRTrk2ioZ2wDN0I9L+mapzJVldVqsZdy7vakyMtxfknN2cn5wjESbvg==}
+    engines: {node: '>=14.6'}
     hasBin: true
     dev: false
 
