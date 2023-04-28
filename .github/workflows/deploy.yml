@@ -1,26 +1,16 @@
 name: Deploy
-
 on:
-  workflow_dispatch:
-
+  push:
+    branches:
+      - dev
 jobs:
-  deployment:
+  mainPromotion:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           ref: main
-
-      - name: Configure Git
-        run: |
-          git config user.name "Luis Steidle"
-          git config user.email "luis@steidle.me"
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          base: main
-          branch: deployment
-          title: 'Production Deployment'
-          body: 'This is an automated pull request to merge the dev branch into the main branch.'
+          branch: main-promotion
