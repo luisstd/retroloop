@@ -1,14 +1,13 @@
 name: Prisma Migrate
 
 on:
-  push:
-    pull_request:
-      types:
-        - closed
-      branches:
-        - main
-      paths:
-        - './prisma/**/*.*'
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+    paths:
+      - './prisma/**/*.*'
   workflow_dispatch:
     branches: [main]
 
