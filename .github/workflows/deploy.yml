@@ -8,8 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: main
+          ref: dev
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          branch: dev
+          branch: main
+          title: 'Production Deployment'
+          body: 'This is an automated pull request to merge the dev branch into main.'
