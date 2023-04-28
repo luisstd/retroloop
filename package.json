@@ -5,6 +5,7 @@
   "scripts": {
     "setup": "pnpm install && husky install",
     "dev": "next dev",
+    "prebuild": "rimraf .next/cache",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint --fix ./",
