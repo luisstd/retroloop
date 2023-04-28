@@ -8,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         with:
           ref: main
 
       - name: Configure Git
-      - run: |
+        run: |
           git config user.name "Luis Steidle"
           git config user.email "luis@steidle.me"
 
       - name: Create Pull Request
-      - uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v5
         with:
           base: main
           branch: deployment
