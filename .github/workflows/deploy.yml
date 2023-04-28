@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -18,10 +18,9 @@ jobs:
           git config user.email "luis@steidle.me"
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: 'main'
-          head: 'dev'
           title: 'Deployment'
           body: 'This is an automated pull request to merge the dev branch into the main branch.'
