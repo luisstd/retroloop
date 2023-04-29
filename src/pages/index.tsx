@@ -13,8 +13,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
-import Footer from '@/components/footer/footer'
-import MenuBar from '@/components/menu-bar/menu-bar'
+import { Footer } from '@/components/footer/footer'
+import { MenuBar } from '@/components/menu-bar/menu-bar'
 
 const Landingpage: NextPage = () => {
   const theme = useTheme()

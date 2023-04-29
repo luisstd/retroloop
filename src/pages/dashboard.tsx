@@ -3,10 +3,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
-import MenuBar from '@/components/menu-bar/menu-bar'
-import RetroSection from '@/components/retro-section/retro-section'
-import SignUpForm from '@/components/sign-up/sign-up-form'
-import TeamSection from '@/components/team-section/team-section'
+import { MenuBar } from '@/components/menu-bar/menu-bar'
+import { RetroSection } from '@/components/retro-section/retro-section'
+import { SignUpForm } from '@/components/sign-up/sign-up-form'
+import { TeamSection } from '@/components/team-section/team-section'
 
 const Dashboard: NextPage = () => {
   const { data: session, status } = useSession()
@@ -65,5 +65,4 @@ const Dashboard: NextPage = () => {
     </div>
   )
 }
-
 export default Dashboard

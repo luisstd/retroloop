@@ -1,13 +1,13 @@
 import { Retrospective } from '@prisma/client'
 
-import RetroActionBar from '@/components/retro-view/components/retro-action-bar'
-import ItemVoter from '@/components/retro-view/views/voting-phase/components/item-voter'
+import { RetroActionBar } from '@/components/retro-view/components/retro-action-bar'
+import { ItemVoter } from '@/components/retro-view/views/voting-phase/components/item-voter'
 
 type VotingViewProps = {
   selectedRetro: Retrospective
 }
 
-function VotingView({ selectedRetro }: VotingViewProps) {
+export function VotingView({ selectedRetro }: VotingViewProps) {
   return (
     <section className='w-full px-5 pb-2 mx-5 border-2 border-black rounded-md lg:h-screen min-h-min dark:border-neutral-200'>
       <div className='flex flex-col w-full grid-cols-3 gap-5 lg:grid grid-rows-auto h-5/6 place-items-center'>
@@ -42,5 +42,3 @@ function VotingView({ selectedRetro }: VotingViewProps) {
     </section>
   )
 }
-
-export default VotingView

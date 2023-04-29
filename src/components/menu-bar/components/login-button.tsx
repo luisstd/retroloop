@@ -2,7 +2,7 @@ import { IconUserCircle } from '@tabler/icons-react'
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
 
-export default function Component() {
+export function LoginButton() {
   const { data: session } = useSession()
   if (session) {
     return (

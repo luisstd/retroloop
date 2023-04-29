@@ -9,7 +9,7 @@ type ItemSwitcherProps = {
   currentIndex: number
 }
 
-function ItemSwitcher({
+export function ItemSwitcher({
   handleNextItem,
   handlePreviousItem,
   currentIndex,
@@ -58,5 +58,3 @@ function ItemSwitcher({
     </div>
   )
 }
-
-export default ItemSwitcher

@@ -5,10 +5,10 @@ import { useTheme } from 'next-themes'
 import { useState } from 'react'
 import { GridLoader } from 'react-spinners'
 
-import InviteUserDialog from '@/components/team-section/components/invite-user-dialog'
+import { InviteUserDialog } from '@/components/team-section/components/invite-user-dialog'
 import { trpc } from '@/utils/trpc'
 
-export default function TeamSection() {
+export function TeamSection() {
   const { resolvedTheme } = useTheme()
   const [open, setOpen] = useState(false)
 

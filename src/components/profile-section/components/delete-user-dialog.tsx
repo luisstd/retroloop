@@ -8,7 +8,7 @@ type DeleteDialogProps = {
   deleteHandler: (input: User) => void
 }
 
-export default function DeleteUserDialog(props: DeleteDialogProps) {
+export function DeleteUserDialog(props: DeleteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

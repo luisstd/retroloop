@@ -1,15 +1,15 @@
 import { render, RenderResult } from '@testing-library/react'
 import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 
-import CommonEditDialog from '@/components/dialog/edit-dialog/edit-dialog'
+import { EditDialog } from '@/components/dialog/edit-dialog/edit-dialog'
 
-test('CommonEditDialog', () => {
-  describe('CommonEditDialog', () => {
+test('EditDialog', () => {
+  describe('EditDialog', () => {
     let DialogMounted: RenderResult
 
     beforeAll(() => {
       DialogMounted = render(
-        <CommonEditDialog
+        <EditDialog
           itemToEdit={{ id: '' }}
           editHandler={(input) => {
             expect(input)

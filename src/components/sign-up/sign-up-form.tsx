@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react'
 import { UserSession } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 
-function SignUpForm() {
+export function SignUpForm() {
   const { data } = useSession()
   const router = useRouter()
 
@@ -88,5 +88,3 @@ function SignUpForm() {
     </>
   )
 }
-
-export default SignUpForm

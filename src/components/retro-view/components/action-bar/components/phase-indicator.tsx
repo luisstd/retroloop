@@ -12,7 +12,7 @@ type PhaseIndicatorProps = {
   handleUpdateRetro: (input: Retrospective) => void
 }
 
-function PhaseIndicator(props: PhaseIndicatorProps) {
+export function PhaseIndicator(props: PhaseIndicatorProps) {
   return (
     <div className='flex flex-row justify-around w-full'>
       {props.retrospective.phase === RetroPhase.WRITING ? (
@@ -71,5 +71,3 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
     </div>
   )
 }
-
-export default PhaseIndicator

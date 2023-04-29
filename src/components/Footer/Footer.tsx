@@ -1,6 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 
-export default function Footer() {
+export function Footer() {
   return (
     <>
       <footer className='p-3 m-5 rounded-md dark:border-neutral-200 max-w-screen-2x'>

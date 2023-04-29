@@ -8,7 +8,7 @@ type ActionButtonsProps = {
   handleUpdateRetro: (input: Retrospective) => void
 }
 
-function ActionButtons(props: ActionButtonsProps) {
+export function ActionButtons(props: ActionButtonsProps) {
   const [open, setOpen] = useState(false)
 
   function handleCopy() {
@@ -82,5 +82,3 @@ function ActionButtons(props: ActionButtonsProps) {
     </div>
   )
 }
-
-export default ActionButtons

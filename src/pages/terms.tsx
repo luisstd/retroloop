@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import Footer from '@/components/footer/footer'
-import MenuBar from '@/components/menu-bar/menu-bar'
+import { Footer } from '@/components/footer/footer'
+import { MenuBar } from '@/components/menu-bar/menu-bar'
 
-const TermsOfUse: NextPage = () => {
+const Terms: NextPage = () => {
   return (
     <div className='grid place-items-center'>
       <Head>
@@ -366,4 +366,4 @@ const TermsOfUse: NextPage = () => {
   )
 }
 
-export default TermsOfUse
+export default Terms

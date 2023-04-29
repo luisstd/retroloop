@@ -2,7 +2,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { IconUserCircle } from '@tabler/icons-react'
 import { signOut, useSession } from 'next-auth/react'
 
-function UserDropdown() {
+export function UserDropdown() {
   const { data: session } = useSession()
 
   return (
@@ -29,5 +29,3 @@ function UserDropdown() {
     </DropdownMenu.Root>
   )
 }
-
-export default UserDropdown

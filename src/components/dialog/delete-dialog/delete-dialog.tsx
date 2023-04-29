@@ -10,7 +10,7 @@ type DeleteDialogProps = {
   deleteHandler: (input: ItemToDelete['id']) => void
 }
 
-export default function CommonDeleteDialog(props: DeleteDialogProps) {
+export function DeleteDialog(props: DeleteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

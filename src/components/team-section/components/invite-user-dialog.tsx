@@ -9,7 +9,7 @@ type InviteUserDialogProps = {
   handleToastOpen: (value: boolean) => void
 }
 
-export default function InviteUserDialog({ handleToastOpen }: InviteUserDialogProps) {
+export function InviteUserDialog({ handleToastOpen }: InviteUserDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

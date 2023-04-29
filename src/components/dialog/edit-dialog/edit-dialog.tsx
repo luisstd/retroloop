@@ -10,7 +10,7 @@ type EditDialogProps = {
   editHandler: (input: unknown) => void
 }
 
-export default function CommonEditDialog(props: EditDialogProps) {
+export function EditDialog(props: EditDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

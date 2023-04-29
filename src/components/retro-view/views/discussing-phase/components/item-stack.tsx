@@ -7,7 +7,7 @@ type ItemStackProps = {
   currentIndex: number
 }
 
-function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
+export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
   const [sortedItems, setSortedItems] = useState(retroItems)
 
   useEffect(() => {
@@ -69,5 +69,3 @@ function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
     </>
   )
 }
-
-export default ItemStack

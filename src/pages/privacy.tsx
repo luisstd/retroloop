@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import Footer from '@/components/footer/footer'
-import MenuBar from '@/components/menu-bar/menu-bar'
+import { Footer } from '@/components/footer/footer'
+import { MenuBar } from '@/components/menu-bar/menu-bar'
 
-const PrivacyPolicy: NextPage = () => {
+const Privacy: NextPage = () => {
   return (
     <div className='grid place-items-center'>
       <Head>
@@ -551,5 +551,4 @@ const PrivacyPolicy: NextPage = () => {
     </div>
   )
 }
-
-export default PrivacyPolicy
+export default Privacy
