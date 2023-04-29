@@ -8,6 +8,7 @@ const { withSentryConfig } = require('@sentry/nextjs')
 const nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
   swcMinify: true,
+  output: 'standalone',
 })
 
 module.exports = withSentryConfig(nextConfig, {

@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import Footer from '@/components/Footer/Footer'
-import MenuBar from '@/components/MenuBar/MenuBar'
+import Footer from '@/components/footer/footer'
+import MenuBar from '@/components/menu-bar/menu-bar'
 
 const PrivacyPolicy: NextPage = () => {
   return (

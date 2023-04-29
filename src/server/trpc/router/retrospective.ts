@@ -26,21 +26,6 @@ export const retrospectiveRouter = t.router({
       },
     })
   }),
-  updateTimer: t.procedure
-    .input(
-      z.object({
-        id: z.string().optional(),
-        timerExpiration: z.date().optional(),
-      })
-    )
-    .query(({ ctx, input }) => {
-      return ctx.prisma.retrospective.update({
-        where: {
-          id: input.id,
-        },
-        data: { timerExpiration: input.timerExpiration },
-      })
-    }),
   add: t.procedure.input(RetrospectiveCreateInputSchema).mutation(async ({ ctx, input }) => {
     const userId = ctx.session?.user?.id
 

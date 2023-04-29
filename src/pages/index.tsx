@@ -13,8 +13,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
-import Footer from '@/components/Footer/Footer'
-import MenuBar from '@/components/MenuBar/MenuBar'
+import Footer from '@/components/footer/footer'
+import MenuBar from '@/components/menu-bar/menu-bar'
 
 const Landingpage: NextPage = () => {
   const theme = useTheme()
@@ -66,7 +66,7 @@ const Landingpage: NextPage = () => {
           </div>
           <span className='text-4xl font-medium text-center'>Agile retrospectives made easy</span>
           <p className='text-2xl text-center'>
-            Create a powerful feedback loop for continuous team improvement
+            Create an effective feedback loop for continuous team improvement
           </p>
           <div className='flex gap-4'>
             <Link href={'/dashboard'}>
@@ -112,7 +112,7 @@ const Landingpage: NextPage = () => {
               </div>
               <p>
                 Get started quickly via e-mail login or an OAuth provider of your choice. Jump right
-                into conducting effective retrospectives.
+                into conducting simple retrospectives.
               </p>
             </div>
 
@@ -133,7 +133,7 @@ const Landingpage: NextPage = () => {
             <div className='text-start'>
               <div className='flex items-center gap-2 mb-1'>
                 <IconRepeat size={32} className='text-accent-light dark:text-accent-dark' />
-                <h3 className='font-bold'>Streamlined retrospectives</h3>
+                <h3 className='font-bold'>Straightforward retrospectives</h3>
               </div>
               <p>
                 A user-friendly interface makes it effortless to gather and organize feedback,
@@ -153,8 +153,8 @@ const Landingpage: NextPage = () => {
               <h2 className='text-2xl font-bold md:text-4xl'>Maximize team growth</h2>
             </div>
             <p className='my-5 text-lg'>
-              Leverage our retrospective tool to identify opportunities for growth, streamline
-              processes, and foster a culture of continuous improvement.
+              Leverage Retroloop to identify opportunities for growth, streamline processes, and
+              foster a culture of continuous improvement.
             </p>
 
             <Link href={'/dashboard'}>

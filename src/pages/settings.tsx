@@ -3,9 +3,9 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
-import MenuBar from '@/components/MenuBar/MenuBar'
-import ProfileSection from '@/components/ProfileSection/ProfileSection'
-import SignUpForm from '@/components/SignUp/SignUpForm'
+import MenuBar from '@/components/menu-bar/menu-bar'
+import ProfileSection from '@/components/profile-section/profile-section'
+import SignUpForm from '@/components/sign-up/sign-up-form'
 
 const Settings: NextPage = () => {
   const { data: session, status } = useSession()

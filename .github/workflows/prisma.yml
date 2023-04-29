@@ -1,8 +1,11 @@
 name: Prisma Migrate
 
 on:
-  push:
-    branches: [main]
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
     paths:
       - './prisma/**/*.*'
   workflow_dispatch:
@@ -29,7 +32,7 @@ jobs:
       - name: Install pnpm & deps
         uses: pnpm/action-setup@v2
         with:
-          version: 7.18.1
+          version: 8.3.1
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -57,7 +60,7 @@ jobs:
       - name: Install pnpm & deps
         uses: pnpm/action-setup@v2
         with:
-          version: 7.18.1
+          version: 8.3.1
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -92,7 +95,7 @@ jobs:
       - name: Install pnpm & deps
         uses: pnpm/action-setup@v2
         with:
-          version: 7.18.1
+          version: 8.3.1
       - uses: actions/setup-node@v3
         with:
           node-version: 18
