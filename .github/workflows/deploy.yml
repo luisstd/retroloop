@@ -1,9 +1,9 @@
-name: Deploy
+name: Create deployment pull request
 on:
   workflow_dispatch:
 
 jobs:
-  deployment:
+  devToMainPromotion:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,6 +12,8 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          branch: main
+          branch: dev-to-main-promotion
+          base: main
           title: 'Production Deployment'
           body: 'This is an automated pull request to merge the dev branch into main.'
+          reviewers: 'luisstd'
