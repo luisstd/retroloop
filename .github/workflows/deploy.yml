@@ -6,9 +6,11 @@ jobs:
   devToMainPromotion:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
           ref: dev
+          fetch-depth: 0
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
