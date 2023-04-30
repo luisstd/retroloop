@@ -8,7 +8,7 @@ type ActionButtonsProps = {
   handleUpdateRetro: (input: Retrospective) => void
 }
 
-export function ActionButtons(props: ActionButtonsProps) {
+export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButtonsProps) {
   const [open, setOpen] = useState(false)
 
   function handleCopy() {
@@ -17,35 +17,35 @@ export function ActionButtons(props: ActionButtonsProps) {
   }
 
   function handleNextPhase() {
-    props.retrospective.phase === 'WRITING'
-      ? props.handleUpdateRetro({
-          ...props.retrospective,
-          id: props.retrospective.id,
+    retrospective.phase === 'WRITING'
+      ? handleUpdateRetro({
+          ...retrospective,
+          id: retrospective.id,
           phase: 'VOTING',
         })
       : null
 
     // Disabled for now
-    // props.retrospective.phase === 'GROUPING'
-    //   ? props.handleUpdateRetro({
-    //       ...props.retrospective,
-    //       id: props.retrospective.id,
+    // retrospective.phase === 'GROUPING'
+    //   ? handleUpdateRetro({
+    //       ...retrospective,
+    //       id: retrospective.id,
     //       phase: 'VOTING',
     //     })
     //   : null
 
-    props.retrospective.phase === 'VOTING'
-      ? props.handleUpdateRetro({
-          ...props.retrospective,
-          id: props.retrospective.id,
+    retrospective.phase === 'VOTING'
+      ? handleUpdateRetro({
+          ...retrospective,
+          id: retrospective.id,
           phase: 'DISCUSSING',
         })
       : null
 
-    props.retrospective.phase === 'DISCUSSING'
-      ? props.handleUpdateRetro({
-          ...props.retrospective,
-          id: props.retrospective.id,
+    retrospective.phase === 'DISCUSSING'
+      ? handleUpdateRetro({
+          ...retrospective,
+          id: retrospective.id,
           phase: 'DISCUSSING',
         })
       : null

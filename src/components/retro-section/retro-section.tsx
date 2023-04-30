@@ -12,10 +12,10 @@ type RetroSectionProps = {
   userId: User['id']
 }
 
-export function RetroSection(props: RetroSectionProps) {
+export function RetroSection({ userId }: RetroSectionProps) {
   const { resolvedTheme } = useTheme()
 
-  const retrospectives = trpc.retrospective.getAll.useQuery(props.userId)
+  const retrospectives = trpc.retrospective.getAll.useQuery(userId)
 
   const [sortedRetros, setSortedRetros] = useState(retrospectives.data)
 

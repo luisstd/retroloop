@@ -10,7 +10,7 @@ type EditDialogProps = {
   editHandler: (input: unknown) => void
 }
 
-export function EditDialog(props: EditDialogProps) {
+export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -55,9 +55,9 @@ export function EditDialog(props: EditDialogProps) {
           </Dialog.Close>
         </div>
         <Formik
-          initialValues={cloneDeep(props.itemToEdit)}
+          initialValues={cloneDeep(itemToEdit)}
           onSubmit={(values) => {
-            props.editHandler(values)
+            editHandler(values)
             setIsOpen(false)
           }}
         >
