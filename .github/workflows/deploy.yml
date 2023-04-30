@@ -20,7 +20,7 @@ jobs:
           echo "List of branches:"
           git branch -a
           echo "Commits difference between dev and main:"
-          git log --oneline main..dev
+          git log --oneline origin/main..origin/dev
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
