@@ -11,6 +11,10 @@ jobs:
         with:
           ref: dev
           fetch-depth: 0
+
+      - name: Fetch all history
+        run: git fetch --unshallow
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
