@@ -2,12 +2,12 @@ import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import GridLoader from 'react-spinners/GridLoader'
 
-import DiscussingView from '@/components/retro-view/views/discussing-phase/discussing-view'
-import VotingView from '@/components/retro-view/views/voting-phase/voting-view'
-import WritingView from '@/components/retro-view/views/writing-phase/writing-view'
+import { DiscussingView } from '@/components/retro-view/views/discussing-phase/discussing-view'
+import { VotingView } from '@/components/retro-view/views/voting-phase/voting-view'
+import { WritingView } from '@/components/retro-view/views/writing-phase/writing-view'
 import { trpc } from '@/utils/trpc'
 
-const RetroView = () => {
+export function RetroView() {
   const { resolvedTheme } = useTheme()
   const router = useRouter()
 
@@ -42,5 +42,3 @@ const RetroView = () => {
     </div>
   )
 }
-
-export default RetroView

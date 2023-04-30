@@ -10,7 +10,7 @@ type DeleteDialogProps = {
   deleteHandler: (input: ItemToDelete['id']) => void
 }
 
-export default function CommonDeleteDialog(props: DeleteDialogProps) {
+export function DeleteDialog({ itemToDelete, deleteHandler }: DeleteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -54,7 +54,7 @@ export default function CommonDeleteDialog(props: DeleteDialogProps) {
           </AlertDialog.Cancel>
           <AlertDialog.Action asChild>
             <button
-              onClick={() => props.deleteHandler(props.itemToDelete.id)}
+              onClick={() => deleteHandler(itemToDelete.id)}
               className='px-2 py-1 m-2 mt-10 italic font-bold bg-red-500 hover:border-red-400 hover:bg-red-400 dark:hover:bg-red-400 dark:hover:border-red-400 btn'
             >
               Yes, delete item

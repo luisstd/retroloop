@@ -1,16 +1,16 @@
 import { Retrospective } from '@prisma/client'
 import { useState } from 'react'
 
-import ActionButtons from '@/components/retro-view/components/action-bar/components/action-buttons'
-import PhaseIndicator from '@/components/retro-view/components/action-bar/components/phase-indicator'
-import RetroTimer from '@/components/retro-view/components/action-bar/components/retro-timer'
+import { ActionButtons } from '@/components/retro-view/components/action-bar/components/action-buttons'
+import { PhaseIndicator } from '@/components/retro-view/components/action-bar/components/phase-indicator'
+import { RetroTimer } from '@/components/retro-view/components/action-bar/components/retro-timer'
 import { trpc } from '@/utils/trpc'
 
 type RetroActionBarProps = {
   selectedRetro: Retrospective
 }
 
-function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
+export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
   const [currentRetro, setCurrentRetro] = useState(selectedRetro)
 
   const { refetch: refetchRetro } = trpc.retrospective.getById.useQuery(selectedRetro.id)
@@ -42,5 +42,3 @@ function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
     </>
   )
 }
-
-export default RetroActionBar

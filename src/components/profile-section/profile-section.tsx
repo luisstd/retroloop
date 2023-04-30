@@ -8,12 +8,12 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-import DeleteUserDialog from '@/components/profile-section/components/delete-user-dialog'
+import { DeleteUserDialog } from '@/components/profile-section/components/delete-user-dialog'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { UserUpdateInput } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 
-const SettingsSection = () => {
+export function ProfileSection() {
   const user = trpc.user.getLoggedIn.useQuery()
   const router = useRouter()
 
@@ -134,5 +134,3 @@ const SettingsSection = () => {
     </>
   )
 }
-
-export default SettingsSection

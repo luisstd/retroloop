@@ -4,7 +4,7 @@ import { IconDeviceLaptop, IconMoon, IconSun } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
-function ThemeDropdown() {
+export function ThemeDropdown() {
   const [mounted, setMounted] = useState(false)
   const { theme, resolvedTheme, setTheme } = useTheme()
 
@@ -83,5 +83,3 @@ function ThemeDropdown() {
     </>
   )
 }
-
-export default ThemeDropdown

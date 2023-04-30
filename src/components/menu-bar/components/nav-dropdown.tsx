@@ -4,7 +4,7 @@ import { IconDotsCircleHorizontal, IconMenu, IconSquare } from '@tabler/icons-re
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-function NavigationDropdown() {
+export function NavigationDropdown() {
   const router = useRouter()
   const currentPage = router.pathname
 
@@ -44,5 +44,3 @@ function NavigationDropdown() {
     </>
   )
 }
-
-export default NavigationDropdown

@@ -12,19 +12,17 @@ type PhaseIndicatorProps = {
   handleUpdateRetro: (input: Retrospective) => void
 }
 
-function PhaseIndicator(props: PhaseIndicatorProps) {
+export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndicatorProps) {
   return (
     <div className='flex flex-row justify-around w-full'>
-      {props.retrospective.phase === RetroPhase.WRITING ? (
+      {retrospective.phase === RetroPhase.WRITING ? (
         <div className='px-2 text-lg '>01) Write</div>
-      ) : props.retrospective.phase === RetroPhase.GROUPING ||
+      ) : retrospective.phase === RetroPhase.GROUPING ||
         RetroPhase.VOTING ||
         RetroPhase.DISCUSSING ? (
         <div
           className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:text-base-dark dark:hover:bg-hover-dark'
-          onClick={() =>
-            props.handleUpdateRetro({ ...props.retrospective, phase: RetroPhase.WRITING })
-          }
+          onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })}
         >
           01) Write
         </div>
@@ -33,14 +31,14 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
       )}
 
       {/* Disabled for now */}
-      {/* {props.retrospective.phase === RetroPhase.GROUPING ? (
+      {/* {retrospective.phase === RetroPhase.GROUPING ? (
         <div className='px-2 text-lg '>02)Group</div>
-      ) : props.retrospective.phase !== RetroPhase.WRITING &&
+      ) : retrospective.phase !== RetroPhase.WRITING &&
         (RetroPhase.VOTING || RetroPhase.DISCUSSING) ? (
         <div
           className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
           onClick={() =>
-            props.handleUpdateRetro({ ...props.retrospective, phase: RetroPhase.GROUPING })
+            handleUpdateRetro({ ...retrospective, phase: RetroPhase.GROUPING })
           }
         >
           02)Group
@@ -49,21 +47,19 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
         <div className='px-2 text-lg text-gray-500'>02)Group</div>
       )} */}
 
-      {props.retrospective.phase === RetroPhase.VOTING ? (
+      {retrospective.phase === RetroPhase.VOTING ? (
         <div className='px-2 text-lg'>02) Vote</div>
-      ) : props.retrospective.phase === RetroPhase.DISCUSSING ? (
+      ) : retrospective.phase === RetroPhase.DISCUSSING ? (
         <div
           className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:text-base-dark dark:hover:bg-hover-dark'
-          onClick={() =>
-            props.handleUpdateRetro({ ...props.retrospective, phase: RetroPhase.VOTING })
-          }
+          onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.VOTING })}
         >
           02) Vote
         </div>
       ) : (
         <div className='px-2 text-lg text-gray-500'>02) Vote</div>
       )}
-      {props.retrospective.phase === RetroPhase.DISCUSSING ? (
+      {retrospective.phase === RetroPhase.DISCUSSING ? (
         <div className='px-2 text-lg'>03) Discuss</div>
       ) : (
         <div className='px-2 text-lg text-gray-500'>03) Discuss</div>
@@ -71,5 +67,3 @@ function PhaseIndicator(props: PhaseIndicatorProps) {
     </div>
   )
 }
-
-export default PhaseIndicator

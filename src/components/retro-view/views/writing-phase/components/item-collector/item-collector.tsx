@@ -1,9 +1,9 @@
 import { RetroItem, Retrospective } from '@prisma/client'
 import { useSession } from 'next-auth/react'
 
-import DeleteDialog from '@/components/dialog/delete-dialog/delete-dialog'
-import EditDialog from '@/components/dialog/edit-dialog/edit-dialog'
-import RetroItemDialog from '@/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
+import { DeleteDialog } from '@/components/dialog/delete-dialog/delete-dialog'
+import { EditDialog } from '@/components/dialog/edit-dialog/edit-dialog'
+import { RetroItemDialog } from '@/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
 import { RetroItemCreateInput } from '@/types/retro-item'
 import { trpc } from '@/utils/trpc'
 
@@ -13,7 +13,7 @@ type ItemCollectorProps = {
   itemType: string
 }
 
-function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
+export function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
   const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
   const { data: session } = useSession()
 
@@ -86,5 +86,3 @@ function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
     </div>
   )
 }
-
-export default ItemCollector

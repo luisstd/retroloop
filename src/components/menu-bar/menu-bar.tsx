@@ -3,12 +3,12 @@ import { IconDotsCircleHorizontal, IconInfinity, IconSquare } from '@tabler/icon
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 
-import LoginButton from '@/components/menu-bar/components/login-button'
-import NavigationDropdown from '@/components/menu-bar/components/nav-dropdown'
-import ThemeDropdown from '@/components/menu-bar/components/theme-dropdown'
-import UserDropdown from '@/components/menu-bar/components/user-dropdown'
+import { LoginButton } from '@/components/menu-bar/components/login-button'
+import { NavigationDropdown } from '@/components/menu-bar/components/nav-dropdown'
+import { ThemeDropdown } from '@/components/menu-bar/components/theme-dropdown'
+import { UserDropdown } from '@/components/menu-bar/components/user-dropdown'
 
-export default function MenuBar() {
+export function MenuBar() {
   const { data: session } = useSession()
   return (
     <div className='flex items-center w-screen max-w-screen-2xl'>

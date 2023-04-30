@@ -9,7 +9,7 @@ type RetroTimerProps = {
   handleUpdateRetro: (input: Retrospective) => void
 }
 
-function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
+export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
   const [minutes, setMinutes] = useState(0)
   const [timerStarted, setTimerStarted] = useState(false)
 
@@ -127,5 +127,3 @@ function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
     </>
   )
 }
-
-export default RetroTimer

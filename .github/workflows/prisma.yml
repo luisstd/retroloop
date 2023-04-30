@@ -6,8 +6,6 @@ on:
       - closed
     branches:
       - main
-    paths:
-      - './prisma/**/*.*'
   workflow_dispatch:
     branches: [main]
 

@@ -1,16 +1,16 @@
 import { Retrospective } from '@prisma/client'
 import { useState } from 'react'
 
-import RetroActionBar from '@/components/retro-view/components/retro-action-bar'
-import ItemStack from '@/components/retro-view/views/discussing-phase/components/item-stack'
-import ItemSwitcher from '@/components/retro-view/views/discussing-phase/components/item-switcher'
+import { RetroActionBar } from '@/components/retro-view/components/retro-action-bar'
+import { ItemStack } from '@/components/retro-view/views/discussing-phase/components/item-stack'
+import { ItemSwitcher } from '@/components/retro-view/views/discussing-phase/components/item-switcher'
 import { trpc } from '@/utils/trpc'
 
 type DiscussingViewProps = {
   selectedRetro: Retrospective
 }
 
-function DiscussingView({ selectedRetro }: DiscussingViewProps) {
+export function DiscussingView({ selectedRetro }: DiscussingViewProps) {
   const retroItems = trpc.retroItem.getAllByRetroId.useQuery(selectedRetro.id)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -47,5 +47,3 @@ function DiscussingView({ selectedRetro }: DiscussingViewProps) {
     </section>
   )
 }
-
-export default DiscussingView

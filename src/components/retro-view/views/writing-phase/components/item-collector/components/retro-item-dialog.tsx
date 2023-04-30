@@ -16,7 +16,7 @@ type RetroItemDialogProps = {
   handleAddRetroItem: (input: RetroItemCreateInput) => void
 }
 
-export default function RetroItemDialog({
+export function RetroItemDialog({
   itemType,
   userId,
   retrospective,

@@ -12,7 +12,7 @@ type RetroDialogProps = {
   handleAddRetro: (input: RetrospectiveCreateInput) => void
 }
 
-export default function RetroDialog({ handleAddRetro }: RetroDialogProps) {
+export function RetroDialog({ handleAddRetro }: RetroDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

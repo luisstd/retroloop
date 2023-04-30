@@ -3,9 +3,9 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
-import MenuBar from '@/components/menu-bar/menu-bar'
-import RetroView from '@/components/retro-view/retro-view'
-import SignUpForm from '@/components/sign-up/sign-up-form'
+import { MenuBar } from '@/components/menu-bar/menu-bar'
+import { RetroView } from '@/components/retro-view/retro-view'
+import { SignUpForm } from '@/components/sign-up/sign-up-form'
 
 const Retro: NextPage = () => {
   const { data: session, status } = useSession()
@@ -56,5 +56,4 @@ const Retro: NextPage = () => {
     </div>
   )
 }
-
 export default Retro

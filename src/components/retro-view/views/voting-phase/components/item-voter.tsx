@@ -12,7 +12,7 @@ type ItemVoterProps = {
   itemType: string
 }
 
-function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
+export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
   const { data: session } = useSession()
 
   const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
@@ -99,5 +99,3 @@ function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
     </>
   ) : null
 }
-
-export default ItemVoter
