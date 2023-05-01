@@ -4,6 +4,7 @@
 
 const { withPlausibleProxy } = require('next-plausible')
 const { withSentryConfig } = require('@sentry/nextjs')
+const { version } = require('./package.json')
 
 const nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
@@ -15,4 +16,5 @@ module.exports = withSentryConfig(nextConfig, {
   silent: true,
   hideSourcemaps: true,
   tunnel: '/sentry',
+  release: version,
 })
