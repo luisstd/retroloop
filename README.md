@@ -1,8 +1,3 @@
-<div align="center">
-  <em><b>WORK IN PROGRESS</b></em>
-</div>
-<br />
-
 <!-- PROJECT LOGO -->
 <div align="center">
 
@@ -16,10 +11,4 @@
 
   <p align="center">
 Retroloop is an easy to use tool for conducting agile retrospectives.
-    <br />
-    <br />
-    <a href="https://github.com/luisstd/listed-app/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/luisstd/listed-app/issues">Request Feature</a>
-  </p>
 </div>
