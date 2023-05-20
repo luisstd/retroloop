@@ -150,7 +150,7 @@ const Landingpage: NextPage = () => {
             </h2>
             <div className='flex items-center justify-center gap-6 md:justify-start'>
               <IconInfinity size={72} className='block md:hidden' />
-              <h2 className='text-2xl font-bold md:text-4xl'>Maximize team growth</h2>
+              <h2 className='text-2xl font-bold md:text-4xl'>Improve collaboration</h2>
             </div>
             <p className='my-5 text-lg'>
               Leverage Retroloop to identify opportunities for growth, streamline processes, and
