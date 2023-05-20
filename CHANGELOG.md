@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/luisstd/retroloop/compare/v1.0.0...v1.1.0) (2023-05-20)
+
+
+### Features
+
+* only show items created by current user in writing phase ([15acaac](https://github.com/luisstd/retroloop/commit/15acaac02a46ef228b4d829a806b51c8b3855695))
+
+
+### Bug Fixes
+
+* fix incorrect casing for filename ([0ba29f5](https://github.com/luisstd/retroloop/commit/0ba29f5a1fc0a505cf89ee5d73a3904785732ea7))
+* fix layout shift on phase switch ([379e591](https://github.com/luisstd/retroloop/commit/379e591345dc1d21721e8491f3e9439c78577699))
+
 ## 1.0.0 (2023-05-01)
 
 
