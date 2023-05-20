@@ -150,7 +150,7 @@ const Landingpage: NextPage = () => {
             </h2>
             <div className='flex items-center justify-center gap-6 md:justify-start'>
               <IconInfinity size={72} className='block md:hidden' />
-              <h2 className='text-2xl font-bold md:text-4xl'>Maximize team growth</h2>
+              <h2 className='text-2xl font-bold md:text-4xl'>Improve collaboration</h2>
             </div>
             <p className='my-5 text-lg'>
               Leverage Retroloop to identify opportunities for growth, streamline processes, and
@@ -198,58 +198,6 @@ const Landingpage: NextPage = () => {
           </div>
         </section>
 
-        {/* <section className='grid w-5/6 my-2 border-2 rounded-md shadow-md md:grid-cols-2 md:w-4/6 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
-        <div className='flex flex-col col-start-1 gap-3 p-10'>
-          <h3 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
-            A platform for effective retrospectives
-          </h3>
-          <div className='flex items-center justify-center gap-2'>
-            <IconInfinity size={72} />
-            <h2 className='text-4xl font-bold'>Simplify your retrospectives</h2>
-          </div>
-          <p className='my-5 text-lg'>
-            For teams of any size and projects in any domain, our retrospective tool makes it easy
-            to gather feedback, identify areas for improvement, and boost your team&apos;s
-            performance.
-          </p>
-          <button className='self-start p-2 font-bold btn'>Get started</button>
-        </div>
-
-        <div className='flex flex-col items-center col-start-2 gap-3 p-10'>
-          <div className=' text-start m'>
-            <div className='flex items-center gap-2 mb-1'>
-              <IconLogin size={32} className='text-accent-light dark:text-accent-dark' />
-              <h3 className='font-bold'>Seamless login</h3>
-            </div>
-            <p>
-              Get started quickly without the need for creating an account or providing personal
-              information. Jump right into conducting effective retrospectives.
-            </p>
-          </div>
-
-          <div className='text-start'>
-            <div className='flex items-center gap-2 mb-1'>
-              <IconBrandOpenSource size={32} className='text-accent-light dark:text-accent-dark' />
-              <h3 className='font-bold'>Transparent & collaborative</h3>
-            </div>
-            <p>
-              Encourage open communication and collaboration by making your retrospectives
-              transparent and inclusive for every team member.
-            </p>
-          </div>
-
-          <div className='text-start'>
-            <div className='flex items-center gap-2 mb-1'>
-              <IconRotate360 size={32} className='text-accent-light dark:text-accent-dark' />
-              <h3 className='font-bold'>Streamlined retrospectives</h3>
-            </div>
-            <p>
-              Our user-friendly interface makes it effortless to gather and organize feedback,
-              ensuring your retrospectives are focused and productive.
-            </p>
-          </div>
-        </div>
-      </section> */}
         <Footer />
       </main>
     </div>
