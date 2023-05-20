@@ -36,7 +36,9 @@ export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
           <RetroTimer selectedRetro={currentRetro} handleUpdateRetro={handleUpdateRetro} />
         </div>
       ) : (
-        <div className='col-start-2 row-start-1 p-5 rounded-md dark:border-neutral-200'></div>
+        <div className='invisible col-start-2 row-start-1 p-5 px-2 border-2 rounded-md shadow-md border-base-dark dark:border-base-light'>
+          <RetroTimer selectedRetro={currentRetro} handleUpdateRetro={handleUpdateRetro} />
+        </div>
       )}
       <ActionButtons retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
     </>
