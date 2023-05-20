@@ -64,24 +64,26 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
       </div>
       <ul>
         {retroItems.data &&
-          retroItems.data.map((item: RetroItem, index: number) =>
-            item.type === itemType ? (
-              <li
-                className='flex justify-between p-2 my-3 border-2 rounded-md border-base-dark dark:border-base-light'
-                key={index}
-              >
-                <p className='p-1'>{item.content}</p>
+          retroItems.data
+            .filter((item) => item.type === itemType && item.userId === userId)
+            .map((item: RetroItem, index: number) =>
+              item.type === itemType ? (
+                <li
+                  className='flex justify-between p-2 my-3 border-2 rounded-md border-base-dark dark:border-base-light'
+                  key={index}
+                >
+                  <p className='p-1'>{item.content}</p>
 
-                <div className='flex flex-row items-center'>
-                  <EditDialog
-                    itemToEdit={item}
-                    editHandler={(input) => handleEditRetroItem(input as RetroItem)}
-                  />
-                  <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
-                </div>
-              </li>
-            ) : null
-          )}
+                  <div className='flex flex-row items-center'>
+                    <EditDialog
+                      itemToEdit={item}
+                      editHandler={(input) => handleEditRetroItem(input as RetroItem)}
+                    />
+                    <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
+                  </div>
+                </li>
+              ) : null
+            )}
       </ul>
     </div>
   )
