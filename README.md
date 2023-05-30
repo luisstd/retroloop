@@ -10,5 +10,69 @@
 ![Retroloop Logo](./public/logo.webp) <br />
 
   <p align="center">
-Retroloop is an easy to use tool for conducting agile retrospectives.
+Retroloop is an easy to use tool for conducting agile retrospectives
 </div>
+
+## Local Development
+
+Install dependencies
+
+```bash
+  pnpm install
+```
+
+Start the server
+
+```bash
+  pnpm dev
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  pnpm test
+```
+
+To create coverage files manually, run the following command
+
+```bash
+  pnpm coverage
+```
+
+## Deployment
+
+To deploy this project, self-host the application using Docker or use this button to deploy the project to [Railway](https://railway.app).
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/Ya-cUm?referralCode=rB6tnt)
+
+### Railway
+
+The railway template will ask you for all necessary environment variables and spin up the necessary services for you.
+
+### Docker
+
+Create a Docker container using the provided `Dockerfile`. You will need a database at the minimum, so don't forget to setup the environment variable for that.
+
+```
+DATABASE_URL='postgresql://yourdbconnectionurl'
+```
+
+## Tech Stack
+
+- [NextJS](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Radix UI](https://www.radix-ui.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [tRPC](https://trpc.io/)
+- [Prisma](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+
+## Feedback
+
+If you have any feedback, please open an issue or reach out at info@mail.retroloop.io
+
+## License
+
+Retroloop is open-source under the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) Version 3 (GPLv3) or any later version. See [LICENSE](https://github.com/luisstd/retroloop/blob/dev/LICENSE.md) for more detail.
