@@ -53,10 +53,24 @@ The railway template will ask you for all necessary environment variables and sp
 
 ### Docker
 
-Create a Docker container using the provided `Dockerfile`. You will need a database at the minimum, so don't forget to setup the environment variable for that.
+Create a Docker container using the provided `Dockerfile`. You will need these 3 environment variables at the minimum:
+
+The PostgreSQL connection string
 
 ```
 DATABASE_URL='postgresql://yourdbconnectionurl'
+```
+
+When deploying to production, set the `NEXTAUTH_URL` environment variable to the canonical URL of your site.
+
+```
+NEXTAUTH_URL="https://retroloop.io"
+```
+
+`NEXTAUTH_SECRET` is used to encrypt the NextAuth.js JWT, and to hash email verification tokens
+
+```
+NEXTAUTH_SECRET="YOUR_NEXTAUTH_SECRET"
 ```
 
 ## Tech Stack
@@ -64,6 +78,7 @@ DATABASE_URL='postgresql://yourdbconnectionurl'
 - [NextJS](https://nextjs.org/)
 - [React](https://react.dev/)
 - [Radix UI](https://www.radix-ui.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [tRPC](https://trpc.io/)
 - [Prisma](https://www.prisma.io/)
