@@ -11,6 +11,7 @@ import {
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 
 import { Footer } from '@/components/footer/footer'
@@ -18,6 +19,9 @@ import { MenuBar } from '@/components/menu-bar/menu-bar'
 
 const Landingpage: NextPage = () => {
   const theme = useTheme()
+  const { data: session, status } = useSession()
+
+  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
     <div
@@ -70,9 +74,18 @@ const Landingpage: NextPage = () => {
           </p>
           <div className='flex gap-4'>
             <Link href={'/dashboard'}>
-              <button className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
-                Get started
-              </button>
+              {isSignedUp ? (
+                <button className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
+                  Get started
+                </button>
+              ) : (
+                <button
+                  onClick={() => signIn()}
+                  className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'
+                >
+                  Get started
+                </button>
+              )}
             </Link>
 
             <Link href={'https://github.com/luisstd/retroloop'}>
@@ -99,8 +112,14 @@ const Landingpage: NextPage = () => {
               performance.
             </p>
 
-            <Link href={'/dashboard'}>
-              <button className='self-start p-2 font-bold btn'>Start retrospective</button>
+            <Link href={'/dashboard'} className='max-w-max'>
+              {isSignedUp ? (
+                <button className='self-start w-full p-2 font-bold btn'>Start retrospective</button>
+              ) : (
+                <button onClick={() => signIn()} className='self-start w-full p-2 font-bold btn'>
+                  Start retrospective
+                </button>
+              )}
             </Link>
           </div>
 
@@ -157,8 +176,14 @@ const Landingpage: NextPage = () => {
               foster a culture of continuous improvement.
             </p>
 
-            <Link href={'/dashboard'}>
-              <button className='self-start p-2 font-bold btn'>Invite team member</button>
+            <Link href={'/dashboard'} className='max-w-max'>
+              {isSignedUp ? (
+                <button className='self-start p-2 font-bold btn'>Invite team member</button>
+              ) : (
+                <button onClick={() => signIn()} className='self-start p-2 font-bold btn'>
+                  Invite team member
+                </button>
+              )}
             </Link>
           </div>
 

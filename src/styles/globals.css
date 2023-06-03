@@ -4,9 +4,6 @@
 
 * {
   box-sizing: border-box;
-  /*
-  @apply focus:outline-4 focus:outline-offset-0 focus:outline-indigo-800/90 focus:outline focus:border-transparent;
-  */
 }
 
 html {
