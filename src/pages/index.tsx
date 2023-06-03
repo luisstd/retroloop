@@ -99,8 +99,8 @@ const Landingpage: NextPage = () => {
               performance.
             </p>
 
-            <Link href={'/dashboard'}>
-              <button className='self-start p-2 font-bold btn'>Start retrospective</button>
+            <Link href={'/dashboard'} className='max-w-max'>
+              <button className='self-start w-full p-2 font-bold btn'>Start retrospective</button>
             </Link>
           </div>
 
@@ -157,7 +157,7 @@ const Landingpage: NextPage = () => {
               foster a culture of continuous improvement.
             </p>
 
-            <Link href={'/dashboard'}>
+            <Link href={'/dashboard'} className='max-w-max'>
               <button className='self-start p-2 font-bold btn'>Invite team member</button>
             </Link>
           </div>
