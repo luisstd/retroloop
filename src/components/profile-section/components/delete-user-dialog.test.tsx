@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { DeleteUserDialog } from '@/components/profile-section/components/delete-user-dialog'
 
@@ -12,6 +12,29 @@ test('DeleteUserDialog', () => {
     let useStateMock
     let setIsOpenMock: () => void
     let deleteHandlerMock: () => void
+
+    let DeleteUserDialogMounted: RenderResult
+
+    beforeEach(() => {
+      DeleteUserDialogMounted = render(
+        <DeleteUserDialog
+          itemToDelete={{
+            id: '1',
+            name: 'John Doe',
+            email: 'user@mail.com',
+            image: 'https://example.com/image.png',
+            createdAt: new Date(),
+            emailVerified: new Date(),
+            role: '',
+          }}
+          deleteHandler={deleteHandlerMock}
+        />
+      )
+    })
+
+    afterEach(() => {
+      DeleteUserDialogMounted.unmount()
+    })
 
     beforeAll(() => {
       // eslint-disable-next-line @typescript-eslint/no-var-requires

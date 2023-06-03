@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { ThemeDropdown } from '@/components/menu-bar/components/theme-dropdown/theme-dropdown'
 
@@ -10,6 +10,16 @@ vi.mock('next-themes', () => ({
 test('ThemeDropdown', () => {
   describe('ThemeDropdown', () => {
     let useThemeMock
+
+    let ThemeDropdownMounted: RenderResult
+
+    beforeEach(() => {
+      ThemeDropdownMounted = render(<ThemeDropdown />)
+    })
+
+    afterEach(() => {
+      ThemeDropdownMounted.unmount()
+    })
 
     beforeAll(() => {
       // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react'
-import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { render, RenderResult, screen } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { NavigationDropdown } from '@/components/menu-bar/components/nav-dropdown/nav-dropdown'
 
@@ -9,6 +9,16 @@ vi.mock('next/router', () => ({
 
 test('NavigationDropdown', () => {
   describe('NavigationDropdown', () => {
+    let NavDropdownMounted: RenderResult
+
+    beforeEach(() => {
+      NavDropdownMounted = render(<NavigationDropdown />)
+    })
+
+    afterEach(() => {
+      NavDropdownMounted.unmount()
+    })
+
     let useRouterMock
 
     beforeAll(() => {

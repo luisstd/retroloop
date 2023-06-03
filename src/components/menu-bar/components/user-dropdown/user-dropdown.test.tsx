@@ -1,6 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { signOut } from 'next-auth/react'
-import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { UserDropdown } from '@/components/menu-bar/components/user-dropdown/user-dropdown'
 
@@ -12,6 +12,16 @@ vi.mock('next-auth/react', () => ({
 test('UserDropdown', () => {
   describe('UserDropdown', () => {
     let useSessionMock
+
+    let UserDropdownMounted: RenderResult
+
+    beforeEach(() => {
+      UserDropdownMounted = render(<UserDropdown />)
+    })
+
+    afterEach(() => {
+      UserDropdownMounted.unmount()
+    })
 
     beforeAll(() => {
       // eslint-disable-next-line @typescript-eslint/no-var-requires

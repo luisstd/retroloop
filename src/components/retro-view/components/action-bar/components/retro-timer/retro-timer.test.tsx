@@ -1,6 +1,6 @@
 import { Retrospective } from '@prisma/client'
-import { fireEvent, render, screen } from '@testing-library/react'
-import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { RetroTimer } from '@/components/retro-view/components/action-bar/components/retro-timer/retro-timer'
 
@@ -12,6 +12,18 @@ test('RetroTimer', () => {
   describe('RetroTimer', () => {
     let handleUpdateRetroMock: (input: Retrospective) => void
     let mockMinutes: number
+
+    let RetroTimerMounted: RenderResult
+
+    beforeEach(() => {
+      RetroTimerMounted = render(
+        <RetroTimer selectedRetro={selectedRetro} handleUpdateRetro={handleUpdateRetroMock} />
+      )
+    })
+
+    afterEach(() => {
+      RetroTimerMounted.unmount()
+    })
 
     const selectedRetro: Retrospective = {
       id: '1',

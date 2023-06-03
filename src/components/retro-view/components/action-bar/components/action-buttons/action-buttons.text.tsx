@@ -1,6 +1,6 @@
 import { Retrospective } from '@prisma/client'
-import { fireEvent, render, screen } from '@testing-library/react'
-import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { ActionButtons } from '@/components/retro-view/components/action-bar/components/action-buttons/action-buttons'
 
@@ -23,6 +23,18 @@ test('ActionButtons', () => {
       timerExpiration: new Date(),
       workspaceId: '1',
     }
+
+    let ActionButtonsMounted: RenderResult
+
+    beforeEach(() => {
+      ActionButtonsMounted = render(
+        <ActionButtons retrospective={retrospective} handleUpdateRetro={handleUpdateRetroMock} />
+      )
+    })
+
+    afterEach(() => {
+      ActionButtonsMounted.unmount()
+    })
 
     beforeAll(() => {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
