@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/luisstd/retroloop/compare/v1.1.0...v1.2.0) (2023-06-03)
+
+
+### Features
+
+* redirect to login page on click when unauthenticated ([393431f](https://github.com/luisstd/retroloop/commit/393431facbce6b4a733c986f6f9068601d315708))
+
+
+### Bug Fixes
+
+* fix button click-target width ([7da2a1b](https://github.com/luisstd/retroloop/commit/7da2a1be03da2da06fae1c3dfdd781c5fa921dda))
+* remove trailing comma from renovate config ([178e665](https://github.com/luisstd/retroloop/commit/178e665ec68702ebb9fcb57c5b501c40bd15e6b4))
+
 ## [1.1.0](https://github.com/luisstd/retroloop/compare/v1.0.0...v1.1.0) (2023-05-20)
 
 
