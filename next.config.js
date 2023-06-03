@@ -17,4 +17,5 @@ module.exports = withSentryConfig(nextConfig, {
   hideSourcemaps: true,
   tunnel: '/sentry',
   release: version,
+  environment: process.env.NODE_ENV,
 })
