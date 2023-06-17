@@ -19,7 +19,7 @@
     "node": ">=18",
     "pnpm": ">=8"
   },
-  "packageManager": "pnpm@8.3.1",
+  "packageManager": "pnpm@8.6.2",
   "dependencies": {
     "@fontsource/ia-writer-mono": "^4.5.3",
     "@fontsource/ia-writer-quattro": "^4.5.3",
@@ -64,7 +64,7 @@
     "next-plausible": "^3.7.2",
     "next-themes": "^0.2.1",
     "nodemailer": "^6.9.1",
-    "pnpm": "8.3.1",
+    "pnpm": "8.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-spinners": "^0.13.8",

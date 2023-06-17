@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@fontsource/ia-writer-mono':
     specifier: ^4.5.3
@@ -131,8 +135,8 @@ dependencies:
     specifier: ^6.9.1
     version: 6.9.1
   pnpm:
-    specifier: 8.3.1
-    version: 8.3.1
+    specifier: 8.6.2
+    version: 8.6.2
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -7327,8 +7331,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pnpm@8.3.1:
-    resolution: {integrity: sha512-0mT2ZAv08J3nz8xUdWhRW88GE89IWgPo/xZhb6acQXK2+aCikl7kT7Bg31ZcnJqOrwYXSed68xjLd/ZoSnBR8w==}
+  /pnpm@8.6.2:
+    resolution: {integrity: sha512-Dmgwe+T34Xr6UYaTLXSphPS7ok4h2EPkaHQEH6j7USoAk21CzueAdD1nQLkWJwDnZkJucho0LbKntJ+9B5xlUQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: false
