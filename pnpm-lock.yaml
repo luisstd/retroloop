@@ -6,23 +6,23 @@ settings:
 
 dependencies:
   '@fontsource/ia-writer-mono':
-    specifier: ^4.5.3
-    version: 4.5.3
+    specifier: ^5.0.0
+    version: 5.0.0
   '@fontsource/ia-writer-quattro':
-    specifier: ^4.5.3
-    version: 4.5.3
+    specifier: ^5.0.0
+    version: 5.0.0
   '@fontsource/space-grotesk':
-    specifier: ^4.5.13
-    version: 4.5.13
+    specifier: ^5.0.0
+    version: 5.0.0
   '@fontsource/space-mono':
-    specifier: ^4.5.12
-    version: 4.5.12
+    specifier: ^5.0.0
+    version: 5.0.0
   '@fontsource/spline-sans':
-    specifier: ^4.5.14
-    version: 4.5.14
+    specifier: ^5.0.0
+    version: 5.0.0
   '@fontsource/spline-sans-mono':
-    specifier: ^4.5.3
-    version: 4.5.3
+    specifier: ^5.0.0
+    version: 5.0.0
   '@formspree/react':
     specifier: ^2.4.1
     version: 2.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -1089,28 +1089,28 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@fontsource/ia-writer-mono@4.5.3:
-    resolution: {integrity: sha512-/k0n7sRaiehoFZKzvcKV4CdxwFVO8cMb3VHBDnYZVw9vzBfO9lSk+DER/c56cQ3z85Us0wfMSuP9woqvDwSLaw==}
+  /@fontsource/ia-writer-mono@5.0.0:
+    resolution: {integrity: sha512-XSugP1XR02+j570hF+KUPR7ZvbCMiSBrrnL+S5qtCG4ZHGKAItNcnJTUF5DNdaYt33iA+3OR+kBqT+3CI1AMjQ==}
     dev: false
 
-  /@fontsource/ia-writer-quattro@4.5.3:
-    resolution: {integrity: sha512-3TUpjflZ4vTVEy3rmnLGhyQGFLJUlVqqZ19/dVl8D4IPrxho4Lvgn54FiXarfnO++XjemUYXR79zjDnhrHkDbg==}
+  /@fontsource/ia-writer-quattro@5.0.0:
+    resolution: {integrity: sha512-eufl+ZIrY8v8MY1USYCkqEOrZAK7A3b4NVvJELgn+kFvxf/TfU8y7PyXWQ/ggLJJL8Luqh6wvUEmFp0RAgkOXg==}
     dev: false
 
-  /@fontsource/space-grotesk@4.5.13:
-    resolution: {integrity: sha512-HYjs3C/ME3N55+9la5FGH3NebpBqyCP03DJzDLYlQ/fpnYOoQcEEoojtMyqDr8kBlQtrB6FSoa3vy84Wh0ZFqw==}
+  /@fontsource/space-grotesk@5.0.0:
+    resolution: {integrity: sha512-wi3A+VanTtsccTHvzMhxYEUzgFuYzrSVOV12xfx1tlXSSD3dDk4awZR2chV9w+nngYdzaNE80H1O03Ugc3xsEQ==}
     dev: false
 
-  /@fontsource/space-mono@4.5.12:
-    resolution: {integrity: sha512-/ljrJgSIB/C0jUCn07r/V/KpkdHF9bnK2fD0raGSVkgQjFqQ6Q3LndVeBiUCJlIi6ROh7rHDkpFzn+nNmRgRlQ==}
+  /@fontsource/space-mono@5.0.0:
+    resolution: {integrity: sha512-XggIoE2o2dOEj/wzAVbwgQJb4RDwzaNP+WHB6fJwc/kEraBKD54wvI9piwDkwPIjOAjEZqGswJBIvCRYyYZQ2Q==}
     dev: false
 
-  /@fontsource/spline-sans-mono@4.5.3:
-    resolution: {integrity: sha512-X/kpX66s2Y56uiHqywjY0okjdcEmAgj2laejvhGCY8Q//53FKrKcEt5ImfnyN00AyQyMZusXLwf3k4R+41a8LA==}
+  /@fontsource/spline-sans-mono@5.0.0:
+    resolution: {integrity: sha512-BJv1d4Cm4H4SXfwu4MKpH7/j+eGmwSShA29S0eYIEtjF50ZkI8NGot6ILWa22dSqBOj8KhlH7V6NKiZ0Uv0Ilw==}
     dev: false
 
-  /@fontsource/spline-sans@4.5.14:
-    resolution: {integrity: sha512-dZd8toVw/5P4GvA0+NIB4bDsR3W8/MK/Ua9HU0NlPLY2FkmNRiuTgmmfFIm1F2eYyBQRs/oSkR0kmfA8K9rmQw==}
+  /@fontsource/spline-sans@5.0.0:
+    resolution: {integrity: sha512-I5pvVOI+Qgl4uR8xuGY8w01sxx5+aGzX2XbvIGifF0/dyoC0TxRpBDoDlzcylVAPjnh0VzBmm7UXP/zL5AOApA==}
     dev: false
 
   /@formspree/react@2.4.1(react-dom@18.2.0)(react@18.2.0):
