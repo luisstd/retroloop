@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/luisstd/retroloop/compare/v1.2.0...v1.2.1) (2023-06-18)
+
+
+### Bug Fixes
+
+* make home link logo clickable ([b5830c8](https://github.com/luisstd/retroloop/commit/b5830c8c1da2d4154be645174723565b878cd335))
+
 ## [1.2.0](https://github.com/luisstd/retroloop/compare/v1.1.0...v1.2.0) (2023-06-03)
 
 
