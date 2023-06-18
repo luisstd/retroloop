@@ -27,7 +27,7 @@ export function RetroItemDialog({
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger className='justify-self-end' asChild>
-        <button className='btn'>
+        <button className='btn' aria-label='Add item' data-testid='add-item-button'>
           <IconPlus size={40} className='p-1 rounded-md justify-self-center' />
         </button>
       </Dialog.Trigger>
@@ -54,12 +54,13 @@ export function RetroItemDialog({
       <Dialog.Content
         onPointerDownOutside={(event) => event.preventDefault()}
         className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg bg-base-light border-base-dark dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:bg-base-dark dark:text-base-light'
+        data-testid='dialog-content'
       >
         <div className='flex flex-row items-start justify-between'>
           <Dialog.Title className='py-5 text-3xl italic font-bold '>Add item</Dialog.Title>
 
           <Dialog.Close asChild className='inline-flex'>
-            <button className='border-none btn' aria-label='Close'>
+            <button className='border-none btn' aria-label='Close' data-testid='close-dialog'>
               <IconMinimize />
             </button>
           </Dialog.Close>
