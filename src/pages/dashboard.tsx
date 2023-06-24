@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
+import { Feedback } from '@/components/feedback/feedback'
 import { MenuBar } from '@/components/menu-bar/menu-bar'
 import { RetroSection } from '@/components/retro-section/retro-section'
 import { SignUpForm } from '@/components/sign-up/sign-up-form'
@@ -43,6 +44,8 @@ const Dashboard: NextPage = () => {
         />
         <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
+
+      {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
       <MenuBar />
 
