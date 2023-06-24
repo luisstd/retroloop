@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/luisstd/retroloop/compare/v1.2.1...v1.3.0) (2023-06-24)
+
+
+### Features
+
+* add widget for user feedback ([c82d7af](https://github.com/luisstd/retroloop/commit/c82d7af2e7bcfd1695dfce3928952a47fdd114ec))
+
+
+### Bug Fixes
+
+* fix inconsistent colors for navigation dropdown ([d20aa42](https://github.com/luisstd/retroloop/commit/d20aa42dd39b869b0eb4b1aec4966cff20b78aa2))
+
 ## [1.2.1](https://github.com/luisstd/retroloop/compare/v1.2.0...v1.2.1) (2023-06-18)
 
 
