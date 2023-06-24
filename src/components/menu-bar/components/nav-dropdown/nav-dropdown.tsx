@@ -16,25 +16,25 @@ export function NavigationDropdown() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
-          <DropdownMenu.Content className='w-full gap-1 pt-1 m-2 bg-white border-2 border-black rounded-md dark:bg-black dark:text-neutral-200 dark:border-neutral-200'>
+          <DropdownMenu.Content className='w-full gap-1 pt-1 m-2 border-2 rounded-md border-base-dark bg-base-light dark:bg-base-dark dark:text-base-light dark:border-base-light'>
             <DropdownMenu.Label />
             <DropdownMenu.Item />
             <Link href='/dashboard'>
               <NavigationMenu.Item
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-black
+                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-base-dark
               ${currentPage === '/dashboard' ? 'font-bold' : 'font-normal'}`}
               >
-                <IconSquare size={30} />
+                <IconSquare size={26} />
                 <NavigationMenu.Link>Dashboard</NavigationMenu.Link>
               </NavigationMenu.Item>
             </Link>
 
             <Link href='/settings'>
               <NavigationMenu.Item
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-black
+                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-base-dark
               ${currentPage === '/settings' ? 'font-bold' : 'font-normal'}`}
               >
-                <IconDotsCircleHorizontal size={30} />
+                <IconDotsCircleHorizontal size={26} />
                 <NavigationMenu.Link>Settings</NavigationMenu.Link>
               </NavigationMenu.Item>
             </Link>

@@ -86,7 +86,7 @@ NEXTAUTH_SECRET="YOUR_NEXTAUTH_SECRET"
 
 ## Feedback
 
-If you have any feedback, please open an issue or reach out at info@mail.retroloop.io
+If you have any feedback, please use the feedback widget, open an issue or reach out at info@mail.retroloop.io
 
 ## License
 
