@@ -5,7 +5,7 @@ type FeedbackButtonProps = {
 }
 
 export function Feedback({ userEmail }: FeedbackButtonProps) {
-  const PROJECT_ID = process.env.FEEDBACK_FISH_PROJECT_ID || ''
+  const PROJECT_ID = process.env.FEEDBACK_FISH_PROJECT_ID as string
 
   return (
     <FeedbackFish projectId={PROJECT_ID} userId={userEmail}>
