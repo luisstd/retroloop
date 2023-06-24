@@ -21,6 +21,7 @@
   },
   "packageManager": "pnpm@8.6.2",
   "dependencies": {
+    "@feedback-fish/react": "^1.2.2",
     "@fontsource/ia-writer-mono": "^4.5.3",
     "@fontsource/ia-writer-quattro": "^4.5.3",
     "@fontsource/space-grotesk": "^4.5.13",
