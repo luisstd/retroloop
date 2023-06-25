@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.1](https://github.com/luisstd/retroloop/compare/v1.3.0...v1.3.1) (2023-06-25)
+
+
+### Bug Fixes
+
+* add min-height for item columns ([30f48bc](https://github.com/luisstd/retroloop/commit/30f48bcb543e62e3a4d445d1a362d4a28707b607))
+* fix vertical overflow for retrospective items ([ba0f049](https://github.com/luisstd/retroloop/commit/ba0f0494dd82e08c959b6e7381ef3dcaf425dc3a))
+* fix z-index issue with notification toast ([9fd03da](https://github.com/luisstd/retroloop/commit/9fd03da2e52e67cd8b383d1d8e17a44bf818f6b9))
+
 ## [1.3.0](https://github.com/luisstd/retroloop/compare/v1.2.1...v1.3.0) (2023-06-24)
 
 
