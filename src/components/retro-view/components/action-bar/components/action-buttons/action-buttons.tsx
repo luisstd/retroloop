@@ -52,7 +52,7 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
   }
 
   return (
-    <div className='flex'>
+    <div className='flex mt-2'>
       <Toast.Provider swipeDirection='right'>
         <button className='btn' type='submit' aria-label='Start Retro' onClick={handleCopy}>
           <div className='flex flex-row items-center gap-2 p-5 text-lg shadow-md'>
@@ -69,7 +69,7 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
         </Toast.Root>
 
         {open ? (
-          <Toast.Viewport className='fixed bottom-0 right-0 gap-2 p-5 m-5 border-2 rounded-md bg-base-light dark:bg-base-dark dark:text-base-light border-base-dark text-base-dark w-fit dark:border-base-light ' />
+          <Toast.Viewport className='fixed bottom-0 right-0 z-50 gap-2 p-5 m-5 border-2 rounded-md bg-base-light dark:bg-base-dark dark:text-base-light border-base-dark text-base-dark w-fit dark:border-base-light ' />
         ) : null}
       </Toast.Provider>
 
