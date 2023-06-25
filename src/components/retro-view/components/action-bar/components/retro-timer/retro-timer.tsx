@@ -66,7 +66,7 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
 
   return (
     <>
-      <div className='flex items-center justify-center gap-3'>
+      <div className='flex items-center justify-center h-6 gap-3 '>
         <IconAlarm size={36} />
 
         <h1 className='text-2xl font-bold'>Timer</h1>
