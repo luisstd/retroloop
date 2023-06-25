@@ -15,7 +15,7 @@ export function WritingView({ selectedRetro }: WritingViewProps) {
 
         {selectedRetro ? (
           <>
-            <div className='w-full h-full col-start-1 row-span-6 row-start-2 p-5 border-2 border-black rounded-md dark:border-neutral-200'>
+            <div className='w-full h-full col-start-1 row-span-6 row-start-2 p-5 border-2 border-black rounded-md lg:min-h-screen dark:border-neutral-200'>
               <ItemCollector
                 retrospective={selectedRetro}
                 itemType='success'
