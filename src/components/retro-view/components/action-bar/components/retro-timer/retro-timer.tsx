@@ -66,12 +66,12 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
 
   return (
     <>
-      <div className='flex items-center justify-center h-6 gap-3 '>
+      <div className='flex items-center justify-center h-6 gap-3'>
         <IconAlarm size={36} />
 
         <h1 className='text-2xl font-bold'>Timer</h1>
 
-        <div className='flex gap-2 mx-2 text-2xl '>
+        <div className='flex gap-2 mx-2 text-2xl'>
           {!timer.isRunning && !timer.minutes ? (
             <input
               type='number'
@@ -84,7 +84,7 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
               onChange={(e) => setMinutes(Number(e.currentTarget.value))}
             />
           ) : (
-            <span className='text-4xl'>
+            <span className='w-12 text-4xl'>
               {isMinutesSingleDigit ? 0 : null}
               {timer.minutes}:
             </span>
@@ -92,7 +92,7 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
           {!timer.isRunning && !timer.minutes ? (
             <span className='self-center'>min</span>
           ) : (
-            <span className='text-4xl'>
+            <span className='w-12 text-4xl'>
               {isSecondsSingleDigit ? 0 : null}
               {timer.seconds}
             </span>
