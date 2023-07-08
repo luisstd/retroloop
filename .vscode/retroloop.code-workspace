@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/.husky": true,
+      "**/.vscode": true,
+      "**/.github": true
+    }
+  }
+}
