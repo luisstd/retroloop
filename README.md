@@ -7,10 +7,8 @@
   <a href="https://retroloop.io" rel="noopener">retroloop.io</a>
 </h3>
 
-![Retroloop Logo](./public/logo.webp) <br />
+![Retroloop Preview](./public/preview.webp) <br />
 
-  <p align="center">
-Retroloop is an easy to use tool for conducting agile retrospectives
 </div>
 
 ## Local Development
