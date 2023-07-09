@@ -4,8 +4,7 @@ import { defineConfig } from 'vitest/config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  plugins: [react() as any],
+  plugins: [react()],
   test: {
     environment: 'jsdom',
     coverage: {
