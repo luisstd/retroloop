@@ -2,10 +2,16 @@
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "echo building!"
+    "buildCommand": "echo building!",
+    "nixpacksPlan": {
+      "providers": ["deno"]
+    },
+    "dockerfilePath": "none"
   },
   "deploy": {
+    "numReplicas": 1,
     "startCommand": "echo starting!",
-    "restartPolicyType": "ON_FAILURE"
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
   }
 }
