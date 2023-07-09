@@ -5,8 +5,7 @@
     "buildCommand": "echo building!",
     "nixpacksPlan": {
       "providers": ["deno"]
-    },
-    "dockerfilePath": "none"
+    }
   },
   "deploy": {
     "numReplicas": 1,
