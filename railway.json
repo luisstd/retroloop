@@ -3,7 +3,7 @@
   "build": {
     "builder": "NIXPACKS",
     "nixpacksPlan": {
-      "providers": ["deno"]
+      "providers": ["node"]
     }
   },
   "deploy": {
