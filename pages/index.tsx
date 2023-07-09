@@ -8,13 +8,14 @@ import {
   IconRepeat,
   IconUsers,
 } from '@tabler/icons-react'
-import { Footer } from 'components/footer/footer'
-import { MenuBar } from 'components/menu-bar/menu-bar'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
+
+import { Footer } from '@/app/components/footer/footer'
+import { MenuBar } from '@/app/components/menu-bar/menu-bar'
 
 const Landingpage: NextPage = () => {
   const theme = useTheme()
