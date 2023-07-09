@@ -1,7 +1,7 @@
 import { render, RenderResult } from '@testing-library/react'
 import { afterAll, beforeAll, describe, test } from 'vitest'
 
-import { Footer } from '@/app/components/footer/footer'
+import { Footer } from '@/components/footer/footer'
 
 test('Footer', () => {
   describe('Footer', () => {

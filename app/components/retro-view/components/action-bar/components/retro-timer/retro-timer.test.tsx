@@ -2,7 +2,7 @@ import { Retrospective } from '@prisma/client'
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { RetroTimer } from '@/app/components/retro-view/components/action-bar/components/retro-timer/retro-timer'
+import { RetroTimer } from '@/components/retro-view/components/action-bar/components/retro-timer/retro-timer'
 
 vi.mock('react-timer-hook', () => ({
   useTimer: vi.fn(),

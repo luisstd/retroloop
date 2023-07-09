@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeAll, describe, expect, test, vi } from 'vitest'
 
-import { RetroDialog } from '@/app/components/retro-section/components/retro-dialog'
+import { RetroDialog } from '@/components/retro-section/components/retro-dialog'
 
 vi.mock('formik', () => ({
   Formik: vi.fn(),

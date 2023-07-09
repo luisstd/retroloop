@@ -5,8 +5,8 @@ import { IconThumbUp } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
-import { UserSession } from '@/app/types/user'
-import { trpc } from '@/app/utils/trpc'
+import { UserSession } from '@/types/user'
+import { trpc } from '@/utils/trpc'
 
 type ItemVoterProps = {
   title: string

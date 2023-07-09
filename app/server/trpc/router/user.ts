@@ -1,4 +1,4 @@
-import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/app/schemas/user'
+import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/schemas/user'
 
 import { t } from '../trpc'
 

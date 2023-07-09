@@ -10,10 +10,10 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-import { DeleteUserDialog } from '@/app/components/profile-section/components/delete-user-dialog'
-import { UserUpdateInputSchema } from '@/app/schemas/user'
-import { UserUpdateInput } from '@/app/types/user'
-import { trpc } from '@/app/utils/trpc'
+import { DeleteUserDialog } from '@/components/profile-section/components/delete-user-dialog'
+import { UserUpdateInputSchema } from '@/schemas/user'
+import { UserUpdateInput } from '@/types/user'
+import { trpc } from '@/utils/trpc'
 
 export function ProfileSection() {
   const user = trpc.user.getLoggedIn.useQuery()

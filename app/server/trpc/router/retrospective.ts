@@ -3,7 +3,7 @@ import { z } from 'zod'
 import {
   RetrospectiveCreateInputSchema,
   RetrospectiveUpdateInputSchema,
-} from '@/app/schemas/retrospective'
+} from '@/schemas/retrospective'
 
 import { t } from '../trpc'
 

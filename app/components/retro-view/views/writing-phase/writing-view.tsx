@@ -2,8 +2,8 @@
 
 import { Retrospective } from '@prisma/client'
 
-import { RetroActionBar } from '@/app/components/retro-view/components/retro-action-bar'
-import { ItemCollector } from '@/app/components/retro-view/views/writing-phase/components/item-collector/item-collector'
+import { RetroActionBar } from '@/components/retro-view/components/retro-action-bar'
+import { ItemCollector } from '@/components/retro-view/views/writing-phase/components/item-collector/item-collector'
 
 type WritingViewProps = {
   selectedRetro: Retrospective
