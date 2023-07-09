@@ -6,8 +6,8 @@ import { useSession } from 'next-auth/react'
 import { DeleteDialog } from '@/app/components/dialog/delete-dialog/delete-dialog'
 import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
 import { RetroItemDialog } from '@/app/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
-import { RetroItemCreateInput } from '@/types/retro-item'
-import { trpc } from '@/utils/trpc'
+import { RetroItemCreateInput } from '@/app/types/retro-item'
+import { trpc } from '@/app/utils/trpc'
 
 type ItemCollectorProps = {
   title: string

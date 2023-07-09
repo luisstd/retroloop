@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import { RetroDialog } from '@/app/components/retro-section/components/retro-dialog'
-import { RetrospectiveCreateInput } from '@/types/retrospective'
-import { trpc } from '@/utils/trpc'
+import { RetrospectiveCreateInput } from '@/app/types/retrospective'
+import { trpc } from '@/app/utils/trpc'
 
 type RetroSectionProps = {
   userId: User['id']

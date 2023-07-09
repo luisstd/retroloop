@@ -7,8 +7,8 @@ import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
-import { RetrospectiveCreateInput } from '@/types/retrospective'
+import { RetrospectiveCreateInputSchema } from '@/app/schemas/retrospective'
+import { RetrospectiveCreateInput } from '@/app/types/retrospective'
 
 type RetroDialogProps = {
   handleAddRetro: (input: RetrospectiveCreateInput) => void

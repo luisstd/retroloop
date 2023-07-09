@@ -3,13 +3,13 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { ItemVoter } from '@/app/components/retro-view/views/voting-phase/components/item-voter'
-import { trpc } from '@/utils/trpc'
+import { trpc } from '@/app/utils/trpc'
 
 vi.mock('next-auth/react', () => ({
   useSession: vi.fn(),
 }))
 
-vi.mock('@/utils/trpc', () => ({
+vi.mock('@/app/utils/trpc', () => ({
   trpc: {
     retroItem: {
       getAllByRetroId: {

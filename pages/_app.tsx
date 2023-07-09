@@ -9,7 +9,7 @@ import { SessionProvider } from 'next-auth/react'
 import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 
-import { trpc } from '@/utils/trpc'
+import { trpc } from '@/app/utils/trpc'
 
 const queryClient = new QueryClient()
 
