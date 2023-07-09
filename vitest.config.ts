@@ -10,12 +10,12 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       reporter: ['json'],
-      reportsDirectory: './tests/unit/coverage',
+      reportsDirectory: './coverage',
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './'),
     },
   },
 })
