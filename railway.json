@@ -4,12 +4,11 @@
     "builder": "NIXPACKS",
     "buildCommand": "echo building!",
     "nixpacksPlan": {
-      "providers": ["node"]
+      "providers": ["deno"]
     }
   },
   "deploy": {
     "numReplicas": 1,
-    "startCommand": "echo starting!",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
