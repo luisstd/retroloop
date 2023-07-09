@@ -19,23 +19,23 @@ export function MenuBar() {
     <div className='flex items-center w-screen max-w-screen-2xl'>
       <NavigationMenu.Root className='relative flex items-center justify-between w-full p-2 m-5 text-xl border-2 rounded-md shadow-md border-base-dark dark:border-base-light max-w-screen-2xl bg-base-light dark:bg-base-dark'>
         <NavigationMenu.List className='flex items-center gap-2'>
-          <Link href='/' legacyBehavior>
+          <Link href='/'>
             <NavigationMenu.Item className='text-2xl italic text-center sm:text-3xl'>
-              <NavigationMenu.Link className='flex p-1 pr-2 font-semibold transition ease-in-out rounded-md cursor-pointer items-top hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
+              <div className='flex p-1 pr-2 font-semibold transition ease-in-out rounded-md cursor-pointer items-top hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
                 <IconInfinity className='self-center sm:hidden' size={28} />
                 <IconInfinity className='hidden sm:block' size={40} />
                 retroloop
-              </NavigationMenu.Link>
+              </div>
             </NavigationMenu.Item>
           </Link>
         </NavigationMenu.List>
 
         <NavigationMenu.List className='hidden gap-6 sm:flex'>
-          <Link href='/dashboard' legacyBehavior>
+          <Link href='/dashboard'>
             {isSignedUp ? (
               <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
                 <IconSquare size={24} />
-                <NavigationMenu.Link className='text-xl font-medium'>Dashboard</NavigationMenu.Link>
+                <div className='text-xl font-medium'>Dashboard</div>
               </NavigationMenu.Item>
             ) : (
               <NavigationMenu.Item
@@ -43,16 +43,16 @@ export function MenuBar() {
                 className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
               >
                 <IconSquare size={24} />
-                <NavigationMenu.Link className='text-xl font-medium'>Dashboard</NavigationMenu.Link>
+                <div className='text-xl font-medium'>Dashboard</div>
               </NavigationMenu.Item>
             )}
           </Link>
 
-          <Link href='/settings' legacyBehavior>
+          <Link href='/settings'>
             {isSignedUp ? (
               <NavigationMenu.Item className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'>
                 <IconDotsCircleHorizontal size={24} />
-                <NavigationMenu.Link className='text-xl font-medium'>Settings</NavigationMenu.Link>
+                <div className='text-xl font-medium'>Settings</div>
               </NavigationMenu.Item>
             ) : (
               <NavigationMenu.Item
@@ -60,7 +60,7 @@ export function MenuBar() {
                 className='flex items-center gap-1 p-2 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
               >
                 <IconDotsCircleHorizontal size={24} />
-                <NavigationMenu.Link className='text-xl font-medium'>Settings</NavigationMenu.Link>
+                <div className='text-xl font-medium'>Settings</div>
               </NavigationMenu.Item>
             )}
           </Link>
