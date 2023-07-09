@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { RetroActionBar } from '@/app/components/retro-view/components/retro-action-bar'
 import { ItemStack } from '@/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
 import { ItemSwitcher } from '@/app/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
-import { trpc } from '@/utils/trpc'
+import { trpc } from '@/app/utils/trpc'
 
 type DiscussingViewProps = {
   selectedRetro: Retrospective

@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { GridLoader } from 'react-spinners'
 
 import { InviteUserDialog } from '@/app/components/team-section/components/invite-user-dialog'
-import { trpc } from '@/utils/trpc'
+import { trpc } from '@/app/utils/trpc'
 
 export function TeamSection() {
   const { resolvedTheme } = useTheme()

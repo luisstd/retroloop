@@ -8,8 +8,8 @@ import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-import { RetroItemCreateInputSchema } from '@/schemas/retro-item'
-import { RetroItemCreateInput } from '@/types/retro-item'
+import { RetroItemCreateInputSchema } from '@/app/schemas/retro-item'
+import { RetroItemCreateInput } from '@/app/types/retro-item'
 
 type RetroItemDialogProps = {
   itemType: string

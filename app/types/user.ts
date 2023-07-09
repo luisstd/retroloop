@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { UserCreateInputSchema, UserUpdateInputSchema } from '@/schemas/user'
+import { UserCreateInputSchema, UserUpdateInputSchema } from '@/app/schemas/user'
 
 export type UserCreateInput = z.infer<typeof UserCreateInputSchema>
 
