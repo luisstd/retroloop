@@ -1,7 +1,7 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { DeleteUserDialog } from '@/app/components/profile-section/components/delete-user-dialog'
+import { DeleteUserDialog } from '@/components/profile-section/components/delete-user-dialog'
 
 vi.mock('@radix-ui/react-alert-dialog', () => ({
   Transition: vi.fn(),

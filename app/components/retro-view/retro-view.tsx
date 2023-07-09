@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import GridLoader from 'react-spinners/GridLoader'
 
-import { DiscussingView } from '@/app/components/retro-view/views/discussing-phase/discussing-view'
-import { VotingView } from '@/app/components/retro-view/views/voting-phase/voting-view'
-import { WritingView } from '@/app/components/retro-view/views/writing-phase/writing-view'
-import { trpc } from '@/app/utils/trpc'
+import { DiscussingView } from '@/components/retro-view/views/discussing-phase/discussing-view'
+import { VotingView } from '@/components/retro-view/views/voting-phase/voting-view'
+import { WritingView } from '@/components/retro-view/views/writing-phase/writing-view'
+import { trpc } from '@/utils/trpc'
 
 export function RetroView() {
   const { resolvedTheme } = useTheme()

@@ -2,7 +2,7 @@ import { Retrospective } from '@prisma/client'
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { ActionButtons } from '@/app/components/retro-view/components/action-bar/components/action-buttons/action-buttons'
+import { ActionButtons } from '@/components/retro-view/components/action-bar/components/action-buttons/action-buttons'
 
 vi.mock('react', () => ({
   useState: vi.fn(),

@@ -1,8 +1,8 @@
 // src/server/trpc/router/index.ts
-import { retroItemRouter } from '@/app/server/trpc/router/retro-item'
-import { retroItemCollectionRouter } from '@/app/server/trpc/router/retro-item-collection'
-import { retrospectiveRouter } from '@/app/server/trpc/router/retrospective'
-import { userRouter } from '@/app/server/trpc/router/user'
+import { retroItemRouter } from '@/server/trpc/router/retro-item'
+import { retroItemCollectionRouter } from '@/server/trpc/router/retro-item-collection'
+import { retrospectiveRouter } from '@/server/trpc/router/retrospective'
+import { userRouter } from '@/server/trpc/router/user'
 
 import { t } from '../trpc'
 import { authRouter } from './auth'

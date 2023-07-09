@@ -6,8 +6,8 @@ import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 
-import { UserSession } from '@/app/types/user'
-import { trpc } from '@/app/utils/trpc'
+import { UserSession } from '@/types/user'
+import { trpc } from '@/utils/trpc'
 
 export function SignUpForm() {
   const { data } = useSession()

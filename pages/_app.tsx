@@ -1,4 +1,4 @@
-import '@/app/globals.css'
+import '@/globals.css'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -9,7 +9,7 @@ import { SessionProvider } from 'next-auth/react'
 import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 
-import { trpc } from '@/app/utils/trpc'
+import { trpc } from '@/utils/trpc'
 
 const queryClient = new QueryClient()
 

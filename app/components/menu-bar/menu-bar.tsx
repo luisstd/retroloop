@@ -5,10 +5,10 @@ import { IconDotsCircleHorizontal, IconInfinity, IconSquare } from '@tabler/icon
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
 
-import { LoginButton } from '@/app/components/menu-bar/components/login-button/login-button'
-import { NavigationDropdown } from '@/app/components/menu-bar/components/nav-dropdown/nav-dropdown'
-import { ThemeDropdown } from '@/app/components/menu-bar/components/theme-dropdown/theme-dropdown'
-import { UserDropdown } from '@/app/components/menu-bar/components/user-dropdown/user-dropdown'
+import { LoginButton } from '@/components/menu-bar/components/login-button/login-button'
+import { NavigationDropdown } from '@/components/menu-bar/components/nav-dropdown/nav-dropdown'
+import { ThemeDropdown } from '@/components/menu-bar/components/theme-dropdown/theme-dropdown'
+import { UserDropdown } from '@/components/menu-bar/components/user-dropdown/user-dropdown'
 
 export function MenuBar() {
   const { data: session, status } = useSession()

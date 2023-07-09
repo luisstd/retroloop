@@ -1,7 +1,7 @@
 import { render, RenderResult } from '@testing-library/react'
 import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 
-import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
+import { EditDialog } from '@/components/dialog/edit-dialog/edit-dialog'
 
 test('EditDialog', () => {
   describe('EditDialog', () => {
