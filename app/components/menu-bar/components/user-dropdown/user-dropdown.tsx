@@ -16,13 +16,13 @@ export function UserDropdown() {
       <DropdownMenu.Portal>
         <DropdownMenu.Content>
           <DropdownMenu.Label />
-          <DropdownMenu.Item className='flex flex-col items-center w-full p-3 border-2 rounded-md border-base-dark bg-base-light dark:bg-base-dark dark:border-base-light '>
+          <DropdownMenu.Item className='flex w-full flex-col items-center rounded-md border-2 border-base-dark bg-base-light p-3 dark:border-base-light dark:bg-base-dark '>
             <span>
               Logged in as <br />
               <strong>{session?.user?.name}</strong>
             </span>
 
-            <button className='px-2 py-1 m-2 italic font-bold btn' onClick={() => signOut()}>
+            <button className='btn m-2 px-2 py-1 font-bold italic' onClick={() => signOut()}>
               Logout
             </button>
           </DropdownMenu.Item>

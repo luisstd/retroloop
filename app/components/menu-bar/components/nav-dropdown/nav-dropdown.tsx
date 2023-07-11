@@ -18,12 +18,12 @@ export function NavigationDropdown() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
-          <DropdownMenu.Content className='w-full gap-1 pt-1 m-2 border-2 rounded-md border-base-dark bg-base-light dark:bg-base-dark dark:text-base-light dark:border-base-light'>
+          <DropdownMenu.Content className='m-2 w-full gap-1 rounded-md border-2 border-base-dark bg-base-light pt-1 dark:border-base-light dark:bg-base-dark dark:text-base-light'>
             <DropdownMenu.Label />
             <DropdownMenu.Item />
             <Link href='/dashboard'>
               <NavigationMenu.Item
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-base-dark
+                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-neutral-100 dark:hover:text-base-dark
               ${currentPage === '/dashboard' ? 'font-bold' : 'font-normal'}`}
               >
                 <IconSquare size={26} />
@@ -33,7 +33,7 @@ export function NavigationDropdown() {
 
             <Link href='/settings'>
               <NavigationMenu.Item
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-neutral-100 dark:hover:text-base-dark
+                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-neutral-100 dark:hover:text-base-dark
               ${currentPage === '/settings' ? 'font-bold' : 'font-normal'}`}
               >
                 <IconDotsCircleHorizontal size={26} />

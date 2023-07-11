@@ -44,12 +44,12 @@ export function ThemeDropdown() {
               orientation='vertical'
               value={theme}
               aria-label='Dark/Light/System Mode Selection'
-              className='flex flex-col items-start w-full gap-1 pt-1 m-2 border-2 rounded-md bg-base-light dark:bg-base-dark border-base-dark dark:border-base-light'
+              className='m-2 flex w-full flex-col items-start gap-1 rounded-md border-2 border-base-dark bg-base-light pt-1 dark:border-base-light dark:bg-base-dark'
             >
               <ToggleGroup.Item
                 value='light'
                 onClick={() => setTheme('light')}
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
+                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
                   theme === 'light' ? 'font-bold' : 'font-normal'
                 }`}
               >
@@ -60,7 +60,7 @@ export function ThemeDropdown() {
               <ToggleGroup.Item
                 value='dark'
                 onClick={() => setTheme('dark')}
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
+                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
                   theme === 'dark' ? 'font-bold' : 'font-normal'
                 }`}
               >
@@ -71,7 +71,7 @@ export function ThemeDropdown() {
               <ToggleGroup.Item
                 value='system'
                 onClick={() => setTheme('system')}
-                className={`flex items-center w-full gap-1 px-1 py-1 mx-0 hover:bg-hover-light dark:hover:bg-hover-dark hover:text-base-dark ${
+                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-hover-light hover:text-base-dark dark:hover:bg-hover-dark ${
                   theme === 'system' ? 'font-bold' : 'font-normal'
                 }`}
               >

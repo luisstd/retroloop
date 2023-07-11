@@ -68,16 +68,16 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
 
   return (
     <>
-      <div className='flex items-center justify-center h-6 gap-3'>
+      <div className='flex h-6 items-center justify-center gap-3'>
         <IconAlarm size={36} />
 
         <h1 className='text-2xl font-bold'>Timer</h1>
 
-        <div className='flex gap-2 mx-2 text-2xl'>
+        <div className='mx-2 flex gap-2 text-2xl'>
           {!timer.isRunning && !timer.minutes ? (
             <input
               type='number'
-              className='p-1 border-2 rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark dark:border-base-light max-w-max'
+              className='max-w-max rounded-md border-2 border-base-dark bg-neutral-100 p-1 dark:border-base-light dark:bg-neutral-700'
               min={0}
               max={99}
               maxLength={2}

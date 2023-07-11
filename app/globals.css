@@ -7,13 +7,24 @@
 }
 
 html {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family:
+    'Space Grotesk',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
 }
 
 body {
-  @apply bg-base-light dark:bg-base-dark text-base-dark dark:text-base-light;
+  @apply bg-base-light text-base-dark dark:bg-base-dark dark:text-base-light;
 }
 
 a {
@@ -22,11 +33,11 @@ a {
 }
 
 .btn {
-  @apply transition ease-in-out border-2 rounded-md shadow-sm hover:bg-accent-light hover:text-base-light dark:hover:bg-accent-dark dark:hover:text-base-dark border-base-dark w-fit dark:border-base-light hover:cursor-pointer hover:border-accent-light dark:hover:border-accent-dark;
+  @apply w-fit rounded-md border-2 border-base-dark shadow-sm transition ease-in-out hover:cursor-pointer hover:border-accent-light hover:bg-accent-light hover:text-base-light dark:border-base-light dark:hover:border-accent-dark dark:hover:bg-accent-dark dark:hover:text-base-dark;
 }
 
 .depth {
-  @apply after:-z-20 after:absolute after:border-r-2 after:border-b-2 after:rounded-md after:border-base-dark after:dark:border-base-light after:top-2 after:left-2 after:w-full after:h-full after:transition after:ease-in-out after:bg-indigo-800;
+  @apply after:absolute after:left-2 after:top-2 after:-z-20 after:h-full after:w-full after:rounded-md after:border-b-2 after:border-r-2 after:border-base-dark after:bg-indigo-800 after:transition after:ease-in-out after:dark:border-base-light;
 }
 
 .retro-pattern {

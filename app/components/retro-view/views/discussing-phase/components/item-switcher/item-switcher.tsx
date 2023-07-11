@@ -19,17 +19,17 @@ export function ItemSwitcher({
 }: ItemSwitcherProps) {
   return (
     <div className='flex flex-col items-center justify-center gap-2'>
-      <div className='flex items-center gap-2 mx-2'>
+      <div className='mx-2 flex items-center gap-2'>
         {currentIndex > 0 ? (
           <button
             onClick={handlePreviousItem}
-            className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'
+            className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'
           >
             <IconArrowLeft />
             Previous
           </button>
         ) : (
-          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'>
+          <button className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'>
             <IconArrowLeft className='opacity-0' />
             Previous
           </button>
@@ -37,13 +37,13 @@ export function ItemSwitcher({
         {currentIndex < retroItems.length - 1 ? (
           <button
             onClick={handleNextItem}
-            className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'
+            className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'
           >
             Next
             <IconArrowRight />
           </button>
         ) : (
-          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'>
+          <button className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'>
             Next
             <IconArrowRight className='opacity-0' />
           </button>
@@ -51,7 +51,7 @@ export function ItemSwitcher({
       </div>
       <div>
         <Link href={{ pathname: '/dashboard' }}>
-          <button className='flex flex-row items-center gap-2 px-5 py-2 text-lg btn'>
+          <button className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'>
             Finish Retro
             <IconChecks />
           </button>

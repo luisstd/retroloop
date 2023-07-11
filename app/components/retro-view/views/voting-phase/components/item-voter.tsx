@@ -60,16 +60,16 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
 
   return user_id ? (
     <>
-      <div className='w-full h-full'>
-        <div className='flex flex-row items-center pb-3 border-b-2 border-base-dark dark:border-base-light'>
-          <h2 className='p-1 m-2 mr-auto text-xl font-bold'>{title}</h2>
+      <div className='h-full w-full'>
+        <div className='flex flex-row items-center border-b-2 border-base-dark pb-3 dark:border-base-light'>
+          <h2 className='m-2 mr-auto p-1 text-xl font-bold'>{title}</h2>
         </div>
         <ul>
           {sortedItems &&
             sortedItems.map((item, index) =>
               item.type === itemType ? (
                 <li
-                  className='flex justify-between p-2 my-3 border-2 rounded-md border-base-dark dark:border-base-light'
+                  className='my-3 flex justify-between rounded-md border-2 border-base-dark p-2 dark:border-base-light'
                   key={index}
                 >
                   <p className='p-1'>{item.content}</p>
@@ -78,10 +78,10 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                     {item.votes ? <span>+{item.votes}</span> : null}
 
                     {!hasVoted(item, user_id) ? (
-                      <button className='mx-1 btn'>
+                      <button className='btn mx-1'>
                         <IconThumbUp
                           size={26}
-                          className='p-1 rounded-md justify-self-center'
+                          className='justify-self-center rounded-md p-1'
                           onClick={() => {
                             handleEditRetroItem({
                               ...item,

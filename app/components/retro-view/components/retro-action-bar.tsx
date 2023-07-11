@@ -30,15 +30,15 @@ export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
 
   return (
     <>
-      <div className='flex flex-row flex-wrap w-full p-5 mt-2 border-2 rounded-md shadow-md border-base-dark dark:border-base-light'>
+      <div className='mt-2 flex w-full flex-row flex-wrap rounded-md border-2 border-base-dark p-5 shadow-md dark:border-base-light'>
         <PhaseIndicator retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
       </div>
       {selectedRetro.phase === 'WRITING' ? (
-        <div className='col-start-2 row-start-1 p-5 px-2 mt-2 border-2 rounded-md shadow-md border-base-dark dark:border-base-light'>
+        <div className='col-start-2 row-start-1 mt-2 rounded-md border-2 border-base-dark p-5 px-2 shadow-md dark:border-base-light'>
           <RetroTimer selectedRetro={currentRetro} handleUpdateRetro={handleUpdateRetro} />
         </div>
       ) : (
-        <div className='invisible col-start-2 row-start-1 p-5 px-2 border-2 rounded-md shadow-md border-base-dark dark:border-base-light'>
+        <div className='invisible col-start-2 row-start-1 rounded-md border-2 border-base-dark p-5 px-2 shadow-md dark:border-base-light'>
           <RetroTimer selectedRetro={currentRetro} handleUpdateRetro={handleUpdateRetro} />
         </div>
       )}

@@ -30,12 +30,12 @@ export function DiscussingView({ selectedRetro }: DiscussingViewProps) {
   }
 
   return (
-    <section className='w-full px-5 pb-2 mx-5 border-2 border-black rounded-md lg:h-screen min-h-min dark:border-neutral-200'>
-      <div className='flex flex-col w-full grid-cols-3 grid-rows-6 gap-5 mt-16 lg:grid h-5/6 place-items-start'>
+    <section className='mx-5 min-h-min w-full rounded-md border-2 border-black px-5 pb-2 dark:border-neutral-200 lg:h-screen'>
+      <div className='mt-16 flex h-5/6 w-full grid-cols-3 grid-rows-6 flex-col place-items-start gap-5 lg:grid'>
         <RetroActionBar selectedRetro={selectedRetro} />
 
         {retroItems.data ? (
-          <div className='flex flex-col w-full h-full col-span-3 col-start-1 row-span-2 row-start-3 lg:flex-row'>
+          <div className='col-span-3 col-start-1 row-span-2 row-start-3 flex h-full w-full flex-col lg:flex-row'>
             <ItemStack retroItems={retroItems.data} currentIndex={currentIndex} />
             <ItemSwitcher
               handleNextItem={handleNextItem}
