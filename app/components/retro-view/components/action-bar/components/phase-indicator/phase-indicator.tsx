@@ -16,14 +16,14 @@ type PhaseIndicatorProps = {
 
 export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndicatorProps) {
   return (
-    <div className='flex flex-row justify-around w-full'>
+    <div className='flex w-full flex-row justify-around'>
       {retrospective.phase === RetroPhase.WRITING ? (
         <div className='px-2 text-lg '>01) Write</div>
       ) : retrospective.phase === RetroPhase.GROUPING ||
         RetroPhase.VOTING ||
         RetroPhase.DISCUSSING ? (
         <div
-          className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:text-base-dark dark:hover:bg-hover-dark'
+          className='cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
           onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })}
         >
           01) Write
@@ -53,7 +53,7 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
         <div className='px-2 text-lg'>02) Vote</div>
       ) : retrospective.phase === RetroPhase.DISCUSSING ? (
         <div
-          className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-hover-light dark:hover:text-base-dark dark:hover:bg-hover-dark'
+          className='cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
           onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.VOTING })}
         >
           02) Vote

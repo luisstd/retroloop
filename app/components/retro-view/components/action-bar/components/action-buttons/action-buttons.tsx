@@ -54,7 +54,7 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
   }
 
   return (
-    <div className='flex mt-2'>
+    <div className='mt-2 flex'>
       <Toast.Provider swipeDirection='right'>
         <button className='btn' type='submit' aria-label='Start Retro' onClick={handleCopy}>
           <div className='flex flex-row items-center gap-2 p-5 text-lg shadow-md'>
@@ -64,18 +64,18 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
         </button>
 
         <Toast.Root open={open} onOpenChange={setOpen}>
-          <Toast.Title className='flex items-center gap-2 text-md'>
+          <Toast.Title className='text-md flex items-center gap-2'>
             <span>Copied retrospective link to clipboard!</span>
             <IconCopy />
           </Toast.Title>
         </Toast.Root>
 
         {open ? (
-          <Toast.Viewport className='fixed bottom-0 right-0 z-50 gap-2 p-5 m-5 border-2 rounded-md bg-base-light dark:bg-base-dark dark:text-base-light border-base-dark text-base-dark w-fit dark:border-base-light ' />
+          <Toast.Viewport className='fixed bottom-0 right-0 z-50 m-5 w-fit gap-2 rounded-md border-2 border-base-dark bg-base-light p-5 text-base-dark dark:border-base-light dark:bg-base-dark dark:text-base-light ' />
         ) : null}
       </Toast.Provider>
 
-      <button type='submit' aria-label='Start Retro' className='mx-2 btn' onClick={handleNextPhase}>
+      <button type='submit' aria-label='Start Retro' className='btn mx-2' onClick={handleNextPhase}>
         <div className='flex flex-row items-center gap-2 p-5 text-lg shadow-md'>
           Next Phase
           <IconArrowRight />

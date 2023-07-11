@@ -38,7 +38,7 @@ const Terms: NextPage = () => {
 
       <MenuBar />
 
-      <main className='px-5 prose prose-md max-w-prose '>
+      <main className='prose prose-md max-w-prose px-5 '>
         <article>
           <h2 className='py-3 text-4xl'>Retroloop Terms of Service</h2>
           <p className='py-2'>
@@ -63,7 +63,7 @@ const Terms: NextPage = () => {
             By using this website, you warrant on behalf of yourself, your users, and other parties
             you represent that you will not:
           </p>
-          <ol className='list-disc list-inside'>
+          <ol className='list-inside list-disc'>
             <li className='py-1'>
               modify, copy, prepare derivative works of, decompile, or reverse engineer any
               materials and software contained on this website;
@@ -230,7 +230,7 @@ const Terms: NextPage = () => {
             Our Products must not be used to transmit, distribute or store any material in violation
             of any applicable law. This includes but isn’t limited to:{' '}
           </p>
-          <ol type='i' className='list-decimal list-inside'>
+          <ol type='i' className='list-inside list-decimal'>
             <li className='py-1'>
               any material protected by copyright, trademark, trade secret, or other intellectual
               property right used without proper authorization, and
@@ -302,7 +302,7 @@ const Terms: NextPage = () => {
           <p className='py-2'>
             Other activities considered unethical, exploitative, and malicious include:{' '}
           </p>
-          <ol type='i' className='list-decimal list-inside '>
+          <ol type='i' className='list-inside list-decimal '>
             <li className='py-1'>
               Obtaining (or attempting to obtain) services from us with the intent to avoid payment;
             </li>
@@ -351,7 +351,7 @@ const Terms: NextPage = () => {
             We reserve the right to modify this policy at any time by publishing the revised version
             on our website. The revised version will be effective from the earlier of:{' '}
           </p>
-          <ul className='list-disc list-inside'>
+          <ul className='list-inside list-disc'>
             <li className='py-1'>
               the date the customer uses our Products after we publish the revised version on our
               website; or

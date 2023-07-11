@@ -17,10 +17,10 @@ export function InviteUserDialog({ handleToastOpen }: InviteUserDialogProps) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className='flex flex-row items-center btn'>
-          <h2 className='p-2 text-lg italic font-bold'>Invite</h2>
+        <button className='btn flex flex-row items-center'>
+          <h2 className='p-2 text-lg font-bold italic'>Invite</h2>
 
-          <IconPlus size={32} className='p-1 rounded-md justify-self-center' />
+          <IconPlus size={32} className='justify-self-center rounded-md p-1' />
         </button>
       </Dialog.Trigger>
       <Transition.Root show={isOpen}>
@@ -43,12 +43,12 @@ export function InviteUserDialog({ handleToastOpen }: InviteUserDialogProps) {
       </Transition.Root>
       <Dialog.Overlay className='fixed inset-0 z-20 bg-base-dark/50' />
 
-      <Dialog.Content className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg border-base-dark bg-base-light dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:bg-base-dark dark:text-base-light'>
+      <Dialog.Content className='fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light md:w-full'>
         <div className='flex flex-row items-start justify-between'>
-          <Dialog.Title className='py-5 text-3xl italic font-bold '>Invite to team</Dialog.Title>
+          <Dialog.Title className='py-5 text-3xl font-bold italic '>Invite to team</Dialog.Title>
 
           <Dialog.Close asChild className='inline-flex'>
-            <button className='border-none btn' aria-label='Close'>
+            <button className='btn border-none' aria-label='Close'>
               <IconMinimize />
             </button>
           </Dialog.Close>
@@ -72,15 +72,15 @@ export function InviteUserDialog({ handleToastOpen }: InviteUserDialogProps) {
                 id='email'
                 name='email'
                 placeholder='example@email.com'
-                className='p-2 m-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700'
+                className='m-2 rounded-md bg-neutral-200 p-2 outline-2 dark:bg-neutral-700'
               />
             </fieldset>
 
-            <div className='flex flex-row justify-end w-full'>
+            <div className='flex w-full flex-row justify-end'>
               <button
                 type='submit'
                 aria-label='Close'
-                className='px-1 py-1 m-2 mt-10 italic font-bold btn'
+                className='btn m-2 mt-10 px-1 py-1 font-bold italic'
               >
                 Send invite
               </button>

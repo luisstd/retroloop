@@ -16,7 +16,7 @@ export function DeleteUserDialog({ itemToDelete, deleteHandler }: DeleteDialogPr
   return (
     <AlertDialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialog.Trigger asChild>
-        <button className='px-2 py-1 m-2 mt-2 italic font-bold bg-red-500 hover:border-red-400 hover:bg-red-400 dark:hover:bg-red-400 dark:hover:border-red-400 btn'>
+        <button className='btn m-2 mt-2 bg-red-500 px-2 py-1 font-bold italic hover:border-red-400 hover:bg-red-400 dark:hover:border-red-400 dark:hover:bg-red-400'>
           Delete Account
         </button>
       </AlertDialog.Trigger>
@@ -41,8 +41,8 @@ export function DeleteUserDialog({ itemToDelete, deleteHandler }: DeleteDialogPr
 
       <AlertDialog.Overlay className='fixed inset-0 z-20 bg-base-dark/50' />
 
-      <AlertDialog.Content className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg border-base-dark bg-base-light dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:bg-base-dark dark:text-base-light'>
-        <AlertDialog.Title className='py-5 text-3xl italic font-bold'>
+      <AlertDialog.Content className='fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light md:w-full'>
+        <AlertDialog.Title className='py-5 text-3xl font-bold italic'>
           Are you absolutely sure?
         </AlertDialog.Title>
         <AlertDialog.Description className=''>
@@ -50,12 +50,12 @@ export function DeleteUserDialog({ itemToDelete, deleteHandler }: DeleteDialogPr
         </AlertDialog.Description>
         <div style={{ display: 'flex', gap: 25, justifyContent: 'flex-end' }}>
           <AlertDialog.Cancel asChild>
-            <button className='px-2 py-1 m-2 mt-10 italic font-bold btn'>Cancel</button>
+            <button className='btn m-2 mt-10 px-2 py-1 font-bold italic'>Cancel</button>
           </AlertDialog.Cancel>
           <AlertDialog.Action asChild>
             <button
               onClick={() => deleteHandler(itemToDelete)}
-              className='px-2 py-1 m-2 mt-10 italic font-bold bg-red-500 hover:border-red-400 hover:bg-red-400 dark:hover:bg-red-400 dark:hover:border-red-400 btn'
+              className='btn m-2 mt-10 bg-red-500 px-2 py-1 font-bold italic hover:border-red-400 hover:bg-red-400 dark:hover:border-red-400 dark:hover:bg-red-400'
             >
               Yes, delete account
             </button>

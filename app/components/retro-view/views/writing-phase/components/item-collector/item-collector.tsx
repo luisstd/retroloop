@@ -52,9 +52,9 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
   }
 
   return (
-    <div className='w-full h-full'>
-      <div className='flex flex-row items-center pb-3 border-b-2 border-base-dark dark:border-base-light'>
-        <h2 className='p-1 m-2 mr-auto text-xl font-bold'>{title}</h2>
+    <div className='h-full w-full'>
+      <div className='flex flex-row items-center border-b-2 border-base-dark pb-3 dark:border-base-light'>
+        <h2 className='m-2 mr-auto p-1 text-xl font-bold'>{title}</h2>
         {userId ? (
           <RetroItemDialog
             retrospective={retrospective}
@@ -71,7 +71,7 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
             .map((item: RetroItem, index: number) =>
               item.type === itemType ? (
                 <li
-                  className='flex justify-between p-2 my-3 border-2 rounded-md border-base-dark dark:border-base-light'
+                  className='my-3 flex justify-between rounded-md border-2 border-base-dark p-2 dark:border-base-light'
                   key={index}
                 >
                   <p className='p-1'>{item.content}</p>

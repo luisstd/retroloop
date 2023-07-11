@@ -62,26 +62,26 @@ const Landingpage: NextPage = () => {
 
       <MenuBar />
 
-      <main className='flex flex-col items-center w-screen h-screen max-w-screen-2xl'>
-        <section className='flex flex-col items-center w-full row-start-1 gap-5 px-2 my-5 mb-20'>
+      <main className='flex h-screen w-screen max-w-screen-2xl flex-col items-center'>
+        <section className='row-start-1 my-5 mb-20 flex w-full flex-col items-center gap-5 px-2'>
           <div className='flex items-center gap-2'>
             <IconInfinity size={72} />
-            <h1 className='text-5xl italic font-semibold'>retroloop</h1>
+            <h1 className='text-5xl font-semibold italic'>retroloop</h1>
           </div>
-          <span className='text-4xl font-medium text-center'>Agile retrospectives made easy</span>
-          <p className='text-2xl text-center'>
+          <span className='text-center text-4xl font-medium'>Agile retrospectives made easy</span>
+          <p className='text-center text-2xl'>
             Create an effective feedback loop for continuous team improvement
           </p>
           <div className='flex gap-4'>
             <Link href={'/dashboard'}>
               {isSignedUp ? (
-                <button className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
+                <button className='btn bg-base-light p-2 text-xl font-bold dark:bg-base-dark'>
                   Get started
                 </button>
               ) : (
                 <button
                   onClick={() => signIn()}
-                  className='p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'
+                  className='btn bg-base-light p-2 text-xl font-bold dark:bg-base-dark'
                 >
                   Get started
                 </button>
@@ -89,7 +89,7 @@ const Landingpage: NextPage = () => {
             </Link>
 
             <Link href={'https://github.com/luisstd/retroloop'}>
-              <button className='flex items-center gap-2 p-2 text-xl font-bold btn bg-base-light dark:bg-base-dark'>
+              <button className='btn flex items-center gap-2 bg-base-light p-2 text-xl font-bold dark:bg-base-dark'>
                 <IconBrandGithub size={24} />
                 Github
               </button>
@@ -97,8 +97,8 @@ const Landingpage: NextPage = () => {
           </div>
         </section>
 
-        <section className='grid w-5/6 grid-cols-1 my-2 border-2 rounded-md shadow-md w grid-rows-auto md:grid-cols-2 md:w-11/12 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
-          <div className='flex flex-col w-full col-start-1 row-start-1 gap-3 p-10'>
+        <section className='w grid-rows-auto my-2 grid max-h-max min-h-min w-5/6 grid-cols-1 rounded-md border-2 border-base-dark bg-base-light shadow-md dark:border-base-light dark:bg-base-dark md:w-11/12 md:grid-cols-2'>
+          <div className='col-start-1 row-start-1 flex w-full flex-col gap-3 p-10'>
             <h2 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
               A platform for effective retrospectives
             </h2>
@@ -114,18 +114,18 @@ const Landingpage: NextPage = () => {
 
             <Link href={'/dashboard'} className='max-w-max'>
               {isSignedUp ? (
-                <button className='self-start w-full p-2 font-bold btn'>Start retrospective</button>
+                <button className='btn w-full self-start p-2 font-bold'>Start retrospective</button>
               ) : (
-                <button onClick={() => signIn()} className='self-start w-full p-2 font-bold btn'>
+                <button onClick={() => signIn()} className='btn w-full self-start p-2 font-bold'>
                   Start retrospective
                 </button>
               )}
             </Link>
           </div>
 
-          <div className='flex flex-col items-center w-full gap-6 p-10 md:row-start-1 md:col-start-2'>
+          <div className='flex w-full flex-col items-center gap-6 p-10 md:col-start-2 md:row-start-1'>
             <div className='text-start'>
-              <div className='flex items-center gap-2 mb-1'>
+              <div className='mb-1 flex items-center gap-2'>
                 <IconLogin size={32} className='text-accent-light dark:text-accent-dark' />
                 <h3 className='font-bold'>Seamless login</h3>
               </div>
@@ -136,7 +136,7 @@ const Landingpage: NextPage = () => {
             </div>
 
             <div className='text-start'>
-              <div className='flex items-center gap-2 mb-1'>
+              <div className='mb-1 flex items-center gap-2'>
                 <IconBrandOpenSource
                   size={32}
                   className='text-accent-light dark:text-accent-dark'
@@ -150,7 +150,7 @@ const Landingpage: NextPage = () => {
             </div>
 
             <div className='text-start'>
-              <div className='flex items-center gap-2 mb-1'>
+              <div className='mb-1 flex items-center gap-2'>
                 <IconRepeat size={32} className='text-accent-light dark:text-accent-dark' />
                 <h3 className='font-bold'>Straightforward retrospectives</h3>
               </div>
@@ -162,8 +162,8 @@ const Landingpage: NextPage = () => {
           </div>
         </section>
 
-        <section className='grid w-5/6 my-2 border-2 rounded-md shadow-md md:grid-cols-2 md:w-11/12 min-h-min max-h-max border-base-dark dark:border-base-light bg-base-light dark:bg-base-dark'>
-          <div className='flex flex-col row-start-1 gap-3 p-10 md:col-start-2'>
+        <section className='my-2 grid max-h-max min-h-min w-5/6 rounded-md border-2 border-base-dark bg-base-light shadow-md dark:border-base-light dark:bg-base-dark md:w-11/12 md:grid-cols-2'>
+          <div className='row-start-1 flex flex-col gap-3 p-10 md:col-start-2'>
             <h2 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
               A resource for continuous improvement
             </h2>
@@ -178,18 +178,18 @@ const Landingpage: NextPage = () => {
 
             <Link href={'/dashboard'} className='max-w-max'>
               {isSignedUp ? (
-                <button className='self-start p-2 font-bold btn'>Invite team member</button>
+                <button className='btn self-start p-2 font-bold'>Invite team member</button>
               ) : (
-                <button onClick={() => signIn()} className='self-start p-2 font-bold btn'>
+                <button onClick={() => signIn()} className='btn self-start p-2 font-bold'>
                   Invite team member
                 </button>
               )}
             </Link>
           </div>
 
-          <div className='flex flex-col items-center col-start-1 row-start-2 gap-6 p-10 md:row-start-1'>
-            <div className=' text-start m'>
-              <div className='flex items-center gap-2 mb-1'>
+          <div className='col-start-1 row-start-2 flex flex-col items-center gap-6 p-10 md:row-start-1'>
+            <div className=' m text-start'>
+              <div className='mb-1 flex items-center gap-2'>
                 <IconBulb size={32} className='text-accent-light dark:text-accent-dark' />
                 <h3 className='font-bold'>Actionable insights</h3>
               </div>
@@ -200,7 +200,7 @@ const Landingpage: NextPage = () => {
             </div>
 
             <div className='text-start'>
-              <div className='flex items-center gap-2 mb-1'>
+              <div className='mb-1 flex items-center gap-2'>
                 <IconUsers size={32} className='text-accent-light dark:text-accent-dark' />
                 <h3 className='font-bold'>Built for modern teams</h3>
               </div>
@@ -211,7 +211,7 @@ const Landingpage: NextPage = () => {
             </div>
 
             <div className='text-start'>
-              <div className='flex items-center gap-2 mb-1'>
+              <div className='mb-1 flex items-center gap-2'>
                 <IconAffiliate size={32} className='text-accent-light dark:text-accent-dark' />
                 <h3 className='font-bold'>Transparent & collaborative</h3>
               </div>

@@ -20,10 +20,10 @@ export function RetroDialog({ handleAddRetro }: RetroDialogProps) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className='relative flex flex-row items-center btn bg-base-light dark:bg-base-dark'>
-          <h2 className='p-2 text-lg italic font-bold '>Start Retro</h2>
+        <button className='btn relative flex flex-row items-center bg-base-light dark:bg-base-dark'>
+          <h2 className='p-2 text-lg font-bold italic '>Start Retro</h2>
 
-          <IconPlus size={32} className='p-1 rounded-md justify-self-center' />
+          <IconPlus size={32} className='justify-self-center rounded-md p-1' />
         </button>
       </Dialog.Trigger>
       <Transition.Root show={isOpen}>
@@ -46,14 +46,14 @@ export function RetroDialog({ handleAddRetro }: RetroDialogProps) {
       </Transition.Root>
       <Dialog.Overlay className='fixed inset-0 z-20 bg-base-dark/50' />
 
-      <Dialog.Content className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg bg-base-light border-base-dark dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:bg-base-dark dark:text-base-light '>
+      <Dialog.Content className='fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light md:w-full '>
         <div className='flex flex-row items-start justify-between'>
-          <Dialog.Title className='py-5 text-3xl italic font-bold '>
+          <Dialog.Title className='py-5 text-3xl font-bold italic '>
             Start a retrospective
           </Dialog.Title>
 
           <Dialog.Close asChild className='inline-flex'>
-            <button className='border-none btn' aria-label='Close'>
+            <button className='btn border-none' aria-label='Close'>
               <IconMinimize />
             </button>
           </Dialog.Close>
@@ -80,15 +80,15 @@ export function RetroDialog({ handleAddRetro }: RetroDialogProps) {
                 id='name'
                 name='name'
                 placeholder='Untitled Retro'
-                className='p-2 m-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700'
+                className='m-2 rounded-md bg-neutral-200 p-2 outline-2 dark:bg-neutral-700'
               />
             </fieldset>
 
-            <div className='flex flex-row justify-end w-full'>
+            <div className='flex w-full flex-row justify-end'>
               <button
                 type='submit'
                 aria-label='Start Retro'
-                className='px-2 py-1 m-2 mt-10 italic font-bold btn'
+                className='btn m-2 mt-10 px-2 py-1 font-bold italic'
               >
                 Start Retro
               </button>

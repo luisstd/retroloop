@@ -30,7 +30,7 @@ export function RetroItemDialog({
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger className='justify-self-end' asChild>
         <button className='btn' aria-label='Add item' data-testid='add-item-button'>
-          <IconPlus size={40} className='p-1 rounded-md justify-self-center' />
+          <IconPlus size={40} className='justify-self-center rounded-md p-1' />
         </button>
       </Dialog.Trigger>
       <Transition.Root show={isOpen}>
@@ -55,14 +55,14 @@ export function RetroItemDialog({
 
       <Dialog.Content
         onPointerDownOutside={(event) => event.preventDefault()}
-        className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg bg-base-light border-base-dark dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:bg-base-dark dark:text-base-light'
+        className='fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light md:w-full'
         data-testid='dialog-content'
       >
         <div className='flex flex-row items-start justify-between'>
-          <Dialog.Title className='py-5 text-3xl italic font-bold '>Add item</Dialog.Title>
+          <Dialog.Title className='py-5 text-3xl font-bold italic '>Add item</Dialog.Title>
 
           <Dialog.Close asChild className='inline-flex'>
-            <button className='border-none btn' aria-label='Close' data-testid='close-dialog'>
+            <button className='btn border-none' aria-label='Close' data-testid='close-dialog'>
               <IconMinimize />
             </button>
           </Dialog.Close>
@@ -96,15 +96,15 @@ export function RetroItemDialog({
                 name='content'
                 component='textarea'
                 rows={10}
-                className='w-full h-full p-2 border-2 rounded-md border-base-dark bg-neutral-200 dark:bg-neutral-700 min-h-min dark:border-base-light'
+                className='h-full min-h-min w-full rounded-md border-2 border-base-dark bg-neutral-200 p-2 dark:border-base-light dark:bg-neutral-700'
               />
             </fieldset>
 
-            <div className='flex flex-row justify-end w-full'>
+            <div className='flex w-full flex-row justify-end'>
               <button
                 type='submit'
                 aria-label='Save'
-                className='p-1 m-2 mt-10 italic font-bold btn'
+                className='btn m-2 mt-10 p-1 font-bold italic'
               >
                 Save
               </button>

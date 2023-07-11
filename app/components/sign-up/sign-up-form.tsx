@@ -26,8 +26,8 @@ export function SignUpForm() {
   return (
     <>
       {data ? (
-        <div className='flex flex-col items-center w-screen max-w-screen-2xl'>
-          <h1 className='my-5 text-3xl italic font-bold'>Complete login</h1>
+        <div className='flex w-screen max-w-screen-2xl flex-col items-center'>
+          <h1 className='my-5 text-3xl font-bold italic'>Complete login</h1>
           <Formik
             initialValues={{
               id: data.user?.id || '',
@@ -39,14 +39,14 @@ export function SignUpForm() {
               handleSubmit(values)
             }}
           >
-            <Form className='flex flex-col items-center w-screen max-w-md gap-4 p-5 border-2 rounded-lg border-base-dark bg-base-light dark:bg-base-dark dark:border-base-light dark:text-base-light'>
+            <Form className='flex w-screen max-w-md flex-col items-center gap-4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light'>
               <Avatar.Root className='hover:cursor-pointer'>
                 <Avatar.Image src={data.user?.image || ''} alt='User Avatar' />
                 <Avatar.Fallback delayMs={600}>
                   <IconUserCircle size={72} />
                 </Avatar.Fallback>
               </Avatar.Root>
-              <fieldset className='flex flex-col w-full gap-4'>
+              <fieldset className='flex w-full flex-col gap-4'>
                 <label htmlFor='name' className='font-bold'>
                   Name
                 </label>
@@ -56,7 +56,7 @@ export function SignUpForm() {
                   component='input'
                   rows={10}
                   required
-                  className='w-full h-full p-2 border-2 rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark min-h-min dark:border-base-light'
+                  className='h-full min-h-min w-full rounded-md border-2 border-base-dark bg-neutral-100 p-2 dark:border-base-light dark:bg-neutral-700'
                 />
 
                 <label htmlFor='name' className='font-bold'>
@@ -69,16 +69,16 @@ export function SignUpForm() {
                   rows={10}
                   required
                   disabled={data.user?.email}
-                  className={`w-full h-full p-2 border-2 ${
-                    data.user?.email ? 'text-gray-400 italic ' : ''
-                  }  rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark min-h-min dark:border-base-light`}
+                  className={`h-full w-full border-2 p-2 ${
+                    data.user?.email ? 'italic text-gray-400 ' : ''
+                  }  min-h-min rounded-md border-base-dark bg-neutral-100 dark:border-base-light dark:bg-neutral-700`}
                 />
               </fieldset>
-              <div className='flex flex-row justify-end w-full'>
+              <div className='flex w-full flex-row justify-end'>
                 <button
                   type='submit'
                   aria-label='Save'
-                  className='px-2 py-1 m-2 mt-10 italic font-bold btn'
+                  className='btn m-2 mt-10 px-2 py-1 font-bold italic'
                 >
                   Continue
                 </button>

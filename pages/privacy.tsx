@@ -38,7 +38,7 @@ const Privacy: NextPage = () => {
 
       <MenuBar />
 
-      <main className='px-5 prose prose-md max-w-prose'>
+      <main className='prose prose-md max-w-prose px-5'>
         <h2 className='py-3 text-4xl'>Retroloop Privacy Policy</h2>
         <p className='py-2'>
           Your privacy is important to us. It is Retroloop&#39;s policy to respect your privacy and
@@ -100,7 +100,7 @@ const Privacy: NextPage = () => {
           When you visit our website or interact with our services, we may automatically collect
           data about your device, such as:
         </p>
-        <ul className='list-disc list-inside'>
+        <ul className='list-inside list-disc'>
           <li>Device Type</li>
           <li>Geo-location data</li>
         </ul>
@@ -114,7 +114,7 @@ const Privacy: NextPage = () => {
           We may ask for personal information — for example, when you subscribe to our newsletter or
           when you contact us — which may include one or more of the following:
         </p>
-        <ul className='list-disc list-inside'>
+        <ul className='list-inside list-disc'>
           <li>Name</li>
           <li>Email</li>
         </ul>
@@ -138,7 +138,7 @@ const Privacy: NextPage = () => {
           We may collect personal information from you when you do any of the following on our
           website:
         </p>
-        <ul className='list-disc list-inside'>
+        <ul className='list-inside list-disc'>
           <li className='py-1'>Register for an account</li>
           <li className='py-1'>Purchase a subscription</li>
           <li className='py-1'>
@@ -155,7 +155,7 @@ const Privacy: NextPage = () => {
           personal information will not be further processed in a manner that is incompatible with
           these purposes:
         </p>
-        <ul className='list-inside list-dics'>
+        <ul className='list-dics list-inside'>
           <li className='py-1'>
             to provide you with our platform&apos;s core features and services
           </li>
@@ -209,7 +209,7 @@ const Privacy: NextPage = () => {
         </p>
         <h3 className='py-3 text-3xl'>Disclosure of Personal Information to Third Parties</h3>
         <p>We may disclose personal information to: </p>
-        <ul className='list-disc list-inside'>
+        <ul className='list-inside list-disc'>
           <li className='py-1'>a parent, subsidiary, or affiliate of our company</li>
           <li className='py-1'>
             third-party service providers for the purpose of enabling them to provide their
@@ -239,7 +239,7 @@ const Privacy: NextPage = () => {
           </li>
         </ul>
         <p className='py-2'>Third parties we currently use include: </p>
-        <ul className='list-disc list-inside'>
+        <ul className='list-inside list-disc'>
           <li className='py-1'>Plausible Analytics</li>
           <li className='py-1'>Sentry Error Monitoring</li>
         </ul>
@@ -475,7 +475,7 @@ const Privacy: NextPage = () => {
           In the past 12 months, we have collected the following categories of personal information
           enumerated in the California Consumer Privacy Act:
         </p>
-        <ul className='list-disc list-inside'>
+        <ul className='list-inside list-disc'>
           <li className='py-1'>
             Identifiers, such as name, email address, phone number account name, IP address, and an
             ID or number assigned to your account.
@@ -495,7 +495,7 @@ const Privacy: NextPage = () => {
           collected and know certain information about our data practices in the preceding 12
           months. In particular, you have the right to request the following from us:
         </p>
-        <ul className='list-disc list-inside'>
+        <ul className='list-inside list-disc'>
           <li className='py-1'>
             The categories of personal information we have collected about you;
           </li>

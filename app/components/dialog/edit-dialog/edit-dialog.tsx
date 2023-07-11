@@ -18,8 +18,8 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className='mx-1 btn'>
-          <IconPencil size={26} className='p-1 rounded-md justify-self-center' />
+        <button className='btn mx-1'>
+          <IconPencil size={26} className='justify-self-center rounded-md p-1' />
         </button>
       </Dialog.Trigger>
       <Transition.Root show={isOpen}>
@@ -45,13 +45,13 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
 
       <Dialog.Content
         onPointerDownOutside={(event) => event.preventDefault()}
-        className='fixed z-50 w-screen max-w-md p-5 border-2 rounded-lg border-base-dark bg-base-light dark:bg-base-dark dark:border-base-light top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 md:w-full dark:text-base-light'
+        className='fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light md:w-full'
       >
         <div className='flex flex-row items-start justify-between'>
-          <Dialog.Title className='py-5 text-3xl italic font-bold '>Edit item</Dialog.Title>
+          <Dialog.Title className='py-5 text-3xl font-bold italic '>Edit item</Dialog.Title>
 
           <Dialog.Close asChild className='inline-flex'>
-            <button className='border-none btn' aria-label='Close'>
+            <button className='btn border-none' aria-label='Close'>
               <IconMinimize />
             </button>
           </Dialog.Close>
@@ -72,15 +72,15 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
                 name='content'
                 component='textarea'
                 rows={10}
-                className='w-full h-full p-2 border-2 rounded-md bg-neutral-100 dark:bg-neutral-700 border-base-dark min-h-min dark:border-base-light'
+                className='h-full min-h-min w-full rounded-md border-2 border-base-dark bg-neutral-100 p-2 dark:border-base-light dark:bg-neutral-700'
               />
             </fieldset>
 
-            <div className='flex flex-row justify-end w-full'>
+            <div className='flex w-full flex-row justify-end'>
               <button
                 type='submit'
                 aria-label='Save'
-                className='px-2 py-1 m-2 mt-10 italic font-bold btn'
+                className='btn m-2 mt-10 px-2 py-1 font-bold italic'
               >
                 Save
               </button>

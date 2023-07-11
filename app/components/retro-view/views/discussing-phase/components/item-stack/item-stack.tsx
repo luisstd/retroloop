@@ -41,7 +41,7 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
   return (
     <>
       <div
-        className='relative flex flex-wrap items-center justify-center w-full gap-2 mx-5 my-32 lg:mx-0 lg:my-0'
+        className='relative mx-5 my-32 flex w-full flex-wrap items-center justify-center gap-2 lg:mx-0 lg:my-0'
         style={{ flex: '1 1 auto' }}
       >
         {sortedItems.map((item, index) => (
@@ -50,17 +50,17 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               zIndex: `${index}`,
               transform: `translate(${index * -5}px,${index * -5}px)`,
             }}
-            className='absolute w-3/5 h-full p-10 text-lg text-center border-2 rounded-md border-base-dark bg-base-light max-w-5/6 dark:bg-base-dark dark:border-base-light'
+            className='max-w-5/6 absolute h-full w-3/5 rounded-md border-2 border-base-dark bg-base-light p-10 text-center text-lg dark:border-base-light dark:bg-base-dark'
             key={item.id}
           >
-            <div className='flex items-center justify-center h-full gap-1 text-2xl text-center '>
-              <q className='font-bold text-left'>
+            <div className='flex h-full items-center justify-center gap-1 text-center text-2xl '>
+              <q className='text-left font-bold'>
                 <span className='mx-1 bg-base-light dark:bg-base-dark'>
                   {sortedItems[currentIndex].content}
                 </span>
               </q>
 
-              <div className='flex items-baseline gap-2 ml-5 text-6xl font-bold max-w-min'>
+              <div className='ml-5 flex max-w-min items-baseline gap-2 text-6xl font-bold'>
                 +{sortedItems[currentIndex].votes}
                 <IconThumbUp size={50} />
               </div>

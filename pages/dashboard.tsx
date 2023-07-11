@@ -50,7 +50,7 @@ const Dashboard: NextPage = () => {
       <MenuBar />
 
       {isSignedUp && session?.user ? (
-        <main className='grid w-screen h-screen mx-5 mb-10 place-items-center max-w-screen-2xl'>
+        <main className='mx-5 mb-10 grid h-screen w-screen max-w-screen-2xl place-items-center'>
           <RetroSection userId={session.user.id} />
 
           <TeamSection />

@@ -47,19 +47,19 @@ export function ProfileSection() {
     <>
       <Toast.Provider swipeDirection='right'>
         <Toast.Root open={open} onOpenChange={setOpen}>
-          <Toast.Title className='flex items-center gap-2 text-md'>
+          <Toast.Title className='text-md flex items-center gap-2'>
             <span>Success</span>
             <IconCheck />
           </Toast.Title>
         </Toast.Root>
 
         {open ? (
-          <Toast.Viewport className='fixed bottom-0 right-0 gap-2 p-5 m-5 border-2 rounded-md bg-base-light dark:bg-base-dark dark:text-base-light border-base-dark text-base-dark w-fit dark:border-base-light ' />
+          <Toast.Viewport className='fixed bottom-0 right-0 m-5 w-fit gap-2 rounded-md border-2 border-base-dark bg-base-light p-5 text-base-dark dark:border-base-light dark:bg-base-dark dark:text-base-light ' />
         ) : null}
 
         {user.data ? (
-          <main className='flex justify-around w-full gap-5 max-w-screen-2xl'>
-            <section className='flex-grow p-5 mx-5 text-xl border-2 rounded-md shadow-md border-base-dark min-w-min dark:border-base-light'>
+          <main className='flex w-full max-w-screen-2xl justify-around gap-5'>
+            <section className='mx-5 min-w-min flex-grow rounded-md border-2 border-base-dark p-5 text-xl shadow-md dark:border-base-light'>
               <Formik
                 validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
                 initialValues={{
@@ -73,8 +73,8 @@ export function ProfileSection() {
                 }}
                 onSubmit={(values) => handleSubmit(values)}
               >
-                <Form className='flex flex-col items-center w-full md:justify-around md:flex-row'>
-                  <div className='flex flex-col items-start gap-5 place-items-center'>
+                <Form className='flex w-full flex-col items-center md:flex-row md:justify-around'>
+                  <div className='flex flex-col place-items-center items-start gap-5'>
                     <fieldset className='flex flex-col items-start'>
                       <Label.Root htmlFor='name' className='px-2 font-bold'>
                         Name:
@@ -84,7 +84,7 @@ export function ProfileSection() {
                         name='name'
                         type='text'
                         placeholder='Your Name'
-                        className='p-2 m-2 border-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700 border-base-dark dark:border-base-light'
+                        className='m-2 rounded-md border-2 border-base-dark bg-neutral-200 p-2 outline-2 dark:border-base-light dark:bg-neutral-700'
                       />
                     </fieldset>
 
@@ -97,11 +97,11 @@ export function ProfileSection() {
                         name='email'
                         type='email'
                         placeholder='user@mail.com'
-                        className='p-2 m-2 border-2 rounded-md outline-2 bg-neutral-200 dark:bg-neutral-700 border-base-dark dark:border-base-light'
+                        className='m-2 rounded-md border-2 border-base-dark bg-neutral-200 p-2 outline-2 dark:border-base-light dark:bg-neutral-700'
                       />
                     </fieldset>
 
-                    <button className='px-2 py-1 m-2 mt-10 italic font-bold btn' type='submit'>
+                    <button className='btn m-2 mt-10 px-2 py-1 font-bold italic' type='submit'>
                       Submit
                     </button>
                   </div>
@@ -110,7 +110,7 @@ export function ProfileSection() {
                     <Avatar.Image
                       src={user.data?.image || ''}
                       alt='User Avatar'
-                      className='hidden border-2 rounded border-base-dark dark:border-base-light sm:block hover:cursor-pointer'
+                      className='hidden rounded border-2 border-base-dark hover:cursor-pointer dark:border-base-light sm:block'
                       width={250}
                       height='auto'
                     />
@@ -118,7 +118,7 @@ export function ProfileSection() {
                       <IconUserCircle width={250} size={180} />
                     </Avatar.Fallback>
 
-                    <div className='flex flex-col items-center mt-5 font-mono text-sm '>
+                    <div className='mt-5 flex flex-col items-center font-mono text-sm '>
                       <b>Signed up at: </b>
 
                       <p>{user.data.createdAt.toLocaleString()}</p>

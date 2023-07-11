@@ -18,7 +18,7 @@ export function LoginButton() {
   return (
     <>
       <button
-        className='px-2 py-1 text-lg italic font-bold border-2 border-black rounded-md dark:border-neutral-200'
+        className='rounded-md border-2 border-black px-2 py-1 text-lg font-bold italic dark:border-neutral-200'
         onClick={() => signIn()}
       >
         Login

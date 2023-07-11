@@ -19,7 +19,7 @@ export function RetroView() {
 
   return selectedRetro.data ? (
     <>
-      <div className='flex items-center justify-center w-full h-full px-1 max-w-screen-2xl'>
+      <div className='flex h-full w-full max-w-screen-2xl items-center justify-center px-1'>
         {selectedRetro.data.phase === 'WRITING' ? (
           <WritingView selectedRetro={selectedRetro.data} />
         ) : null}
