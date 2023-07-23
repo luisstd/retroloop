@@ -4,18 +4,17 @@ import { defineConfig } from 'vitest/config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  plugins: [react() as any],
+  plugins: [react()],
   test: {
     environment: 'jsdom',
     coverage: {
       reporter: ['json'],
-      reportsDirectory: './tests/unit/coverage',
+      reportsDirectory: './coverage',
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './app/'),
     },
   },
 })
