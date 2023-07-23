@@ -257,8 +257,8 @@ devDependencies:
     specifier: ^29.6.1
     version: 29.6.1(@types/node@18.16.18)(ts-node@10.9.1)
   jsdom:
-    specifier: ^21.1.2
-    version: 21.1.2
+    specifier: ^22.0.0
+    version: 22.0.0
   lint-staged:
     specifier: ^13.2.3
     version: 13.2.3
@@ -285,7 +285,7 @@ devDependencies:
     version: 5.0.2
   vitest:
     specifier: ^0.30.1
-    version: 0.30.1(jsdom@21.1.2)
+    version: 0.30.1(jsdom@22.0.0)
 
 packages:
 
@@ -3354,7 +3354,7 @@ packages:
       c8: 7.14.0
       picocolors: 1.0.0
       std-env: 3.3.3
-      vitest: 0.30.1(jsdom@21.1.2)
+      vitest: 0.30.1(jsdom@22.0.0)
     dev: true
 
   /@vitest/expect@0.30.1:
@@ -3406,13 +3406,6 @@ packages:
 
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
-    dev: true
-
-  /acorn-globals@7.0.1:
-    resolution: {integrity: sha512-umOSDSDrfHbTNPuNpC2NSnnA3LUrqpevPb4T9jRx4MagXNS0rs+gwiTcAvqCRmsD6utzsrzNt+ebm00SNWiC3Q==}
-    dependencies:
-      acorn: 8.10.0
-      acorn-walk: 8.2.0
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -4602,18 +4595,6 @@ packages:
   /escape-string-regexp@4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
-    dev: true
-
-  /escodegen@2.1.0:
-    resolution: {integrity: sha512-2NlIDTwUWJN0mRPQOdtQBzbUHvdGY2P1VXSyU83Q3xKxM7WHX2Ql8dKq782Q9TgQUNOLEzEYu9bzLNj1q88I5w==}
-    engines: {node: '>=6.0'}
-    hasBin: true
-    dependencies:
-      esprima: 4.0.1
-      estraverse: 5.3.0
-      esutils: 2.0.3
-    optionalDependencies:
-      source-map: 0.6.1
     dev: true
 
   /eslint-config-next@13.4.9(eslint@8.44.0)(typescript@5.0.2):
@@ -6451,9 +6432,9 @@ packages:
       argparse: 2.0.1
     dev: true
 
-  /jsdom@21.1.2:
-    resolution: {integrity: sha512-sCpFmK2jv+1sjff4u7fzft+pUh2KSUbUrEHYHyfSIbGTIcmnjyp83qg6qLwdJ/I3LpTXx33ACxeRL7Lsyc6lGQ==}
-    engines: {node: '>=14'}
+  /jsdom@22.0.0:
+    resolution: {integrity: sha512-p5ZTEb5h+O+iU02t0GfEjAnkdYPrQSkfuTSMkMYyIoMvUNEHsbG0bHHbfXIcfTqD2UfvjQX7mmgiFsyRwGscVw==}
+    engines: {node: '>=16'}
     peerDependencies:
       canvas: ^2.5.0
     peerDependenciesMeta:
@@ -6461,13 +6442,10 @@ packages:
         optional: true
     dependencies:
       abab: 2.0.6
-      acorn: 8.10.0
-      acorn-globals: 7.0.1
       cssstyle: 3.0.0
       data-urls: 4.0.0
       decimal.js: 10.4.3
       domexception: 4.0.0
-      escodegen: 2.1.0
       form-data: 4.0.0
       html-encoding-sniffer: 3.0.0
       http-proxy-agent: 5.0.0
@@ -8876,7 +8854,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.30.1(jsdom@21.1.2):
+  /vitest@0.30.1(jsdom@22.0.0):
     resolution: {integrity: sha512-y35WTrSTlTxfMLttgQk4rHcaDkbHQwDP++SNwPb+7H8yb13Q3cu2EixrtHzF27iZ8v0XCciSsLg00RkPAzB/aA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -8921,7 +8899,7 @@ packages:
       chai: 4.3.7
       concordance: 5.0.4
       debug: 4.3.4
-      jsdom: 21.1.2
+      jsdom: 22.0.0
       local-pkg: 0.4.3
       magic-string: 0.30.1
       pathe: 1.1.1
