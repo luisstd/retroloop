@@ -75,7 +75,7 @@
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "@faker-js/faker": "^7.6.0",
-    "@logux/eslint-config": "^49.0.0",
+    "@logux/eslint-config": "^51.0.0",
     "@next/eslint-plugin-next": "^13.4.9",
     "@tailwindcss/typography": "^0.5.9",
     "@testing-library/jest-dom": "^5.16.5",
