@@ -8,14 +8,15 @@ import { LoginButton } from '@/components/menu-bar/components/login-button/login
 import { NavigationDropdown } from '@/components/menu-bar/components/nav-dropdown/nav-dropdown'
 import { ThemeDropdown } from '@/components/menu-bar/components/theme-dropdown/theme-dropdown'
 import { UserDropdown } from '@/components/menu-bar/components/user-dropdown/user-dropdown'
-import { Button } from '@/ui/button/button'
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  navigationMenuTriggerStyle,
   NavigationMenuViewport,
 } from '@/ui/navigation-menu/navigation-menu'
+import { cn } from '@/utils/cn'
 
 export function MenuBar() {
   const { data: session, status } = useSession()
@@ -26,47 +27,46 @@ export function MenuBar() {
     <div className='flex w-screen max-w-screen-2xl items-center'>
       <NavigationMenu className='border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark relative m-5 flex w-full max-w-screen-2xl items-center justify-between rounded-md border-2 p-2 text-xl shadow-md'>
         <NavigationMenuList className='flex items-center gap-2'>
-          <Link href='/'>
-            <NavigationMenuLink>
-              <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>
+          <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl '>
+            <Link href='/' legacyBehavior>
+              <NavigationMenuLink
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  'items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'
+                )}
+              >
                 <IconInfinity className='self-center sm:hidden' size={28} />
                 <IconInfinity className='hidden sm:block' size={40} />
                 retroloop
-              </NavigationMenuItem>
-            </NavigationMenuLink>
-          </Link>
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
         </NavigationMenuList>
 
         <NavigationMenuList className='hidden gap-6 sm:flex'>
-          <Link href='/dashboard'>
-            <NavigationMenuLink>
-              <NavigationMenuItem>
-                <Button
-                  className='flex gap-2 text-lg'
-                  variant='ghost'
-                  onClick={!isSignedUp ? () => signIn() : undefined}
-                >
-                  <IconLayoutGrid size={20} />
-                  Dashboard
-                </Button>
-              </NavigationMenuItem>
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuItem>
+            <Link href='/dashboard' legacyBehavior>
+              <NavigationMenuLink
+                className={cn(navigationMenuTriggerStyle(), 'flex cursor-pointer gap-2 text-lg')}
+                onClick={!isSignedUp ? () => signIn() : undefined}
+              >
+                <IconLayoutGrid size={20} />
+                Dashboard
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
 
-          <Link href='/settings'>
-            <NavigationMenuLink>
-              <NavigationMenuItem className='hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark flex cursor-pointer items-center gap-1 rounded-md p-2 transition ease-in-out'>
-                <Button
-                  className='flex gap-2 text-lg'
-                  variant='ghost'
-                  onClick={!isSignedUp ? () => signIn() : undefined}
-                >
-                  <IconDotsCircleHorizontal size={20} />
-                  Settings
-                </Button>
-              </NavigationMenuItem>
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuItem>
+            <Link href='/settings' legacyBehavior>
+              <NavigationMenuLink
+                className={cn(navigationMenuTriggerStyle(), 'flex cursor-pointer gap-2 text-lg')}
+                onClick={!isSignedUp ? () => signIn() : undefined}
+              >
+                <IconDotsCircleHorizontal size={20} />
+                Settings
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
         </NavigationMenuList>
 
         <div className='flex items-center gap-2'>
