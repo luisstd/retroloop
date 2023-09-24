@@ -1,33 +1,30 @@
 'use client'
 
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { IconUserCircle } from '@tabler/icons-react'
 import { signOut, useSession } from 'next-auth/react'
+
+import { Button } from '@/ui/button/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover/popover'
 
 export function UserDropdown() {
   const { data: session } = useSession()
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <IconUserCircle size={30} />
-      </DropdownMenu.Trigger>
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant='ghost' className='rounded-l-md rounded-r-3xl'>
+          <IconUserCircle size={24} />
+        </Button>
+      </PopoverTrigger>
 
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content>
-          <DropdownMenu.Label />
-          <DropdownMenu.Item className='flex w-full flex-col items-center rounded-md border-2 border-base-dark bg-base-light p-3 dark:border-base-light dark:bg-base-dark '>
-            <span>
-              Logged in as <br />
-              <strong>{session?.user?.name}</strong>
-            </span>
-
-            <button className='btn m-2 px-2 py-1 font-bold italic' onClick={() => signOut()}>
-              Logout
-            </button>
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
+      <PopoverContent className='flex w-max flex-col items-center gap-1'>
+        <div>
+          Logged in as
+          <br />
+          <strong>{session?.user?.name}</strong>
+        </div>
+        <Button onClick={() => signOut()}>Logout</Button>
+      </PopoverContent>
+    </Popover>
   )
 }
