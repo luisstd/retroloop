@@ -2,6 +2,8 @@
 
 import { FeedbackFish } from '@feedback-fish/react'
 
+import { Button } from '@/ui/button/button'
+
 type FeedbackButtonProps = {
   userEmail: string
 }
@@ -11,12 +13,13 @@ export function Feedback({ userEmail }: FeedbackButtonProps) {
 
   return (
     <FeedbackFish projectId={PROJECT_ID} userId={userEmail}>
-      <button
-        className='fixed bottom-5 right-10 z-40 cursor-pointer rounded border-none bg-base-dark px-4 py-2 font-bold text-base-light dark:bg-base-light dark:text-base-dark'
+      <Button
+        variant='secondary'
+        className='fixed bottom-5 right-10 z-40 '
         aria-label='Send feedback'
       >
         Send feedback
-      </button>
+      </Button>
     </FeedbackFish>
   )
 }
