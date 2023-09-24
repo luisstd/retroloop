@@ -1,10 +1,18 @@
 'use client'
 
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { IconDeviceLaptop, IconMoon, IconSun } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+
+import { Button } from '@/ui/button/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuTrigger,
+} from '@/ui/dropdown-menu/dropdown-menu'
 
 export function ThemeDropdown() {
   const [mounted, setMounted] = useState(false)
@@ -19,69 +27,57 @@ export function ThemeDropdown() {
   }
   return (
     <>
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
-          {resolvedTheme === 'light' && theme === 'light' ? (
-            <IconSun size={30} className='text-blue-400' />
-          ) : resolvedTheme === 'light' ? (
-            <IconSun size={30} />
-          ) : resolvedTheme === 'dark' && theme === 'dark' ? (
-            <IconMoon size={30} className='text-blue-300' />
-          ) : resolvedTheme === 'dark' ? (
-            <IconMoon size={30} />
-          ) : (
-            <IconDeviceLaptop size={30} />
-          )}
-        </DropdownMenu.Trigger>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant='ghost' aria-label='Select theme'>
+            {resolvedTheme === 'light' && theme === 'light' ? (
+              <IconSun size={24} className='text-blue-400' />
+            ) : resolvedTheme === 'light' ? (
+              <IconSun size={24} />
+            ) : resolvedTheme === 'dark' && theme === 'dark' ? (
+              <IconMoon size={24} className='text-blue-300' />
+            ) : resolvedTheme === 'dark' ? (
+              <IconMoon size={24} />
+            ) : (
+              <IconDeviceLaptop size={24} />
+            )}
+          </Button>
+        </DropdownMenuTrigger>
 
-        <DropdownMenu.Portal>
-          <DropdownMenu.Content>
-            <DropdownMenu.Label />
-            <DropdownMenu.Item />
-
-            <ToggleGroup.Root
-              type='single'
-              orientation='vertical'
-              value={theme}
-              aria-label='Dark/Light/System Mode Selection'
-              className='m-2 flex w-full flex-col items-start gap-1 rounded-md border-2 border-base-dark bg-base-light pt-1 dark:border-base-light dark:bg-base-dark'
+        <DropdownMenuPortal>
+          <DropdownMenuContent aria-label='Dark/Light/System Mode Selection'>
+            <DropdownMenuLabel>Theme</DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() => setTheme('light')}
+              className={`flex items-center gap-1 ${
+                theme === 'light' ? 'font-bold' : 'font-normal'
+              }`}
             >
-              <ToggleGroup.Item
-                value='light'
-                onClick={() => setTheme('light')}
-                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
-                  theme === 'light' ? 'font-bold' : 'font-normal'
-                }`}
-              >
-                <IconSun size={30} />
-                <span>Light</span>
-              </ToggleGroup.Item>
+              <IconSun size={22} />
+              <span>Light</span>
+            </DropdownMenuItem>
 
-              <ToggleGroup.Item
-                value='dark'
-                onClick={() => setTheme('dark')}
-                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark ${
-                  theme === 'dark' ? 'font-bold' : 'font-normal'
-                }`}
-              >
-                <IconMoon size={30} />
-                <span>Dark</span>
-              </ToggleGroup.Item>
-
-              <ToggleGroup.Item
-                value='system'
-                onClick={() => setTheme('system')}
-                className={`mx-0 flex w-full items-center gap-1 px-1 py-1 hover:bg-hover-light hover:text-base-dark dark:hover:bg-hover-dark ${
-                  theme === 'system' ? 'font-bold' : 'font-normal'
-                }`}
-              >
-                <IconDeviceLaptop size={30} />
-                <span>System</span>
-              </ToggleGroup.Item>
-            </ToggleGroup.Root>
-          </DropdownMenu.Content>
-        </DropdownMenu.Portal>
-      </DropdownMenu.Root>
+            <DropdownMenuItem
+              onClick={() => setTheme('dark')}
+              className={`flex items-center gap-1 ${
+                theme === 'dark' ? 'font-bold' : 'font-normal'
+              }`}
+            >
+              <IconMoon size={22} />
+              <span>Dark</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => setTheme('system')}
+              className={`flex items-center gap-1 ${
+                theme === 'system' ? 'font-bold' : 'font-normal'
+              }`}
+            >
+              <IconDeviceLaptop size={22} />
+              <span>System</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenuPortal>
+      </DropdownMenu>
     </>
   )
 }
