@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { Footer } from '@/components/footer/footer'
-import { MenuBar } from '@/components/menu-bar/menu-bar'
 
 const Terms: NextPage = () => {
   return (
@@ -35,8 +34,6 @@ const Terms: NextPage = () => {
         />
         <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
-
-      <MenuBar />
 
       <main className='prose prose-md max-w-prose px-5 '>
         <article>

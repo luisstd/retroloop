@@ -60,8 +60,6 @@ const Landingpage: NextPage = () => {
         <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
 
-      <MenuBar />
-
       <main className='flex h-screen w-screen max-w-screen-2xl flex-col items-center'>
         <section className='row-start-1 my-5 mb-20 flex w-full flex-col items-center gap-5 px-2'>
           <div className='flex items-center gap-2'>
@@ -75,13 +73,13 @@ const Landingpage: NextPage = () => {
           <div className='flex gap-4'>
             <Link href={'/dashboard'}>
               {isSignedUp ? (
-                <button className='btn bg-base-light p-2 text-xl font-bold dark:bg-base-dark'>
+                <button className='btn bg-base-light dark:bg-base-dark p-2 text-xl font-bold'>
                   Get started
                 </button>
               ) : (
                 <button
                   onClick={() => signIn()}
-                  className='btn bg-base-light p-2 text-xl font-bold dark:bg-base-dark'
+                  className='btn bg-base-light dark:bg-base-dark p-2 text-xl font-bold'
                 >
                   Get started
                 </button>
@@ -89,7 +87,7 @@ const Landingpage: NextPage = () => {
             </Link>
 
             <Link href={'https://github.com/luisstd/retroloop'}>
-              <button className='btn flex items-center gap-2 bg-base-light p-2 text-xl font-bold dark:bg-base-dark'>
+              <button className='btn bg-base-light dark:bg-base-dark flex items-center gap-2 p-2 text-xl font-bold'>
                 <IconBrandGithub size={24} />
                 Github
               </button>
@@ -97,9 +95,9 @@ const Landingpage: NextPage = () => {
           </div>
         </section>
 
-        <section className='w grid-rows-auto my-2 grid max-h-max min-h-min w-5/6 grid-cols-1 rounded-md border-2 border-base-dark bg-base-light shadow-md dark:border-base-light dark:bg-base-dark md:w-11/12 md:grid-cols-2'>
+        <section className='w grid-rows-auto border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark my-2 grid max-h-max min-h-min w-5/6 grid-cols-1 rounded-md border-2 shadow-md md:w-11/12 md:grid-cols-2'>
           <div className='col-start-1 row-start-1 flex w-full flex-col gap-3 p-10'>
-            <h2 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
+            <h2 className='text-accent-light dark:text-accent-dark mb-5 font-bold'>
               A platform for effective retrospectives
             </h2>
             <div className='flex items-center gap-6 md:justify-start'>
@@ -162,9 +160,9 @@ const Landingpage: NextPage = () => {
           </div>
         </section>
 
-        <section className='my-2 grid max-h-max min-h-min w-5/6 rounded-md border-2 border-base-dark bg-base-light shadow-md dark:border-base-light dark:bg-base-dark md:w-11/12 md:grid-cols-2'>
+        <section className='border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark my-2 grid max-h-max min-h-min w-5/6 rounded-md border-2 shadow-md md:w-11/12 md:grid-cols-2'>
           <div className='row-start-1 flex flex-col gap-3 p-10 md:col-start-2'>
-            <h2 className='mb-5 font-bold text-accent-light dark:text-accent-dark'>
+            <h2 className='text-accent-light dark:text-accent-dark mb-5 font-bold'>
               A resource for continuous improvement
             </h2>
             <div className='flex items-center justify-center gap-6 md:justify-start'>

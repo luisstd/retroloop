@@ -46,8 +46,6 @@ const Settings: NextPage = () => {
 
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
-      <MenuBar />
-
       {isSignedUp && session?.user ? <ProfileSection /> : <SignUpForm />}
 
       {!isSignedUp && !session?.user ? (
