@@ -24,7 +24,7 @@ export function MenuBar() {
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
-    <NavigationMenu className='m-5 flex items-center gap-2 rounded-full border-2 p-1 text-xl shadow-sm'>
+    <NavigationMenu className='m-5 flex items-center gap-2 rounded-full border-2 bg-background p-1 text-xl shadow-sm'>
       <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl '>
         <Link href='/' legacyBehavior passHref>
           <NavigationMenuLink
