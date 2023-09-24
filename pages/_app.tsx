@@ -33,7 +33,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<Custo
           <div
             className={
               (cn(space_grotesk.className),
-              'relative mx-auto flex h-screen w-screen max-w-screen-2xl flex-col items-center')
+              'relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center')
             }
           >
             <MenuBar />
