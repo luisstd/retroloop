@@ -21,7 +21,7 @@ export function NavigationDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className='sm:hidden'>
-        <Button variant='ghost'>
+        <Button variant='ghost' size='icon'>
           <IconMenu size={24} />
         </Button>
       </DropdownMenuTrigger>

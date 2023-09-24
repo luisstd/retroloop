@@ -12,7 +12,7 @@ export function UserDropdown() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='ghost' className='rounded-l-md rounded-r-3xl'>
+        <Button variant='ghost' size='icon' className='rounded-l-md rounded-r-3xl'>
           <IconUserCircle size={24} />
         </Button>
       </PopoverTrigger>

@@ -29,7 +29,7 @@ export function ThemeDropdown() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost' aria-label='Select theme'>
+          <Button variant='ghost' size='icon' aria-label='Select theme'>
             {resolvedTheme === 'light' && theme === 'light' ? (
               <IconSun size={24} className='text-blue-400' />
             ) : resolvedTheme === 'light' ? (
