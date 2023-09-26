@@ -51,7 +51,7 @@ export function MenuBar() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href='/settings' legacyBehavior passHref>
+          <Link href='/profile' legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
               onClick={!isSignedUp ? () => signIn() : undefined}

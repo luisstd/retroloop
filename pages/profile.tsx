@@ -7,13 +7,13 @@ import { Feedback } from '@/components/feedback/feedback'
 import { ProfileSection } from '@/components/profile-section/profile-section'
 import { SignUpForm } from '@/components/sign-up/sign-up-form'
 
-const Settings: NextPage = () => {
+const Profile: NextPage = () => {
   const { data: session, status } = useSession()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
-    <div className='flex flex-col items-center'>
+    <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
@@ -53,8 +53,8 @@ const Settings: NextPage = () => {
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
 
-export default Settings
+export default Profile

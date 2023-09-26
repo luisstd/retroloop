@@ -37,9 +37,9 @@ export function NavigationDropdown() {
           </DropdownMenuItem>
 
           <DropdownMenuItem
-            className={`flex ${currentPage === '/settings' ? 'font-bold' : 'font-normal'}`}
+            className={`flex ${currentPage === '/profile' ? 'font-bold' : 'font-normal'}`}
           >
-            <Link href='/settings' legacyBehavior passHref>
+            <Link href='/profile' legacyBehavior passHref>
               <NavigationMenuLink>Settings</NavigationMenuLink>
             </Link>
           </DropdownMenuItem>
