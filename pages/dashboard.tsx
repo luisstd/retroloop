@@ -47,11 +47,11 @@ const Dashboard: NextPage = () => {
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
       {isSignedUp && session?.user ? (
-        <>
+        <section className='flex w-full flex-col items-center gap-10'>
           <RetroSection userId={session.user.id} />
 
           <TeamSection />
-        </>
+        </section>
       ) : (
         <SignUpForm />
       )}
