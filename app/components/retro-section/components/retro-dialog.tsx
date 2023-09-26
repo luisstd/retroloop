@@ -1,6 +1,5 @@
 'use client'
 
-import { Transition } from '@headlessui/react'
 import { IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
@@ -36,25 +35,6 @@ export function RetroDialog({ handleAddRetro }: RetroDialogProps) {
           <IconPlus size={18} />
         </Button>
       </DialogTrigger>
-
-      <Transition.Root show={isOpen}>
-        <Transition.Child
-          enter='ease-out duration-300'
-          enterFrom='opacity-0'
-          enterTo='opacity-100'
-          leave='ease-in duration-200'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
-        ></Transition.Child>
-        <Transition.Child
-          enter='ease-out duration-300'
-          enterFrom='opacity-0 scale-95'
-          enterTo='opacity-100 scale-100'
-          leave='ease-in duration-200'
-          leaveFrom='opacity-100 scale-100'
-          leaveTo='opacity-0 scale-95'
-        ></Transition.Child>
-      </Transition.Root>
 
       <DialogContent>
         <DialogHeader>
