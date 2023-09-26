@@ -14,7 +14,7 @@ const Dashboard: NextPage = () => {
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
-    <div className='flex flex-col items-center'>
+    <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
@@ -62,7 +62,7 @@ const Dashboard: NextPage = () => {
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
 export default Dashboard
