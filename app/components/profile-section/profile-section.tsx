@@ -73,7 +73,7 @@ export function ProfileSection() {
         onSubmit={(values) => handleSubmit(values)}
       >
         <Form className='mx-auto w-10/12'>
-          <div className='flex items-end justify-around'>
+          <div className='flex flex-col items-center justify-around gap-5 sm:flex-row sm:items-end sm:gap-0'>
             <section className='flex flex-col gap-5'>
               <fieldset className='flex flex-col items-start gap-2'>
                 <Label htmlFor='name'>Name</Label>
