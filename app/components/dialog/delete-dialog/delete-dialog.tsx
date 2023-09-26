@@ -41,9 +41,9 @@ export function DeleteDialog({ itemToDelete, deleteHandler }: DeleteDialogProps)
         ></Transition.Child>
       </Transition.Root>
 
-      <AlertDialog.Overlay className='fixed inset-0 z-20 bg-base-dark/50' />
+      <AlertDialog.Overlay className='bg-base-dark/50 fixed inset-0 z-20' />
 
-      <AlertDialog.Content className='fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light md:w-full'>
+      <AlertDialog.Content className='border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark dark:text-base-light fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 p-5 md:w-full'>
         <AlertDialog.Title className='py-5 text-3xl font-bold italic'>
           Are you absolutely sure?
         </AlertDialog.Title>

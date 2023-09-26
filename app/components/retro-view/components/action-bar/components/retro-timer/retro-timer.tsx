@@ -77,7 +77,7 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
           {!timer.isRunning && !timer.minutes ? (
             <input
               type='number'
-              className='max-w-max rounded-md border-2 border-base-dark bg-neutral-100 p-1 dark:border-base-light dark:bg-neutral-700'
+              className='border-base-dark dark:border-base-light max-w-max rounded-md border-2 bg-neutral-100 p-1 dark:bg-neutral-700'
               min={0}
               max={99}
               maxLength={2}

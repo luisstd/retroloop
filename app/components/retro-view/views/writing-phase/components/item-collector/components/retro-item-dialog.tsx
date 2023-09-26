@@ -51,11 +51,11 @@ export function RetroItemDialog({
           leaveTo='opacity-0 scale-95'
         ></Transition.Child>
       </Transition.Root>
-      <Dialog.Overlay className='fixed inset-0 z-20 bg-base-dark/50' />
+      <Dialog.Overlay className='bg-base-dark/50 fixed inset-0 z-20' />
 
       <Dialog.Content
         onPointerDownOutside={(event) => event.preventDefault()}
-        className='fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light md:w-full'
+        className='border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark dark:text-base-light fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 p-5 md:w-full'
         data-testid='dialog-content'
       >
         <div className='flex flex-row items-start justify-between'>
@@ -96,7 +96,7 @@ export function RetroItemDialog({
                 name='content'
                 component='textarea'
                 rows={10}
-                className='h-full min-h-min w-full rounded-md border-2 border-base-dark bg-neutral-200 p-2 dark:border-base-light dark:bg-neutral-700'
+                className='border-base-dark dark:border-base-light h-full min-h-min w-full rounded-md border-2 bg-neutral-200 p-2 dark:bg-neutral-700'
               />
             </fieldset>
 

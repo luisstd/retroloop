@@ -71,7 +71,7 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
         </Toast.Root>
 
         {open ? (
-          <Toast.Viewport className='fixed bottom-0 right-0 z-50 m-5 w-fit gap-2 rounded-md border-2 border-base-dark bg-base-light p-5 text-base-dark dark:border-base-light dark:bg-base-dark dark:text-base-light ' />
+          <Toast.Viewport className='border-base-dark bg-base-light text-base-dark dark:border-base-light dark:bg-base-dark dark:text-base-light fixed bottom-0 right-0 z-50 m-5 w-fit gap-2 rounded-md border-2 p-5 ' />
         ) : null}
       </Toast.Provider>
 

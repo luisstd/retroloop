@@ -50,12 +50,12 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               zIndex: `${index}`,
               transform: `translate(${index * -5}px,${index * -5}px)`,
             }}
-            className='max-w-5/6 absolute h-full w-3/5 rounded-md border-2 border-base-dark bg-base-light p-10 text-center text-lg dark:border-base-light dark:bg-base-dark'
+            className='max-w-5/6 border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark absolute h-full w-3/5 rounded-md border-2 p-10 text-center text-lg'
             key={item.id}
           >
             <div className='flex h-full items-center justify-center gap-1 text-center text-2xl '>
               <q className='text-left font-bold'>
-                <span className='mx-1 bg-base-light dark:bg-base-dark'>
+                <span className='bg-base-light dark:bg-base-dark mx-1'>
                   {sortedItems[currentIndex].content}
                 </span>
               </q>

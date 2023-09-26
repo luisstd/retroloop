@@ -23,7 +23,7 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
         RetroPhase.VOTING ||
         RetroPhase.DISCUSSING ? (
         <div
-          className='cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
+          className='hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out'
           onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })}
         >
           01) Write
@@ -53,7 +53,7 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
         <div className='px-2 text-lg'>02) Vote</div>
       ) : retrospective.phase === RetroPhase.DISCUSSING ? (
         <div
-          className='cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
+          className='hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out'
           onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.VOTING })}
         >
           02) Vote

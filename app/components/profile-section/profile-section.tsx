@@ -54,12 +54,12 @@ export function ProfileSection() {
         </Toast.Root>
 
         {open ? (
-          <Toast.Viewport className='fixed bottom-0 right-0 m-5 w-fit gap-2 rounded-md border-2 border-base-dark bg-base-light p-5 text-base-dark dark:border-base-light dark:bg-base-dark dark:text-base-light ' />
+          <Toast.Viewport className='border-base-dark bg-base-light text-base-dark dark:border-base-light dark:bg-base-dark dark:text-base-light fixed bottom-0 right-0 m-5 w-fit gap-2 rounded-md border-2 p-5 ' />
         ) : null}
 
         {user.data ? (
           <main className='flex w-full max-w-screen-2xl justify-around gap-5'>
-            <section className='mx-5 min-w-min flex-grow rounded-md border-2 border-base-dark p-5 text-xl shadow-md dark:border-base-light'>
+            <section className='border-base-dark dark:border-base-light mx-5 min-w-min flex-grow rounded-md border-2 p-5 text-xl shadow-md'>
               <Formik
                 validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
                 initialValues={{
@@ -84,7 +84,7 @@ export function ProfileSection() {
                         name='name'
                         type='text'
                         placeholder='Your Name'
-                        className='m-2 rounded-md border-2 border-base-dark bg-neutral-200 p-2 outline-2 dark:border-base-light dark:bg-neutral-700'
+                        className='border-base-dark dark:border-base-light m-2 rounded-md border-2 bg-neutral-200 p-2 outline-2 dark:bg-neutral-700'
                       />
                     </fieldset>
 
@@ -97,7 +97,7 @@ export function ProfileSection() {
                         name='email'
                         type='email'
                         placeholder='user@mail.com'
-                        className='m-2 rounded-md border-2 border-base-dark bg-neutral-200 p-2 outline-2 dark:border-base-light dark:bg-neutral-700'
+                        className='border-base-dark dark:border-base-light m-2 rounded-md border-2 bg-neutral-200 p-2 outline-2 dark:bg-neutral-700'
                       />
                     </fieldset>
 
@@ -110,7 +110,7 @@ export function ProfileSection() {
                     <Avatar.Image
                       src={user.data?.image || ''}
                       alt='User Avatar'
-                      className='hidden rounded border-2 border-base-dark hover:cursor-pointer dark:border-base-light sm:block'
+                      className='border-base-dark dark:border-base-light hidden rounded border-2 hover:cursor-pointer sm:block'
                       width={250}
                       height='auto'
                     />
