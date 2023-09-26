@@ -10,6 +10,7 @@ import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 
 import { MenuBar } from '@/components/menu-bar/menu-bar'
+import { Toaster } from '@/ui/toast/toaster'
 import { cn } from '@/utils/cn'
 import { trpc } from '@/utils/trpc'
 
@@ -39,6 +40,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<Custo
             <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
             <MenuBar />
             <Component {...pageProps} />
+            <Toaster />
           </div>
         </PlausibleProvider>
         <ReactQueryDevtools initialIsOpen={false} />
