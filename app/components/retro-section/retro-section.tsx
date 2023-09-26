@@ -53,7 +53,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
   }
 
   return (
-    <Card className='bg-background p-10 shadow-sm'>
+    <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
       <div className='flex flex-row items-baseline justify-between'>
         <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
