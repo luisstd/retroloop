@@ -1,0 +1,25 @@
+name: Merge dev into main
+
+on:
+  workflow_dispatch:
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Git User
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Merge dev into main
+        run: |
+          git checkout main
+          git pull origin main
+          git merge --squash dev || { echo "Merge conflict"; exit 1; }
+          git commit -m "Merge dev into main via GitHub Actions"
+          git push origin main
