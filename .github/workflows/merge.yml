@@ -16,10 +16,14 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
+      - name: Fetch latest branches
+        run: |
+          git fetch origin main:main
+          git fetch origin dev:dev
+
       - name: Merge dev into main
         run: |
           git checkout main
-          git pull origin main
           git merge --squash dev || { echo "Merge conflict"; exit 1; }
           git commit -m "Merge dev into main via GitHub Actions"
           git push origin main
