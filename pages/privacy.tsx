@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer/footer'
 
 const Privacy: NextPage = () => {
   return (
-    <div className='grid place-items-center'>
+    <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
@@ -35,7 +35,7 @@ const Privacy: NextPage = () => {
         <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
 
-      <main className='prose'>
+      <main className='prose text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>
         <h2>Retroloop Privacy Policy</h2>
         <p>
           Your privacy is important to us. It is Retroloop&#39;s policy to respect your privacy and
@@ -529,7 +529,7 @@ const Privacy: NextPage = () => {
       </main>
 
       <Footer />
-    </div>
+    </>
   )
 }
 export default Privacy
