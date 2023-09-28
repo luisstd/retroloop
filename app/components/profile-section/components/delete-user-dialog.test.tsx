@@ -3,10 +3,6 @@ import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vi
 
 import { DeleteUserDialog } from '@/components/profile-section/components/delete-user-dialog'
 
-vi.mock('@radix-ui/react-alert-dialog', () => ({
-  Transition: vi.fn(),
-}))
-
 test('DeleteUserDialog', () => {
   describe('DeleteUserDialog', () => {
     let useStateMock
