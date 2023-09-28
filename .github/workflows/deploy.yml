@@ -24,6 +24,6 @@ jobs:
       - name: Merge dev into main
         run: |
           git checkout main
-          git merge --squash dev || { echo "Merge conflict"; exit 1; }
+          git merge dev || { echo "Merge conflict"; exit 1; }
           git commit -m "Merge dev into main via GitHub Actions"
           git push origin main
