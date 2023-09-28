@@ -30,11 +30,11 @@ describe('MenuBar', () => {
     fireEvent.click(dashboardLink)
   })
 
-  test('should render Settings link and handle click when user is authenticated', async () => {
-    const settingsLink = screen.getByText('Settings')
-    expect(settingsLink).toBeDefined()
+  test('should render Profile link and handle click when user is authenticated', async () => {
+    const profileLink = screen.getByText('Profile')
+    expect(profileLink).toBeDefined()
 
-    fireEvent.click(settingsLink)
+    fireEvent.click(profileLink)
   })
 
   test('should handle user login when user is not authenticated', async () => {
