@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer/footer'
 
 const Terms: NextPage = () => {
   return (
-    <div className='grid place-items-center'>
+    <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
@@ -35,7 +35,7 @@ const Terms: NextPage = () => {
         <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
 
-      <main className='prose'>
+      <main className='prose text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>
         <article>
           <h2>Retroloop Terms of Service</h2>
           <p>
@@ -349,7 +349,7 @@ const Terms: NextPage = () => {
       </main>
 
       <Footer />
-    </div>
+    </>
   )
 }
 
