@@ -1,13 +1,13 @@
+name: Release
+
 on:
   push:
     branches:
-      - dev
+      - main
 
 permissions:
   contents: write
   pull-requests: write
-
-name: Release
 
 jobs:
   release-please:
