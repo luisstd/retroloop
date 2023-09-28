@@ -17,7 +17,7 @@ const Profile: NextPage = () => {
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
-        <title>Retroloop - Settings</title>
+        <title>Retroloop - Profile</title>
 
         <meta name='title' content='Retroloop - Agile retrospectives made easy' />
         <meta
