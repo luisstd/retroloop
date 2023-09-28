@@ -13,26 +13,26 @@ import { cn } from '@/utils/cn'
 
 export function Footer() {
   return (
-    <>
-      <footer className='max-w-screen-2x m-5 rounded-md p-3 dark:border-neutral-200'>
-        <NavigationMenu className='grid place-items-center'>
-          <NavigationMenuList className='flex items-center gap-2'>
-            <NavigationMenuItem className='text-center'>
-              <Link href='/privacy' legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}>
-                  Privacy Policy
-                </NavigationMenuLink>
-              </Link>
+    <footer>
+      <NavigationMenu className='p-5'>
+        <NavigationMenuList className='flex items-center gap-2'>
+          <NavigationMenuItem>
+            <Link href='/privacy' legacyBehavior passHref>
+              <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}>
+                Privacy Policy
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
 
-              <Link href='/terms' legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}>
-                  Terms of Use
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </footer>
-    </>
+          <NavigationMenuItem>
+            <Link href='/terms' legacyBehavior passHref>
+              <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}>
+                Terms of Use
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </footer>
   )
 }
