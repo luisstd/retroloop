@@ -4,7 +4,9 @@ import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
 import { version } from 'package.json'
+import { GridLoader } from 'react-spinners'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { DeleteUserDialog } from '@/components/profile-section/components/delete-user-dialog'
@@ -23,6 +25,7 @@ export function ProfileSection() {
   const user = trpc.user.getLoggedIn.useQuery()
   const router = useRouter()
   const { toast } = useToast()
+  const { resolvedTheme } = useTheme()
 
   const mutationEdit = trpc.user.edit.useMutation({
     onSuccess: () => {
@@ -53,66 +56,77 @@ export function ProfileSection() {
   }
 
   return (
-    <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
-      <CardHeader className='flex flex-row items-baseline justify-between'>
-        <CardTitle>PROFILE</CardTitle>
-        <Badge>Version {version}</Badge>
-      </CardHeader>
+    <>
+      {user.data ? (
+        <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
+          <CardHeader className='flex flex-row items-baseline justify-between'>
+            <CardTitle>PROFILE</CardTitle>
+            <Badge>Version {version}</Badge>
+          </CardHeader>
 
-      <Formik
-        validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
-        initialValues={{
-          id: user.data?.id || '',
-          name: user.data?.name || '',
-          email: user.data?.email || '',
-          image: user.data?.image || '',
-          role: user.data?.role || '',
-          createdAt: user.data?.createdAt,
-          emailVerified: user.data?.emailVerified,
-        }}
-        onSubmit={(values) => handleSubmit(values)}
-      >
-        <Form className='mx-auto w-10/12'>
-          <div className='flex flex-col items-center justify-around gap-5 sm:flex-row sm:items-end sm:gap-0'>
-            <section className='flex flex-col gap-5'>
-              <fieldset className='flex flex-col items-start gap-2'>
-                <Label htmlFor='name'>Name</Label>
-                <Field as={Input} id='name' name='name' type='text' placeholder='Your Name' />
-              </fieldset>
+          <Formik
+            validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
+            initialValues={{
+              id: user.data?.id || '',
+              name: user.data?.name || '',
+              email: user.data?.email || '',
+              image: user.data?.image || '',
+              role: user.data?.role || '',
+              createdAt: user.data?.createdAt,
+              emailVerified: user.data?.emailVerified,
+            }}
+            onSubmit={(values) => handleSubmit(values)}
+          >
+            <Form className='mx-auto w-10/12'>
+              <div className='flex flex-col items-center justify-around gap-5 sm:flex-row sm:items-end sm:gap-0'>
+                <section className='flex flex-col gap-5'>
+                  <fieldset className='flex flex-col items-start gap-2'>
+                    <Label htmlFor='name'>Name</Label>
+                    <Field as={Input} id='name' name='name' type='text' placeholder='Your Name' />
+                  </fieldset>
 
-              <fieldset className='flex flex-col items-start gap-2'>
-                <Label htmlFor='email'>E-Mail</Label>
-                <Field
-                  as={Input}
-                  id='email'
-                  name='email'
-                  type='email'
-                  placeholder='user@mail.com'
-                />
-              </fieldset>
+                  <fieldset className='flex flex-col items-start gap-2'>
+                    <Label htmlFor='email'>E-Mail</Label>
+                    <Field
+                      as={Input}
+                      id='email'
+                      name='email'
+                      type='email'
+                      placeholder='user@mail.com'
+                    />
+                  </fieldset>
 
-              <Button type='submit'>Submit</Button>
-            </section>
+                  <Button type='submit'>Submit</Button>
+                </section>
 
-            <section className='flex flex-col items-center gap-2'>
-              <Avatar className='h-32 w-32'>
-                <AvatarImage src={user.data?.image || ''} alt='User Avatar' />
-                <AvatarFallback delayMs={300} className='h-32 w-32'>
-                  <IconUserCircle size={64} />
-                </AvatarFallback>
-              </Avatar>
-              <div className='flex flex-col items-center gap-2'>
-                <Label>User since</Label>
-                <Badge variant='outline'>{user.data?.createdAt.toLocaleString()}</Badge>
+                <section className='flex flex-col items-center gap-2'>
+                  <Avatar className='h-32 w-32'>
+                    <AvatarImage src={user.data.image || ''} alt='User Avatar' />
+                    <AvatarFallback className='h-32 w-32'>
+                      <IconUserCircle size={64} />
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className='flex flex-col items-center gap-2'>
+                    <Label>User since</Label>
+                    <Badge variant='outline'>{user.data.createdAt.toLocaleString()}</Badge>
 
-                {user.data ? (
-                  <DeleteUserDialog itemToDelete={user.data} deleteHandler={handleDelete} />
-                ) : null}
+                    {user.data ? (
+                      <DeleteUserDialog itemToDelete={user.data} deleteHandler={handleDelete} />
+                    ) : null}
+                  </div>
+                </section>
               </div>
-            </section>
-          </div>
-        </Form>
-      </Formik>
-    </Card>
+            </Form>
+          </Formik>
+        </Card>
+      ) : (
+        <GridLoader
+          color={resolvedTheme === 'light' ? 'black' : 'white'}
+          loading={user.isLoading}
+          size={15}
+          aria-label='Loading Spinner'
+        />
+      )}
+    </>
   )
 }
