@@ -4,6 +4,8 @@ import { RetroItem } from '@prisma/client'
 import { IconArrowLeft, IconArrowRight, IconChecks } from '@tabler/icons-react'
 import Link from 'next/link'
 
+import { Button } from '@/ui/button/button'
+
 type ItemSwitcherProps = {
   handleNextItem: () => void
   handlePreviousItem: () => void
@@ -21,40 +23,34 @@ export function ItemSwitcher({
     <div className='flex flex-col items-center justify-center gap-2'>
       <div className='mx-2 flex items-center gap-2'>
         {currentIndex > 0 ? (
-          <button
-            onClick={handlePreviousItem}
-            className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'
-          >
+          <Button onClick={handlePreviousItem}>
             <IconArrowLeft />
             Previous
-          </button>
+          </Button>
         ) : (
-          <button className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'>
+          <Button>
             <IconArrowLeft className='opacity-0' />
             Previous
-          </button>
+          </Button>
         )}
         {currentIndex < retroItems.length - 1 ? (
-          <button
-            onClick={handleNextItem}
-            className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'
-          >
+          <Button onClick={handleNextItem}>
             Next
             <IconArrowRight />
-          </button>
+          </Button>
         ) : (
-          <button className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'>
+          <Button>
             Next
             <IconArrowRight className='opacity-0' />
-          </button>
+          </Button>
         )}
       </div>
       <div>
         <Link href={{ pathname: '/dashboard' }}>
-          <button className='btn flex flex-row items-center gap-2 px-5 py-2 text-lg'>
+          <Button>
             Finish Retro
             <IconChecks />
-          </button>
+          </Button>
         </Link>
       </div>
     </div>
