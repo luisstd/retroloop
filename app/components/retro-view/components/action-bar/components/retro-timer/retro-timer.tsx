@@ -6,6 +6,10 @@ import { add } from 'date-fns'
 import { useEffect, useState } from 'react'
 import { useTimer } from 'react-timer-hook'
 
+import { Button } from '@/ui/button/button'
+import { Card } from '@/ui/card/card'
+import { Input } from '@/ui/input/input'
+
 type RetroTimerProps = {
   selectedRetro: Retrospective
   handleUpdateRetro: (input: Retrospective) => void
@@ -67,65 +71,58 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
   }, [timerStarted, timer.isRunning, resumeTimer])
 
   return (
-    <>
-      <div className='flex h-6 items-center justify-center gap-3'>
-        <IconAlarm size={36} />
+    <Card className='flex h-full w-full items-center justify-center gap-3 p-3'>
+      <IconAlarm size={32} />
 
-        <h1 className='text-2xl font-bold'>Timer</h1>
+      <h1 className='text-2xl font-bold'>Timer</h1>
 
-        <div className='mx-2 flex gap-2 text-2xl'>
-          {!timer.isRunning && !timer.minutes ? (
-            <input
-              type='number'
-              className='border-base-dark dark:border-base-light max-w-max rounded-md border-2 bg-neutral-100 p-1 dark:bg-neutral-700'
-              min={0}
-              max={99}
-              maxLength={2}
-              size={2}
-              placeholder='00'
-              onChange={(e) => setMinutes(Number(e.currentTarget.value))}
-            />
-          ) : (
-            <span className='w-12 text-4xl'>
-              {isMinutesSingleDigit ? 0 : null}
-              {timer.minutes}:
-            </span>
-          )}
-          {!timer.isRunning && !timer.minutes ? (
-            <span className='self-center'>min</span>
-          ) : (
-            <span className='w-12 text-4xl'>
-              {isSecondsSingleDigit ? 0 : null}
-              {timer.seconds}
-            </span>
-          )}
-        </div>
-
-        {!timer.isRunning ? (
-          <button onClick={onStartTimer}>
-            <IconPlayerPlay size={36} />
-          </button>
+      <div className='mx-2 flex gap-2 text-2xl'>
+        {!timer.isRunning && !timer.minutes ? (
+          <Input
+            type='number'
+            min={0}
+            max={99}
+            maxLength={2}
+            size={2}
+            placeholder='00'
+            onChange={(e) => setMinutes(Number(e.currentTarget.value))}
+          />
         ) : (
-          <button onClick={timer.pause}>
-            <IconPlayerPause size={36} onClick={timer.pause} />
-          </button>
+          <span className='w-12 text-4xl'>
+            {isMinutesSingleDigit ? 0 : null}
+            {timer.minutes}:
+          </span>
         )}
-
-        <button
-          onClick={() => {
-            const time = new Date()
-
-            handleUpdateRetro({
-              ...selectedRetro,
-              timerExpiration: new Date(),
-            })
-
-            timer.restart(time)
-          }}
-        >
-          <IconRefresh size={34} />
-        </button>
+        {!timer.isRunning && !timer.minutes ? (
+          <span className='self-center'>min</span>
+        ) : (
+          <span className='w-12 text-4xl'>
+            {isSecondsSingleDigit ? 0 : null}
+            {timer.seconds}
+          </span>
+        )}
       </div>
-    </>
+
+      <Button size='icon' variant='ghost' onClick={timer.isRunning ? timer.pause : onStartTimer}>
+        {timer.isRunning ? <IconPlayerPause size={24} /> : <IconPlayerPlay size={24} />}
+      </Button>
+
+      <Button
+        size='icon'
+        variant='ghost'
+        onClick={() => {
+          const time = new Date()
+
+          handleUpdateRetro({
+            ...selectedRetro,
+            timerExpiration: new Date(),
+          })
+
+          timer.restart(time)
+        }}
+      >
+        <IconRefresh size={24} />
+      </Button>
+    </Card>
   )
 }
