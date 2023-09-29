@@ -7,6 +7,8 @@ import { DeleteDialog } from '@/components/dialog/delete-dialog/delete-dialog'
 import { EditDialog } from '@/components/dialog/edit-dialog/edit-dialog'
 import { RetroItemDialog } from '@/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
 import { RetroItemCreateInput } from '@/types/retro-item'
+import { Card } from '@/ui/card/card'
+import { toast } from '@/ui/toast/use-toast'
 import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
@@ -49,12 +51,16 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
 
   function handleDeleteRetroItem(input: RetroItem['id']): void {
     mutationDelete.mutate(input)
+    toast({
+      title: 'Feedback deleted',
+      description: 'Your feedback was successfully deleted.',
+    })
   }
 
   return (
-    <div className='h-full w-full'>
-      <div className='border-base-dark dark:border-base-light flex flex-row items-center border-b-2 pb-3'>
-        <h2 className='m-2 mr-auto p-1 text-xl font-bold'>{title}</h2>
+    <>
+      <div className='flex flex-row items-center pb-3'>
+        <h2 className='m-2 mr-auto p-2 text-xl font-bold'>{title}</h2>
         {userId ? (
           <RetroItemDialog
             retrospective={retrospective}
@@ -64,29 +70,29 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
           />
         ) : null}
       </div>
+
       <ul>
         {retroItems.data &&
           retroItems.data
             .filter((item) => item.type === itemType && item.userId === userId)
             .map((item: RetroItem, index: number) =>
               item.type === itemType ? (
-                <li
-                  className='border-base-dark dark:border-base-light my-3 flex justify-between rounded-md border-2 p-2'
-                  key={index}
-                >
-                  <p className='p-1'>{item.content}</p>
+                <li key={index}>
+                  <Card className='m-2 flex justify-between p-4'>
+                    <p>{item.content}</p>
 
-                  <div className='flex flex-row items-center'>
-                    <EditDialog
-                      itemToEdit={item}
-                      editHandler={(input) => handleEditRetroItem(input as RetroItem)}
-                    />
-                    <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
-                  </div>
+                    <div className='flex flex-row items-center'>
+                      <EditDialog
+                        itemToEdit={item}
+                        editHandler={(input) => handleEditRetroItem(input as RetroItem)}
+                      />
+                      <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
+                    </div>
+                  </Card>
                 </li>
               ) : null
             )}
       </ul>
-    </div>
+    </>
   )
 }
