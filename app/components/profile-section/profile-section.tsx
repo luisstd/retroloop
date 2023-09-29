@@ -3,9 +3,9 @@
 import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
+import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
-import { version } from 'package.json'
 import { GridLoader } from 'react-spinners'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -26,6 +26,8 @@ export function ProfileSection() {
   const router = useRouter()
   const { toast } = useToast()
   const { resolvedTheme } = useTheme()
+  const { publicRuntimeConfig } = getConfig()
+  const version = publicRuntimeConfig?.version
 
   const mutationEdit = trpc.user.edit.useMutation({
     onSuccess: () => {
