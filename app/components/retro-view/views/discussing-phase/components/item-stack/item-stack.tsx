@@ -69,9 +69,9 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               </CardHeader>
 
               <CardContent className='text-xl'>{sortedItems[currentIndex].content}</CardContent>
-              <p className='self-end justify-self-end px-5 text-sm font-medium'>
+              <CardDescription className='self-end justify-self-end px-5'>
                 {`${currentIndex + 1}/${sortedItems.length}`}
-              </p>
+              </CardDescription>
             </Card>
           </div>
         ))}
