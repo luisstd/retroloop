@@ -122,12 +122,14 @@ export function ProfileSection() {
           </Formik>
         </Card>
       ) : (
-        <GridLoader
-          color={resolvedTheme === 'light' ? 'black' : 'white'}
-          loading={user.isLoading}
-          size={15}
-          aria-label='Loading Spinner'
-        />
+        <div className='grid h-screen place-items-center'>
+          <GridLoader
+            color={resolvedTheme === 'light' ? 'black' : 'white'}
+            loading={user.isLoading}
+            size={15}
+            aria-label='Loading Spinner'
+          />
+        </div>
       )}
     </>
   )
