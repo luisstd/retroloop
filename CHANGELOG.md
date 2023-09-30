@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.4.0](https://github.com/luisstd/retroloop/compare/v1.3.1...v1.4.0) (2023-09-30)
+
+
+### Features
+
+* add generic alert dialog component ([d7ffae7](https://github.com/luisstd/retroloop/commit/d7ffae7c487588700e32bf610a5ed74c473ec39c))
+* add generic avatar component ([792c5f8](https://github.com/luisstd/retroloop/commit/792c5f83a415de9c1e16183fa4151b550f3be8b4))
+* add generic badge component ([7cef3df](https://github.com/luisstd/retroloop/commit/7cef3df83dde637744ea38a11711e169a2ca1528))
+* add generic button component ([34aab81](https://github.com/luisstd/retroloop/commit/34aab8138a4b0d52059b23707b4e0f826f7f35ea))
+* add generic card component ([8dd9e46](https://github.com/luisstd/retroloop/commit/8dd9e463c36e95e692925bb1a02770656518a399))
+* add generic dialog component ([69d324e](https://github.com/luisstd/retroloop/commit/69d324e3a73e792b1a75c839a15f9dd7d26f9929))
+* add generic dropdown menu ([33c1541](https://github.com/luisstd/retroloop/commit/33c1541564a504d35be26206377e54a2ce8c0a5c))
+* add generic input component ([3247613](https://github.com/luisstd/retroloop/commit/3247613c8628dc033383371ac3fccd44cd2c8514))
+* add generic label component ([de0fa7b](https://github.com/luisstd/retroloop/commit/de0fa7bdd3d17b8941f870dc4f1d70520560ab80))
+* add generic nav menu component ([2683c5e](https://github.com/luisstd/retroloop/commit/2683c5ef50f859d56e02d8993543c2d1de64628f))
+* add generic popover component ([9c6d963](https://github.com/luisstd/retroloop/commit/9c6d963cc11911dddf0d049ed39e07ad18e580e1))
+* add generic separator component ([2542b3b](https://github.com/luisstd/retroloop/commit/2542b3be9097bd9b847b2e806c730a4e3729dd36))
+* add generic textarea component ([03cafee](https://github.com/luisstd/retroloop/commit/03cafee8eb98868717db3971a56403a89f501b9b))
+* add generic toast components ([782e102](https://github.com/luisstd/retroloop/commit/782e102fe81e46787c82aff5d8244895ad2b5565))
+* add improved bg-pattern ([22095ba](https://github.com/luisstd/retroloop/commit/22095ba0d7755068a1520f2b9c498ee1bc098344))
+* add position indicator for feedback stack ([4159da9](https://github.com/luisstd/retroloop/commit/4159da99013ea718b86e51819b359cdd989c8031))
+* display item type on feedback stack ([642996e](https://github.com/luisstd/retroloop/commit/642996e015b9edbcc4f352d3d060c789c9f2c5ad))
+
+
+### Bug Fixes
+
+* add missing asChild prop ([0d61da0](https://github.com/luisstd/retroloop/commit/0d61da0fff653d64691ca95fe9df4ed117b86ebc))
+* fix compile errors ([ec0f41a](https://github.com/luisstd/retroloop/commit/ec0f41a0c233a48910ba79c3bd5bc534cceb076a))
+* fix layout shift with different feedback item sizes ([5425862](https://github.com/luisstd/retroloop/commit/54258624152d2b7ae3ce6ac989c88867d0ae427c))
+* fix positioning of feedback widget ([662181c](https://github.com/luisstd/retroloop/commit/662181c237366152fbf9f16251d1484c697206f0))
+* remove console.log statement ([b0f316b](https://github.com/luisstd/retroloop/commit/b0f316bc3622c826b115d2c1a578373df3d995be))
+
 ## [1.3.1](https://github.com/luisstd/retroloop/compare/v1.3.0...v1.3.1) (2023-06-25)
 
 
