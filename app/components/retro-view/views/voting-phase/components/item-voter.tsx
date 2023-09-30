@@ -49,7 +49,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
             item.type === itemType ? (
               <li key={index}>
                 <Card className='m-2 flex justify-between p-4'>
-                  <p className='p-1'>{item.content}</p>
+                  <p>{item.content}</p>
 
                   <div className='flex flex-row items-center'>
                     {item.votes ? <Badge>+{item.votes}</Badge> : null}
