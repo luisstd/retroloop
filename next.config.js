@@ -9,6 +9,9 @@ const { version } = require('./package.json')
 const nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
   swcMinify: true,
+  publicRuntimeConfig: {
+    version,
+  },
 })
 
 module.exports = withSentryConfig(nextConfig, {
