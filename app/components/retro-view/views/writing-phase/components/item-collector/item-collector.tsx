@@ -78,7 +78,7 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
             .map((item: RetroItem, index: number) =>
               item.type === itemType ? (
                 <li key={index}>
-                  <Card className='m-2 flex max-w-full items-center justify-between break-words p-4'>
+                  <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
                     <p>{item.content}</p>
 
                     <div className='flex flex-row items-center'>
