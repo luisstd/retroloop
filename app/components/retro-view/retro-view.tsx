@@ -18,7 +18,7 @@ export function RetroView() {
   const selectedRetro = trpc.retrospective.getById.useQuery(retroId)
 
   return selectedRetro.data ? (
-    <>
+    <div className='flex flex-col items-center'>
       {selectedRetro.data.phase === 'WRITING' ? (
         <WritingView selectedRetro={selectedRetro.data} />
       ) : null}
@@ -30,7 +30,7 @@ export function RetroView() {
       {selectedRetro.data.phase === 'DISCUSSING' ? (
         <DiscussingView selectedRetro={selectedRetro.data} />
       ) : null}
-    </>
+    </div>
   ) : (
     <div className='grid h-screen place-items-center'>
       <GridLoader
