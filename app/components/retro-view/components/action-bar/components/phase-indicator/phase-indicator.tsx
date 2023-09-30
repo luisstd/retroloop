@@ -26,7 +26,7 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
     <Card className='flex w-full flex-row justify-around p-3'>
       <Button
         variant={isWritingPhase ? null : 'ghost'}
-        className={`text-lg ${isWritingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        className={`text-md ${isWritingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
         onClick={() =>
           !isWritingPhase && handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })
         }
@@ -36,7 +36,7 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
 
       <Button
         variant={isWritingPhase || isVotingPhase ? null : 'ghost'}
-        className={`text-lg ${isVotingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        className={`text-md ${isVotingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
         onClick={() =>
           !(isWritingPhase || isVotingPhase) &&
           handleUpdateRetro({ ...retrospective, phase: RetroPhase.VOTING })
@@ -47,7 +47,7 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
 
       <Button
         variant={isWritingPhase || isVotingPhase || isDiscussingPhase ? null : 'ghost'}
-        className={`text-lg ${isDiscussingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        className={`text-md ${isDiscussingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
       >
         [03] Discuss
       </Button>
