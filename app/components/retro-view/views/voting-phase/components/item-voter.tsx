@@ -34,7 +34,6 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
   })
 
   function handleEditRetroItem(input: RetroItem): void {
-    console.log(input)
     mutationEdit.mutate(input)
   }
 
