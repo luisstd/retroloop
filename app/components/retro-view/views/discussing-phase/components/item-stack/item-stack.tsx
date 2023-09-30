@@ -53,10 +53,10 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               zIndex: `${index}`,
               transform: `translate(${index * -5}px,${index * -5}px)`,
             }}
-            className='absolute h-full min-h-min w-full text-start text-lg'
+            className='absolute h-full w-full text-start text-lg'
             key={item.id}
           >
-            <Card className='mx-auto flex h-64 w-2/3 flex-col break-words p-5'>
+            <Card className='mx-auto flex h-min min-h-[18rem] w-2/3 flex-col justify-between break-words p-5'>
               <CardHeader className='flex flex-row items-center justify-between'>
                 <CardTitle className='flex gap-2'>
                   Feedback <Badge variant='secondary'>{sortedItems[currentIndex].type}</Badge>
@@ -69,6 +69,9 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               </CardHeader>
 
               <CardContent className='text-xl'>{sortedItems[currentIndex].content}</CardContent>
+              <p className='self-end justify-self-end px-5 text-sm font-medium'>
+                {`${currentIndex + 1}/${sortedItems.length}`}
+              </p>
             </Card>
           </div>
         ))}
