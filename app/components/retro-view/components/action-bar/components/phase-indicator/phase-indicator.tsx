@@ -2,6 +2,9 @@
 
 import { Retrospective } from '@prisma/client'
 
+import { Button } from '@/ui/button/button'
+import { Card } from '@/ui/card/card'
+
 enum RetroPhase {
   WRITING = 'WRITING',
   GROUPING = 'GROUPING',
@@ -15,57 +18,39 @@ type PhaseIndicatorProps = {
 }
 
 export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndicatorProps) {
+  const isWritingPhase = retrospective.phase === RetroPhase.WRITING
+  const isVotingPhase = retrospective.phase === RetroPhase.VOTING
+  const isDiscussingPhase = retrospective.phase === RetroPhase.DISCUSSING
+
   return (
-    <div className='flex w-full flex-row justify-around'>
-      {retrospective.phase === RetroPhase.WRITING ? (
-        <div className='px-2 text-lg '>01) Write</div>
-      ) : retrospective.phase === RetroPhase.GROUPING ||
-        RetroPhase.VOTING ||
-        RetroPhase.DISCUSSING ? (
-        <div
-          className='cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
-          onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })}
-        >
-          01) Write
-        </div>
-      ) : (
-        <div className='px-2 text-lg text-gray-500'>01) Write</div>
-      )}
+    <Card className='flex w-full flex-row justify-around p-3'>
+      <Button
+        variant={isWritingPhase ? null : 'ghost'}
+        className={`text-md ${isWritingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        onClick={() =>
+          !isWritingPhase && handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })
+        }
+      >
+        [01] Write
+      </Button>
 
-      {/* Disabled for now */}
-      {/* {retrospective.phase === RetroPhase.GROUPING ? (
-        <div className='px-2 text-lg '>02)Group</div>
-      ) : retrospective.phase !== RetroPhase.WRITING &&
-        (RetroPhase.VOTING || RetroPhase.DISCUSSING) ? (
-        <div
-          className='px-2 text-lg text-gray-500 transition ease-in-out rounded-md cursor-pointer hover:bg-neutral-100 dark:hover:text-black'
-          onClick={() =>
-            handleUpdateRetro({ ...retrospective, phase: RetroPhase.GROUPING })
-          }
-        >
-          02)Group
-        </div>
-      ) : (
-        <div className='px-2 text-lg text-gray-500'>02)Group</div>
-      )} */}
+      <Button
+        variant={isWritingPhase || isVotingPhase ? null : 'ghost'}
+        className={`text-md ${isVotingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        onClick={() =>
+          !(isWritingPhase || isVotingPhase) &&
+          handleUpdateRetro({ ...retrospective, phase: RetroPhase.VOTING })
+        }
+      >
+        [02] Vote
+      </Button>
 
-      {retrospective.phase === RetroPhase.VOTING ? (
-        <div className='px-2 text-lg'>02) Vote</div>
-      ) : retrospective.phase === RetroPhase.DISCUSSING ? (
-        <div
-          className='cursor-pointer rounded-md px-2 text-lg text-gray-500 transition ease-in-out hover:bg-hover-light dark:hover:bg-hover-dark dark:hover:text-base-dark'
-          onClick={() => handleUpdateRetro({ ...retrospective, phase: RetroPhase.VOTING })}
-        >
-          02) Vote
-        </div>
-      ) : (
-        <div className='px-2 text-lg text-gray-500'>02) Vote</div>
-      )}
-      {retrospective.phase === RetroPhase.DISCUSSING ? (
-        <div className='px-2 text-lg'>03) Discuss</div>
-      ) : (
-        <div className='px-2 text-lg text-gray-500'>03) Discuss</div>
-      )}
-    </div>
+      <Button
+        variant={isWritingPhase || isVotingPhase || isDiscussingPhase ? null : 'ghost'}
+        className={`text-md ${isDiscussingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+      >
+        [03] Discuss
+      </Button>
+    </Card>
   )
 }

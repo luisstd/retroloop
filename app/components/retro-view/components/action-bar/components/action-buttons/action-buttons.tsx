@@ -1,9 +1,10 @@
 'use client'
 
 import { Retrospective } from '@prisma/client'
-import * as Toast from '@radix-ui/react-toast'
 import { IconArrowRight, IconCopy } from '@tabler/icons-react'
-import { useState } from 'react'
+
+import { Button } from '@/ui/button/button'
+import { toast } from '@/ui/toast/use-toast'
 
 type ActionButtonsProps = {
   retrospective: Retrospective
@@ -11,11 +12,12 @@ type ActionButtonsProps = {
 }
 
 export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButtonsProps) {
-  const [open, setOpen] = useState(false)
-
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href)
-    setOpen(true)
+    toast({
+      title: 'Copied retrospective link to clipboard!',
+      description: 'Anyone with this link can join your retrospective',
+    })
   }
 
   function handleNextPhase() {
@@ -26,15 +28,6 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
           phase: 'VOTING',
         })
       : null
-
-    // Disabled for now
-    // retrospective.phase === 'GROUPING'
-    //   ? handleUpdateRetro({
-    //       ...retrospective,
-    //       id: retrospective.id,
-    //       phase: 'VOTING',
-    //     })
-    //   : null
 
     retrospective.phase === 'VOTING'
       ? handleUpdateRetro({
@@ -54,33 +47,16 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
   }
 
   return (
-    <div className='mt-2 flex'>
-      <Toast.Provider swipeDirection='right'>
-        <button className='btn' type='submit' aria-label='Start Retro' onClick={handleCopy}>
-          <div className='flex flex-row items-center gap-2 p-5 text-lg shadow-md'>
-            Copy Retro link
-            <IconCopy />
-          </div>
-        </button>
+    <div className='flex gap-4'>
+      <Button aria-label='Start Retro' onClick={handleCopy}>
+        Copy Retro link
+        <IconCopy />
+      </Button>
 
-        <Toast.Root open={open} onOpenChange={setOpen}>
-          <Toast.Title className='text-md flex items-center gap-2'>
-            <span>Copied retrospective link to clipboard!</span>
-            <IconCopy />
-          </Toast.Title>
-        </Toast.Root>
-
-        {open ? (
-          <Toast.Viewport className='fixed bottom-0 right-0 z-50 m-5 w-fit gap-2 rounded-md border-2 border-base-dark bg-base-light p-5 text-base-dark dark:border-base-light dark:bg-base-dark dark:text-base-light ' />
-        ) : null}
-      </Toast.Provider>
-
-      <button type='submit' aria-label='Start Retro' className='btn mx-2' onClick={handleNextPhase}>
-        <div className='flex flex-row items-center gap-2 p-5 text-lg shadow-md'>
-          Next Phase
-          <IconArrowRight />
-        </div>
-      </button>
+      <Button aria-label='Start Retro' onClick={handleNextPhase}>
+        Next Phase
+        <IconArrowRight />
+      </Button>
     </div>
   )
 }

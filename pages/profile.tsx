@@ -4,21 +4,20 @@ import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
 import { Feedback } from '@/components/feedback/feedback'
-import { MenuBar } from '@/components/menu-bar/menu-bar'
 import { ProfileSection } from '@/components/profile-section/profile-section'
 import { SignUpForm } from '@/components/sign-up/sign-up-form'
 
-const Settings: NextPage = () => {
+const Profile: NextPage = () => {
   const { data: session, status } = useSession()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
-    <div className='flex flex-col items-center'>
+    <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
-        <title>Retroloop - Settings</title>
+        <title>Retroloop - Profile</title>
 
         <meta name='title' content='Retroloop - Agile retrospectives made easy' />
         <meta
@@ -46,8 +45,6 @@ const Settings: NextPage = () => {
 
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
-      <MenuBar />
-
       {isSignedUp && session?.user ? <ProfileSection /> : <SignUpForm />}
 
       {!isSignedUp && !session?.user ? (
@@ -56,8 +53,8 @@ const Settings: NextPage = () => {
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
 
-export default Settings
+export default Profile

@@ -9,6 +9,9 @@ import { SessionProvider } from 'next-auth/react'
 import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 
+import { MenuBar } from '@/components/menu-bar/menu-bar'
+import { Toaster } from '@/ui/toast/toaster'
+import { cn } from '@/utils/cn'
 import { trpc } from '@/utils/trpc'
 
 const queryClient = new QueryClient()
@@ -28,9 +31,17 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<Custo
     <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
       <QueryClientProvider client={queryClient}>
         <PlausibleProvider domain='retroloop.io' customDomain='stats.retroloop.io'>
-          <main className={space_grotesk.className}>
+          <div
+            className={
+              (cn(space_grotesk.className),
+              'relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center')
+            }
+          >
+            <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
+            <MenuBar />
             <Component {...pageProps} />
-          </main>
+            <Toaster />
+          </div>
         </PlausibleProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>

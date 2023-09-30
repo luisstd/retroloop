@@ -39,7 +39,7 @@ export function SignUpForm() {
               handleSubmit(values)
             }}
           >
-            <Form className='flex w-screen max-w-md flex-col items-center gap-4 rounded-lg border-2 border-base-dark bg-base-light p-5 dark:border-base-light dark:bg-base-dark dark:text-base-light'>
+            <Form className='border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark dark:text-base-light flex w-screen max-w-md flex-col items-center gap-4 rounded-lg border-2 p-5'>
               <Avatar.Root className='hover:cursor-pointer'>
                 <Avatar.Image src={data.user?.image || ''} alt='User Avatar' />
                 <Avatar.Fallback delayMs={600}>
@@ -56,7 +56,7 @@ export function SignUpForm() {
                   component='input'
                   rows={10}
                   required
-                  className='h-full min-h-min w-full rounded-md border-2 border-base-dark bg-neutral-100 p-2 dark:border-base-light dark:bg-neutral-700'
+                  className='border-base-dark dark:border-base-light h-full min-h-min w-full rounded-md border-2 bg-neutral-100 p-2 dark:bg-neutral-700'
                 />
 
                 <label htmlFor='name' className='font-bold'>
@@ -71,7 +71,7 @@ export function SignUpForm() {
                   disabled={data.user?.email}
                   className={`h-full w-full border-2 p-2 ${
                     data.user?.email ? 'italic text-gray-400 ' : ''
-                  }  min-h-min rounded-md border-base-dark bg-neutral-100 dark:border-base-light dark:bg-neutral-700`}
+                  }  border-base-dark dark:border-base-light min-h-min rounded-md bg-neutral-100 dark:bg-neutral-700`}
                 />
               </fieldset>
               <div className='flex w-full flex-row justify-end'>

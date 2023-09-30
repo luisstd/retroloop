@@ -4,7 +4,6 @@ import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
 import { Feedback } from '@/components/feedback/feedback'
-import { MenuBar } from '@/components/menu-bar/menu-bar'
 import { RetroSection } from '@/components/retro-section/retro-section'
 import { SignUpForm } from '@/components/sign-up/sign-up-form'
 import { TeamSection } from '@/components/team-section/team-section'
@@ -15,7 +14,7 @@ const Dashboard: NextPage = () => {
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
-    <div className='flex flex-col items-center'>
+    <>
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
@@ -47,14 +46,12 @@ const Dashboard: NextPage = () => {
 
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
-      <MenuBar />
-
       {isSignedUp && session?.user ? (
-        <main className='mx-5 mb-10 grid h-screen w-screen max-w-screen-2xl place-items-center'>
+        <section className='flex w-full flex-col items-center gap-10'>
           <RetroSection userId={session.user.id} />
 
           <TeamSection />
-        </main>
+        </section>
       ) : (
         <SignUpForm />
       )}
@@ -65,7 +62,7 @@ const Dashboard: NextPage = () => {
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
 export default Dashboard

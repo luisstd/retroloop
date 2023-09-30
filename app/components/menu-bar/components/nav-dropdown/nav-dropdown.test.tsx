@@ -44,17 +44,17 @@ test('NavigationDropdown', () => {
       expect(dashboardItem).toBeDefined()
       expect(dashboardItem).toContain('font-bold')
 
-      const settingsItem = screen.getByRole('menuitem', { name: 'Settings' })
-      expect(settingsItem).toBeDefined()
-      expect(settingsItem).not.toContain('font-bold')
+      const profileItem = screen.getByRole('menuitem', { name: 'Profile' })
+      expect(profileItem).toBeDefined()
+      expect(profileItem).not.toContain('font-bold')
     })
 
     test('renders menu item links', () => {
       const dashboardLink = screen.getByRole('link', { name: 'Dashboard' })
       expect(dashboardLink).toBeDefined()
 
-      const settingsLink = screen.getByRole('link', { name: 'Settings' })
-      expect(settingsLink).toBeDefined()
+      const profileLink = screen.getByRole('link', { name: 'Profile' })
+      expect(profileLink).toBeDefined()
     })
 
     test('renders menu item icons', () => {

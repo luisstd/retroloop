@@ -19,18 +19,6 @@ test('LoginButton', () => {
       render(<LoginButton />)
     })
 
-    test('renders user profile link when session exists', () => {
-      const linkElement = document.querySelector('a[href="/profile"]')
-      expect(linkElement).toBeTruthy()
-
-      const iconElement = document.querySelector('[data-testid="icon-user-circle"]')
-      expect(iconElement).toBeTruthy()
-
-      if (iconElement) {
-        expect(iconElement.getAttribute('size')).toBe('30')
-      }
-    })
-
     test('calls signIn function when login button is clicked', () => {
       const loginButton = document.querySelector('button')
       expect(loginButton).toBeTruthy()

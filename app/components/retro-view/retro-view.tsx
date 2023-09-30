@@ -18,21 +18,19 @@ export function RetroView() {
   const selectedRetro = trpc.retrospective.getById.useQuery(retroId)
 
   return selectedRetro.data ? (
-    <>
-      <div className='flex h-full w-full max-w-screen-2xl items-center justify-center px-1'>
-        {selectedRetro.data.phase === 'WRITING' ? (
-          <WritingView selectedRetro={selectedRetro.data} />
-        ) : null}
+    <div className='flex flex-col items-center'>
+      {selectedRetro.data.phase === 'WRITING' ? (
+        <WritingView selectedRetro={selectedRetro.data} />
+      ) : null}
 
-        {selectedRetro.data.phase === 'VOTING' ? (
-          <VotingView selectedRetro={selectedRetro.data} />
-        ) : null}
+      {selectedRetro.data.phase === 'VOTING' ? (
+        <VotingView selectedRetro={selectedRetro.data} />
+      ) : null}
 
-        {selectedRetro.data.phase === 'DISCUSSING' ? (
-          <DiscussingView selectedRetro={selectedRetro.data} />
-        ) : null}
-      </div>
-    </>
+      {selectedRetro.data.phase === 'DISCUSSING' ? (
+        <DiscussingView selectedRetro={selectedRetro.data} />
+      ) : null}
+    </div>
   ) : (
     <div className='grid h-screen place-items-center'>
       <GridLoader

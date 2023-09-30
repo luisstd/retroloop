@@ -8,6 +8,7 @@ import GridLoader from 'react-spinners/GridLoader'
 
 import { RetroDialog } from '@/components/retro-section/components/retro-dialog'
 import { RetrospectiveCreateInput } from '@/types/retrospective'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
 import { trpc } from '@/utils/trpc'
 
 type RetroSectionProps = {
@@ -52,50 +53,49 @@ export function RetroSection({ userId }: RetroSectionProps) {
   }
 
   return (
-    <div className='flex h-full w-screen max-w-screen-2xl items-center'>
-      <section className='relative mx-5 h-full w-full rounded-md border-2 border-base-dark bg-base-light p-10 shadow-md dark:border-base-light dark:bg-base-dark'>
-        <div className='flex flex-row items-baseline'>
-          <h2 className='p-5 text-center'>RETROS</h2>
-          <div className='mb-10 flex w-full justify-end'>
-            <RetroDialog handleAddRetro={handleAddRetro} />
-          </div>
-        </div>
+    <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
+      <div className='flex flex-row items-baseline justify-between'>
+        <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
-        {retrospectives.isLoading && (
-          <div className='grid place-items-center'>
-            <GridLoader
-              color={resolvedTheme === 'light' ? 'black' : 'white'}
-              loading={retrospectives.isLoading}
-              size={15}
-              aria-label='Loading Spinner'
-            />
-          </div>
-        )}
-
-        <div className='flex flex-grow flex-row flex-wrap items-start justify-center gap-4 sm:justify-start'>
-          {sortedRetros &&
-            sortedRetros.map((retrospective: Retrospective) => (
-              <Link
-                key={retrospective.id}
-                href={{
-                  pathname: '/retro',
-                  query: {
-                    id: retrospective.id,
-                    name: retrospective.name,
-                  },
-                }}
-              >
-                <div className='grid-col-1 row-start-2 mx-4 my-1 grid h-72 min-h-min w-52 min-w-min auto-rows-min gap-4 rounded-md border-2 border-black p-5 transition ease-in-out hover:scale-105 hover:cursor-pointer dark:border-neutral-200'>
-                  <div className='grid auto-rows-auto place-items-start'>
-                    <h2 className='text-left text-2xl font-bold'>{retrospective.name}</h2>
-                    <p className='mt-2 text-lg '>{retrospective.date.toLocaleDateString()}</p>
-                  </div>
-                  <div className='retro-pattern row-start-3 h-28'></div>
-                </div>
-              </Link>
-            ))}
+        <div className='flex w-full justify-end'>
+          <RetroDialog handleAddRetro={handleAddRetro} />
         </div>
+      </div>
+
+      {retrospectives.isLoading && (
+        <div className='grid place-items-center'>
+          <GridLoader
+            color={resolvedTheme === 'light' ? 'black' : 'white'}
+            loading={retrospectives.isLoading}
+            size={15}
+            aria-label='Loading Spinner'
+          />
+        </div>
+      )}
+
+      <section className='mt-5 grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+        {sortedRetros &&
+          sortedRetros.map((retrospective: Retrospective) => (
+            <Link
+              key={retrospective.id}
+              href={{
+                pathname: '/retro',
+                query: {
+                  id: retrospective.id,
+                  name: retrospective.name,
+                },
+              }}
+            >
+              <Card className='h-full w-full shadow-sm transition ease-in-out hover:scale-105 hover:cursor-pointer'>
+                <CardHeader>
+                  <CardTitle>{retrospective.name}</CardTitle>
+                  <CardDescription>{retrospective.date.toLocaleDateString()}</CardDescription>
+                </CardHeader>
+                <div className='pattern-cross h-28 pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4' />
+              </Card>
+            </Link>
+          ))}
       </section>
-    </div>
+    </Card>
   )
 }

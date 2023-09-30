@@ -4,7 +4,6 @@ import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
 import { Feedback } from '@/components/feedback/feedback'
-import { MenuBar } from '@/components/menu-bar/menu-bar'
 import { RetroView } from '@/components/retro-view/retro-view'
 import { SignUpForm } from '@/components/sign-up/sign-up-form'
 
@@ -45,8 +44,6 @@ const Retro: NextPage = () => {
       </Head>
 
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
-
-      <MenuBar />
 
       {isSignedUp && session?.user ? <RetroView /> : <SignUpForm />}
 

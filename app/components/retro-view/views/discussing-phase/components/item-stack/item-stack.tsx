@@ -4,6 +4,9 @@ import { RetroItem } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 
+import { Badge } from '@/ui/badge/badge'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
+
 type ItemStackProps = {
   retroItems: RetroItem[]
   currentIndex: number
@@ -41,7 +44,7 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
   return (
     <>
       <div
-        className='relative mx-5 my-32 flex w-full flex-wrap items-center justify-center gap-2 lg:mx-0 lg:my-0'
+        className='relative flex w-full flex-wrap items-center justify-center gap-2 lg:mx-0 lg:my-0'
         style={{ flex: '1 1 auto' }}
       >
         {sortedItems.map((item, index) => (
@@ -50,21 +53,26 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               zIndex: `${index}`,
               transform: `translate(${index * -5}px,${index * -5}px)`,
             }}
-            className='max-w-5/6 absolute h-full w-3/5 rounded-md border-2 border-base-dark bg-base-light p-10 text-center text-lg dark:border-base-light dark:bg-base-dark'
+            className='absolute h-full w-full text-start text-lg'
             key={item.id}
           >
-            <div className='flex h-full items-center justify-center gap-1 text-center text-2xl '>
-              <q className='text-left font-bold'>
-                <span className='mx-1 bg-base-light dark:bg-base-dark'>
-                  {sortedItems[currentIndex].content}
-                </span>
-              </q>
+            <Card className='mx-auto flex h-min min-h-[18rem] w-2/3 flex-col justify-between break-words p-5'>
+              <CardHeader className='flex flex-row items-center justify-between'>
+                <CardTitle className='flex gap-2'>
+                  Feedback <Badge variant='secondary'>{sortedItems[currentIndex].type}</Badge>
+                </CardTitle>
 
-              <div className='ml-5 flex max-w-min items-baseline gap-2 text-6xl font-bold'>
-                +{sortedItems[currentIndex].votes}
-                <IconThumbUp size={50} />
-              </div>
-            </div>
+                <Badge className='align-self-end flex items-center gap-2'>
+                  <span className='text-xl'>+{sortedItems[currentIndex].votes}</span>
+                  <IconThumbUp size={2} />
+                </Badge>
+              </CardHeader>
+
+              <CardContent className='text-xl'>{sortedItems[currentIndex].content}</CardContent>
+              <CardDescription className='self-end justify-self-end px-5'>
+                {`${currentIndex + 1}/${sortedItems.length}`}
+              </CardDescription>
+            </Card>
           </div>
         ))}
       </div>
