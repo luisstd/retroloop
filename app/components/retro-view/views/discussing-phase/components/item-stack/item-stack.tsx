@@ -5,7 +5,7 @@ import { IconThumbUp } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 
 import { Badge } from '@/ui/badge/badge'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
 
 type ItemStackProps = {
   retroItems: RetroItem[]
@@ -53,20 +53,22 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
               zIndex: `${index}`,
               transform: `translate(${index * -5}px,${index * -5}px)`,
             }}
-            className='absolute h-full w-full p-10 text-center text-lg'
+            className='absolute h-full min-h-min w-full text-start text-lg'
             key={item.id}
           >
-            <Card className='mx-auto flex h-64 w-2/3 break-words p-5'>
-              <CardHeader className='flex w-full flex-row items-center justify-between gap-2'>
-                <CardTitle>{sortedItems[currentIndex].content}</CardTitle>
+            <Card className='mx-auto flex h-64 w-2/3 flex-col break-words p-5'>
+              <CardHeader className='flex flex-row items-center justify-between'>
+                <CardTitle className='flex gap-2'>
+                  Feedback <Badge variant='secondary'>{sortedItems[currentIndex].type}</Badge>
+                </CardTitle>
 
-                <CardDescription className='flex flex-col gap-2'>
-                  <Badge className='flex items-center gap-2'>
-                    <span className='text-xl'>+{sortedItems[currentIndex].votes}</span>
-                    <IconThumbUp size={2} />
-                  </Badge>
-                </CardDescription>
+                <Badge className='align-self-end flex items-center gap-2'>
+                  <span className='text-xl'>+{sortedItems[currentIndex].votes}</span>
+                  <IconThumbUp size={2} />
+                </Badge>
               </CardHeader>
+
+              <CardContent className='text-xl'>{sortedItems[currentIndex].content}</CardContent>
             </Card>
           </div>
         ))}
