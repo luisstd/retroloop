@@ -27,7 +27,7 @@ export function DeleteDialog({ itemToDelete, deleteHandler }: DeleteDialogProps)
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-      <AlertDialogTrigger>
+      <AlertDialogTrigger asChild>
         <Button size='icon' variant='ghost' className='mx-1'>
           <IconTrash size={18} />
         </Button>
