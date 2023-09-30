@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { RetroActionBar } from '@/components/retro-view/components/retro-action-bar'
 import { ItemStack } from '@/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
 import { ItemSwitcher } from '@/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
+import { Card } from '@/ui/card/card'
 import { trpc } from '@/utils/trpc'
 
 type DiscussingViewProps = {
@@ -30,12 +31,14 @@ export function DiscussingView({ selectedRetro }: DiscussingViewProps) {
   }
 
   return (
-    <section className='mx-5 min-h-min w-full rounded-md border-2 border-black px-5 pb-2 dark:border-neutral-200 lg:h-screen'>
-      <div className='mt-16 flex h-5/6 w-full grid-cols-3 grid-rows-6 flex-col place-items-start gap-5 lg:grid'>
+    <Card className='m-5 p-5'>
+      <div className='flex h-5/6 w-full grid-cols-3 flex-col place-items-center gap-5 lg:grid'>
         <RetroActionBar selectedRetro={selectedRetro} />
+      </div>
 
+      <section className='h-screen w-full'>
         {retroItems.data ? (
-          <div className='col-span-3 col-start-1 row-span-2 row-start-3 flex h-full w-full flex-col lg:flex-row'>
+          <div className='flex h-2/3 w-full items-center justify-center'>
             <ItemStack retroItems={retroItems.data} currentIndex={currentIndex} />
             <ItemSwitcher
               handleNextItem={handleNextItem}
@@ -45,7 +48,7 @@ export function DiscussingView({ selectedRetro }: DiscussingViewProps) {
             />
           </div>
         ) : null}
-      </div>
-    </section>
+      </section>
+    </Card>
   )
 }
