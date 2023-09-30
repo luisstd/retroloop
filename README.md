@@ -9,7 +9,7 @@
 </div>
 <!-- --- -->
 
-**Make retrospectives easy!**
+**Retrospectives made easy**
 
 ---
 
@@ -19,7 +19,7 @@
 
 After checking out the repository, install dependencies and setup pre-commit hooks
 
-```zsh
+```
   pnpm setup
 ```
 
@@ -27,13 +27,13 @@ After checking out the repository, install dependencies and setup pre-commit hoo
 
 Start Next.js the server
 
-```bash
+```
   pnpm dev
 ```
 
 Use `clean` to re-install dependencies, generate the Prisma client and run ESlint on the codebase
 
-```bash
+```
   pnpm clean
 ```
 
@@ -41,13 +41,13 @@ Use `clean` to re-install dependencies, generate the Prisma client and run ESlin
 
 To run the unit tests, use the following command
 
-```bash
+```
   pnpm test
 ```
 
 To create coverage files manually, run the following command
 
-```bash
+```
   pnpm coverage
 ```
 
