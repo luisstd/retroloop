@@ -18,7 +18,7 @@ export function WritingView({ selectedRetro }: WritingViewProps) {
 
         {selectedRetro ? (
           <>
-            <Card className='col-start-1 row-span-6 row-start-2 h-full w-full px-2 lg:min-h-screen'>
+            <Card className='col-start-1 row-span-6 row-start-2 h-full w-[100rem] min-w-full max-w-full px-2 lg:min-h-screen'>
               <ItemCollector
                 retrospective={selectedRetro}
                 itemType='success'
@@ -26,7 +26,7 @@ export function WritingView({ selectedRetro }: WritingViewProps) {
               />
             </Card>
 
-            <Card className='col-start-2 row-span-6 row-start-2 h-full w-full px-2 lg:min-h-screen'>
+            <Card className='col-start-2 row-span-6 row-start-2 h-full w-[100rem] min-w-full max-w-full px-2 lg:min-h-screen'>
               <ItemCollector
                 retrospective={selectedRetro}
                 itemType='improvement'
@@ -34,7 +34,7 @@ export function WritingView({ selectedRetro }: WritingViewProps) {
               />
             </Card>
 
-            <Card className='col-start-3 row-span-6 row-start-2 h-full w-full px-2 lg:min-h-screen'>
+            <Card className='col-start-3 row-span-6 row-start-2 h-full w-[100rem] min-w-full max-w-full px-2 lg:min-h-screen'>
               <ItemCollector
                 retrospective={selectedRetro}
                 itemType='action'
