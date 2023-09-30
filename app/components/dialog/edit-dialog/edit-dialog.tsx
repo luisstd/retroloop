@@ -29,7 +29,7 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button size='icon' variant='ghost' className='mx-1'>
-          <IconPencil size={18} />
+          <IconPencil size={16} />
         </Button>
       </DialogTrigger>
 

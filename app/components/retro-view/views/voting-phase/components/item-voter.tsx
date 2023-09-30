@@ -48,7 +48,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
           retroItems.data.map((item, index) =>
             item.type === itemType ? (
               <li key={index}>
-                <Card className='m-2 flex justify-between p-4'>
+                <Card className='m-2 flex max-w-full items-center justify-between break-words p-4'>
                   <p>{item.content}</p>
 
                   <div className='flex flex-row items-center'>
@@ -57,7 +57,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                     {!hasVoted(item, user_id) ? (
                       <Button size='icon' variant='ghost'>
                         <IconThumbUp
-                          size={18}
+                          size={16}
                           onClick={() => {
                             handleEditRetroItem({
                               ...item,
