@@ -75,9 +75,10 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
         {retroItems.data &&
           retroItems.data
             .filter((item) => item.type === itemType && item.userId === userId)
-            .map((item: RetroItem, index: number) =>
+            .sort((a, b) => Number(a.id) - Number(b.id))
+            .map((item: RetroItem) =>
               item.type === itemType ? (
-                <li key={index}>
+                <li key={item.id}>
                   <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
                     <p>{item.content}</p>
 
