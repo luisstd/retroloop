@@ -40,6 +40,7 @@ describe('MenuBar', () => {
   test('should handle user login when user is not authenticated', async () => {
     vi.mock('next-auth/react', () => ({
       useSession: () => ({ status: 'unauthenticated', data: null }),
+      signIn: () => ({}),
     }))
 
     const { rerender } = MenuBarMounted
