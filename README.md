@@ -1,33 +1,45 @@
-<!-- PROJECT LOGO -->
-<div align="center">
+ <img src="https://raw.githubusercontent.com/luisstd/retroloop/dev/public/logo-transparent.png" width="150px" alt="logo" align="right" />
 
-[![Pipeline](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml/badge.svg)](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml) ![CodeQL](https://github.com/luisstd/retroloop/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/luisstd/retroloop/badge)](https://www.codefactor.io/repository/github/luisstd/retroloop) [![codecov](https://codecov.io/gh/luisstd/retroloop/branch/dev/graph/badge.svg?token=XXXG1MOCIC)](https://codecov.io/gh/luisstd/retroloop)
+<div align="left">
 
-<h3 align="center">
-  <a href="https://retroloop.io" rel="noopener">retroloop.io</a>
-</h3>
+# Retroloop
 
-![Retroloop Preview](./public/preview.webp) <br />
+[![Pipeline](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml/badge.svg)](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml) ![CodeQL](https://github.com/luisstd/retroloop/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/luisstd/retroloop/badge)](https://www.codefactor.io/repository/github/luisstd/retroloop) [![codecov](https://codecov.io/gh/luisstd/retroloop/branch/dev/graph/badge.svg?token=XXXG1MOCIC)](https://codecov.io/gh/luisstd/retroloop) ![GitHub tag (with filter)](https://img.shields.io/github/v/tag/luisstd/retroloop?label=release&link=https%3A%2F%2Fgithub.com%2Fluisstd%2Fretroloop%2Freleases) ![GitHub](https://img.shields.io/github/license/luisstd/retroloop)
 
 </div>
+<!-- --- -->
 
-## Local Development
+**Make retrospectives easy!**
 
-Install dependencies
+---
 
-```bash
-  pnpm install
+## Local development
+
+### Setup
+
+After checking out the repository, install dependencies and setup pre-commit hooks
+
+```zsh
+  pnpm setup
 ```
 
-Start the server
+### Development
+
+Start Next.js the server
 
 ```bash
   pnpm dev
 ```
 
-## Running Tests
+Use `clean` to re-install dependencies, generate the Prisma client and run ESlint on the codebase
 
-To run tests, run the following command
+```bash
+  pnpm clean
+```
+
+### Testing
+
+To run the unit tests, use the following command
 
 ```bash
   pnpm test
@@ -55,19 +67,19 @@ Create a Docker container using the provided `Dockerfile`. You will need these 3
 
 The PostgreSQL connection string
 
-```
+```bash
 DATABASE_URL='postgresql://yourdbconnectionurl'
 ```
 
 When deploying to production, set the `NEXTAUTH_URL` environment variable to the canonical URL of your site.
 
-```
+```bash
 NEXTAUTH_URL="https://retroloop.io"
 ```
 
 `NEXTAUTH_SECRET` is used to encrypt the NextAuth.js JWT, and to hash email verification tokens
 
-```
+```bash
 NEXTAUTH_SECRET="YOUR_NEXTAUTH_SECRET"
 ```
 
@@ -84,7 +96,11 @@ NEXTAUTH_SECRET="YOUR_NEXTAUTH_SECRET"
 
 ## Feedback
 
-If you have any feedback, please use the feedback widget, open an issue or reach out at info@mail.retroloop.io
+If you have any feedback, please use the feedback widget, open an issue or reach out at <info@noisia.co>
+
+## Contributing
+
+Everyone is welcome to improve this project. See [CONTRIBUTING](https://github.com/luisstd/retroloop/blob/dev/CONTRIBUTING.md)
 
 ## License
 
