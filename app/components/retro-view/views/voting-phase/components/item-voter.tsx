@@ -46,7 +46,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
       <ul>
         {retroItems.data &&
           retroItems.data
-            .sort((a, b) => Number(a.id) - Number(b.id))
+            .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
             .map((item) =>
               item.type === itemType ? (
                 <li key={item.id}>
@@ -54,7 +54,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                     <p>{item.content}</p>
 
                     <div className='flex flex-row items-center'>
-                      {item.votes ? <Badge>+{item.votes}</Badge> : null}
+                      {item.votes ? <Badge className='my-[0.5625rem]'>+{item.votes}</Badge> : null}
 
                       {!hasVoted(item, user_id) ? (
                         <Button size='icon' variant='ghost'>
