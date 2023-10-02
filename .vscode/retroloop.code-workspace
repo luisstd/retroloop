@@ -10,8 +10,7 @@
       "**/coverage": true,
       "**/.next": true,
       "**/.husky": true,
-      "**/.vscode": true,
-      "**/.github": true
+      "**/.vscode": true
     }
   }
 }
