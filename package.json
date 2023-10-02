@@ -8,7 +8,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint --fix ./",
-    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:integration": "playwright test",
     "coverage": "vitest run --coverage",
     "clean": "rimraf node_modules && pnpm install && prisma generate && pnpm lint"
   },
