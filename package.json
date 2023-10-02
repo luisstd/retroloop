@@ -8,7 +8,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint --fix ./",
-    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:integration": "playwright test",
     "coverage": "vitest run --coverage",
     "clean": "rimraf node_modules && pnpm install && prisma generate && pnpm lint"
   },
@@ -86,6 +87,7 @@
     "@faker-js/faker": "^8.1.0",
     "@logux/eslint-config": "^49.0.0",
     "@next/eslint-plugin-next": "^13.5.3",
+    "@playwright/test": "^1.38.1",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
