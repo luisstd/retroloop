@@ -11,7 +11,7 @@ export default defineConfig({
       reporter: ['json'],
       reportsDirectory: './coverage',
     },
-    exclude: [...configDefaults.exclude, './tests/integration'],
+    exclude: [...configDefaults.exclude, './tests'],
   },
   resolve: {
     alias: {
