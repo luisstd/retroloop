@@ -86,6 +86,7 @@
     "@faker-js/faker": "^8.1.0",
     "@logux/eslint-config": "^49.0.0",
     "@next/eslint-plugin-next": "^13.5.3",
+    "@playwright/test": "^1.38.1",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
