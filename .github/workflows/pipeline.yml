@@ -39,7 +39,7 @@ jobs:
         run: pnpm lint
 
   vitest:
-    name: Test
+    name: Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
@@ -67,10 +67,35 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Run Vitest
-        run: pnpm test
+        run: pnpm test:unit
+
+  playwright:
+    name: Integration Tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: pnpm exec playwright test
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
   codecov:
-    name: Coverage
+    name: Code Coverage
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
