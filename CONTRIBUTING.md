@@ -41,7 +41,7 @@ Everyone is welcome to improve this project. Here's how you can help:
 
 ## Testing
 
-- Add tests for any new features and make sure all tests pass by running `pnpm test`.
+- Add unit and integration tests for any new features where applicable and make sure all tests pass by running `pnpm test:unit` and `pnpm test:integration`.
 
 ## Recognition
 
