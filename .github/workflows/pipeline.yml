@@ -100,9 +100,14 @@ jobs:
 
       - name: Build Project
         run: pnpm build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Start Server
-        run: pnpm start
+        run: pnpm start &
+
+      - name: Wait for Server to Start
+        run: sleep 5
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
