@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import { defineConfig } from 'vitest/config'
+import { configDefaults, defineConfig } from 'vitest/config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,6 +11,7 @@ export default defineConfig({
       reporter: ['json'],
       reportsDirectory: './coverage',
     },
+    exclude: [...configDefaults.exclude, './tests'],
   },
   resolve: {
     alias: {

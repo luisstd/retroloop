@@ -75,7 +75,7 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
         {retroItems.data &&
           retroItems.data
             .filter((item) => item.type === itemType && item.userId === userId)
-            .sort((a, b) => Number(a.id) - Number(b.id))
+            .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
             .map((item: RetroItem) =>
               item.type === itemType ? (
                 <li key={item.id}>
