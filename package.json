@@ -83,7 +83,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^8.1.0",
     "@logux/eslint-config": "^49.0.0",
     "@next/eslint-plugin-next": "^13.5.3",
     "@tailwindcss/typography": "^0.5.10",
