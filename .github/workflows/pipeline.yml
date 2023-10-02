@@ -98,6 +98,12 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: Build Project
+        run: pnpm build
+
+      - name: Start Server
+        run: pnpm start
+
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
