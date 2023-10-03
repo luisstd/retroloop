@@ -25,7 +25,7 @@ After checking out the repository, install dependencies and setup pre-commit hoo
 
 ### Development
 
-Start Next.js the server
+Start the Next.js server
 
 ```
   pnpm dev
