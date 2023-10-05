@@ -13,29 +13,30 @@ export function RetroView() {
   const { resolvedTheme } = useTheme()
   const router = useRouter()
 
-  // get selected retro
   const retroId = String(router.query.id)
-  const selectedRetro = trpc.retrospective.getById.useQuery(retroId)
+  const { data: selectedRetro, isLoading: isRetroLoading } = trpc.retrospective.getById.useQuery(
+    retroId,
+    {
+      refetchInterval: 5000,
+      refetchIntervalInBackground: true,
+    }
+  )
 
-  return selectedRetro.data ? (
+  return selectedRetro ? (
     <div className='flex flex-col items-center'>
-      {selectedRetro.data.phase === 'WRITING' ? (
-        <WritingView selectedRetro={selectedRetro.data} />
-      ) : null}
+      {selectedRetro.phase === 'WRITING' ? <WritingView selectedRetro={selectedRetro} /> : null}
 
-      {selectedRetro.data.phase === 'VOTING' ? (
-        <VotingView selectedRetro={selectedRetro.data} />
-      ) : null}
+      {selectedRetro.phase === 'VOTING' ? <VotingView selectedRetro={selectedRetro} /> : null}
 
-      {selectedRetro.data.phase === 'DISCUSSING' ? (
-        <DiscussingView selectedRetro={selectedRetro.data} />
+      {selectedRetro.phase === 'DISCUSSING' ? (
+        <DiscussingView selectedRetro={selectedRetro} />
       ) : null}
     </div>
   ) : (
     <div className='grid h-screen place-items-center'>
       <GridLoader
         color={resolvedTheme === 'light' ? 'black' : 'white'}
-        loading={selectedRetro.isLoading}
+        loading={isRetroLoading}
         size={15}
         aria-label='Loading Spinner'
       />

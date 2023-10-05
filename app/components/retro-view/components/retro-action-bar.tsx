@@ -15,7 +15,10 @@ type RetroActionBarProps = {
 export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
   const [currentRetro, setCurrentRetro] = useState(selectedRetro)
 
-  const { refetch: refetchRetro } = trpc.retrospective.getById.useQuery(selectedRetro.id)
+  const { refetch: refetchRetro } = trpc.retrospective.getById.useQuery(selectedRetro.id, {
+    refetchInterval: 5000,
+    refetchIntervalInBackground: true,
+  })
 
   const { mutate: updateRetro } = trpc.retrospective.edit.useMutation({
     onSuccess: () => {
