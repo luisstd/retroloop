@@ -18,9 +18,7 @@ type RetroTimerProps = {
 export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
   const [minutes, setMinutes] = useState(0)
   const [timerStarted, setTimerStarted] = useState(false)
-
-  const [isSecondsSingleDigit, setSecondsSingleDigit] = useState(false)
-  const [isMinutesSingleDigit, setMinutesSingleDigit] = useState(false)
+  const [isSingleDigit, setIsSingleDigit] = useState({ minutes: false, seconds: false })
 
   const timer = useTimer({
     expiryTimestamp: selectedRetro.timerExpiration,
@@ -28,9 +26,7 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
     onExpire: () => console.warn('onExpire called'),
   })
 
-  function checkLength(timeUnit: number): number {
-    return timeUnit.toString().length
-  }
+  const checkIsSingleDigit = (num: number) => num.toString().length === 1
 
   function updateTimer(minutes: number): void {
     const now: Date = new Date()
@@ -59,8 +55,10 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
   }
 
   useEffect(() => {
-    checkLength(timer.minutes) === 1 ? setMinutesSingleDigit(true) : setMinutesSingleDigit(false)
-    checkLength(timer.seconds) === 1 ? setSecondsSingleDigit(true) : setSecondsSingleDigit(false)
+    setIsSingleDigit({
+      minutes: checkIsSingleDigit(timer.minutes),
+      seconds: checkIsSingleDigit(timer.seconds),
+    })
   }, [timer.minutes, timer.seconds])
 
   useEffect(() => {
@@ -68,7 +66,7 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
       resumeTimer()
       setTimerStarted(false)
     }
-  }, [timerStarted, timer.isRunning, resumeTimer])
+  }, [timerStarted, timer.isRunning])
 
   return (
     <Card className='flex h-full w-full items-center justify-center gap-3 p-3'>
@@ -76,30 +74,32 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
 
       <h1 className='text-2xl font-bold'>Timer</h1>
 
-      <div className='mx-2 flex gap-2 text-2xl'>
+      <div className='mx-2 flex gap-2 text-center text-2xl'>
         {!timer.isRunning && !timer.minutes ? (
-          <Input
-            type='number'
-            min={0}
-            max={99}
-            maxLength={2}
-            size={2}
-            placeholder='00'
-            onChange={(e) => setMinutes(Number(e.currentTarget.value))}
-          />
+          <>
+            <Input
+              type='number'
+              min={0}
+              max={99}
+              maxLength={2}
+              size={2}
+              placeholder='00'
+              onChange={(e) => setMinutes(Number(e.currentTarget.value))}
+            />
+            <span className='self-center'>min</span>
+          </>
         ) : (
-          <span className='w-12 text-4xl'>
-            {isMinutesSingleDigit ? 0 : null}
-            {timer.minutes}:
-          </span>
-        )}
-        {!timer.isRunning && !timer.minutes ? (
-          <span className='self-center'>min</span>
-        ) : (
-          <span className='w-12 text-4xl'>
-            {isSecondsSingleDigit ? 0 : null}
-            {timer.seconds}
-          </span>
+          <>
+            <span className='w-12 text-4xl'>
+              {isSingleDigit.minutes ? 0 : null}
+              {timer.minutes}
+            </span>
+            <span className='self-center text-4xl'>:</span>
+            <span className='w-12 text-4xl'>
+              {isSingleDigit.seconds ? 0 : null}
+              {timer.seconds}
+            </span>
+          </>
         )}
       </div>
 
