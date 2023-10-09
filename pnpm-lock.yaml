@@ -174,11 +174,11 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.3.3)
   zod:
-    specifier: ^3.22.2
-    version: 3.22.2
+    specifier: ^3.22.3
+    version: 3.22.3
   zod-formik-adapter:
     specifier: ^1.2.0
-    version: 1.2.0(formik@2.4.5)(zod@3.22.2)
+    version: 1.2.0(formik@2.4.5)(zod@3.22.3)
 
 devDependencies:
   '@commitlint/cli':
@@ -9291,20 +9291,20 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
 
-  /zod-formik-adapter@1.2.0(formik@2.4.5)(zod@3.22.2):
+  /zod-formik-adapter@1.2.0(formik@2.4.5)(zod@3.22.3):
     resolution: {integrity: sha512-62U+Mf8U05pvLsIMUTC1H6d4K5SmsrXM+YgiZhCpPin5GNhnVuXCGySmJCs0FHuTJCBy7Et5Z1i8KF5ffuLttg==}
     peerDependencies:
       formik: ^2.2.9
       zod: ^3.14.4
     dependencies:
       formik: 2.4.5(react@18.2.0)
-      zod: 3.22.2
+      zod: 3.22.3
     dev: false
 
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
-  /zod@3.22.2:
-    resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
+  /zod@3.22.3:
+    resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
     dev: false
