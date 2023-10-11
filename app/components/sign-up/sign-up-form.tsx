@@ -1,12 +1,10 @@
 'use client'
 
-import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 
 import { UserSession } from '@/types/user'
-import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar/avatar'
 import { Button } from '@/ui/button/button'
 import {
   Card,
