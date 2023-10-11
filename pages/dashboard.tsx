@@ -6,6 +6,7 @@ import { GridLoader } from 'react-spinners'
 
 import { Feedback } from '@/components/feedback/feedback'
 import { RetroSection } from '@/components/retro-section/retro-section'
+import { SignUpForm } from '@/components/sign-up/sign-up-form'
 import { TeamSection } from '@/components/team-section/team-section'
 
 const Dashboard: NextPage = () => {
@@ -53,6 +54,8 @@ const Dashboard: NextPage = () => {
 
           <TeamSection />
         </section>
+      ) : !isSignedUp ? (
+        <SignUpForm />
       ) : (
         <div className='grid h-screen place-items-center'>
           <GridLoader

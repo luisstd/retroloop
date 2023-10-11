@@ -6,6 +6,7 @@ import { GridLoader } from 'react-spinners'
 
 import { Feedback } from '@/components/feedback/feedback'
 import { ProfileSection } from '@/components/profile-section/profile-section'
+import { SignUpForm } from '@/components/sign-up/sign-up-form'
 
 const Profile: NextPage = () => {
   const { data: session, status } = useSession()
@@ -48,6 +49,8 @@ const Profile: NextPage = () => {
 
       {isSignedUp && session?.user ? (
         <ProfileSection />
+      ) : !isSignedUp ? (
+        <SignUpForm />
       ) : (
         <div className='grid h-screen place-items-center'>
           <GridLoader
