@@ -1,5 +1,4 @@
 import { IconMailFast } from '@tabler/icons-react'
-import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 
 import { Button } from '@/ui/button/button'
