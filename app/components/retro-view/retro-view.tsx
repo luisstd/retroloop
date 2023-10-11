@@ -1,7 +1,9 @@
 'use client'
 
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
+import { useEffect } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import { DiscussingView } from '@/components/retro-view/views/discussing-phase/discussing-view'
@@ -12,8 +14,11 @@ import { trpc } from '@/utils/trpc'
 export function RetroView() {
   const { resolvedTheme } = useTheme()
   const router = useRouter()
+  const { data: session } = useSession()
 
+  const userId = session?.user?.id
   const retroId = String(router.query.id)
+
   const { data: selectedRetro, isLoading: isRetroLoading } = trpc.retrospective.getById.useQuery(
     retroId,
     {
@@ -21,6 +26,14 @@ export function RetroView() {
       refetchIntervalInBackground: true,
     }
   )
+
+  const { mutate: addParticipant } = trpc.retrospective.addParticipant.useMutation()
+
+  useEffect(() => {
+    if (retroId && userId && selectedRetro) {
+      addParticipant({ retroId, userId })
+    }
+  }, [retroId, selectedRetro])
 
   return selectedRetro ? (
     <div className='flex flex-col items-center'>
