@@ -42,6 +42,22 @@ export const retrospectiveRouter = t.router({
       },
     })
   }),
+  addParticipant: t.procedure
+    .input(z.object({ retroId: z.string(), userId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const { retroId, userId } = input
+
+      return ctx.prisma.retrospective.update({
+        where: {
+          id: retroId,
+        },
+        data: {
+          participants: {
+            connect: [{ id: userId }],
+          },
+        },
+      })
+    }),
   edit: t.procedure.input(RetrospectiveUpdateInputSchema).mutation(({ ctx, input }) => {
     return ctx.prisma.retrospective.update({
       where: {
