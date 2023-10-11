@@ -1,15 +1,16 @@
-import { IconFaceIdError } from '@tabler/icons-react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
+import { useTheme } from 'next-themes'
+import { GridLoader } from 'react-spinners'
 
 import { Feedback } from '@/components/feedback/feedback'
 import { RetroSection } from '@/components/retro-section/retro-section'
-import { SignUpForm } from '@/components/sign-up/sign-up-form'
 import { TeamSection } from '@/components/team-section/team-section'
 
 const Dashboard: NextPage = () => {
   const { data: session, status } = useSession()
+  const { resolvedTheme } = useTheme()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
@@ -53,15 +54,15 @@ const Dashboard: NextPage = () => {
           <TeamSection />
         </section>
       ) : (
-        <SignUpForm />
-      )}
-
-      {!isSignedUp && !session?.user ? (
-        <div className='flex flex-col items-center'>
-          <IconFaceIdError size={122} className='m-5' />
-          <p className='text-xl'>Not authenticated, please log in first</p>
+        <div className='grid h-screen place-items-center'>
+          <GridLoader
+            color={resolvedTheme === 'light' ? 'black' : 'white'}
+            loading={!isSignedUp && !session?.user}
+            size={15}
+            aria-label='Loading Spinner'
+          />
         </div>
-      ) : null}
+      )}
     </>
   )
 }

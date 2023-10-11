@@ -2,13 +2,15 @@ import { IconFaceIdError } from '@tabler/icons-react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
+import { useTheme } from 'next-themes'
+import { GridLoader } from 'react-spinners'
 
 import { Feedback } from '@/components/feedback/feedback'
 import { RetroView } from '@/components/retro-view/retro-view'
-import { SignUpForm } from '@/components/sign-up/sign-up-form'
 
 const Retro: NextPage = () => {
   const { data: session, status } = useSession()
+  const { resolvedTheme } = useTheme()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
@@ -45,14 +47,14 @@ const Retro: NextPage = () => {
 
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
-      {isSignedUp && session?.user ? <RetroView /> : <SignUpForm />}
-
-      {!isSignedUp && !session?.user ? (
+      {isSignedUp && session?.user ? (
+        <RetroView />
+      ) : (
         <div className='flex flex-col items-center'>
           <IconFaceIdError size={122} className='m-5' />
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
-      ) : null}
+      )}
     </div>
   )
 }
