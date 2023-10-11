@@ -45,14 +45,16 @@ const Retro: NextPage = () => {
 
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
-      {isSignedUp && session?.user ? <RetroView /> : <SignUpForm />}
-
-      {!isSignedUp && !session?.user ? (
+      {isSignedUp && session?.user ? (
+        <RetroView />
+      ) : !isSignedUp ? (
+        <SignUpForm />
+      ) : (
         <div className='flex flex-col items-center'>
           <IconFaceIdError size={122} className='m-5' />
           <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
-      ) : null}
+      )}
     </div>
   )
 }
