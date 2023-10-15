@@ -35,7 +35,7 @@ const Privacy: NextPage = () => {
         <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
 
-      <main className='prose text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>
+      <main className='prose mx-5 text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>
         <h2>Retroloop Privacy Policy</h2>
         <p>
           Your privacy is important to us. It is Retroloop&#39;s policy to respect your privacy and
@@ -524,7 +524,7 @@ const Privacy: NextPage = () => {
         <p>
           Luis Steidle
           <br />
-          info@mail.retroloop.io
+          contact@noisia.co
         </p>
       </main>
 
