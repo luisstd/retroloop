@@ -32,7 +32,7 @@ const Landingpage: NextPage = () => {
         <meta name='title' content='Retroloop - Agile retrospectives made easy' />
         <meta
           name='description'
-          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
         />
 
         <meta property='og:type' content='website' />
@@ -40,7 +40,7 @@ const Landingpage: NextPage = () => {
         <meta property='og:title' content='Retroloop - Agile retrospectives made easy' />
         <meta
           property='og:description'
-          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
         />
         <meta property='og:image' content='https://retroloop.io/preview.webp' />
 
@@ -48,7 +48,7 @@ const Landingpage: NextPage = () => {
         <meta property='twitter:title' content='Retroloop - Agile retrospectives made easy' />
         <meta
           property='twitter:description'
-          content='Retroloop is a simple, open-source tool for creating a feedback loop that drives continuous team improvement'
+          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
         />
         <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
       </Head>
