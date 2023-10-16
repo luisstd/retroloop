@@ -82,7 +82,7 @@
     "zod-formik-adapter": "^1.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.2",
+    "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.7.0",
     "@faker-js/faker": "^8.2.0",
     "@logux/eslint-config": "^52.0.1",
