@@ -104,4 +104,4 @@ Everyone is welcome to improve this project. See [CONTRIBUTING](https://github.c
 
 ## License
 
-Retroloop is open-source under the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) Version 3 (GPLv3) or any later version. See [LICENSE](https://github.com/luisstd/retroloop/blob/dev/LICENSE.md) for more detail.
+Retroloop is open-source under the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) Version 3 (AGPLv3) or any later version. See [LICENSE](https://github.com/luisstd/retroloop/blob/dev/LICENSE.md) for more detail.
