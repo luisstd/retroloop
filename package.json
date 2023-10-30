@@ -86,7 +86,7 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@faker-js/faker": "^8.2.0",
     "@logux/eslint-config": "^52.0.1",
-    "@next/eslint-plugin-next": "^13.5.4",
+    "@next/eslint-plugin-next": "^14.0.0",
     "@playwright/test": "^1.38.1",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.1.4",
