@@ -24,7 +24,7 @@
   "dependencies": {
     "@feedback-fish/react": "^1.2.2",
     "@fontsource/space-grotesk": "^5.0.13",
-    "@fontsource/space-mono": "^5.0.15",
+    "@fontsource/space-mono": "^5.0.17",
     "@formspree/react": "^2.5.1",
     "@headlessui/react": "^1.7.17",
     "@next-auth/prisma-adapter": "^1.0.7",

@@ -12,8 +12,8 @@ dependencies:
     specifier: ^5.0.13
     version: 5.0.13
   '@fontsource/space-mono':
-    specifier: ^5.0.15
-    version: 5.0.15
+    specifier: ^5.0.17
+    version: 5.0.17
   '@formspree/react':
     specifier: ^2.5.1
     version: 2.5.1(react-dom@18.2.0)(react@18.2.0)
@@ -1101,8 +1101,8 @@ packages:
     resolution: {integrity: sha512-WymregWHM3QxZ+LC09hwaDbU/SHV8WgEcdmzG1/d1Mv78uZB1bUVEHBdiMzN+7xPBsiyG9EqJ5JR2fkunhH3OQ==}
     dev: false
 
-  /@fontsource/space-mono@5.0.15:
-    resolution: {integrity: sha512-ZxXuj8+9R0kpkfLUe+1vfVfvn77R/YtHIWDe6iOKvLT5aALGVnbEkm/azGWfmD10id4C17iZ3HMuzp60kHZtPQ==}
+  /@fontsource/space-mono@5.0.17:
+    resolution: {integrity: sha512-AwglnwSQ6DRoAKhrmkTngY2GFjCjONA5vlw+62b6cC7z5FEWeJ+nleUaOQnLxkGKKL68fA30CjnHJvKENck5Fw==}
     dev: false
 
   /@formspree/core@3.0.1:
