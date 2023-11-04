@@ -16,41 +16,38 @@ type RetroSectionProps = {
 }
 
 export function RetroSection({ userId }: RetroSectionProps) {
+  const { data: retrospectives, refetch, isLoading } = trpc.retrospective.getAll.useQuery(userId)
+  const { mutate } = trpc.retrospective.add.useMutation({
+    onSuccess: async () => {
+      refetch()
+    },
+  })
   const { resolvedTheme } = useTheme()
+  const [sortedRetros, setSortedRetros] = useState(retrospectives)
 
-  const retrospectives = trpc.retrospective.getAll.useQuery(userId)
+  const sortItems = () => {
+    if (retrospectives) {
+      setSortedRetros(
+        [...retrospectives].sort((a, b) => {
+          if (b.date === null) {
+            return 1
+          }
+          if (a.date === null) {
+            return -1
+          }
+          return b.date.getTime() - a.date.getTime()
+        })
+      )
+    }
+  }
 
-  const [sortedRetros, setSortedRetros] = useState(retrospectives.data)
+  const handleAddRetro = (input: RetrospectiveCreateInput) => {
+    mutate(input)
+  }
 
   useEffect(() => {
     sortItems()
-  }, [retrospectives.data])
-
-  function sortItems(): void {
-    retrospectives.data
-      ? setSortedRetros(
-          [...retrospectives.data].sort((a, b) => {
-            if (b.date === null) {
-              return 1
-            }
-            if (a.date === null) {
-              return -1
-            }
-            return b.date.getTime() - a.date.getTime()
-          })
-        )
-      : null
-  }
-
-  const mutation = trpc.retrospective.add.useMutation({
-    onSuccess: async () => {
-      retrospectives.refetch()
-    },
-  })
-
-  const handleAddRetro = (input: RetrospectiveCreateInput) => {
-    mutation.mutate(input)
-  }
+  }, [retrospectives])
 
   return (
     <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
@@ -62,11 +59,11 @@ export function RetroSection({ userId }: RetroSectionProps) {
         </div>
       </div>
 
-      {retrospectives.isLoading && (
+      {isLoading && (
         <div className='grid place-items-center'>
           <GridLoader
             color={resolvedTheme === 'light' ? 'black' : 'white'}
-            loading={retrospectives.isLoading}
+            loading={isLoading}
             size={15}
             aria-label='Loading Spinner'
           />
