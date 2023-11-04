@@ -19,7 +19,6 @@ import {
   DialogTrigger,
 } from '@/ui/dialog/dialog'
 import { Textarea } from '@/ui/textarea/textarea'
-import { toast } from '@/ui/toast/use-toast'
 
 type RetroItemDialogProps = {
   itemType: string
@@ -75,10 +74,6 @@ export function RetroItemDialog({
           }}
           onSubmit={(values: RetroItemCreateInput) => {
             handleAddRetroItem(values)
-            toast({
-              title: 'Feedback added',
-              description: 'Your feedback was successfully added.',
-            })
             setIsOpen(false)
           }}
         >

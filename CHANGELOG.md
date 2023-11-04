@@ -6,7 +6,6 @@
 ### Features
 
 * add users as retro participants on page view ([#126](https://github.com/luisstd/retroloop/issues/126)) ([d6c4ee4](https://github.com/luisstd/retroloop/commit/d6c4ee4bf317f884b73b736bf93aefabd5c7553d))
-* add custom auth pages ([#127](https://github.com/luisstd/retroloop/issues/127))
 
 ## [1.4.0](https://github.com/luisstd/retroloop/compare/v1.3.1...v1.4.0) (2023-09-30)
 

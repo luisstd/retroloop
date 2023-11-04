@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 /** @type {import('next').NextConfig} */
 
 const { withPlausibleProxy } = require('next-plausible')
@@ -14,10 +13,19 @@ const nextConfig = withPlausibleProxy()({
   },
 })
 
-module.exports = withSentryConfig(nextConfig, {
-  silent: true,
+const sentryConfig = {
   hideSourcemaps: true,
-  tunnel: '/sentry',
-  release: version,
-  environment: process.env.NODE_ENV,
-})
+  widenClientFileUpload: true,
+  transpileClientSDK: true,
+  tunnelRoute: '/monitoring',
+  release: `retroloop@${version}`,
+  silent: true,
+}
+
+const sentryWebpackOptions = {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+}
+
+module.exports = withSentryConfig(nextConfig, sentryConfig, sentryWebpackOptions)

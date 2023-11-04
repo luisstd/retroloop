@@ -15,7 +15,7 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href)
     toast({
-      title: 'Copied retrospective link to clipboard!',
+      title: 'Copied retrospective link to clipboard',
       description: 'Anyone with this link can join your retrospective',
     })
   }

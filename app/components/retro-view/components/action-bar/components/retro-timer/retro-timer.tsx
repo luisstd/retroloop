@@ -9,6 +9,7 @@ import { useTimer } from 'react-timer-hook'
 import { Button } from '@/ui/button/button'
 import { Card } from '@/ui/card/card'
 import { Input } from '@/ui/input/input'
+import { useToast } from '@/ui/toast/use-toast'
 
 type RetroTimerProps = {
   selectedRetro: Retrospective
@@ -16,6 +17,7 @@ type RetroTimerProps = {
 }
 
 export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
+  const { toast } = useToast()
   const [minutes, setMinutes] = useState(0)
   const [timerStarted, setTimerStarted] = useState(false)
   const [isSingleDigit, setIsSingleDigit] = useState({ minutes: false, seconds: false })
@@ -52,6 +54,10 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
 
   function onStartTimer(): void {
     updateTimer(minutes)
+    toast({
+      title: 'Timer started',
+      description: `Timer set to ${minutes} minutes`,
+    })
   }
 
   useEffect(() => {
