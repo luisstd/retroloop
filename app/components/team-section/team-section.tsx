@@ -50,7 +50,7 @@ export function TeamSection() {
       )}
 
       <section className='mt-5 grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-        {users ? (
+        {users?.length ? (
           users.map((user: User) => (
             <Card
               key={user.id}
