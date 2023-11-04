@@ -37,7 +37,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<Custo
               'relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center')
             }
           >
-            <div className='opacity-gradient pattern-dots pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2 absolute -z-50 h-full min-h-screen w-screen' />
+            <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
             <MenuBar />
             <Component {...pageProps} />
             <Toaster />
