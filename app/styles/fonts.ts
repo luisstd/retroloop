@@ -1,7 +1,8 @@
 import { Space_Grotesk } from 'next/font/google'
 
-export const space_grotesk = Space_Grotesk({
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal'],
-  subsets: ['latin'],
+export const font = Space_Grotesk({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-sans',
 })

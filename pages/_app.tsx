@@ -16,10 +16,11 @@ import { trpc } from '@/utils/trpc'
 
 const queryClient = new QueryClient()
 
-const space_grotesk = Space_Grotesk({
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal'],
-  subsets: ['latin'],
+const font = Space_Grotesk({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-sans',
 })
 
 type CustomPageProps = {
@@ -33,7 +34,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps<Custo
         <PlausibleProvider domain='retroloop.io' customDomain='stats.retroloop.io'>
           <div
             className={
-              (cn(space_grotesk.className),
+              (cn(font.className),
               'relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center')
             }
           >

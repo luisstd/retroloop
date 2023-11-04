@@ -35,7 +35,7 @@ const Dashboard: NextPage = () => {
           property='og:description'
           content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
         />
-        <meta property='og:image' content='https://retroloop.io/preview.webp' />
+        <meta property='og:image' content='https://retroloop.io/og.webp' />
 
         <meta property='twitter:card' content='summary_large_image' />
         <meta property='twitter:title' content='Retroloop - Agile retrospectives made easy' />
@@ -43,7 +43,7 @@ const Dashboard: NextPage = () => {
           property='twitter:description'
           content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
         />
-        <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
+        <meta property='twitter:image' content='https://retroloop.io/og.webp' />
       </Head>
 
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
