@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.0](https://github.com/luisstd/retroloop/compare/v1.5.0...v1.6.0) (2023-11-04)
+
+
+### Features
+
+* add fallback ui for empty retro section ([5a10dda](https://github.com/luisstd/retroloop/commit/5a10ddafc923de169bb749bc085eb1a378630ba5))
+* add fallback ui for empty team section ([d9471f0](https://github.com/luisstd/retroloop/commit/d9471f016ecaa91266ced21d99d203d7634de419))
+* add functionality to edit retro titles ([3564045](https://github.com/luisstd/retroloop/commit/3564045511f5c04f4a60d18eb31de39c6dab59d3))
+* add generic skeleton component ([a2da2b4](https://github.com/luisstd/retroloop/commit/a2da2b4dc0b31600b1b83fa0f8e65c47b966c6b1))
+* add toast notification for every user interaction ([d5c9acc](https://github.com/luisstd/retroloop/commit/d5c9acc92acadee0b56ddbe506bddbc025f2f84a))
+
 ## [1.5.0](https://github.com/luisstd/retroloop/compare/v1.4.0...v1.5.0) (2023-10-11)
 
 
