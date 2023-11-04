@@ -15,7 +15,6 @@ import {
   DialogTrigger,
 } from '@/ui/dialog/dialog'
 import { Textarea } from '@/ui/textarea/textarea'
-import { toast } from '@/ui/toast/use-toast'
 
 type EditDialogProps = {
   itemToEdit: Record<string, unknown>
@@ -41,10 +40,6 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
           initialValues={cloneDeep(itemToEdit)}
           onSubmit={(values) => {
             editHandler(values)
-            toast({
-              title: 'Feedback edited',
-              description: 'Your feedback was successfully edited.',
-            })
             setIsOpen(false)
           }}
         >
