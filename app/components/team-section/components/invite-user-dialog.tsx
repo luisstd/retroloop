@@ -46,7 +46,8 @@ export function InviteUserDialog() {
             signIn('email', { ...values, redirect: false })
             setIsOpen(false)
             toast({
-              title: 'Successfully sent login link!',
+              title: 'Successfully sent login link',
+              description: 'The recipient can now login with the link sent to their email',
             })
           }}
         >

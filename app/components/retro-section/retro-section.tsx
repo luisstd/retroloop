@@ -1,4 +1,5 @@
 'use client'
+
 import { Retrospective, User } from '@prisma/client'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
@@ -8,6 +9,7 @@ import GridLoader from 'react-spinners/GridLoader'
 import { RetroDialog } from '@/components/retro-section/components/retro-dialog'
 import { RetrospectiveCreateInput } from '@/types/retrospective'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
+import { useToast } from '@/ui/toast/use-toast'
 import { trpc } from '@/utils/trpc'
 import { formatDate } from '@/utils/utils'
 
@@ -24,6 +26,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
   })
   const { resolvedTheme } = useTheme()
   const [sortedRetros, setSortedRetros] = useState(retrospectives)
+  const { toast } = useToast()
 
   const sortItems = () => {
     if (retrospectives) {
@@ -43,6 +46,10 @@ export function RetroSection({ userId }: RetroSectionProps) {
 
   const handleAddRetro = (input: RetrospectiveCreateInput) => {
     mutate(input)
+    toast({
+      title: 'Retrospective created',
+      description: 'Your retro was successfully created',
+    })
   }
 
   useEffect(() => {

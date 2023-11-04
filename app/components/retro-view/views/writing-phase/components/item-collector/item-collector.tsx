@@ -8,7 +8,7 @@ import { EditDialog } from '@/components/dialog/edit-dialog/edit-dialog'
 import { RetroItemDialog } from '@/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
 import { RetroItemCreateInput } from '@/types/retro-item'
 import { Card } from '@/ui/card/card'
-import { toast } from '@/ui/toast/use-toast'
+import { useToast } from '@/ui/toast/use-toast'
 import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
@@ -18,39 +18,48 @@ type ItemCollectorProps = {
 }
 
 export function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
-  const retroItems = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
   const { data: session } = useSession()
+  const { toast } = useToast()
 
   const userId = session?.user?.id
 
-  const mutationAdd = trpc.retroItem.add.useMutation({
+  const { data: retroItems, refetch } = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
+
+  const { mutate: addRetroItem } = trpc.retroItem.add.useMutation({
     onSuccess: () => {
-      retroItems.refetch()
+      refetch()
+    },
+  })
+  const { mutate: updateRetroItem } = trpc.retroItem.edit.useMutation({
+    onSuccess: () => {
+      refetch()
     },
   })
 
-  const mutationEdit = trpc.retroItem.edit.useMutation({
+  const { mutate: deleteRetroItem } = trpc.retroItem.delete.useMutation({
     onSuccess: () => {
-      retroItems.refetch()
-    },
-  })
-
-  const mutationDelete = trpc.retroItem.delete.useMutation({
-    onSuccess: () => {
-      retroItems.refetch()
+      refetch()
     },
   })
 
   function handleAddRetroItem(input: RetroItemCreateInput): void {
-    mutationAdd.mutate(input)
+    addRetroItem(input)
+    toast({
+      title: 'Feedback added',
+      description: 'Your feedback was successfully added.',
+    })
   }
 
   function handleEditRetroItem(input: RetroItem): void {
-    mutationEdit.mutate(input)
+    updateRetroItem(input)
+    toast({
+      title: 'Feedback updated',
+      description: 'Your feedback was successfully updated.',
+    })
   }
 
   function handleDeleteRetroItem(input: RetroItem['id']): void {
-    mutationDelete.mutate(input)
+    deleteRetroItem(input)
     toast({
       title: 'Feedback deleted',
       description: 'Your feedback was successfully deleted.',
@@ -72,8 +81,8 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
       </div>
 
       <ul>
-        {retroItems.data &&
-          retroItems.data
+        {retroItems &&
+          retroItems
             .filter((item) => item.type === itemType && item.userId === userId)
             .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
             .map((item: RetroItem) =>
