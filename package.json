@@ -3,7 +3,7 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "setup": "pnpm install && husky install",
+    "setup": "bun install && husky install",
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
@@ -11,7 +11,7 @@
     "test:unit": "vitest run",
     "test:integration": "playwright test",
     "coverage": "vitest run --coverage",
-    "clean": "rimraf node_modules && pnpm install && prisma generate && pnpm lint"
+    "clean": "rimraf node_modules && bun install && prisma generate && bun lint"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
