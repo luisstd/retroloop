@@ -24,7 +24,7 @@ const Terms: NextPage = () => {
           property='og:description'
           content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
         />
-        <meta property='og:image' content='https://retroloop.io/preview.webp' />
+        <meta property='og:image' content='https://retroloop.io/og.webp' />
 
         <meta property='twitter:card' content='summary_large_image' />
         <meta property='twitter:title' content='Retroloop - Agile retrospectives made easy' />
@@ -32,7 +32,7 @@ const Terms: NextPage = () => {
           property='twitter:description'
           content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
         />
-        <meta property='twitter:image' content='https://retroloop.io/preview.webp' />
+        <meta property='twitter:image' content='https://retroloop.io/og.webp' />
       </Head>
 
       <main className='prose mx-5 text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>

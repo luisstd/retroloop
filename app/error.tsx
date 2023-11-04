@@ -13,7 +13,6 @@ import type { ErrorProps } from 'next/error'
 import NextErrorComponent from 'next/error'
 
 const CustomErrorComponent: NextPage<ErrorProps> = (props) => {
-  // eslint-disable-next-line react/prop-types
   return <NextErrorComponent statusCode={props.statusCode} />
 }
 

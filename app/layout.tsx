@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from 'pages/api/auth/[...nextauth]'
 
 import { Providers } from '@/providers'
-import { space_grotesk } from '@/styles/fonts'
+import { font } from '@/styles/fonts'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const query_client = new QueryClient()
@@ -14,7 +14,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <html lang='en'>
         <body>
           <Providers queryClient={query_client} session={session}>
-            <main className={space_grotesk.className}>{children}</main>
+            <main className={font.className}>{children}</main>
           </Providers>
         </body>
       </html>

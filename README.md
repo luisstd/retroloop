@@ -1,4 +1,4 @@
- <img src="https://raw.githubusercontent.com/luisstd/retroloop/dev/public/logo-transparent.png" width="150px" alt="logo" align="right" />
+ <img src="https://raw.githubusercontent.com/luisstd/retroloop/dev/public/logo-transparent.png" width="150px" alt="Retroloop logo" align="right" />
 
 <div align="left">
 
@@ -96,7 +96,7 @@ NEXTAUTH_SECRET="YOUR_NEXTAUTH_SECRET"
 
 ## Feedback
 
-If you have any feedback, please use the feedback widget, open an issue or reach out at <info@noisia.co>
+If you have any feedback, please use the feedback widget, open an issue or reach out at <contact@noisia.co>
 
 ## Contributing
 

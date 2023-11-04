@@ -14,12 +14,12 @@ const nextConfig = withPlausibleProxy()({
 })
 
 const sentryConfig = {
-  hideSourcemaps: true,
+  hideSourceMaps: true,
   widenClientFileUpload: true,
   transpileClientSDK: true,
   tunnelRoute: '/monitoring',
   release: `retroloop@${version}`,
-  silent: true,
+  silent: false,
 }
 
 const sentryWebpackOptions = {
