@@ -1,5 +1,4 @@
 'use client'
-
 import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
@@ -20,37 +19,39 @@ import { Input } from '@/ui/input/input'
 import { Label } from '@/ui/label/label'
 import { useToast } from '@/ui/toast/use-toast'
 import { trpc } from '@/utils/trpc'
+import { formatDate } from '@/utils/utils'
 
 export function ProfileSection() {
-  const user = trpc.user.getLoggedIn.useQuery()
+  const { publicRuntimeConfig } = getConfig()
   const router = useRouter()
   const { toast } = useToast()
   const { resolvedTheme } = useTheme()
-  const { publicRuntimeConfig } = getConfig()
+
+  const { data: user, isLoading, refetch } = trpc.user.getLoggedIn.useQuery()
   const version = publicRuntimeConfig?.version
 
-  const mutationEdit = trpc.user.edit.useMutation({
+  const { mutate: updateUser } = trpc.user.edit.useMutation({
     onSuccess: () => {
-      user.refetch()
+      refetch()
     },
   })
 
-  const mutationDelete = trpc.user.delete.useMutation({
+  const { mutate: deleteUser } = trpc.user.delete.useMutation({
     onSuccess: () => {
       router.push('/')
     },
   })
 
-  function handleSubmit(input: UserUpdateInput): void {
-    mutationEdit.mutate(input)
+  const handleSubmit = (input: UserUpdateInput): void => {
+    updateUser(input)
     toast({
       title: 'Profile updated',
       description: 'Your profile was successfully updated',
     })
   }
 
-  function handleDelete(input: User): void {
-    mutationDelete.mutate(input)
+  const handleDelete = (input: User): void => {
+    deleteUser(input)
     toast({
       title: 'Account deleted',
       description: 'Your account was successfully deleted',
@@ -59,7 +60,7 @@ export function ProfileSection() {
 
   return (
     <>
-      {user.data ? (
+      {user ? (
         <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
           <CardHeader className='flex flex-row items-baseline justify-between'>
             <CardTitle>PROFILE</CardTitle>
@@ -69,13 +70,13 @@ export function ProfileSection() {
           <Formik
             validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
             initialValues={{
-              id: user.data?.id || '',
-              name: user.data?.name || '',
-              email: user.data?.email || '',
-              image: user.data?.image || '',
-              role: user.data?.role || '',
-              createdAt: user.data?.createdAt,
-              emailVerified: user.data?.emailVerified,
+              id: user?.id || '',
+              name: user?.name || '',
+              email: user?.email || '',
+              image: user?.image || '',
+              role: user?.role || '',
+              createdAt: user?.createdAt,
+              emailVerified: user?.emailVerified,
             }}
             onSubmit={(values) => handleSubmit(values)}
           >
@@ -103,17 +104,17 @@ export function ProfileSection() {
 
                 <section className='flex flex-col items-center gap-2'>
                   <Avatar className='h-32 w-32'>
-                    <AvatarImage src={user.data.image || ''} alt='User Avatar' />
+                    <AvatarImage src={user.image || ''} alt='User Avatar' />
                     <AvatarFallback className='h-32 w-32'>
                       <IconUserCircle size={64} />
                     </AvatarFallback>
                   </Avatar>
                   <div className='flex flex-col items-center gap-2'>
                     <Label>User since</Label>
-                    <Badge variant='outline'>{user.data.createdAt.toLocaleString()}</Badge>
+                    <Badge variant='outline'>{formatDate(user.createdAt)}</Badge>
 
-                    {user.data ? (
-                      <DeleteUserDialog itemToDelete={user.data} deleteHandler={handleDelete} />
+                    {user ? (
+                      <DeleteUserDialog itemToDelete={user} deleteHandler={handleDelete} />
                     ) : null}
                   </div>
                 </section>
@@ -125,7 +126,7 @@ export function ProfileSection() {
         <div className='grid h-screen place-items-center'>
           <GridLoader
             color={resolvedTheme === 'light' ? 'black' : 'white'}
-            loading={user.isLoading}
+            loading={isLoading}
             size={15}
             aria-label='Loading Spinner'
           />
