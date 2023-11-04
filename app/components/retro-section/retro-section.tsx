@@ -1,6 +1,8 @@
 'use client'
 
 import { Retrospective, User } from '@prisma/client'
+import { format, Locale } from 'date-fns'
+import { de, enUS, fr } from 'date-fns/locale'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -15,6 +17,10 @@ type RetroSectionProps = {
   userId: User['id']
 }
 
+type LocalesMap = {
+  [key: string]: Locale
+}
+
 export function RetroSection({ userId }: RetroSectionProps) {
   const { data: retrospectives, refetch, isLoading } = trpc.retrospective.getAll.useQuery(userId)
   const { mutate } = trpc.retrospective.add.useMutation({
@@ -24,6 +30,13 @@ export function RetroSection({ userId }: RetroSectionProps) {
   })
   const { resolvedTheme } = useTheme()
   const [sortedRetros, setSortedRetros] = useState(retrospectives)
+
+  const formatDate = (date: Date): string => {
+    const locales: LocalesMap = { 'en-US': enUS, 'de-DE': de, 'fr-FR': fr }
+    const userLocale = navigator.language || 'en-US'
+    const locale: Locale = locales[userLocale] || enUS
+    return format(date, 'PP', { locale })
+  }
 
   const sortItems = () => {
     if (retrospectives) {
@@ -86,7 +99,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
               <Card className='h-full w-full shadow-sm transition ease-in-out hover:scale-105 hover:cursor-pointer'>
                 <CardHeader>
                   <CardTitle>{retrospective.name}</CardTitle>
-                  <CardDescription>{retrospective.date.toLocaleDateString()}</CardDescription>
+                  <CardDescription>{formatDate(retrospective.date)}</CardDescription>
                 </CardHeader>
                 <div className='pattern-cross h-28 pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4' />
               </Card>
