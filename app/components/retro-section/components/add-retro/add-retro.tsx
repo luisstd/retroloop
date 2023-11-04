@@ -20,11 +20,11 @@ import {
 import { Input } from '@/ui/input/input'
 import { Label } from '@/ui/label/label'
 
-type RetroDialogProps = {
+type AddRetroProps = {
   handleAddRetro: (input: RetrospectiveCreateInput) => void
 }
 
-export function RetroDialog({ handleAddRetro }: RetroDialogProps) {
+export function AddRetro({ handleAddRetro }: AddRetroProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

@@ -1,15 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeAll, describe, expect, test, vi } from 'vitest'
 
-import { RetroDialog } from '@/components/retro-section/components/retro-dialog'
+import { AddRetro } from '@/components/retro-section/components/add-retro/add-retro'
 
 vi.mock('formik', () => ({
   Formik: vi.fn(),
   Field: vi.fn(),
 }))
 
-test('RetroDialog', () => {
-  describe('RetroDialog', () => {
+test('AddRetro', () => {
+  describe('AddRetro', () => {
     let useStateMock
     let setIsOpenMock: () => void
     let handleAddRetroMock: () => void
@@ -22,7 +22,7 @@ test('RetroDialog', () => {
 
       useStateMock.mockImplementation((initialState) => [initialState, setIsOpenMock])
 
-      render(<RetroDialog handleAddRetro={handleAddRetroMock} />)
+      render(<AddRetro handleAddRetro={handleAddRetroMock} />)
     })
 
     test('renders start retro button', () => {
