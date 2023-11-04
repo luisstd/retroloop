@@ -1,8 +1,5 @@
 'use client'
-
 import { Retrospective, User } from '@prisma/client'
-import { format, Locale } from 'date-fns'
-import { de, enUS, fr } from 'date-fns/locale'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -12,13 +9,10 @@ import { RetroDialog } from '@/components/retro-section/components/retro-dialog'
 import { RetrospectiveCreateInput } from '@/types/retrospective'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
 import { trpc } from '@/utils/trpc'
+import { formatDate } from '@/utils/utils'
 
 type RetroSectionProps = {
   userId: User['id']
-}
-
-type LocalesMap = {
-  [key: string]: Locale
 }
 
 export function RetroSection({ userId }: RetroSectionProps) {
@@ -30,13 +24,6 @@ export function RetroSection({ userId }: RetroSectionProps) {
   })
   const { resolvedTheme } = useTheme()
   const [sortedRetros, setSortedRetros] = useState(retrospectives)
-
-  const formatDate = (date: Date): string => {
-    const locales: LocalesMap = { 'en-US': enUS, 'de-DE': de, 'fr-FR': fr }
-    const userLocale = navigator.language || 'en-US'
-    const locale: Locale = locales[userLocale] || enUS
-    return format(date, 'PP', { locale })
-  }
 
   const sortItems = () => {
     if (retrospectives) {
