@@ -7,8 +7,9 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
-import { RetroDialog } from '@/components/retro-section/components/retro-dialog'
-import { RetrospectiveCreateInput } from '@/types/retrospective'
+import { AddRetro } from '@/components/retro-section/components/add-retro/add-retro'
+import { EditRetro } from '@/components/retro-section/components/edit-retro/edit-retro'
+import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from '@/types/retrospective'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
 import { useToast } from '@/ui/toast/use-toast'
 import { trpc } from '@/utils/trpc'
@@ -36,7 +37,12 @@ function RetrospectivesFallback() {
 
 export function RetroSection({ userId }: RetroSectionProps) {
   const { data: retrospectives, refetch, isLoading } = trpc.retrospective.getAll.useQuery(userId)
-  const { mutate } = trpc.retrospective.add.useMutation({
+  const { mutate: addRetro } = trpc.retrospective.add.useMutation({
+    onSuccess: async () => {
+      refetch()
+    },
+  })
+  const { mutate: updateRetro } = trpc.retrospective.edit.useMutation({
     onSuccess: async () => {
       refetch()
     },
@@ -62,10 +68,18 @@ export function RetroSection({ userId }: RetroSectionProps) {
   }
 
   const handleAddRetro = (input: RetrospectiveCreateInput) => {
-    mutate(input)
+    addRetro(input)
     toast({
       title: 'Retrospective created',
       description: 'Your retro was successfully created',
+    })
+  }
+
+  const handleUpdateRetro = (input: RetrospectiveUpdateInput) => {
+    updateRetro(input)
+    toast({
+      title: 'Retrospective updated',
+      description: 'Your retro was successfully updated',
     })
   }
 
@@ -79,7 +93,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
         <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
         <div className='flex w-full justify-end'>
-          <RetroDialog handleAddRetro={handleAddRetro} />
+          <AddRetro handleAddRetro={handleAddRetro} />
         </div>
       </div>
 
@@ -97,24 +111,30 @@ export function RetroSection({ userId }: RetroSectionProps) {
       <section className='mt-5 grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {sortedRetros ? (
           sortedRetros.map((retrospective: Retrospective) => (
-            <Link
+            <Card
               key={retrospective.id}
-              href={{
-                pathname: '/retro',
-                query: {
-                  id: retrospective.id,
-                  name: retrospective.name,
-                },
-              }}
+              className='h-full w-full shadow-sm transition ease-in-out hover:scale-105'
             >
-              <Card className='h-full w-full shadow-sm transition ease-in-out hover:scale-105 hover:cursor-pointer'>
-                <CardHeader>
-                  <CardTitle>{retrospective.name}</CardTitle>
-                  <CardDescription>{formatDate(retrospective.date)}</CardDescription>
-                </CardHeader>
+              <CardHeader>
+                <CardTitle className='flex items-baseline justify-between'>
+                  {retrospective.name}
+                  <EditRetro handleEditRetro={handleUpdateRetro} retrospective={retrospective} />
+                </CardTitle>
+                <CardDescription>{formatDate(retrospective.date)}</CardDescription>
+              </CardHeader>
+              <Link
+                className='hover:cursor-pointer'
+                href={{
+                  pathname: '/retro',
+                  query: {
+                    id: retrospective.id,
+                    name: retrospective.name,
+                  },
+                }}
+              >
                 <div className='pattern-cross h-28 pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4' />
-              </Card>
-            </Link>
+              </Link>
+            </Card>
           ))
         ) : !isLoading ? (
           <RetrospectivesFallback />
