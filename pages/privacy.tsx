@@ -57,27 +57,27 @@ const Privacy: NextPage = () => {
           they collect and use personal information. This Privacy Policy does not apply to any of
           your activities after you leave our site.
         </p>
-        <p>This policy is effective as of 28 January 2023. </p>
-        <p>Last updated: 28 January 2023 </p>
+        <p>This policy is effective as of 28 January 2023</p>
+        <p>Last updated: 29 October 2023</p>
         <h3>Information We Collect</h3>
         <p>
-          Information we collect falls into one of two categories: &ldquo;voluntarily
-          provided&rdquo; information and &ldquo;automatically collected&rdquo; information.
+          Information we collect falls into one of two categories: “voluntarily provided”
+          information and “automatically collected” information.
         </p>
         <p>
-          &ldquo;Voluntarily provided&rdquo; information refers to any information you knowingly and
-          actively provide us when using or participating in any of our services and promotions.
+          “Voluntarily provided” information refers to any information you knowingly and actively
+          provide us when using or participating in any of our services and promotions.
         </p>
         <p>
-          &ldquo;Automatically collected&rdquo; information refers to any information automatically
-          sent by your devices in the course of accessing our products and services.
+          “Automatically collected” information refers to any information automatically sent by your
+          devices in the course of accessing our products and services.
         </p>
-        <h4>Log Data</h4>
+        <h3>Log Data</h3>
         <p>
           When you visit our website, our servers may automatically log the standard data provided
-          by your web browser. It may include your device’s Internet Protocol (IP) address, your
-          browser type and version, the pages you visit, the time and date of your visit, the time
-          spent on each page, and other details about your visit.
+          by your web browser. It may include your device&apos;s Internet Protocol (IP) address,
+          your browser type and version, the pages you visit, the time and date of your visit, the
+          time spent on each page, and other details about your visit.
         </p>
         <p>
           Additionally, if you encounter certain errors while using the site, we may automatically
@@ -92,13 +92,13 @@ const Privacy: NextPage = () => {
           it may be possible to combine it with other data to personally identify individual
           persons.
         </p>
-        <h4>Device Data</h4>
+        <h3>Device Data</h3>
         <p>
           When you visit our website or interact with our services, we may automatically collect
           data about your device, such as:
         </p>
-        <ul className='list-inside list-disc'>
-          <li>Device Type</li>
+        <ul>
+          <li>Device type</li>
           <li>Geo-location data</li>
         </ul>
         <p>
@@ -106,12 +106,12 @@ const Privacy: NextPage = () => {
           recommend checking the policies of your device manufacturer or software provider to learn
           what information they make available to us.
         </p>
-        <h4>Personal Information</h4>
+        <h3>Personal Information</h3>
         <p>
           We may ask for personal information — for example, when you subscribe to our newsletter or
           when you contact us — which may include one or more of the following:
         </p>
-        <ul className='list-inside list-disc'>
+        <ul>
           <li>Name</li>
           <li>Email</li>
         </ul>
@@ -122,18 +122,18 @@ const Privacy: NextPage = () => {
           data and other metrics, as well as other types of information, created or generated, as
           users interact with our services.
         </p>
-        <h4>Legitimate Reasons for Processing Your Personal Information</h4>
+        <h3>Legitimate Reasons for Processing Your Personal Information</h3>
         <p>
           We only collect and use your personal information when we have a legitimate reason for
           doing so. In which instance, we only collect personal information that is reasonably
           necessary to provide our services to you.
         </p>
-        <h4>Collection and Use of Information</h4>
+        <h3>Collection and Use of Information</h3>
         <p>
           We may collect personal information from you when you do any of the following on our
           website:
         </p>
-        <ul className='list-inside list-disc'>
+        <ul>
           <li>Register for an account</li>
           <li>Purchase a subscription</li>
           <li>Sign up to receive updates from us via email or social media channels</li>
@@ -146,7 +146,7 @@ const Privacy: NextPage = () => {
           personal information will not be further processed in a manner that is incompatible with
           these purposes:
         </p>
-        <ul className='list-dics list-inside'>
+        <ul>
           <li>to provide you with our platform&apos;s core features and services</li>
           <li>to contact and communicate with you</li>
           <li>
@@ -164,11 +164,11 @@ const Privacy: NextPage = () => {
         <p>
           When we collect and process personal information, and while we retain this information, we
           will protect it within commercially acceptable means to prevent loss and theft, as well as
-          unauthorized access, disclosure, copying, use, or modification.
+          unauthorized access, disclosure, copying, use or modification.
         </p>
         <p>
           Although we will do our best to protect the personal information you provide to us, we
-          advise that no method of electronic transmission or storage is 100% secure, and no one can
+          advise that no method of electronic transmission or storage is 100% secure and no one can
           guarantee absolute data security.
         </p>
         <p>
@@ -191,23 +191,24 @@ const Privacy: NextPage = () => {
           legal, accounting, or reporting obligation or for archiving purposes in the public
           interest, scientific, or historical research purposes or statistical purposes.
         </p>
-        <h3>Children’s Privacy</h3>
+        <h3>Children&apos;s Privacy</h3>
         <p>
-          We do not aim any of our products or services directly at children under the age of 13,
-          and we do not knowingly collect personal information about children under 13.
+          We do not aim any of our products or services directly at children under the age of 13 and
+          we do not knowingly collect personal information about children under 13.
         </p>
         <h3>Disclosure of Personal Information to Third Parties</h3>
-        <p>We may disclose personal information to: </p>
-        <ul className='list-inside list-disc'>
-          <li>a parent, subsidiary, or affiliate of our company</li>
+        <p>We may disclose personal information to:</p>
+        <ul>
+          <li>a parent, subsidiary or affiliate of our company</li>
           <li>
             third-party service providers for the purpose of enabling them to provide their
             services, including (without limitation) IT service providers, data storage, hosting and
-            server providers, analytics, error loggers, debt collectors, maintenance or
-            problem-solving providers, professional advisors, and payment systems operators
+            server providers, ad networks, analytics, error loggers, debt collectors, maintenance or
+            problem-solving providers, providers, professional advisors, and payment systems
+            operators{' '}
           </li>
-          <li>our employees, contractors, and/or related entities</li>
-          <li>our existing or potential agents or business partners</li>
+          <li>our employees, contractors, and/or related entities </li>
+          <li>our existing or potential agents or business partners </li>
           <li>
             credit reporting agencies, courts, tribunals, and regulatory authorities, in the event
             you fail to pay for goods or services we have provided to you
@@ -218,7 +219,7 @@ const Privacy: NextPage = () => {
             establish, exercise, or defend our legal rights
           </li>
           <li>
-            third parties, including agents or sub-contractors, who assist us in providing
+            third parties, including agents or sub-contractors who assist us in providing
             information, products, services, or direct marketing to you
           </li>
           <li>third parties to collect and process data</li>
@@ -227,10 +228,11 @@ const Privacy: NextPage = () => {
             business
           </li>
         </ul>
-        <p>Third parties we currently use include: </p>
-        <ul className='list-inside list-disc'>
+        <p>Third parties we currently use include:</p>
+        <ul>
           <li>Plausible Analytics</li>
           <li>Sentry Error Monitoring</li>
+          <li>Vercel Cloud Hosting</li>
         </ul>
         <h3>Your Rights and Controlling Your Personal Information</h3>
         <p>
@@ -244,7 +246,7 @@ const Privacy: NextPage = () => {
           <strong>Information from third parties:</strong> If we receive personal information about
           you from a third party, we will protect it as set out in this privacy policy. If you are a
           third party providing personal information about somebody else, you represent and warrant
-          that you have such person’s consent to provide the personal information to us.
+          that you have such person&apos;s consent to provide the personal information to us.
         </p>
         <p>
           <strong>Marketing permission:</strong> If you have previously agreed to us using your
@@ -327,9 +329,9 @@ const Privacy: NextPage = () => {
         <h4>Data Controller / Data Processor</h4>
         <p>
           The GDPR distinguishes between organisations that process personal information for their
-          own purposes (known as &ldquo;data controllers&rdquo;) and organizations that process
-          personal information on behalf of other organizations (known as &ldquo;data
-          processors&rdquo;). We, Retroloop, located at the address provided in our Contact Us
+          own purposes (known as &quot;data controllers&quot;) and organisations that process
+          personal information on behalf of other organisations (known as &quot;data
+          processors&quot;). We, Retroloop, located at the address provided in our Contact Us
           section, are a Data Controller with respect to the personal information you provide to us.
         </p>
         <h4>Legal Bases for Processing Your Personal Information</h4>
@@ -344,7 +346,7 @@ const Privacy: NextPage = () => {
           Our lawful bases depend on the services you use and how you use them. This means we only
           collect and use your information on the following grounds:
         </p>
-        <h5>Consent From You</h5>
+        <h3>Consent From You</h3>
         <p>
           Where you give us consent to collect and use your personal information for a specific
           purpose. You may withdraw your consent at any time using the facilities we provide;
@@ -355,14 +357,14 @@ const Privacy: NextPage = () => {
           free to enquire using the details provided in the Contact Us section of this privacy
           policy.
         </p>
-        <h5>Performance of a Contract or Transaction</h5>
+        <h3>Performance of a Contract or Transaction</h3>
         <p>
           Where you have entered into a contract or transaction with us, or in order to take
           preparatory steps prior to our entering into a contract or transaction with you. For
           example, if you purchase a product, service, or subscription from us, we may need to use
           your personal and payment information in order to process and deliver your order.
         </p>
-        <h5>Our Legitimate Interests</h5>
+        <h3>Our Legitimate Interests</h3>
         <p>
           Where we assess it is necessary for our legitimate interests, such as for us to provide,
           operate, improve and communicate our services. We consider our legitimate interests to
@@ -370,7 +372,7 @@ const Privacy: NextPage = () => {
           services, measures taken to operate our services efficiently, marketing analysis, and
           measures taken to protect our legal rights and interests.
         </p>
-        <h5>Compliance with Law</h5>
+        <h3>Compliance with Law</h3>
         <p>
           In some cases, we may have a legal obligation to use or keep your personal information.
           Such cases may include (but are not limited to) court orders, criminal investigations,
@@ -420,69 +422,70 @@ const Privacy: NextPage = () => {
           least once, like certain profile information and public comments, even after you have
           deleted the information from our services or deactivated your account.
         </p>
-        <h3>Additional Disclosures for California Compliance (US)</h3>
+        <h3>Additional Disclosures for U.S. States Privacy Law Compliance.</h3>
         <p>
-          Under California Civil Code Section 1798.83, if you live in California and your business
-          relationship with us is mainly for personal, family, or household purposes, you may ask us
-          about the information we release to other organizations for their marketing purposes.
-        </p>
-        <p>
-          To make such a request, please contact us using the details provided in this privacy
-          policy with &ldquo;Request for California privacy information&rdquo; in the subject line.
-          You may make this type of request once every calendar year. We will email you a list of
-          categories of personal information we revealed to other organisations for their marketing
-          purposes in the last calendar year, along with their names and addresses. Not all personal
-          information shared in this way is covered by Section 1798.83 of the California Civil Code.
+          The following section includes provisions that comply with the privacy laws of these
+          states (California, Colorado, Delaware, Florida, Virginia, and Utah) and is applicable
+          only to the residents of those states. Specific references to a particular state (in a
+          heading or in the text) are only a reference to that state&apos;s law and applies only to
+          that state&apos;s residents. Non-state specific language applies to all of the states
+          listed above.
         </p>
         <h4>Do Not Track</h4>
         <p>
-          Some browsers have a &ldquo;Do Not Track&rdquo; feature that lets you tell websites that
-          you do not want to have your online activities tracked. At this time, we do not respond to
-          browser &ldquo;Do Not Track&rdquo; signals.
+          Some browsers have a &quot;Do Not Track&quot; feature that lets you tell websites that you
+          do not want to have your online activities tracked. At this time, we do not respond to
+          browser &quot;Do Not Track&quot; signals.
         </p>
         <p>
           We adhere to the standards outlined in this privacy policy, ensuring we collect and
           process personal information lawfully, fairly, transparently, and with legitimate, legal
           reasons for doing so.
         </p>
-        <h4>CCPA-permitted financial incentives</h4>
+        <h4>California Privacy Laws - CPPA</h4>
         <p>
-          In accordance with your right to non-discrimination, we may offer you certain financial
-          incentives permitted by the CCPA that can result in different prices, rates, or quality
-          levels for the goods or services we provide.
+          Under California Civil Code Section 1798.83, if you live in California and your business
+          relationship with us is mainly for personal, family, or household purposes, you may ask us
+          about the information we release to other organizations for their marketing purposes. In
+          accordance with your right to non-discrimination, we may offer you certain financial
+          incentives permitted by the California Consumer Privacy Act, and the California Privacy
+          Rights Act (collectively, CCPA) that can result in different prices, rates, or quality
+          levels for the goods or services we provide. Any CCPA-permitted financial incentive we
+          offer will reasonably relate to the value of your personal information, and we will
+          provide written terms that describe clearly the nature of such an offer. Participation in
+          a financial incentive program requires your prior opt-in consent, which you may revoke at
+          any time.
         </p>
         <p>
-          Any CCPA-permitted financial incentive we offer will reasonably relate to the value of
-          your personal information, and we will provide written terms that describe clearly the
-          nature of such an offer. Participation in a financial incentive program requires your
-          prior opt-in consent, which you may revoke at any time.
+          Under California Civil Code Section 1798.83, if you live in California and your business
+          relationship with us is mainly for personal, family, or household purposes, you may ask us
+          about the information we release to other organizations for their marketing purposes. To
+          make such a request, please contact us using the details provided in this privacy policy
+          with “Request for California privacy information” in the subject line. You may make this
+          type of request once every calendar year. We will email you a list of categories of
+          personal information we revealed to other organisations for their marketing purposes in
+          the last calendar year, along with their names and addresses. Not all personal information
+          shared in this way is covered by Section 1798.83 of the California Civil Code.
         </p>
         <h4>California Notice of Collection</h4>
         <p>
           In the past 12 months, we have collected the following categories of personal information
-          enumerated in the California Consumer Privacy Act:
+          enumerated in the CCPA:
         </p>
-        <ul className='list-inside list-disc'>
-          <li>
-            Identifiers, such as name, email address, phone number account name, IP address, and an
-            ID or number assigned to your account.
-          </li>
-          <li>Geolocation data.</li>
-        </ul>
+        <ul></ul>
         <p>
           For more information on information we collect, including the sources we receive
-          information from, review the &ldquo;Information We Collect&rdquo; section. We collect and
-          use these categories of personal information for the business purposes described in the
-          &ldquo;Collection and Use of Information&rdquo; section, including to provide and manage
-          our Service.
+          information from, review the “Information We Collect” section. We collect and use these
+          categories of personal information for the business purposes described in the “Collection
+          and Use of Information” section, including to provide and manage our Service.
         </p>
         <h4>Right to Know and Delete</h4>
         <p>
-          If you are a California resident, you have rights to delete your personal information we
-          collected and know certain information about our data practices in the preceding 12
-          months. In particular, you have the right to request the following from us:
+          You have rights to delete your personal information we collected and know certain
+          information about our data practices in the preceding 12 months. In particular, you have
+          the right to request the following from us:
         </p>
-        <ul className='list-inside list-disc'>
+        <ul>
           <li>The categories of personal information we have collected about you;</li>
           <li>The categories of sources from which the personal information was collected;</li>
           <li>
@@ -505,16 +508,15 @@ const Privacy: NextPage = () => {
         </p>
         <h4>Shine the Light</h4>
         <p>
-          If you are a California resident, in addition to the rights discussed above, you have the
-          right to request information from us regarding the manner in which we share certain
-          personal information as defined by California’s &ldquo;Shine the Light&rdquo; with third
-          parties and affiliates for their own direct marketing purposes.
+          In addition to the rights discussed above, you have the right to request information from
+          us regarding the manner in which we share certain personal information as defined by
+          applicable statute with third parties and affiliates for their own direct marketing
+          purposes.
         </p>
         <p>
           To receive this information, send us a request using the contact details provided in this
-          privacy policy. Requests must include &ldquo;California Privacy Rights Request&rdquo; in
-          the first line of the description and include your name, street address, city, state, and
-          ZIP code.
+          privacy policy. Requests must include “Privacy Rights Request” in the first line of the
+          description and include your name, street address, city, state, and ZIP code.
         </p>
         <h3>Contact Us</h3>
         <p>
