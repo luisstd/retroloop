@@ -4,7 +4,6 @@ import {
   IconBrandGithub,
   IconBrandOpenSource,
   IconBulb,
-  IconInfinity,
   IconLogin,
   IconRepeat,
   IconUsers,
@@ -58,8 +57,8 @@ const Landingpage: NextPage = () => {
       </Head>
 
       <section className='row-start-1 m-5 flex flex-col items-center gap-5 px-2'>
-        <div className='flex items-center gap-3'>
-          <IconInfinity size={64} />
+        <div className='flex items-center'>
+          <Image src='/logo.svg' alt='Retroloop logo' width={132} height={132} />
           <h1 className='scroll-m-20 text-4xl font-extrabold italic tracking-tight lg:text-5xl'>
             retroloop
           </h1>
