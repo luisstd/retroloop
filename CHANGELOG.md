@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/luisstd/retroloop/compare/v1.6.0...v1.6.1) (2023-11-04)
+
+
+### Bug Fixes
+
+* fix check for empty dashboard state ([d426178](https://github.com/luisstd/retroloop/commit/d42617894c3a48b4e9d92f2adc79dd0b3d90a5a2))
+
 ## [1.6.0](https://github.com/luisstd/retroloop/compare/v1.5.0...v1.6.0) (2023-11-04)
 
 
