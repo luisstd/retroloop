@@ -1,5 +1,4 @@
 'use client'
-
 import { Retrospective, User } from '@prisma/client'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
@@ -10,47 +9,45 @@ import { RetroDialog } from '@/components/retro-section/components/retro-dialog'
 import { RetrospectiveCreateInput } from '@/types/retrospective'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/ui/card/card'
 import { trpc } from '@/utils/trpc'
+import { formatDate } from '@/utils/utils'
 
 type RetroSectionProps = {
   userId: User['id']
 }
 
 export function RetroSection({ userId }: RetroSectionProps) {
+  const { data: retrospectives, refetch, isLoading } = trpc.retrospective.getAll.useQuery(userId)
+  const { mutate } = trpc.retrospective.add.useMutation({
+    onSuccess: async () => {
+      refetch()
+    },
+  })
   const { resolvedTheme } = useTheme()
+  const [sortedRetros, setSortedRetros] = useState(retrospectives)
 
-  const retrospectives = trpc.retrospective.getAll.useQuery(userId)
+  const sortItems = () => {
+    if (retrospectives) {
+      setSortedRetros(
+        [...retrospectives].sort((a, b) => {
+          if (b.date === null) {
+            return 1
+          }
+          if (a.date === null) {
+            return -1
+          }
+          return b.date.getTime() - a.date.getTime()
+        })
+      )
+    }
+  }
 
-  const [sortedRetros, setSortedRetros] = useState(retrospectives.data)
+  const handleAddRetro = (input: RetrospectiveCreateInput) => {
+    mutate(input)
+  }
 
   useEffect(() => {
     sortItems()
-  }, [retrospectives.data])
-
-  function sortItems(): void {
-    retrospectives.data
-      ? setSortedRetros(
-          [...retrospectives.data].sort((a, b) => {
-            if (b.date === null) {
-              return 1
-            }
-            if (a.date === null) {
-              return -1
-            }
-            return b.date.getTime() - a.date.getTime()
-          })
-        )
-      : null
-  }
-
-  const mutation = trpc.retrospective.add.useMutation({
-    onSuccess: async () => {
-      retrospectives.refetch()
-    },
-  })
-
-  const handleAddRetro = (input: RetrospectiveCreateInput) => {
-    mutation.mutate(input)
-  }
+  }, [retrospectives])
 
   return (
     <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
@@ -62,11 +59,11 @@ export function RetroSection({ userId }: RetroSectionProps) {
         </div>
       </div>
 
-      {retrospectives.isLoading && (
+      {isLoading && (
         <div className='grid place-items-center'>
           <GridLoader
             color={resolvedTheme === 'light' ? 'black' : 'white'}
-            loading={retrospectives.isLoading}
+            loading={isLoading}
             size={15}
             aria-label='Loading Spinner'
           />
@@ -89,7 +86,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
               <Card className='h-full w-full shadow-sm transition ease-in-out hover:scale-105 hover:cursor-pointer'>
                 <CardHeader>
                   <CardTitle>{retrospective.name}</CardTitle>
-                  <CardDescription>{retrospective.date.toLocaleDateString()}</CardDescription>
+                  <CardDescription>{formatDate(retrospective.date)}</CardDescription>
                 </CardHeader>
                 <div className='pattern-cross h-28 pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4' />
               </Card>
