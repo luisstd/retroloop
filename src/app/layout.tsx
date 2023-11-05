@@ -1,8 +1,9 @@
 import { QueryClient } from '@tanstack/react-query'
 import { getServerSession } from 'next-auth'
 import { Providers } from 'src/app/providers'
-import { font } from 'src/app/styles/fonts'
 import { authOptions } from 'src/pages/api/auth/[...nextauth]'
+
+import { font } from '@/styles/fonts'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const query_client = new QueryClient()
