@@ -1,9 +1,9 @@
+import { type Config } from 'tailwindcss'
 import { fontFamily } from 'tailwindcss/defaultTheme'
 
-/** @type {import('tailwindcss').Config} */
-export const darkMode = ['class']
-export const content = ['app/**/*.{ts,tsx}', 'pages/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}']
 export const theme = {
+  darkMode: ['class'],
+  content: ['./src/**/*.tsx'],
   container: {
     center: true,
     padding: '2rem',
@@ -92,9 +92,9 @@ export const theme = {
       },
     },
   },
-}
-export const plugins = [
-  require('tailwindcss-animate'),
-  require('tailwindcss-bg-patterns'),
-  require('@tailwindcss/typography'),
-]
+  plugins: [
+    require('tailwindcss-animate'),
+    require('tailwindcss-bg-patterns'),
+    require('@tailwindcss/typography'),
+  ],
+} satisfies Config
