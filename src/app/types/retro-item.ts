@@ -1,5 +1,6 @@
-import { RetroItemCreateInputSchema, RetroItemUpdateInputSchema } from 'src/app/schemas/retro-item'
 import { z } from 'zod'
+
+import { RetroItemCreateInputSchema, RetroItemUpdateInputSchema } from '@/schemas/retro-item'
 
 export type RetroItemCreateInput = z.infer<typeof RetroItemCreateInputSchema>
 

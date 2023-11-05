@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 import { DeleteUserDialog } from 'src/app/components/profile-section/components/delete-user-dialog'
-import { UserUpdateInputSchema } from 'src/app/schemas/user'
 import { UserUpdateInput } from 'src/app/types/user'
 import { Avatar, AvatarFallback, AvatarImage } from 'src/app/ui/avatar/avatar'
 import { Badge } from 'src/app/ui/badge/badge'
@@ -19,6 +18,8 @@ import { useToast } from 'src/app/ui/toast/use-toast'
 import { trpc } from 'src/app/utils/trpc'
 import { formatDate } from 'src/app/utils/utils'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
+
+import { UserUpdateInputSchema } from '@/schemas/user'
 
 export function ProfileSection() {
   const { publicRuntimeConfig } = getConfig()

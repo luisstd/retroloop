@@ -1,8 +1,9 @@
+import { z } from 'zod'
+
 import {
   RetrospectiveCreateInputSchema,
   RetrospectiveUpdateInputSchema,
-} from 'src/app/schemas/retrospective'
-import { z } from 'zod'
+} from '@/schemas/retrospective'
 
 import { t } from '../trpc'
 

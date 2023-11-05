@@ -1,5 +1,6 @@
-import { RetroItemCreateInputSchema, RetroItemUpdateInputSchema } from 'src/app/schemas/retro-item'
 import { z } from 'zod'
+
+import { RetroItemCreateInputSchema, RetroItemUpdateInputSchema } from '@/schemas/retro-item'
 
 import { t } from '../trpc'
 
