@@ -3,12 +3,13 @@
 import { RetroItem, Retrospective } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
-import { UserSession } from 'src/app/types/user'
 import { Badge } from 'src/app/ui/badge/badge'
 import { Button } from 'src/app/ui/button/button'
 import { Card } from 'src/app/ui/card/card'
 import { useToast } from 'src/app/ui/toast/use-toast'
 import { trpc } from 'src/app/utils/trpc'
+
+import { UserSession } from '@/types/user'
 
 type ItemVoterProps = {
   title: string

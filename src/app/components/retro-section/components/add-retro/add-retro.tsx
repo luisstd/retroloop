@@ -3,7 +3,6 @@
 import { IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
-import { RetrospectiveCreateInput } from 'src/app/types/retrospective'
 import { Button } from 'src/app/ui/button/button'
 import {
   Dialog,
@@ -19,6 +18,7 @@ import { Label } from 'src/app/ui/label/label'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
+import { RetrospectiveCreateInput } from '@/types/retrospective'
 
 type AddRetroProps = {
   handleAddRetro: (input: RetrospectiveCreateInput) => void

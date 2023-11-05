@@ -3,7 +3,6 @@
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
-import { UserSession } from 'src/app/types/user'
 import { Button } from 'src/app/ui/button/button'
 import {
   Card,
@@ -16,6 +15,8 @@ import {
 import { Input } from 'src/app/ui/input/input'
 import { Label } from 'src/app/ui/label/label'
 import { trpc } from 'src/app/utils/trpc'
+
+import { UserSession } from '@/types/user'
 
 export function SignUpForm() {
   const { data } = useSession()

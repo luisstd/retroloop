@@ -4,7 +4,6 @@ import { Retrospective } from '@prisma/client'
 import { IconPlus } from '@tabler/icons-react'
 import { Field, FieldProps, Form, Formik } from 'formik'
 import { useState } from 'react'
-import { RetroItemCreateInput } from 'src/app/types/retro-item'
 import { Button } from 'src/app/ui/button/button'
 import {
   Dialog,
@@ -19,6 +18,7 @@ import { Textarea } from 'src/app/ui/textarea/textarea'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { RetroItemCreateInputSchema } from '@/schemas/retro-item'
+import { RetroItemCreateInput } from '@/types/retro-item'
 
 type RetroItemDialogProps = {
   itemType: string

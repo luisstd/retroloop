@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 import { DeleteUserDialog } from 'src/app/components/profile-section/components/delete-user-dialog'
-import { UserUpdateInput } from 'src/app/types/user'
 import { Avatar, AvatarFallback, AvatarImage } from 'src/app/ui/avatar/avatar'
 import { Badge } from 'src/app/ui/badge/badge'
 import { Button } from 'src/app/ui/button/button'
@@ -20,6 +19,7 @@ import { formatDate } from 'src/app/utils/utils'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { UserUpdateInputSchema } from '@/schemas/user'
+import { UserUpdateInput } from '@/types/user'
 
 export function ProfileSection() {
   const { publicRuntimeConfig } = getConfig()

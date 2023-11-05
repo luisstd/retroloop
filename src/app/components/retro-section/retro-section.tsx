@@ -8,11 +8,12 @@ import { useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 import { AddRetro } from 'src/app/components/retro-section/components/add-retro/add-retro'
 import { EditRetro } from 'src/app/components/retro-section/components/edit-retro/edit-retro'
-import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from 'src/app/types/retrospective'
 import { Card, CardDescription, CardHeader, CardTitle } from 'src/app/ui/card/card'
 import { useToast } from 'src/app/ui/toast/use-toast'
 import { trpc } from 'src/app/utils/trpc'
 import { formatDate } from 'src/app/utils/utils'
+
+import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from '@/types/retrospective'
 
 type RetroSectionProps = {
   userId: User['id']

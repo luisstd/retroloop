@@ -4,7 +4,6 @@ import { Retrospective } from '@prisma/client'
 import { IconDots } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
-import { RetrospectiveUpdateInput } from 'src/app/types/retrospective'
 import { Button } from 'src/app/ui/button/button'
 import {
   Dialog,
@@ -19,6 +18,7 @@ import { Label } from 'src/app/ui/label/label'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
+import { RetrospectiveUpdateInput } from '@/types/retrospective'
 
 type EditRetroProps = {
   handleEditRetro: (input: RetrospectiveUpdateInput) => void
