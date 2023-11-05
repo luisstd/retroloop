@@ -1,6 +1,7 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
-import { MenuBar } from 'src/app/components/menu-bar/menu-bar'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+
+import { MenuBar } from '@/app/components/menu-bar/menu-bar'
 
 vi.mock('next-auth/react', () => ({
   useSession: () => ({ status: 'unauthenticated', data: null }),

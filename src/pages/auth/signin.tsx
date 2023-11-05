@@ -2,10 +2,11 @@ import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { getServerSession } from 'next-auth/next'
 import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
-import { Button } from 'src/app/ui/button/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'src/app/ui/card/card'
-import { Input } from 'src/app/ui/input/input'
-import { Label } from 'src/app/ui/label/label'
+
+import { Button } from '@/app/ui/button/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
+import { Input } from '@/app/ui/input/input'
+import { Label } from '@/app/ui/label/label'
 
 import { authOptions } from '../api/auth/[...nextauth]'
 

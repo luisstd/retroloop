@@ -1,7 +1,8 @@
 import { RetroItem } from '@prisma/client'
 import { render, screen } from '@testing-library/react'
-import { ItemStack } from 'src/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
 import { beforeEach, describe, expect, test } from 'vitest'
+
+import { ItemStack } from '@/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
 
 test('ItemStack', () => {
   describe('ItemStack', () => {

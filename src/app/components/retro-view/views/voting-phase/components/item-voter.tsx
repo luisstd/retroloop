@@ -3,11 +3,11 @@
 import { RetroItem, Retrospective } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
-import { Badge } from 'src/app/ui/badge/badge'
-import { Button } from 'src/app/ui/button/button'
-import { Card } from 'src/app/ui/card/card'
-import { useToast } from 'src/app/ui/toast/use-toast'
 
+import { Badge } from '@/app/ui/badge/badge'
+import { Button } from '@/app/ui/button/button'
+import { Card } from '@/app/ui/card/card'
+import { useToast } from '@/app/ui/toast/use-toast'
 import { UserSession } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 

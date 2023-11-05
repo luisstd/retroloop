@@ -3,10 +3,11 @@
 import { IconInfinity } from '@tabler/icons-react'
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
-import { LoginButton } from 'src/app/components/menu-bar/components/login-button/login-button'
-import { NavigationDropdown } from 'src/app/components/menu-bar/components/nav-dropdown/nav-dropdown'
-import { ThemeDropdown } from 'src/app/components/menu-bar/components/theme-dropdown/theme-dropdown'
-import { UserDropdown } from 'src/app/components/menu-bar/components/user-dropdown/user-dropdown'
+
+import { LoginButton } from '@/app/components/menu-bar/components/login-button/login-button'
+import { NavigationDropdown } from '@/app/components/menu-bar/components/nav-dropdown/nav-dropdown'
+import { ThemeDropdown } from '@/app/components/menu-bar/components/theme-dropdown/theme-dropdown'
+import { UserDropdown } from '@/app/components/menu-bar/components/user-dropdown/user-dropdown'
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -14,8 +15,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
   NavigationMenuViewport,
-} from 'src/app/ui/navigation-menu/navigation-menu'
-
+} from '@/app/ui/navigation-menu/navigation-menu'
 import { cn } from '@/utils/cn'
 
 export function MenuBar() {

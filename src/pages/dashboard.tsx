@@ -3,10 +3,11 @@ import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
-import { Feedback } from 'src/app/components/feedback/feedback'
-import { RetroSection } from 'src/app/components/retro-section/retro-section'
-import { SignUpForm } from 'src/app/components/sign-up/sign-up-form'
-import { TeamSection } from 'src/app/components/team-section/team-section'
+
+import { Feedback } from '@/app/components/feedback/feedback'
+import { RetroSection } from '@/app/components/retro-section/retro-section'
+import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
+import { TeamSection } from '@/app/components/team-section/team-section'
 
 const Dashboard: NextPage = () => {
   const { data: session, status } = useSession()

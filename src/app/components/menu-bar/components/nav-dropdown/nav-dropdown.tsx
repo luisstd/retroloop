@@ -3,15 +3,16 @@
 import { IconMenu } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Button } from 'src/app/ui/button/button'
+
+import { Button } from '@/app/ui/button/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuPortal,
   DropdownMenuTrigger,
-} from 'src/app/ui/dropdown-menu/dropdown-menu'
-import { NavigationMenuLink } from 'src/app/ui/navigation-menu/navigation-menu'
+} from '@/app/ui/dropdown-menu/dropdown-menu'
+import { NavigationMenuLink } from '@/app/ui/navigation-menu/navigation-menu'
 
 export function NavigationDropdown() {
   const router = useRouter()

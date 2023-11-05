@@ -3,7 +3,8 @@
 import { RetroItem } from '@prisma/client'
 import { IconArrowLeft, IconArrowRight, IconChecks } from '@tabler/icons-react'
 import Link from 'next/link'
-import { Button } from 'src/app/ui/button/button'
+
+import { Button } from '@/app/ui/button/button'
 
 type ItemSwitcherProps = {
   handleNextItem: () => void

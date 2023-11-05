@@ -2,9 +2,10 @@ import { IconFaceIdError } from '@tabler/icons-react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
-import { Feedback } from 'src/app/components/feedback/feedback'
-import { RetroView } from 'src/app/components/retro-view/retro-view'
-import { SignUpForm } from 'src/app/components/sign-up/sign-up-form'
+
+import { Feedback } from '@/app/components/feedback/feedback'
+import { RetroView } from '@/app/components/retro-view/retro-view'
+import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
 
 const Retro: NextPage = () => {
   const { data: session, status } = useSession()

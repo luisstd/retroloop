@@ -1,6 +1,7 @@
 import { fireEvent, render, RenderResult } from '@testing-library/react'
-import { LoginButton } from 'src/app/components/menu-bar/components/login-button/login-button'
 import { afterEach, beforeAll, beforeEach, describe, expect, test } from 'vitest'
+
+import { LoginButton } from '@/app/components/menu-bar/components/login-button/login-button'
 
 test('LoginButton', () => {
   let LoginButtonMounted: RenderResult

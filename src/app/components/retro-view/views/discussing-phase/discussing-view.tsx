@@ -2,11 +2,11 @@
 
 import { Retrospective } from '@prisma/client'
 import { useState } from 'react'
-import { RetroActionBar } from 'src/app/components/retro-view/components/retro-action-bar'
-import { ItemStack } from 'src/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
-import { ItemSwitcher } from 'src/app/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
-import { Card } from 'src/app/ui/card/card'
 
+import { RetroActionBar } from '@/app/components/retro-view/components/retro-action-bar'
+import { ItemStack } from '@/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
+import { ItemSwitcher } from '@/app/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
+import { Card } from '@/app/ui/card/card'
 import { trpc } from '@/utils/trpc'
 
 type DiscussingViewProps = {

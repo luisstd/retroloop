@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Footer } from 'src/app/components/footer/footer'
+
+import { Footer } from '@/app/components/footer/footer'
 
 const Terms: NextPage = () => {
   return (

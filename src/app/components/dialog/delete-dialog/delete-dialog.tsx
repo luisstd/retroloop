@@ -2,6 +2,7 @@
 
 import { IconTrash } from '@tabler/icons-react'
 import { useState } from 'react'
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,8 +12,8 @@ import {
   AlertDialogFooter,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from 'src/app/ui/alert-dialog/alert-dialog'
-import { Button } from 'src/app/ui/button/button'
+} from '@/app/ui/alert-dialog/alert-dialog'
+import { Button } from '@/app/ui/button/button'
 
 type ItemToDelete = { id: string; [key: string]: unknown }
 

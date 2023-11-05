@@ -1,8 +1,9 @@
 'use client'
 
 import { Retrospective } from '@prisma/client'
-import { Button } from 'src/app/ui/button/button'
-import { Card } from 'src/app/ui/card/card'
+
+import { Button } from '@/app/ui/button/button'
+import { Card } from '@/app/ui/card/card'
 
 enum RetroPhase {
   WRITING = 'WRITING',

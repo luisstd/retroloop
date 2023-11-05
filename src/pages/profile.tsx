@@ -3,9 +3,10 @@ import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
-import { Feedback } from 'src/app/components/feedback/feedback'
-import { ProfileSection } from 'src/app/components/profile-section/profile-section'
-import { SignUpForm } from 'src/app/components/sign-up/sign-up-form'
+
+import { Feedback } from '@/app/components/feedback/feedback'
+import { ProfileSection } from '@/app/components/profile-section/profile-section'
+import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
 
 const Profile: NextPage = () => {
   const { data: session, status } = useSession()

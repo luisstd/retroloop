@@ -8,9 +8,9 @@ import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
-import { MenuBar } from 'src/app/components/menu-bar/menu-bar'
-import { Toaster } from 'src/app/ui/toast/toaster'
 
+import { MenuBar } from '@/app/components/menu-bar/menu-bar'
+import { Toaster } from '@/app/ui/toast/toaster'
 import { cn } from '@/utils/cn'
 import { trpc } from '@/utils/trpc'
 

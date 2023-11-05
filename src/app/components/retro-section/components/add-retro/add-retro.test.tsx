@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { AddRetro } from 'src/app/components/retro-section/components/add-retro/add-retro'
 import { beforeAll, describe, expect, test, vi } from 'vitest'
+
+import { AddRetro } from '@/app/components/retro-section/components/add-retro/add-retro'
 
 vi.mock('formik', () => ({
   Formik: vi.fn(),

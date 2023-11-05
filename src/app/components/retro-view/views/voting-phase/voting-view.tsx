@@ -1,9 +1,10 @@
 'use client'
 
 import { Retrospective } from '@prisma/client'
-import { RetroActionBar } from 'src/app/components/retro-view/components/retro-action-bar'
-import { ItemVoter } from 'src/app/components/retro-view/views/voting-phase/components/item-voter'
-import { Card } from 'src/app/ui/card/card'
+
+import { RetroActionBar } from '@/app/components/retro-view/components/retro-action-bar'
+import { ItemVoter } from '@/app/components/retro-view/views/voting-phase/components/item-voter'
+import { Card } from '@/app/ui/card/card'
 
 type VotingViewProps = {
   selectedRetro: Retrospective

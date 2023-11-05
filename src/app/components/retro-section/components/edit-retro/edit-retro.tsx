@@ -4,7 +4,9 @@ import { Retrospective } from '@prisma/client'
 import { IconDots } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
-import { Button } from 'src/app/ui/button/button'
+import { toFormikValidationSchema } from 'zod-formik-adapter'
+
+import { Button } from '@/app/ui/button/button'
 import {
   Dialog,
   DialogContent,
@@ -12,11 +14,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from 'src/app/ui/dialog/dialog'
-import { Input } from 'src/app/ui/input/input'
-import { Label } from 'src/app/ui/label/label'
-import { toFormikValidationSchema } from 'zod-formik-adapter'
-
+} from '@/app/ui/dialog/dialog'
+import { Input } from '@/app/ui/input/input'
+import { Label } from '@/app/ui/label/label'
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
 import { RetrospectiveUpdateInput } from '@/types/retrospective'
 

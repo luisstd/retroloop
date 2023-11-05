@@ -1,7 +1,8 @@
 'use client'
 
 import { FeedbackFish } from '@feedback-fish/react'
-import { Button } from 'src/app/ui/button/button'
+
+import { Button } from '@/app/ui/button/button'
 
 type FeedbackButtonProps = {
   userEmail: string

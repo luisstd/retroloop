@@ -2,8 +2,9 @@
 
 import { Retrospective } from '@prisma/client'
 import { IconArrowRight, IconCopy } from '@tabler/icons-react'
-import { Button } from 'src/app/ui/button/button'
-import { toast } from 'src/app/ui/toast/use-toast'
+
+import { Button } from '@/app/ui/button/button'
+import { toast } from '@/app/ui/toast/use-toast'
 
 type ActionButtonsProps = {
   retrospective: Retrospective

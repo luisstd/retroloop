@@ -14,9 +14,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
-import { Footer } from 'src/app/components/footer/footer'
-import { Button } from 'src/app/ui/button/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'src/app/ui/card/card'
+
+import { Footer } from '@/app/components/footer/footer'
+import { Button } from '@/app/ui/button/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 
 const Landingpage: NextPage = () => {
   const { data: session, status } = useSession()

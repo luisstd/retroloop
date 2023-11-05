@@ -1,7 +1,8 @@
 import { IconMailFast } from '@tabler/icons-react'
 import { signIn } from 'next-auth/react'
-import { Button } from 'src/app/ui/button/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'src/app/ui/card/card'
+
+import { Button } from '@/app/ui/button/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 
 export default function VerifyRequest() {
   return (

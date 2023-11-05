@@ -1,14 +1,14 @@
 'use client'
 
 import Link from 'next/link'
+
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from 'src/app/ui/navigation-menu/navigation-menu'
-
+} from '@/app/ui/navigation-menu/navigation-menu'
 import { cn } from '@/utils/cn'
 
 export function Footer() {

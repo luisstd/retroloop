@@ -4,7 +4,8 @@ import { IconPencil } from '@tabler/icons-react'
 import { Field, FieldProps, Form, Formik } from 'formik'
 import cloneDeep from 'lodash/cloneDeep'
 import { useState } from 'react'
-import { Button } from 'src/app/ui/button/button'
+
+import { Button } from '@/app/ui/button/button'
 import {
   Dialog,
   DialogContent,
@@ -12,8 +13,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from 'src/app/ui/dialog/dialog'
-import { Textarea } from 'src/app/ui/textarea/textarea'
+} from '@/app/ui/dialog/dialog'
+import { Textarea } from '@/app/ui/textarea/textarea'
 
 type EditDialogProps = {
   itemToEdit: Record<string, unknown>

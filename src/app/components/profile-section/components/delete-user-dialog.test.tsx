@@ -1,6 +1,7 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
-import { DeleteUserDialog } from 'src/app/components/profile-section/components/delete-user-dialog'
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+
+import { DeleteUserDialog } from '@/app/components/profile-section/components/delete-user-dialog'
 
 test('DeleteUserDialog', () => {
   describe('DeleteUserDialog', () => {

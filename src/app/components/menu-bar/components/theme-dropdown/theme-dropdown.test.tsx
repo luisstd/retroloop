@@ -1,6 +1,7 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
-import { ThemeDropdown } from 'src/app/components/menu-bar/components/theme-dropdown/theme-dropdown'
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+
+import { ThemeDropdown } from '@/app/components/menu-bar/components/theme-dropdown/theme-dropdown'
 
 vi.mock('next-themes', () => ({
   useTheme: vi.fn(),

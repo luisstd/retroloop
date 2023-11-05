@@ -3,8 +3,9 @@
 import { RetroItem } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
-import { Badge } from 'src/app/ui/badge/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'src/app/ui/card/card'
+
+import { Badge } from '@/app/ui/badge/badge'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 
 type ItemStackProps = {
   retroItems: RetroItem[]

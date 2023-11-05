@@ -4,7 +4,8 @@ import { IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
-import { Button } from 'src/app/ui/button/button'
+
+import { Button } from '@/app/ui/button/button'
 import {
   Dialog,
   DialogContent,
@@ -13,10 +14,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from 'src/app/ui/dialog/dialog'
-import { Input } from 'src/app/ui/input/input'
-import { Label } from 'src/app/ui/label/label'
-import { useToast } from 'src/app/ui/toast/use-toast'
+} from '@/app/ui/dialog/dialog'
+import { Input } from '@/app/ui/input/input'
+import { Label } from '@/app/ui/label/label'
+import { useToast } from '@/app/ui/toast/use-toast'
 
 export function InviteUserDialog() {
   const [isOpen, setIsOpen] = useState(false)

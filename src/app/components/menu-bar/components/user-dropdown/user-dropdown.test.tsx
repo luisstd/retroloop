@@ -1,7 +1,8 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { signOut } from 'next-auth/react'
-import { UserDropdown } from 'src/app/components/menu-bar/components/user-dropdown/user-dropdown'
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+
+import { UserDropdown } from '@/app/components/menu-bar/components/user-dropdown/user-dropdown'
 
 vi.mock('next-auth/react', () => ({
   signOut: vi.fn(),

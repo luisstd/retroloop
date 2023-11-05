@@ -3,7 +3,8 @@
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
-import { Button } from 'src/app/ui/button/button'
+
+import { Button } from '@/app/ui/button/button'
 import {
   Card,
   CardContent,
@@ -11,10 +12,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from 'src/app/ui/card/card'
-import { Input } from 'src/app/ui/input/input'
-import { Label } from 'src/app/ui/label/label'
-
+} from '@/app/ui/card/card'
+import { Input } from '@/app/ui/input/input'
+import { Label } from '@/app/ui/label/label'
 import { UserSession } from '@/types/user'
 import { trpc } from '@/utils/trpc'
 

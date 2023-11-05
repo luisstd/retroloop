@@ -4,9 +4,9 @@ import { User } from '@prisma/client'
 import { IconUsersGroup } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
-import { InviteUserDialog } from 'src/app/components/team-section/components/invite-user-dialog'
-import { Card, CardDescription, CardHeader, CardTitle } from 'src/app/ui/card/card'
 
+import { InviteUserDialog } from '@/app/components/team-section/components/invite-user-dialog'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 import { trpc } from '@/utils/trpc'
 
 function UsersFallback() {
