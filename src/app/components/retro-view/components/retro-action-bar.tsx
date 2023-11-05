@@ -5,7 +5,8 @@ import { useState } from 'react'
 import { ActionButtons } from 'src/app/components/retro-view/components/action-bar/components/action-buttons/action-buttons'
 import { PhaseIndicator } from 'src/app/components/retro-view/components/action-bar/components/phase-indicator/phase-indicator'
 import { RetroTimer } from 'src/app/components/retro-view/components/action-bar/components/retro-timer/retro-timer'
-import { trpc } from 'src/app/utils/trpc'
+
+import { trpc } from '@/utils/trpc'
 
 type RetroActionBarProps = {
   selectedRetro: Retrospective

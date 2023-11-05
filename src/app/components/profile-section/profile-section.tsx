@@ -14,12 +14,12 @@ import { Card, CardHeader, CardTitle } from 'src/app/ui/card/card'
 import { Input } from 'src/app/ui/input/input'
 import { Label } from 'src/app/ui/label/label'
 import { useToast } from 'src/app/ui/toast/use-toast'
-import { trpc } from 'src/app/utils/trpc'
-import { formatDate } from 'src/app/utils/utils'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { UserUpdateInput } from '@/types/user'
+import { trpc } from '@/utils/trpc'
+import { formatDate } from '@/utils/utils'
 
 export function ProfileSection() {
   const { publicRuntimeConfig } = getConfig()

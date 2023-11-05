@@ -15,7 +15,8 @@ import {
   navigationMenuTriggerStyle,
   NavigationMenuViewport,
 } from 'src/app/ui/navigation-menu/navigation-menu'
-import { cn } from 'src/app/utils/cn'
+
+import { cn } from '@/utils/cn'
 
 export function MenuBar() {
   const { data: session, status } = useSession()

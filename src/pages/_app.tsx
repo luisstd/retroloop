@@ -10,8 +10,9 @@ import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 import { MenuBar } from 'src/app/components/menu-bar/menu-bar'
 import { Toaster } from 'src/app/ui/toast/toaster'
-import { cn } from 'src/app/utils/cn'
-import { trpc } from 'src/app/utils/trpc'
+
+import { cn } from '@/utils/cn'
+import { trpc } from '@/utils/trpc'
 
 const queryClient = new QueryClient()
 

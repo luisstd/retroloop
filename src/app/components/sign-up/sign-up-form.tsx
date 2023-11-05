@@ -14,9 +14,9 @@ import {
 } from 'src/app/ui/card/card'
 import { Input } from 'src/app/ui/input/input'
 import { Label } from 'src/app/ui/label/label'
-import { trpc } from 'src/app/utils/trpc'
 
 import { UserSession } from '@/types/user'
+import { trpc } from '@/utils/trpc'
 
 export function SignUpForm() {
   const { data } = useSession()

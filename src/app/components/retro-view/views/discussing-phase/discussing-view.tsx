@@ -6,7 +6,8 @@ import { RetroActionBar } from 'src/app/components/retro-view/components/retro-a
 import { ItemStack } from 'src/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
 import { ItemSwitcher } from 'src/app/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
 import { Card } from 'src/app/ui/card/card'
-import { trpc } from 'src/app/utils/trpc'
+
+import { trpc } from '@/utils/trpc'
 
 type DiscussingViewProps = {
   selectedRetro: Retrospective

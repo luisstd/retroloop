@@ -6,7 +6,8 @@ import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 import { InviteUserDialog } from 'src/app/components/team-section/components/invite-user-dialog'
 import { Card, CardDescription, CardHeader, CardTitle } from 'src/app/ui/card/card'
-import { trpc } from 'src/app/utils/trpc'
+
+import { trpc } from '@/utils/trpc'
 
 function UsersFallback() {
   return (

@@ -7,9 +7,9 @@ import { EditDialog } from 'src/app/components/dialog/edit-dialog/edit-dialog'
 import { RetroItemDialog } from 'src/app/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
 import { Card } from 'src/app/ui/card/card'
 import { useToast } from 'src/app/ui/toast/use-toast'
-import { trpc } from 'src/app/utils/trpc'
 
 import { RetroItemCreateInput } from '@/types/retro-item'
+import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
   title: string

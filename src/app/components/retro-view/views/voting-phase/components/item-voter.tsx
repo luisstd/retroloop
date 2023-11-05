@@ -7,9 +7,9 @@ import { Badge } from 'src/app/ui/badge/badge'
 import { Button } from 'src/app/ui/button/button'
 import { Card } from 'src/app/ui/card/card'
 import { useToast } from 'src/app/ui/toast/use-toast'
-import { trpc } from 'src/app/utils/trpc'
 
 import { UserSession } from '@/types/user'
+import { trpc } from '@/utils/trpc'
 
 type ItemVoterProps = {
   title: string

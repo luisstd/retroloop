@@ -8,7 +8,8 @@ import GridLoader from 'react-spinners/GridLoader'
 import { DiscussingView } from 'src/app/components/retro-view/views/discussing-phase/discussing-view'
 import { VotingView } from 'src/app/components/retro-view/views/voting-phase/voting-view'
 import { WritingView } from 'src/app/components/retro-view/views/writing-phase/writing-view'
-import { trpc } from 'src/app/utils/trpc'
+
+import { trpc } from '@/utils/trpc'
 
 export function RetroView() {
   const { resolvedTheme } = useTheme()
