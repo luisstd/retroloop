@@ -1,4 +1,4 @@
- <img src="https://raw.githubusercontent.com/luisstd/retroloop/dev/public/logo-transparent.png" width="150px" alt="Retroloop logo" align="right" />
+ <img src="./public/logo-transparent.png" width="150px" alt="Retroloop logo" align="right" />
 
 <div align="left">
 
@@ -105,3 +105,7 @@ Everyone is welcome to improve this project. See [CONTRIBUTING](https://github.c
 ## License
 
 Retroloop is open-source under the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) Version 3 (AGPLv3) or any later version. See [LICENSE](https://github.com/luisstd/retroloop/blob/dev/LICENSE.md) for more detail.
+
+## Sponsors
+
+<a href="https://sentry.io"><img src="./public/sentry.svg" alt="Sentry logo"  /></a>
