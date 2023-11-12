@@ -2,7 +2,7 @@
 
 import { IconMenu } from '@tabler/icons-react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
 import { Button } from '@/app/ui/button/button'
 import {
@@ -15,8 +15,7 @@ import {
 import { NavigationMenuLink } from '@/app/ui/navigation-menu/navigation-menu'
 
 export function NavigationDropdown() {
-  const router = useRouter()
-  const currentPage = router.pathname
+  const currentPage = usePathname()
 
   return (
     <DropdownMenu>
