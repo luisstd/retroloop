@@ -1,4 +1,3 @@
-import { QueryClient } from '@tanstack/react-query'
 import { headers } from 'next/headers'
 
 import { MenuBar } from '@/app/components/menu-bar/menu-bar'
@@ -10,14 +9,13 @@ import { TRPCReactProvider } from '@/trpc/react'
 import { cn } from '@/utils/cn'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const queryClient = new QueryClient()
   const session = await getServerAuthSession()
 
   return (
     session && (
       <html lang='en'>
         <body>
-          <Providers queryClient={queryClient} session={session}>
+          <Providers session={session}>
             <TRPCReactProvider headers={headers()}>
               <main
                 className={

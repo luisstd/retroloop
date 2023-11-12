@@ -11,10 +11,11 @@ import * as React from 'react'
 export interface ProvidersProps {
   children: React.ReactNode
   session: Session
-  queryClient: QueryClient
 }
 
-export function Providers({ children, session, queryClient }: ProvidersProps) {
+export function Providers({ children, session }: ProvidersProps) {
+  const queryClient = new QueryClient()
+
   return (
     <>
       <SessionProvider session={session}>
