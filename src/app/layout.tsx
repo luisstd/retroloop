@@ -1,3 +1,5 @@
+import '@/styles/globals.css'
+
 import { headers } from 'next/headers'
 
 import { MenuBar } from '@/app/components/menu-bar/menu-bar'
