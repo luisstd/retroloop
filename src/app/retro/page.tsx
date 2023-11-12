@@ -1,25 +1,24 @@
+'use client'
+import { IconFaceIdError } from '@tabler/icons-react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
-import { useTheme } from 'next-themes'
-import { GridLoader } from 'react-spinners'
 
 import { Feedback } from '@/app/components/feedback/feedback'
-import { ProfileSection } from '@/app/components/profile-section/profile-section'
+import { RetroView } from '@/app/components/retro-view/retro-view'
 import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
 
-const Profile: NextPage = () => {
+const Retro: NextPage = () => {
   const { data: session, status } = useSession()
-  const { resolvedTheme } = useTheme()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   return (
-    <>
+    <div className='flex flex-col items-center'>
       <Head>
         <link rel='icon' href='/favicon.ico' />
 
-        <title>Retroloop - Profile</title>
+        <title>Retroloop - Retrospective</title>
 
         <meta name='title' content='Retroloop - Agile retrospectives made easy' />
         <meta
@@ -48,21 +47,16 @@ const Profile: NextPage = () => {
       {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
 
       {isSignedUp && session?.user ? (
-        <ProfileSection />
+        <RetroView />
       ) : !isSignedUp ? (
         <SignUpForm />
       ) : (
-        <div className='grid h-screen place-items-center'>
-          <GridLoader
-            color={resolvedTheme === 'light' ? 'black' : 'white'}
-            loading={!isSignedUp && !session?.user}
-            size={15}
-            aria-label='Loading Spinner'
-          />
+        <div className='flex flex-col items-center'>
+          <IconFaceIdError size={122} className='m-5' />
+          <p className='text-xl'>Not authenticated, please log in first</p>
         </div>
       )}
-    </>
+    </div>
   )
 }
-
-export default Profile
+export default Retro
