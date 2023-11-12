@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { ActionButtons } from '@/app/components/retro-view/components/action-bar/components/action-buttons/action-buttons'
 import { PhaseIndicator } from '@/app/components/retro-view/components/action-bar/components/phase-indicator/phase-indicator'
 import { RetroTimer } from '@/app/components/retro-view/components/action-bar/components/retro-timer/retro-timer'
-import { trpc } from '@/utils/trpc'
+import { api } from '@/trpc/react'
 
 type RetroActionBarProps = {
   selectedRetro: Retrospective
@@ -15,12 +15,12 @@ type RetroActionBarProps = {
 export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
   const [currentRetro, setCurrentRetro] = useState(selectedRetro)
 
-  const { refetch: refetchRetro } = trpc.retrospective.getById.useQuery(selectedRetro.id, {
+  const { refetch: refetchRetro } = api.retrospective.getById.useQuery(selectedRetro.id, {
     refetchInterval: 5000,
     refetchIntervalInBackground: true,
   })
 
-  const { mutate: updateRetro } = trpc.retrospective.edit.useMutation({
+  const { mutate: updateRetro } = api.retrospective.edit.useMutation({
     onSuccess: () => {
       refetchRetro()
     },

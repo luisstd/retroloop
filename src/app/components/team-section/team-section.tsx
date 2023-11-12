@@ -7,7 +7,7 @@ import { GridLoader } from 'react-spinners'
 
 import { InviteUserDialog } from '@/app/components/team-section/components/invite-user-dialog'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
-import { trpc } from '@/utils/trpc'
+import { api } from '@/trpc/react'
 
 function UsersFallback() {
   return (
@@ -27,7 +27,7 @@ function UsersFallback() {
 
 export function TeamSection() {
   const { resolvedTheme } = useTheme()
-  const { data: users, isLoading } = trpc.user.getAll.useQuery()
+  const { data: users, isLoading } = api.user.getAll.useQuery()
 
   return (
     <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>

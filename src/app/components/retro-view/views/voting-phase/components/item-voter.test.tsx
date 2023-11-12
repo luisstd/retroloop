@@ -3,14 +3,14 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { ItemVoter } from '@/app/components/retro-view/views/voting-phase/components/item-voter'
-import { trpc } from '@/utils/trpc'
+import { api } from '@/trpc/react'
 
 vi.mock('next-auth/react', () => ({
   useSession: vi.fn(),
 }))
 
-vi.mock('@/utils/trpc', () => ({
-  trpc: {
+vi.mock('@/trpc/react', () => ({
+  api: {
     retroItem: {
       getAllByRetroId: {
         useQuery: vi.fn(),
@@ -125,7 +125,7 @@ test('ItemVoter', () => {
       fireEvent.click(thumbsUpButton)
 
       expect(retroItemsQuery.refetch).toHaveBeenCalled()
-      expect(trpc.retroItem.edit.useMutation).toHaveBeenCalledWith(
+      expect(api.retroItem.edit.useMutation).toHaveBeenCalledWith(
         expect.objectContaining({
           votes: retroItem.votes + 1,
           voters: [session.user.id],

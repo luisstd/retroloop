@@ -11,8 +11,8 @@ import { AddRetro } from '@/app/components/retro-section/components/add-retro/ad
 import { EditRetro } from '@/app/components/retro-section/components/edit-retro/edit-retro'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 import { useToast } from '@/app/ui/toast/use-toast'
+import { api } from '@/trpc/react'
 import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from '@/types/retrospective'
-import { trpc } from '@/utils/trpc'
 import { formatDate } from '@/utils/utils'
 
 type RetroSectionProps = {
@@ -36,13 +36,13 @@ function RetrospectivesFallback() {
 }
 
 export function RetroSection({ userId }: RetroSectionProps) {
-  const { data: retrospectives, refetch, isLoading } = trpc.retrospective.getAll.useQuery(userId)
-  const { mutate: addRetro } = trpc.retrospective.add.useMutation({
+  const { data: retrospectives, refetch, isLoading } = api.retrospective.getAll.useQuery(userId)
+  const { mutate: addRetro } = api.retrospective.add.useMutation({
     onSuccess: async () => {
       refetch()
     },
   })
-  const { mutate: updateRetro } = trpc.retrospective.edit.useMutation({
+  const { mutate: updateRetro } = api.retrospective.edit.useMutation({
     onSuccess: async () => {
       refetch()
     },

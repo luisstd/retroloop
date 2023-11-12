@@ -15,14 +15,14 @@ import {
 } from '@/app/ui/card/card'
 import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
+import { api } from '@/trpc/react'
 import { UserSession } from '@/types/user'
-import { trpc } from '@/utils/trpc'
 
 export function SignUpForm() {
   const { data } = useSession()
   const router = useRouter()
 
-  const mutation = trpc.user.edit.useMutation({
+  const mutation = api.user.edit.useMutation({
     onSuccess: () => {
       router.push('/')
     },

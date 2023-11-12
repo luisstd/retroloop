@@ -8,8 +8,8 @@ import { Badge } from '@/app/ui/badge/badge'
 import { Button } from '@/app/ui/button/button'
 import { Card } from '@/app/ui/card/card'
 import { useToast } from '@/app/ui/toast/use-toast'
+import { api } from '@/trpc/react'
 import { UserSession } from '@/types/user'
-import { trpc } from '@/utils/trpc'
 
 type ItemVoterProps = {
   title: string
@@ -20,8 +20,8 @@ type ItemVoterProps = {
 export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
   const { toast } = useToast()
   const { data: session } = useSession()
-  const { data: retroItems, refetch } = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
-  const { mutate: updateRetroItem } = trpc.retroItem.edit.useMutation({
+  const { data: retroItems, refetch } = api.retroItem.getAllByRetroId.useQuery(retrospective.id)
+  const { mutate: updateRetroItem } = api.retroItem.edit.useMutation({
     onSuccess: () => {
       refetch()
     },

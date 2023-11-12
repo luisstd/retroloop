@@ -7,14 +7,14 @@ import { RetroActionBar } from '@/app/components/retro-view/components/retro-act
 import { ItemStack } from '@/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
 import { ItemSwitcher } from '@/app/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
 import { Card } from '@/app/ui/card/card'
-import { trpc } from '@/utils/trpc'
+import { api } from '@/trpc/react'
 
 type DiscussingViewProps = {
   selectedRetro: Retrospective
 }
 
 export function DiscussingView({ selectedRetro }: DiscussingViewProps) {
-  const retroItems = trpc.retroItem.getAllByRetroId.useQuery(selectedRetro.id)
+  const retroItems = api.retroItem.getAllByRetroId.useQuery(selectedRetro.id)
 
   const [currentIndex, setCurrentIndex] = useState(0)
 

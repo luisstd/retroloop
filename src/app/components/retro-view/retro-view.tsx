@@ -9,7 +9,7 @@ import GridLoader from 'react-spinners/GridLoader'
 import { DiscussingView } from '@/app/components/retro-view/views/discussing-phase/discussing-view'
 import { VotingView } from '@/app/components/retro-view/views/voting-phase/voting-view'
 import { WritingView } from '@/app/components/retro-view/views/writing-phase/writing-view'
-import { trpc } from '@/utils/trpc'
+import { api } from '@/trpc/react'
 
 export function RetroView() {
   const { resolvedTheme } = useTheme()
@@ -19,7 +19,7 @@ export function RetroView() {
   const userId = session?.user?.id
   const retroId = String(router.query.id)
 
-  const { data: selectedRetro, isLoading: isRetroLoading } = trpc.retrospective.getById.useQuery(
+  const { data: selectedRetro, isLoading: isRetroLoading } = api.retrospective.getById.useQuery(
     retroId,
     {
       refetchInterval: 5000,
@@ -27,7 +27,7 @@ export function RetroView() {
     }
   )
 
-  const { mutate: addParticipant } = trpc.retrospective.addParticipant.useMutation()
+  const { mutate: addParticipant } = api.retrospective.addParticipant.useMutation()
 
   useEffect(() => {
     if (retroId && userId && selectedRetro) {

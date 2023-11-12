@@ -17,8 +17,8 @@ import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { UserUpdateInputSchema } from '@/schemas/user'
+import { api } from '@/trpc/react'
 import { UserUpdateInput } from '@/types/user'
-import { trpc } from '@/utils/trpc'
 import { formatDate } from '@/utils/utils'
 
 export function ProfileSection() {
@@ -27,16 +27,16 @@ export function ProfileSection() {
   const { toast } = useToast()
   const { resolvedTheme } = useTheme()
 
-  const { data: user, isLoading, refetch } = trpc.user.getLoggedIn.useQuery()
+  const { data: user, isLoading, refetch } = api.user.getLoggedIn.useQuery()
   const version = publicRuntimeConfig?.version
 
-  const { mutate: updateUser } = trpc.user.edit.useMutation({
+  const { mutate: updateUser } = api.user.edit.useMutation({
     onSuccess: () => {
       refetch()
     },
   })
 
-  const { mutate: deleteUser } = trpc.user.delete.useMutation({
+  const { mutate: deleteUser } = api.user.delete.useMutation({
     onSuccess: () => {
       router.push('/')
     },

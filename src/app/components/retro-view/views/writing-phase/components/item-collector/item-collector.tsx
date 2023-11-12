@@ -8,8 +8,8 @@ import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
 import { RetroItemDialog } from '@/app/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
 import { Card } from '@/app/ui/card/card'
 import { useToast } from '@/app/ui/toast/use-toast'
+import { api } from '@/trpc/react'
 import { RetroItemCreateInput } from '@/types/retro-item'
-import { trpc } from '@/utils/trpc'
 
 type ItemCollectorProps = {
   title: string
@@ -23,20 +23,20 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
 
   const userId = session?.user?.id
 
-  const { data: retroItems, refetch } = trpc.retroItem.getAllByRetroId.useQuery(retrospective.id)
+  const { data: retroItems, refetch } = api.retroItem.getAllByRetroId.useQuery(retrospective.id)
 
-  const { mutate: addRetroItem } = trpc.retroItem.add.useMutation({
+  const { mutate: addRetroItem } = api.retroItem.add.useMutation({
     onSuccess: () => {
       refetch()
     },
   })
-  const { mutate: updateRetroItem } = trpc.retroItem.edit.useMutation({
+  const { mutate: updateRetroItem } = api.retroItem.edit.useMutation({
     onSuccess: () => {
       refetch()
     },
   })
 
-  const { mutate: deleteRetroItem } = trpc.retroItem.delete.useMutation({
+  const { mutate: deleteRetroItem } = api.retroItem.delete.useMutation({
     onSuccess: () => {
       refetch()
     },
