@@ -35,7 +35,7 @@ const Terms: NextPage = () => {
         <meta property='twitter:image' content='https://retroloop.io/og.webp' />
       </Head>
 
-      <main className='prose prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground mx-5 text-foreground'>
+      <main className='prose mx-5 text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>
         <article>
           <h2>Retroloop Terms of Service</h2>
           <p>

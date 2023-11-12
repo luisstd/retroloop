@@ -132,7 +132,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
                   },
                 }}
               >
-                <div className='pattern-cross pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4 h-28' />
+                <div className='pattern-cross h-28 pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4' />
               </Link>
             </Card>
           ))
