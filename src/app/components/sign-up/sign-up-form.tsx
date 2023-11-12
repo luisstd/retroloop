@@ -1,7 +1,7 @@
 'use client'
 
 import { Field, Form, Formik } from 'formik'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button/button'
