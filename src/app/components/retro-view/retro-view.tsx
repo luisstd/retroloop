@@ -1,6 +1,4 @@
-'use client'
-
-import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
@@ -13,14 +11,14 @@ import { api } from '@/trpc/react'
 
 export function RetroView() {
   const { resolvedTheme } = useTheme()
-  const router = useRouter()
   const { data: session } = useSession()
+  const searchParams = useSearchParams()
 
   const userId = session?.user?.id
-  const retroId = String(router.query.id)
+  const retroId = searchParams.get('id')
 
   const { data: selectedRetro, isLoading: isRetroLoading } = api.retrospective.getById.useQuery(
-    retroId,
+    retroId as string,
     {
       refetchInterval: 5000,
       refetchIntervalInBackground: true,
