@@ -1,17 +1,16 @@
 import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/schemas/user'
+import { createTRPCRouter, publicProcedure } from '@/server/api/trpc'
 
-import { t } from '../trpc'
-
-export const userRouter = t.router({
-  getLoggedIn: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.user.findUnique({
+export const userRouter = createTRPCRouter({
+  getLoggedIn: publicProcedure.query(({ ctx }) => {
+    return ctx.db.user.findUnique({
       where: {
         id: ctx.session?.user?.id,
       },
     })
   }),
-  getAll: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.user.findMany({
+  getAll: publicProcedure.query(({ ctx }) => {
+    return ctx.db.user.findMany({
       where: {
         retrospectives: {
           some: {
@@ -32,19 +31,19 @@ export const userRouter = t.router({
       },
     })
   }),
-  add: t.procedure.input(UserCreateInputSchema).mutation(({ ctx, input }) => {
-    return ctx.prisma.user.create({ data: input })
+  add: publicProcedure.input(UserCreateInputSchema).mutation(({ ctx, input }) => {
+    return ctx.db.user.create({ data: input })
   }),
-  edit: t.procedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
-    return ctx.prisma.user.update({
+  edit: publicProcedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
+    return ctx.db.user.update({
       where: {
         id: input.id,
       },
       data: input,
     })
   }),
-  delete: t.procedure.input(UserSessionSchema).mutation(({ ctx, input }) => {
-    return ctx.prisma.user.delete({
+  delete: publicProcedure.input(UserSessionSchema).mutation(({ ctx, input }) => {
+    return ctx.db.user.delete({
       where: {
         id: input.id,
       },

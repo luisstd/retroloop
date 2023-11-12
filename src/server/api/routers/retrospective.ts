@@ -4,12 +4,11 @@ import {
   RetrospectiveCreateInputSchema,
   RetrospectiveUpdateInputSchema,
 } from '@/schemas/retrospective'
+import { createTRPCRouter, publicProcedure } from '@/server/api/trpc'
 
-import { t } from '../trpc'
-
-export const retrospectiveRouter = t.router({
-  getAll: t.procedure.input(z.string()).query(({ ctx, input }) => {
-    return ctx.prisma.retrospective.findMany({
+export const retrospectiveRouter = createTRPCRouter({
+  getAll: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+    return ctx.db.retrospective.findMany({
       where: {
         participants: {
           some: {
@@ -19,17 +18,17 @@ export const retrospectiveRouter = t.router({
       },
     })
   }),
-  getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
-    return ctx.prisma.retrospective.findUnique({
+  getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+    return ctx.db.retrospective.findUnique({
       where: {
         id: input,
       },
     })
   }),
-  add: t.procedure.input(RetrospectiveCreateInputSchema).mutation(async ({ ctx, input }) => {
+  add: publicProcedure.input(RetrospectiveCreateInputSchema).mutation(async ({ ctx, input }) => {
     const userId = ctx.session?.user?.id
 
-    return ctx.prisma.retrospective.create({
+    return ctx.db.retrospective.create({
       data: {
         ...input,
         participants: {
@@ -42,12 +41,12 @@ export const retrospectiveRouter = t.router({
       },
     })
   }),
-  addParticipant: t.procedure
+  addParticipant: publicProcedure
     .input(z.object({ retroId: z.string(), userId: z.string() }))
     .mutation(async ({ ctx, input }) => {
       const { retroId, userId } = input
 
-      return ctx.prisma.retrospective.update({
+      return ctx.db.retrospective.update({
         where: {
           id: retroId,
         },
@@ -58,8 +57,8 @@ export const retrospectiveRouter = t.router({
         },
       })
     }),
-  edit: t.procedure.input(RetrospectiveUpdateInputSchema).mutation(({ ctx, input }) => {
-    return ctx.prisma.retrospective.update({
+  edit: publicProcedure.input(RetrospectiveUpdateInputSchema).mutation(({ ctx, input }) => {
+    return ctx.db.retrospective.update({
       where: {
         id: input.id,
       },
