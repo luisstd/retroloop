@@ -10,7 +10,7 @@ import * as React from 'react'
 
 export interface ProvidersProps {
   children: React.ReactNode
-  session: Session
+  session: Session | null
 }
 
 export function Providers({ children, session }: ProvidersProps) {

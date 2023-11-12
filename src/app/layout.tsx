@@ -14,26 +14,24 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const session = await getServerAuthSession()
 
   return (
-    session && (
-      <html lang='en' suppressHydrationWarning>
-        <body suppressHydrationWarning>
-          <Providers session={session}>
-            <TRPCReactProvider headers={headers()}>
-              <main
-                className={
-                  (cn(font.className),
-                  'relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center')
-                }
-              >
-                <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
-                <MenuBar />
-                {children}
-                <Toaster />
-              </main>
-            </TRPCReactProvider>
-          </Providers>
-        </body>
-      </html>
-    )
+    <html lang='en' suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <Providers session={session}>
+          <TRPCReactProvider headers={headers()}>
+            <main
+              className={
+                (cn(font.className),
+                'relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center')
+              }
+            >
+              <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
+              <MenuBar />
+              {children}
+              <Toaster />
+            </main>
+          </TRPCReactProvider>
+        </Providers>
+      </body>
+    </html>
   )
 }
