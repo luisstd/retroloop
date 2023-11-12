@@ -2,9 +2,9 @@
 import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
-import getConfig from 'next/config'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
+import { version } from 'package.json'
 import { GridLoader } from 'react-spinners'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -22,13 +22,11 @@ import { UserUpdateInput } from '@/types/user'
 import { formatDate } from '@/utils/utils'
 
 export function ProfileSection() {
-  const { publicRuntimeConfig } = getConfig()
   const router = useRouter()
   const { toast } = useToast()
   const { resolvedTheme } = useTheme()
 
   const { data: user, isLoading, refetch } = api.user.getLoggedIn.useQuery()
-  const version = publicRuntimeConfig?.version
 
   const { mutate: updateUser } = api.user.edit.useMutation({
     onSuccess: () => {
