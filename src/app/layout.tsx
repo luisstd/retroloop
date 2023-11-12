@@ -15,8 +15,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     session && (
-      <html lang='en'>
-        <body>
+      <html lang='en' suppressHydrationWarning>
+        <body suppressHydrationWarning>
           <Providers session={session}>
             <TRPCReactProvider headers={headers()}>
               <main
