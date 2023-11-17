@@ -143,7 +143,7 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
 
       - name: Start Server
-        run: pnpm start &
+        run: SKIP_ENV_VALIDATION=1 pnpm start &
 
       - name: Wait for Server to Start
         run: sleep 5
