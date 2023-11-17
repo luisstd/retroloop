@@ -10,6 +10,26 @@ import { font } from '@/styles/fonts'
 import { TRPCReactProvider } from '@/trpc/react'
 import { cn } from '@/utils/cn'
 
+export const metadata = {
+  title: 'Retroloop - Agile retrospectives made easy',
+  description: 'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
+  icons: [{ rel: 'icon', url: '/favicon.ico' }],
+  metadataBase: new URL('https://retroloop.io'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://retroloop.io/',
+    title: 'Retroloop - Agile retrospectives made easy',
+    description: 'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
+    image: 'https://retroloop.io/og.webp',
+  },
+}
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerAuthSession()
 

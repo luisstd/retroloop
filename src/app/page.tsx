@@ -8,8 +8,6 @@ import {
   IconRepeat,
   IconUsers,
 } from '@tabler/icons-react'
-import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
@@ -19,7 +17,7 @@ import { Footer } from '@/app/components/footer/footer'
 import { Button } from '@/app/ui/button/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 
-const Landingpage: NextPage = () => {
+export default function Landingpage() {
   const { data: session, status } = useSession()
   const { resolvedTheme, theme } = useTheme()
 
@@ -27,35 +25,6 @@ const Landingpage: NextPage = () => {
 
   return (
     <div className='flex w-full flex-col items-center'>
-      <Head>
-        <link rel='icon' href='/favicon.ico' />
-
-        <title>Retroloop - Agile retrospectives made easy</title>
-
-        <meta name='title' content='Retroloop - Agile retrospectives made easy' />
-        <meta
-          name='description'
-          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
-        />
-
-        <meta property='og:type' content='website' />
-        <meta property='og:url' content='https://retroloop.io/' />
-        <meta property='og:title' content='Retroloop - Agile retrospectives made easy' />
-        <meta
-          property='og:description'
-          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
-        />
-        <meta property='og:image' content='https://retroloop.io/og.webp' />
-
-        <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:title' content='Retroloop - Agile retrospectives made easy' />
-        <meta
-          property='twitter:description'
-          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
-        />
-        <meta property='twitter:image' content='https://retroloop.io/og.webp' />
-      </Head>
-
       <section className='row-start-1 m-5 flex flex-col items-center gap-5 px-2'>
         <div className='flex items-center'>
           <Image src='/logo.svg' alt='Retroloop logo' width={132} height={132} />
@@ -222,5 +191,3 @@ const Landingpage: NextPage = () => {
     </div>
   )
 }
-
-export default Landingpage

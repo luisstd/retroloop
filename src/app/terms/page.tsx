@@ -1,41 +1,10 @@
 'use client'
-import type { NextPage } from 'next'
-import Head from 'next/head'
 
 import { Footer } from '@/app/components/footer/footer'
 
-const Terms: NextPage = () => {
+export default function Terms() {
   return (
     <>
-      <Head>
-        <link rel='icon' href='/favicon.ico' />
-
-        <title>Retroloop - Terms of Use</title>
-
-        <meta name='title' content='Retroloop - Agile retrospectives made easy' />
-        <meta
-          name='description'
-          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
-        />
-
-        <meta property='og:type' content='website' />
-        <meta property='og:url' content='https://retroloop.io/' />
-        <meta property='og:title' content='Retroloop - Agile retrospectives made easy' />
-        <meta
-          property='og:description'
-          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
-        />
-        <meta property='og:image' content='https://retroloop.io/og.webp' />
-
-        <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:title' content='Retroloop - Agile retrospectives made easy' />
-        <meta
-          property='twitter:description'
-          content='Retroloop is a simple, open-source tool for facilitating agile retrospectives'
-        />
-        <meta property='twitter:image' content='https://retroloop.io/og.webp' />
-      </Head>
-
       <main className='prose mx-5 text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>
         <article>
           <h2>Retroloop Terms of Service</h2>
@@ -353,5 +322,3 @@ const Terms: NextPage = () => {
     </>
   )
 }
-
-export default Terms
