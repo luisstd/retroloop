@@ -38,7 +38,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm build
+        run: SKIP_ENV_VALIDATION=1 pnpm build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
@@ -136,7 +136,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm build
+        run: SKIP_ENV_VALIDATION=1 pnpm build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
