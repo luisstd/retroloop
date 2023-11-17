@@ -59,8 +59,8 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: '/auth/signin',
-    verifyRequest: '/auth/verify-request',
+    signIn: '/auth/login',
+    verifyRequest: '/auth/verify',
   },
   secret: process.env.JWT_SECRET,
 }
