@@ -44,14 +44,15 @@ jobs:
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           EMAIL_SERVER_USER: ${{ secrets.EMAIL_SERVER_USER }}
           EMAIL_SERVER_PASSWORD: ${{ secrets.EMAIL_SERVER_PASSWORD }}
           EMAIL_SERVER_HOST: ${{ secrets.EMAIL_SERVER_HOST }}
           EMAIL_SERVER_PORT: ${{ secrets.EMAIL_SERVER_PORT }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          GITHUB_ID: ${{ secrets.GITHUB_ID }}
-          GITHUB_SECRET: ${{ secrets.GITHUB_SECRET }}
+          GITHUB_ID: ${{ secrets._GITHUB_ID }}
+          GITHUB_SECRET: ${{ secrets._GITHUB_SECRET }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
@@ -155,14 +156,15 @@ jobs:
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           EMAIL_SERVER_USER: ${{ secrets.EMAIL_SERVER_USER }}
           EMAIL_SERVER_PASSWORD: ${{ secrets.EMAIL_SERVER_PASSWORD }}
           EMAIL_SERVER_HOST: ${{ secrets.EMAIL_SERVER_HOST }}
           EMAIL_SERVER_PORT: ${{ secrets.EMAIL_SERVER_PORT }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          GITHUB_ID: ${{ secrets.GITHUB_ID }}
-          GITHUB_SECRET: ${{ secrets.GITHUB_SECRET }}
+          GITHUB_ID: ${{ secrets._GITHUB_ID }}
+          GITHUB_SECRET: ${{ secrets._GITHUB_SECRET }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
