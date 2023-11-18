@@ -25,8 +25,8 @@ jobs:
       EMAIL_SERVER_HOST: ${{ secrets.EMAIL_SERVER_HOST }}
       EMAIL_SERVER_PORT: ${{ secrets.EMAIL_SERVER_PORT }}
       EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-      GITHUB_ID: ${{ secrets.GITHUB_ID }}
-      GITHUB_SECRET: ${{ secrets.GITHUB_SECRET }}
+      GITHUB_ID: ${{ secrets._GITHUB_ID }}
+      GITHUB_SECRET: ${{ secrets._GITHUB_SECRET }}
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
