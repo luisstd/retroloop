@@ -55,9 +55,7 @@ jobs:
         id: cache-deps
         uses: actions/cache@v3
         with:
-          path: |
-            ~/.pnpm-store
-            **/node_modules
+          path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
@@ -90,6 +88,10 @@ jobs:
         with:
           version: 8
 
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
+
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
         with:
@@ -111,6 +113,10 @@ jobs:
         with:
           version: 8
 
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
+
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
         with:
@@ -131,6 +137,10 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
+
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
 
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
@@ -168,6 +178,10 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
+
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
 
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
