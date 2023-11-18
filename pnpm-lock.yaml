@@ -68,6 +68,9 @@ dependencies:
   '@radix-ui/react-toggle-group':
     specifier: ^1.0.4
     version: 1.0.4(@types/react-dom@18.2.14)(@types/react@18.2.36)(react-dom@18.2.0)(react@18.2.0)
+  '@sentry/integrations':
+    specifier: ^7.80.1
+    version: 7.80.1
   '@sentry/nextjs':
     specifier: ^7.80.1
     version: 7.80.1(next@14.0.1)(react@18.2.0)
