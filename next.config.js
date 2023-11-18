@@ -19,7 +19,6 @@ const sentryConfig = {
   hideSourceMaps: true,
   widenClientFileUpload: true,
   transpileClientSDK: true,
-  tunnelRoute: '/monitoring',
   release: `retroloop@${version}`,
   silent: false,
 }
