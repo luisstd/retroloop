@@ -166,7 +166,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: test-results/
+          path: test-results/playwright
           retention-days: 30
 
   codecov:
