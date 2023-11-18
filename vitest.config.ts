@@ -9,7 +9,7 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       reporter: ['json'],
-      reportsDirectory: './coverage',
+      reportsDirectory: './test-results/coverage',
     },
     exclude: [...configDefaults.exclude, './src/tests'],
   },
