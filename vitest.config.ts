@@ -11,11 +11,11 @@ export default defineConfig({
       reporter: ['json'],
       reportsDirectory: './coverage',
     },
-    exclude: [...configDefaults.exclude, './tests'],
+    exclude: [...configDefaults.exclude, './src/tests'],
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './app/'),
+      '@': path.resolve(__dirname, '/src/'),
     },
   },
 })
