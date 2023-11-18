@@ -69,7 +69,7 @@
     "next-plausible": "^3.11.3",
     "next-themes": "^0.2.1",
     "nodemailer": "^6.9.7",
-    "pnpm": "8.10.2",
+    "pnpm": "8.10.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-spinners": "^0.13.8",
