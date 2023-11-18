@@ -73,7 +73,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifact
-          path: .next
+          path: .next/cache
 
   eslint:
     name: Lint
@@ -96,9 +96,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifact
-
-      - name: Change to correct directory
-        run: cd ./cache
 
       - name: Lint
         run: pnpm lint
@@ -124,9 +121,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifact
-
-      - name: Change to correct directory
-        run: cd ./cache
 
       - name: Run Vitest
         run: pnpm test:unit
@@ -154,7 +148,7 @@ jobs:
           name: build-artifact
 
       - name: Change to correct directory
-        run: cd ./cache
+        run: cd ./../
 
       - name: Start Server
         run: pnpm start &
@@ -196,9 +190,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifact
-
-      - name: Change to correct directory
-        run: cd ./cache
 
       - name: Generate coverage files
         run: pnpm coverage
