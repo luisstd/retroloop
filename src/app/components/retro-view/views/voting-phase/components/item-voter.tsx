@@ -61,17 +61,18 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                       {item.votes ? <Badge className='my-[0.5625rem]'>+{item.votes}</Badge> : null}
 
                       {!hasVoted(item, userId) ? (
-                        <Button size='icon' variant='ghost'>
-                          <IconThumbUp
-                            size={16}
-                            onClick={() => {
-                              handleEditRetroItem({
-                                ...item,
-                                votes: item.votes + 1,
-                                voters: [...item.voters, userId],
-                              })
-                            }}
-                          />
+                        <Button
+                          size='icon'
+                          variant='ghost'
+                          onClick={() => {
+                            handleEditRetroItem({
+                              ...item,
+                              votes: item.votes + 1,
+                              voters: [...item.voters, userId],
+                            })
+                          }}
+                        >
+                          <IconThumbUp size={16} />
                         </Button>
                       ) : null}
                     </div>
