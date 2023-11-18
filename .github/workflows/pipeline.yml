@@ -98,7 +98,7 @@ jobs:
           name: build-artifact
 
       - name: Change to correct directory
-        run: cd .next/cache
+        run: cd /cache
 
       - name: Lint
         run: pnpm lint
@@ -126,7 +126,7 @@ jobs:
           name: build-artifact
 
       - name: Change to correct directory
-        run: cd .next/cache
+        run: cd /cache
 
       - name: Run Vitest
         run: pnpm test:unit
@@ -154,7 +154,7 @@ jobs:
           name: build-artifact
 
       - name: Change to correct directory
-        run: cd .next/cache
+        run: cd /cache
 
       - name: Start Server
         run: pnpm start &
@@ -198,7 +198,7 @@ jobs:
           name: build-artifact
 
       - name: Change to correct directory
-        run: cd .next/cache
+        run: cd /cache
 
       - name: Generate coverage files
         run: pnpm coverage
