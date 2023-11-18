@@ -1,3 +1,4 @@
+import { CaptureConsole, Debug, ExtraErrorData, HttpClient } from '@sentry/integrations'
 import * as Sentry from '@sentry/nextjs'
 
 Sentry.init({
@@ -12,5 +13,9 @@ Sentry.init({
     new Sentry.BrowserTracing(),
     new Sentry.BrowserProfilingIntegration(),
     new Sentry.Replay(),
+    new CaptureConsole(),
+    new Debug(),
+    new ExtraErrorData(),
+    new HttpClient(),
   ],
 })
