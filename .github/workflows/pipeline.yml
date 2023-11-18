@@ -81,6 +81,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
         with:
@@ -97,6 +102,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
         with:
@@ -112,6 +122,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
@@ -144,6 +159,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
