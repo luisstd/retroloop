@@ -73,7 +73,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifact
-          path: .next/cache
+          path: |
+            .next/cache
+            node_modules
 
   eslint:
     name: Lint
