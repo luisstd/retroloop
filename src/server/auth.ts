@@ -36,13 +36,13 @@ export const authOptions: NextAuthOptions = {
         id: user.id,
       },
     }),
-    signIn: ({ user }) => {
-      Sentry.setUser({
-        id: user.id,
-        email: user.email ?? undefined,
-        name: user.name,
-      })
-      return true
+  },
+  events: {
+    signIn({ user }) {
+      Sentry.setUser({ id: user.id, email: user.email ?? undefined, name: user.name })
+    },
+    signOut() {
+      Sentry.setUser(null)
     },
   },
   adapter: PrismaAdapter(db),
