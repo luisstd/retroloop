@@ -5,6 +5,8 @@ const { withPlausibleProxy } = require('next-plausible')
 const { withSentryConfig } = require('@sentry/nextjs')
 const { version } = require('./package.json')
 
+import('./src/env.mjs')
+
 const nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
   swcMinify: true,
@@ -17,7 +19,6 @@ const sentryConfig = {
   hideSourceMaps: true,
   widenClientFileUpload: true,
   transpileClientSDK: true,
-  tunnelRoute: '/monitoring',
   release: `retroloop@${version}`,
   silent: false,
 }

@@ -10,8 +10,27 @@ on:
 jobs:
   build:
     name: Build
-    timeout-minutes: 60
     runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.cache-deps.outputs.cache-hit }}
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      EMAIL_SERVER_USER: ${{ secrets.EMAIL_SERVER_USER }}
+      EMAIL_SERVER_PASSWORD: ${{ secrets.EMAIL_SERVER_PASSWORD }}
+      EMAIL_SERVER_HOST: ${{ secrets.EMAIL_SERVER_HOST }}
+      EMAIL_SERVER_PORT: ${{ secrets.EMAIL_SERVER_PORT }}
+      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+      GITHUB_ID: ${{ secrets._GITHUB_ID }}
+      GITHUB_SECRET: ${{ secrets._GITHUB_SECRET }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      FEEDBACK_FISH_PROJECT_ID: ${{ secrets.FEEDBACK_FISH_PROJECT_ID }}
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.11.0
@@ -21,129 +40,118 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install pnpm & deps
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8.3.1
-      - uses: actions/setup-node@v3
+          version: 8
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
 
-      - run: pnpm install --frozen-lockfile
+      - name: Cache Dependencies
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
 
       - name: Build Project
         run: pnpm build
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: .next/cache
 
   eslint:
     name: Lint
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-
       - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install pnpm & deps
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8.3.1
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
+          version: 8
 
-      - run: pnpm install --frozen-lockfile
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
 
       - name: Lint
         run: pnpm lint
 
   vitest:
     name: Unit Tests
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-
       - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install pnpm & deps
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8.3.1
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
+          version: 8
 
-      - run: pnpm install --frozen-lockfile
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
 
       - name: Run Vitest
         run: pnpm test:unit
 
   playwright:
     name: Integration Tests
-    timeout-minutes: 60
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-
       - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install pnpm & deps
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8.3.1
-      - uses: actions/setup-node@v3
+          version: 8
+
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
         with:
-          node-version: 18
-          cache: 'pnpm'
+          name: build-artifact
 
-      - run: pnpm install --frozen-lockfile
-
-      - name: Build Project
-        run: pnpm build
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      - name: Change to correct directory
+        run: cd ./../
 
       - name: Start Server
-        run: pnpm start &
+        run: SKIP_ENV_VALIDATION=1 pnpm dev &
 
       - name: Wait for Server to Start
         run: sleep 5
@@ -158,40 +166,34 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: test-results/
+          path: test-results/playwright
           retention-days: 30
 
   codecov:
     name: Code Coverage
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-
       - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install pnpm & deps
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8.3.1
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
+          version: 8
 
-      - run: pnpm install --frozen-lockfile
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
 
       - name: Generate coverage files
         run: pnpm coverage
 
       - uses: codecov/codecov-action@v3
         with:
-          files: ./coverage/coverage-final.json
+          files: ./test-results/coverage/coverage-final.json
