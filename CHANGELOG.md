@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.2](https://github.com/luisstd/retroloop/compare/v1.6.1...v1.6.2) (2023-11-20)
+
+
+### Bug Fixes
+
+* disable env validation for docker builds ([533f104](https://github.com/luisstd/retroloop/commit/533f104a3884d008768162badef5197115df7cd1))
+* set click handler correctly on button element ([fed2670](https://github.com/luisstd/retroloop/commit/fed2670c548edd98bdc9443efc83e4159255c104))
+* use correct redirect for app router ([35eef8f](https://github.com/luisstd/retroloop/commit/35eef8f1a78614dd31bd997f06e79ec70e75cbff))
+
 ## [1.6.1](https://github.com/luisstd/retroloop/compare/v1.6.0...v1.6.1) (2023-11-04)
 
 
