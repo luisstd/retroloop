@@ -39,7 +39,7 @@ export default defineConfig({
       name: 'setup',
       testMatch: /.*\.setup\.ts/,
       use: {
-        ...devices['Desktop Chrome'],
+        ...devices['Desktop Firefox'],
       },
     },
     {
