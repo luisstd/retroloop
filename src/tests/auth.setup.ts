@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { expect, test as setup } from '@playwright/test'
+import * as dotenv from 'dotenv'
 
-require('dotenv').config()
+dotenv.config()
 
 const authFile = 'playwright/.auth/user.json'
 const username = process.env.GOOGLE_E2E_USERNAME
