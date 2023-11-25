@@ -40,7 +40,6 @@ export default defineConfig({
       testMatch: /.*\.setup\.ts/,
       use: {
         ...devices['Desktop Chrome'],
-        headless: false,
         launchOptions: {
           args: [
             '--disable-site-isolation-trials',
