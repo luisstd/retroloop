@@ -131,6 +131,9 @@ jobs:
     name: Integration Tests
     needs: build
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_E2E_USERNAME: ${{ secrets.GOOGLE_E2E_USERNAME }}
+      GOOGLE_E2E_PASSWORD: ${{ secrets.GOOGLE_E2E_PASSWORD }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
