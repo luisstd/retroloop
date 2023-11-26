@@ -76,6 +76,7 @@ setup('authenticate', async ({ page }) => {
   await page.locator('#passwordNext').waitFor()
   await page.locator('#passwordNext').click()
 
+  await page.waitForURL('https://accounts.google.com/**')
   await page.waitForURL('/dashboard')
   await page.getByRole('button', { name: 'Start retro' }).waitFor()
   await expect(page.getByRole('button', { name: 'Start retro' })).toBeVisible()
