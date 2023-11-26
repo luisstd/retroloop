@@ -135,6 +135,8 @@ jobs:
     env:
       GOOGLE_E2E_USERNAME: ${{ secrets.GOOGLE_E2E_USERNAME }}
       GOOGLE_E2E_PASSWORD: ${{ secrets.GOOGLE_E2E_PASSWORD }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
     steps:
       - name: Checkout repo
