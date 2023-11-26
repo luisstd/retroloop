@@ -67,17 +67,17 @@ setup('authenticate', async ({ page }) => {
   await page.getByLabel('Email or phone').waitFor()
   await page.getByLabel('Email or phone').fill(username)
 
-  await page.locator('#identifierNext').waitFor()
-  await page.locator('#identifierNext').click()
+  await page.getByRole('button', { name: 'Next' }).waitFor()
+  await page.getByRole('button', { name: 'Next' }).click()
 
   await page.getByLabel('Enter your password').waitFor()
   await page.getByLabel('Enter your password').fill(password)
 
   await page.locator('#passwordNext').waitFor()
   await page.locator('#passwordNext').click()
-  await page.waitForTimeout(5000)
 
   await page.waitForURL('/dashboard')
+  await page.getByRole('button', { name: 'Start retro' }).waitFor()
   await expect(page.getByRole('button', { name: 'Start retro' })).toBeVisible()
 
   await page.context().storageState({ path: authFile })
