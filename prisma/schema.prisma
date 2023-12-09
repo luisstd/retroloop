@@ -51,79 +51,34 @@ model User {
   name           String?
   role           String?         @default("USER")
   retrospectives Retrospective[]
-  invite         Invite[]
   retroItem      RetroItem[]
-  workspace      Workspace[]
   image          String?
   accounts       Account[]
   sessions       Session[]
 }
 
-model Workspace {
-  id        String          @id @default(cuid())
-  createdAt DateTime        @default(now())
-  owner     User            @relation(fields: [userId], references: [id])
-  link      Link[]
-  retros    Retrospective[]
-  userId    String
-}
-
 model Retrospective {
-  id              String           @id @default(cuid())
-  createdAt       DateTime         @default(now())
+  id              String      @id @default(cuid())
+  createdAt       DateTime    @default(now())
   name            String
   date            DateTime
-  workspace       Workspace?       @relation(fields: [workspaceId], references: [id])
-  invite          Invite[]
-  itemCollections ItemCollection[]
-  link            Link[]
   items           RetroItem[]
-  phase           String           @default("WRITING")
+  phase           String      @default("WRITING")
   participants    User[]
-  timerExpiration DateTime         @default(now())
+  timerExpiration DateTime    @default(now())
   workspaceId     String?
 }
 
 model RetroItem {
-  id               String          @id @default(cuid())
-  createdAt        DateTime        @default(now())
+  id               String        @id @default(cuid())
+  createdAt        DateTime      @default(now())
   content          String
   type             String
-  itemCollection   ItemCollection? @relation(fields: [itemCollectionId], references: [id])
-  retrospective    Retrospective   @relation(fields: [retrospectiveId], references: [id])
+  retrospective    Retrospective @relation(fields: [retrospectiveId], references: [id])
   itemCollectionId String?
   retrospectiveId  String
   votes            Int
-  voters           String[]        @default([])
-  author           User?           @relation(fields: [userId], references: [id])
+  voters           String[]      @default([])
+  author           User?         @relation(fields: [userId], references: [id])
   userId           String?
-}
-
-model ItemCollection {
-  id              String          @id @default(cuid())
-  createdAt       DateTime        @default(now())
-  votes           Int?
-  retrospectives  Retrospective[]
-  items           RetroItem[]
-  retrospectiveId String
-}
-
-model Invite {
-  id              String        @id @default(cuid())
-  createdAt       DateTime      @default(now())
-  userId          Int
-  retro           Retrospective @relation(fields: [retrospectiveId], references: [id])
-  invitee         User          @relation(fields: [id], references: [id])
-  retrospectiveId String
-}
-
-model Link {
-  id              String        @id @default(cuid())
-  createdAt       DateTime      @default(now())
-  url             String
-  expiration      DateTime
-  retro           Retrospective @relation(fields: [retrospectiveId], references: [id])
-  workspace       Workspace     @relation(fields: [workspaceId], references: [id])
-  retrospectiveId String
-  workspaceId     String
 }
