@@ -1,14 +1,14 @@
 import '@/styles/globals.css'
 
-// import { headers } from 'next/headers'
+import { headers } from 'next/headers'
 
-// import { MenuBar } from '@/app/components/menu-bar/menu-bar'
-// import { Providers } from '@/app/providers'
-// import { Toaster } from '@/app/ui/toast/toaster'
-// import { getServerAuthSession } from '@/server/auth'
-// import { font } from '@/styles/fonts'
-// import { TRPCReactProvider } from '@/trpc/react'
-// import { cn } from '@/utils/cn'
+import { MenuBar } from '@/app/components/menu-bar/menu-bar'
+import { Providers } from '@/app/providers'
+import { Toaster } from '@/app/ui/toast/toaster'
+import { getServerAuthSession } from '@/server/auth'
+import { font } from '@/styles/fonts'
+import { TRPCReactProvider } from '@/trpc/react'
+import { cn } from '@/utils/cn'
 
 export const metadata = {
   title: 'Retroloop - Agile retrospectives made easy',
@@ -30,13 +30,13 @@ export const metadata = {
   },
 }
 
-export default async function RootLayout() {
-  // const session = await getServerAuthSession()
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await getServerAuthSession()
 
   return (
     <html lang='en' suppressHydrationWarning>
       <body suppressHydrationWarning>
-        {/* <Providers session={session}>
+        <Providers session={session}>
           <TRPCReactProvider headers={headers()}>
             <main
               className={
@@ -50,10 +50,7 @@ export default async function RootLayout() {
               <Toaster />
             </main>
           </TRPCReactProvider>
-        </Providers> */}
-        <div className='grid h-screen place-items-center'>
-          <p>Retroloop is currently offline for maintenance. Please check back soon</p>
-        </div>
+        </Providers>
       </body>
     </html>
   )
