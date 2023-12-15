@@ -76,7 +76,7 @@
     "react-timer-hook": "^3.0.7",
     "rimraf": "^5.0.5",
     "superjson": "^2.2.1",
-    "tailwind-merge": "^2.0.0",
+    "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4",
     "zod-formik-adapter": "^1.2.0"
