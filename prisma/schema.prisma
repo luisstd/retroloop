@@ -44,17 +44,19 @@ model VerificationToken {
 }
 
 model User {
-  id             String          @id @default(cuid())
-  createdAt      DateTime        @default(now())
-  email          String          @unique
-  emailVerified  DateTime?
-  name           String?
-  role           String?         @default("USER")
-  retrospectives Retrospective[]
-  retroItem      RetroItem[]
-  image          String?
-  accounts       Account[]
-  sessions       Session[]
+  id                  String          @id @default(cuid())
+  createdAt           DateTime        @default(now())
+  email               String          @unique
+  emailVerified       DateTime?
+  name                String?
+  role                String?         @default("USER")
+  retrospectives      Retrospective[]
+  retroItem           RetroItem[]
+  image               String?
+  accounts            Account[]
+  sessions            Session[]
+  subscriptionType    String          @default("standard")
+  subscriptionExpires DateTime?
 }
 
 model Retrospective {

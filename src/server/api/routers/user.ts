@@ -49,4 +49,16 @@ export const userRouter = createTRPCRouter({
       },
     })
   }),
+  updateSubscriptionType: publicProcedure
+    .input(UserUpdateInputSchema)
+    .mutation(({ ctx, input }) => {
+      return ctx.db.user.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          subscriptionType: input.subscriptionType,
+        },
+      })
+    }),
 })
