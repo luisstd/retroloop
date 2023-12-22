@@ -4,7 +4,7 @@ export const UserCreateInputSchema = z.object({
   email: z.string(),
   name: z.string().nullable(),
   subscriptionType: z.string(),
-  subscriptionExpires: z.date(),
+  subscriptionExpires: z.date().nullable(),
 })
 
 export const UserUpdateInputSchema = z.object({
@@ -21,5 +21,5 @@ export const UserSessionSchema = z.object({
   name: z.string().nullable(),
   image: z.string().nullable(),
   subscriptionType: z.string(),
-  subscriptionExpires: z.date(),
+  subscriptionExpires: z.date().nullable(),
 })
