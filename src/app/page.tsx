@@ -32,9 +32,9 @@ export default function Landingpage() {
             retroloop
           </h1>
         </div>
-        <span className='scroll-m-20 pb-2 text-center text-4xl font-semibold tracking-tight first:mt-0'>
+        <h1 className='scroll-m-20 pb-2 text-center text-4xl font-semibold tracking-tight first:mt-0'>
           Agile retrospectives made easy
-        </span>
+        </h1>
         <p className='pb-2 text-center text-xl text-muted-foreground'>
           Create an effective feedback loop for continuous team improvement
         </p>
@@ -63,6 +63,8 @@ export default function Landingpage() {
           priority
         />
       </section>
+
+      <h2 className='my-5 scroll-m-20 text-4xl font-semibold tracking-tight'>Features</h2>
 
       <Card className='grid-rows-auto m-5 grid grid-cols-1 md:w-9/12 md:grid-cols-2'>
         <CardHeader className='col-start-1 row-start-1 flex w-full flex-col gap-3 p-10'>
@@ -186,6 +188,47 @@ export default function Landingpage() {
           </div>
         </CardContent>
       </Card>
+
+      <h2 className='my-5 scroll-m-20 text-4xl font-semibold tracking-tight'>Pricing</h2>
+
+      <div className='flex w-full flex-col items-center justify-center md:w-10/12 md:flex-row'>
+        <Card className='m-5'>
+          <CardHeader className='flex  flex-col gap-3 p-10'>
+            <CardTitle className='flex items-center justify-start gap-6'>
+              <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>Standard</span>
+            </CardTitle>
+            <CardDescription className='prose flex items-center gap-1 text-foreground'>
+              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>0€</span>
+              <span>/month</span>
+            </CardDescription>
+            <Button>Get started for free</Button>
+            <div className='prose text-lg text-foreground'>
+              <ul>
+                <li>Create up to 3 retrospectives</li>
+                <li>3 month access to retrospectives</li>
+              </ul>
+            </div>
+          </CardHeader>
+        </Card>
+        <Card className='m-5 '>
+          <CardHeader className='flex flex-col gap-3 p-10'>
+            <CardTitle className='flex items-center justify-start gap-6'>
+              <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>Unlimited</span>
+            </CardTitle>
+            <CardDescription className='prose flex items-center gap-1 text-foreground'>
+              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>4.99€</span>
+              <span>/month</span>
+            </CardDescription>
+            <Button>Get Retroloop Unlimited</Button>
+            <div className='prose text-lg text-foreground'>
+              <ul>
+                <li>Create unlimited retrospectives</li>
+                <li>Unlimited access to retrospectives</li>
+              </ul>
+            </div>
+          </CardHeader>
+        </Card>
+      </div>
 
       <Footer />
     </div>
