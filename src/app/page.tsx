@@ -201,7 +201,7 @@ export default function Landingpage() {
               <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>0€</span>
               <span>/month</span>
             </CardDescription>
-            <Button>Get started for free</Button>
+            <Button onClick={!isSignedUp ? () => signIn() : undefined}>Get started for free</Button>
             <div className='prose text-lg text-foreground'>
               <ul>
                 <li>Create up to 3 retrospectives</li>
@@ -219,7 +219,9 @@ export default function Landingpage() {
               <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>4.99€</span>
               <span>/month</span>
             </CardDescription>
-            <Button>Get Retroloop Unlimited</Button>
+            <Button onClick={!isSignedUp ? () => signIn() : undefined}>
+              Get Retroloop Unlimited
+            </Button>
             <div className='prose text-lg text-foreground'>
               <ul>
                 <li>Create unlimited retrospectives</li>
