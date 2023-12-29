@@ -56,11 +56,19 @@ export function ProfileSection() {
     })
   }
 
+  const subscriptionType = (subscription: User['subscriptionType']) => {
+    if (subscription === 'standard') {
+      return 'Standard'
+    } else if (subscription === 'unlimited') {
+      return 'Unlimited'
+    }
+  }
+
   return (
     <>
       {user ? (
         <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
-          <CardHeader className='flex flex-row items-baseline justify-between'>
+          <CardHeader className='flex flex-row items-end justify-between'>
             <CardTitle>PROFILE</CardTitle>
             <Badge>Version {version}</Badge>
           </CardHeader>
@@ -111,9 +119,16 @@ export function ProfileSection() {
                     <Label>User since</Label>
                     <Badge variant='outline'>{formatDate(user.createdAt)}</Badge>
 
-                    {user ? (
-                      <DeleteUserDialog itemToDelete={user} deleteHandler={handleDelete} />
-                    ) : null}
+                    <Label>Account type</Label>
+                    <Badge variant='outline'>{subscriptionType(user.subscriptionType)}</Badge>
+
+                    <div className='flex flex-col gap-2'>
+                      {user.subscriptionType === 'standard' && <Button>Upgrade account</Button>}
+
+                      {user && (
+                        <DeleteUserDialog itemToDelete={user} deleteHandler={handleDelete} />
+                      )}
+                    </div>
                   </div>
                 </section>
               </div>
