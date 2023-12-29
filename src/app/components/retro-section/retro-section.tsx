@@ -50,7 +50,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
     },
   })
   const { resolvedTheme } = useTheme()
-  const [sortedRetros, setSortedRetros] = useState(retrospectives)
+  const [sortedRetros, setSortedRetros] = useState(retrospectives || [])
   const { toast } = useToast()
 
   const userSubscriptionType: User['subscriptionType'] = user?.subscriptionType || 'standard'
@@ -92,13 +92,15 @@ export function RetroSection({ userId }: RetroSectionProps) {
     sortItems(userSubscriptionType)
   }, [retrospectives])
 
+  const isRetroLimitReached = userSubscriptionType === 'standard' && sortedRetros?.length > 3
+
   return (
     <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
       <div className='flex flex-row items-baseline justify-between'>
         <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
         <div className='flex w-full justify-end'>
-          <AddRetro handleAddRetro={handleAddRetro} />
+          <AddRetro handleAddRetro={handleAddRetro} isLimitReached={isRetroLimitReached} />
         </div>
       </div>
 
