@@ -2,6 +2,7 @@
 
 import { Retrospective, User } from '@prisma/client'
 import { IconLayoutDashboard } from '@tabler/icons-react'
+import { sub } from 'date-fns'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -37,6 +38,7 @@ function RetrospectivesFallback() {
 
 export function RetroSection({ userId }: RetroSectionProps) {
   const { data: retrospectives, refetch, isLoading } = api.retrospective.getAll.useQuery(userId)
+  const { data: user } = api.user.getLoggedIn.useQuery()
   const { mutate: addRetro } = api.retrospective.add.useMutation({
     onSuccess: async () => {
       refetch()
@@ -51,20 +53,23 @@ export function RetroSection({ userId }: RetroSectionProps) {
   const [sortedRetros, setSortedRetros] = useState(retrospectives)
   const { toast } = useToast()
 
-  const sortItems = () => {
-    if (retrospectives) {
-      setSortedRetros(
-        [...retrospectives].sort((a, b) => {
-          if (b.date === null) {
-            return 1
-          }
-          if (a.date === null) {
-            return -1
-          }
-          return b.date.getTime() - a.date.getTime()
-        })
-      )
+  const userSubscriptionType: User['subscriptionType'] = user?.subscriptionType || 'standard'
+
+  const sortItems = (userSubscriptionType: User['subscriptionType']) => {
+    if (!retrospectives) return
+
+    let filteredRetros = retrospectives
+
+    if (userSubscriptionType === 'standard') {
+      const threeMonthsAgo = sub(new Date(), { days: 90 })
+      filteredRetros = filteredRetros.filter((retro) => retro.date && retro.date > threeMonthsAgo)
     }
+
+    const sortedRetros = filteredRetros.sort(
+      (a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0)
+    )
+
+    setSortedRetros(sortedRetros)
   }
 
   const handleAddRetro = (input: RetrospectiveCreateInput) => {
@@ -84,7 +89,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
   }
 
   useEffect(() => {
-    sortItems()
+    sortItems(userSubscriptionType)
   }, [retrospectives])
 
   return (
