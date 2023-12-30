@@ -1,5 +1,5 @@
 import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/schemas/user'
-import { createTRPCRouter, publicProcedure } from '@/server/api/trpc'
+import { createTRPCRouter, protectedProcedure, publicProcedure } from '@/server/api/trpc'
 
 export const userRouter = createTRPCRouter({
   getLoggedIn: publicProcedure.query(({ ctx }) => {
@@ -49,16 +49,26 @@ export const userRouter = createTRPCRouter({
       },
     })
   }),
-  updateSubscriptionType: publicProcedure
-    .input(UserUpdateInputSchema)
-    .mutation(({ ctx, input }) => {
-      return ctx.db.user.update({
-        where: {
-          id: input.id,
-        },
-        data: {
-          subscriptionType: input.subscriptionType,
-        },
-      })
-    }),
+  subscriptionStatus: protectedProcedure.query(async ({ ctx }) => {
+    const { session, db } = ctx
+
+    if (!session.user?.id) {
+      throw new Error('Not authenticated')
+    }
+
+    const data = await db.user.findUnique({
+      where: {
+        id: session.user?.id,
+      },
+      select: {
+        stripeSubscriptionStatus: true,
+      },
+    })
+
+    if (!data) {
+      throw new Error('Could not find user')
+    }
+
+    return data.stripeSubscriptionStatus
+  }),
 })
