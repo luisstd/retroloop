@@ -14,7 +14,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
 import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from '@/types/retrospective'
-import { formatDate } from '@/utils/utils'
+import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
 type RetroSectionProps = {
   userId: User['id']
@@ -53,14 +53,15 @@ export function RetroSection({ userId }: RetroSectionProps) {
   const [sortedRetros, setSortedRetros] = useState(retrospectives || [])
   const { toast } = useToast()
 
-  const userSubscriptionType: User['subscriptionType'] = user?.subscriptionType || 'standard'
+  const userAccountType =
+    getAccountType(user?.stripeSubscriptionStatus || null) || AccountType.Standard
 
-  const sortItems = (userSubscriptionType: User['subscriptionType']) => {
+  const sortItems = (accountType: AccountType) => {
     if (!retrospectives) return
 
     let filteredRetros = retrospectives
 
-    if (userSubscriptionType === 'standard') {
+    if (accountType === AccountType.Standard) {
       const threeMonthsAgo = sub(new Date(), { days: 90 })
       filteredRetros = filteredRetros.filter((retro) => retro.date && retro.date > threeMonthsAgo)
     }
@@ -89,10 +90,10 @@ export function RetroSection({ userId }: RetroSectionProps) {
   }
 
   useEffect(() => {
-    sortItems(userSubscriptionType)
+    sortItems(userAccountType)
   }, [retrospectives])
 
-  const isRetroLimitReached = userSubscriptionType === 'standard' && sortedRetros?.length > 3
+  const isRetroLimitReached = userAccountType === AccountType.Standard && sortedRetros?.length > 3
 
   return (
     <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>

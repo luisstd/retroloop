@@ -1,5 +1,5 @@
 'use client'
-import { StripeSubscriptionStatus, User } from '@prisma/client'
+import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/navigation'
@@ -19,7 +19,7 @@ import { useToast } from '@/app/ui/toast/use-toast'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
 import { UserUpdateInput } from '@/types/user'
-import { formatDate } from '@/utils/utils'
+import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
 export function ProfileSection() {
   const router = useRouter()
@@ -54,17 +54,6 @@ export function ProfileSection() {
       title: 'Account deleted',
       description: 'Your account was successfully deleted',
     })
-  }
-
-  const subscriptionType = (subscriptionStatus: User['stripeSubscriptionStatus']) => {
-    if (
-      subscriptionStatus &&
-      subscriptionStatus === (StripeSubscriptionStatus.active || StripeSubscriptionStatus.trialing)
-    ) {
-      return 'Unlimited'
-    } else {
-      return 'Standard'
-    }
   }
 
   return (
@@ -123,12 +112,10 @@ export function ProfileSection() {
                     <Badge variant='outline'>{formatDate(user.createdAt)}</Badge>
 
                     <Label>Account type</Label>
-                    <Badge variant='outline'>
-                      {subscriptionType(user.stripeSubscriptionStatus)}
-                    </Badge>
+                    <Badge variant='outline'>{getAccountType(user.stripeSubscriptionStatus)}</Badge>
 
                     <div className='flex flex-col gap-2'>
-                      {subscriptionType(user.stripeSubscriptionStatus) === 'Standard' ? (
+                      {getAccountType(user.stripeSubscriptionStatus) === AccountType.Standard ? (
                         <Button
                           type='button'
                           variant='outline'
