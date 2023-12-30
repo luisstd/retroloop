@@ -32,7 +32,13 @@ export default function Landingpage() {
     <div className='flex w-full flex-col items-center'>
       <section className='row-start-1 m-5 flex flex-col items-center gap-5 px-2'>
         <div className='flex items-center'>
-          <Image src='/logo.svg' alt='Retroloop logo' width={132} height={132} />
+          <Image
+            src='/logo.svg'
+            alt='Retroloop logo'
+            width={132}
+            height={132}
+            style={{ width: 132, height: 132 }}
+          />
           <h1 className='scroll-m-20 text-4xl font-extrabold italic tracking-tight lg:text-5xl'>
             retroloop
           </h1>
@@ -63,6 +69,7 @@ export default function Landingpage() {
               : '/preview-dark.png'
           }
           alt='Retroloop preview'
+          title='Retroloop preview'
           width={1920}
           height={1080}
           priority
