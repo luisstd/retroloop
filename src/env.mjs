@@ -31,6 +31,10 @@ export const env = createEnv({
     SENTRY_ORG: z.string(),
     SENTRY_PROJECT: z.string(),
     FEEDBACK_FISH_PROJECT_ID: z.string(),
+    STRIPE_PK: z.string(),
+    STRIPE_SK: z.string(),
+    STRIPE_PRICE_ID: z.string(),
+    STRIPE_WEBHOOK_SECRET: z.string(),
   },
 
   /**
