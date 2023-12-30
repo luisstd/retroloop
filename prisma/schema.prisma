@@ -44,19 +44,44 @@ model VerificationToken {
 }
 
 model User {
-  id                  String          @id @default(cuid())
-  createdAt           DateTime        @default(now())
-  email               String          @unique
-  emailVerified       DateTime?
-  name                String?
-  role                String?         @default("USER")
-  retrospectives      Retrospective[]
-  retroItem           RetroItem[]
-  image               String?
-  accounts            Account[]
-  sessions            Session[]
-  subscriptionType    String          @default("standard")
-  subscriptionExpires DateTime?
+  id                       String                    @id @default(cuid())
+  createdAt                DateTime                  @default(now())
+  email                    String                    @unique
+  emailVerified            DateTime?
+  name                     String?
+  role                     String?                   @default("USER")
+  retrospectives           Retrospective[]
+  retroItem                RetroItem[]
+  image                    String?
+  accounts                 Account[]
+  sessions                 Session[]
+  stripeCustomerId         String?
+  stripeSubscriptionId     String?
+  stripeSubscriptionStatus StripeSubscriptionStatus?
+}
+
+enum StripeSubscriptionStatus {
+  incomplete
+  incomplete_expired
+  trialing
+  active
+  past_due
+  canceled
+  unpaid
+  paused
+}
+
+model StripeEvent {
+  id               String   @id @unique
+  api_version      String?
+  data             Json
+  request          Json?
+  type             String
+  object           String
+  account          String?
+  created          DateTime
+  livemode         Boolean
+  pending_webhooks Int
 }
 
 model Retrospective {
