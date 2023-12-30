@@ -1,5 +1,5 @@
 'use client'
-import { User } from '@prisma/client'
+import { StripeSubscriptionStatus, User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/navigation'
@@ -56,11 +56,14 @@ export function ProfileSection() {
     })
   }
 
-  const subscriptionType = (subscription: User['subscriptionType']) => {
-    if (subscription === 'standard') {
-      return 'Standard'
-    } else if (subscription === 'unlimited') {
+  const subscriptionType = (subscriptionStatus: User['stripeSubscriptionStatus']) => {
+    if (
+      subscriptionStatus &&
+      subscriptionStatus === (StripeSubscriptionStatus.active || StripeSubscriptionStatus.trialing)
+    ) {
       return 'Unlimited'
+    } else {
+      return 'Standard'
     }
   }
 
@@ -120,10 +123,28 @@ export function ProfileSection() {
                     <Badge variant='outline'>{formatDate(user.createdAt)}</Badge>
 
                     <Label>Account type</Label>
-                    <Badge variant='outline'>{subscriptionType(user.subscriptionType)}</Badge>
+                    <Badge variant='outline'>
+                      {subscriptionType(user.stripeSubscriptionStatus)}
+                    </Badge>
 
                     <div className='flex flex-col gap-2'>
-                      {user.subscriptionType === 'standard' && <Button>Upgrade account</Button>}
+                      {subscriptionType(user.stripeSubscriptionStatus) === 'Standard' ? (
+                        <Button
+                          type='button'
+                          variant='outline'
+                          onClick={() => console.log('Upgraded subscription')}
+                        >
+                          Upgrade account
+                        </Button>
+                      ) : (
+                        <Button
+                          type='button'
+                          variant='outline'
+                          onClick={() => console.log('Managed subscription')}
+                        >
+                          Manage subscription
+                        </Button>
+                      )}
 
                       {user && (
                         <DeleteUserDialog itemToDelete={user} deleteHandler={handleDelete} />
