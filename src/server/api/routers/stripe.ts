@@ -4,7 +4,7 @@ import { getOrCreateStripeCustomerIdForUser } from '@/server/stripe/stripe-webho
 
 export const stripeRouter = createTRPCRouter({
   createCheckoutSession: protectedProcedure.mutation(async ({ ctx }) => {
-    const { stripe, session, prisma, headers } = ctx
+    const { stripe, session, db: prisma, headers } = ctx
 
     const customerId = await getOrCreateStripeCustomerIdForUser({
       prisma,
@@ -48,7 +48,7 @@ export const stripeRouter = createTRPCRouter({
     return { checkoutUrl: checkoutSession.url }
   }),
   createBillingPortalSession: protectedProcedure.mutation(async ({ ctx }) => {
-    const { stripe, session, prisma, headers } = ctx
+    const { stripe, session, db: prisma, headers } = ctx
 
     const customerId = await getOrCreateStripeCustomerIdForUser({
       prisma,

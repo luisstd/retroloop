@@ -14,7 +14,7 @@ import superjson from 'superjson'
 import { ZodError } from 'zod'
 
 import { getServerAuthSession } from '@/server/auth'
-import { db as prisma } from '@/server/db'
+import { db } from '@/server/db'
 import { stripe } from '@/server/stripe/client'
 
 /**
@@ -45,7 +45,7 @@ export const createInnerTRPCContext = async (opts: CreateContextOptions) => {
   return {
     session,
     headers: opts.headers,
-    prisma,
+    db,
     stripe,
   }
 }
