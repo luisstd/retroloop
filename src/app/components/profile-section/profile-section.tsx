@@ -4,7 +4,7 @@ import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { version } from 'package.json'
+import packageInfo from 'package.json'
 import { GridLoader } from 'react-spinners'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -66,7 +66,7 @@ export function ProfileSection() {
         <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
           <CardHeader className='flex flex-row items-end justify-between'>
             <CardTitle>PROFILE</CardTitle>
-            <Badge>Version {version}</Badge>
+            <Badge>Version {packageInfo.version}</Badge>
           </CardHeader>
 
           <Formik
