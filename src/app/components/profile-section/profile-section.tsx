@@ -40,6 +40,10 @@ export function ProfileSection() {
     },
   })
 
+  const { mutateAsync: createCheckoutSession } = api.stripe.createCheckoutSession.useMutation()
+  const { mutateAsync: createBillingPortalSession } =
+    api.stripe.createBillingPortalSession.useMutation()
+
   const handleSubmit = (input: UserUpdateInput): void => {
     updateUser(input)
     toast({
@@ -119,7 +123,12 @@ export function ProfileSection() {
                         <Button
                           type='button'
                           variant='outline'
-                          onClick={() => console.log('Upgraded subscription')}
+                          onClick={async () => {
+                            const { checkoutUrl } = await createCheckoutSession()
+                            if (checkoutUrl) {
+                              router.push(checkoutUrl)
+                            }
+                          }}
                         >
                           Upgrade account
                         </Button>
@@ -127,7 +136,12 @@ export function ProfileSection() {
                         <Button
                           type='button'
                           variant='outline'
-                          onClick={() => console.log('Managed subscription')}
+                          onClick={async () => {
+                            const { billingPortalUrl } = await createBillingPortalSession()
+                            if (billingPortalUrl) {
+                              router.push(billingPortalUrl)
+                            }
+                          }}
                         >
                           Manage subscription
                         </Button>

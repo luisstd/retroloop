@@ -10,18 +10,23 @@ import {
 } from '@tabler/icons-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 
 import { Footer } from '@/app/components/footer/footer'
 import { Button } from '@/app/ui/button/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
+import { api } from '@/trpc/react'
 
 export default function Landingpage() {
   const { data: session, status } = useSession()
   const { resolvedTheme, theme } = useTheme()
+  const router = useRouter()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+
+  const { mutateAsync: createCheckoutSession } = api.stripe.createCheckoutSession.useMutation()
 
   return (
     <div className='flex w-full flex-col items-center'>
@@ -201,7 +206,9 @@ export default function Landingpage() {
               <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>0€</span>
               <span>/month</span>
             </CardDescription>
-            <Button onClick={!isSignedUp ? () => signIn() : undefined}>Get started for free</Button>
+            <Button onClick={!isSignedUp ? () => signIn() : () => router.push('/dashboard')}>
+              Get started for free
+            </Button>
             <div className='prose text-lg text-foreground'>
               <ul>
                 <li>Create up to 3 retrospectives</li>
@@ -219,7 +226,18 @@ export default function Landingpage() {
               <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>4.99€</span>
               <span>/month</span>
             </CardDescription>
-            <Button onClick={!isSignedUp ? () => signIn() : undefined}>
+            <Button
+              onClick={
+                !isSignedUp
+                  ? () => signIn()
+                  : async () => {
+                      const { checkoutUrl } = await createCheckoutSession()
+                      if (checkoutUrl) {
+                        router.push(checkoutUrl)
+                      }
+                    }
+              }
+            >
               Get Retroloop Unlimited
             </Button>
             <div className='prose text-lg text-foreground'>
