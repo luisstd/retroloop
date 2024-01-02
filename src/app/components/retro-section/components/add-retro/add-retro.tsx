@@ -22,9 +22,25 @@ import { RetrospectiveCreateInput } from '@/types/retrospective'
 
 type AddRetroProps = {
   handleAddRetro: (input: RetrospectiveCreateInput) => void
+  isLimitReached: boolean
 }
 
-export function AddRetro({ handleAddRetro }: AddRetroProps) {
+const RetroLimitReached = () => {
+  return (
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Retrospective limit reached</DialogTitle>
+        <DialogDescription>
+          You have reached the maximum of 3 active retrospectives for the Standard plan. Upgrade to
+          Unlimited to create more.
+        </DialogDescription>
+      </DialogHeader>
+      <Button>Upgrade subscription</Button>
+    </DialogContent>
+  )
+}
+
+export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -36,40 +52,44 @@ export function AddRetro({ handleAddRetro }: AddRetroProps) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Start retrospective</DialogTitle>
-          <DialogDescription>Create a new retrospective by giving it a name</DialogDescription>
-        </DialogHeader>
+      {isLimitReached ? (
+        <RetroLimitReached />
+      ) : (
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Start retrospective</DialogTitle>
+            <DialogDescription>Create a new retrospective by giving it a name</DialogDescription>
+          </DialogHeader>
 
-        <Formik
-          validationSchema={toFormikValidationSchema(RetrospectiveCreateInputSchema)}
-          initialValues={{
-            name: '',
-            date: new Date(),
-            timerExpiration: new Date(),
-            phase: 'WRITING',
-          }}
-          onSubmit={(values: RetrospectiveCreateInput) => {
-            handleAddRetro(values)
-            setIsOpen(false)
-          }}
-        >
-          <Form className='flex flex-col gap-5'>
-            <fieldset>
-              <Label htmlFor='name'>Retro Name</Label>
+          <Formik
+            validationSchema={toFormikValidationSchema(RetrospectiveCreateInputSchema)}
+            initialValues={{
+              name: '',
+              date: new Date(),
+              timerExpiration: new Date(),
+              phase: 'WRITING',
+            }}
+            onSubmit={(values: RetrospectiveCreateInput) => {
+              handleAddRetro(values)
+              setIsOpen(false)
+            }}
+          >
+            <Form className='flex flex-col gap-5'>
+              <fieldset>
+                <Label htmlFor='name'>Retro Name</Label>
 
-              <Field id='name' as={Input} name='name' placeholder='Untitled Retro' />
-            </fieldset>
+                <Field id='name' as={Input} name='name' placeholder='Untitled Retro' />
+              </fieldset>
 
-            <DialogFooter>
-              <Button type='submit' aria-label='Start Retro'>
-                Start Retro
-              </Button>
-            </DialogFooter>
-          </Form>
-        </Formik>
-      </DialogContent>
+              <DialogFooter>
+                <Button type='submit' aria-label='Start Retro'>
+                  Start Retro
+                </Button>
+              </DialogFooter>
+            </Form>
+          </Formik>
+        </DialogContent>
+      )}
     </Dialog>
   )
 }

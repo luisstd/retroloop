@@ -2,6 +2,7 @@
 
 import { Retrospective, User } from '@prisma/client'
 import { IconLayoutDashboard } from '@tabler/icons-react'
+import { sub } from 'date-fns'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -13,7 +14,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
 import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from '@/types/retrospective'
-import { formatDate } from '@/utils/utils'
+import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
 type RetroSectionProps = {
   userId: User['id']
@@ -37,6 +38,7 @@ function RetrospectivesFallback() {
 
 export function RetroSection({ userId }: RetroSectionProps) {
   const { data: retrospectives, refetch, isLoading } = api.retrospective.getAll.useQuery(userId)
+  const { data: user } = api.user.getLoggedIn.useQuery()
   const { mutate: addRetro } = api.retrospective.add.useMutation({
     onSuccess: async () => {
       refetch()
@@ -48,23 +50,27 @@ export function RetroSection({ userId }: RetroSectionProps) {
     },
   })
   const { resolvedTheme } = useTheme()
-  const [sortedRetros, setSortedRetros] = useState(retrospectives)
+  const [sortedRetros, setSortedRetros] = useState(retrospectives || [])
   const { toast } = useToast()
 
-  const sortItems = () => {
-    if (retrospectives) {
-      setSortedRetros(
-        [...retrospectives].sort((a, b) => {
-          if (b.date === null) {
-            return 1
-          }
-          if (a.date === null) {
-            return -1
-          }
-          return b.date.getTime() - a.date.getTime()
-        })
-      )
+  const userAccountType =
+    getAccountType(user?.stripeSubscriptionStatus || null) || AccountType.Standard
+
+  const sortItems = (accountType: AccountType) => {
+    if (!retrospectives) return
+
+    let filteredRetros = retrospectives
+
+    if (accountType === AccountType.Standard) {
+      const threeMonthsAgo = sub(new Date(), { days: 90 })
+      filteredRetros = filteredRetros.filter((retro) => retro.date && retro.date > threeMonthsAgo)
     }
+
+    const sortedRetros = filteredRetros.sort(
+      (a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0)
+    )
+
+    setSortedRetros(sortedRetros)
   }
 
   const handleAddRetro = (input: RetrospectiveCreateInput) => {
@@ -84,8 +90,10 @@ export function RetroSection({ userId }: RetroSectionProps) {
   }
 
   useEffect(() => {
-    sortItems()
+    sortItems(userAccountType)
   }, [retrospectives])
+
+  const isRetroLimitReached = userAccountType === AccountType.Standard && sortedRetros?.length > 3
 
   return (
     <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
@@ -93,7 +101,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
         <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
         <div className='flex w-full justify-end'>
-          <AddRetro handleAddRetro={handleAddRetro} />
+          <AddRetro handleAddRetro={handleAddRetro} isLimitReached={isRetroLimitReached} />
         </div>
       </div>
 
