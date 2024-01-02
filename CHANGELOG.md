@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.7.0](https://github.com/luisstd/retroloop/compare/v1.6.2...v1.7.0) (2024-01-02)
+
+
+### Features
+
+* add checkout and billing portal link handlers ([ae680e6](https://github.com/luisstd/retroloop/commit/ae680e618bdb776c84ea886dde40ead5f7902815))
+* add pricing section ([8ab3a34](https://github.com/luisstd/retroloop/commit/8ab3a3468c766535f705ddcb62bfc600881e8690))
+* add redirect for logged out users ([825e051](https://github.com/luisstd/retroloop/commit/825e0513165ce4b2ddb8c03117cd32edbc8504a6))
+* add stripe API client ([3c09e2d](https://github.com/luisstd/retroloop/commit/3c09e2dabc313805bedcc0e93d83682325bc6275))
+* add stripe trpc router ([d3ebb78](https://github.com/luisstd/retroloop/commit/d3ebb78322be96616cafc25237d35ef660ca7fc2))
+* add stripe webhook event handlers ([50a5131](https://github.com/luisstd/retroloop/commit/50a5131e36c1af86bd1a8619980688e1dbb20903))
+* add stripe webhook listener route ([436a566](https://github.com/luisstd/retroloop/commit/436a566fb2017b07f0edb93df9901b782f99eecc))
+* add subscription type to user table ([9eb5e16](https://github.com/luisstd/retroloop/commit/9eb5e165a223e4fd8a27fd0d998d23199a72e43f))
+* display account type in profile ([c86a944](https://github.com/luisstd/retroloop/commit/c86a944f21f888667cb4a9127b0e8a5813d937ef))
+* extend dialog to enforce retrospective limit ([f7d2b70](https://github.com/luisstd/retroloop/commit/f7d2b700815917cc2aff254fc7ed7d9bcd05937a))
+* only show retros from last 90 days for standard accounts ([f4b5bb5](https://github.com/luisstd/retroloop/commit/f4b5bb5c072b35eb9d1f6c35449ba683b7b21591))
+
+
+### Bug Fixes
+
+* correctly access version number ([1a8a215](https://github.com/luisstd/retroloop/commit/1a8a21551f6f9656d9e54519f746daecb90a47b3))
+* resolve warning about image dimensions ([d678355](https://github.com/luisstd/retroloop/commit/d678355f6db03726883afc63c48f2954d65c8e47))
+
 ## [1.6.2](https://github.com/luisstd/retroloop/compare/v1.6.1...v1.6.2) (2023-11-20)
 
 
