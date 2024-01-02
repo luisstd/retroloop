@@ -4,7 +4,7 @@ import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { version } from 'package.json'
+import packageInfo from 'package.json'
 import { GridLoader } from 'react-spinners'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -19,7 +19,7 @@ import { useToast } from '@/app/ui/toast/use-toast'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
 import { UserUpdateInput } from '@/types/user'
-import { formatDate } from '@/utils/utils'
+import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
 export function ProfileSection() {
   const router = useRouter()
@@ -39,6 +39,10 @@ export function ProfileSection() {
       router.push('/')
     },
   })
+
+  const { mutateAsync: createCheckoutSession } = api.stripe.createCheckoutSession.useMutation()
+  const { mutateAsync: createBillingPortalSession } =
+    api.stripe.createBillingPortalSession.useMutation()
 
   const handleSubmit = (input: UserUpdateInput): void => {
     updateUser(input)
@@ -60,9 +64,9 @@ export function ProfileSection() {
     <>
       {user ? (
         <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
-          <CardHeader className='flex flex-row items-baseline justify-between'>
+          <CardHeader className='flex flex-row items-end justify-between'>
             <CardTitle>PROFILE</CardTitle>
-            <Badge>Version {version}</Badge>
+            <Badge>Version {packageInfo.version}</Badge>
           </CardHeader>
 
           <Formik
@@ -111,9 +115,42 @@ export function ProfileSection() {
                     <Label>User since</Label>
                     <Badge variant='outline'>{formatDate(user.createdAt)}</Badge>
 
-                    {user ? (
-                      <DeleteUserDialog itemToDelete={user} deleteHandler={handleDelete} />
-                    ) : null}
+                    <Label>Account type</Label>
+                    <Badge variant='outline'>{getAccountType(user.stripeSubscriptionStatus)}</Badge>
+
+                    <div className='flex flex-col gap-2'>
+                      {getAccountType(user.stripeSubscriptionStatus) === AccountType.Standard ? (
+                        <Button
+                          type='button'
+                          variant='outline'
+                          onClick={async () => {
+                            const { checkoutUrl } = await createCheckoutSession()
+                            if (checkoutUrl) {
+                              router.push(checkoutUrl)
+                            }
+                          }}
+                        >
+                          Upgrade account
+                        </Button>
+                      ) : (
+                        <Button
+                          type='button'
+                          variant='outline'
+                          onClick={async () => {
+                            const { billingPortalUrl } = await createBillingPortalSession()
+                            if (billingPortalUrl) {
+                              router.push(billingPortalUrl)
+                            }
+                          }}
+                        >
+                          Manage subscription
+                        </Button>
+                      )}
+
+                      {user && (
+                        <DeleteUserDialog itemToDelete={user} deleteHandler={handleDelete} />
+                      )}
+                    </div>
                   </div>
                 </section>
               </div>

@@ -30,6 +30,10 @@ jobs:
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      STRIPE_PK: ${{ secrets.STRIPE_PK }}
+      STRIPE_SK: ${{ secrets.STRIPE_SK }}
+      STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+      STRIPE_PRICE_ID: ${{ secrets.STRIPE_PRICE_ID }}
       FEEDBACK_FISH_PROJECT_ID: ${{ secrets.FEEDBACK_FISH_PROJECT_ID }}
     steps:
       - name: Cancel Previous Runs

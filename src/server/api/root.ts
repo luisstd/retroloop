@@ -1,6 +1,7 @@
 import { authRouter } from '@/server/api/routers/auth'
 import { retroItemRouter } from '@/server/api/routers/retro-item'
 import { retrospectiveRouter } from '@/server/api/routers/retrospective'
+import { stripeRouter } from '@/server/api/routers/stripe'
 import { userRouter } from '@/server/api/routers/user'
 import { createTRPCRouter } from '@/server/api/trpc'
 
@@ -10,6 +11,7 @@ import { createTRPCRouter } from '@/server/api/trpc'
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
+  stripe: stripeRouter,
   auth: authRouter,
   user: userRouter,
   retrospective: retrospectiveRouter,

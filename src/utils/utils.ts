@@ -1,3 +1,4 @@
+import { StripeSubscriptionStatus, User } from '@prisma/client'
 import { format, Locale } from 'date-fns'
 import { de, enUS, fr } from 'date-fns/locale'
 
@@ -13,4 +14,20 @@ const formatDate = (date: Date): string => {
   return format(date, 'PP', { locale })
 }
 
-export { formatDate }
+enum AccountType {
+  Unlimited = 'Unlimited',
+  Standard = 'Standard',
+}
+
+const getAccountType = (subscriptionStatus: User['stripeSubscriptionStatus']) => {
+  if (
+    subscriptionStatus &&
+    subscriptionStatus === (StripeSubscriptionStatus.active || StripeSubscriptionStatus.trialing)
+  ) {
+    return AccountType.Unlimited
+  } else {
+    return AccountType.Standard
+  }
+}
+
+export { AccountType, formatDate, getAccountType }
