@@ -13,6 +13,5 @@ export const RetrospectiveUpdateInputSchema = z.object({
   name: z.string(),
   date: z.date(),
   phase: z.string(),
-  timerExpiration: z.date(),
-  workspaceId: z.string().nullable(),
+  timerExpiration: z.date().nullable(),
 })
