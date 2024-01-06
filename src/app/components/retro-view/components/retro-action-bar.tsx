@@ -1,7 +1,6 @@
 'use client'
 
 import { Retrospective } from '@prisma/client'
-import { useState } from 'react'
 
 import { ActionButtons } from '@/app/components/retro-view/components/action-bar/components/action-buttons/action-buttons'
 import { PhaseIndicator } from '@/app/components/retro-view/components/action-bar/components/phase-indicator/phase-indicator'
@@ -13,11 +12,10 @@ type RetroActionBarProps = {
 }
 
 export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
-  const [currentRetro, setCurrentRetro] = useState(selectedRetro)
-
   const { refetch: refetchRetro } = api.retrospective.getById.useQuery(selectedRetro.id, {
-    refetchInterval: 5000,
+    refetchInterval: 500,
     refetchIntervalInBackground: true,
+    cacheTime: 0,
   })
 
   const { mutate: updateRetro } = api.retrospective.edit.useMutation({
@@ -27,15 +25,18 @@ export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
   })
 
   function handleUpdateRetro(input: Retrospective) {
-    setCurrentRetro(input)
     updateRetro(input)
   }
 
   return (
     <>
-      <PhaseIndicator retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
-      <RetroTimer selectedRetro={currentRetro} handleUpdateRetro={handleUpdateRetro} />
-      <ActionButtons retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+      {selectedRetro && (
+        <>
+          <PhaseIndicator retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+          <RetroTimer selectedRetro={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+          <ActionButtons retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+        </>
+      )}
     </>
   )
 }

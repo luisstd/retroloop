@@ -26,7 +26,6 @@ export const metadata = {
     url: 'https://retroloop.io/',
     title: 'Retroloop - Agile retrospectives made easy',
     description: 'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
-    image: 'https://retroloop.io/og.webp',
   },
 }
 
