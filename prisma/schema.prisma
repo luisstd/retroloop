@@ -92,8 +92,7 @@ model Retrospective {
   items           RetroItem[]
   phase           String      @default("WRITING")
   participants    User[]
-  timerExpiration DateTime    @default(now())
-  workspaceId     String?
+  timerExpiration DateTime?
 }
 
 model RetroItem {
