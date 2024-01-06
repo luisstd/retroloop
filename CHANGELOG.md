@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.1](https://github.com/luisstd/retroloop/compare/v1.7.0...v1.7.1) (2024-01-06)
+
+
+### Bug Fixes
+
+* correctly set open graph image ([aab6e51](https://github.com/luisstd/retroloop/commit/aab6e51e6ce0dc4e80488357384979781b08aa7a))
+* resolve timer synchronization issues ([6464e92](https://github.com/luisstd/retroloop/commit/6464e92599a4d5f848c3a25dc3190daa7b8edda3))
+
 ## [1.7.0](https://github.com/luisstd/retroloop/compare/v1.6.2...v1.7.0) (2024-01-02)
 
 
