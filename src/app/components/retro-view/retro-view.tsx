@@ -28,10 +28,10 @@ export function RetroView() {
   const { mutate: addParticipant } = api.retrospective.addParticipant.useMutation()
 
   useEffect(() => {
-    if (retroId && userId && selectedRetro) {
+    if (retroId && userId) {
       addParticipant({ retroId, userId })
     }
-  }, [retroId, selectedRetro])
+  }, [userId, retroId])
 
   return selectedRetro ? (
     <div className='flex flex-col items-center'>

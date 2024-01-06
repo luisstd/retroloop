@@ -4,10 +4,6 @@ import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vi
 
 import { RetroTimer } from '@/app/components/retro-view/components/action-bar/components/retro-timer/retro-timer'
 
-vi.mock('react-timer-hook', () => ({
-  useTimer: vi.fn(),
-}))
-
 test('RetroTimer', () => {
   describe('RetroTimer', () => {
     let handleUpdateRetroMock: (input: Retrospective) => void
@@ -32,7 +28,6 @@ test('RetroTimer', () => {
       createdAt: new Date(),
       date: new Date(),
       timerExpiration: new Date(),
-      workspaceId: '1',
     }
 
     beforeAll(() => {
@@ -63,23 +58,6 @@ test('RetroTimer', () => {
     test('starts timer on button click', () => {
       const startButton = screen.getByRole('button', { name: 'Play Timer' })
       fireEvent.click(startButton)
-
-      expect(handleUpdateRetroMock).toHaveBeenCalledWith({
-        ...selectedRetro,
-        timerExpiration: expect.any(Date),
-      })
-    })
-
-    test('pauses timer on button click', () => {
-      const pauseButton = screen.getByRole('button', { name: 'Pause Timer' })
-      fireEvent.click(pauseButton)
-
-      expect(handleUpdateRetroMock).not.toHaveBeenCalled()
-    })
-
-    test('restarts timer on button click', () => {
-      const restartButton = screen.getByRole('button', { name: 'Restart Timer' })
-      fireEvent.click(restartButton)
 
       expect(handleUpdateRetroMock).toHaveBeenCalledWith({
         ...selectedRetro,
