@@ -69,8 +69,8 @@ dependencies:
     specifier: ^1.0.4
     version: 1.0.4(@types/react-dom@18.2.17)(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0)
   '@sentry/integrations':
-    specifier: ^7.80.1
-    version: 7.80.1
+    specifier: ^7.92.0
+    version: 7.92.0
   '@sentry/nextjs':
     specifier: ^7.80.1
     version: 7.80.1(next@14.0.3)(react@18.2.0)
@@ -2710,6 +2710,14 @@ packages:
       '@sentry/utils': 7.80.1
     dev: false
 
+  /@sentry/core@7.92.0:
+    resolution: {integrity: sha512-1Tly7YB2I1byI5xb0Cwrxs56Rhww+6mQ7m9P7rTmdC3/ijOzbEoohtYIUPwcooCEarpbEJe/tAayRx6BrH2UbQ==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.92.0
+      '@sentry/utils': 7.92.0
+    dev: false
+
   /@sentry/integrations@7.80.1:
     resolution: {integrity: sha512-9C+CBwgFZZUkBYLrPTHaDr3kyknfSs0ejF/00RucvPZjiUPoxfslnh4IjWnN90ELEy2u09kcJY+dTCFVKd0UPQ==}
     engines: {node: '>=8'}
@@ -2717,6 +2725,16 @@ packages:
       '@sentry/core': 7.80.1
       '@sentry/types': 7.80.1
       '@sentry/utils': 7.80.1
+      localforage: 1.10.0
+    dev: false
+
+  /@sentry/integrations@7.92.0:
+    resolution: {integrity: sha512-9OT4i9b0Ge5sP3rCV8yYqoPp3BKcB9wjddW7sG0w88va32F0UWMKk4gmprtwgPYM0+u5AS/TTAVichRVRj+I1Q==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/core': 7.92.0
+      '@sentry/types': 7.92.0
+      '@sentry/utils': 7.92.0
       localforage: 1.10.0
     dev: false
 
@@ -2792,11 +2810,23 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /@sentry/types@7.92.0:
+    resolution: {integrity: sha512-APmSOuZuoRGpbPpPeYIbMSplPjiWNLZRQa73QiXuTflW4Tu/ItDlU8hOa2+A6JKVkJCuD2EN6yUrxDGSMyNXeg==}
+    engines: {node: '>=8'}
+    dev: false
+
   /@sentry/utils@7.80.1:
     resolution: {integrity: sha512-bfFm2e/nEn+b9++QwjNEYCbS7EqmteT8uf0XUs7PljusSimIqqxDtK1pfD9zjynPgC8kW/fVBKv0pe2LufomeA==}
     engines: {node: '>=8'}
     dependencies:
       '@sentry/types': 7.80.1
+    dev: false
+
+  /@sentry/utils@7.92.0:
+    resolution: {integrity: sha512-3nEfrQ1z28b/2zgFGANPh5yMVtgwXmrasZxTvKbrAj+KWJpjrJHrIR84r9W277J44NMeZ5RhRW2uoDmuBslPnA==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.92.0
     dev: false
 
   /@sentry/vercel-edge@7.80.1:
