@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/luisstd/retroloop/compare/v1.7.1...v1.8.0) (2024-01-24)
+
+
+### Features
+
+* add confirmation dialog for switching phase ([2391a9b](https://github.com/luisstd/retroloop/commit/2391a9ba9f30dd408eca4454971e0f54936ad436))
+
 ## [1.7.1](https://github.com/luisstd/retroloop/compare/v1.7.0...v1.7.1) (2024-01-06)
 
 
