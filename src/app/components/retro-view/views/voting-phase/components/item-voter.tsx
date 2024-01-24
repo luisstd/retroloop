@@ -20,7 +20,12 @@ type ItemVoterProps = {
 export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
   const { toast } = useToast()
   const { data: session } = useSession()
-  const { data: retroItems, refetch } = api.retroItem.getAllByRetroId.useQuery(retrospective.id)
+  const { data: retroItems, refetch } = api.retroItem.getAllByRetroId.useQuery(retrospective.id, {
+    refetchInterval: 500,
+    refetchIntervalInBackground: true,
+    cacheTime: 0,
+  })
+
   const { mutate: updateRetroItem } = api.retroItem.edit.useMutation({
     onSuccess: () => {
       refetch()

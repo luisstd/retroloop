@@ -8,13 +8,14 @@ import { Card } from '@/app/ui/card/card'
 
 type VotingViewProps = {
   selectedRetro: Retrospective
+  refetchRetro: () => void
 }
 
-export function VotingView({ selectedRetro }: VotingViewProps) {
+export function VotingView({ selectedRetro, refetchRetro }: VotingViewProps) {
   return (
     <Card className='m-5 p-5'>
       <div className='grid-rows-auto flex h-5/6 w-full grid-cols-3 flex-col place-items-center gap-5 lg:grid'>
-        <RetroActionBar selectedRetro={selectedRetro} />
+        <RetroActionBar selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
 
         {selectedRetro ? (
           <>

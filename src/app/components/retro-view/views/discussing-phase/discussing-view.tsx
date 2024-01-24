@@ -11,9 +11,10 @@ import { api } from '@/trpc/react'
 
 type DiscussingViewProps = {
   selectedRetro: Retrospective
+  refetchRetro: () => void
 }
 
-export function DiscussingView({ selectedRetro }: DiscussingViewProps) {
+export function DiscussingView({ selectedRetro, refetchRetro }: DiscussingViewProps) {
   const retroItems = api.retroItem.getAllByRetroId.useQuery(selectedRetro.id)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -33,7 +34,7 @@ export function DiscussingView({ selectedRetro }: DiscussingViewProps) {
   return (
     <Card className='m-5 p-5'>
       <div className='flex h-5/6 w-full grid-cols-3 flex-col place-items-center gap-5 lg:grid'>
-        <RetroActionBar selectedRetro={selectedRetro} />
+        <RetroActionBar selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
       </div>
 
       <section className='h-screen w-full'>
