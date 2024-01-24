@@ -1,8 +1,9 @@
 'use client'
 
 import { Retrospective } from '@prisma/client'
-import { IconArrowRight, IconCopy } from '@tabler/icons-react'
+import { IconCopy } from '@tabler/icons-react'
 
+import { PhaseSwitchDialog } from '@/app/components/retro-view/components/action-bar/components/action-buttons/phase-switch-dialog'
 import { Button } from '@/app/ui/button/button'
 import { toast } from '@/app/ui/toast/use-toast'
 
@@ -53,10 +54,7 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
         <IconCopy />
       </Button>
 
-      <Button aria-label='Start Retro' onClick={handleNextPhase}>
-        Next Phase
-        <IconArrowRight />
-      </Button>
+      <PhaseSwitchDialog phaseSwitchHandler={handleNextPhase} />
     </div>
   )
 }
