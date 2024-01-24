@@ -17,13 +17,15 @@ export function RetroView() {
   const userId = session?.user?.id
   const retroId = searchParams.get('id')
 
-  const { data: selectedRetro, isLoading: isRetroLoading } = api.retrospective.getById.useQuery(
-    retroId as string,
-    {
-      refetchInterval: 5000,
-      refetchIntervalInBackground: true,
-    }
-  )
+  const {
+    data: selectedRetro,
+    isLoading: isRetroLoading,
+    refetch: refetchRetro,
+  } = api.retrospective.getById.useQuery(retroId as string, {
+    refetchInterval: 500,
+    refetchIntervalInBackground: true,
+    cacheTime: 0,
+  })
 
   const { mutate: addParticipant } = api.retrospective.addParticipant.useMutation()
 
@@ -35,12 +37,16 @@ export function RetroView() {
 
   return selectedRetro ? (
     <div className='flex flex-col items-center'>
-      {selectedRetro.phase === 'WRITING' ? <WritingView selectedRetro={selectedRetro} /> : null}
+      {selectedRetro.phase === 'WRITING' ? (
+        <WritingView selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
+      ) : null}
 
-      {selectedRetro.phase === 'VOTING' ? <VotingView selectedRetro={selectedRetro} /> : null}
+      {selectedRetro.phase === 'VOTING' ? (
+        <VotingView selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
+      ) : null}
 
       {selectedRetro.phase === 'DISCUSSING' ? (
-        <DiscussingView selectedRetro={selectedRetro} />
+        <DiscussingView selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
       ) : null}
     </div>
   ) : (
