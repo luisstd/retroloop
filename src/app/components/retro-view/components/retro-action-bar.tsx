@@ -9,10 +9,15 @@ import { api } from '@/trpc/react'
 
 type RetroActionBarProps = {
   selectedRetro: Retrospective
-  refetchRetro: () => void
 }
 
-export function RetroActionBar({ selectedRetro, refetchRetro }: RetroActionBarProps) {
+export function RetroActionBar({ selectedRetro }: RetroActionBarProps) {
+  const { refetch: refetchRetro } = api.retrospective.getById.useQuery(selectedRetro.id, {
+    refetchInterval: 500,
+    refetchIntervalInBackground: true,
+    cacheTime: 0,
+  })
+
   const { mutate: updateRetro } = api.retrospective.edit.useMutation({
     onSuccess: () => {
       refetchRetro()
