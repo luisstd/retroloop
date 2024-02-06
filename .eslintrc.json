@@ -1,12 +1,11 @@
 {
-  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:jsx-a11y/recommended",
-    "plugin:@next/next/recommended"
+    "next/core-web-vitals"
   ],
   "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
   "env": {
@@ -15,16 +14,7 @@
     "es6": true
   },
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "ecmaVersion": "latest",
     "sourceType": "module"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "root": true
+  }
 }
