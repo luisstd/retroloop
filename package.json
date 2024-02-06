@@ -100,6 +100,7 @@
     "eslint-config-next": "^14.1.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
     "jsdom": "^23.0.1",
     "knip": "^4.4.0",
