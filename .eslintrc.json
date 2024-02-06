@@ -1,10 +1,10 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
+    "eslint:recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "plugin:@next/next/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@next/next/recommended"
   ],
   "settings": {
     "react": {
@@ -16,15 +16,14 @@
     "node": true,
     "es6": true
   },
-  "plugins": ["simple-import-sort", "import"],
-  "rules": {
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "import/first": "error",
-    "import/newline-after-import": "error",
-    "import/no-duplicates": "error",
-    "react/prop-types": "off"
-  },
+  "plugins": [],
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "extends": "standard-with-typescript"
+    }
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -32,7 +31,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-
   "globals": {
     "React": "writable"
   }
