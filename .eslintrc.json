@@ -7,7 +7,11 @@
     "plugin:jsx-a11y/recommended",
     "next/core-web-vitals"
   ],
-  "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
+  "plugins": ["@typescript-eslint", "react", "jsx-a11y", "simple-import-sort"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
   "env": {
     "browser": true,
     "node": true,
