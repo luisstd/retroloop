@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint --fix ./",
+    "lint": "ts-standard ./",
     "clean": "rimraf node_modules && pnpm install && prisma generate && pnpm lint",
     "knip": "knip",
     "test:unit": "vitest run",
@@ -22,6 +22,9 @@
     "pnpm": ">=8"
   },
   "packageManager": "pnpm@8.6.2",
+  "ts-standard": {
+    "project": "./tsconfig.json"
+  },
   "dependencies": {
     "@feedback-fish/react": "^1.2.2",
     "@formspree/react": "^2.5.1",
@@ -110,6 +113,7 @@
     "tailwindcss": "^3.3.5",
     "tailwindcss-bg-patterns": "^0.3.0",
     "ts-node": "^10.9.1",
+    "ts-standard": "^12.0.2",
     "typescript": "5.2.2",
     "vitest": "^0.34.6"
   }
