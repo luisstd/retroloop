@@ -14,9 +14,6 @@
     "test:integration": "playwright test",
     "coverage": "vitest run --coverage"
   },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  },
   "engines": {
     "node": ">=18",
     "pnpm": ">=8"
