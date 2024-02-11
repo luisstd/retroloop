@@ -1,16 +1,14 @@
 import { useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
-import GridLoader from 'react-spinners/GridLoader'
 
+import { Loader } from '@/app/components/loader/loader'
 import { DiscussingView } from '@/app/components/retro-view/views/discussing-phase/discussing-view'
 import { VotingView } from '@/app/components/retro-view/views/voting-phase/voting-view'
 import { WritingView } from '@/app/components/retro-view/views/writing-phase/writing-view'
 import { api } from '@/trpc/react'
 
 export function RetroView() {
-  const { resolvedTheme } = useTheme()
   const { data: session } = useSession()
   const searchParams = useSearchParams()
 
@@ -50,13 +48,6 @@ export function RetroView() {
       ) : null}
     </div>
   ) : (
-    <div className='grid h-screen place-items-center'>
-      <GridLoader
-        color={resolvedTheme === 'light' ? 'black' : 'white'}
-        loading={isRetroLoading}
-        size={15}
-        aria-label='Loading Spinner'
-      />
-    </div>
+    <Loader isLoading={isRetroLoading} fullHeight />
   )
 }

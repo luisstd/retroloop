@@ -4,10 +4,9 @@ import { Retrospective, User } from '@prisma/client'
 import { IconLayoutDashboard } from '@tabler/icons-react'
 import { sub } from 'date-fns'
 import Link from 'next/link'
-import { useTheme } from 'next-themes'
 import { useCallback, useEffect, useState } from 'react'
-import GridLoader from 'react-spinners/GridLoader'
 
+import { Loader } from '@/app/components/loader/loader'
 import { AddRetro } from '@/app/dashboard/retros/components/add-retro/add-retro'
 import { EditRetro } from '@/app/dashboard/retros/components/edit-retro/edit-retro'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
@@ -49,7 +48,6 @@ export function Retros({ userId }: RetroSectionProps) {
       refetch()
     },
   })
-  const { resolvedTheme } = useTheme()
   const [sortedRetros, setSortedRetros] = useState(retrospectives || [])
   const { toast } = useToast()
 
@@ -110,16 +108,7 @@ export function Retros({ userId }: RetroSectionProps) {
         </div>
       </div>
 
-      {isLoading && (
-        <div className='grid place-items-center'>
-          <GridLoader
-            color={resolvedTheme === 'light' ? 'black' : 'white'}
-            loading={isLoading}
-            size={15}
-            aria-label='Loading Spinner'
-          />
-        </div>
-      )}
+      {isLoading && <Loader isLoading={isLoading} />}
 
       <section className='mt-5 grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {sortedRetros?.length ? (

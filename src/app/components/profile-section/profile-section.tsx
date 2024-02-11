@@ -3,11 +3,10 @@ import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/navigation'
-import { useTheme } from 'next-themes'
 import packageInfo from 'package.json'
-import { GridLoader } from 'react-spinners'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
+import { Loader } from '@/app/components/loader/loader'
 import { DeleteUserDialog } from '@/app/components/profile-section/components/delete-user-dialog'
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar/avatar'
 import { Badge } from '@/app/ui/badge/badge'
@@ -24,7 +23,6 @@ import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 export function ProfileSection() {
   const router = useRouter()
   const { toast } = useToast()
-  const { resolvedTheme } = useTheme()
 
   const { data: user, isLoading, refetch } = api.user.getLoggedIn.useQuery()
 
@@ -158,14 +156,7 @@ export function ProfileSection() {
           </Formik>
         </Card>
       ) : (
-        <div className='grid h-screen place-items-center'>
-          <GridLoader
-            color={resolvedTheme === 'light' ? 'black' : 'white'}
-            loading={isLoading}
-            size={15}
-            aria-label='Loading Spinner'
-          />
-        </div>
+        <Loader isLoading={isLoading} fullHeight />
       )}
     </>
   )

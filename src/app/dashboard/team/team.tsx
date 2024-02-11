@@ -2,9 +2,8 @@
 
 import { User } from '@prisma/client'
 import { IconUsersGroup } from '@tabler/icons-react'
-import { useTheme } from 'next-themes'
-import { GridLoader } from 'react-spinners'
 
+import { Loader } from '@/app/components/loader/loader'
 import { InviteUserDialog } from '@/app/dashboard/team/components/invite-user-dialog'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 import { api } from '@/trpc/react'
@@ -26,7 +25,6 @@ function UsersFallback() {
 }
 
 export function Team() {
-  const { resolvedTheme } = useTheme()
   const { data: users, isLoading } = api.user.getAll.useQuery()
 
   return (
@@ -38,16 +36,7 @@ export function Team() {
         </div>
       </div>
 
-      {isLoading && (
-        <div className='grid place-items-center'>
-          <GridLoader
-            color={resolvedTheme === 'light' ? 'black' : 'white'}
-            loading={isLoading}
-            size={15}
-            aria-label='Loading Spinner'
-          />
-        </div>
-      )}
+      {isLoading && <Loader isLoading={isLoading} />}
 
       <section className='mt-5 grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {users?.length ? (
