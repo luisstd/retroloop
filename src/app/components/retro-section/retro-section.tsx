@@ -5,7 +5,7 @@ import { IconLayoutDashboard } from '@tabler/icons-react'
 import { sub } from 'date-fns'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
 import { AddRetro } from '@/app/components/retro-section/components/add-retro/add-retro'
@@ -56,22 +56,27 @@ export function RetroSection({ userId }: RetroSectionProps) {
   const userAccountType =
     getAccountType(user?.stripeSubscriptionStatus || null) || AccountType.Standard
 
-  const sortItems = (accountType: AccountType) => {
-    if (!retrospectives) return
+  const sortItems = useCallback(
+    (accountType: AccountType) => {
+      if (!retrospectives) return
 
-    let filteredRetros = retrospectives
+      let filteredRetros = retrospectives
 
-    if (accountType === AccountType.Standard) {
-      const threeMonthsAgo = sub(new Date(), { days: 90 })
-      filteredRetros = filteredRetros.filter((retro) => retro.date && retro.date > threeMonthsAgo)
-    }
+      if (accountType === AccountType.Standard) {
+        const threeMonthsAgo = sub(new Date(), { days: 90 })
+        filteredRetros = filteredRetros.filter(
+          (retro: Retrospective) => retro.date && retro.date > threeMonthsAgo
+        )
+      }
 
-    const sortedRetros = filteredRetros.sort(
-      (a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0)
-    )
+      const sortedRetros = filteredRetros.sort(
+        (a: Retrospective, b: Retrospective) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0)
+      )
 
-    setSortedRetros(sortedRetros)
-  }
+      setSortedRetros(sortedRetros)
+    },
+    [retrospectives, setSortedRetros]
+  )
 
   const handleAddRetro = (input: RetrospectiveCreateInput) => {
     addRetro(input)
@@ -91,7 +96,7 @@ export function RetroSection({ userId }: RetroSectionProps) {
 
   useEffect(() => {
     sortItems(userAccountType)
-  }, [retrospectives])
+  }, [retrospectives, userAccountType, sortItems])
 
   const isRetroLimitReached = userAccountType === AccountType.Standard && sortedRetros?.length > 3
 

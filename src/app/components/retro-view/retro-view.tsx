@@ -33,7 +33,7 @@ export function RetroView() {
     if (retroId && userId) {
       addParticipant({ retroId, userId })
     }
-  }, [userId, retroId])
+  }, [userId, retroId, addParticipant])
 
   return selectedRetro ? (
     <div className='flex flex-col items-center'>
