@@ -39,7 +39,7 @@ export function NavigationDropdown() {
             className={`flex ${currentPage === '/profile' ? 'font-bold' : 'font-normal'}`}
           >
             <Link href='/profile' legacyBehavior passHref>
-              <NavigationMenuLink aria-label='Settings'>Settings</NavigationMenuLink>
+              <NavigationMenuLink aria-label='Profile'>Profile</NavigationMenuLink>
             </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
