@@ -29,7 +29,7 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button size='icon' variant='ghost'>
+        <Button size='icon' variant='ghost' aria-label='Edit retrospective button'>
           <IconDots size={18} className='text-muted-foreground' />
         </Button>
       </DialogTrigger>

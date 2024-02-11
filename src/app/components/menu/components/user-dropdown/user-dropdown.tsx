@@ -12,7 +12,12 @@ export function UserDropdown() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='ghost' size='icon' className='rounded-l-md rounded-r-3xl'>
+        <Button
+          variant='ghost'
+          size='icon'
+          className='rounded-l-md rounded-r-3xl'
+          aria-label='Authentication status'
+        >
           <IconUserCircle size={24} />
         </Button>
       </PopoverTrigger>

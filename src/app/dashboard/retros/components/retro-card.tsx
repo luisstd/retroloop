@@ -33,6 +33,7 @@ export function RetroCard({ retrospective, handleUpdateRetro }: RetroCardProps) 
             name: retrospective.name,
           },
         }}
+        aria-label='Go to retro view'
       >
         <div className='pattern-cross h-28 pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4' />
       </Link>

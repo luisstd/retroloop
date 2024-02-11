@@ -25,13 +25,14 @@ export function Menu() {
 
   return (
     <NavigationMenu className='m-5 flex items-center gap-2 rounded-full border-2 bg-background p-1 text-xl shadow-sm'>
-      <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl '>
+      <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>
         <Link href='/' legacyBehavior passHref>
           <NavigationMenuLink
             className={cn(
               navigationMenuTriggerStyle(),
               'cursor-pointer rounded-l-3xl rounded-r-md'
             )}
+            aria-label='Landingpage'
           >
             <IconInfinity className='self-center' size={28} />
           </NavigationMenuLink>
@@ -44,17 +45,19 @@ export function Menu() {
             <NavigationMenuLink
               className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
               onClick={!isSignedUp ? () => signIn() : undefined}
+              aria-label='Dashboard'
             >
               Dashboard
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
-        <NavigationMenuItem>
+        <NavigationMenuItem aria-label=''>
           <Link href='/profile' legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
               onClick={!isSignedUp ? () => signIn() : undefined}
+              aria-label='Profile'
             >
               Profile
             </NavigationMenuLink>

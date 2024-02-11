@@ -20,7 +20,7 @@ export function NavigationDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className='sm:hidden'>
-        <Button variant='ghost' size='icon'>
+        <Button variant='ghost' size='icon' aria-label='Navigation dropdown'>
           <IconMenu size={24} />
         </Button>
       </DropdownMenuTrigger>
@@ -31,7 +31,7 @@ export function NavigationDropdown() {
             className={`flex ${currentPage === '/dashboard' ? 'font-bold' : 'font-normal'}`}
           >
             <Link href='/dashboard' legacyBehavior passHref>
-              <NavigationMenuLink>Dashboard</NavigationMenuLink>
+              <NavigationMenuLink aria-label='Dashboard'>Dashboard</NavigationMenuLink>
             </Link>
           </DropdownMenuItem>
 
@@ -39,7 +39,7 @@ export function NavigationDropdown() {
             className={`flex ${currentPage === '/profile' ? 'font-bold' : 'font-normal'}`}
           >
             <Link href='/profile' legacyBehavior passHref>
-              <NavigationMenuLink>Settings</NavigationMenuLink>
+              <NavigationMenuLink aria-label='Settings'>Settings</NavigationMenuLink>
             </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
