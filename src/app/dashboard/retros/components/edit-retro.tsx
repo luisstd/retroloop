@@ -1,5 +1,3 @@
-'use client'
-
 import { Retrospective } from '@prisma/client'
 import { IconDots } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'

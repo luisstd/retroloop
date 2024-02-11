@@ -1,5 +1,3 @@
-'use client'
-
 import { IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { signIn } from 'next-auth/react'
@@ -19,7 +17,7 @@ import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
 import { useToast } from '@/app/ui/toast/use-toast'
 
-export function InviteUserDialog() {
+export function InviteDialog() {
   const [isOpen, setIsOpen] = useState(false)
   const { toast } = useToast()
 

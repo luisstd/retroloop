@@ -1,41 +1,24 @@
 'use client'
 
 import { Retrospective, User } from '@prisma/client'
-import { IconLayoutDashboard } from '@tabler/icons-react'
 import { sub } from 'date-fns'
-import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
-import { AddRetro } from '@/app/dashboard/retros/components/add-retro/add-retro'
-import { EditRetro } from '@/app/dashboard/retros/components/edit-retro/edit-retro'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
+import { AddRetro } from '@/app/dashboard/retros/components/add-retro'
+import { RetroCard } from '@/app/dashboard/retros/components/retro-card'
+import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
+import { Card, CardTitle } from '@/app/ui/card/card'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
 import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from '@/types/retrospective'
-import { AccountType, formatDate, getAccountType } from '@/utils/utils'
+import { AccountType, getAccountType } from '@/utils/utils'
 
-type RetroSectionProps = {
+type RetrosProps = {
   userId: User['id']
 }
 
-function RetrospectivesFallback() {
-  return (
-    <div className='col-span-full grid place-items-center gap-4 p-5 sm:p-16'>
-      <IconLayoutDashboard size={100} />
-
-      <h3 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
-        Your retrospectives will show up here
-      </h3>
-
-      <p className='text-lg text-muted-foreground'>
-        Any retro you join or create will be added to your dashboard
-      </p>
-    </div>
-  )
-}
-
-export function Retros({ userId }: RetroSectionProps) {
+export function Retros({ userId }: RetrosProps) {
   const { data: retrospectives, refetch, isLoading } = api.retrospective.getAll.useQuery(userId)
   const { data: user } = api.user.getLoggedIn.useQuery()
   const { mutate: addRetro } = api.retrospective.add.useMutation({
@@ -59,7 +42,6 @@ export function Retros({ userId }: RetroSectionProps) {
       if (!retrospectives) return
 
       let filteredRetros = retrospectives
-
       if (accountType === AccountType.Standard) {
         const threeMonthsAgo = sub(new Date(), { days: 90 })
         filteredRetros = filteredRetros.filter(
@@ -70,7 +52,6 @@ export function Retros({ userId }: RetroSectionProps) {
       const sortedRetros = filteredRetros.sort(
         (a: Retrospective, b: Retrospective) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0)
       )
-
       setSortedRetros(sortedRetros)
     },
     [retrospectives, setSortedRetros]
@@ -113,33 +94,14 @@ export function Retros({ userId }: RetroSectionProps) {
       <section className='mt-5 grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {sortedRetros?.length ? (
           sortedRetros.map((retrospective: Retrospective) => (
-            <Card
+            <RetroCard
               key={retrospective.id}
-              className='h-full w-full shadow-sm transition ease-in-out hover:scale-105'
-            >
-              <CardHeader>
-                <CardTitle className='flex items-baseline justify-between'>
-                  {retrospective.name}
-                  <EditRetro handleEditRetro={handleUpdateRetro} retrospective={retrospective} />
-                </CardTitle>
-                <CardDescription>{formatDate(retrospective.date)}</CardDescription>
-              </CardHeader>
-              <Link
-                className='hover:cursor-pointer'
-                href={{
-                  pathname: '/retro',
-                  query: {
-                    id: retrospective.id,
-                    name: retrospective.name,
-                  },
-                }}
-              >
-                <div className='pattern-cross h-28 pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4' />
-              </Link>
-            </Card>
+              retrospective={retrospective}
+              handleUpdateRetro={handleUpdateRetro}
+            />
           ))
         ) : !isLoading ? (
-          <RetrospectivesFallback />
+          <RetroFallback />
         ) : null}
       </section>
     </Card>

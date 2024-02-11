@@ -1,5 +1,3 @@
-'use client'
-
 import { IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { useState } from 'react'
