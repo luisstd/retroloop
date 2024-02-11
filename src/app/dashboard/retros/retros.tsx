@@ -80,7 +80,7 @@ export function Retros({ userId }: RetrosProps) {
   const isRetroLimitReached = userAccountType === AccountType.Standard && sortedRetros?.length > 3
 
   return (
-    <Card className='w-[calc(100%-2.5rem)] bg-background p-10 shadow-sm'>
+    <Card className='w-full bg-background p-10 shadow-sm'>
       <div className='flex flex-row items-baseline justify-between'>
         <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
