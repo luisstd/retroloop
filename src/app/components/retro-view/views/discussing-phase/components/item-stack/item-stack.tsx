@@ -2,7 +2,7 @@
 
 import { RetroItem } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Badge } from '@/app/ui/badge/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
@@ -15,11 +15,7 @@ type ItemStackProps = {
 export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
   const [sortedItems, setSortedItems] = useState(retroItems)
 
-  useEffect(() => {
-    sortItems()
-  }, [retroItems])
-
-  function sortItems(): void {
+  const sortItems = useCallback(() => {
     if (retroItems) {
       const sorted = [...retroItems].sort((a, b) => {
         // If both items have non-null votes, sort by votes
@@ -39,7 +35,11 @@ export function ItemStack({ retroItems, currentIndex }: ItemStackProps) {
       })
       setSortedItems(sorted)
     }
-  }
+  }, [retroItems, setSortedItems])
+
+  useEffect(() => {
+    sortItems()
+  }, [retroItems, sortItems])
 
   return (
     <>
