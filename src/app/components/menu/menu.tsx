@@ -4,10 +4,10 @@ import { IconInfinity } from '@tabler/icons-react'
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
 
-import { LoginButton } from '@/app/components/menu-bar/components/login-button/login-button'
-import { NavigationDropdown } from '@/app/components/menu-bar/components/nav-dropdown/nav-dropdown'
-import { ThemeDropdown } from '@/app/components/menu-bar/components/theme-dropdown/theme-dropdown'
-import { UserDropdown } from '@/app/components/menu-bar/components/user-dropdown/user-dropdown'
+import { LoginButton } from '@/app/components/menu/components/login-button/login-button'
+import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
+import { ThemeDropdown } from '@/app/components/menu/components/theme-dropdown/theme-dropdown'
+import { UserDropdown } from '@/app/components/menu/components/user-dropdown/user-dropdown'
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -18,7 +18,7 @@ import {
 } from '@/app/ui/navigation-menu/navigation-menu'
 import { cn } from '@/utils/cn'
 
-export function MenuBar() {
+export function Menu() {
   const { data: session, status } = useSession()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null

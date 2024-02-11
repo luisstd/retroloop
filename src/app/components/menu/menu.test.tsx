@@ -1,7 +1,7 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { MenuBar } from '@/app/components/menu-bar/menu-bar'
+import { Menu } from '@/app/components/menu/menu'
 
 vi.mock('next-auth/react', () => ({
   useSession: () => ({ status: 'unauthenticated', data: null }),
@@ -12,11 +12,11 @@ vi.mock('next/router', () => ({
   useRouter: () => ({}),
 }))
 
-describe('MenuBar', () => {
+describe('Menu', () => {
   let MenuBarMounted: RenderResult
 
   beforeEach(() => {
-    MenuBarMounted = render(<MenuBar />)
+    MenuBarMounted = render(<Menu />)
   })
 
   afterEach(() => {
@@ -45,7 +45,7 @@ describe('MenuBar', () => {
 
     const { rerender } = MenuBarMounted
 
-    rerender(<MenuBar />)
+    rerender(<Menu />)
 
     const loginButton = screen.getByText('Login')
 

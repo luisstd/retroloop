@@ -1,7 +1,7 @@
 import { render, RenderResult, screen } from '@testing-library/react'
 import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { NavigationDropdown } from '@/app/components/menu-bar/components/nav-dropdown/nav-dropdown'
+import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
 
 vi.mock('next/router', () => ({
   useRouter: vi.fn(),
