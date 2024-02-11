@@ -4,9 +4,9 @@ import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 
 import { Feedback } from '@/app/components/feedback/feedback'
-import { RetroSection } from '@/app/components/retro-section/retro-section'
 import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
-import { TeamSection } from '@/app/components/team-section/team-section'
+import { Retros } from '@/app/dashboard/retros/retros'
+import { Team } from '@/app/dashboard/team/team'
 
 export default function Dashboard() {
   const { data: session, status } = useSession()
@@ -20,9 +20,8 @@ export default function Dashboard() {
 
       {isSignedUp && session?.user ? (
         <section className='flex w-full flex-col items-center gap-10'>
-          <RetroSection userId={session.user.id} />
-
-          <TeamSection />
+          <Retros userId={session.user.id} />
+          <Team />
         </section>
       ) : !isSignedUp ? (
         <SignUpForm />

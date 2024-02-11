@@ -8,8 +8,8 @@ import { useTheme } from 'next-themes'
 import { useCallback, useEffect, useState } from 'react'
 import GridLoader from 'react-spinners/GridLoader'
 
-import { AddRetro } from '@/app/components/retro-section/components/add-retro/add-retro'
-import { EditRetro } from '@/app/components/retro-section/components/edit-retro/edit-retro'
+import { AddRetro } from '@/app/dashboard/retros/components/add-retro/add-retro'
+import { EditRetro } from '@/app/dashboard/retros/components/edit-retro/edit-retro'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
@@ -36,7 +36,7 @@ function RetrospectivesFallback() {
   )
 }
 
-export function RetroSection({ userId }: RetroSectionProps) {
+export function Retros({ userId }: RetroSectionProps) {
   const { data: retrospectives, refetch, isLoading } = api.retrospective.getAll.useQuery(userId)
   const { data: user } = api.user.getLoggedIn.useQuery()
   const { mutate: addRetro } = api.retrospective.add.useMutation({

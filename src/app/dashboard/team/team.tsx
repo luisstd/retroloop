@@ -5,7 +5,7 @@ import { IconUsersGroup } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
 import { GridLoader } from 'react-spinners'
 
-import { InviteUserDialog } from '@/app/components/team-section/components/invite-user-dialog'
+import { InviteUserDialog } from '@/app/dashboard/team/components/invite-user-dialog'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
 import { api } from '@/trpc/react'
 
@@ -25,7 +25,7 @@ function UsersFallback() {
   )
 }
 
-export function TeamSection() {
+export function Team() {
   const { resolvedTheme } = useTheme()
   const { data: users, isLoading } = api.user.getAll.useQuery()
 
