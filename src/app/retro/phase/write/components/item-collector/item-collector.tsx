@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 
 import { DeleteDialog } from '@/app/components/dialog/delete-dialog/delete-dialog'
 import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
-import { RetroItemDialog } from '@/app/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
+import { RetroItemDialog } from '@/app/retro/phase/write/components/item-collector/components/retro-item-dialog'
 import { Card } from '@/app/ui/card/card'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'

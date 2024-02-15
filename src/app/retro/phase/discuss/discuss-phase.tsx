@@ -3,18 +3,15 @@
 import { Retrospective } from '@prisma/client'
 import { useState } from 'react'
 
-import { RetroActionBar } from '@/app/components/retro-view/components/retro-action-bar'
-import { ItemStack } from '@/app/components/retro-view/views/discussing-phase/components/item-stack/item-stack'
-import { ItemSwitcher } from '@/app/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
-import { Card } from '@/app/ui/card/card'
+import { ItemStack } from '@/app/retro/phase/discuss/components/item-stack/item-stack'
+import { ItemSwitcher } from '@/app/retro/phase/discuss/components/item-switcher/item-switcher'
 import { api } from '@/trpc/react'
 
-type DiscussingViewProps = {
+type DiscussPhaseProps = {
   selectedRetro: Retrospective
-  refetchRetro: () => void
 }
 
-export function DiscussingView({ selectedRetro, refetchRetro }: DiscussingViewProps) {
+export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
   const retroItems = api.retroItem.getAllByRetroId.useQuery(selectedRetro.id)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -32,15 +29,13 @@ export function DiscussingView({ selectedRetro, refetchRetro }: DiscussingViewPr
   }
 
   return (
-    <Card className='m-5 p-5'>
-      <div className='flex h-5/6 w-full grid-cols-3 flex-col place-items-center gap-5 lg:grid'>
-        <RetroActionBar selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
-      </div>
-
-      <section className='h-screen w-full'>
-        {retroItems.data ? (
-          <div className='flex h-2/3 w-full items-center justify-center'>
+    <>
+      {retroItems.data && (
+        <>
+          <div className='col-span-2 row-start-4 h-full w-[100rem] min-w-full max-w-full px-2 lg:min-h-screen'>
             <ItemStack retroItems={retroItems.data} currentIndex={currentIndex} />
+          </div>
+          <div className='col-span-2 row-start-4 h-full w-[100rem] min-w-full max-w-full px-2 lg:min-h-screen'>
             <ItemSwitcher
               handleNextItem={handleNextItem}
               handlePreviousItem={handlePreviousItem}
@@ -48,8 +43,8 @@ export function DiscussingView({ selectedRetro, refetchRetro }: DiscussingViewPr
               retroItems={retroItems.data}
             />
           </div>
-        ) : null}
-      </section>
-    </Card>
+        </>
+      )}
+    </>
   )
 }

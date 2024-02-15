@@ -2,7 +2,7 @@ import { RetroItem, Retrospective } from '@prisma/client'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { ItemVoter } from '@/app/components/retro-view/views/voting-phase/components/item-voter'
+import { ItemVoter } from '@/app/retro/phase/vote/components/item-voter'
 import { api } from '@/trpc/react'
 
 vi.mock('next-auth/react', () => ({

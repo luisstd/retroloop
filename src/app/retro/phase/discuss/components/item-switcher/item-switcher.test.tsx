@@ -2,7 +2,7 @@ import { RetroItem } from '@prisma/client'
 import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { ItemSwitcher } from '@/app/components/retro-view/views/discussing-phase/components/item-switcher/item-switcher'
+import { ItemSwitcher } from '@/app/retro/phase/discuss/components/item-switcher/item-switcher'
 
 test('ItemSwitcher', () => {
   describe('ItemSwitcher', () => {

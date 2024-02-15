@@ -2,9 +2,9 @@
 
 import { Retrospective } from '@prisma/client'
 
-import { ActionButtons } from '@/app/components/retro-view/components/action-bar/components/action-buttons/action-buttons'
-import { PhaseIndicator } from '@/app/components/retro-view/components/action-bar/components/phase-indicator/phase-indicator'
-import { RetroTimer } from '@/app/components/retro-view/components/action-bar/components/retro-timer/retro-timer'
+import { ActionButtons } from '@/app/retro/components/action-bar/components/action-buttons/action-buttons'
+import { PhaseIndicator } from '@/app/retro/components/action-bar/components/phase-indicator/phase-indicator'
+import { RetroTimer } from '@/app/retro/components/action-bar/components/retro-timer/retro-timer'
 import { api } from '@/trpc/react'
 
 type RetroActionBarProps = {

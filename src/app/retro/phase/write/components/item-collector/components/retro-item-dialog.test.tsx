@@ -1,7 +1,7 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { RetroItemDialog } from '@/app/components/retro-view/views/writing-phase/components/item-collector/components/retro-item-dialog'
+import { RetroItemDialog } from '@/app/retro/phase/write/components/item-collector/components/retro-item-dialog'
 
 describe('RetroItemDialog', () => {
   let RetroItemDialogMounted: RenderResult

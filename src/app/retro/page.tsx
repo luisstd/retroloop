@@ -1,30 +1,50 @@
 'use client'
-import { IconFaceIdError } from '@tabler/icons-react'
+import { useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { useEffect } from 'react'
 
 import { Feedback } from '@/app/components/feedback/feedback'
-import { RetroView } from '@/app/components/retro-view/retro-view'
-import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
+import { Loader } from '@/app/components/loader/loader'
+import { RetroActionBar } from '@/app/retro/components/retro-action-bar'
+import { DiscussPhase } from '@/app/retro/phase/discuss/discuss-phase'
+import { VotePhase } from '@/app/retro/phase/vote/vote-phase'
+import { WritePhase } from '@/app/retro/phase/write/write-phase'
+import { api } from '@/trpc/react'
 
 export default function Retro() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
+  const searchParams = useSearchParams()
 
-  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+  const userId = session?.user?.id
+  const retroId = searchParams.get('id')
 
-  return (
-    <div className='flex flex-col items-center'>
-      {session?.user?.email ? <Feedback userEmail={session.user.email} /> : null}
+  const {
+    data: selectedRetro,
+    isLoading: isRetroLoading,
+    refetch: refetchRetro,
+  } = api.retrospective.getById.useQuery(retroId as string, {
+    refetchInterval: 500,
+    refetchIntervalInBackground: true,
+    cacheTime: 0,
+  })
 
-      {isSignedUp && session?.user ? (
-        <RetroView />
-      ) : !isSignedUp ? (
-        <SignUpForm />
-      ) : (
-        <div className='flex flex-col items-center'>
-          <IconFaceIdError size={122} className='m-5' />
-          <p className='text-xl'>Not authenticated, please log in first</p>
-        </div>
-      )}
-    </div>
+  const { mutate: addParticipant } = api.retrospective.addParticipant.useMutation()
+
+  useEffect(() => {
+    if (retroId && userId) {
+      addParticipant({ retroId, userId })
+    }
+  }, [userId, retroId, addParticipant])
+
+  return selectedRetro ? (
+    <>
+      <RetroActionBar selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
+      {selectedRetro.phase === 'WRITING' && <WritePhase selectedRetro={selectedRetro} />}
+      {selectedRetro.phase === 'VOTING' && <VotePhase selectedRetro={selectedRetro} />}
+      {selectedRetro.phase === 'DISCUSSING' && <DiscussPhase selectedRetro={selectedRetro} />}
+      {session?.user?.email && <Feedback userEmail={session.user.email} />}
+    </>
+  ) : (
+    <Loader isLoading={isRetroLoading} fullHeight />
   )
 }
