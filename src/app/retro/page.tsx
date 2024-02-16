@@ -45,6 +45,8 @@ export default function Retro() {
       {session?.user?.email && <Feedback userEmail={session.user.email} />}
     </>
   ) : (
-    <Loader isLoading={isRetroLoading} fullHeight />
+    <div className='col-span-full'>
+      <Loader isLoading={isRetroLoading} fullHeight />
+    </div>
   )
 }
