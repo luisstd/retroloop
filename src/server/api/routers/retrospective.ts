@@ -1,3 +1,4 @@
+import { sub } from 'date-fns'
 import { z } from 'zod'
 
 import {
@@ -7,17 +8,27 @@ import {
 import { createTRPCRouter, publicProcedure } from '@/server/api/trpc'
 
 export const retrospectiveRouter = createTRPCRouter({
-  getAll: publicProcedure.input(z.string()).query(({ ctx, input }) => {
-    return ctx.db.retrospective.findMany({
-      where: {
-        participants: {
-          some: {
-            id: input,
-          },
-        },
-      },
-    })
-  }),
+  getAll: publicProcedure
+    .input(
+      z.object({
+        userId: z.string(),
+        accountType: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      console.log('input', input)
+      const filters = {
+        participants: { some: { id: input.userId } },
+        ...(input.accountType === 'Standard' && {
+          date: { gt: sub(new Date(), { days: 90 }) },
+        }),
+      }
+
+      return ctx.db.retrospective.findMany({
+        where: filters,
+        orderBy: { date: 'desc' },
+      })
+    }),
   getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.db.retrospective.findUnique({
       where: {
