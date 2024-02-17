@@ -2,6 +2,7 @@
 
 import { Retrospective } from '@prisma/client'
 import { IconCopy } from '@tabler/icons-react'
+import { useRouter } from 'next/navigation'
 
 import { PhaseSwitchDialog } from '@/app/retro/components/action-bar/components/action-buttons/phase-switch-dialog'
 import { Button } from '@/app/ui/button/button'
@@ -13,6 +14,8 @@ type ActionButtonsProps = {
 }
 
 export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButtonsProps) {
+  const router = useRouter()
+
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href)
     toast({
@@ -22,39 +25,31 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
   }
 
   function handleNextPhase() {
-    retrospective.phase === 'WRITING'
-      ? handleUpdateRetro({
-          ...retrospective,
-          id: retrospective.id,
-          phase: 'VOTING',
-        })
-      : null
+    retrospective.phase === 'WRITING' &&
+      handleUpdateRetro({
+        ...retrospective,
+        id: retrospective.id,
+        phase: 'VOTING',
+      })
 
-    retrospective.phase === 'VOTING'
-      ? handleUpdateRetro({
-          ...retrospective,
-          id: retrospective.id,
-          phase: 'DISCUSSING',
-        })
-      : null
+    retrospective.phase === 'VOTING' &&
+      handleUpdateRetro({
+        ...retrospective,
+        id: retrospective.id,
+        phase: 'DISCUSSING',
+      })
 
-    retrospective.phase === 'DISCUSSING'
-      ? handleUpdateRetro({
-          ...retrospective,
-          id: retrospective.id,
-          phase: 'DISCUSSING',
-        })
-      : null
+    retrospective.phase === 'DISCUSSING' && router.push(`/dashboard`)
   }
 
   return (
     <div className='flex gap-4'>
-      <Button aria-label='Start Retro' onClick={handleCopy}>
+      <Button aria-label='Start Retro' className='flex gap-1' onClick={handleCopy}>
         Copy Retro link
         <IconCopy />
       </Button>
 
-      <PhaseSwitchDialog phaseSwitchHandler={handleNextPhase} />
+      <PhaseSwitchDialog phaseSwitchHandler={handleNextPhase} phase={retrospective.phase} />
     </div>
   )
 }
