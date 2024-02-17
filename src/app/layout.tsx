@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 
 import { headers } from 'next/headers'
 
-import { MenuBar } from '@/app/components/menu-bar/menu-bar'
+import { Menu } from '@/app/components/menu/menu'
 import { Providers } from '@/app/providers'
 import { Toaster } from '@/app/ui/toast/toaster'
 import { getServerAuthSession } from '@/server/auth'
@@ -44,7 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               }
             >
               <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
-              <MenuBar />
+              <Menu />
               {children}
               <Toaster />
             </main>

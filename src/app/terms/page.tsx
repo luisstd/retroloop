@@ -1,5 +1,3 @@
-'use client'
-
 import { Footer } from '@/app/components/footer/footer'
 
 export default function Terms() {
