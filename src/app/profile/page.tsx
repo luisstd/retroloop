@@ -76,7 +76,7 @@ export default function Profile() {
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
       <Card className='w-full bg-background p-10 shadow-sm'>
-        <CardHeader className='flex flex-row items-end justify-between'>
+        <CardHeader className='flex flex-row items-baseline justify-between'>
           <CardTitle>PROFILE</CardTitle>
           <Badge>Version {packageInfo.version}</Badge>
         </CardHeader>
