@@ -74,13 +74,16 @@ export default function Profile() {
   return (
     <>
       {session.user.email && <Feedback userEmail={session.user.email} />}
-      {user ? (
-        <Card className='w-full bg-background p-10 shadow-sm'>
-          <CardHeader className='flex flex-row items-end justify-between'>
-            <CardTitle>PROFILE</CardTitle>
-            <Badge>Version {packageInfo.version}</Badge>
-          </CardHeader>
 
+      <Card className='w-full bg-background p-10 shadow-sm'>
+        <CardHeader className='flex flex-row items-end justify-between'>
+          <CardTitle>PROFILE</CardTitle>
+          <Badge>Version {packageInfo.version}</Badge>
+        </CardHeader>
+
+        {isLoading ? (
+          <Loader isLoading={isLoading} />
+        ) : user ? (
           <Formik
             validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
             initialValues={{
@@ -168,10 +171,8 @@ export default function Profile() {
               </div>
             </Form>
           </Formik>
-        </Card>
-      ) : (
-        <Loader isLoading={isLoading} fullHeight />
-      )}
+        ) : null}
+      </Card>
     </>
   )
 }
