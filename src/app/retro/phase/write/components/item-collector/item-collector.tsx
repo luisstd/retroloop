@@ -22,7 +22,9 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
   const { toast } = useToast()
   const userId = session?.user?.id
 
-  const { data: retroItems, refetch } = api.retroItem.getAllByRetroId.useQuery(retrospective.id)
+  const { data: retroItems, refetch } = api.retroItem.getAllByRetroIdFiltered.useQuery(
+    retrospective.id
+  )
 
   const { mutate: addRetroItem } = api.retroItem.add.useMutation({
     onSuccess: () => {
