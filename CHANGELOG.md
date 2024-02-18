@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.9.0](https://github.com/luisstd/retroloop/compare/v1.8.0...v1.9.0) (2024-02-18)
+
+
+### Features
+
+* add generic carousel component ([45ba3bc](https://github.com/luisstd/retroloop/commit/45ba3bc10e489de99fe8d6345e1f64554cfa31f8))
+* add util function for displaying feedback type ([08f1f1c](https://github.com/luisstd/retroloop/commit/08f1f1caa5c38a77851707f8e9ec0d18b1ec4acd))
+* implement carousel for feedback items ([23516ad](https://github.com/luisstd/retroloop/commit/23516ad835e492fe2f4a9c8538abd8a46d22a10e))
+
 ## [1.8.0](https://github.com/luisstd/retroloop/compare/v1.7.1...v1.8.0) (2024-01-24)
 
 
