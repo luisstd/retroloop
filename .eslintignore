@@ -2,4 +2,7 @@
 next-env.d.ts
 node_modules
 package-lock.json
+pnpm-lock.yaml
 public
+CHANGELOG.md
+Dockerfile.md
