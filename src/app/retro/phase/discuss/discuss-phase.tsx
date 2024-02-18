@@ -20,7 +20,7 @@ type DiscussPhaseProps = {
 }
 
 export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
-  const { data: feedbackItems, isLoading } = api.retroItem.getAllByRetroId.useQuery(
+  const { data: feedbackItems, isLoading } = api.retroItem.getAllByRetroIdSorted.useQuery(
     selectedRetro.id
   )
 
@@ -29,24 +29,22 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
       <Carousel className='lg:mt-48'>
         <CarouselContent>
           {feedbackItems ? (
-            feedbackItems
-              .sort((a, b) => b.votes - a.votes)
-              .map((item, index) => (
-                <CarouselItem key={item.id}>
-                  <Card className='mx-auto flex min-h-[18rem] w-11/12 flex-col justify-between break-words p-5'>
-                    <CardTitle className='flex flex-row items-center justify-between'>
-                      Feedback <Badge variant='secondary'>{getFeedbackItemType(item.type)}</Badge>
-                    </CardTitle>
-                    <CardDescription className='prose text-lg'>{item.content}</CardDescription>
-                    <div className='flex flex-row items-center justify-between'>
-                      <Badge className='text-lg font-bold'>+{item.votes}</Badge>
-                      <CardDescription className='self-end justify-self-end px-5 text-lg'>
-                        {`${index + 1}/${feedbackItems.length}`}
-                      </CardDescription>
-                    </div>
-                  </Card>
-                </CarouselItem>
-              ))
+            feedbackItems.map((item, index) => (
+              <CarouselItem key={item.id}>
+                <Card className='mx-auto flex min-h-[18rem] w-11/12 flex-col justify-between break-words p-5'>
+                  <CardTitle className='flex flex-row items-center justify-between'>
+                    Feedback <Badge variant='secondary'>{getFeedbackItemType(item.type)}</Badge>
+                  </CardTitle>
+                  <CardDescription className='prose text-lg'>{item.content}</CardDescription>
+                  <div className='flex flex-row items-center justify-between'>
+                    <Badge className='text-lg font-bold'>+{item.votes}</Badge>
+                    <CardDescription className='self-end justify-self-end px-5 text-lg'>
+                      {`${index + 1}/${feedbackItems.length}`}
+                    </CardDescription>
+                  </div>
+                </Card>
+              </CarouselItem>
+            ))
           ) : (
             <Loader isLoading={isLoading} />
           )}
