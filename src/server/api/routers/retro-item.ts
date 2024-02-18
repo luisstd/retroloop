@@ -12,6 +12,21 @@ export const retroItemRouter = createTRPCRouter({
       where: {
         retrospectiveId: input,
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
+  }),
+  getAllByRetroIdFiltered: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+    const id = ctx.session?.user?.id
+    return ctx.db.retroItem.findMany({
+      where: {
+        retrospectiveId: input,
+        userId: id,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
     })
   }),
   add: publicProcedure.input(RetroItemCreateInputSchema).mutation(({ ctx, input }) => {

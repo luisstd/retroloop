@@ -54,37 +54,35 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
 
       <ul>
         {retroItems &&
-          retroItems
-            .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
-            .map((item) =>
-              item.type === itemType ? (
-                <li key={item.id}>
-                  <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
-                    <p>{item.content}</p>
+          retroItems.map((item) =>
+            item.type === itemType ? (
+              <li key={item.id}>
+                <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
+                  <p>{item.content}</p>
 
-                    <div className='flex flex-row items-center'>
-                      {item.votes ? <Badge className='my-[0.5625rem]'>+{item.votes}</Badge> : null}
+                  <div className='flex flex-row items-center'>
+                    {item.votes ? <Badge className='my-[0.5625rem]'>+{item.votes}</Badge> : null}
 
-                      {!hasVoted(item, userId) ? (
-                        <Button
-                          size='icon'
-                          variant='ghost'
-                          onClick={() => {
-                            handleEditRetroItem({
-                              ...item,
-                              votes: item.votes + 1,
-                              voters: [...item.voters, userId],
-                            })
-                          }}
-                        >
-                          <IconThumbUp size={16} />
-                        </Button>
-                      ) : null}
-                    </div>
-                  </Card>
-                </li>
-              ) : null
-            )}
+                    {!hasVoted(item, userId) ? (
+                      <Button
+                        size='icon'
+                        variant='ghost'
+                        onClick={() => {
+                          handleEditRetroItem({
+                            ...item,
+                            votes: item.votes + 1,
+                            voters: [...item.voters, userId],
+                          })
+                        }}
+                      >
+                        <IconThumbUp size={16} />
+                      </Button>
+                    ) : null}
+                  </div>
+                </Card>
+              </li>
+            ) : null
+          )}
       </ul>
     </>
   ) : null
