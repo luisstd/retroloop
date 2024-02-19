@@ -33,7 +33,7 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
-    "@sentry/integrations": "^7.80.1",
+    "@sentry/integrations": "^7.101.1",
     "@sentry/nextjs": "^7.80.1",
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tabler/icons-react": "^2.40.0",
