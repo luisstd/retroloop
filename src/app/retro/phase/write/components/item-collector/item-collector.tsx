@@ -7,6 +7,7 @@ import { DeleteDialog } from '@/app/components/dialog/delete-dialog/delete-dialo
 import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
 import { RetroItemDialog } from '@/app/retro/phase/write/components/item-collector/components/retro-item-dialog'
 import { Card } from '@/app/ui/card/card'
+import { Skeleton } from '@/app/ui/skeleton/skeleton'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
 import { RetroItemCreateInput } from '@/types/retro-item'
@@ -22,9 +23,11 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
   const { toast } = useToast()
   const userId = session?.user?.id
 
-  const { data: retroItems, refetch } = api.retroItem.getAllByRetroIdFiltered.useQuery(
-    retrospective.id
-  )
+  const {
+    data: retroItems,
+    isLoading,
+    refetch,
+  } = api.retroItem.getAllByRetroIdFiltered.useQuery(retrospective.id)
 
   const { mutate: addRetroItem } = api.retroItem.add.useMutation({
     onSuccess: () => {
@@ -81,24 +84,33 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
         )}
       </div>
 
+      {isLoading && (
+        <>
+          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
+        </>
+      )}
+
       <ul>
         {retroItems &&
-          retroItems.map((item: RetroItem) =>
-            item.type === itemType ? (
-              <li key={item.id}>
-                <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
-                  <p>{item.content}</p>
+          retroItems.map(
+            (item: RetroItem) =>
+              item.type === itemType && (
+                <li key={item.id}>
+                  <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
+                    <p>{item.content}</p>
 
-                  <div className='flex flex-row items-center'>
-                    <EditDialog
-                      itemToEdit={item}
-                      editHandler={(input) => handleEditRetroItem(input as RetroItem)}
-                    />
-                    <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
-                  </div>
-                </Card>
-              </li>
-            ) : null
+                    <div className='flex flex-row items-center'>
+                      <EditDialog
+                        itemToEdit={item}
+                        editHandler={(input) => handleEditRetroItem(input as RetroItem)}
+                      />
+                      <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
+                    </div>
+                  </Card>
+                </li>
+              )
           )}
       </ul>
     </>

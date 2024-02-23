@@ -1,110 +1,109 @@
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model Account {
-  id                       String  @id @default(cuid())
-  userId                   String
-  type                     String
-  provider                 String
-  providerAccountId        String
-  refresh_token            String? @db.Text
-  refresh_token_expires_in Int?
-  access_token             String? @db.Text
-  expires_at               Int?
-  token_type               String?
-  scope                    String?
-  id_token                 String? @db.Text
-  session_state            String?
+    id                       String  @id @default(cuid())
+    userId                   String
+    type                     String
+    provider                 String
+    providerAccountId        String
+    refresh_token            String? @db.Text
+    refresh_token_expires_in Int?
+    access_token             String? @db.Text
+    expires_at               Int?
+    token_type               String?
+    scope                    String?
+    id_token                 String? @db.Text
+    session_state            String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
+    @@unique([provider, providerAccountId])
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    userId       String
+    expires      DateTime
+    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+    identifier String
+    token      String   @unique
+    expires    DateTime
 
-  @@unique([identifier, token])
+    @@unique([identifier, token])
 }
 
 model User {
-  id                       String                    @id @default(cuid())
-  createdAt                DateTime                  @default(now())
-  email                    String                    @unique
-  emailVerified            DateTime?
-  name                     String?
-  role                     String?                   @default("USER")
-  retrospectives           Retrospective[]
-  retroItem                RetroItem[]
-  image                    String?
-  accounts                 Account[]
-  sessions                 Session[]
-  stripeCustomerId         String?
-  stripeSubscriptionId     String?
-  stripeSubscriptionStatus StripeSubscriptionStatus?
+    id                       String                    @id @default(cuid())
+    createdAt                DateTime                  @default(now())
+    email                    String                    @unique
+    emailVerified            DateTime?
+    name                     String?
+    role                     String?                   @default("USER")
+    retrospectives           Retrospective[]
+    feedback                 RetroItem[]
+    image                    String?
+    accounts                 Account[]
+    sessions                 Session[]
+    stripeCustomerId         String?
+    stripeSubscriptionId     String?
+    stripeSubscriptionStatus StripeSubscriptionStatus?
 }
 
 enum StripeSubscriptionStatus {
-  incomplete
-  incomplete_expired
-  trialing
-  active
-  past_due
-  canceled
-  unpaid
-  paused
+    incomplete
+    incomplete_expired
+    trialing
+    active
+    past_due
+    canceled
+    unpaid
+    paused
 }
 
 model StripeEvent {
-  id               String   @id @unique
-  api_version      String?
-  data             Json
-  request          Json?
-  type             String
-  object           String
-  account          String?
-  created          DateTime
-  livemode         Boolean
-  pending_webhooks Int
+    id               String   @id @unique
+    api_version      String?
+    data             Json
+    request          Json?
+    type             String
+    object           String
+    account          String?
+    created          DateTime
+    livemode         Boolean
+    pending_webhooks Int
 }
 
 model Retrospective {
-  id              String      @id @default(cuid())
-  createdAt       DateTime    @default(now())
-  name            String
-  date            DateTime
-  items           RetroItem[]
-  phase           String      @default("WRITING")
-  participants    User[]
-  timerExpiration DateTime?
+    id              String      @id @default(cuid())
+    createdAt       DateTime    @default(now())
+    name            String
+    date            DateTime
+    items           RetroItem[]
+    phase           String      @default("WRITING")
+    participants    User[]
+    timerExpiration DateTime?
 }
 
 model RetroItem {
-  id               String        @id @default(cuid())
-  createdAt        DateTime      @default(now())
-  content          String
-  type             String
-  retrospective    Retrospective @relation(fields: [retrospectiveId], references: [id])
-  itemCollectionId String?
-  retrospectiveId  String
-  votes            Int
-  voters           String[]      @default([])
-  author           User?         @relation(fields: [userId], references: [id])
-  userId           String?
+    id              String        @id @default(cuid())
+    createdAt       DateTime      @default(now())
+    content         String
+    type            String
+    retrospective   Retrospective @relation(fields: [retrospectiveId], references: [id])
+    retrospectiveId String
+    votes           Int
+    voters          String[]      @default([])
+    author          User?         @relation(fields: [userId], references: [id])
+    userId          String?
 }

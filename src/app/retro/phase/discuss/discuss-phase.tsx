@@ -26,9 +26,10 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
 
   return (
     <div className='col-start-2 w-full lg:min-h-screen'>
+      {isLoading && <Loader isLoading fullHeight />}
       <Carousel className='lg:mt-48'>
         <CarouselContent>
-          {feedbackItems ? (
+          {feedbackItems &&
             feedbackItems.map((item, index) => (
               <CarouselItem key={item.id}>
                 <Card className='mx-auto flex min-h-[18rem] w-11/12 flex-col justify-between break-words p-5'>
@@ -44,10 +45,7 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
                   </div>
                 </Card>
               </CarouselItem>
-            ))
-          ) : (
-            <Loader isLoading={isLoading} />
-          )}
+            ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

@@ -46,7 +46,6 @@ test('ItemVoter', () => {
         createdAt: new Date(),
         date: new Date(),
         timerExpiration: new Date(),
-        workspaceId: '1',
       }
       itemType = 'testType'
       retroItemsQuery = {

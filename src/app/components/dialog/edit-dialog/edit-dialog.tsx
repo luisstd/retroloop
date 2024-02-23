@@ -27,7 +27,7 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button size='icon' variant='ghost' className='mx-1'>
+        <Button size='icon' variant='ghost' className='mx-1' aria-label='Edit item'>
           <IconPencil size={16} />
         </Button>
       </DialogTrigger>

@@ -87,11 +87,11 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
       </div>
 
       {isTimerRunning ? (
-        <Button size='icon' variant='ghost' onClick={handleStopTimer}>
+        <Button size='icon' variant='ghost' onClick={handleStopTimer} aria-label='Reset timer'>
           <IconPlayerStop size={24} />
         </Button>
       ) : (
-        <Button size='icon' variant='ghost' onClick={handleStartTimer}>
+        <Button size='icon' variant='ghost' onClick={handleStartTimer} aria-label='Start timer'>
           <IconPlayerPlay size={24} />
         </Button>
       )}
