@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "setup": "pnpm install && husky install",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint --fix ./",
