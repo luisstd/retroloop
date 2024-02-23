@@ -16,7 +16,6 @@ describe('RetroItemDialog', () => {
     createdAt: new Date(),
     date: new Date(),
     timerExpiration: new Date(),
-    workspaceId: '1',
   }
 
   beforeEach(() => {

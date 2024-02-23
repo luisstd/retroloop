@@ -14,7 +14,6 @@ test('PhaseIndicator', () => {
     createdAt: new Date(),
     date: new Date(),
     timerExpiration: new Date(),
-    workspaceId: '1',
   }
 
   test('renders phase indicators with active and clickable first phase', () => {
