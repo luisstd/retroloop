@@ -28,7 +28,7 @@ export function DeleteDialog({ itemToDelete, deleteHandler }: DeleteDialogProps)
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <Button size='icon' variant='ghost' className='mx-1'>
+        <Button size='icon' variant='ghost' className='mx-1' aria-label='Delete item'>
           <IconTrash size={16} />
         </Button>
       </AlertDialogTrigger>

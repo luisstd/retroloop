@@ -93,6 +93,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                               voters: [...item.voters, userId],
                             })
                           }}
+                          aria-label='Upvote feedback item'
                         >
                           <IconThumbUp size={16} />
                         </Button>
