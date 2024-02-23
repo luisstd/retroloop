@@ -8,7 +8,6 @@ import { Toaster } from '@/app/ui/toast/toaster'
 import { getServerAuthSession } from '@/server/auth'
 import { font } from '@/styles/fonts'
 import { TRPCReactProvider } from '@/trpc/react'
-import { cn } from '@/utils/cn'
 
 export const metadata = {
   title: 'Retroloop - Agile retrospectives made easy',
@@ -34,16 +33,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang='en' suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className={font.className}>
         <Providers session={session}>
           <TRPCReactProvider headers={headers()}>
-            <main
-              className={
-                (cn(font.className),
-                'relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center')
-              }
-            >
-              <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
+            <main className='relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center'>
+              <div className='opacity-gradient pattern-dots pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2 absolute -z-50 h-full min-h-screen w-screen' />
               <Menu />
               {children}
               <Toaster />
