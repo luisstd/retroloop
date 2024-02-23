@@ -75,7 +75,7 @@ export default function Profile() {
     <>
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
-      <Card className='w-full bg-background p-10 shadow-sm'>
+      <Card className='bg-background w-full p-10 shadow-sm'>
         <CardHeader className='flex flex-row items-baseline justify-between'>
           <CardTitle>PROFILE</CardTitle>
           <Badge>Version {packageInfo.version}</Badge>
@@ -99,26 +99,6 @@ export default function Profile() {
           >
             <Form className='mx-auto w-10/12'>
               <div className='flex flex-col items-center justify-around gap-5 sm:flex-row sm:items-end sm:gap-0'>
-                <section className='flex flex-col gap-5'>
-                  <fieldset className='flex flex-col items-start gap-2'>
-                    <Label htmlFor='name'>Name</Label>
-                    <Field as={Input} id='name' name='name' type='text' placeholder='Your Name' />
-                  </fieldset>
-
-                  <fieldset className='flex flex-col items-start gap-2'>
-                    <Label htmlFor='email'>E-Mail</Label>
-                    <Field
-                      as={Input}
-                      id='email'
-                      name='email'
-                      type='email'
-                      placeholder='user@mail.com'
-                    />
-                  </fieldset>
-
-                  <Button type='submit'>Submit</Button>
-                </section>
-
                 <section className='flex flex-col items-center gap-2'>
                   <Avatar className='h-32 w-32'>
                     <AvatarImage src={user.image || ''} alt='User Avatar' />
@@ -167,6 +147,26 @@ export default function Profile() {
                       )}
                     </div>
                   </div>
+                </section>
+
+                <section className='flex flex-col gap-5'>
+                  <fieldset className='flex flex-col items-start gap-2'>
+                    <Label htmlFor='name'>Name</Label>
+                    <Field as={Input} id='name' name='name' type='text' placeholder='Your Name' />
+                  </fieldset>
+
+                  <fieldset className='flex flex-col items-start gap-2'>
+                    <Label htmlFor='email'>E-Mail</Label>
+                    <Field
+                      as={Input}
+                      id='email'
+                      name='email'
+                      type='email'
+                      placeholder='user@mail.com'
+                    />
+                  </fieldset>
+
+                  <Button type='submit'>Submit</Button>
                 </section>
               </div>
             </Form>
