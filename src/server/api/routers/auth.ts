@@ -1,7 +1,7 @@
-import { createTRPCRouter, protectedProcedure, publicProcedure } from '@/server/api/trpc'
+import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc'
 
 export const authRouter = createTRPCRouter({
-  getSession: publicProcedure.query(({ ctx }) => {
+  getSession: protectedProcedure.query(({ ctx }) => {
     return ctx.session
   }),
   getSecretMessage: protectedProcedure.query(() => {
