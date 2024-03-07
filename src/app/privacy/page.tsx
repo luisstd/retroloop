@@ -3,7 +3,7 @@ import { Footer } from '@/app/components/footer/footer'
 export default function Privacy() {
   return (
     <>
-      <main className='prose mx-5 text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground'>
+      <main className='prose text-foreground prose-headings:text-foreground prose-a:text-foreground prose-strong:text-foreground mx-5'>
         <article>
           <h2>Retroloop Privacy Policy</h2>
           <p>
@@ -203,7 +203,8 @@ export default function Privacy() {
           <ul>
             <li>Plausible Analytics</li>
             <li>Sentry Error Monitoring</li>
-            <li>Vercel Cloud Hosting</li>
+            <li>Railway Cloud Hosting</li>
+            <li>Cloudflare DNS Services</li>
           </ul>
           <h3>Your Rights and Controlling Your Personal Information</h3>
           <p>
