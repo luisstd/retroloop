@@ -1,15 +1,15 @@
 import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/schemas/user'
-import { createTRPCRouter, protectedProcedure, publicProcedure } from '@/server/api/trpc'
+import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc'
 
 export const userRouter = createTRPCRouter({
-  getLoggedIn: publicProcedure.query(({ ctx }) => {
+  getLoggedIn: protectedProcedure.query(({ ctx }) => {
     return ctx.db.user.findUnique({
       where: {
         id: ctx.session?.user?.id,
       },
     })
   }),
-  getAll: publicProcedure.query(({ ctx }) => {
+  getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.user.findMany({
       where: {
         retrospectives: {
@@ -31,10 +31,10 @@ export const userRouter = createTRPCRouter({
       },
     })
   }),
-  add: publicProcedure.input(UserCreateInputSchema).mutation(({ ctx, input }) => {
+  add: protectedProcedure.input(UserCreateInputSchema).mutation(({ ctx, input }) => {
     return ctx.db.user.create({ data: input })
   }),
-  edit: publicProcedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
+  edit: protectedProcedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
     return ctx.db.user.update({
       where: {
         id: input.id,
@@ -42,7 +42,7 @@ export const userRouter = createTRPCRouter({
       data: input,
     })
   }),
-  delete: publicProcedure.input(UserSessionSchema).mutation(({ ctx, input }) => {
+  delete: protectedProcedure.input(UserSessionSchema).mutation(({ ctx, input }) => {
     return ctx.db.user.delete({
       where: {
         id: input.id,

@@ -1,13 +1,13 @@
 import { z } from 'zod'
 
 import { RetroItemCreateInputSchema, RetroItemUpdateInputSchema } from '@/schemas/retro-item'
-import { createTRPCRouter, publicProcedure } from '@/server/api/trpc'
+import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc'
 
 export const retroItemRouter = createTRPCRouter({
-  getAll: publicProcedure.query(({ ctx }) => {
+  getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.db.retroItem.findMany()
   }),
-  getAllByRetroId: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+  getAllByRetroId: protectedProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.db.retroItem.findMany({
       where: {
         retrospectiveId: input,
@@ -17,7 +17,7 @@ export const retroItemRouter = createTRPCRouter({
       },
     })
   }),
-  getAllByRetroIdFiltered: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+  getAllByRetroIdFiltered: protectedProcedure.input(z.string()).query(({ ctx, input }) => {
     const id = ctx.session?.user?.id
     return ctx.db.retroItem.findMany({
       where: {
@@ -29,7 +29,7 @@ export const retroItemRouter = createTRPCRouter({
       },
     })
   }),
-  getAllByRetroIdSorted: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+  getAllByRetroIdSorted: protectedProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.db.retroItem.findMany({
       where: {
         retrospectiveId: input,
@@ -39,10 +39,10 @@ export const retroItemRouter = createTRPCRouter({
       },
     })
   }),
-  add: publicProcedure.input(RetroItemCreateInputSchema).mutation(({ ctx, input }) => {
+  add: protectedProcedure.input(RetroItemCreateInputSchema).mutation(({ ctx, input }) => {
     return ctx.db.retroItem.create({ data: input })
   }),
-  edit: publicProcedure.input(RetroItemUpdateInputSchema).mutation(({ ctx, input }) => {
+  edit: protectedProcedure.input(RetroItemUpdateInputSchema).mutation(({ ctx, input }) => {
     return ctx.db.retroItem.update({
       where: {
         id: input.id,
@@ -50,7 +50,7 @@ export const retroItemRouter = createTRPCRouter({
       data: input,
     })
   }),
-  delete: publicProcedure.input(z.string()).mutation(({ ctx, input }) => {
+  delete: protectedProcedure.input(z.string()).mutation(({ ctx, input }) => {
     return ctx.db.retroItem.delete({
       where: {
         id: input,
