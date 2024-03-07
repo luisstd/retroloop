@@ -56,6 +56,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-spinners": "^0.13.8",
+    "sharp": "^0.33.2",
     "stripe": "^14.10.0",
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.1.0",
