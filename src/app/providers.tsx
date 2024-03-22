@@ -2,6 +2,8 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import * as Ably from 'ably'
+import { AblyProvider } from 'ably/react'
 import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import PlausibleProvider from 'next-plausible'
@@ -15,19 +17,18 @@ export interface ProvidersProps {
 
 export function Providers({ children, session }: ProvidersProps) {
   const queryClient = new QueryClient()
+  const ably = new Ably.Realtime.Promise({ authUrl: '/api/ably', authMethod: 'GET' })
 
   return (
-    <>
-      <SessionProvider session={session}>
+    <SessionProvider session={session}>
+      <PlausibleProvider domain='retroloop.io' customDomain='stats.retroloop.io'>
         <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
           <QueryClientProvider client={queryClient}>
-            <PlausibleProvider domain='retroloop.io' customDomain='stats.retroloop.io'>
-              {children}
-            </PlausibleProvider>
+            <AblyProvider client={ably}>{children}</AblyProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
         </ThemeProvider>
-      </SessionProvider>
-    </>
+      </PlausibleProvider>
+    </SessionProvider>
   )
 }

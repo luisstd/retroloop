@@ -22,11 +22,7 @@ export default function Retro() {
     data: selectedRetro,
     isLoading: isRetroLoading,
     refetch: refetchRetro,
-  } = api.retrospective.getById.useQuery(retroId as string, {
-    refetchInterval: 500,
-    refetchIntervalInBackground: true,
-    cacheTime: 0,
-  })
+  } = api.retrospective.getById.useQuery(retroId as string)
 
   const { mutate: addParticipant } = api.retrospective.addParticipant.useMutation()
 
