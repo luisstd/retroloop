@@ -1,8 +1,7 @@
-import Ably from 'ably/promises'
-import { NextResponse } from 'next/server'
+import * as Ably from 'ably'
 
 export async function GET() {
-  const client = new Ably.Realtime(process.env.ABLY_API_KEY as string)
+  const client = new Ably.Realtime.Promise(process.env.ABLY_API_KEY as string)
   const tokenRequestData = await client.auth.createTokenRequest({ clientId: 'retroloop' })
-  return NextResponse.json(tokenRequestData)
+  return Response.json(tokenRequestData)
 }
