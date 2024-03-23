@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.0](https://github.com/luisstd/retroloop/compare/v1.9.0...v1.10.0) (2024-03-23)
+
+
+### Features
+
+* add global error component ([544115b](https://github.com/luisstd/retroloop/commit/544115b8e1076807dfbf8d02de5b7eb5538c7128))
+* implement timer display using websockets ([f714e72](https://github.com/luisstd/retroloop/commit/f714e72783fd85040cece76905d4cfd7fad7807c))
+
 ## [1.9.0](https://github.com/luisstd/retroloop/compare/v1.8.0...v1.9.0) (2024-02-18)
 
 
