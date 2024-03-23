@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import * as Ably from 'ably'
 
 export async function GET() {
