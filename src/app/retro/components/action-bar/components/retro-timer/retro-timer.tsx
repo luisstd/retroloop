@@ -1,5 +1,6 @@
 import { Retrospective } from '@prisma/client'
 import { IconAlarm, IconPlayerPlay, IconPlayerStop } from '@tabler/icons-react'
+import { useChannel } from 'ably/react'
 import { add, differenceInSeconds, format, isFuture } from 'date-fns'
 import { useEffect, useState } from 'react'
 
@@ -19,12 +20,16 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
   const [timerDisplay, setTimerDisplay] = useState('00:00')
   const [isTimerRunning, setIsTimerRunning] = useState(false)
 
+  const { channel } = useChannel('retrospective', 'timerDisplay', (message) => {
+    setTimerDisplay(message.data)
+  })
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (selectedRetro.timerExpiration && isFuture(selectedRetro.timerExpiration)) {
         setIsTimerRunning(true)
         const secondsDiff = differenceInSeconds(selectedRetro.timerExpiration, new Date())
-        setTimerDisplay(format(add(new Date(0), { seconds: secondsDiff }), 'mm:ss'))
+        channel.publish('timerDisplay', format(add(new Date(0), { seconds: secondsDiff }), 'mm:ss'))
       } else {
         clearInterval(interval)
         setIsTimerRunning(false)
@@ -32,7 +37,7 @@ export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps
     }, 1000)
 
     return () => clearInterval(interval)
-  }, [selectedRetro.timerExpiration])
+  }, [selectedRetro.timerExpiration, channel])
 
   function handleStartTimer() {
     updateTimer(minutes)
