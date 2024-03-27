@@ -17,7 +17,7 @@ export interface ProvidersProps {
 
 export function Providers({ children, session }: ProvidersProps) {
   const queryClient = new QueryClient()
-  const ably = new Ably.Realtime({ authUrl: '/api/ably', authMethod: 'GET' })
+  const ably = new Ably.Realtime({ authUrl: 'api/ably', authMethod: 'GET' })
 
   return (
     <SessionProvider session={session}>
