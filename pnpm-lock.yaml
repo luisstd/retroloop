@@ -69,8 +69,8 @@ dependencies:
     specifier: ^10.43.1
     version: 10.43.1
   ably:
-    specifier: ^1.2.49
-    version: 1.2.49(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.0.1
+    version: 2.0.1(react-dom@18.2.0)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -3292,9 +3292,9 @@ packages:
       through: 2.3.8
     dev: true
 
-  /ably@1.2.49(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-p0plkM7o9N58LEIxu5SpqHkU/A0dyBrW9kalaCufRuZyF5ZKaXvfsb1Ay/+1KGqBwigYlud5AlL2jTQvTw8Arg==}
-    engines: {node: '>=5.10.x'}
+  /ably@2.0.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZosxyitZDHlG7ffWAV1PTTX14nHpaAr9dD2zApGHq4Y9oVtY74g9wOIwYsA95+9mMFWLbMqnc+R4HY1zOlTxqg==}
+    engines: {node: '>=16'}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -3305,6 +3305,7 @@ packages:
         optional: true
     dependencies:
       '@ably/msgpack-js': 0.4.0
+      fastestsmallesttextencoderdecoder: 1.0.22
       got: 11.8.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -4828,6 +4829,10 @@ packages:
   /fast-safe-stringify@2.1.1:
     resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
     dev: true
+
+  /fastestsmallesttextencoderdecoder@1.0.22:
+    resolution: {integrity: sha512-Pb8d48e+oIuY4MaM64Cd7OW1gt4nxCHs7/ddPPZ/Ic3sg8yVGM7O9wDvZ7us6ScaUupzM+pfBolwtYhN1IxBIw==}
+    dev: false
 
   /fastq@1.15.0:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}

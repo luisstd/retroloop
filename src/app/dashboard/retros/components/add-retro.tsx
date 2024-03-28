@@ -1,5 +1,6 @@
 import { IconPlus } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -16,6 +17,7 @@ import {
 import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
+import { api } from '@/trpc/react'
 import { RetrospectiveCreateInput } from '@/types/retrospective'
 
 type AddRetroProps = {
@@ -24,6 +26,9 @@ type AddRetroProps = {
 }
 
 const RetroLimitReached = () => {
+  const router = useRouter()
+  const { mutateAsync: createCheckoutSession } = api.stripe.createCheckoutSession.useMutation()
+
   return (
     <DialogContent>
       <DialogHeader>
@@ -33,7 +38,16 @@ const RetroLimitReached = () => {
           Unlimited to create more.
         </DialogDescription>
       </DialogHeader>
-      <Button>Upgrade subscription</Button>
+      <Button
+        onClick={async () => {
+          const { checkoutUrl } = await createCheckoutSession()
+          if (checkoutUrl) {
+            router.push(checkoutUrl)
+          }
+        }}
+      >
+        Upgrade subscription
+      </Button>
     </DialogContent>
   )
 }
