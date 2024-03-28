@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.1](https://github.com/luisstd/retroloop/compare/v1.10.0...v1.10.1) (2024-03-28)
+
+
+### Bug Fixes
+
+* add missing stripe link ([155e87c](https://github.com/luisstd/retroloop/commit/155e87c19ddcce7dac6d97e58609f9f2e78af8f0))
+* remove slash from ably auth url ([882ba04](https://github.com/luisstd/retroloop/commit/882ba0430237ab74351221218f117680666770e8))
+
 ## [1.10.0](https://github.com/luisstd/retroloop/compare/v1.9.0...v1.10.0) (2024-03-23)
 
 
