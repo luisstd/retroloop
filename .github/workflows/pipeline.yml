@@ -33,7 +33,8 @@ jobs:
       STRIPE_PK: ${{ secrets.STRIPE_PK }}
       STRIPE_SK: ${{ secrets.STRIPE_SK }}
       STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
-      STRIPE_PRICE_ID: ${{ secrets.STRIPE_PRICE_ID }}
+      STRIPE_PRICE_ID_MONTHLY: ${{ secrets.STRIPE_PRICE_ID_MONTHLY }}
+      STRIPE_PRICE_ID_YEARLY: ${{ secrets.STRIPE_PRICE_ID_YEARLY }}
       FEEDBACK_FISH_PROJECT_ID: ${{ secrets.FEEDBACK_FISH_PROJECT_ID }}
     steps:
       - name: Cancel Previous Runs
