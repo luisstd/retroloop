@@ -20,6 +20,7 @@ import { Label } from '@/app/ui/label/label'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
+import { StripeBillingInterval } from '@/types/stripe-plan'
 import { UserUpdateInput } from '@/types/user'
 import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
@@ -119,7 +120,9 @@ export default function Profile() {
                           type='button'
                           variant='outline'
                           onClick={async () => {
-                            const { checkoutUrl } = await createCheckoutSession('MONTHLY')
+                            const { checkoutUrl } = await createCheckoutSession(
+                              StripeBillingInterval.MONTHLY
+                            )
                             if (checkoutUrl) {
                               router.push(checkoutUrl)
                             }

@@ -19,6 +19,7 @@ import { Label } from '@/app/ui/label/label'
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
 import { api } from '@/trpc/react'
 import { RetrospectiveCreateInput } from '@/types/retrospective'
+import { StripeBillingInterval } from '@/types/stripe-plan'
 
 type AddRetroProps = {
   handleAddRetro: (input: RetrospectiveCreateInput) => void
@@ -40,7 +41,7 @@ const RetroLimitReached = () => {
       </DialogHeader>
       <Button
         onClick={async () => {
-          const { checkoutUrl } = await createCheckoutSession('MONTHLY')
+          const { checkoutUrl } = await createCheckoutSession(StripeBillingInterval.MONTHLY)
           if (checkoutUrl) {
             router.push(checkoutUrl)
           }
