@@ -20,6 +20,7 @@ import { Label } from '@/app/ui/label/label'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
+import { StripeBillingInterval } from '@/types/stripe-plan'
 import { UserUpdateInput } from '@/types/user'
 import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
@@ -75,7 +76,7 @@ export default function Profile() {
     <>
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
-      <Card className='bg-background w-full p-10 shadow-sm'>
+      <Card className='w-full bg-background p-10 shadow-sm'>
         <CardHeader className='flex flex-row items-baseline justify-between'>
           <CardTitle>PROFILE</CardTitle>
           <Badge>Version {packageInfo.version}</Badge>
@@ -119,7 +120,9 @@ export default function Profile() {
                           type='button'
                           variant='outline'
                           onClick={async () => {
-                            const { checkoutUrl } = await createCheckoutSession()
+                            const { checkoutUrl } = await createCheckoutSession(
+                              StripeBillingInterval.MONTHLY
+                            )
                             if (checkoutUrl) {
                               router.push(checkoutUrl)
                             }

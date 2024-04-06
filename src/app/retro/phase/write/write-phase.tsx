@@ -15,27 +15,19 @@ export function WritePhase({ selectedRetro }: WritePhaseProps) {
       {selectedRetro && (
         <>
           <Card className='col-start-1 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
-            <ItemCollector
-              retrospective={selectedRetro}
-              itemType='success'
-              title={'things that went well'}
-            />
+            <ItemCollector retrospective={selectedRetro} itemType='success' title={'Went well'} />
           </Card>
 
           <Card className='col-start-2 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
             <ItemCollector
               retrospective={selectedRetro}
               itemType='improvement'
-              title={'things that can be improved'}
+              title={'Can be improved'}
             />
           </Card>
 
           <Card className='col-start-3 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
-            <ItemCollector
-              retrospective={selectedRetro}
-              itemType='action'
-              title={'things to start doing'}
-            />
+            <ItemCollector retrospective={selectedRetro} itemType='action' title={'Start doing'} />
           </Card>
         </>
       )}

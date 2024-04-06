@@ -1,12 +1,11 @@
-import { Recursive } from 'next/font/google'
+import { Space_Grotesk } from 'next/font/google'
 
-export const font = Recursive({
+export const font = Space_Grotesk({
   subsets: ['latin', 'latin-ext'],
   display: 'swap',
   preload: true,
-  weight: 'variable',
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal'],
-  axes: ['CASL', 'CRSV', 'MONO', 'slnt'],
   variable: '--font-sans',
   fallback: ['system-ui', 'Inter'],
 })

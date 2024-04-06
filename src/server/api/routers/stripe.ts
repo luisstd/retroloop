@@ -1,9 +1,11 @@
+import { z } from 'zod'
+
 import { env } from '@/env.mjs'
 import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc'
 import { getOrCreateStripeCustomerIdForUser } from '@/server/stripe/stripe-webhook-handlers'
 
 export const stripeRouter = createTRPCRouter({
-  createCheckoutSession: protectedProcedure.mutation(async ({ ctx }) => {
+  createCheckoutSession: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
     const { stripe, session, db: prisma, headers } = ctx
 
     const customerId = await getOrCreateStripeCustomerIdForUser({
@@ -11,6 +13,8 @@ export const stripeRouter = createTRPCRouter({
       stripe,
       userId: session.user?.id,
     })
+
+    const priceId = input === 'YEARLY' ? env.STRIPE_PRICE_ID_YEARLY : env.STRIPE_PRICE_ID_MONTHLY
 
     if (!customerId) {
       throw new Error('Could not create customer')
@@ -28,7 +32,7 @@ export const stripeRouter = createTRPCRouter({
       mode: 'subscription',
       line_items: [
         {
-          price: env.STRIPE_PRICE_ID,
+          price: priceId,
           quantity: 1,
         },
       ],

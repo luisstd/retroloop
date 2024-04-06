@@ -53,12 +53,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: [
-          'var(--font-sans)',
-          {
-            fontVariationSettings: '"CASL" 0, "CRSV" 0, "MONO" 0, "slnt" 0',
-          },
-        ],
+        sans: ['var(--font-sans)'],
       },
       keyframes: {
         'accordion-down': {

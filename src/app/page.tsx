@@ -13,15 +13,20 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
+import { useState } from 'react'
 
 import { Footer } from '@/app/components/footer/footer'
+import { Badge } from '@/app/ui/badge/badge'
 import { Button } from '@/app/ui/button/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs/tabs'
 import { api } from '@/trpc/react'
+import { StripeBillingInterval } from '@/types/stripe-plan'
 
 export default function Landingpage() {
   const { data: session, status } = useSession()
   const { resolvedTheme, theme } = useTheme()
+  const [selectedPlan, setSelectedPlan] = useState(StripeBillingInterval.YEARLY)
   const router = useRouter()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
@@ -210,7 +215,9 @@ export default function Landingpage() {
               <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>Standard</span>
             </CardTitle>
             <CardDescription className='prose flex items-center gap-1 text-foreground'>
-              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>0€</span>
+              <span className='scroll-m-20 text-4xl font-semibold tracking-tight text-primary'>
+                0€
+              </span>
               <span>/month</span>
             </CardDescription>
             <Button onClick={!isSignedUp ? () => signIn() : () => router.push('/dashboard')}>
@@ -224,21 +231,54 @@ export default function Landingpage() {
             </div>
           </CardHeader>
         </Card>
-        <Card className='m-5 '>
+        <Card className='m-5'>
           <CardHeader className='flex flex-col gap-3 p-10'>
-            <CardTitle className='flex items-center justify-start gap-6'>
+            <CardTitle className='flex items-center justify-between gap-6'>
               <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>Unlimited</span>
+              {selectedPlan === StripeBillingInterval.YEARLY && (
+                <Badge variant='outline' className='text-sm'>
+                  Save 20%
+                </Badge>
+              )}
             </CardTitle>
-            <CardDescription className='prose flex items-center gap-1 text-foreground'>
-              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>4.99€</span>
-              <span>/month</span>
-            </CardDescription>
+            <Tabs defaultValue={selectedPlan} className='flex items-center justify-between gap-4'>
+              <TabsContent value={StripeBillingInterval.MONTHLY}>
+                <span className='scroll-m-20 py-5 text-4xl font-semibold tracking-tight text-primary'>
+                  4.99€
+                </span>
+                <span>/month</span>
+              </TabsContent>
+              <TabsContent value={StripeBillingInterval.YEARLY}>
+                <span className='scroll-m-20 py-5 text-4xl font-semibold tracking-tight text-primary'>
+                  49€
+                </span>
+                <span>/year</span>
+              </TabsContent>
+              <TabsList>
+                <TabsTrigger
+                  value={StripeBillingInterval.MONTHLY}
+                  onClick={() => setSelectedPlan(StripeBillingInterval.MONTHLY)}
+                >
+                  Monthly
+                </TabsTrigger>
+                <TabsTrigger
+                  value={StripeBillingInterval.YEARLY}
+                  onClick={() => setSelectedPlan(StripeBillingInterval.YEARLY)}
+                >
+                  Yearly
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
             <Button
               onClick={
                 !isSignedUp
                   ? () => signIn()
                   : async () => {
-                      const { checkoutUrl } = await createCheckoutSession()
+                      const plan =
+                        selectedPlan === StripeBillingInterval.YEARLY
+                          ? StripeBillingInterval.YEARLY
+                          : StripeBillingInterval.MONTHLY
+                      const { checkoutUrl } = await createCheckoutSession(plan)
                       if (checkoutUrl) {
                         router.push(checkoutUrl)
                       }
