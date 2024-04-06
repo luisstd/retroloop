@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.11.0](https://github.com/luisstd/retroloop/compare/v1.10.1...v1.11.0) (2024-04-06)
+
+
+### Features
+
+* add generic tabs component ([1a26b30](https://github.com/luisstd/retroloop/commit/1a26b3024a77ecb78856d738b26273bf3271c2cd))
+* add support for yearly plan ([be8a4df](https://github.com/luisstd/retroloop/commit/be8a4dfa48868077deaa8a1fd320b617a8669cca))
+
 ## [1.10.1](https://github.com/luisstd/retroloop/compare/v1.10.0...v1.10.1) (2024-03-28)
 
 
