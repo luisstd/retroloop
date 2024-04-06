@@ -164,8 +164,8 @@ devDependencies:
     specifier: ^6.1.4
     version: 6.1.4(vitest@0.34.6)
   '@testing-library/react':
-    specifier: ^14.0.0
-    version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^14.2.2
+    version: 14.2.2(react-dom@18.2.0)(react@18.2.0)
   '@types/lodash':
     specifier: ^4.14.200
     version: 4.14.200
@@ -2855,14 +2855,14 @@ packages:
       vitest: 0.34.6(jsdom@23.0.1)
     dev: true
 
-  /@testing-library/react@14.0.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-S04gSNJbYE30TlIMLTzv6QCTzt9AqIF5y6s6SzVFILNcNvbV/jU96GeiTPillGQo+Ny64M/5PV7klNYYgv5Dfg==}
+  /@testing-library/react@14.2.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-SOUuM2ysCvjUWBXTNfQ/ztmnKDmqaiPV3SvoIuyxMUca45rbSWWAT/qB8CUs/JQ/ux/8JFs9DNdFQ3f6jH3crA==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.6
       '@testing-library/dom': 9.3.3
       '@types/react-dom': 18.2.21
       react: 18.2.0
