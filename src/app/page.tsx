@@ -238,7 +238,7 @@ export default function Landingpage() {
                 !isSignedUp
                   ? () => signIn()
                   : async () => {
-                      const { checkoutUrl } = await createCheckoutSession()
+                      const { checkoutUrl } = await createCheckoutSession('MONTHLY')
                       if (checkoutUrl) {
                         router.push(checkoutUrl)
                       }

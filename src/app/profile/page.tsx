@@ -75,7 +75,7 @@ export default function Profile() {
     <>
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
-      <Card className='bg-background w-full p-10 shadow-sm'>
+      <Card className='w-full bg-background p-10 shadow-sm'>
         <CardHeader className='flex flex-row items-baseline justify-between'>
           <CardTitle>PROFILE</CardTitle>
           <Badge>Version {packageInfo.version}</Badge>
@@ -119,7 +119,7 @@ export default function Profile() {
                           type='button'
                           variant='outline'
                           onClick={async () => {
-                            const { checkoutUrl } = await createCheckoutSession()
+                            const { checkoutUrl } = await createCheckoutSession('MONTHLY')
                             if (checkoutUrl) {
                               router.push(checkoutUrl)
                             }
