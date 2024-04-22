@@ -90,7 +90,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
     "jsdom": "^23.0.1",
-    "knip": "^4.4.0",
+    "knip": "^5.9.4",
     "lint-staged": "^15.1.0",
     "pnpm": "8.10.3",
     "postcss": "^8.4.31",
