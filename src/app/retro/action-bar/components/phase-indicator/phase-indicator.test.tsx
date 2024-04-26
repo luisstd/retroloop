@@ -1,3 +1,5 @@
+import { describe } from 'node:test'
+
 import { Retrospective } from '@prisma/client'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { expect, test, vi } from 'vitest'
@@ -16,7 +18,7 @@ test('PhaseIndicator', () => {
     timerExpiration: new Date(),
   }
 
-  test('renders phase indicators with active and clickable first phase', () => {
+  describe('renders phase indicators with active and clickable first phase', () => {
     render(
       <PhaseIndicator retrospective={retrospective} handleUpdateRetro={handleUpdateRetroMock} />
     )
@@ -33,7 +35,7 @@ test('PhaseIndicator', () => {
     })
   })
 
-  test('renders phase indicators with inactive and clickable second phase', () => {
+  describe('renders phase indicators with inactive and clickable second phase', () => {
     retrospective.phase = 'VOTING'
 
     render(
@@ -52,7 +54,7 @@ test('PhaseIndicator', () => {
     })
   })
 
-  test('renders phase indicators with inactive third phase', () => {
+  describe('renders phase indicators with inactive third phase', () => {
     retrospective.phase = 'DISCUSSING'
 
     render(
