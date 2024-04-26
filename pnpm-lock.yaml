@@ -72,8 +72,8 @@ dependencies:
     specifier: ^10.43.1
     version: 10.43.1
   ably:
-    specifier: ^2.0.1
-    version: 2.0.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.0.3
+    version: 2.0.3(react-dom@18.2.0)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -3355,8 +3355,8 @@ packages:
       through: 2.3.8
     dev: true
 
-  /ably@2.0.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ZosxyitZDHlG7ffWAV1PTTX14nHpaAr9dD2zApGHq4Y9oVtY74g9wOIwYsA95+9mMFWLbMqnc+R4HY1zOlTxqg==}
+  /ably@2.0.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-a4L2kPJDopNQgiSKakQ68v0otxKH+UV8tjA8asIAnfGUyR4Coy31MQkthpSPU06RsNrwsql1AConYqot66/eNg==}
     engines: {node: '>=16'}
     peerDependencies:
       react: '>=16.8.0'
