@@ -2,7 +2,7 @@ import { Retrospective } from '@prisma/client'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { expect, test, vi } from 'vitest'
 
-import { PhaseIndicator } from '@/app/retro/components/action-bar/components/phase-indicator/phase-indicator'
+import { PhaseIndicator } from '@/app/retro/action-bar/components/phase-indicator/phase-indicator'
 
 test('PhaseIndicator', () => {
   const handleUpdateRetroMock = vi.fn()

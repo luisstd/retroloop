@@ -4,7 +4,7 @@ import { Retrospective } from '@prisma/client'
 import { IconCopy } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
 
-import { PhaseSwitchDialog } from '@/app/retro/components/action-bar/components/action-buttons/phase-switch-dialog'
+import { PhaseSwitchDialog } from '@/app/retro/action-bar/components/action-buttons/phase-switch-dialog'
 import { Button } from '@/app/ui/button/button'
 import { toast } from '@/app/ui/toast/use-toast'
 
