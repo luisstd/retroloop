@@ -1,7 +1,7 @@
 import { Retrospective } from '@prisma/client'
 import { IconAlarm, IconPlayerPlay, IconPlayerStop } from '@tabler/icons-react'
-import { useChannel } from 'ably/react'
-import { add, differenceInSeconds, format, isFuture } from 'date-fns'
+import { RealtimeChannel } from 'ably'
+import { add, addSeconds, differenceInSeconds, format, isFuture } from 'date-fns'
 import { useEffect, useState } from 'react'
 
 import { Button } from '@/app/ui/button/button'
@@ -12,31 +12,47 @@ import { useToast } from '@/app/ui/toast/use-toast'
 type RetroTimerProps = {
   selectedRetro: Retrospective
   handleUpdateRetro: (retro: Retrospective) => void
+  timerDisplay: string
+  channel: RealtimeChannel
 }
 
-export function RetroTimer({ selectedRetro, handleUpdateRetro }: RetroTimerProps) {
+export function RetroTimer({
+  selectedRetro,
+  handleUpdateRetro,
+  channel,
+  timerDisplay,
+}: RetroTimerProps) {
   const { toast } = useToast()
   const [minutes, setMinutes] = useState(0)
-  const [timerDisplay, setTimerDisplay] = useState('00:00')
   const [isTimerRunning, setIsTimerRunning] = useState(false)
 
-  const { channel } = useChannel('retrospective', 'timerDisplay', (message) => {
-    setTimerDisplay(message.data)
-  })
-
   useEffect(() => {
-    const interval = setInterval(() => {
+    let timeoutId: NodeJS.Timeout
+
+    function scheduleNextUpdate() {
+      const now = new Date()
+      const nextTick = 1000 - now.getMilliseconds()
+      timeoutId = setTimeout(updateTimer, nextTick)
+    }
+
+    function updateTimer() {
       if (selectedRetro.timerExpiration && isFuture(selectedRetro.timerExpiration)) {
         setIsTimerRunning(true)
-        const secondsDiff = differenceInSeconds(selectedRetro.timerExpiration, new Date())
-        channel.publish('timerDisplay', format(add(new Date(0), { seconds: secondsDiff }), 'mm:ss'))
+        const now = new Date()
+        const expirationDate = new Date(selectedRetro.timerExpiration)
+        const secondsDiff = differenceInSeconds(expirationDate, now)
+
+        const displayTime = format(addSeconds(new Date(0), secondsDiff), 'mm:ss')
+        channel.publish('timerDisplay', displayTime)
+        scheduleNextUpdate()
       } else {
-        clearInterval(interval)
         setIsTimerRunning(false)
       }
-    }, 1000)
+    }
 
-    return () => clearInterval(interval)
+    scheduleNextUpdate()
+
+    return () => clearTimeout(timeoutId)
   }, [selectedRetro.timerExpiration, channel])
 
   function handleStartTimer() {
