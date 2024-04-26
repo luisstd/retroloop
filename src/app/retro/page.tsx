@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 import { Feedback } from '@/app/components/feedback/feedback'
 import { Loader } from '@/app/components/loader/loader'
-import { RetroActionBar } from '@/app/retro/components/retro-action-bar'
+import { RetroActionBar } from '@/app/retro/action-bar/retro-action-bar'
 import { DiscussPhase } from '@/app/retro/phase/discuss/discuss-phase'
 import { VotePhase } from '@/app/retro/phase/vote/vote-phase'
 import { WritePhase } from '@/app/retro/phase/write/write-phase'

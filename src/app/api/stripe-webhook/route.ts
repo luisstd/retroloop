@@ -76,7 +76,7 @@ export async function POST(req: Request) {
         created: new Date(event.created * 1000), // convert to milliseconds
         data: {
           object: JSON.stringify(event.data.object),
-          previous_attributes: event.data.previous_attributes,
+          previous_attributes: JSON.stringify(event.data.previous_attributes),
         },
         livemode: event.livemode,
         pending_webhooks: event.pending_webhooks,
