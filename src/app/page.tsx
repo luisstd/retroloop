@@ -76,7 +76,10 @@ export default function Landingpage() {
         />
       </section>
 
-      <h2 className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight md:text-4xl'>
+      <h2
+        className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight md:text-4xl'
+        id='features'
+      >
         Features
       </h2>
 
@@ -213,7 +216,9 @@ export default function Landingpage() {
         </CardContent>
       </Card>
 
-      <h2 className='my-5 scroll-m-20 text-3xl font-semibold tracking-tight'>Pricing</h2>
+      <h2 className='my-5 scroll-m-20 text-3xl font-semibold tracking-tight' id='pricing'>
+        Pricing
+      </h2>
 
       <div className='flex w-full flex-col items-center justify-center md:w-10/12 md:flex-row'>
         <Card className='m-5'>
