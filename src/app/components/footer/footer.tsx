@@ -14,7 +14,7 @@ import { cn } from '@/utils/cn'
 export function Footer() {
   return (
     <footer>
-      <NavigationMenu className='p-5'>
+      <NavigationMenu className='p-10'>
         <NavigationMenuList className='flex items-center gap-2'>
           <NavigationMenuItem>
             <Link href='/privacy' legacyBehavior passHref>
