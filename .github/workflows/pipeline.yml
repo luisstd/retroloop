@@ -98,7 +98,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download Build Artifact
-        uses: actions/download-artifcat@v4
+        uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
@@ -123,7 +123,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download Build Artifact
-        uses: actions/download-artifcat@v4
+        uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
@@ -148,7 +148,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download Build Artifact
-        uses: actions/download-artifcat@v4
+        uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
@@ -192,7 +192,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download Build Artifact
-        uses: actions/download-artifcat@v4
+        uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
