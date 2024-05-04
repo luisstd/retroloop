@@ -1,7 +1,8 @@
 'use client'
 
-import { IconInfinity } from '@tabler/icons-react'
+import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
 
 import { LoginButton } from '@/app/components/menu/components/login-button/login-button'
@@ -20,23 +21,31 @@ import { cn } from '@/utils/cn'
 
 export function Menu() {
   const { data: session, status } = useSession()
+  const path = usePathname()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+  const isLandingPage = path === '/'
 
   return (
-    <div className='min-w-full'>
-      <NavigationMenu className='m-5 flex max-w-none items-center gap-2 rounded-full border-2 bg-background p-1 text-xl shadow-sm md:mx-auto md:max-w-max'>
+    <div className='min-w-full '>
+      <NavigationMenu className='m-5 flex max-w-none items-center gap-2 rounded-full border-2 bg-background p-1 text-xl shadow-sm sm:gap-10 md:mx-auto md:max-w-max'>
         <NavigationMenuList>
           <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>
             <Link href='/' legacyBehavior passHref>
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  'cursor-pointer rounded-l-3xl rounded-r-md'
+                  'flex cursor-pointer items-center rounded-l-3xl rounded-r-md'
                 )}
                 aria-label='Landingpage'
               >
-                <IconInfinity className='self-center' size={28} />
+                <Image
+                  src='/logo-transparent.png'
+                  alt='Retroloop logo'
+                  width={isLandingPage ? 45 : 55}
+                  height={isLandingPage ? 45 : 55}
+                />
+                {isLandingPage && <span className='text-xl not-italic'>Retroloop</span>}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -44,27 +53,49 @@ export function Menu() {
 
         <NavigationMenuList className='hidden sm:flex'>
           <NavigationMenuItem>
-            <Link href='/dashboard' legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                onClick={!isSignedUp ? () => signIn() : undefined}
-                aria-label='Dashboard'
-              >
-                Dashboard
-              </NavigationMenuLink>
-            </Link>
+            {isLandingPage ? (
+              <Link href='#features'>
+                <NavigationMenuLink
+                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+                  aria-label='Features'
+                >
+                  Features
+                </NavigationMenuLink>
+              </Link>
+            ) : (
+              <Link href='/dashboard' legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+                  onClick={!isSignedUp ? () => signIn() : undefined}
+                  aria-label='Dashboard'
+                >
+                  Dashboard
+                </NavigationMenuLink>
+              </Link>
+            )}
           </NavigationMenuItem>
 
           <NavigationMenuItem aria-label=''>
-            <Link href='/profile' legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                onClick={!isSignedUp ? () => signIn() : undefined}
-                aria-label='Profile'
-              >
-                Profile
-              </NavigationMenuLink>
-            </Link>
+            {isLandingPage ? (
+              <Link href='#pricing'>
+                <NavigationMenuLink
+                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+                  aria-label='Pricing'
+                >
+                  Pricing
+                </NavigationMenuLink>
+              </Link>
+            ) : (
+              <Link href='/profile' legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+                  onClick={!isSignedUp ? () => signIn() : undefined}
+                  aria-label='Profile'
+                >
+                  Profile
+                </NavigationMenuLink>
+              </Link>
+            )}
           </NavigationMenuItem>
         </NavigationMenuList>
 

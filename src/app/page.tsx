@@ -1,11 +1,12 @@
 'use client'
 import {
   IconAffiliate,
-  IconBrandGithub,
-  IconBrandOpenSource,
+  IconArrowRight,
   IconBulb,
+  IconHourglass,
   IconLogin,
   IconRepeat,
+  IconSend,
   IconUsers,
 } from '@tabler/icons-react'
 import Image from 'next/image'
@@ -35,34 +36,28 @@ export default function Landingpage() {
 
   return (
     <div className='flex w-full flex-col items-center'>
-      <section className='row-start-1 m-5 flex flex-col items-center gap-5 px-2'>
-        <div className='flex items-center'>
-          <Image
-            src='/logo.svg'
-            alt='Retroloop logo'
-            width={132}
-            height={132}
-            style={{ width: 132, height: 132 }}
-          />
-          <h1 className='scroll-m-20 text-4xl font-extrabold italic tracking-tight lg:text-5xl'>
-            retroloop
-          </h1>
-        </div>
-        <h1 className='scroll-m-20 pb-2 text-center text-4xl font-semibold tracking-tight first:mt-0'>
+      <section className='row-start-1 m-5 flex flex-col items-center gap-7 px-2 sm:mt-12'>
+        <h1 className='scroll-m-20 pb-2 text-center text-4xl font-semibold tracking-tight first:mt-0 md:text-5xl'>
           Agile retrospectives made easy
         </h1>
-        <p className='pb-2 text-center text-xl text-muted-foreground'>
-          Create an effective feedback loop for continuous team improvement
+        <p className='pb-2 text-center text-xl text-muted-foreground md:text-2xl'>
+          Enable effective feedback across remote & hybrid teams
         </p>
-        <div className='flex gap-4'>
-          <Link href={'/dashboard'} className='max-w-max'>
-            <Button onClick={!isSignedUp ? () => signIn() : undefined}>Get started</Button>
+        <div className='flex flex-col items-center gap-4 sm:flex-row'>
+          <Link href={'/dashboard'} className='w-full'>
+            <Button variant='secondary' className='flex w-full items-center'>
+              Invite a team member
+              <IconSend size={18} className='ml-2' />
+            </Button>
           </Link>
 
-          <Link href={'https://github.com/luisstd/retroloop'}>
-            <Button variant='secondary'>
-              <IconBrandGithub size={24} className='mr-2' />
-              Github
+          <Link href={'/dashboard'} className='w-full'>
+            <Button
+              onClick={!isSignedUp ? () => signIn() : undefined}
+              className='flex w-full items-center'
+            >
+              Start a feedback session
+              <IconArrowRight size={18} className='ml-2' />
             </Button>
           </Link>
         </div>
@@ -81,26 +76,37 @@ export default function Landingpage() {
         />
       </section>
 
-      <h2 className='my-5 scroll-m-20 text-4xl font-semibold tracking-tight'>Features</h2>
+      <h2
+        className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight md:text-4xl'
+        id='features'
+      >
+        Features
+      </h2>
 
       <Card className='grid-rows-auto m-5 grid grid-cols-1 md:w-9/12 md:grid-cols-2'>
         <CardHeader className='col-start-1 row-start-1 flex w-full flex-col gap-3 p-10'>
-          <CardDescription className='mb-5 font-semibold text-primary'>
-            A platform for effective retrospectives
+          <CardDescription className='mb-2 font-semibold text-primary'>
+            A space for effective feedback
           </CardDescription>
           <CardTitle className='flex items-center justify-start gap-6'>
-            <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>
+            <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
               Simplify your retrospectives
             </span>
           </CardTitle>
           <p className='prose text-foreground'>
-            For teams of any size and projects in any domain, this retrospective tool makes it easy
-            to gather feedback, identify areas for improvement, and boost your team&apos;s
-            performance.
+            Retroloop makes it easy for any team, in any field, to streamline their feedback
+            process. Get set up in just a few minutes, quickly identify what needs improvement and
+            start seeing real results from the start.
           </p>
 
-          <Link href={'/dashboard'} className='max-w-max'>
-            <Button onClick={!isSignedUp ? () => signIn() : undefined}>Start retrospective</Button>
+          <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
+            <Button
+              variant='outline'
+              onClick={!isSignedUp ? () => signIn() : undefined}
+              className='m-5 mx-auto w-full sm:w-auto'
+            >
+              Start retrospective
+            </Button>
           </Link>
         </CardHeader>
 
@@ -111,21 +117,21 @@ export default function Landingpage() {
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>Seamless login</h3>
             </div>
             <p className='prose text-foreground'>
-              Get started quickly via e-mail login or an OAuth provider of your choice. Jump right
-              into conducting simple retrospectives.
+              Get started quickly via e-mail login or an OAuth provider of your choice. Access
+              Retroloop quickly and start your feedback sessions without any hassle.
             </p>
           </div>
 
           <div className='text-start'>
             <div className='mb-1 flex items-center gap-2'>
-              <IconBrandOpenSource size={32} className='text-primary' />
+              <IconHourglass size={32} className='text-primary' />
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Open-source & self-hostable
+                Real-time functionality
               </h3>
             </div>
             <p className='prose text-foreground'>
-              Host the tool on your own infrastructure and benefit from the open-source nature that
-              allows for customization and contribution.
+              Keep your retrospectives on track with a timer synchronized between all participants,
+              perfect for timeboxing discussions.
             </p>
           </div>
 
@@ -133,12 +139,12 @@ export default function Landingpage() {
             <div className='mb-1 flex items-center gap-2'>
               <IconRepeat size={32} className='text-primary ' />
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Straightforward retrospectives
+                Intuitive user interface
               </h3>
             </div>
             <p className='prose text-foreground '>
-              A user-friendly interface makes it effortless to gather and organize feedback,
-              ensuring your retrospectives are focused and productive.
+              Navigate with ease using a clean, simple interface that&apos;s intuitive for everyone.
+              Gather feedback easily and make every retrospective straightforward and productive.
             </p>
           </div>
         </CardContent>
@@ -146,12 +152,12 @@ export default function Landingpage() {
 
       <Card className='grid-rows-auto m-5 grid grid-cols-1 md:w-9/12 md:grid-cols-2'>
         <CardHeader className='col-start-2 row-start-1 flex w-full flex-col gap-3 p-10'>
-          <CardDescription className='mb-5 font-semibold text-primary'>
+          <CardDescription className='mb-2 font-semibold text-primary'>
             A resource for continuous improvement
           </CardDescription>
           <CardTitle className='flex items-center justify-start gap-6'>
-            <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>
-              Improve collaboration
+            <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
+              Get actionable feedback
             </span>
           </CardTitle>
           <p className='prose text-foreground '>
@@ -159,8 +165,14 @@ export default function Landingpage() {
             foster a culture of continuous improvement.
           </p>
 
-          <Link href={'/dashboard'} className='max-w-max'>
-            <Button onClick={!isSignedUp ? () => signIn() : undefined}>Invite team member</Button>
+          <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
+            <Button
+              variant='outline'
+              onClick={!isSignedUp ? () => signIn() : undefined}
+              className='m-5 mx-auto w-full sm:w-auto'
+            >
+              Invite team member
+            </Button>
           </Link>
         </CardHeader>
 
@@ -168,13 +180,11 @@ export default function Landingpage() {
           <div className=' m text-start'>
             <div className='mb-1 flex items-center gap-2'>
               <IconBulb size={32} className='text-primary ' />
-              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Actionable insights
-              </h3>
+              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>Helpful insights</h3>
             </div>
             <p className='prose text-foreground '>
               Transform feedback into concrete action items that drive meaningful change and help
-              your team reach its full potential.
+              your team get better.
             </p>
           </div>
 
@@ -186,8 +196,8 @@ export default function Landingpage() {
               </h3>
             </div>
             <p className='prose text-foreground '>
-              This retrospective tool is designed to support the diverse needs of today&apos;s agile
-              teams, with a focus on simplicity, effectiveness, and collaboration.
+              Retroloop is designed to support the diverse needs of today&apos;s agile teams, with a
+              focus on simplicity, effectiveness, and collaboration.
             </p>
           </div>
 
@@ -206,13 +216,15 @@ export default function Landingpage() {
         </CardContent>
       </Card>
 
-      <h2 className='my-5 scroll-m-20 text-4xl font-semibold tracking-tight'>Pricing</h2>
+      <h2 className='my-5 scroll-m-20 text-3xl font-semibold tracking-tight' id='pricing'>
+        Pricing
+      </h2>
 
       <div className='flex w-full flex-col items-center justify-center md:w-10/12 md:flex-row'>
         <Card className='m-5'>
-          <CardHeader className='flex  flex-col gap-3 p-10'>
+          <CardHeader className='flex flex-col gap-3 p-10'>
             <CardTitle className='flex items-center justify-start gap-6'>
-              <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>Standard</span>
+              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>Standard</span>
             </CardTitle>
             <CardDescription className='prose flex items-center gap-1 text-foreground'>
               <span className='scroll-m-20 text-4xl font-semibold tracking-tight text-primary'>
@@ -231,17 +243,20 @@ export default function Landingpage() {
             </div>
           </CardHeader>
         </Card>
-        <Card className='m-5'>
+        <Card className='m-5 '>
           <CardHeader className='flex flex-col gap-3 p-10'>
             <CardTitle className='flex items-center justify-between gap-6'>
-              <span className='scroll-m-20 text-4xl font-semibold tracking-tight'>Unlimited</span>
+              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>Unlimited</span>
               {selectedPlan === StripeBillingInterval.YEARLY && (
                 <Badge variant='outline' className='text-sm'>
                   Save 20%
                 </Badge>
               )}
             </CardTitle>
-            <Tabs defaultValue={selectedPlan} className='flex items-center justify-between gap-4'>
+            <Tabs
+              defaultValue={selectedPlan}
+              className='flex flex-col items-center justify-between gap-4 sm:flex-row'
+            >
               <TabsContent value={StripeBillingInterval.MONTHLY}>
                 <span className='scroll-m-20 py-5 text-4xl font-semibold tracking-tight text-primary'>
                   4.99€
