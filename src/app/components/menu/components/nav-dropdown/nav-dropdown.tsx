@@ -32,7 +32,7 @@ export function NavigationDropdown() {
             className={`flex ${currentPage === '/dashboard' ? 'font-bold' : 'font-normal'}`}
           >
             {isLandingPage ? (
-              <Link href='#features' passHref>
+              <Link href='#features' legacyBehavior passHref>
                 <NavigationMenuLink aria-label='Features'>Features</NavigationMenuLink>
               </Link>
             ) : (
@@ -46,7 +46,7 @@ export function NavigationDropdown() {
             className={`flex ${currentPage === '/profile' ? 'font-bold' : 'font-normal'}`}
           >
             {isLandingPage ? (
-              <Link href='#pricing' passHref>
+              <Link href='#pricing' legacyBehavior passHref>
                 <NavigationMenuLink aria-label='Pricing'>Pricing</NavigationMenuLink>
               </Link>
             ) : (

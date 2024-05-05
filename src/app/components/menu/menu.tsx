@@ -54,7 +54,7 @@ export function Menu() {
         <NavigationMenuList className='hidden sm:flex'>
           <NavigationMenuItem>
             {isLandingPage ? (
-              <Link href='#features'>
+              <Link href='#features' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
                   aria-label='Features'
@@ -76,7 +76,7 @@ export function Menu() {
 
           <NavigationMenuItem aria-label=''>
             {isLandingPage ? (
-              <Link href='#pricing'>
+              <Link href='#pricing' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
                   aria-label='Pricing'
