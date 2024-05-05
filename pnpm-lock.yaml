@@ -72,8 +72,8 @@ dependencies:
     specifier: ^10.45.2
     version: 10.45.2
   ably:
-    specifier: ^2.0.3
-    version: 2.0.3(react-dom@18.3.1)(react@18.3.1)
+    specifier: ^2.0.4
+    version: 2.0.4(react-dom@18.3.1)(react@18.3.1)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -3215,8 +3215,8 @@ packages:
       through: 2.3.8
     dev: true
 
-  /ably@2.0.3(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-a4L2kPJDopNQgiSKakQ68v0otxKH+UV8tjA8asIAnfGUyR4Coy31MQkthpSPU06RsNrwsql1AConYqot66/eNg==}
+  /ably@2.0.4(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-mA2Zsv7u29jZSCyz9YOXoxWq8GIktcvA57GTIdMP0Xv3byV41bBoAZUgXMl7VjD5cioA6xenUbqX17d9zcimSw==}
     engines: {node: '>=16'}
     peerDependencies:
       react: '>=16.8.0'
@@ -3232,7 +3232,7 @@ packages:
       got: 11.8.6
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      ws: 8.14.2
+      ws: 8.16.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -8455,19 +8455,6 @@ packages:
   /wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  /ws@8.14.2:
-    resolution: {integrity: sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-    dev: false
-
   /ws@8.16.0:
     resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
     engines: {node: '>=10.0.0'}
@@ -8479,7 +8466,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: true
 
   /xml-name-validator@5.0.0:
     resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==}

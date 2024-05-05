@@ -28,6 +28,7 @@ export default function Profile() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const { toast } = useToast()
+  const isAuthenticated = status === 'authenticated'
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   const { data: user, isLoading, refetch } = api.user.getLoggedIn.useQuery()
@@ -64,12 +65,13 @@ export default function Profile() {
     })
   }
 
-  if (!isSignedUp) {
-    return <SignUpForm />
+  if (!isAuthenticated) {
+    const callbackURL = encodeURIComponent(window.location.href)
+    router.push(`/auth/login?callbackurl=${callbackURL}`)
   }
 
-  if (!session?.user) {
-    return <Loader isLoading fullHeight />
+  if (!isSignedUp) {
+    return <SignUpForm />
   }
 
   return (

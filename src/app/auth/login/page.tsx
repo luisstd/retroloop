@@ -1,5 +1,6 @@
 'use client'
 import { Field, Form, Formik } from 'formik'
+import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button/button'
@@ -8,6 +9,9 @@ import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
 
 export default function Login() {
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackurl') || undefined
+
   return (
     <section className='mx-auto grid h-screen place-items-center'>
       <Card className='mx-5 sm:mx-0'>
@@ -19,7 +23,7 @@ export default function Login() {
         </CardHeader>
         <CardContent className='flex flex-col items-center gap-4'>
           <div className='mx-auto flex w-full flex-col justify-between gap-3 sm:flex-row sm:gap-6'>
-            <Button onClick={() => signIn('github')} className='w-full'>
+            <Button onClick={() => signIn('github', { callbackUrl })} className='w-full'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='26'
@@ -33,7 +37,10 @@ export default function Login() {
               Sign in with GitHub
             </Button>
 
-            <button className='gsi-material-button' onClick={() => signIn('google')}>
+            <button
+              className='gsi-material-button'
+              onClick={() => signIn('google', { callbackUrl })}
+            >
               <div className='gsi-material-button-state'></div>
               <div className='gsi-material-button-content-wrapper'>
                 <div className='gsi-material-button-icon'>
@@ -64,7 +71,7 @@ export default function Login() {
           <Formik
             initialValues={{ email: '' }}
             onSubmit={(values) => {
-              signIn('email', { email: values.email })
+              signIn('email', { callbackUrl, email: values.email })
             }}
           >
             <Form className='mt-5 w-full'>

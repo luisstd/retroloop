@@ -52,10 +52,7 @@ export default function Landingpage() {
           </Link>
 
           <Link href={'/dashboard'} className='w-full'>
-            <Button
-              onClick={!isSignedUp ? () => signIn() : undefined}
-              className='flex w-full items-center'
-            >
+            <Button className='flex w-full items-center'>
               Start a feedback session
               <IconArrowRight size={18} className='ml-2' />
             </Button>
@@ -76,10 +73,7 @@ export default function Landingpage() {
         />
       </section>
 
-      <h2
-        className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight md:text-4xl'
-        id='features'
-      >
+      <h2 className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight' id='features'>
         Features
       </h2>
 
@@ -100,11 +94,7 @@ export default function Landingpage() {
           </p>
 
           <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
-            <Button
-              variant='outline'
-              onClick={!isSignedUp ? () => signIn() : undefined}
-              className='m-5 mx-auto w-full sm:w-auto'
-            >
+            <Button variant='outline' className='m-5 mx-auto w-full sm:w-auto'>
               Start retrospective
             </Button>
           </Link>
@@ -166,11 +156,7 @@ export default function Landingpage() {
           </p>
 
           <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
-            <Button
-              variant='outline'
-              onClick={!isSignedUp ? () => signIn() : undefined}
-              className='m-5 mx-auto w-full sm:w-auto'
-            >
+            <Button variant='outline' className='m-5 mx-auto w-full sm:w-auto'>
               Invite team member
             </Button>
           </Link>
@@ -232,9 +218,7 @@ export default function Landingpage() {
               </span>
               <span>/month</span>
             </CardDescription>
-            <Button onClick={!isSignedUp ? () => signIn() : () => router.push('/dashboard')}>
-              Get started for free
-            </Button>
+            <Button onClick={() => router.push('/dashboard')}>Get started for free</Button>
             <div className='prose text-lg text-foreground'>
               <ul>
                 <li>Create up to 3 retrospectives</li>

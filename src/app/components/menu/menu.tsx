@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { signIn, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 import { LoginButton } from '@/app/components/menu/components/login-button/login-button'
 import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
@@ -20,10 +20,9 @@ import {
 import { cn } from '@/utils/cn'
 
 export function Menu() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const path = usePathname()
 
-  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
   const isLandingPage = path === '/'
 
   return (
@@ -40,12 +39,13 @@ export function Menu() {
                 aria-label='Landingpage'
               >
                 <Image
+                  className={isLandingPage ? 'hidden sm:block' : 'block'}
                   src='/logo-transparent.png'
                   alt='Retroloop logo'
                   width={isLandingPage ? 45 : 55}
                   height={isLandingPage ? 45 : 55}
                 />
-                {isLandingPage && <span className='text-xl not-italic'>Retroloop</span>}
+                {isLandingPage && <span className='text-md not-italic sm:text-xl'>Retroloop</span>}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -54,7 +54,7 @@ export function Menu() {
         <NavigationMenuList className='hidden sm:flex'>
           <NavigationMenuItem>
             {isLandingPage ? (
-              <Link href='#features'>
+              <Link href='#features' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
                   aria-label='Features'
@@ -66,7 +66,6 @@ export function Menu() {
               <Link href='/dashboard' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  onClick={!isSignedUp ? () => signIn() : undefined}
                   aria-label='Dashboard'
                 >
                   Dashboard
@@ -77,7 +76,7 @@ export function Menu() {
 
           <NavigationMenuItem aria-label=''>
             {isLandingPage ? (
-              <Link href='#pricing'>
+              <Link href='#pricing' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
                   aria-label='Pricing'
@@ -89,7 +88,6 @@ export function Menu() {
               <Link href='/profile' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  onClick={!isSignedUp ? () => signIn() : undefined}
                   aria-label='Profile'
                 >
                   Profile
