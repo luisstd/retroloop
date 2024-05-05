@@ -39,12 +39,13 @@ export function Menu() {
                 aria-label='Landingpage'
               >
                 <Image
+                  className={isLandingPage ? 'hidden' : 'visible'}
                   src='/logo-transparent.png'
                   alt='Retroloop logo'
                   width={isLandingPage ? 45 : 55}
                   height={isLandingPage ? 45 : 55}
                 />
-                {isLandingPage && <span className='text-xl not-italic'>Retroloop</span>}
+                {isLandingPage && <span className='text-md not-italic sm:text-xl'>Retroloop</span>}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
