@@ -76,10 +76,7 @@ export default function Landingpage() {
         />
       </section>
 
-      <h2
-        className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight md:text-4xl'
-        id='features'
-      >
+      <h2 className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight' id='features'>
         Features
       </h2>
 
