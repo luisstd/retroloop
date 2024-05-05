@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.12.0](https://github.com/luisstd/retroloop/compare/v1.11.0...v1.12.0) (2024-05-05)
+
+
+### Features
+
+* redirect unauthenticated users to login page ([1db4185](https://github.com/luisstd/retroloop/commit/1db4185bfbeb56e3fc261e7d55de2bdea54517f9))
+
+
+### Bug Fixes
+
+* add correct props for nextjs link components ([be9aaea](https://github.com/luisstd/retroloop/commit/be9aaea301cfb418d5e642a98b2c07799e1e0cc7))
+* correctly name param for callbackurl ([d2d7f38](https://github.com/luisstd/retroloop/commit/d2d7f38e7b59b8399ad799863130d0a19b4a6bb3))
+* correctly pass callbackUrl to signIn function ([cc2c5bd](https://github.com/luisstd/retroloop/commit/cc2c5bd95bf71e9f337b3a014383ecd0adf98b9a))
+* fix race condition during retro creation block ([9682bd2](https://github.com/luisstd/retroloop/commit/9682bd2bfffbec42c617ca2be64f94b8fb571fc9))
+* fix typo for url param ([65059c4](https://github.com/luisstd/retroloop/commit/65059c453fe3d227f7bd5ccd8fc5bb2b56bad09c))
+* make sure landingpage links redirect correctly ([bac8bb7](https://github.com/luisstd/retroloop/commit/bac8bb75f1d4f59a3f7302e9a2fd1b1bb58429c6))
+* use correct hook for reading url param ([013173a](https://github.com/luisstd/retroloop/commit/013173a15537183240b17b1403d29c290a468ff6))
+
 ## [1.11.0](https://github.com/luisstd/retroloop/compare/v1.10.1...v1.11.0) (2024-04-06)
 
 
