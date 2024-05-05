@@ -68,10 +68,6 @@ export default function Profile() {
     return <SignUpForm />
   }
 
-  if (!session?.user) {
-    return <Loader isLoading fullHeight />
-  }
-
   return (
     <>
       {session.user.email && <Feedback userEmail={session.user.email} />}
