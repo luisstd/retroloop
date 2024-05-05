@@ -21,7 +21,7 @@ export function Retros({ userId }: RetrosProps) {
   const { toast } = useToast()
   const [isLimitReached, setIsLimitReached] = useState(false)
   const { data: user } = api.user.getLoggedIn.useQuery()
-  const accountType = getAccountType(user?.stripeSubscriptionStatus || null) || AccountType.Standard
+  const accountType = getAccountType(user?.stripeSubscriptionStatus || null)
 
   const {
     data: retrospectives,
@@ -57,7 +57,10 @@ export function Retros({ userId }: RetrosProps) {
   }
 
   useEffect(() => {
-    if (retrospectives && retrospectives.length >= 3 && accountType === AccountType.Standard) {
+    if (!retrospectives) return
+    if (!accountType) return
+
+    if (retrospectives.length >= 3 && accountType === AccountType.Standard) {
       setIsLimitReached(true)
     }
   }, [retrospectives, accountType])
@@ -67,9 +70,11 @@ export function Retros({ userId }: RetrosProps) {
       <div className='flex flex-row items-baseline justify-between'>
         <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
-        <div className='flex w-full justify-end'>
-          <AddRetro handleAddRetro={handleAddRetro} isLimitReached={isLimitReached} />
-        </div>
+        {!isLoading && (
+          <div className='flex w-full justify-end'>
+            <AddRetro handleAddRetro={handleAddRetro} isLimitReached={isLimitReached} />
+          </div>
+        )}
       </div>
 
       {isLoading && <Loader isLoading={isLoading} />}
