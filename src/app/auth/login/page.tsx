@@ -9,7 +9,7 @@ import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
 
 export default function Login() {
-  const { callbackUrl } = useParams()
+  const { callbackurl } = useParams()
 
   return (
     <section className='mx-auto grid h-screen place-items-center'>
@@ -23,7 +23,7 @@ export default function Login() {
         <CardContent className='flex flex-col items-center gap-4'>
           <div className='mx-auto flex w-full flex-col justify-between gap-3 sm:flex-row sm:gap-6'>
             <Button
-              onClick={() => signIn('github', { callbackUrl: callbackUrl.toString() })}
+              onClick={() => signIn('github', { callbackUrl: callbackurl.toString() })}
               className='w-full'
             >
               <svg
@@ -41,7 +41,7 @@ export default function Login() {
 
             <button
               className='gsi-material-button'
-              onClick={() => signIn('google', { callbackUrl: callbackUrl.toString() })}
+              onClick={() => signIn('google', { callbackUrl: callbackurl.toString() })}
             >
               <div className='gsi-material-button-state'></div>
               <div className='gsi-material-button-content-wrapper'>
@@ -73,7 +73,7 @@ export default function Login() {
           <Formik
             initialValues={{ email: '' }}
             onSubmit={(values) => {
-              signIn('email', { callbackUrl: callbackUrl.toString(), email: values.email })
+              signIn('email', { callbackUrl: callbackurl.toString(), email: values.email })
             }}
           >
             <Form className='mt-5 w-full'>
