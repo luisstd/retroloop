@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
 import { Feedback } from '@/app/components/feedback/feedback'
@@ -8,7 +9,14 @@ import { Team } from '@/app/dashboard/team/team'
 
 export default function Dashboard() {
   const { data: session, status } = useSession()
+  const router = useRouter()
+  const isAuthenticated = status === 'authenticated'
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+
+  if (!isAuthenticated) {
+    const callbackURL = encodeURIComponent(window.location.href)
+    router.push(`/auth/login?callbackUrl=${callbackURL}`)
+  }
 
   if (!isSignedUp) {
     return <SignUpForm />

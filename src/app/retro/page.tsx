@@ -1,5 +1,5 @@
 'use client'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 
@@ -12,8 +12,11 @@ import { WritePhase } from '@/app/retro/phase/write/write-phase'
 import { api } from '@/trpc/react'
 
 export default function Retro() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const searchParams = useSearchParams()
+
+  const router = useRouter()
+  const isAuthenticated = status === 'authenticated'
 
   const userId = session?.user?.id
   const retroId = searchParams.get('id')
@@ -34,6 +37,11 @@ export default function Retro() {
       addParticipant({ retroId, userId })
     }
   }, [userId, retroId, addParticipant])
+
+  if (!isAuthenticated) {
+    const callbackURL = encodeURIComponent(window.location.href)
+    router.push(`/auth/login?callbackUrl=${callbackURL}`)
+  }
 
   return selectedRetro ? (
     <>

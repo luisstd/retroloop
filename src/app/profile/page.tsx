@@ -28,6 +28,7 @@ export default function Profile() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const { toast } = useToast()
+  const isAuthenticated = status === 'authenticated'
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   const { data: user, isLoading, refetch } = api.user.getLoggedIn.useQuery()
@@ -62,6 +63,11 @@ export default function Profile() {
       title: 'Account deleted',
       description: 'Your account was successfully deleted',
     })
+  }
+
+  if (!isAuthenticated) {
+    const callbackURL = encodeURIComponent(window.location.href)
+    router.push(`/auth/login?callbackUrl=${callbackURL}`)
   }
 
   if (!isSignedUp) {
