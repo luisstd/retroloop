@@ -52,10 +52,7 @@ export default function Landingpage() {
           </Link>
 
           <Link href={'/dashboard'} className='w-full'>
-            <Button
-              onClick={!isSignedUp ? () => signIn() : undefined}
-              className='flex w-full items-center'
-            >
+            <Button className='flex w-full items-center'>
               Start a feedback session
               <IconArrowRight size={18} className='ml-2' />
             </Button>

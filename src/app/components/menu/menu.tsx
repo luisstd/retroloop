@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { signIn, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 import { LoginButton } from '@/app/components/menu/components/login-button/login-button'
 import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
@@ -20,10 +20,9 @@ import {
 import { cn } from '@/utils/cn'
 
 export function Menu() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const path = usePathname()
 
-  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
   const isLandingPage = path === '/'
 
   return (
@@ -66,7 +65,6 @@ export function Menu() {
               <Link href='/dashboard' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  onClick={!isSignedUp ? () => signIn() : undefined}
                   aria-label='Dashboard'
                 >
                   Dashboard
@@ -89,7 +87,6 @@ export function Menu() {
               <Link href='/profile' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  onClick={!isSignedUp ? () => signIn() : undefined}
                   aria-label='Profile'
                 >
                   Profile
