@@ -39,7 +39,7 @@ export function Menu() {
                 aria-label='Landingpage'
               >
                 <Image
-                  className={isLandingPage ? 'hidden' : 'visible'}
+                  className={isLandingPage ? 'hidden sm:block' : 'block'}
                   src='/logo-transparent.png'
                   alt='Retroloop logo'
                   width={isLandingPage ? 45 : 55}
