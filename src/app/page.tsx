@@ -94,11 +94,7 @@ export default function Landingpage() {
           </p>
 
           <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
-            <Button
-              variant='outline'
-              onClick={!isSignedUp ? () => signIn() : undefined}
-              className='m-5 mx-auto w-full sm:w-auto'
-            >
+            <Button variant='outline' className='m-5 mx-auto w-full sm:w-auto'>
               Start retrospective
             </Button>
           </Link>
@@ -160,11 +156,7 @@ export default function Landingpage() {
           </p>
 
           <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
-            <Button
-              variant='outline'
-              onClick={!isSignedUp ? () => signIn() : undefined}
-              className='m-5 mx-auto w-full sm:w-auto'
-            >
+            <Button variant='outline' className='m-5 mx-auto w-full sm:w-auto'>
               Invite team member
             </Button>
           </Link>
@@ -226,9 +218,7 @@ export default function Landingpage() {
               </span>
               <span>/month</span>
             </CardDescription>
-            <Button onClick={!isSignedUp ? () => signIn() : () => router.push('/dashboard')}>
-              Get started for free
-            </Button>
+            <Button onClick={() => router.push('/dashboard')}>Get started for free</Button>
             <div className='prose text-lg text-foreground'>
               <ul>
                 <li>Create up to 3 retrospectives</li>
