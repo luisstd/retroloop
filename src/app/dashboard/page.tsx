@@ -14,8 +14,15 @@ export default function Dashboard() {
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
   if (!isAuthenticated) {
-    const callbackURL = encodeURIComponent(window.location.href)
+    let redirectUrl = window.location.href
+
+    if (!redirectUrl.includes('/dashboard')) {
+      redirectUrl = `${window.location.origin}/dashboard`
+    }
+
+    const callbackURL = encodeURIComponent(redirectUrl)
     router.push(`/auth/login?callbackurl=${callbackURL}`)
+    return null
   }
 
   if (!isSignedUp) {
