@@ -67,7 +67,7 @@ export default function Profile() {
 
   if (!isAuthenticated) {
     const callbackURL = encodeURIComponent(window.location.href)
-    router.push(`/auth/login?callbackUrl=${callbackURL}`)
+    router.push(`/auth/login?callbackurl=${callbackURL}`)
   }
 
   if (!isSignedUp) {
