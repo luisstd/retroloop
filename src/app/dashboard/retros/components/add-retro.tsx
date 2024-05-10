@@ -71,7 +71,7 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Start retrospective</DialogTitle>
-            <DialogDescription>Create a new retrospective by giving it a name</DialogDescription>
+            <DialogDescription>Create a new retrospective by giving it a name.</DialogDescription>
           </DialogHeader>
 
           <Formik
@@ -87,10 +87,9 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
               setIsOpen(false)
             }}
           >
-            <Form className='flex flex-col gap-5'>
-              <fieldset>
+            <Form className='flex flex-col gap-10'>
+              <fieldset className='flex flex-col gap-2'>
                 <Label htmlFor='name'>Retro Name</Label>
-
                 <Field id='name' as={Input} name='name' placeholder='Untitled Retro' />
               </fieldset>
 
