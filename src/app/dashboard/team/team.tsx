@@ -33,7 +33,13 @@ export function Team() {
       <div className='flex flex-row items-baseline justify-between'>
         <CardTitle className='p-5 text-center'>TEAM</CardTitle>
         <div className='flex w-full justify-end'>
-          <InviteDialog />
+          <InviteDialog
+            ctaCopy='Invite'
+            ctaVariant='default'
+            dialogTitle='Invite to team'
+            dialogDescription='Invite someone by sending them a login link'
+            iconVariant='plus'
+          />
         </div>
       </div>
       {isLoading ? (

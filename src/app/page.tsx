@@ -6,7 +6,6 @@ import {
   IconHourglass,
   IconLogin,
   IconRepeat,
-  IconSend,
   IconUsers,
 } from '@tabler/icons-react'
 import Image from 'next/image'
@@ -17,6 +16,7 @@ import { useTheme } from 'next-themes'
 import { useState } from 'react'
 
 import { Footer } from '@/app/components/footer/footer'
+import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { Badge } from '@/app/ui/badge/badge'
 import { Button } from '@/app/ui/button/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
@@ -44,13 +44,13 @@ export default function Landingpage() {
           Enable effective feedback across remote & hybrid teams
         </p>
         <div className='flex flex-col items-center gap-4 sm:flex-row'>
-          <Link href={'/dashboard'} className='w-full'>
-            <Button variant='secondary' className='flex w-full items-center'>
-              Invite a team member
-              <IconSend size={18} className='ml-2' />
-            </Button>
-          </Link>
-
+          <InviteDialog
+            ctaCopy='Invite a team member'
+            ctaVariant='secondary'
+            dialogTitle='Send an invite link'
+            dialogDescription='Invite someone by sending them a login link'
+            iconVariant='send'
+          />
           <Link href={'/dashboard'} className='w-full'>
             <Button className='flex w-full items-center'>
               Start a feedback session
@@ -155,11 +155,15 @@ export default function Landingpage() {
             foster a culture of continuous improvement.
           </p>
 
-          <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
-            <Button variant='outline' className='m-5 mx-auto w-full sm:w-auto'>
-              Invite team member
-            </Button>
-          </Link>
+          <div className='w-full p-5 sm:w-auto sm:self-center'>
+            <InviteDialog
+              ctaCopy='Invite a team member'
+              ctaVariant='outline'
+              dialogTitle='Send an invite link'
+              dialogDescription='Invite someone by sending them a login link'
+              iconVariant='none'
+            />
+          </div>
         </CardHeader>
 
         <CardContent className='col-start-2 row-start-2 flex flex-col items-center gap-6 p-10 md:col-start-1 md:row-start-1'>

@@ -1,4 +1,4 @@
-import { IconPlus } from '@tabler/icons-react'
+import { IconPlus, IconSend } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
@@ -17,23 +17,42 @@ import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
 import { useToast } from '@/app/ui/toast/use-toast'
 
-export function InviteDialog() {
+type InviteDialogProps = {
+  ctaCopy: string
+  ctaVariant: 'default' | 'secondary' | 'outline'
+  dialogTitle: string
+  dialogDescription: string
+  iconVariant: 'send' | 'plus' | 'none'
+}
+
+export function InviteDialog({
+  ctaCopy,
+  ctaVariant,
+  dialogTitle,
+  dialogDescription,
+  iconVariant,
+}: InviteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
+
   const { toast } = useToast()
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className='flex gap-1'>
-          Invite
-          <IconPlus size={18} />
+        <Button className='flex gap-1' variant={ctaVariant}>
+          {ctaCopy}
+          {iconVariant === 'none' ? null : iconVariant === 'send' ? (
+            <IconSend size={18} />
+          ) : (
+            <IconPlus size={18} />
+          )}
         </Button>
       </DialogTrigger>
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Invite to team</DialogTitle>
-          <DialogDescription>Invite someone by sending them a login link</DialogDescription>
+          <DialogTitle>{dialogTitle}</DialogTitle>
+          <DialogDescription>{dialogDescription}</DialogDescription>
         </DialogHeader>
 
         <Formik
@@ -49,8 +68,8 @@ export function InviteDialog() {
             })
           }}
         >
-          <Form className='flex flex-col gap-5'>
-            <fieldset>
+          <Form className='flex flex-col gap-10'>
+            <fieldset className='flex flex-col gap-2'>
               <Label htmlFor='email'>E-Mail</Label>
               <Field as={Input} id='email' name='email' placeholder='example@email.com' />
             </fieldset>
