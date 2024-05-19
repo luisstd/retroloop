@@ -1,5 +1,12 @@
 import { fireEvent, render, RenderResult } from '@testing-library/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, test } from 'vitest'
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+} from 'vitest'
 
 import { LoginButton } from '@/app/components/menu/components/login-button/login-button'
 

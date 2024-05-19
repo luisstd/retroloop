@@ -19,10 +19,13 @@ enum AccountType {
   Standard = 'Standard',
 }
 
-const getAccountType = (subscriptionStatus: User['stripeSubscriptionStatus']) => {
+const getAccountType = (
+  subscriptionStatus: User['stripeSubscriptionStatus'],
+) => {
   if (
     subscriptionStatus &&
-    subscriptionStatus === (StripeSubscriptionStatus.active || StripeSubscriptionStatus.trialing)
+    subscriptionStatus ===
+      (StripeSubscriptionStatus.active || StripeSubscriptionStatus.trialing)
   ) {
     return AccountType.Unlimited
   } else {

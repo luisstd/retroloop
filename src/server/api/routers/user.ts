@@ -1,4 +1,8 @@
-import { UserCreateInputSchema, UserSessionSchema, UserUpdateInputSchema } from '@/schemas/user'
+import {
+  UserCreateInputSchema,
+  UserSessionSchema,
+  UserUpdateInputSchema,
+} from '@/schemas/user'
 import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc'
 
 export const userRouter = createTRPCRouter({
@@ -31,24 +35,30 @@ export const userRouter = createTRPCRouter({
       },
     })
   }),
-  add: protectedProcedure.input(UserCreateInputSchema).mutation(({ ctx, input }) => {
-    return ctx.db.user.create({ data: input })
-  }),
-  edit: protectedProcedure.input(UserUpdateInputSchema).mutation(({ ctx, input }) => {
-    return ctx.db.user.update({
-      where: {
-        id: input.id,
-      },
-      data: input,
-    })
-  }),
-  delete: protectedProcedure.input(UserSessionSchema).mutation(({ ctx, input }) => {
-    return ctx.db.user.delete({
-      where: {
-        id: input.id,
-      },
-    })
-  }),
+  add: protectedProcedure
+    .input(UserCreateInputSchema)
+    .mutation(({ ctx, input }) => {
+      return ctx.db.user.create({ data: input })
+    }),
+  edit: protectedProcedure
+    .input(UserUpdateInputSchema)
+    .mutation(({ ctx, input }) => {
+      return ctx.db.user.update({
+        where: {
+          id: input.id,
+        },
+        data: input,
+      })
+    }),
+  delete: protectedProcedure
+    .input(UserSessionSchema)
+    .mutation(({ ctx, input }) => {
+      return ctx.db.user.delete({
+        where: {
+          id: input.id,
+        },
+      })
+    }),
   subscriptionStatus: protectedProcedure.query(async ({ ctx }) => {
     const { session, db } = ctx
 

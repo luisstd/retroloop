@@ -14,7 +14,10 @@ type RetroActionBarProps = {
   refetchRetro: () => void
 }
 
-export function RetroActionBar({ selectedRetro, refetchRetro }: RetroActionBarProps) {
+export function RetroActionBar({
+  selectedRetro,
+  refetchRetro,
+}: RetroActionBarProps) {
   const [timerDisplay, setTimerDisplay] = useState('00:00')
   const { channel } = useChannel('retrospective', 'timerDisplay', (message) => {
     setTimerDisplay(message.data)
@@ -34,14 +37,20 @@ export function RetroActionBar({ selectedRetro, refetchRetro }: RetroActionBarPr
     <>
       {selectedRetro && (
         <>
-          <PhaseIndicator retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+          <PhaseIndicator
+            retrospective={selectedRetro}
+            handleUpdateRetro={handleUpdateRetro}
+          />
           <RetroTimer
             selectedRetro={selectedRetro}
             handleUpdateRetro={handleUpdateRetro}
             timerDisplay={timerDisplay}
             channel={channel}
           />
-          <ActionButtons retrospective={selectedRetro} handleUpdateRetro={handleUpdateRetro} />
+          <ActionButtons
+            retrospective={selectedRetro}
+            handleUpdateRetro={handleUpdateRetro}
+          />
         </>
       )}
     </>

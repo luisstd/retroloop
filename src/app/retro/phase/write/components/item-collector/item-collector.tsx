@@ -18,7 +18,11 @@ type ItemCollectorProps = {
   itemType: string
 }
 
-export function ItemCollector({ title, retrospective, itemType }: ItemCollectorProps) {
+export function ItemCollector({
+  title,
+  retrospective,
+  itemType,
+}: ItemCollectorProps) {
   const { data: session } = useSession()
   const { toast } = useToast()
   const userId = session?.user?.id
@@ -104,13 +108,18 @@ export function ItemCollector({ title, retrospective, itemType }: ItemCollectorP
                     <div className='flex flex-row items-center'>
                       <EditDialog
                         itemToEdit={item}
-                        editHandler={(input) => handleEditRetroItem(input as RetroItem)}
+                        editHandler={(input) =>
+                          handleEditRetroItem(input as RetroItem)
+                        }
                       />
-                      <DeleteDialog itemToDelete={item} deleteHandler={handleDeleteRetroItem} />
+                      <DeleteDialog
+                        itemToDelete={item}
+                        deleteHandler={handleDeleteRetroItem}
+                      />
                     </div>
                   </Card>
                 </li>
-              )
+              ),
           )}
       </ul>
     </>

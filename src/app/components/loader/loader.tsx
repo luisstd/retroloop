@@ -10,7 +10,9 @@ export function Loader({ isLoading, fullHeight }: LoaderProps) {
   const { resolvedTheme } = useTheme()
 
   return (
-    <div className={`grid w-full place-items-center ${fullHeight && 'h-screen'}`}>
+    <div
+      className={`grid w-full place-items-center ${fullHeight && 'h-screen'}`}
+    >
       <GridLoader
         color={resolvedTheme === 'light' ? 'black' : 'white'}
         loading={isLoading}

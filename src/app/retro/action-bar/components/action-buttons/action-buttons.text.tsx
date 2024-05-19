@@ -1,6 +1,14 @@
 import { Retrospective } from '@prisma/client'
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+  vi,
+} from 'vitest'
 
 import { ActionButtons } from '@/app/retro/action-bar/components/action-buttons/action-buttons'
 
@@ -27,7 +35,10 @@ test('ActionButtons', () => {
 
     beforeEach(() => {
       ActionButtonsMounted = render(
-        <ActionButtons retrospective={retrospective} handleUpdateRetro={handleUpdateRetroMock} />
+        <ActionButtons
+          retrospective={retrospective}
+          handleUpdateRetro={handleUpdateRetroMock}
+        />,
       )
     })
 
@@ -41,27 +52,41 @@ test('ActionButtons', () => {
       setOpenMock = vi.fn()
       handleUpdateRetroMock = vi.fn()
 
-      useStateMock.mockImplementation((initialState) => [initialState, setOpenMock])
+      useStateMock.mockImplementation((initialState) => [
+        initialState,
+        setOpenMock,
+      ])
 
       render(
-        <ActionButtons retrospective={retrospective} handleUpdateRetro={handleUpdateRetroMock} />
+        <ActionButtons
+          retrospective={retrospective}
+          handleUpdateRetro={handleUpdateRetroMock}
+        />,
       )
     })
 
     test('renders copy retro link button', () => {
-      const copyRetroLinkButton = screen.getByRole('button', { name: 'Copy Retro link' })
+      const copyRetroLinkButton = screen.getByRole('button', {
+        name: 'Copy Retro link',
+      })
       expect(copyRetroLinkButton).toBeDefined()
     })
 
     test('copies retro link on button click', () => {
-      const copyRetroLinkButton = screen.getByRole('button', { name: 'Copy Retro link' })
+      const copyRetroLinkButton = screen.getByRole('button', {
+        name: 'Copy Retro link',
+      })
       fireEvent.click(copyRetroLinkButton)
-      expect(navigator.clipboard.writeText).toHaveBeenCalledWith(window.location.href)
+      expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
+        window.location.href,
+      )
       expect(setOpenMock).toHaveBeenCalledWith(true)
     })
 
     test('renders toast notification when retro link is copied', () => {
-      const toastNotification = screen.getByText(/Copied retrospective link to clipboard!/i)
+      const toastNotification = screen.getByText(
+        /Copied retrospective link to clipboard!/i,
+      )
       expect(toastNotification).toBeDefined()
     })
 

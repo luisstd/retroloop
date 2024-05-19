@@ -22,13 +22,21 @@ type DeleteDialogProps = {
   deleteHandler: (input: ItemToDelete['id']) => void
 }
 
-export function DeleteDialog({ itemToDelete, deleteHandler }: DeleteDialogProps) {
+export function DeleteDialog({
+  itemToDelete,
+  deleteHandler,
+}: DeleteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <Button size='icon' variant='ghost' className='mx-1' aria-label='Delete item'>
+        <Button
+          size='icon'
+          variant='ghost'
+          className='mx-1'
+          aria-label='Delete item'
+        >
           <IconTrash size={16} />
         </Button>
       </AlertDialogTrigger>

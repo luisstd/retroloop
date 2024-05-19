@@ -19,7 +19,11 @@ export async function POST(req: Request) {
   let event: Stripe.Event
 
   try {
-    event = stripe.webhooks.constructEvent(payload, sig as string, webhookSecret)
+    event = stripe.webhooks.constructEvent(
+      payload,
+      sig as string,
+      webhookSecret,
+    )
 
     // Handle the event
     switch (event.type) {
@@ -89,6 +93,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ received: true })
   } catch (err) {
-    if (err instanceof Error) return NextResponse.json({ message: err.message }, { status: 400 })
+    if (err instanceof Error)
+      return NextResponse.json({ message: err.message }, { status: 400 })
   }
 }

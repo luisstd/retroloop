@@ -12,7 +12,7 @@ export async function POST(req: Request) {
         headers: new Headers({
           'content-type': 'application/json',
         }),
-      }
+      },
     )
   }
 
@@ -21,7 +21,9 @@ export async function POST(req: Request) {
     process.env.DEFAULT_CLIENT_ID ||
     'NO_CLIENT_ID'
   const client = new Ably.Rest(process.env.ABLY_API_KEY)
-  const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId })
+  const tokenRequestData = await client.auth.createTokenRequest({
+    clientId: clientId,
+  })
   console.log(tokenRequestData)
   return NextResponse.json(tokenRequestData)
 }

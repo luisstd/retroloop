@@ -1,7 +1,9 @@
 import { test } from '@playwright/test'
 
 test.describe('Landing Page Health Check', () => {
-  test('should navigate to Privacy Policy and Terms of Use pages', async ({ page }) => {
+  test('should navigate to Privacy Policy and Terms of Use pages', async ({
+    page,
+  }) => {
     await page.goto('/')
 
     // Navigate to Privacy Policy and verify
@@ -18,7 +20,11 @@ test.describe('Landing Page Health Check', () => {
     await page.goto('/')
 
     // Verify main navigation links
-    page.locator('nav').filter({ hasText: 'Dashboard' }).getByRole('link').first()
+    page
+      .locator('nav')
+      .filter({ hasText: 'Dashboard' })
+      .getByRole('link')
+      .first()
     page.locator('nav').filter({ hasText: 'Profile' }).getByRole('link').first()
     page.locator('nav').filter({ hasText: 'Login' }).getByRole('link').first()
 

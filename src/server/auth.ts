@@ -1,6 +1,10 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import * as Sentry from '@sentry/nextjs'
-import { type DefaultSession, getServerSession, type NextAuthOptions } from 'next-auth'
+import {
+  type DefaultSession,
+  getServerSession,
+  type NextAuthOptions,
+} from 'next-auth'
 import EmailProvider from 'next-auth/providers/email'
 import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
@@ -39,7 +43,11 @@ export const authOptions: NextAuthOptions = {
   },
   events: {
     signIn({ user }) {
-      Sentry.setUser({ id: user.id, email: user.email ?? undefined, name: user.name })
+      Sentry.setUser({
+        id: user.id,
+        email: user.email ?? undefined,
+        name: user.name,
+      })
     },
     signOut() {
       Sentry.setUser(null)

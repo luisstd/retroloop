@@ -63,7 +63,9 @@ export function RetroItemDialog({
         </DialogHeader>
 
         <Formik
-          validationSchema={toFormikValidationSchema(RetroItemCreateInputSchema)}
+          validationSchema={toFormikValidationSchema(
+            RetroItemCreateInputSchema,
+          )}
           initialValues={{
             type: itemType ? itemType : '',
             content: '',
@@ -81,7 +83,11 @@ export function RetroItemDialog({
             <fieldset className='mb-5'>
               <Field id='content' name='content' className='h-full w-full'>
                 {({ field }: FieldProps) => (
-                  <Textarea placeholder='Type your feedback here' {...field} rows={8} />
+                  <Textarea
+                    placeholder='Type your feedback here'
+                    {...field}
+                    rows={8}
+                  />
                 )}
               </Field>
             </fieldset>

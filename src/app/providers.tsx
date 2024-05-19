@@ -21,11 +21,20 @@ export function Providers({ children, session }: ProvidersProps) {
 
   return (
     <SessionProvider session={session}>
-      <PlausibleProvider domain='retroloop.io' customDomain='stats.retroloop.io'>
-        <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
+      <PlausibleProvider
+        domain='retroloop.io'
+        customDomain='stats.retroloop.io'
+      >
+        <ThemeProvider
+          attribute='class'
+          enableColorScheme={true}
+          enableSystem={true}
+        >
           <QueryClientProvider client={queryClient}>
             <AblyProvider client={ably}>
-              <ChannelProvider channelName='retrospective'>{children}</ChannelProvider>
+              <ChannelProvider channelName='retrospective'>
+                {children}
+              </ChannelProvider>
             </AblyProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>

@@ -10,7 +10,10 @@ import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
 import { Card, CardTitle } from '@/app/ui/card/card'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
-import { RetrospectiveCreateInput, RetrospectiveUpdateInput } from '@/types/retrospective'
+import {
+  RetrospectiveCreateInput,
+  RetrospectiveUpdateInput,
+} from '@/types/retrospective'
 import { AccountType, getAccountType } from '@/utils/utils'
 
 type RetrosProps = {
@@ -27,7 +30,10 @@ export function Retros({ userId }: RetrosProps) {
     data: retrospectives,
     refetch,
     isLoading,
-  } = api.retrospective.getAll.useQuery({ userId, accountType }, { enabled: !!accountType })
+  } = api.retrospective.getAll.useQuery(
+    { userId, accountType },
+    { enabled: !!accountType },
+  )
 
   const { mutate: addRetro } = api.retrospective.add.useMutation({
     onSuccess: async () => {
@@ -72,7 +78,10 @@ export function Retros({ userId }: RetrosProps) {
 
         {!isLoading && (
           <div className='flex w-full justify-end'>
-            <AddRetro handleAddRetro={handleAddRetro} isLimitReached={isLimitReached} />
+            <AddRetro
+              handleAddRetro={handleAddRetro}
+              isLimitReached={isLimitReached}
+            />
           </div>
         )}
       </div>

@@ -1,6 +1,14 @@
 import { Retrospective } from '@prisma/client'
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+  vi,
+} from 'vitest'
 
 import { RetroTimer } from '@/app/retro/action-bar/components/retro-timer/retro-timer'
 
@@ -13,7 +21,10 @@ test('RetroTimer', () => {
 
     beforeEach(() => {
       RetroTimerMounted = render(
-        <RetroTimer selectedRetro={selectedRetro} handleUpdateRetro={handleUpdateRetroMock} />
+        <RetroTimer
+          selectedRetro={selectedRetro}
+          handleUpdateRetro={handleUpdateRetroMock}
+        />,
       )
     })
 
@@ -34,7 +45,12 @@ test('RetroTimer', () => {
       handleUpdateRetroMock = vi.fn()
       mockMinutes = 5
 
-      render(<RetroTimer selectedRetro={selectedRetro} handleUpdateRetro={handleUpdateRetroMock} />)
+      render(
+        <RetroTimer
+          selectedRetro={selectedRetro}
+          handleUpdateRetro={handleUpdateRetroMock}
+        />,
+      )
     })
 
     test('renders timer component with initial state', () => {

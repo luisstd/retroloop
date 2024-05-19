@@ -29,7 +29,11 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button size='icon' variant='ghost' aria-label='Edit retrospective button'>
+        <Button
+          size='icon'
+          variant='ghost'
+          aria-label='Edit retrospective button'
+        >
           <IconDots size={18} className='text-muted-foreground' />
         </Button>
       </DialogTrigger>
@@ -40,7 +44,9 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
         </DialogHeader>
 
         <Formik
-          validationSchema={toFormikValidationSchema(RetrospectiveCreateInputSchema)}
+          validationSchema={toFormikValidationSchema(
+            RetrospectiveCreateInputSchema,
+          )}
           initialValues={{
             ...retrospective,
           }}
@@ -53,7 +59,12 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
             <fieldset>
               <Label htmlFor='name'>Retro Name</Label>
 
-              <Field id='name' as={Input} name='name' placeholder='Untitled Retro' />
+              <Field
+                id='name'
+                as={Input}
+                name='name'
+                placeholder='Untitled Retro'
+              />
             </fieldset>
 
             <DialogFooter>

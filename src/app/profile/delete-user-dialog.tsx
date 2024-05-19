@@ -21,7 +21,10 @@ type DeleteDialogProps = {
   deleteHandler: (input: User) => void
 }
 
-export function DeleteUserDialog({ itemToDelete, deleteHandler }: DeleteDialogProps) {
+export function DeleteUserDialog({
+  itemToDelete,
+  deleteHandler,
+}: DeleteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -34,7 +37,8 @@ export function DeleteUserDialog({ itemToDelete, deleteHandler }: DeleteDialogPr
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your account.
+            This action cannot be undone. This will permanently delete your
+            account.
           </AlertDialogDescription>
         </AlertDialogHeader>
 

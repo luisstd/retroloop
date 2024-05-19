@@ -21,7 +21,10 @@ type PhaseSwitchDialogProps = {
   phaseSwitchHandler: () => void
 }
 
-export function PhaseSwitchDialog({ phase, phaseSwitchHandler }: PhaseSwitchDialogProps) {
+export function PhaseSwitchDialog({
+  phase,
+  phaseSwitchHandler,
+}: PhaseSwitchDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
   const isLastPhase = phase === 'DISCUSSING'
 
@@ -35,7 +38,9 @@ export function PhaseSwitchDialog({ phase, phaseSwitchHandler }: PhaseSwitchDial
       </AlertDialogTrigger>
 
       <AlertDialogContent>
-        <AlertDialogTitle>{isLastPhase ? 'Finish retro?' : 'Are you sure?'}</AlertDialogTitle>
+        <AlertDialogTitle>
+          {isLastPhase ? 'Finish retro?' : 'Are you sure?'}
+        </AlertDialogTitle>
         <AlertDialogDescription>
           {isLastPhase
             ? 'Leaving the retro view will take you back to the dashboard'

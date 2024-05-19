@@ -98,7 +98,13 @@ test('ItemVoter', () => {
         refetch: vi.fn(),
       }
       session = { user: { id: '1' } }
-      render(<ItemVoter title={title} retrospective={retrospective} itemType={itemType} />)
+      render(
+        <ItemVoter
+          title={title}
+          retrospective={retrospective}
+          itemType={itemType}
+        />,
+      )
     })
 
     afterEach(() => {
@@ -116,7 +122,9 @@ test('ItemVoter', () => {
     })
 
     test('increments votes when thumbs up button is clicked', () => {
-      const thumbsUpButton = screen.getAllByRole('button', { name: /thumbs up/i })[0]
+      const thumbsUpButton = screen.getAllByRole('button', {
+        name: /thumbs up/i,
+      })[0]
       const retroItem = retroItemsQuery.data[0]
 
       expect(retroItem.votes).toBe(5)
@@ -128,12 +136,18 @@ test('ItemVoter', () => {
         expect.objectContaining({
           votes: retroItem.votes + 1,
           voters: [session.user.id],
-        })
+        }),
       )
     })
 
     test('does not render retro items if session user is not defined', () => {
-      render(<ItemVoter title={title} retrospective={retrospective} itemType={itemType} />)
+      render(
+        <ItemVoter
+          title={title}
+          retrospective={retrospective}
+          itemType={itemType}
+        />,
+      )
 
       const itemElements = screen.queryAllByRole('listitem')
       expect(itemElements.length).toBe(0)

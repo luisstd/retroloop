@@ -27,7 +27,12 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button size='icon' variant='ghost' className='mx-1' aria-label='Edit item'>
+        <Button
+          size='icon'
+          variant='ghost'
+          className='mx-1'
+          aria-label='Edit item'
+        >
           <IconPencil size={16} />
         </Button>
       </DialogTrigger>
@@ -47,7 +52,11 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
             <fieldset className='mb-5'>
               <Field id='content' name='content' className='h-full w-full'>
                 {({ field }: FieldProps) => (
-                  <Textarea placeholder='Type your feedback here' {...field} rows={8} />
+                  <Textarea
+                    placeholder='Type your feedback here'
+                    {...field}
+                    rows={8}
+                  />
                 )}
               </Field>
             </fieldset>

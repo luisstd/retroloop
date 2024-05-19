@@ -4,7 +4,13 @@ import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/app/ui/card/card'
 import { Input } from '@/app/ui/input/input'
 import { Label } from '@/app/ui/label/label'
 
@@ -18,12 +24,16 @@ export default function Login() {
         <CardHeader>
           <CardTitle>Sign in</CardTitle>
           <CardDescription>
-            Sign in to Retroloop via e-mail link or using one of the providers below
+            Sign in to Retroloop via e-mail link or using one of the providers
+            below
           </CardDescription>
         </CardHeader>
         <CardContent className='flex flex-col items-center gap-4'>
           <div className='mx-auto flex w-full flex-col justify-between gap-3 sm:flex-row sm:gap-6'>
-            <Button onClick={() => signIn('github', { callbackUrl })} className='w-full'>
+            <Button
+              onClick={() => signIn('github', { callbackUrl })}
+              className='w-full'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='26'
@@ -44,7 +54,11 @@ export default function Login() {
               <div className='gsi-material-button-state'></div>
               <div className='gsi-material-button-content-wrapper'>
                 <div className='gsi-material-button-icon'>
-                  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>
+                  <svg
+                    version='1.1'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 48 48'
+                  >
                     <path
                       fill='#EA4335'
                       d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'
@@ -64,7 +78,9 @@ export default function Login() {
                     <path fill='none' d='M0 0h48v48H0z'></path>
                   </svg>
                 </div>
-                <span className='gsi-material-button-contents'>Sign in with Google</span>
+                <span className='gsi-material-button-contents'>
+                  Sign in with Google
+                </span>
               </div>
             </button>
           </div>

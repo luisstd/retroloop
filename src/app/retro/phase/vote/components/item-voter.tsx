@@ -80,7 +80,9 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                     <p>{item.content}</p>
 
                     <div className='flex flex-row items-center'>
-                      {item.votes ? <Badge className='my-[0.5625rem]'>+{item.votes}</Badge> : null}
+                      {item.votes ? (
+                        <Badge className='my-[0.5625rem]'>+{item.votes}</Badge>
+                      ) : null}
 
                       {!hasVoted(item, userId) && (
                         <Button
@@ -101,7 +103,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                     </div>
                   </Card>
                 </li>
-              )
+              ),
           )}
       </ul>
     </>
