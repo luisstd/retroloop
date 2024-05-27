@@ -218,8 +218,8 @@ devDependencies:
     specifier: ^15.2.2
     version: 15.2.2
   pnpm:
-    specifier: 8.15.7
-    version: 8.15.7
+    specifier: 9.1.3
+    version: 9.1.3
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -6738,9 +6738,9 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /pnpm@8.15.7:
-    resolution: {integrity: sha512-yFzSG22hAzIVaxyiqnnAph7nrS6wRTuIqymSienoypPmCRIyslwHy/YfbfdxKNnISeXJrG5EhU29IRxJ86Z63A==}
-    engines: {node: '>=16.14'}
+  /pnpm@9.1.3:
+    resolution: {integrity: sha512-fC6gieGmrzBkCcT8jE8Il72sMrdyAWGWxGnZQo8f4tWiHa+K1lEnYmVKxkW12RNrshDsmgCvqNvEZ3hDujYuzQ==}
+    engines: {node: '>=18.12'}
     hasBin: true
     dev: true
 
