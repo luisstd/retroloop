@@ -57,8 +57,8 @@ dependencies:
     specifier: ^0.10.1
     version: 0.10.1(typescript@5.4.5)(zod@3.23.4)
   '@tabler/icons-react':
-    specifier: ^3.2.0
-    version: 3.2.0(react@18.3.1)
+    specifier: ^3.10.0
+    version: 3.10.0(react@18.3.1)
   '@tanstack/react-query':
     specifier: ^4.36.1
     version: 4.36.1(react-dom@18.3.1)(react@18.3.1)
@@ -2654,17 +2654,17 @@ packages:
       zod: 3.23.4
     dev: false
 
-  /@tabler/icons-react@3.2.0(react@18.3.1):
-    resolution: {integrity: sha512-b1mZT1XpZrzvbM+eFe1YbYbxkzgJ18tM4knZKqXh0gnHDZ6XVLIH3TzJZ3HZ7PTkUqZLZ7XcGae3qQVGburlBw==}
+  /@tabler/icons-react@3.10.0(react@18.3.1):
+    resolution: {integrity: sha512-FTES0wJLIV+M9Ggng0j/6Kn/j43ZuBukR5n6DNV8Npk4woPCDcRjA+2KzKQyvSdwtPMAM6o1e8fQBPDS337Spg==}
     peerDependencies:
       react: '>= 16'
     dependencies:
-      '@tabler/icons': 3.2.0
+      '@tabler/icons': 3.10.0
       react: 18.3.1
     dev: false
 
-  /@tabler/icons@3.2.0:
-    resolution: {integrity: sha512-h8GQ2rtxgiSjltrVz4vcopAxTPSpUSUi5nBfJ09H3Bk4fJk6wZ/dVUjzhv/BHfDwGTkAxZBiYe/Q/T95cPeg5Q==}
+  /@tabler/icons@3.10.0:
+    resolution: {integrity: sha512-jCMO+hDTw8Gn1CNb15zIENLQ9b0UplGXtjMnEUhDoKH+Q4fta8tBLUxZpPpFtpV+q+gzGqfM76xNAoD1GBpmnA==}
     dev: false
 
   /@tailwindcss/typography@0.5.13(tailwindcss@3.4.3):
