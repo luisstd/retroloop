@@ -24,6 +24,5 @@ export async function POST(req: Request) {
   const tokenRequestData = await client.auth.createTokenRequest({
     clientId: clientId,
   })
-  console.log(tokenRequestData)
   return NextResponse.json(tokenRequestData)
 }
