@@ -33,11 +33,15 @@ export function NavigationDropdown() {
           >
             {isLandingPage ? (
               <Link href='#features' legacyBehavior passHref>
-                <NavigationMenuLink aria-label='Features'>Features</NavigationMenuLink>
+                <NavigationMenuLink aria-label='Features'>
+                  Features
+                </NavigationMenuLink>
               </Link>
             ) : (
               <Link href='/dashboard' legacyBehavior passHref>
-                <NavigationMenuLink aria-label='Dashboard'>Dashboard</NavigationMenuLink>
+                <NavigationMenuLink aria-label='Dashboard'>
+                  Dashboard
+                </NavigationMenuLink>
               </Link>
             )}
           </DropdownMenuItem>
@@ -47,11 +51,15 @@ export function NavigationDropdown() {
           >
             {isLandingPage ? (
               <Link href='#pricing' legacyBehavior passHref>
-                <NavigationMenuLink aria-label='Pricing'>Pricing</NavigationMenuLink>
+                <NavigationMenuLink aria-label='Pricing'>
+                  Pricing
+                </NavigationMenuLink>
               </Link>
             ) : (
               <Link href='/profile' legacyBehavior passHref>
-                <NavigationMenuLink aria-label='Profile'>Profile</NavigationMenuLink>
+                <NavigationMenuLink aria-label='Profile'>
+                  Profile
+                </NavigationMenuLink>
               </Link>
             )}
           </DropdownMenuItem>

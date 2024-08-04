@@ -17,15 +17,24 @@ export interface ProvidersProps {
 
 export function Providers({ children, session }: ProvidersProps) {
   const queryClient = new QueryClient()
-  const ably = new Ably.Realtime({ authUrl: '/api/ably', authMethod: 'POST' })
+  const ably = new Ably.Realtime({ authUrl: `${window.location.origin}/api/ably`,  authMethod: 'POST',  })
 
   return (
     <SessionProvider session={session}>
-      <PlausibleProvider domain='retroloop.io' customDomain='stats.retroloop.io'>
-        <ThemeProvider attribute='class' enableColorScheme={true} enableSystem={true}>
+      <PlausibleProvider
+        domain='retroloop.io'
+        customDomain='stats.retroloop.io'
+      >
+        <ThemeProvider
+          attribute='class'
+          enableColorScheme={true}
+          enableSystem={true}
+        >
           <QueryClientProvider client={queryClient}>
             <AblyProvider client={ably}>
-              <ChannelProvider channelName='retrospective'>{children}</ChannelProvider>
+              <ChannelProvider channelName='retrospective'>
+                {children}
+              </ChannelProvider>
             </AblyProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>

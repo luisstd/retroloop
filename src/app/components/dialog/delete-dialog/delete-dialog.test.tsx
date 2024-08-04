@@ -14,7 +14,7 @@ test('DeleteDialog', () => {
           deleteHandler={(input) => {
             expect(input)
           }}
-        />
+        />,
       )
     })
 

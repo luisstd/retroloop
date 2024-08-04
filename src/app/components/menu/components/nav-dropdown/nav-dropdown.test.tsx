@@ -1,5 +1,13 @@
 import { render, RenderResult, screen } from '@testing-library/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+  vi,
+} from 'vitest'
 
 import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
 
@@ -35,7 +43,9 @@ test('NavigationDropdown', () => {
       const triggerElement = screen.getByRole('button', { name: '' })
       expect(triggerElement).toBeDefined()
 
-      const portalElement = screen.getByRole('region', { name: 'RadixDropdownMenuPortal' })
+      const portalElement = screen.getByRole('region', {
+        name: 'RadixDropdownMenuPortal',
+      })
       expect(portalElement).toBeDefined()
     })
 
@@ -61,7 +71,9 @@ test('NavigationDropdown', () => {
       const squareIcon = screen.getByTestId('icon-square')
       expect(squareIcon).toBeDefined()
 
-      const dotsCircleHorizontalIcon = screen.getByTestId('icon-dots-circle-horizontal')
+      const dotsCircleHorizontalIcon = screen.getByTestId(
+        'icon-dots-circle-horizontal',
+      )
       expect(dotsCircleHorizontalIcon).toBeDefined()
     })
   })

@@ -64,14 +64,20 @@ export function InviteDialog({
             setIsOpen(false)
             toast({
               title: 'Successfully sent login link',
-              description: 'The recipient can now login with the link sent to their email',
+              description:
+                'The recipient can now login with the link sent to their email',
             })
           }}
         >
           <Form className='flex flex-col gap-10'>
             <fieldset className='flex flex-col gap-2'>
               <Label htmlFor='email'>E-Mail</Label>
-              <Field as={Input} id='email' name='email' placeholder='example@email.com' />
+              <Field
+                as={Input}
+                id='email'
+                name='email'
+                placeholder='example@email.com'
+              />
             </fieldset>
 
             <DialogFooter>

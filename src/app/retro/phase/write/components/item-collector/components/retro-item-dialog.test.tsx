@@ -25,7 +25,7 @@ describe('RetroItemDialog', () => {
         userId={mockUserId}
         retrospective={mockRetrospective}
         handleAddRetroItem={mockHandleAddRetroItem}
-      />
+      />,
     )
     vi.clearAllMocks()
   })
@@ -41,7 +41,7 @@ describe('RetroItemDialog', () => {
         userId={mockUserId}
         retrospective={mockRetrospective}
         handleAddRetroItem={mockHandleAddRetroItem}
-      />
+      />,
     )
 
     const triggerButton = screen.getAllByTestId('add-item-button')
@@ -55,7 +55,7 @@ describe('RetroItemDialog', () => {
         userId={mockUserId}
         retrospective={mockRetrospective}
         handleAddRetroItem={mockHandleAddRetroItem}
-      />
+      />,
     )
 
     const triggerButton = screen.getAllByTestId('add-item-button')
@@ -72,7 +72,7 @@ describe('RetroItemDialog', () => {
         userId={mockUserId}
         retrospective={mockRetrospective}
         handleAddRetroItem={mockHandleAddRetroItem}
-      />
+      />,
     )
 
     const triggerButton = screen.getAllByTestId('add-item-button')
@@ -98,7 +98,7 @@ describe('RetroItemDialog', () => {
         userId={mockUserId}
         retrospective={mockRetrospective}
         handleAddRetroItem={mockHandleAddRetroItem}
-      />
+      />,
     )
 
     const triggerButton = screen.getAllByTestId('add-item-button')

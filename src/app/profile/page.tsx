@@ -45,7 +45,8 @@ export default function Profile() {
     },
   })
 
-  const { mutateAsync: createCheckoutSession } = api.stripe.createCheckoutSession.useMutation()
+  const { mutateAsync: createCheckoutSession } =
+    api.stripe.createCheckoutSession.useMutation()
   const { mutateAsync: createBillingPortalSession } =
     api.stripe.createBillingPortalSession.useMutation()
 
@@ -111,19 +112,24 @@ export default function Profile() {
                   </Avatar>
                   <div className='flex flex-col items-center gap-2'>
                     <Label>User since</Label>
-                    <Badge variant='outline'>{formatDate(user.createdAt)}</Badge>
+                    <Badge variant='outline'>
+                      {formatDate(user.createdAt)}
+                    </Badge>
 
                     <Label>Account type</Label>
-                    <Badge variant='outline'>{getAccountType(user.stripeSubscriptionStatus)}</Badge>
+                    <Badge variant='outline'>
+                      {getAccountType(user.stripeSubscriptionStatus)}
+                    </Badge>
 
                     <div className='flex flex-col gap-2'>
-                      {getAccountType(user.stripeSubscriptionStatus) === AccountType.Standard ? (
+                      {getAccountType(user.stripeSubscriptionStatus) ===
+                      AccountType.Standard ? (
                         <Button
                           type='button'
                           variant='outline'
                           onClick={async () => {
                             const { checkoutUrl } = await createCheckoutSession(
-                              StripeBillingInterval.MONTHLY
+                              StripeBillingInterval.MONTHLY,
                             )
                             if (checkoutUrl) {
                               router.push(checkoutUrl)
@@ -137,7 +143,8 @@ export default function Profile() {
                           type='button'
                           variant='outline'
                           onClick={async () => {
-                            const { billingPortalUrl } = await createBillingPortalSession()
+                            const { billingPortalUrl } =
+                              await createBillingPortalSession()
                             if (billingPortalUrl) {
                               router.push(billingPortalUrl)
                             }
@@ -148,7 +155,10 @@ export default function Profile() {
                       )}
 
                       {user && (
-                        <DeleteUserDialog itemToDelete={user} deleteHandler={handleDelete} />
+                        <DeleteUserDialog
+                          itemToDelete={user}
+                          deleteHandler={handleDelete}
+                        />
                       )}
                     </div>
                   </div>
@@ -157,7 +167,13 @@ export default function Profile() {
                 <section className='flex flex-col gap-5'>
                   <fieldset className='flex flex-col items-start gap-2'>
                     <Label htmlFor='name'>Name</Label>
-                    <Field as={Input} id='name' name='name' type='text' placeholder='Your Name' />
+                    <Field
+                      as={Input}
+                      id='name'
+                      name='name'
+                      type='text'
+                      placeholder='Your Name'
+                    />
                   </fieldset>
 
                   <fieldset className='flex flex-col items-start gap-2'>

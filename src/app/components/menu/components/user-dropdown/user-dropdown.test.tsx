@@ -1,6 +1,14 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { signOut } from 'next-auth/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+  vi,
+} from 'vitest'
 
 import { UserDropdown } from '@/app/components/menu/components/user-dropdown/user-dropdown'
 
@@ -26,7 +34,9 @@ test('UserDropdown', () => {
     beforeAll(() => {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       useSessionMock = vi.spyOn(require('next-auth/react'), 'useSession')
-      useSessionMock.mockReturnValue({ data: { session: { user: { name: 'John Doe' } } } })
+      useSessionMock.mockReturnValue({
+        data: { session: { user: { name: 'John Doe' } } },
+      })
 
       render(<UserDropdown />)
     })
@@ -35,7 +45,9 @@ test('UserDropdown', () => {
       const triggerElement = screen.getByRole('button', { name: '' })
       expect(triggerElement).toBeDefined()
 
-      const portalElement = screen.getByRole('region', { name: 'RadixDropdownMenuPortal' })
+      const portalElement = screen.getByRole('region', {
+        name: 'RadixDropdownMenuPortal',
+      })
       expect(portalElement).toBeDefined()
     })
 

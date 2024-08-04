@@ -2,7 +2,12 @@ import { Retrospective } from '@prisma/client'
 import Link from 'next/link'
 
 import { EditRetro } from '@/app/dashboard/retros/components/edit-retro'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/app/ui/card/card'
 import { RetrospectiveUpdateInput } from '@/types/retrospective'
 import { formatDate } from '@/utils/utils'
 
@@ -11,7 +16,10 @@ type RetroCardProps = {
   handleUpdateRetro: (input: RetrospectiveUpdateInput) => void
 }
 
-export function RetroCard({ retrospective, handleUpdateRetro }: RetroCardProps) {
+export function RetroCard({
+  retrospective,
+  handleUpdateRetro,
+}: RetroCardProps) {
   return (
     <Card
       key={retrospective.id}
@@ -20,7 +28,10 @@ export function RetroCard({ retrospective, handleUpdateRetro }: RetroCardProps) 
       <CardHeader>
         <CardTitle className='flex items-baseline justify-between'>
           {retrospective.name}
-          <EditRetro handleEditRetro={handleUpdateRetro} retrospective={retrospective} />
+          <EditRetro
+            handleEditRetro={handleUpdateRetro}
+            retrospective={retrospective}
+          />
         </CardTitle>
         <CardDescription>{formatDate(retrospective.date)}</CardDescription>
       </CardHeader>

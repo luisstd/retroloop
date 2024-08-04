@@ -28,20 +28,23 @@ type AddRetroProps = {
 
 const RetroLimitReached = () => {
   const router = useRouter()
-  const { mutateAsync: createCheckoutSession } = api.stripe.createCheckoutSession.useMutation()
+  const { mutateAsync: createCheckoutSession } =
+    api.stripe.createCheckoutSession.useMutation()
 
   return (
     <DialogContent>
       <DialogHeader>
         <DialogTitle>Retrospective limit reached</DialogTitle>
         <DialogDescription>
-          You have reached the maximum of 3 active retrospectives for the Standard plan. Upgrade to
-          Unlimited to create more.
+          You have reached the maximum of 3 active retrospectives for the
+          Standard plan. Upgrade to Unlimited to create more.
         </DialogDescription>
       </DialogHeader>
       <Button
         onClick={async () => {
-          const { checkoutUrl } = await createCheckoutSession(StripeBillingInterval.MONTHLY)
+          const { checkoutUrl } = await createCheckoutSession(
+            StripeBillingInterval.MONTHLY,
+          )
           if (checkoutUrl) {
             router.push(checkoutUrl)
           }
@@ -71,11 +74,15 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Start retrospective</DialogTitle>
-            <DialogDescription>Create a new retrospective by giving it a name.</DialogDescription>
+            <DialogDescription>
+              Create a new retrospective by giving it a name.
+            </DialogDescription>
           </DialogHeader>
 
           <Formik
-            validationSchema={toFormikValidationSchema(RetrospectiveCreateInputSchema)}
+            validationSchema={toFormikValidationSchema(
+              RetrospectiveCreateInputSchema,
+            )}
             initialValues={{
               name: '',
               date: new Date(),
@@ -90,7 +97,12 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
             <Form className='flex flex-col gap-10'>
               <fieldset className='flex flex-col gap-2'>
                 <Label htmlFor='name'>Retro Name</Label>
-                <Field id='name' as={Input} name='name' placeholder='Untitled Retro' />
+                <Field
+                  id='name'
+                  as={Input}
+                  name='name'
+                  placeholder='Untitled Retro'
+                />
               </fieldset>
 
               <DialogFooter>

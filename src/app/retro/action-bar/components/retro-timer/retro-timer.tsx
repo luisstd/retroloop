@@ -1,7 +1,13 @@
 import { Retrospective } from '@prisma/client'
 import { IconAlarm, IconPlayerPlay, IconPlayerStop } from '@tabler/icons-react'
 import { RealtimeChannel } from 'ably'
-import { add, addSeconds, differenceInSeconds, format, isFuture } from 'date-fns'
+import {
+  add,
+  addSeconds,
+  differenceInSeconds,
+  format,
+  isFuture,
+} from 'date-fns'
 import { useEffect, useState } from 'react'
 
 import { Button } from '@/app/ui/button/button'
@@ -36,13 +42,19 @@ export function RetroTimer({
     }
 
     function updateTimer() {
-      if (selectedRetro.timerExpiration && isFuture(selectedRetro.timerExpiration)) {
+      if (
+        selectedRetro.timerExpiration &&
+        isFuture(selectedRetro.timerExpiration)
+      ) {
         setIsTimerRunning(true)
         const now = new Date()
         const expirationDate = new Date(selectedRetro.timerExpiration)
         const secondsDiff = differenceInSeconds(expirationDate, now)
 
-        const displayTime = format(addSeconds(new Date(0), secondsDiff), 'mm:ss')
+        const displayTime = format(
+          addSeconds(new Date(0), secondsDiff),
+          'mm:ss',
+        )
         channel.publish('timerDisplay', displayTime)
         scheduleNextUpdate()
       } else {
@@ -108,11 +120,21 @@ export function RetroTimer({
       </div>
 
       {isTimerRunning ? (
-        <Button size='icon' variant='ghost' onClick={handleStopTimer} aria-label='Reset timer'>
+        <Button
+          size='icon'
+          variant='ghost'
+          onClick={handleStopTimer}
+          aria-label='Reset timer'
+        >
           <IconPlayerStop size={24} />
         </Button>
       ) : (
-        <Button size='icon' variant='ghost' onClick={handleStartTimer} aria-label='Start timer'>
+        <Button
+          size='icon'
+          variant='ghost'
+          onClick={handleStartTimer}
+          aria-label='Start timer'
+        >
           <IconPlayerPlay size={24} />
         </Button>
       )}

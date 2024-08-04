@@ -79,7 +79,8 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
+        zodError:
+          error.cause instanceof ZodError ? error.cause.flatten() : null,
       },
     }
   },
@@ -124,7 +125,7 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
 const sentryMiddleware = t.middleware(
   Sentry.Handlers.trpcMiddleware({
     attachRpcInput: true,
-  })
+  }),
 )
 
 const finalMiddleware = sentryMiddleware.unstable_pipe(enforceUserIsAuthed)

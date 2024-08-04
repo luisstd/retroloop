@@ -20,7 +20,10 @@ test('PhaseIndicator', () => {
 
   describe('renders phase indicators with active and clickable first phase', () => {
     render(
-      <PhaseIndicator retrospective={retrospective} handleUpdateRetro={handleUpdateRetroMock} />
+      <PhaseIndicator
+        retrospective={retrospective}
+        handleUpdateRetro={handleUpdateRetroMock}
+      />,
     )
 
     const writePhaseIndicator = screen.getByText('01) Write')
@@ -39,7 +42,10 @@ test('PhaseIndicator', () => {
     retrospective.phase = 'VOTING'
 
     render(
-      <PhaseIndicator retrospective={retrospective} handleUpdateRetro={handleUpdateRetroMock} />
+      <PhaseIndicator
+        retrospective={retrospective}
+        handleUpdateRetro={handleUpdateRetroMock}
+      />,
     )
 
     const votePhaseIndicator = screen.getByText('02) Vote')
@@ -58,7 +64,10 @@ test('PhaseIndicator', () => {
     retrospective.phase = 'DISCUSSING'
 
     render(
-      <PhaseIndicator retrospective={retrospective} handleUpdateRetro={handleUpdateRetroMock} />
+      <PhaseIndicator
+        retrospective={retrospective}
+        handleUpdateRetro={handleUpdateRetroMock}
+      />,
     )
 
     const discussPhaseIndicator = screen.getByText('03) Discuss')

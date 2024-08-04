@@ -14,7 +14,7 @@ test('EditDialog', () => {
           editHandler={(input) => {
             expect(input)
           }}
-        />
+        />,
       )
     })
 

@@ -3,7 +3,13 @@ import { IconMailFast } from '@tabler/icons-react'
 import { signIn } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/ui/card/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/app/ui/card/card'
 
 export default function VerifyRequest() {
   return (
@@ -11,7 +17,9 @@ export default function VerifyRequest() {
       <Card className='mx-5 sm:mx-0'>
         <CardHeader>
           <CardTitle>Check your e-mail</CardTitle>
-          <CardDescription>A sign-in link has been sent to your e-mail address.</CardDescription>
+          <CardDescription>
+            A sign-in link has been sent to your e-mail address.
+          </CardDescription>
         </CardHeader>
         <CardContent className='flex flex-col items-center gap-4'>
           <IconMailFast size={128} />

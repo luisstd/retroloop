@@ -18,7 +18,9 @@ export function Footer() {
         <NavigationMenuList className='flex items-center gap-2'>
           <NavigationMenuItem>
             <Link href='/privacy' legacyBehavior passHref>
-              <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}>
+              <NavigationMenuLink
+                className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+              >
                 Privacy Policy
               </NavigationMenuLink>
             </Link>
@@ -26,7 +28,9 @@ export function Footer() {
 
           <NavigationMenuItem>
             <Link href='/terms' legacyBehavior passHref>
-              <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}>
+              <NavigationMenuLink
+                className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+              >
                 Terms of Use
               </NavigationMenuLink>
             </Link>

@@ -17,7 +17,10 @@ type PhaseIndicatorProps = {
   handleUpdateRetro: (input: Retrospective) => void
 }
 
-export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndicatorProps) {
+export function PhaseIndicator({
+  retrospective,
+  handleUpdateRetro,
+}: PhaseIndicatorProps) {
   const isWritingPhase = retrospective.phase === RetroPhase.WRITING
   const isVotingPhase = retrospective.phase === RetroPhase.VOTING
   const isDiscussingPhase = retrospective.phase === RetroPhase.DISCUSSING
@@ -28,7 +31,8 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
         variant={isWritingPhase ? null : 'ghost'}
         className={`text-md ${isWritingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
         onClick={() =>
-          !isWritingPhase && handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })
+          !isWritingPhase &&
+          handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })
         }
       >
         [01] Write
@@ -46,7 +50,9 @@ export function PhaseIndicator({ retrospective, handleUpdateRetro }: PhaseIndica
       </Button>
 
       <Button
-        variant={isWritingPhase || isVotingPhase || isDiscussingPhase ? null : 'ghost'}
+        variant={
+          isWritingPhase || isVotingPhase || isDiscussingPhase ? null : 'ghost'
+        }
         className={`text-md ${isDiscussingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
       >
         [03] Discuss

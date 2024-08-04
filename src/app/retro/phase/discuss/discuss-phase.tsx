@@ -20,9 +20,8 @@ type DiscussPhaseProps = {
 }
 
 export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
-  const { data: feedbackItems, isLoading } = api.retroItem.getAllByRetroIdSorted.useQuery(
-    selectedRetro.id
-  )
+  const { data: feedbackItems, isLoading } =
+    api.retroItem.getAllByRetroIdSorted.useQuery(selectedRetro.id)
 
   return (
     <div className='col-start-2 w-full lg:min-h-screen'>
@@ -34,9 +33,14 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
               <CarouselItem key={item.id}>
                 <Card className='mx-auto flex min-h-[18rem] w-11/12 flex-col justify-between break-words p-5'>
                   <CardTitle className='flex flex-row items-center justify-between'>
-                    Feedback <Badge variant='secondary'>{getFeedbackItemType(item.type)}</Badge>
+                    Feedback{' '}
+                    <Badge variant='secondary'>
+                      {getFeedbackItemType(item.type)}
+                    </Badge>
                   </CardTitle>
-                  <CardDescription className='prose text-lg'>{item.content}</CardDescription>
+                  <CardDescription className='prose text-lg'>
+                    {item.content}
+                  </CardDescription>
                   <div className='flex flex-row items-center justify-between'>
                     <Badge className='text-lg font-bold'>+{item.votes}</Badge>
                     <CardDescription className='self-end justify-self-end px-5 text-lg'>

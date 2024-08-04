@@ -13,7 +13,10 @@ type ActionButtonsProps = {
   handleUpdateRetro: (input: Retrospective) => void
 }
 
-export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButtonsProps) {
+export function ActionButtons({
+  retrospective,
+  handleUpdateRetro,
+}: ActionButtonsProps) {
   const router = useRouter()
 
   function handleCopy() {
@@ -44,12 +47,19 @@ export function ActionButtons({ retrospective, handleUpdateRetro }: ActionButton
 
   return (
     <div className='flex gap-4'>
-      <Button aria-label='Start Retro' className='flex gap-1' onClick={handleCopy}>
+      <Button
+        aria-label='Start Retro'
+        className='flex gap-1'
+        onClick={handleCopy}
+      >
         Copy Retro link
         <IconCopy />
       </Button>
 
-      <PhaseSwitchDialog phaseSwitchHandler={handleNextPhase} phase={retrospective.phase} />
+      <PhaseSwitchDialog
+        phaseSwitchHandler={handleNextPhase}
+        phase={retrospective.phase}
+      />
     </div>
   )
 }

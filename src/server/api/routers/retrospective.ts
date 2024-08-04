@@ -13,7 +13,7 @@ export const retrospectiveRouter = createTRPCRouter({
       z.object({
         userId: z.string(),
         accountType: z.string(),
-      })
+      }),
     )
     .query(async ({ ctx, input }) => {
       console.log('input', input)
@@ -36,22 +36,24 @@ export const retrospectiveRouter = createTRPCRouter({
       },
     })
   }),
-  add: protectedProcedure.input(RetrospectiveCreateInputSchema).mutation(async ({ ctx, input }) => {
-    const userId = ctx.session?.user?.id
+  add: protectedProcedure
+    .input(RetrospectiveCreateInputSchema)
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.session?.user?.id
 
-    return ctx.db.retrospective.create({
-      data: {
-        ...input,
-        participants: {
-          connect: [
-            {
-              id: userId,
-            },
-          ],
+      return ctx.db.retrospective.create({
+        data: {
+          ...input,
+          participants: {
+            connect: [
+              {
+                id: userId,
+              },
+            ],
+          },
         },
-      },
-    })
-  }),
+      })
+    }),
   addParticipant: protectedProcedure
     .input(z.object({ retroId: z.string(), userId: z.string() }))
     .mutation(async ({ ctx, input }) => {
@@ -68,12 +70,14 @@ export const retrospectiveRouter = createTRPCRouter({
         },
       })
     }),
-  edit: protectedProcedure.input(RetrospectiveUpdateInputSchema).mutation(({ ctx, input }) => {
-    return ctx.db.retrospective.update({
-      where: {
-        id: input.id,
-      },
-      data: input,
-    })
-  }),
+  edit: protectedProcedure
+    .input(RetrospectiveUpdateInputSchema)
+    .mutation(({ ctx, input }) => {
+      return ctx.db.retrospective.update({
+        where: {
+          id: input.id,
+        },
+        data: input,
+      })
+    }),
 })

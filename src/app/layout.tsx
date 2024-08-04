@@ -11,7 +11,8 @@ import { TRPCReactProvider } from '@/trpc/react'
 
 export const metadata = {
   title: 'Retroloop - Agile retrospectives made easy',
-  description: 'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
+  description:
+    'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
   metadataBase: new URL('https://retroloop.io'),
   alternates: {
@@ -24,11 +25,16 @@ export const metadata = {
     type: 'website',
     url: 'https://retroloop.io/',
     title: 'Retroloop - Agile retrospectives made easy',
-    description: 'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
+    description:
+      'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
   },
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const session = await getServerAuthSession()
 
   return (
@@ -37,7 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers session={session}>
           <TRPCReactProvider headers={headers()}>
             <main className='relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center'>
-              <div className='opacity-gradient pattern-dots pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2 absolute -z-50 h-full min-h-screen w-screen' />
+              <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
               <Menu />
               {children}
               <Toaster />

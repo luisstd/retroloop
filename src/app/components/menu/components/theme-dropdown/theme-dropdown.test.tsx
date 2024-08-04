@@ -1,5 +1,13 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+  vi,
+} from 'vitest'
 
 import { ThemeDropdown } from '@/app/components/menu/components/theme-dropdown/theme-dropdown'
 
@@ -37,7 +45,9 @@ test('ThemeDropdown', () => {
       const triggerElement = screen.getByRole('button', { name: '' })
       expect(triggerElement).toBeDefined()
 
-      const portalElement = screen.getByRole('region', { name: 'RadixDropdownMenuPortal' })
+      const portalElement = screen.getByRole('region', {
+        name: 'RadixDropdownMenuPortal',
+      })
       expect(portalElement).toBeDefined()
     })
 

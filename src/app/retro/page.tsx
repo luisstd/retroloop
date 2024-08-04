@@ -30,7 +30,8 @@ export default function Retro() {
     refetchIntervalInBackground: true,
   })
 
-  const { mutate: addParticipant } = api.retrospective.addParticipant.useMutation()
+  const { mutate: addParticipant } =
+    api.retrospective.addParticipant.useMutation()
 
   useEffect(() => {
     if (retroId && userId) {
@@ -45,10 +46,19 @@ export default function Retro() {
 
   return selectedRetro ? (
     <>
-      <RetroActionBar selectedRetro={selectedRetro} refetchRetro={refetchRetro} />
-      {selectedRetro.phase === 'WRITING' && <WritePhase selectedRetro={selectedRetro} />}
-      {selectedRetro.phase === 'VOTING' && <VotePhase selectedRetro={selectedRetro} />}
-      {selectedRetro.phase === 'DISCUSSING' && <DiscussPhase selectedRetro={selectedRetro} />}
+      <RetroActionBar
+        selectedRetro={selectedRetro}
+        refetchRetro={refetchRetro}
+      />
+      {selectedRetro.phase === 'WRITING' && (
+        <WritePhase selectedRetro={selectedRetro} />
+      )}
+      {selectedRetro.phase === 'VOTING' && (
+        <VotePhase selectedRetro={selectedRetro} />
+      )}
+      {selectedRetro.phase === 'DISCUSSING' && (
+        <DiscussPhase selectedRetro={selectedRetro} />
+      )}
       {session?.user?.email && <Feedback userEmail={session.user.email} />}
     </>
   ) : (

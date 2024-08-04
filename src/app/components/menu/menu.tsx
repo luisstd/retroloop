@@ -34,7 +34,7 @@ export function Menu() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  'flex cursor-pointer items-center rounded-l-3xl rounded-r-md'
+                  'flex cursor-pointer items-center rounded-l-3xl rounded-r-md',
                 )}
                 aria-label='Landingpage'
               >
@@ -45,7 +45,11 @@ export function Menu() {
                   width={isLandingPage ? 45 : 55}
                   height={isLandingPage ? 45 : 55}
                 />
-                {isLandingPage && <span className='text-md not-italic sm:text-xl'>Retroloop</span>}
+                {isLandingPage && (
+                  <span className='text-md not-italic sm:text-xl'>
+                    Retroloop
+                  </span>
+                )}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

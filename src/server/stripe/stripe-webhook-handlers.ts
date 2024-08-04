@@ -59,7 +59,9 @@ export const handleInvoicePaid = async ({
 }) => {
   const invoice = event.data.object as Stripe.Invoice
   const subscriptionId = invoice.subscription
-  const subscription = await stripe.subscriptions.retrieve(subscriptionId as string)
+  const subscription = await stripe.subscriptions.retrieve(
+    subscriptionId as string,
+  )
   const userId = subscription.metadata.userId
 
   // update user with subscription data

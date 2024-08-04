@@ -29,4 +29,8 @@ const sentryWebpackOptions = {
   authToken: process.env.SENTRY_AUTH_TOKEN,
 }
 
-module.exports = withSentryConfig(nextConfig, sentryConfig, sentryWebpackOptions)
+module.exports = withSentryConfig(
+  nextConfig,
+  sentryConfig,
+  sentryWebpackOptions,
+)
