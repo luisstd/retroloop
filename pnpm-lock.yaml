@@ -72,8 +72,8 @@ dependencies:
     specifier: ^10.45.2
     version: 10.45.2
   ably:
-    specifier: ^2.0.4
-    version: 2.0.4(react-dom@18.3.1)(react@18.3.1)
+    specifier: ^2.3.1
+    version: 2.3.1(react-dom@18.3.1)(react@18.3.1)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -3215,8 +3215,8 @@ packages:
       through: 2.3.8
     dev: true
 
-  /ably@2.0.4(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-mA2Zsv7u29jZSCyz9YOXoxWq8GIktcvA57GTIdMP0Xv3byV41bBoAZUgXMl7VjD5cioA6xenUbqX17d9zcimSw==}
+  /ably@2.3.1(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-OQ9PUwQe0qehOUPqvLargmUTlPQsxCAdStIpLZE7pT68yDd3JF28R1Ap7C50DluCIa6NqXrieRSa2tcLNN95PA==}
     engines: {node: '>=16'}
     peerDependencies:
       react: '>=16.8.0'
@@ -3232,7 +3232,8 @@ packages:
       got: 11.8.6
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      ws: 8.16.0
+      ulid: 2.3.0
+      ws: 8.18.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -8075,6 +8076,11 @@ packages:
     resolution: {integrity: sha512-uY/99gMLIOlJPwATcMVYfqDSxUR9//AUcgZMzwfSTJPDKzA1S8mX4VLqa+fiAtveraQUBCz4FFcwVZBGbwBXIw==}
     dev: true
 
+  /ulid@2.3.0:
+    resolution: {integrity: sha512-keqHubrlpvT6G2wH0OEfSW4mquYRcbe/J8NMmveoQOjUqmo+hXtO+ORCpWhdbZ7k72UtY61BL7haGxW6enBnjw==}
+    hasBin: true
+    dev: false
+
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
     dependencies:
@@ -8465,6 +8471,20 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+    dev: true
+
+  /ws@8.18.0:
+    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
 
   /xml-name-validator@5.0.0:
     resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==}
