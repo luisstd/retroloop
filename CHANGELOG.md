@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.1](https://github.com/luisstd/retroloop/compare/v1.12.0...v1.12.1) (2024-08-04)
+
+
+### Bug Fixes
+
+* resolve ably warning logs ([81ca4ab](https://github.com/luisstd/retroloop/commit/81ca4ab0baa031046b547fda5929ec0ada7667fc))
+
 ## [1.12.0](https://github.com/luisstd/retroloop/compare/v1.11.0...v1.12.0) (2024-05-05)
 
 
