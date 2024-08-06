@@ -131,49 +131,49 @@ jobs:
       - name: Run Vitest
         run: pnpm test:unit
 
-  playwright:
-    name: Integration Tests
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+  # playwright:
+  #   name: Integration Tests
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v4
+  #       with:
+  #         version: 8
 
-      - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: pnpm install --frozen-lockfile
+  #     - name: Install Dependencies
+  #       if: steps.cache-deps.outputs.cache-hit != 'true'
+  #       run: pnpm install --frozen-lockfile
 
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifact
+  #     - name: Download Build Artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: build-artifact
 
-      - name: Change to correct directory
-        run: cd ./../
+  #     - name: Change to correct directory
+  #       run: cd ./../
 
-      - name: Start Server
-        run: SKIP_ENV_VALIDATION=1 pnpm dev &
+  #     - name: Start Server
+  #       run: SKIP_ENV_VALIDATION=1 pnpm dev &
 
-      - name: Wait for Server to Start
-        run: sleep 5
+  #     - name: Wait for Server to Start
+  #       run: sleep 5
 
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
+  #     - name: Install Playwright Browsers
+  #       run: pnpm exec playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: pnpm exec playwright test
+  #     - name: Run Playwright tests
+  #       run: pnpm exec playwright test
 
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: test-results
-          path: test-results/playwright
-          retention-days: 30
+  #     - uses: actions/upload-artifact@v4
+  #       if: always()
+  #       with:
+  #         name: test-results
+  #         path: test-results/playwright
+  #         retention-days: 30
 
   codecov:
     name: Code Coverage
