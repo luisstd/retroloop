@@ -49,7 +49,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_ABLY_BASE_URL: z.string(),
   },
 
   /**
@@ -80,6 +80,7 @@ export const env = createEnv({
     STRIPE_PRICE_ID_YEARLY: process.env.STRIPE_PRICE_ID_YEARLY,
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     FEEDBACK_FISH_PROJECT_ID: process.env.FEEDBACK_FISH_PROJECT_ID,
+    NEXT_PUBLIC_ABLY_BASE_URL: process.env.NEXT_PUBLIC_ABLY_BASE_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
