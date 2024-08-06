@@ -10,6 +10,8 @@ import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 import * as React from 'react'
 
+import { env } from '@/env.mjs'
+
 export interface ProvidersProps {
   children: React.ReactNode
   session: Session | null
@@ -17,7 +19,10 @@ export interface ProvidersProps {
 
 export function Providers({ children, session }: ProvidersProps) {
   const queryClient = new QueryClient()
-  const ably = new Ably.Realtime({ authUrl: `${window.location.origin}/api/ably`,  authMethod: 'POST',  })
+  const ably = new Ably.Realtime({
+    authUrl: env.NEXT_PUBLIC_ABLY_BASE_URL + '/api/ably',
+    authMethod: 'POST',
+  })
 
   return (
     <SessionProvider session={session}>
