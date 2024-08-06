@@ -1,4 +1,4 @@
-import { test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 test.describe('Landing Page Health Check', () => {
   test('should navigate to Privacy Policy and Terms of Use pages', async ({
@@ -7,11 +7,15 @@ test.describe('Landing Page Health Check', () => {
     await page.goto('/')
 
     // Navigate to Privacy Policy and verify
+    await expect(
+      page.getByRole('link', { name: 'Privacy Policy' }),
+    ).toBeVisible()
     await page.getByRole('link', { name: 'Privacy Policy' }).click()
     await page.waitForSelector('text=Retroloop Privacy Policy')
 
     // Go back to the homepage and navigate to Terms of Use
     await page.goBack()
+    await expect(page.getByRole('link', { name: 'Terms of Use' })).toBeVisible()
     await page.getByRole('link', { name: 'Terms of Use' }).click()
     await page.waitForSelector('text=Retroloop Terms of Service')
   })
