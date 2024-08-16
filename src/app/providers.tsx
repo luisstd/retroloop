@@ -17,13 +17,13 @@ export interface ProvidersProps {
   session: Session | null
 }
 
-export function Providers({ children, session }: ProvidersProps) {
-  const queryClient = new QueryClient()
-  const ably = new Ably.Realtime({
-    authUrl: env.NEXT_PUBLIC_ABLY_BASE_URL + '/api/ably',
-    authMethod: 'POST',
-  })
+const queryClient = new QueryClient()
+const ablyClient = new Ably.Realtime({
+  authUrl: env.NEXT_PUBLIC_ABLY_BASE_URL + '/api/ably',
+  authMethod: 'POST',
+})
 
+export function Providers({ children, session }: ProvidersProps) {
   return (
     <SessionProvider session={session}>
       <PlausibleProvider
@@ -36,7 +36,7 @@ export function Providers({ children, session }: ProvidersProps) {
           enableSystem={true}
         >
           <QueryClientProvider client={queryClient}>
-            <AblyProvider client={ably}>
+            <AblyProvider client={ablyClient}>
               <ChannelProvider channelName='retrospective'>
                 {children}
               </ChannelProvider>
