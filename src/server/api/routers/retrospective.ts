@@ -26,6 +26,10 @@ export const retrospectiveRouter = createTRPCRouter({
 
       return ctx.db.retrospective.findMany({
         where: filters,
+        include: {
+          items: true,
+          participants: true,
+        },
         orderBy: { date: 'desc' },
       })
     }),
