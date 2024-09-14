@@ -4,7 +4,7 @@
 
 <img src="./public/logo-transparent.png" width="150px" alt="Retroloop logo" align="right" />
 
-[![Pipeline](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml/badge.svg)](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml) ![CodeQL](https://github.com/luisstd/retroloop/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/luisstd/retroloop/badge)](https://www.codefactor.io/repository/github/luisstd/retroloop) ![GitHub](https://img.shields.io/github/license/luisstd/retroloop) ![GitHub tag (with filter)](https://img.shields.io/github/v/tag/luisstd/retroloop?label=release&link=https%3A%2F%2Fgithub.com%2Fluisstd%2Fretroloop%2Freleases)
+[![Pipeline](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml/badge.svg)](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml) ![CodeQL](https://github.com/luisstd/retroloop/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/luisstd/retroloop/badge)](https://www.codefactor.io/repository/github/luisstd/retroloop) ![GitHub tag (with filter)](https://img.shields.io/github/v/tag/luisstd/retroloop?label=release&link=https%3A%2F%2Fgithub.com%2Fluisstd%2Fretroloop%2Freleases)
 
 **Retrospectives made easy**
 
