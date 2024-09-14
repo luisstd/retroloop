@@ -1,6 +1,9 @@
 name: Prisma Migrate
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types:
       - closed
