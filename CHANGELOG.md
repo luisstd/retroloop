@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/luisstd/retroloop/compare/v1.12.1...v1.13.0) (2024-09-14)
+
+
+### Features
+
+* show participant and feedback count ([fe52de9](https://github.com/luisstd/retroloop/commit/fe52de930c3a3ff905ddf89825a320ff81973bf8))
+
 ## [1.12.1](https://github.com/luisstd/retroloop/compare/v1.12.0...v1.12.1) (2024-08-04)
 
 
