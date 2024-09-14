@@ -1,5 +1,6 @@
 'use client'
 
+import { getYear } from 'date-fns'
 import Link from 'next/link'
 
 import {
@@ -12,9 +13,11 @@ import {
 import { cn } from '@/utils/cn'
 
 export function Footer() {
+  const currentYear = getYear(new Date())
+
   return (
-    <footer>
-      <NavigationMenu className='p-10'>
+    <footer className='flex flex-col items-center'>
+      <NavigationMenu className='p-5'>
         <NavigationMenuList className='flex items-center gap-2'>
           <NavigationMenuItem>
             <Link href='/privacy' legacyBehavior passHref>
@@ -25,7 +28,6 @@ export function Footer() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
-
           <NavigationMenuItem>
             <Link href='/terms' legacyBehavior passHref>
               <NavigationMenuLink
@@ -37,6 +39,9 @@ export function Footer() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      <p className='justify-self-start pb-10 text-sm'>
+        &copy; {currentYear} Noisia Labs OÜ
+      </p>
     </footer>
   )
 }
