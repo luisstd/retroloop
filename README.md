@@ -4,7 +4,7 @@
 
 <img src="./public/logo-transparent.png" width="150px" alt="Retroloop logo" align="right" />
 
-[![Pipeline](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml/badge.svg)](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml) ![CodeQL](https://github.com/luisstd/retroloop/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/luisstd/retroloop/badge)](https://www.codefactor.io/repository/github/luisstd/retroloop) ![GitHub](https://img.shields.io/github/license/luisstd/retroloop) ![GitHub tag (with filter)](https://img.shields.io/github/v/tag/luisstd/retroloop?label=release&link=https%3A%2F%2Fgithub.com%2Fluisstd%2Fretroloop%2Freleases)
+[![Pipeline](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml/badge.svg)](https://github.com/luisstd/retroloop/actions/workflows/pipeline.yml) ![CodeQL](https://github.com/luisstd/retroloop/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/luisstd/retroloop/badge)](https://www.codefactor.io/repository/github/luisstd/retroloop) ![GitHub tag (with filter)](https://img.shields.io/github/v/tag/luisstd/retroloop?label=release&link=https%3A%2F%2Fgithub.com%2Fluisstd%2Fretroloop%2Freleases)
 
 **Retrospectives made easy**
 
@@ -64,10 +64,6 @@ If you have any feedback, please use the feedback widget, open an issue or reach
 ## Contributing
 
 Everyone is welcome to improve this project. See [CONTRIBUTING](https://github.com/luisstd/retroloop/blob/dev/CONTRIBUTING.md)
-
-## License
-
-Retroloop is open-source under the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) Version 3 (AGPLv3) or any later version. See [LICENSE](https://github.com/luisstd/retroloop/blob/dev/LICENSE.md) for more detail.
 
 ## Sponsors
 

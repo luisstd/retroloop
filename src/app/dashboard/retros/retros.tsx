@@ -1,6 +1,6 @@
 'use client'
 
-import { Retrospective, User } from '@prisma/client'
+import { User } from '@prisma/client'
 import { useEffect, useState } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
@@ -13,6 +13,7 @@ import { api } from '@/trpc/react'
 import {
   RetrospectiveCreateInput,
   RetrospectiveUpdateInput,
+  RetrospectiveWithRelations,
 } from '@/types/retrospective'
 import { AccountType, getAccountType } from '@/utils/utils'
 
@@ -90,7 +91,7 @@ export function Retros({ userId }: RetrosProps) {
 
       <section className='mt-5 grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {retrospectives?.length ? (
-          retrospectives.map((retrospective: Retrospective) => (
+          retrospectives.map((retrospective: RetrospectiveWithRelations) => (
             <RetroCard
               key={retrospective.id}
               retrospective={retrospective}

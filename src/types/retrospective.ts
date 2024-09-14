@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client'
 import { z } from 'zod'
 
 import {
@@ -12,3 +13,10 @@ export type RetrospectiveCreateInput = z.infer<
 export type RetrospectiveUpdateInput = z.infer<
   typeof RetrospectiveUpdateInputSchema
 >
+
+export type RetrospectiveWithRelations = Prisma.RetrospectiveGetPayload<{
+  include: {
+    items: true
+    participants: true
+  }
+}>
