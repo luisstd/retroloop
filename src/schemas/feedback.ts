@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const RetroItemCreateInputSchema = z.object({
+export const FeedbackCreateInputSchema = z.object({
   content: z.string(),
   type: z.string(),
   retrospectiveId: z.string(),
@@ -9,7 +9,7 @@ export const RetroItemCreateInputSchema = z.object({
   userId: z.string().nullable(),
 })
 
-export const RetroItemUpdateInputSchema = z.object({
+export const FeedbackUpdateInputSchema = z.object({
   id: z.string(),
   content: z.string(),
   type: z.string(),

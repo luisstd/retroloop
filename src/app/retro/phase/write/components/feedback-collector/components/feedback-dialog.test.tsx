@@ -1,12 +1,12 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { RetroItemDialog } from '@/app/retro/phase/write/components/item-collector/components/retro-item-dialog'
+import { FeedbackDialog } from '@/app/retro/phase/write/components/feedback-collector/components/feedback-dialog'
 
-describe('RetroItemDialog', () => {
-  let RetroItemDialogMounted: RenderResult
+describe('FeedbackDialog', () => {
+  let FeedbackDialogMounted: RenderResult
 
-  const mockHandleAddRetroItem = vi.fn()
+  const mockHandleAddFeedback = vi.fn()
   const mockItemType = 'improvement'
   const mockUserId = '123'
   const mockRetrospective = {
@@ -19,28 +19,28 @@ describe('RetroItemDialog', () => {
   }
 
   beforeEach(() => {
-    RetroItemDialogMounted = render(
-      <RetroItemDialog
+    FeedbackDialogMounted = render(
+      <FeedbackDialog
         itemType={mockItemType}
         userId={mockUserId}
         retrospective={mockRetrospective}
-        handleAddRetroItem={mockHandleAddRetroItem}
+        handleAddFeedback={mockHandleAddFeedback}
       />,
     )
     vi.clearAllMocks()
   })
 
   afterEach(() => {
-    RetroItemDialogMounted.unmount()
+    FeedbackDialogMounted.unmount()
   })
 
   test('renders the trigger button', () => {
     render(
-      <RetroItemDialog
+      <FeedbackDialog
         itemType={mockItemType}
         userId={mockUserId}
         retrospective={mockRetrospective}
-        handleAddRetroItem={mockHandleAddRetroItem}
+        handleAddFeedback={mockHandleAddFeedback}
       />,
     )
 
@@ -50,11 +50,11 @@ describe('RetroItemDialog', () => {
 
   test('opens the dialog when the trigger button is clicked', () => {
     render(
-      <RetroItemDialog
+      <FeedbackDialog
         itemType={mockItemType}
         userId={mockUserId}
         retrospective={mockRetrospective}
-        handleAddRetroItem={mockHandleAddRetroItem}
+        handleAddFeedback={mockHandleAddFeedback}
       />,
     )
 
@@ -67,11 +67,11 @@ describe('RetroItemDialog', () => {
 
   test('closes the dialog when the close button is clicked', () => {
     render(
-      <RetroItemDialog
+      <FeedbackDialog
         itemType={mockItemType}
         userId={mockUserId}
         retrospective={mockRetrospective}
-        handleAddRetroItem={mockHandleAddRetroItem}
+        handleAddFeedback={mockHandleAddFeedback}
       />,
     )
 
@@ -91,13 +91,13 @@ describe('RetroItemDialog', () => {
     }
   })
 
-  test('calls handleAddRetroItem with the correct input when the form is submitted', () => {
+  test('calls handleAddFeedback with the correct input when the form is submitted', () => {
     render(
-      <RetroItemDialog
+      <FeedbackDialog
         itemType={mockItemType}
         userId={mockUserId}
         retrospective={mockRetrospective}
-        handleAddRetroItem={mockHandleAddRetroItem}
+        handleAddFeedback={mockHandleAddFeedback}
       />,
     )
 

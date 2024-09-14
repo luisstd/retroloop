@@ -2,7 +2,7 @@
 
 import { Retrospective } from '@prisma/client'
 
-import { ItemCollector } from '@/app/retro/phase/write/components/item-collector/item-collector'
+import { FeedbackCollector } from '@/app/retro/phase/write/components/feedback-collector/feedback-collector'
 import { Card } from '@/app/ui/card/card'
 
 type WritePhaseProps = {
@@ -15,7 +15,7 @@ export function WritePhase({ selectedRetro }: WritePhaseProps) {
       {selectedRetro && (
         <>
           <Card className='col-start-1 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
-            <ItemCollector
+            <FeedbackCollector
               retrospective={selectedRetro}
               itemType='success'
               title={'Went well'}
@@ -23,7 +23,7 @@ export function WritePhase({ selectedRetro }: WritePhaseProps) {
           </Card>
 
           <Card className='col-start-2 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
-            <ItemCollector
+            <FeedbackCollector
               retrospective={selectedRetro}
               itemType='improvement'
               title={'Can be improved'}
@@ -31,7 +31,7 @@ export function WritePhase({ selectedRetro }: WritePhaseProps) {
           </Card>
 
           <Card className='col-start-3 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
-            <ItemCollector
+            <FeedbackCollector
               retrospective={selectedRetro}
               itemType='action'
               title={'Start doing'}
