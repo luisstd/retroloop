@@ -1,4 +1,3 @@
-import { Prisma } from '@prisma/client'
 import { IconArrowRight, IconUser } from '@tabler/icons-react'
 import { MessageCircle } from 'lucide-react'
 import Link from 'next/link'
@@ -12,18 +11,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/app/ui/card/card'
-import { RetrospectiveUpdateInput } from '@/types/retrospective'
+import {
+  RetrospectiveUpdateInput,
+  RetrospectiveWithRelations,
+} from '@/types/retrospective'
 import { formatDate } from '@/utils/utils'
 
-type RetroWithRelations = Prisma.RetrospectiveGetPayload<{
-  include: {
-    items: true
-    participants: true
-  }
-}>
-
 type RetroCardProps = {
-  retrospective: RetroWithRelations
+  retrospective: RetrospectiveWithRelations
   handleUpdateRetro: (input: RetrospectiveUpdateInput) => void
 }
 
