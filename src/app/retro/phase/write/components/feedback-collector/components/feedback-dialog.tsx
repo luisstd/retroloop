@@ -17,22 +17,22 @@ import {
   DialogTrigger,
 } from '@/app/ui/dialog/dialog'
 import { Textarea } from '@/app/ui/textarea/textarea'
-import { RetroItemCreateInputSchema } from '@/schemas/retro-item'
-import { RetroItemCreateInput } from '@/types/retro-item'
+import { FeedbackCreateInputSchema } from '@/schemas/feedback'
+import { FeedbackCreateInput } from '@/types/feedback'
 
-type RetroItemDialogProps = {
+type FeedbackDialogProps = {
   itemType: string
   userId: string
   retrospective: Retrospective
-  handleAddRetroItem: (input: RetroItemCreateInput) => void
+  handleAddFeedback: (input: FeedbackCreateInput) => void
 }
 
-export function RetroItemDialog({
+export function FeedbackDialog({
   itemType,
   userId,
   retrospective,
-  handleAddRetroItem,
-}: RetroItemDialogProps) {
+  handleAddFeedback,
+}: FeedbackDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -63,9 +63,7 @@ export function RetroItemDialog({
         </DialogHeader>
 
         <Formik
-          validationSchema={toFormikValidationSchema(
-            RetroItemCreateInputSchema,
-          )}
+          validationSchema={toFormikValidationSchema(FeedbackCreateInputSchema)}
           initialValues={{
             type: itemType ? itemType : '',
             content: '',
@@ -74,8 +72,8 @@ export function RetroItemDialog({
             voters: [],
             userId: userId,
           }}
-          onSubmit={(values: RetroItemCreateInput) => {
-            handleAddRetroItem(values)
+          onSubmit={(values: FeedbackCreateInput) => {
+            handleAddFeedback(values)
             setIsOpen(false)
           }}
         >

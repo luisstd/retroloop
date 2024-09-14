@@ -1,73 +1,73 @@
 'use client'
 
-import { RetroItem, Retrospective } from '@prisma/client'
+import { Feedback, Retrospective } from '@prisma/client'
 import { useSession } from 'next-auth/react'
 
 import { DeleteDialog } from '@/app/components/dialog/delete-dialog/delete-dialog'
 import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
-import { RetroItemDialog } from '@/app/retro/phase/write/components/item-collector/components/retro-item-dialog'
+import { FeedbackDialog } from '@/app/retro/phase/write/components/feedback-collector/components/feedback-dialog'
 import { Card } from '@/app/ui/card/card'
 import { Skeleton } from '@/app/ui/skeleton/skeleton'
 import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
-import { RetroItemCreateInput } from '@/types/retro-item'
+import { FeedbackCreateInput } from '@/types/feedback'
 
-type ItemCollectorProps = {
+type FeedbackCollectorProps = {
   title: string
   retrospective: Retrospective
   itemType: string
 }
 
-export function ItemCollector({
+export function FeedbackCollector({
   title,
   retrospective,
   itemType,
-}: ItemCollectorProps) {
+}: FeedbackCollectorProps) {
   const { data: session } = useSession()
   const { toast } = useToast()
   const userId = session?.user?.id
 
   const {
-    data: retroItems,
+    data: feedback,
     isLoading,
     refetch,
-  } = api.retroItem.getAllByRetroIdFiltered.useQuery(retrospective.id)
+  } = api.feedback.getAllByRetroIdFiltered.useQuery(retrospective.id)
 
-  const { mutate: addRetroItem } = api.retroItem.add.useMutation({
+  const { mutate: addFeedback } = api.feedback.add.useMutation({
     onSuccess: () => {
       refetch()
     },
   })
-  const { mutate: updateRetroItem } = api.retroItem.edit.useMutation({
-    onSuccess: () => {
-      refetch()
-    },
-  })
-
-  const { mutate: deleteRetroItem } = api.retroItem.delete.useMutation({
+  const { mutate: updateFeedback } = api.feedback.edit.useMutation({
     onSuccess: () => {
       refetch()
     },
   })
 
-  function handleAddRetroItem(input: RetroItemCreateInput): void {
-    addRetroItem(input)
+  const { mutate: deleteFeedback } = api.feedback.delete.useMutation({
+    onSuccess: () => {
+      refetch()
+    },
+  })
+
+  function handleAddFeedback(input: FeedbackCreateInput): void {
+    addFeedback(input)
     toast({
       title: 'Feedback added',
       description: 'Your feedback was successfully added.',
     })
   }
 
-  function handleEditRetroItem(input: RetroItem): void {
-    updateRetroItem(input)
+  function handleEditFeedback(input: Feedback): void {
+    updateFeedback(input)
     toast({
       title: 'Feedback updated',
       description: 'Your feedback was successfully updated.',
     })
   }
 
-  function handleDeleteRetroItem(input: RetroItem['id']): void {
-    deleteRetroItem(input)
+  function handleDeleteFeedback(input: Feedback['id']): void {
+    deleteFeedback(input)
     toast({
       title: 'Feedback deleted',
       description: 'Your feedback was successfully deleted.',
@@ -79,11 +79,11 @@ export function ItemCollector({
       <div className='flex flex-row items-center pb-3'>
         <h2 className='m-2 mr-auto p-2 text-xl font-bold'>{title}</h2>
         {userId && (
-          <RetroItemDialog
+          <FeedbackDialog
             retrospective={retrospective}
             itemType={itemType}
             userId={userId}
-            handleAddRetroItem={handleAddRetroItem}
+            handleAddFeedback={handleAddFeedback}
           />
         )}
       </div>
@@ -97,9 +97,9 @@ export function ItemCollector({
       )}
 
       <ul>
-        {retroItems &&
-          retroItems.map(
-            (item: RetroItem) =>
+        {feedback &&
+          feedback.map(
+            (item: Feedback) =>
               item.type === itemType && (
                 <li key={item.id}>
                   <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
@@ -109,12 +109,12 @@ export function ItemCollector({
                       <EditDialog
                         itemToEdit={item}
                         editHandler={(input) =>
-                          handleEditRetroItem(input as RetroItem)
+                          handleEditFeedback(input as Feedback)
                         }
                       />
                       <DeleteDialog
                         itemToDelete={item}
-                        deleteHandler={handleDeleteRetroItem}
+                        deleteHandler={handleDeleteFeedback}
                       />
                     </div>
                   </Card>

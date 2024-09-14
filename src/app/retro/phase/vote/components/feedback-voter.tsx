@@ -1,6 +1,6 @@
 'use client'
 
-import { RetroItem, Retrospective } from '@prisma/client'
+import { Feedback, Retrospective } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
 
@@ -13,26 +13,30 @@ import { useToast } from '@/app/ui/toast/use-toast'
 import { api } from '@/trpc/react'
 import { UserSession } from '@/types/user'
 
-type ItemVoterProps = {
+type FeedbackVoterProps = {
   title: string
   retrospective: Retrospective
   itemType: string
 }
 
-export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
+export function FeedbackVoter({
+  title,
+  retrospective,
+  itemType,
+}: FeedbackVoterProps) {
   const { toast } = useToast()
   const { data: session } = useSession()
   const {
-    data: retroItems,
+    data: feedback,
     isLoading,
     refetch,
-  } = api.retroItem.getAllByRetroId.useQuery(retrospective.id, {
+  } = api.feedback.getAllByRetroId.useQuery(retrospective.id, {
     refetchInterval: 500,
     refetchIntervalInBackground: true,
     cacheTime: 0,
   })
 
-  const { mutate: updateRetroItem } = api.retroItem.edit.useMutation({
+  const { mutate: updateFeedback } = api.feedback.edit.useMutation({
     onSuccess: () => {
       refetch()
     },
@@ -40,15 +44,15 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
 
   const userId = session?.user?.id
 
-  const handleEditRetroItem = (input: RetroItem): void => {
-    updateRetroItem(input)
+  const handleEditFeedback = (input: Feedback): void => {
+    updateFeedback(input)
     toast({
       title: 'Vote added',
       description: 'Your vote has been added',
     })
   }
 
-  const hasVoted = (item: RetroItem, user_id: UserSession['id']): boolean => {
+  const hasVoted = (item: Feedback, user_id: UserSession['id']): boolean => {
     return item.voters.includes(user_id)
   }
 
@@ -71,9 +75,9 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
       )}
 
       <ul>
-        {retroItems &&
-          retroItems.map(
-            (item) =>
+        {feedback &&
+          feedback.map(
+            (item: Feedback) =>
               item.type === itemType && (
                 <li key={item.id}>
                   <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
@@ -89,7 +93,7 @@ export function ItemVoter({ title, retrospective, itemType }: ItemVoterProps) {
                           size='icon'
                           variant='ghost'
                           onClick={() => {
-                            handleEditRetroItem({
+                            handleEditFeedback({
                               ...item,
                               votes: item.votes + 1,
                               voters: [...item.voters, userId],

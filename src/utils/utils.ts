@@ -1,4 +1,4 @@
-import { RetroItem, StripeSubscriptionStatus, User } from '@prisma/client'
+import { Feedback, StripeSubscriptionStatus, User } from '@prisma/client'
 import { format, Locale } from 'date-fns'
 import { de, enUS, fr } from 'date-fns/locale'
 
@@ -33,7 +33,7 @@ const getAccountType = (
   }
 }
 
-const getFeedbackItemType = (type: RetroItem['type']) => {
+const getFeedbackType = (type: Feedback['type']) => {
   if (type === 'success') {
     return 'Went well'
   }
@@ -45,4 +45,4 @@ const getFeedbackItemType = (type: RetroItem['type']) => {
   }
 }
 
-export { AccountType, formatDate, getAccountType, getFeedbackItemType }
+export { AccountType, formatDate, getAccountType, getFeedbackType }

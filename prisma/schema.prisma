@@ -51,7 +51,7 @@ model User {
     name                     String?
     role                     String?                   @default("USER")
     retrospectives           Retrospective[]
-    feedback                 RetroItem[]
+    feedback                 Feedback[]
     image                    String?
     accounts                 Account[]
     sessions                 Session[]
@@ -85,17 +85,17 @@ model StripeEvent {
 }
 
 model Retrospective {
-    id              String      @id @default(cuid())
-    createdAt       DateTime    @default(now())
+    id              String     @id @default(cuid())
+    createdAt       DateTime   @default(now())
     name            String
     date            DateTime
-    items           RetroItem[]
-    phase           String      @default("WRITING")
+    items           Feedback[]
+    phase           String     @default("WRITING")
     participants    User[]
     timerExpiration DateTime?
 }
 
-model RetroItem {
+model Feedback {
     id              String        @id @default(cuid())
     createdAt       DateTime      @default(now())
     content         String

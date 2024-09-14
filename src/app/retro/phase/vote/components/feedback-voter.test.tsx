@@ -1,8 +1,8 @@
-import { RetroItem, Retrospective } from '@prisma/client'
+import { Feedback, Retrospective } from '@prisma/client'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { ItemVoter } from '@/app/retro/phase/vote/components/item-voter'
+import { FeedbackVoter } from '@/app/retro/phase/vote/components/feedback-voter'
 import { api } from '@/trpc/react'
 
 vi.mock('next-auth/react', () => ({
@@ -11,7 +11,7 @@ vi.mock('next-auth/react', () => ({
 
 vi.mock('@/trpc/react', () => ({
   api: {
-    retroItem: {
+    feedback: {
       getAllByRetroId: {
         useQuery: vi.fn(),
       },
@@ -22,13 +22,13 @@ vi.mock('@/trpc/react', () => ({
   },
 }))
 
-test('ItemVoter', () => {
-  describe('ItemVoter', () => {
+test('Feedback Voter', () => {
+  describe('FeedbackVoter', () => {
     let title: string
     let retrospective: Retrospective
     let itemType: string
-    let retroItemsQuery: {
-      data: RetroItem[]
+    let feedbackQuery: {
+      data: Feedback[]
       refetch: () => void
     }
     let session: {
@@ -48,14 +48,13 @@ test('ItemVoter', () => {
         timerExpiration: new Date(),
       }
       itemType = 'testType'
-      retroItemsQuery = {
+      feedbackQuery = {
         data: [
           {
             id: '1',
             createdAt: new Date(),
             content: 'Item 1',
             type: '',
-            itemCollectionId: '',
             retrospectiveId: '',
             votes: 5,
             voters: [],
@@ -66,7 +65,6 @@ test('ItemVoter', () => {
             createdAt: new Date(),
             content: 'Item 2',
             type: '',
-            itemCollectionId: '',
             retrospectiveId: '',
             votes: 3,
             voters: [],
@@ -77,7 +75,6 @@ test('ItemVoter', () => {
             createdAt: new Date(),
             content: 'Item 3',
             type: '',
-            itemCollectionId: '',
             retrospectiveId: '',
             votes: 0,
             voters: [],
@@ -88,7 +85,6 @@ test('ItemVoter', () => {
             createdAt: new Date(),
             content: 'Item 4',
             type: '',
-            itemCollectionId: '',
             retrospectiveId: '',
             votes: 7,
             voters: [],
@@ -99,7 +95,7 @@ test('ItemVoter', () => {
       }
       session = { user: { id: '1' } }
       render(
-        <ItemVoter
+        <FeedbackVoter
           title={title}
           retrospective={retrospective}
           itemType={itemType}
@@ -125,16 +121,16 @@ test('ItemVoter', () => {
       const thumbsUpButton = screen.getAllByRole('button', {
         name: /thumbs up/i,
       })[0]
-      const retroItem = retroItemsQuery.data[0]
+      const feedback = feedbackQuery.data[0]
 
-      expect(retroItem.votes).toBe(5)
+      expect(feedback.votes).toBe(5)
 
       fireEvent.click(thumbsUpButton)
 
-      expect(retroItemsQuery.refetch).toHaveBeenCalled()
-      expect(api.retroItem.edit.useMutation).toHaveBeenCalledWith(
+      expect(feedbackQuery.refetch).toHaveBeenCalled()
+      expect(api.feedback.edit.useMutation).toHaveBeenCalledWith(
         expect.objectContaining({
-          votes: retroItem.votes + 1,
+          votes: feedback.votes + 1,
           voters: [session.user.id],
         }),
       )
@@ -142,7 +138,7 @@ test('ItemVoter', () => {
 
     test('does not render retro items if session user is not defined', () => {
       render(
-        <ItemVoter
+        <FeedbackVoter
           title={title}
           retrospective={retrospective}
           itemType={itemType}
