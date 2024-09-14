@@ -48,7 +48,7 @@ export function RetroCard({
       </CardHeader>
 
       <CardContent className='flex justify-between text-muted-foreground'>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 text-sm'>
           <p className='flex items-center gap-2'>
             <IconUser size={18} />
             {retrospective.participants.length}
