@@ -65,10 +65,6 @@ If you have any feedback, please use the feedback widget, open an issue or reach
 
 Everyone is welcome to improve this project. See [CONTRIBUTING](https://github.com/luisstd/retroloop/blob/dev/CONTRIBUTING.md)
 
-## License
-
-Retroloop is open-source under the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) Version 3 (AGPLv3) or any later version. See [LICENSE](https://github.com/luisstd/retroloop/blob/dev/LICENSE.md) for more detail.
-
 ## Sponsors
 
 <a href="https://sentry.io"><img src="./public/sentry.svg" alt="Sentry logo"  /></a>
