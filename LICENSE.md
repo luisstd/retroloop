@@ -14,4 +14,4 @@ This software and its source code are made available to the public for viewing a
 
 If you have any questions or wish to request permission for a use not covered by this license, please reach out to Luis Steidle via contact@noisia.co.
 
-© 2024 Noisa Labs OÜ. All rights reserved.
+© Noisia Labs OÜ. All rights reserved.
