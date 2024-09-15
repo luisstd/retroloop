@@ -41,7 +41,8 @@ export default function Retro() {
   }, [userId, retroId, addParticipant])
 
   if (!isAuthenticated) {
-    const callbackURL = encodeURIComponent(pathname)
+    const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
+    const callbackURL = encodeURIComponent(currentUrl)
     router.push(`/auth/login?callbackurl=${callbackURL}`)
   }
 
