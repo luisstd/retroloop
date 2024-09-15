@@ -102,7 +102,7 @@ export function RetroTimer({
 
       <div className='mx-2 flex gap-2 text-center text-2xl'>
         {isTimerRunning ? (
-          <span className='w-28 text-4xl'>{timerDisplay}</span>
+          <span className='text-3xl tabular-nums'>{timerDisplay}</span>
         ) : (
           <>
             <Input
