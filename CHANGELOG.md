@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.13.1](https://github.com/luisstd/retroloop/compare/v1.13.0...v1.13.1) (2024-09-15)
+
+
+### Bug Fixes
+
+* fix timer digit layout shift ([0bbdc5a](https://github.com/luisstd/retroloop/commit/0bbdc5aa984b950ea73cfa17fd1d74eee601ab79))
+* use next pathname hook instead of window object ([73a92e7](https://github.com/luisstd/retroloop/commit/73a92e71bab9e2c9958b70b93156de209a782c43))
+
 ## [1.13.0](https://github.com/luisstd/retroloop/compare/v1.12.1...v1.13.0) (2024-09-14)
 
 
