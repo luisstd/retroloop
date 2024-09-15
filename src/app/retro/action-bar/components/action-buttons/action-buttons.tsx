@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { PhaseSwitchDialog } from '@/app/retro/action-bar/components/action-buttons/phase-switch-dialog'
 import { Button } from '@/app/ui/button/button'
 import { toast } from '@/app/ui/toast/use-toast'
+import { useFullUrl } from '@/utils/utils'
 
 type ActionButtonsProps = {
   retrospective: Retrospective
@@ -18,9 +19,10 @@ export function ActionButtons({
   handleUpdateRetro,
 }: ActionButtonsProps) {
   const router = useRouter()
+  const fullUrl = useFullUrl()
 
   function handleCopy() {
-    navigator.clipboard.writeText(window.location.href)
+    navigator.clipboard.writeText(fullUrl)
     toast({
       title: 'Copied retrospective link to clipboard',
       description: 'Anyone with this link can join your retrospective',

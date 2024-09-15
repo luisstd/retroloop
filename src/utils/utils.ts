@@ -1,6 +1,8 @@
 import { Feedback, StripeSubscriptionStatus, User } from '@prisma/client'
 import { format, Locale } from 'date-fns'
 import { de, enUS, fr } from 'date-fns/locale'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 //format date according to user locale
 type LocalesMap = {
@@ -45,4 +47,19 @@ const getFeedbackType = (type: Feedback['type']) => {
   }
 }
 
-export { AccountType, formatDate, getAccountType, getFeedbackType }
+const useFullUrl = () => {
+  const [fullUrl, setFullUrl] = useState('')
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = `${window.location.origin}${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
+      setFullUrl(url)
+    }
+  }, [pathname, searchParams])
+
+  return fullUrl
+}
+
+export { AccountType, formatDate, getAccountType, getFeedbackType, useFullUrl }

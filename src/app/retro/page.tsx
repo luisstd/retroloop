@@ -1,5 +1,5 @@
 'use client'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 
@@ -15,6 +15,7 @@ export default function Retro() {
   const { data: session, status } = useSession()
   const searchParams = useSearchParams()
 
+  const pathname = usePathname()
   const router = useRouter()
   const isAuthenticated = status === 'authenticated'
 
@@ -40,7 +41,8 @@ export default function Retro() {
   }, [userId, retroId, addParticipant])
 
   if (!isAuthenticated) {
-    const callbackURL = encodeURIComponent(window.location.href)
+    const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
+    const callbackURL = encodeURIComponent(currentUrl)
     router.push(`/auth/login?callbackurl=${callbackURL}`)
   }
 

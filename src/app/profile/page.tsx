@@ -2,7 +2,7 @@
 import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import packageInfo from 'package.json'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
@@ -26,7 +26,9 @@ import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
 export default function Profile() {
   const { data: session, status } = useSession()
+  const pathname = usePathname()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const { toast } = useToast()
   const isAuthenticated = status === 'authenticated'
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
@@ -67,7 +69,8 @@ export default function Profile() {
   }
 
   if (!isAuthenticated) {
-    const callbackURL = encodeURIComponent(window.location.href)
+    const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
+    const callbackURL = encodeURIComponent(currentUrl)
     router.push(`/auth/login?callbackurl=${callbackURL}`)
   }
 
