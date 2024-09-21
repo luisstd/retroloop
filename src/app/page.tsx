@@ -114,7 +114,7 @@ export default function Landingpage() {
         <CardContent className='flex w-full flex-col items-center gap-6 p-10 md:col-start-2 md:row-start-1'>
           <div className='text-start'>
             <div className='mb-1 flex items-center gap-2'>
-              <IconLogin size={32} className='text-primary ' />
+              <IconLogin size={32} className='text-primary' />
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
                 Seamless login
               </h3>
@@ -141,12 +141,12 @@ export default function Landingpage() {
 
           <div className='text-start'>
             <div className='mb-1 flex items-center gap-2'>
-              <IconRepeat size={32} className='text-primary ' />
+              <IconRepeat size={32} className='text-primary' />
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
                 Intuitive user interface
               </h3>
             </div>
-            <p className='prose text-foreground '>
+            <p className='prose text-foreground'>
               Navigate with ease using a clean, simple interface that&apos;s
               intuitive for everyone. Gather feedback easily and make every
               retrospective straightforward and productive.
@@ -165,7 +165,7 @@ export default function Landingpage() {
               Get actionable feedback
             </span>
           </CardTitle>
-          <p className='prose text-foreground '>
+          <p className='prose text-foreground'>
             Leverage Retroloop to identify opportunities for growth, streamline
             processes, and foster a culture of continuous improvement.
           </p>
@@ -182,14 +182,14 @@ export default function Landingpage() {
         </CardHeader>
 
         <CardContent className='col-start-2 row-start-2 flex flex-col items-center gap-6 p-10 md:col-start-1 md:row-start-1'>
-          <div className=' m text-start'>
+          <div className='m text-start'>
             <div className='mb-1 flex items-center gap-2'>
-              <IconBulb size={32} className='text-primary ' />
+              <IconBulb size={32} className='text-primary' />
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
                 Helpful insights
               </h3>
             </div>
-            <p className='prose text-foreground '>
+            <p className='prose text-foreground'>
               Transform feedback into concrete action items that drive
               meaningful change and help your team get better.
             </p>
@@ -197,12 +197,12 @@ export default function Landingpage() {
 
           <div className='text-start'>
             <div className='mb-1 flex items-center gap-2'>
-              <IconUsers size={32} className='text-primary ' />
+              <IconUsers size={32} className='text-primary' />
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
                 Built for modern teams
               </h3>
             </div>
-            <p className='prose text-foreground '>
+            <p className='prose text-foreground'>
               Retroloop is designed to support the diverse needs of today&apos;s
               agile teams, with a focus on simplicity, effectiveness, and
               collaboration.
@@ -211,12 +211,12 @@ export default function Landingpage() {
 
           <div className='text-start'>
             <div className='mb-1 flex items-center gap-2'>
-              <IconAffiliate size={32} className='text-primary ' />
+              <IconAffiliate size={32} className='text-primary' />
               <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
                 Transparent & collaborative
               </h3>
             </div>
-            <p className='prose text-foreground '>
+            <p className='prose text-foreground'>
               Encourage open communication and collaboration by making your
               retrospectives transparent and inclusive for every team member.
             </p>
@@ -256,7 +256,7 @@ export default function Landingpage() {
             </div>
           </CardHeader>
         </Card>
-        <Card className='m-5 '>
+        <Card className='m-5'>
           <CardHeader className='flex flex-col gap-3 p-10'>
             <CardTitle className='flex items-center justify-between gap-6'>
               <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>

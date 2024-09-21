@@ -15,7 +15,7 @@ export function Feedback({ userEmail }: FeedbackButtonProps) {
     <FeedbackFish projectId={PROJECT_ID} userId={userEmail}>
       <Button
         variant='secondary'
-        className='fixed bottom-5 right-28 z-40 '
+        className='fixed bottom-5 right-28 z-40'
         aria-label='Send feedback'
       >
         Send feedback

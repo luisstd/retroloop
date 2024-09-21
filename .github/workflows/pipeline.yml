@@ -49,12 +49,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.11.0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
       - name: Cache Dependencies
@@ -92,7 +92,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.11.0
 
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
@@ -106,6 +106,31 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+  prettier:
+    name: Format
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.11.0
+
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+
+      - name: Format
+        run: pnpm format
+
   vitest:
     name: Unit Tests
     needs: build
@@ -117,7 +142,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.11.0
 
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
@@ -142,7 +167,7 @@ jobs:
   #     - name: Install pnpm
   #       uses: pnpm/action-setup@v4
   #       with:
-  #         version: 8
+  #         version: 9.11.0
 
   #     - name: Install Dependencies
   #       if: steps.cache-deps.outputs.cache-hit != 'true'
@@ -186,7 +211,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.11.0
 
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
