@@ -26,7 +26,7 @@ export function Menu() {
   const isLandingPage = path === '/'
 
   return (
-    <div className='min-w-full '>
+    <div className='min-w-full'>
       <NavigationMenu className='m-5 flex max-w-none items-center gap-2 rounded-full border-2 bg-background p-1 text-xl shadow-sm sm:gap-10 md:mx-auto md:max-w-max'>
         <NavigationMenuList>
           <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>

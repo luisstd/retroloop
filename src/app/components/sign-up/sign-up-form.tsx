@@ -72,7 +72,7 @@ export function SignUpForm() {
                       name='email'
                       required
                       disabled={data.user?.email}
-                      className={`${data.user?.email ? 'italic text-muted-foreground ' : ''}`}
+                      className={`${data.user?.email ? 'italic text-muted-foreground' : ''}`}
                     />
                   </fieldset>
                 </CardContent>
