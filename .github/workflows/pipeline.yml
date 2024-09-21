@@ -49,12 +49,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
       - name: Cache Dependencies
@@ -92,7 +92,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
@@ -117,7 +117,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
@@ -142,7 +142,7 @@ jobs:
   #     - name: Install pnpm
   #       uses: pnpm/action-setup@v4
   #       with:
-  #         version: 8
+  #         version: 9
 
   #     - name: Install Dependencies
   #       if: steps.cache-deps.outputs.cache-hit != 'true'
@@ -186,7 +186,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
