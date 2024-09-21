@@ -7,7 +7,7 @@
  * need to use are documented accordingly near the end.
  */
 
-import * as Sentry from '@sentry/nextjs'
+import { trpcMiddleware } from '@sentry/nextjs'
 import { initTRPC, TRPCError } from '@trpc/server'
 import { type NextRequest } from 'next/server'
 import superjson from 'superjson'
@@ -123,7 +123,7 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
 })
 
 const sentryMiddleware = t.middleware(
-  Sentry.Handlers.trpcMiddleware({
+  trpcMiddleware({
     attachRpcInput: true,
   }),
 )
