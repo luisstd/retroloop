@@ -75,7 +75,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "@tanstack/react-query-devtools": "^4.36.1",
     "@testing-library/jest-dom": "^6.5.0",
-    "@testing-library/react": "^15.0.7",
+    "@testing-library/react": "^16.0.1",
     "@types/lodash": "^4.17.7",
     "@types/node": "22.5.5",
     "@types/react": "18.3.3",
