@@ -2,15 +2,17 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import * as Ably from 'ably'
-import { AblyProvider, ChannelProvider } from 'ably/react'
+import { ChannelProvider } from 'ably/react'
+import dynamic from 'next/dynamic'
 import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 import * as React from 'react'
 
-import { env } from '@/env.mjs'
+const RealtimeProvider = dynamic(() => import('./components/realtime'), {
+  ssr: false,
+})
 
 export interface ProvidersProps {
   children: React.ReactNode
@@ -18,10 +20,6 @@ export interface ProvidersProps {
 }
 
 const queryClient = new QueryClient()
-const ablyClient = new Ably.Realtime({
-  authUrl: env.NEXT_PUBLIC_ABLY_BASE_URL + '/api/ably',
-  authMethod: 'POST',
-})
 
 export function Providers({ children, session }: ProvidersProps) {
   return (
@@ -36,11 +34,11 @@ export function Providers({ children, session }: ProvidersProps) {
           enableSystem={true}
         >
           <QueryClientProvider client={queryClient}>
-            <AblyProvider client={ablyClient}>
+            <RealtimeProvider>
               <ChannelProvider channelName='retrospective'>
                 {children}
               </ChannelProvider>
-            </AblyProvider>
+            </RealtimeProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
         </ThemeProvider>
