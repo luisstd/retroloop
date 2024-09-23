@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.2](https://github.com/luisstd/retroloop/compare/v1.13.1...v1.13.2) (2024-09-23)
+
+
+### Bug Fixes
+
+* use dynamic import for ably provider ([043ba1e](https://github.com/luisstd/retroloop/commit/043ba1ecc7ca672601fb36c19442305fcc78fe14))
+
 ## [1.13.1](https://github.com/luisstd/retroloop/compare/v1.13.0...v1.13.1) (2024-09-15)
 
 
