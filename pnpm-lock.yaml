@@ -136,7 +136,7 @@ importers:
         version: 2.5.2
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))
+        version: 1.0.7(tailwindcss@3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -158,7 +158,7 @@ importers:
         version: 1.47.2
       '@tailwindcss/typography':
         specifier: ^0.5.15
-        version: 0.5.15(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))
+        version: 0.5.15(tailwindcss@3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))
       '@tanstack/react-query-devtools':
         specifier: ^4.36.1
         version: 4.36.1(@tanstack/react-query@4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -238,11 +238,11 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       tailwindcss:
-        specifier: ^3.4.12
-        version: 3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
+        specifier: ^3.4.13
+        version: 3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
       tailwindcss-bg-patterns:
         specifier: ^0.3.0
-        version: 0.3.0(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))
+        version: 0.3.0(tailwindcss@3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.5.5)(typescript@5.5.4)
@@ -4608,8 +4608,8 @@ packages:
     peerDependencies:
       tailwindcss: '>2'
 
-  tailwindcss@3.4.12:
-    resolution: {integrity: sha512-Htf/gHj2+soPb9UayUNci/Ja3d8pTmu9ONTfh4QY8r3MATTZOzmv6UYWF7ZwikEIC8okpfqmGqrmDehua8mF8w==}
+  tailwindcss@3.4.13:
+    resolution: {integrity: sha512-KqjHOJKogOUt5Bs752ykCeiwvi0fKVkr5oqsFNt/8px/tA8scFPIlkygsf6jXrfCqGHz7VflA6+yytWuM+XhFw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -6653,13 +6653,13 @@ snapshots:
 
   '@tabler/icons@3.17.0': {}
 
-  '@tailwindcss/typography@0.5.15(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))':
+  '@tailwindcss/typography@0.5.15(tailwindcss@3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)))':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
+      tailwindcss: 3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
 
   '@tanstack/match-sorter-utils@8.19.4':
     dependencies:
@@ -9776,15 +9776,15 @@ snapshots:
 
   tailwind-merge@2.5.2: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))):
     dependencies:
-      tailwindcss: 3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
+      tailwindcss: 3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
 
-  tailwindcss-bg-patterns@0.3.0(tailwindcss@3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))):
+  tailwindcss-bg-patterns@0.3.0(tailwindcss@3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))):
     dependencies:
-      tailwindcss: 3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
+      tailwindcss: 3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4))
 
-  tailwindcss@3.4.12(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)):
+  tailwindcss@3.4.13(ts-node@10.9.2(@types/node@22.5.5)(typescript@5.5.4)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2

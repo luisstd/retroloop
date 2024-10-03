@@ -99,7 +99,7 @@
     "prettier-plugin-tailwindcss": "^0.6.6",
     "prisma": "^5.19.1",
     "rimraf": "^6.0.1",
-    "tailwindcss": "^3.4.12",
+    "tailwindcss": "^3.4.13",
     "tailwindcss-bg-patterns": "^0.3.0",
     "ts-node": "^10.9.2",
     "typescript": "5.5.4",
