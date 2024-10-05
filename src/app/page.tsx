@@ -30,6 +30,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs/tabs'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
 
+import NewsletterSignup from './components/newsletter'
+import { Separator } from './ui/separator/separator'
+
 export default function Landingpage() {
   const { data: session, status } = useSession()
   const { resolvedTheme, theme } = useTheme()
@@ -224,8 +227,10 @@ export default function Landingpage() {
         </CardContent>
       </Card>
 
+      <NewsletterSignup />
+
       <h2
-        className='my-5 scroll-m-20 text-3xl font-semibold tracking-tight'
+        className='my-5 hidden scroll-m-20 text-3xl font-semibold tracking-tight'
         id='pricing'
       >
         Pricing
@@ -326,6 +331,8 @@ export default function Landingpage() {
           </CardHeader>
         </Card>
       </div>
+
+      <Separator className='my-10' />
 
       <Footer />
     </div>

@@ -85,6 +85,19 @@ model StripeEvent {
   pending_webhooks Int
 }
 
+enum NewsletterSubscriptionStatus {
+  active
+  unsubscribed
+}
+
+model NewsletterSubscription {
+  id           String                       @id @default(uuid())
+  email        String                       @unique
+  subscribedAt DateTime                     @default(now())
+  updatedAt    DateTime                     @updatedAt
+  status       NewsletterSubscriptionStatus @default(active)
+}
+
 model Retrospective {
   id              String     @id @default(cuid())
   createdAt       DateTime   @default(now())
