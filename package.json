@@ -61,7 +61,7 @@
     "react-spinners": "^0.14.1",
     "resend": "^4.0.0",
     "sharp": "^0.33.5",
-    "stripe": "^14.25.0",
+    "stripe": "^17.1.0",
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
