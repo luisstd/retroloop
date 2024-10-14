@@ -71,7 +71,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@next/eslint-plugin-next": "^14.2.13",
+    "@next/eslint-plugin-next": "^14.2.15",
     "@playwright/test": "^1.47.2",
     "@tailwindcss/typography": "^0.5.15",
     "@tanstack/react-query-devtools": "^4.36.1",
