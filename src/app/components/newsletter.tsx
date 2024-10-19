@@ -15,15 +15,23 @@ const emailSchema = z.object({
 
 const NewsletterSignup = () => {
   const { toast } = useToast()
-  const { mutate: subscribeNewsletter } = api.newsletter.subscribe.useMutation()
+  const { mutate: subscribeNewsletter } = api.newsletter.subscribe.useMutation({
+    onSuccess: () => {
+      toast({
+        title: 'Subscribed to newsletter',
+        description: 'You will receive updates about Retroloop',
+      })
+    },
+    onError: (error) => {
+      toast({
+        title: error.message,
+        description: 'Please try again',
+      })
+    },
+  })
 
   const handleNewsletterSubscription = async (email: string) => {
     subscribeNewsletter(email)
-    toast({
-      title: 'Subscribed to newsletter',
-      description: 'You will receive updates about Retroloop',
-      duration: 5000,
-    })
   }
 
   return (
