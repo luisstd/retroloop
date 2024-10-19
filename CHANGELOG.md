@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/luisstd/retroloop/compare/v1.13.2...v1.14.0) (2024-10-19)
+
+
+### Features
+
+* add newsletter form ([4345cde](https://github.com/luisstd/retroloop/commit/4345cde3675a3584636692af4672f1ddebfad917))
+
 ## [1.13.2](https://github.com/luisstd/retroloop/compare/v1.13.1...v1.13.2) (2024-09-23)
 
 
