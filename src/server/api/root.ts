@@ -1,5 +1,6 @@
 import { authRouter } from '@/server/api/routers/auth'
 import { feedbackRouter } from '@/server/api/routers/feedback'
+import { newsletterRouter } from '@/server/api/routers/newsletter'
 import { retrospectiveRouter } from '@/server/api/routers/retrospective'
 import { stripeRouter } from '@/server/api/routers/stripe'
 import { userRouter } from '@/server/api/routers/user'
@@ -16,6 +17,7 @@ export const appRouter = createTRPCRouter({
   user: userRouter,
   retrospective: retrospectiveRouter,
   feedback: feedbackRouter,
+  newsletter: newsletterRouter,
 })
 
 // export type definition of API

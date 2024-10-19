@@ -41,6 +41,8 @@ export const env = createEnv({
     STRIPE_PRICE_ID_MONTHLY: z.string(),
     STRIPE_PRICE_ID_YEARLY: z.string(),
     STRIPE_WEBHOOK_SECRET: z.string(),
+    RESEND_API_KEY: z.string(),
+    RESEND_AUDIENCE_ID: z.string(),
   },
 
   /**
@@ -79,6 +81,8 @@ export const env = createEnv({
     STRIPE_PRICE_ID_MONTHLY: process.env.STRIPE_PRICE_ID_MONTHLY,
     STRIPE_PRICE_ID_YEARLY: process.env.STRIPE_PRICE_ID_YEARLY,
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    RESEND_AUDIENCE_ID: process.env.RESEND_AUDIENCE_ID,
     FEEDBACK_FISH_PROJECT_ID: process.env.FEEDBACK_FISH_PROJECT_ID,
     NEXT_PUBLIC_ABLY_BASE_URL: process.env.NEXT_PUBLIC_ABLY_BASE_URL,
   },
