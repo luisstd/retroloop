@@ -16,7 +16,6 @@ export const retrospectiveRouter = createTRPCRouter({
       }),
     )
     .query(async ({ ctx, input }) => {
-      console.log('input', input)
       const filters = {
         participants: { some: { id: input.userId } },
         ...(input.accountType === 'Standard' && {
