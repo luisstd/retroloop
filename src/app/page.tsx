@@ -256,7 +256,7 @@ export default function Landingpage() {
             <div className='prose text-lg text-foreground'>
               <ul>
                 <li>Create 1 retrospective for free</li>
-                <li>3 month access to past retrospective</li>
+                <li>3 month access to past retrospectives</li>
               </ul>
             </div>
           </CardHeader>
