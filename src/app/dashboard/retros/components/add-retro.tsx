@@ -36,8 +36,8 @@ const RetroLimitReached = () => {
       <DialogHeader>
         <DialogTitle>Retrospective limit reached</DialogTitle>
         <DialogDescription>
-          You have reached the maximum of 3 active retrospectives for the
-          Standard plan. Upgrade to Unlimited to create more.
+          You have reached the limit of 1 retrospective for the Standard plan.
+          Upgrade to Unlimited to create more.
         </DialogDescription>
       </DialogHeader>
       <Button
