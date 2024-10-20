@@ -244,19 +244,19 @@ export default function Landingpage() {
                 Standard
               </span>
             </CardTitle>
-            <CardDescription className='prose flex items-center gap-1 text-foreground'>
-              <span className='scroll-m-20 text-4xl font-semibold tracking-tight text-primary'>
-                0€
+            <CardDescription className='prose flex items-center justify-between gap-1 text-foreground'>
+              <span className='scroll-m-20 py-1 text-4xl font-semibold tracking-tight text-primary'>
+                Free
               </span>
-              <span>/month</span>
+              <span className='italic'>no credit card required</span>
             </CardDescription>
             <Button onClick={() => router.push('/dashboard')}>
               Get started for free
             </Button>
             <div className='prose text-lg text-foreground'>
               <ul>
-                <li>Create up to 3 retrospectives</li>
-                <li>3 month access to retrospectives</li>
+                <li>Create 1 retrospective for free</li>
+                <li>3 month access to past retrospective</li>
               </ul>
             </div>
           </CardHeader>
@@ -279,15 +279,13 @@ export default function Landingpage() {
             >
               <TabsContent value={StripeBillingInterval.MONTHLY}>
                 <span className='scroll-m-20 py-5 text-4xl font-semibold tracking-tight text-primary'>
-                  4.99€
+                  2.99€
                 </span>
-                <span>/month</span>
               </TabsContent>
               <TabsContent value={StripeBillingInterval.YEARLY}>
-                <span className='scroll-m-20 py-5 text-4xl font-semibold tracking-tight text-primary'>
-                  49€
+                <span className='scroll-m-20 text-4xl font-semibold tracking-tight text-primary'>
+                  29€
                 </span>
-                <span>/year</span>
               </TabsContent>
               <TabsList>
                 <TabsTrigger
@@ -325,7 +323,7 @@ export default function Landingpage() {
             <div className='prose text-lg text-foreground'>
               <ul>
                 <li>Create unlimited retrospectives</li>
-                <li>Unlimited access to retrospectives</li>
+                <li>Unlimited access to past retrospectives</li>
               </ul>
             </div>
           </CardHeader>
