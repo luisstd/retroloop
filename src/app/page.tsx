@@ -72,8 +72,8 @@ export default function Landingpage() {
           className='hidden sm:block sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl'
           src={
             resolvedTheme === 'light' || theme === 'light'
-              ? '/preview-light.png'
-              : '/preview-dark.png'
+              ? '/preview-light.webp'
+              : '/preview-dark.webp'
           }
           alt='Retroloop preview'
           title='Retroloop preview'
