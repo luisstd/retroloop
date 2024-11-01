@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.0](https://github.com/luisstd/retroloop/compare/v1.14.0...v2.0.0) (2024-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* add indicator for participant presence
+
+### Features
+
+* add feedback item overview grid ([f38dbc7](https://github.com/luisstd/retroloop/commit/f38dbc72b9882b9b0713a1d1635d6e5c75d27246))
+* add indicator for participant presence ([8633683](https://github.com/luisstd/retroloop/commit/86336833b02aa02eb633efa2afbb231978674d6f))
+* add tooltip component ([d4f0847](https://github.com/luisstd/retroloop/commit/d4f08475eeeb3442e22732d9d96cfecb68dc9f0a))
+
 ## [1.14.0](https://github.com/luisstd/retroloop/compare/v1.13.2...v1.14.0) (2024-10-19)
 
 
