@@ -48,13 +48,14 @@ export function ActionButtons({
   }
 
   return (
-    <div className='flex gap-4'>
+    <div className='flex gap-2'>
       <Button
         aria-label='Start Retro'
         className='flex gap-1'
         onClick={handleCopy}
+        size={'sm'}
       >
-        Copy Retro link
+        Copy link
         <IconCopy />
       </Button>
 

@@ -1,4 +1,6 @@
 'use client'
+import { SpaceProvider } from '@ably/spaces/react'
+import { ChannelProvider } from 'ably/react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
@@ -47,22 +49,24 @@ export default function Retro() {
   }
 
   return selectedRetro ? (
-    <>
-      <RetroActionBar
-        selectedRetro={selectedRetro}
-        refetchRetro={refetchRetro}
-      />
-      {selectedRetro.phase === 'WRITING' && (
-        <WritePhase selectedRetro={selectedRetro} />
-      )}
-      {selectedRetro.phase === 'VOTING' && (
-        <VotePhase selectedRetro={selectedRetro} />
-      )}
-      {selectedRetro.phase === 'DISCUSSING' && (
-        <DiscussPhase selectedRetro={selectedRetro} />
-      )}
-      {session?.user?.email && <Feedback userEmail={session.user.email} />}
-    </>
+    <ChannelProvider channelName={selectedRetro.id}>
+      <SpaceProvider name={selectedRetro.id}>
+        <RetroActionBar
+          selectedRetro={selectedRetro}
+          refetchRetro={refetchRetro}
+        />
+        {selectedRetro.phase === 'WRITING' && (
+          <WritePhase selectedRetro={selectedRetro} />
+        )}
+        {selectedRetro.phase === 'VOTING' && (
+          <VotePhase selectedRetro={selectedRetro} />
+        )}
+        {selectedRetro.phase === 'DISCUSSING' && (
+          <DiscussPhase selectedRetro={selectedRetro} />
+        )}
+        {session?.user?.email && <Feedback userEmail={session.user.email} />}
+      </SpaceProvider>
+    </ChannelProvider>
   ) : (
     <div className='col-span-full'>
       <Loader isLoading={isRetroLoading} fullHeight />

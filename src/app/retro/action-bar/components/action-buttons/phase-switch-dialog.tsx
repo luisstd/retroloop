@@ -31,7 +31,7 @@ export function PhaseSwitchDialog({
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <Button aria-label='Switch phase' className='flex gap-1'>
+        <Button aria-label='Switch phase' size={'sm'}>
           {isLastPhase ? 'Finish Retro' : 'Next Phase'}
           {isLastPhase ? <IconChecks /> : <IconArrowRight />}
         </Button>

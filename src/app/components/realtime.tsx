@@ -1,3 +1,5 @@
+import Spaces from '@ably/spaces'
+import { SpacesProvider } from '@ably/spaces/react'
 import { Realtime } from 'ably'
 import { AblyProvider } from 'ably/react'
 import React from 'react'
@@ -8,13 +10,18 @@ interface RealtimeProviderProps {
   children: React.ReactNode
 }
 
-export default function RealtimeProvider({ children }: RealtimeProviderProps) {
-  const ablyClient = new Realtime({
-    authUrl: env.NEXT_PUBLIC_ABLY_BASE_URL + '/api/ably',
-    authMethod: 'POST',
-    clientId: 'retroloop',
-    logLevel: 1,
-  })
+const client = new Realtime({
+  authUrl: env.NEXT_PUBLIC_ABLY_BASE_URL + '/api/ably',
+  authMethod: 'POST',
+  clientId: 'retroloop',
+  logLevel: 1,
+})
+const spaces = new Spaces(client)
 
-  return <AblyProvider client={ablyClient}>{children}</AblyProvider>
+export default function RealtimeProvider({ children }: RealtimeProviderProps) {
+  return (
+    <AblyProvider client={client}>
+      <SpacesProvider client={spaces}>{children}</SpacesProvider>
+    </AblyProvider>
+  )
 }

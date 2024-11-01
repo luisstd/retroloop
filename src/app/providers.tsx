@@ -2,7 +2,6 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ChannelProvider } from 'ably/react'
 import dynamic from 'next/dynamic'
 import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
@@ -34,11 +33,7 @@ export function Providers({ children, session }: ProvidersProps) {
           enableSystem={true}
         >
           <QueryClientProvider client={queryClient}>
-            <RealtimeProvider>
-              <ChannelProvider channelName='retrospective'>
-                {children}
-              </ChannelProvider>
-            </RealtimeProvider>
+            <RealtimeProvider>{children}</RealtimeProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
         </ThemeProvider>
