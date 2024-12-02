@@ -229,8 +229,8 @@ importers:
         specifier: ^15.2.10
         version: 15.2.10
       pnpm:
-        specifier: 9.11.0
-        version: 9.11.0
+        specifier: 9.14.4
+        version: 9.14.4
       postcss:
         specifier: ^8.4.47
         version: 8.4.47
@@ -4104,8 +4104,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  pnpm@9.11.0:
-    resolution: {integrity: sha512-CiA/+u1aP2MkLNBkyPtYkjZsED4ygHkxj3gGLyTqjJ1QvGpHqjVnyr79gk0XDnj6J0XtHxaxMuFkNhRrdojxmw==}
+  pnpm@9.14.4:
+    resolution: {integrity: sha512-yBgLP75OS8oCyUI0cXiWtVKXQKbLrfGfp4JUJwQD6i8n1OHUagig9WyJtj3I6/0+5TMm2nICc3lOYgD88NGEqw==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -9374,7 +9374,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.2
 
-  pnpm@9.11.0: {}
+  pnpm@9.14.4: {}
 
   possible-typed-array-names@1.0.0: {}
 
