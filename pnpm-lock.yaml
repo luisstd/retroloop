@@ -135,8 +135,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       stripe:
-        specifier: ^14.25.0
-        version: 14.25.0
+        specifier: ^17.5.0
+        version: 17.5.0
       superjson:
         specifier: ^2.2.1
         version: 2.2.1
@@ -4761,8 +4761,8 @@ packages:
   strip-literal@2.1.0:
     resolution: {integrity: sha512-Op+UycaUt/8FbN/Z2TWPBLge3jWrP3xj10f3fnYxf052bKuS3EKs1ZQcVGjnEMdsNVAM+plXRdmjrZ/KgG3Skw==}
 
-  stripe@14.25.0:
-    resolution: {integrity: sha512-wQS3GNMofCXwH8TSje8E1SE8zr6ODiGtHQgPtO95p9Mb4FhKC9jvXR2NUTpZ9ZINlckJcFidCmaTFV4P6vsb9g==}
+  stripe@17.5.0:
+    resolution: {integrity: sha512-kcyeAkDFjGsVl17FqnG7q/+xIjt0ZjOo9Dm+q8deAvs2Xe4iAHrhxyoP4etUVFc+/LZJANjIPVR+ZOnt9hr/Ug==}
     engines: {node: '>=12.*'}
 
   styled-jsx@5.1.1:
@@ -10102,7 +10102,7 @@ snapshots:
     dependencies:
       js-tokens: 9.0.0
 
-  stripe@14.25.0:
+  stripe@17.5.0:
     dependencies:
       '@types/node': 22.10.2
       qs: 6.13.0
