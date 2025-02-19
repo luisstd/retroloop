@@ -24,7 +24,16 @@ export function Footer() {
               <NavigationMenuLink
                 className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
               >
-                Privacy Policy
+                Privacy
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href='/imprint' legacyBehavior passHref>
+              <NavigationMenuLink
+                className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+              >
+                Imprint
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -33,15 +42,19 @@ export function Footer() {
               <NavigationMenuLink
                 className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
               >
-                Terms of Use
+                Terms
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <p className='justify-self-start pb-10 text-sm'>
+      <a
+        className='justify-self-start pb-10 text-sm hover:underline'
+        href='https://noisia.co'
+        target='_blank'
+      >
         &copy; {currentYear} Noisia Labs OÜ
-      </p>
+      </a>
     </footer>
   )
 }
