@@ -33,7 +33,7 @@ jobs:
       - name: Install pnpm & deps
         uses: pnpm/action-setup@v4
         with:
-          version: 9.11.0
+          version: 10.4.1
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -61,7 +61,7 @@ jobs:
       - name: Install pnpm & deps
         uses: pnpm/action-setup@v4
         with:
-          version: 9.11.0
+          version: 10.4.1
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -96,7 +96,7 @@ jobs:
       - name: Install pnpm & deps
         uses: pnpm/action-setup@v4
         with:
-          version: 9.11.0
+          version: 10.4.1
       - uses: actions/setup-node@v4
         with:
           node-version: 22

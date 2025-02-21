@@ -9,12 +9,8 @@ import('./src/env.mjs')
 
 const nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
-  swcMinify: true,
   publicRuntimeConfig: {
     version: packageJson.version,
-  },
-  experimental: {
-    instrumentationHook: true,
   },
 })
 
