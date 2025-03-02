@@ -30,7 +30,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs/tabs'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
 
-import NewsletterSignup from './components/newsletter'
 import { Separator } from './ui/separator/separator'
 
 export default function Landingpage() {
@@ -226,8 +225,6 @@ export default function Landingpage() {
           </div>
         </CardContent>
       </Card>
-
-      <NewsletterSignup />
 
       <h2
         className='my-5 hidden scroll-m-20 text-3xl font-semibold tracking-tight'
