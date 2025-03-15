@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/luisstd/retroloop/compare/v2.0.0...v2.0.1) (2025-03-15)
+
+
+### Bug Fixes
+
+* perform full page reload after user signup/delete ([a203caa](https://github.com/luisstd/retroloop/commit/a203caa35385b889a338a5430eee7936fbc69f09))
+
 ## [2.0.0](https://github.com/luisstd/retroloop/compare/v1.14.0...v2.0.0) (2024-11-01)
 
 
