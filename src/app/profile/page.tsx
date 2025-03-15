@@ -43,7 +43,7 @@ export default function Profile() {
 
   const { mutate: deleteUser } = api.user.delete.useMutation({
     onSuccess: () => {
-      router.push('/')
+      window.location.href = '/'
     },
   })
 
