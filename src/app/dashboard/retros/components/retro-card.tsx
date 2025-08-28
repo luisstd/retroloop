@@ -29,7 +29,7 @@ export function RetroCard({
   return (
     <Card
       key={retrospective.id}
-      className='h-full w-full shadow-sm transition duration-200 ease-in-out hover:ring-2 hover:ring-primary hover:ring-offset-2 dark:hover:ring-secondary'
+      className='hover:ring-primary dark:hover:ring-secondary h-full w-full shadow-xs transition duration-200 ease-in-out hover:ring-2 hover:ring-offset-2'
     >
       <CardHeader>
         <CardTitle className='flex items-baseline justify-between'>
@@ -42,7 +42,7 @@ export function RetroCard({
         <CardDescription>{formatDate(retrospective.date)}</CardDescription>
       </CardHeader>
 
-      <CardContent className='flex justify-between text-muted-foreground'>
+      <CardContent className='text-muted-foreground flex justify-between'>
         <div className='flex flex-col gap-2 text-sm'>
           <p className='flex items-center gap-2'>
             <IconUser size={18} />

@@ -37,7 +37,7 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
     index?: number
     total?: number
   }) => (
-    <Card className='flex min-h-[18rem] w-full flex-col justify-between break-words p-5'>
+    <Card className='flex min-h-72 w-full flex-col justify-between p-5 break-words'>
       <CardTitle className='flex flex-row items-center justify-between'>
         Feedback <Badge variant='secondary'>{getFeedbackType(item.type)}</Badge>
       </CardTitle>

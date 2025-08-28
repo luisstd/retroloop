@@ -33,7 +33,7 @@ export function DeleteUserDialog({
         <Button variant='destructive'>Delete Account</Button>
       </AlertDialogTrigger>
 
-      <AlertDialogContent className='border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark dark:text-base-light fixed left-2/4 top-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 p-5 md:w-full'>
+      <AlertDialogContent className='border-base-dark bg-base-light dark:border-base-light dark:bg-base-dark dark:text-base-light fixed top-2/4 left-2/4 z-50 w-screen max-w-md -translate-x-2/4 -translate-y-2/4 rounded-lg border-2 p-5 md:w-full'>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>

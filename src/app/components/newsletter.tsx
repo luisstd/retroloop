@@ -56,7 +56,7 @@ const NewsletterSignup = () => {
                 <Input
                   type='email'
                   placeholder='Enter your email'
-                  className='flex-grow'
+                  className='grow'
                   {...field}
                   required
                 />

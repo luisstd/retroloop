@@ -42,8 +42,8 @@ export default async function RootLayout({
       <body suppressHydrationWarning className={font.className}>
         <Providers session={session}>
           <TRPCReactProvider headers={headers()}>
-            <main className='relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center'>
-              <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
+            <main className='relative mx-auto flex w-screen max-w-(--breakpoint-2xl) flex-col items-center'>
+              <div className='opacity-gradient pattern-dots pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2 absolute -z-50 h-full min-h-screen w-screen' />
               <Menu />
               {children}
               <Toaster />

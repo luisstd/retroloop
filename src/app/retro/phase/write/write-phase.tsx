@@ -14,7 +14,7 @@ export function WritePhase({ selectedRetro }: WritePhaseProps) {
     <>
       {selectedRetro && (
         <>
-          <Card className='col-start-1 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
+          <Card className='col-start-1 row-span-6 row-start-2 h-full max-w-full min-w-full px-2 lg:min-h-screen'>
             <FeedbackCollector
               retrospective={selectedRetro}
               itemType='success'
@@ -22,7 +22,7 @@ export function WritePhase({ selectedRetro }: WritePhaseProps) {
             />
           </Card>
 
-          <Card className='col-start-2 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
+          <Card className='col-start-2 row-span-6 row-start-2 h-full max-w-full min-w-full px-2 lg:min-h-screen'>
             <FeedbackCollector
               retrospective={selectedRetro}
               itemType='improvement'
@@ -30,7 +30,7 @@ export function WritePhase({ selectedRetro }: WritePhaseProps) {
             />
           </Card>
 
-          <Card className='col-start-3 row-span-6 row-start-2 h-full min-w-full max-w-full px-2 lg:min-h-screen'>
+          <Card className='col-start-3 row-span-6 row-start-2 h-full max-w-full min-w-full px-2 lg:min-h-screen'>
             <FeedbackCollector
               retrospective={selectedRetro}
               itemType='action'

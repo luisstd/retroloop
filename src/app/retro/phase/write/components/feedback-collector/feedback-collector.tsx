@@ -90,9 +90,9 @@ export function FeedbackCollector({
 
       {isLoading && (
         <>
-          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
         </>
       )}
 
@@ -102,7 +102,7 @@ export function FeedbackCollector({
             (item: Feedback) =>
               item.type === itemType && (
                 <li key={item.id}>
-                  <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
+                  <Card className='m-2 mx-auto flex w-400 max-w-full min-w-full items-center justify-between p-4 break-words'>
                     <p>{item.content}</p>
 
                     <div className='flex flex-row items-center'>
