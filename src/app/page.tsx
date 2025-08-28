@@ -231,26 +231,29 @@ export default function Landingpage() {
 
       <div className='mx-auto flex w-full max-w-3xl flex-col items-stretch justify-center gap-6 px-5 md:flex-row'>
         <Card className='flex-1 shadow-xs'>
-          <CardHeader className='p-8 text-center'>
-            <CardTitle className='mb-2'>
-              <span className='text-muted-foreground text-2xl font-bold'>
-                Free
-              </span>
-            </CardTitle>
-            <div className='mb-6'>
-              <span className='text-primary text-4xl font-bold'>0€</span>
+          <CardHeader className='flex h-full flex-col p-8 text-center'>
+            <div>
+              <CardTitle className='mb-2'>
+                <span className='text-muted-foreground text-2xl font-bold'>
+                  Free
+                </span>
+              </CardTitle>
+              <div className='mb-6'>
+                <span className='text-primary text-4xl font-bold'>0€</span>
+              </div>
+              <Button
+                variant='outline'
+                size='lg'
+                className='mb-2 w-full'
+                onClick={() => router.push('/dashboard')}
+              >
+                Get started for free
+              </Button>
+              <p className='mb-6 text-xs text-muted-foreground'>No credit card required</p>
             </div>
-            <Button
-              variant='outline'
-              size='lg'
-              className='mb-6 w-full'
-              onClick={() => router.push('/dashboard')}
-            >
-              Get started for free
-            </Button>
-            <ul className='text-muted-foreground space-y-2 text-sm'>
-              <li>3 retrospectives included</li>
-              <li>No credit card required</li>
+            <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
+              <li>Create 3 retrospectives for free</li>
+              <li>3 month access to past retrospectives</li>
             </ul>
           </CardHeader>
         </Card>
@@ -261,37 +264,39 @@ export default function Landingpage() {
               variant='outline'
               className='bg-background px-3 py-1 text-xs'
             >
-              Recommended
+              Support Development
             </Badge>
           </div>
-          <CardHeader className='p-8 text-center'>
-            <CardTitle className='mb-2'>
-              <span className='text-2xl font-bold'>Unlimited</span>
-            </CardTitle>
-            <div className='mb-6'>
-              <span className='text-primary text-4xl font-bold'>10€</span>
-              <span className='text-muted-foreground ml-1 text-sm'>/year</span>
-            </div>
-            <Button
-              size='lg'
-              className='mb-6 w-full'
-              onClick={
-                !isSignedUp
-                  ? () => signIn()
-                  : async () => {
-                      const { checkoutUrl } = await createCheckoutSession(
-                        StripeBillingInterval.YEARLY,
-                      )
-                      if (checkoutUrl) {
-                        router.push(checkoutUrl)
+          <CardHeader className='flex h-full flex-col p-8 text-center'>
+            <div>
+              <CardTitle className='mb-2'>
+                <span className='text-2xl font-bold'>Unlimited</span>
+              </CardTitle>
+              <div className='mb-6'>
+                <span className='text-primary text-4xl font-bold'>10€</span>
+                <span className='text-muted-foreground ml-1 text-sm'>/year</span>
+              </div>
+              <Button
+                size='lg'
+                className='mb-6 w-full'
+                onClick={
+                  !isSignedUp
+                    ? () => signIn()
+                    : async () => {
+                        const { checkoutUrl } = await createCheckoutSession(
+                          StripeBillingInterval.YEARLY,
+                        )
+                        if (checkoutUrl) {
+                          router.push(checkoutUrl)
+                        }
                       }
-                    }
-              }
-            >
-              Get Retroloop Unlimited
-            </Button>
-            <ul className='text-muted-foreground space-y-2 text-sm'>
-              <li>Unlimited retrospectives</li>
+                }
+              >
+                Get Retroloop Unlimited
+              </Button>
+            </div>
+            <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
+              <li>Create unlimited retrospectives</li>
               <li>Access all past retrospectives</li>
             </ul>
           </CardHeader>
