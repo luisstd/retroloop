@@ -18,11 +18,7 @@ import { Footer } from '@/app/components/footer/footer'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card'
+import { Card, CardHeader, CardTitle } from '@/app/ui/card'
 import { Separator } from '@/app/ui/separator'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
@@ -49,7 +45,10 @@ export default function Landingpage() {
           </p>
           <div className='flex flex-col items-center gap-4 sm:flex-row sm:justify-center'>
             <Link href={'/dashboard'} className='w-full sm:w-52'>
-              <Button size='lg' className='flex h-11 w-full items-center justify-center gap-2'>
+              <Button
+                size='lg'
+                className='flex h-11 w-full items-center justify-center gap-2'
+              >
                 Start your first retro
                 <IconArrowRight size={18} />
               </Button>
@@ -83,93 +82,100 @@ export default function Landingpage() {
       </section>
 
       <section className='w-full max-w-7xl px-6 py-16' id='features'>
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl font-bold tracking-tight mb-4 md:text-4xl'>
+        <div className='mb-16 text-center'>
+          <h2 className='mb-4 text-3xl font-bold tracking-tight md:text-4xl'>
             Everything you need for effective retrospectives
           </h2>
-          <p className='text-muted-foreground text-xl max-w-2xl mx-auto'>
-            Simple, powerful features that help teams reflect, improve, and grow together
+          <p className='text-muted-foreground mx-auto max-w-2xl text-xl'>
+            Simple, powerful features that help teams reflect, improve, and grow
+            together
           </p>
         </div>
 
         <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
           <div className='flex flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 p-3 rounded-lg'>
+              <div className='bg-primary/10 rounded-lg p-3'>
                 <IconLogin size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Seamless login</h3>
             </div>
             <p className='text-muted-foreground leading-relaxed'>
-              Get started quickly via email or OAuth. Access Retroloop instantly and begin your feedback sessions without hassle.
+              Get started quickly via email or OAuth. Access Retroloop instantly
+              and begin your feedback sessions without hassle.
             </p>
           </div>
 
           <div className='flex flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 p-3 rounded-lg'>
+              <div className='bg-primary/10 rounded-lg p-3'>
                 <IconHourglass size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Real-time sync</h3>
             </div>
             <p className='text-muted-foreground leading-relaxed'>
-              Keep retrospectives on track with synchronized timers between all participants, perfect for timeboxing discussions.
+              Keep retrospectives on track with synchronized timers between all
+              participants, perfect for timeboxing discussions.
             </p>
           </div>
 
           <div className='flex flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 p-3 rounded-lg'>
+              <div className='bg-primary/10 rounded-lg p-3'>
                 <IconRepeat size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Intuitive interface</h3>
             </div>
             <p className='text-muted-foreground leading-relaxed'>
-              Navigate with ease using a clean, simple interface that makes every retrospective straightforward and productive.
+              Navigate with ease using a clean, simple interface that makes
+              every retrospective straightforward and productive.
             </p>
           </div>
 
           <div className='flex flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 p-3 rounded-lg'>
+              <div className='bg-primary/10 rounded-lg p-3'>
                 <IconBulb size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Actionable insights</h3>
             </div>
             <p className='text-muted-foreground leading-relaxed'>
-              Transform feedback into concrete action items that drive meaningful change and help your team improve.
+              Transform feedback into concrete action items that drive
+              meaningful change and help your team improve.
             </p>
           </div>
 
           <div className='flex flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 p-3 rounded-lg'>
+              <div className='bg-primary/10 rounded-lg p-3'>
                 <IconUsers size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Built for teams</h3>
             </div>
             <p className='text-muted-foreground leading-relaxed'>
-              Designed for modern agile teams with a focus on simplicity, effectiveness, and seamless collaboration.
+              Designed for modern agile teams with a focus on simplicity,
+              effectiveness, and seamless collaboration.
             </p>
           </div>
 
           <div className='flex flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 p-3 rounded-lg'>
+              <div className='bg-primary/10 rounded-lg p-3'>
                 <IconAffiliate size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Transparent process</h3>
             </div>
             <p className='text-muted-foreground leading-relaxed'>
-              Encourage open communication by making retrospectives transparent and inclusive for every team member.
+              Encourage open communication by making retrospectives transparent
+              and inclusive for every team member.
             </p>
           </div>
         </div>
       </section>
 
       <section className='w-full max-w-4xl px-6 py-16' id='pricing'>
-        <div className='text-center mb-12'>
-          <h2 className='text-3xl font-bold tracking-tight mb-4 md:text-4xl'>
+        <div className='mb-12 text-center'>
+          <h2 className='mb-4 text-3xl font-bold tracking-tight md:text-4xl'>
             Simple, transparent pricing
           </h2>
           <p className='text-muted-foreground text-xl'>
@@ -178,77 +184,81 @@ export default function Landingpage() {
         </div>
 
         <div className='flex flex-col items-stretch justify-center gap-6 md:flex-row'>
-        <Card className='flex-1 shadow-xs'>
-          <CardHeader className='flex h-full flex-col p-8 text-center'>
-            <div>
-              <CardTitle className='mb-2'>
-                <span className='text-muted-foreground text-2xl font-bold'>
-                  Free
-                </span>
-              </CardTitle>
-              <div className='mb-6'>
-                <span className='text-primary text-4xl font-bold'>0€</span>
+          <Card className='flex-1 shadow-xs'>
+            <CardHeader className='flex h-full flex-col p-8 text-center'>
+              <div>
+                <CardTitle className='mb-2'>
+                  <span className='text-muted-foreground text-2xl font-bold'>
+                    Free
+                  </span>
+                </CardTitle>
+                <div className='mb-6'>
+                  <span className='text-primary text-4xl font-bold'>0€</span>
+                </div>
+                <Button
+                  variant='outline'
+                  size='lg'
+                  className='mb-2 w-full'
+                  onClick={() => router.push('/dashboard')}
+                >
+                  Get started for free
+                </Button>
+                <p className='text-muted-foreground mb-6 text-xs'>
+                  No credit card required
+                </p>
               </div>
-              <Button
-                variant='outline'
-                size='lg'
-                className='mb-2 w-full'
-                onClick={() => router.push('/dashboard')}
-              >
-                Get started for free
-              </Button>
-              <p className='mb-6 text-xs text-muted-foreground'>No credit card required</p>
-            </div>
-            <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
-              <li>Create 3 retrospectives for free</li>
-              <li>3 month access to past retrospectives</li>
-            </ul>
-          </CardHeader>
-        </Card>
+              <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
+                <li>Create 3 retrospectives for free</li>
+                <li>3 month access to past retrospectives</li>
+              </ul>
+            </CardHeader>
+          </Card>
 
-        <Card className='relative flex-1 shadow-xs'>
-          <div className='absolute -top-2 left-1/2 -translate-x-1/2'>
-            <Badge
-              variant='outline'
-              className='bg-background px-3 py-1 text-xs'
-            >
-              Support Development
-            </Badge>
-          </div>
-          <CardHeader className='flex h-full flex-col p-8 text-center'>
-            <div>
-              <CardTitle className='mb-2'>
-                <span className='text-2xl font-bold'>Unlimited</span>
-              </CardTitle>
-              <div className='mb-6'>
-                <span className='text-primary text-4xl font-bold'>10€</span>
-                <span className='text-muted-foreground ml-1 text-sm'>/year</span>
-              </div>
-              <Button
-                size='lg'
-                className='mb-6 w-full'
-                onClick={
-                  !isSignedUp
-                    ? () => signIn()
-                    : async () => {
-                        const { checkoutUrl } = await createCheckoutSession(
-                          StripeBillingInterval.YEARLY,
-                        )
-                        if (checkoutUrl) {
-                          router.push(checkoutUrl)
-                        }
-                      }
-                }
+          <Card className='relative flex-1 shadow-xs'>
+            <div className='absolute -top-2 left-1/2 -translate-x-1/2'>
+              <Badge
+                variant='outline'
+                className='bg-background px-3 py-1 text-xs'
               >
-                Get Retroloop Unlimited
-              </Button>
+                Support Development
+              </Badge>
             </div>
-            <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
-              <li>Create unlimited retrospectives</li>
-              <li>Access all past retrospectives</li>
-            </ul>
-          </CardHeader>
-        </Card>
+            <CardHeader className='flex h-full flex-col p-8 text-center'>
+              <div>
+                <CardTitle className='mb-2'>
+                  <span className='text-2xl font-bold'>Unlimited</span>
+                </CardTitle>
+                <div className='mb-6'>
+                  <span className='text-primary text-4xl font-bold'>10€</span>
+                  <span className='text-muted-foreground ml-1 text-sm'>
+                    /year
+                  </span>
+                </div>
+                <Button
+                  size='lg'
+                  className='mb-6 w-full'
+                  onClick={
+                    !isSignedUp
+                      ? () => signIn()
+                      : async () => {
+                          const { checkoutUrl } = await createCheckoutSession(
+                            StripeBillingInterval.YEARLY,
+                          )
+                          if (checkoutUrl) {
+                            router.push(checkoutUrl)
+                          }
+                        }
+                  }
+                >
+                  Get Retroloop Unlimited
+                </Button>
+              </div>
+              <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
+                <li>Create unlimited retrospectives</li>
+                <li>Access all past retrospectives</li>
+              </ul>
+            </CardHeader>
+          </Card>
         </div>
       </section>
 
