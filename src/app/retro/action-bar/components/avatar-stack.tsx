@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
-import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar'
 import {
   Tooltip,
   TooltipContent,

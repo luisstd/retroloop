@@ -2,7 +2,7 @@
 
 import { FeedbackFish } from '@feedback-fish/react'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 
 type FeedbackButtonProps = {
   userEmail: string

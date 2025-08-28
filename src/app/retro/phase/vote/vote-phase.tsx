@@ -3,7 +3,7 @@
 import { Retrospective } from '@prisma/client'
 
 import { FeedbackVoter } from '@/app/retro/phase/vote/components/feedback-voter'
-import { Card } from '@/app/ui/card/card'
+import { Card } from '@/app/ui/card'
 
 type VotePhaseProps = {
   selectedRetro: Retrospective

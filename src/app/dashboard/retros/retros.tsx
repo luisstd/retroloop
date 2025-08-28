@@ -7,8 +7,8 @@ import { Loader } from '@/app/components/loader/loader'
 import { AddRetro } from '@/app/dashboard/retros/components/add-retro'
 import { RetroCard } from '@/app/dashboard/retros/components/retro-card'
 import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
-import { Card, CardTitle } from '@/app/ui/card/card'
-import { useToast } from '@/app/ui/toast/use-toast'
+import { Card, CardTitle } from '@/app/ui/card'
+import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 import {
   RetrospectiveCreateInput,

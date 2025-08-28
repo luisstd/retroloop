@@ -17,20 +17,19 @@ import { useState } from 'react'
 
 import { Footer } from '@/app/components/footer/footer'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
-import { Badge } from '@/app/ui/badge/badge'
-import { Button } from '@/app/ui/button/button'
+import { Badge } from '@/app/ui/badge'
+import { Button } from '@/app/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/app/ui/card/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs/tabs'
+} from '@/app/ui/card'
+import { Separator } from '@/app/ui/separator'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
-
-import { Separator } from './ui/separator/separator'
 
 export default function Landingpage() {
   const { data: session, status } = useSession()

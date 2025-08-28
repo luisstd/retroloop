@@ -3,14 +3,14 @@ import { MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 
 import { EditRetro } from '@/app/dashboard/retros/components/edit-retro'
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/app/ui/card/card'
+} from '@/app/ui/card'
 import {
   RetrospectiveUpdateInput,
   RetrospectiveWithRelations,

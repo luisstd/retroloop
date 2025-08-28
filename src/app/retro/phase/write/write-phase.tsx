@@ -3,7 +3,7 @@
 import { Retrospective } from '@prisma/client'
 
 import { FeedbackCollector } from '@/app/retro/phase/write/components/feedback-collector/feedback-collector'
-import { Card } from '@/app/ui/card/card'
+import { Card } from '@/app/ui/card'
 
 type WritePhaseProps = {
   selectedRetro: Retrospective

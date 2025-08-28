@@ -5,8 +5,8 @@ import { IconCopy } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
 
 import { PhaseSwitchDialog } from '@/app/retro/action-bar/components/action-buttons/phase-switch-dialog'
-import { Button } from '@/app/ui/button/button'
-import { toast } from '@/app/ui/toast/use-toast'
+import { Button } from '@/app/ui/button'
+import { toast } from '@/app/ui/use-toast'
 import { useFullUrl } from '@/utils/utils'
 
 type ActionButtonsProps = {

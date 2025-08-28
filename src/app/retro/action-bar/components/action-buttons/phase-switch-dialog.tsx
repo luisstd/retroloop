@@ -13,8 +13,8 @@ import {
   AlertDialogFooter,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/app/ui/alert-dialog/alert-dialog'
-import { Button } from '@/app/ui/button/button'
+} from '@/app/ui/alert-dialog'
+import { Button } from '@/app/ui/button'
 
 type PhaseSwitchDialogProps = {
   phase: Retrospective['phase']

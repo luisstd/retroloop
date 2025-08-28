@@ -1,6 +1,6 @@
 import { Retrospective } from '@prisma/client'
 
-import { Card } from '@/app/ui/card/card'
+import { Card } from '@/app/ui/card'
 
 type RetroTitleProps = {
   title: Retrospective['name']

@@ -3,16 +3,16 @@ import { IconLayoutGrid, IconSlideshow } from '@tabler/icons-react'
 import React, { useState } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
-import { Badge } from '@/app/ui/badge/badge'
-import { Card, CardDescription, CardTitle } from '@/app/ui/card/card'
+import { Badge } from '@/app/ui/badge'
+import { Card, CardDescription, CardTitle } from '@/app/ui/card'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/app/ui/carousel/carousel'
-import { Tabs, TabsList, TabsTrigger } from '@/app/ui/tabs/tabs'
+} from '@/app/ui/carousel'
+import { Tabs, TabsList, TabsTrigger } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
 import { getFeedbackType } from '@/utils/utils'
 

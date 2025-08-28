@@ -4,7 +4,7 @@ import { headers } from 'next/headers'
 
 import { Menu } from '@/app/components/menu/menu'
 import { Providers } from '@/app/providers'
-import { Toaster } from '@/app/ui/toast/toaster'
+import { Toaster } from '@/app/ui/toaster'
 import { getServerAuthSession } from '@/server/auth'
 import { font } from '@/styles/fonts'
 import { TRPCReactProvider } from '@/trpc/react'

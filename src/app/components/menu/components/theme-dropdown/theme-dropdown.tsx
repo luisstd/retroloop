@@ -4,7 +4,7 @@ import { IconDeviceLaptop, IconMoon, IconSun } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuTrigger,
-} from '@/app/ui/dropdown-menu/dropdown-menu'
+} from '@/app/ui/dropdown-menu'
 
 export function ThemeDropdown() {
   const [mounted, setMounted] = useState(false)

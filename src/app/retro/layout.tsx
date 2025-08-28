@@ -1,4 +1,4 @@
-import { Card } from '@/app/ui/card/card'
+import { Card } from '@/app/ui/card'
 
 export default function RetroLayout({
   children,

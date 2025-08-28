@@ -10,7 +10,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/app/ui/card/card'
+} from '@/app/ui/card'
 import { api } from '@/trpc/react'
 
 export function Team() {

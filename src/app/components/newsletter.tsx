@@ -2,12 +2,11 @@ import { Field, FieldProps, Form, Formik } from 'formik'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
+import { Button } from '@/app/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/app/ui/card'
+import { Input } from '@/app/ui/input'
+import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
-
-import { Button } from '../ui/button/button'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card/card'
-import { Input } from '../ui/input/input'
-import { useToast } from '../ui/toast/use-toast'
 
 const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
