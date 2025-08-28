@@ -13,7 +13,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
-import { useState } from 'react'
 
 import { Footer } from '@/app/components/footer/footer'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
@@ -27,14 +26,12 @@ import {
   CardTitle,
 } from '@/app/ui/card'
 import { Separator } from '@/app/ui/separator'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
 
 export default function Landingpage() {
   const { data: session, status } = useSession()
   const { resolvedTheme, theme } = useTheme()
-  const [selectedPlan, setSelectedPlan] = useState(StripeBillingInterval.YEARLY)
   const router = useRouter()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
@@ -232,82 +229,59 @@ export default function Landingpage() {
         Pricing
       </h2>
 
-      <div className='flex w-full flex-col items-center justify-center md:w-10/12 md:flex-row'>
-        <Card className='m-5'>
-          <CardHeader className='flex flex-col gap-3 p-10'>
-            <CardTitle className='flex items-center justify-start gap-6'>
-              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
-                Standard
-              </span>
-            </CardTitle>
-            <CardDescription className='prose text-foreground flex items-center justify-between gap-1'>
-              <span className='text-primary scroll-m-20 py-1 text-4xl font-semibold tracking-tight'>
+      <div className='mx-auto flex w-full max-w-3xl flex-col items-stretch justify-center gap-6 px-5 md:flex-row'>
+        <Card className='flex-1 shadow-xs'>
+          <CardHeader className='p-8 text-center'>
+            <CardTitle className='mb-2'>
+              <span className='text-muted-foreground text-2xl font-bold'>
                 Free
               </span>
-              <span className='italic'>no credit card required</span>
-            </CardDescription>
-            <Button onClick={() => router.push('/dashboard')}>
+            </CardTitle>
+            <div className='mb-6'>
+              <span className='text-primary text-4xl font-bold'>0€</span>
+            </div>
+            <Button
+              variant='outline'
+              size='lg'
+              className='mb-6 w-full'
+              onClick={() => router.push('/dashboard')}
+            >
               Get started for free
             </Button>
-            <div className='prose text-foreground text-lg'>
-              <ul>
-                <li>Create 1 retrospective for free</li>
-                <li>3 month access to past retrospectives</li>
-              </ul>
-            </div>
+            <ul className='text-muted-foreground space-y-2 text-sm'>
+              <li>3 retrospectives included</li>
+              <li>No credit card required</li>
+            </ul>
           </CardHeader>
         </Card>
-        <Card className='m-5'>
-          <CardHeader className='flex flex-col gap-3 p-10'>
-            <CardTitle className='flex items-center justify-between gap-6'>
-              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
-                Unlimited
-              </span>
-              {selectedPlan === StripeBillingInterval.YEARLY && (
-                <Badge variant='outline' className='text-sm'>
-                  Save 20%
-                </Badge>
-              )}
-            </CardTitle>
-            <Tabs
-              defaultValue={selectedPlan}
-              className='flex flex-col items-center justify-between gap-4 sm:flex-row'
+
+        <Card className='relative flex-1 shadow-xs'>
+          <div className='absolute -top-2 left-1/2 -translate-x-1/2'>
+            <Badge
+              variant='outline'
+              className='bg-background px-3 py-1 text-xs'
             >
-              <TabsContent value={StripeBillingInterval.MONTHLY}>
-                <span className='text-primary scroll-m-20 py-5 text-4xl font-semibold tracking-tight'>
-                  2.99€
-                </span>
-              </TabsContent>
-              <TabsContent value={StripeBillingInterval.YEARLY}>
-                <span className='text-primary scroll-m-20 text-4xl font-semibold tracking-tight'>
-                  29€
-                </span>
-              </TabsContent>
-              <TabsList>
-                <TabsTrigger
-                  value={StripeBillingInterval.MONTHLY}
-                  onClick={() => setSelectedPlan(StripeBillingInterval.MONTHLY)}
-                >
-                  Monthly
-                </TabsTrigger>
-                <TabsTrigger
-                  value={StripeBillingInterval.YEARLY}
-                  onClick={() => setSelectedPlan(StripeBillingInterval.YEARLY)}
-                >
-                  Yearly
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
+              Recommended
+            </Badge>
+          </div>
+          <CardHeader className='p-8 text-center'>
+            <CardTitle className='mb-2'>
+              <span className='text-2xl font-bold'>Unlimited</span>
+            </CardTitle>
+            <div className='mb-6'>
+              <span className='text-primary text-4xl font-bold'>10€</span>
+              <span className='text-muted-foreground ml-1 text-sm'>/year</span>
+            </div>
             <Button
+              size='lg'
+              className='mb-6 w-full'
               onClick={
                 !isSignedUp
                   ? () => signIn()
                   : async () => {
-                      const plan =
-                        selectedPlan === StripeBillingInterval.YEARLY
-                          ? StripeBillingInterval.YEARLY
-                          : StripeBillingInterval.MONTHLY
-                      const { checkoutUrl } = await createCheckoutSession(plan)
+                      const { checkoutUrl } = await createCheckoutSession(
+                        StripeBillingInterval.YEARLY,
+                      )
                       if (checkoutUrl) {
                         router.push(checkoutUrl)
                       }
@@ -316,12 +290,10 @@ export default function Landingpage() {
             >
               Get Retroloop Unlimited
             </Button>
-            <div className='prose text-foreground text-lg'>
-              <ul>
-                <li>Create unlimited retrospectives</li>
-                <li>Unlimited access to past retrospectives</li>
-              </ul>
-            </div>
+            <ul className='text-muted-foreground space-y-2 text-sm'>
+              <li>Unlimited retrospectives</li>
+              <li>Access all past retrospectives</li>
+            </ul>
           </CardHeader>
         </Card>
       </div>

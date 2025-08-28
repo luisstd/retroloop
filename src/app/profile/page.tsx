@@ -132,7 +132,7 @@ export default function Profile() {
                           variant='outline'
                           onClick={async () => {
                             const { checkoutUrl } = await createCheckoutSession(
-                              StripeBillingInterval.MONTHLY,
+                              StripeBillingInterval.YEARLY,
                             )
                             if (checkoutUrl) {
                               router.push(checkoutUrl)

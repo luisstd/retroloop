@@ -36,14 +36,14 @@ const RetroLimitReached = () => {
       <DialogHeader>
         <DialogTitle>Retrospective limit reached</DialogTitle>
         <DialogDescription>
-          You have reached the limit of 1 retrospective for the Standard plan.
+          You have reached the limit of 3 retrospectives for the free plan.
           Upgrade to Unlimited to create more.
         </DialogDescription>
       </DialogHeader>
       <Button
         onClick={async () => {
           const { checkoutUrl } = await createCheckoutSession(
-            StripeBillingInterval.MONTHLY,
+            StripeBillingInterval.YEARLY,
           )
           if (checkoutUrl) {
             router.push(checkoutUrl)

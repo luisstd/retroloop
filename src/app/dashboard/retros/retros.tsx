@@ -67,7 +67,7 @@ export function Retros({ userId }: RetrosProps) {
     if (!retrospectives) return
     if (!accountType) return
 
-    if (retrospectives.length >= 1 && accountType === AccountType.Standard) {
+    if (retrospectives.length >= 3 && accountType === AccountType.Standard) {
       setIsLimitReached(true)
     }
   }, [retrospectives, accountType])
