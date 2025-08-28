@@ -4,15 +4,15 @@ import { IconMenu2 } from '@tabler/icons-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuPortal,
   DropdownMenuTrigger,
-} from '@/app/ui/dropdown-menu/dropdown-menu'
-import { NavigationMenuLink } from '@/app/ui/navigation-menu/navigation-menu'
+} from '@/app/ui/dropdown-menu'
+import { NavigationMenuLink } from '@/app/ui/navigation-menu'
 
 export function NavigationDropdown() {
   const currentPage = usePathname()

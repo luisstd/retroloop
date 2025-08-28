@@ -11,13 +11,13 @@ import { Feedback } from '@/app/components/feedback/feedback'
 import { Loader } from '@/app/components/loader/loader'
 import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
 import { DeleteUserDialog } from '@/app/profile/delete-user-dialog'
-import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar/avatar'
-import { Badge } from '@/app/ui/badge/badge'
-import { Button } from '@/app/ui/button/button'
-import { Card, CardHeader, CardTitle } from '@/app/ui/card/card'
-import { Input } from '@/app/ui/input/input'
-import { Label } from '@/app/ui/label/label'
-import { useToast } from '@/app/ui/toast/use-toast'
+import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar'
+import { Badge } from '@/app/ui/badge'
+import { Button } from '@/app/ui/button'
+import { Card, CardHeader, CardTitle } from '@/app/ui/card'
+import { Input } from '@/app/ui/input'
+import { Label } from '@/app/ui/label'
+import { useToast } from '@/app/ui/use-toast'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
@@ -82,7 +82,7 @@ export default function Profile() {
     <>
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
-      <Card className='w-full bg-background p-10 shadow-sm'>
+      <Card className='bg-background w-full p-10 shadow-xs'>
         <CardHeader className='flex flex-row items-baseline justify-between'>
           <CardTitle>PROFILE</CardTitle>
           <Badge>Version {packageInfo.version}</Badge>

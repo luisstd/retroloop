@@ -5,7 +5,7 @@ import { Field, FieldProps, Form, Formik } from 'formik'
 import cloneDeep from 'lodash/cloneDeep'
 import { useState } from 'react'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -13,8 +13,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/app/ui/dialog/dialog'
-import { Textarea } from '@/app/ui/textarea/textarea'
+} from '@/app/ui/dialog'
+import { Textarea } from '@/app/ui/textarea'
 
 type EditDialogProps = {
   itemToEdit: Record<string, unknown>

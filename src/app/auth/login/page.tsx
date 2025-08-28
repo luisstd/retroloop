@@ -3,16 +3,16 @@ import { Field, Form, Formik } from 'formik'
 import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/app/ui/card/card'
-import { Input } from '@/app/ui/input/input'
-import { Label } from '@/app/ui/label/label'
+} from '@/app/ui/card'
+import { Input } from '@/app/ui/input'
+import { Label } from '@/app/ui/label'
 
 export default function Login() {
   const searchParams = useSearchParams()

@@ -17,20 +17,19 @@ import { useState } from 'react'
 
 import { Footer } from '@/app/components/footer/footer'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
-import { Badge } from '@/app/ui/badge/badge'
-import { Button } from '@/app/ui/button/button'
+import { Badge } from '@/app/ui/badge'
+import { Button } from '@/app/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/app/ui/card/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs/tabs'
+} from '@/app/ui/card'
+import { Separator } from '@/app/ui/separator'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
-
-import { Separator } from './ui/separator/separator'
 
 export default function Landingpage() {
   const { data: session, status } = useSession()
@@ -49,7 +48,7 @@ export default function Landingpage() {
         <h1 className='scroll-m-20 pb-2 text-center text-4xl font-semibold tracking-tight first:mt-0 md:text-5xl'>
           Agile retrospectives made easy
         </h1>
-        <p className='pb-2 text-center text-xl text-muted-foreground md:text-2xl'>
+        <p className='text-muted-foreground pb-2 text-center text-xl md:text-2xl'>
           Enable effective feedback across remote & hybrid teams
         </p>
         <div className='flex flex-col items-center gap-4 sm:flex-row'>
@@ -68,7 +67,7 @@ export default function Landingpage() {
           </Link>
         </div>
         <Image
-          className='hidden sm:block sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl'
+          className='hidden sm:block sm:max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg) xl:max-w-(--breakpoint-xl)'
           src={
             resolvedTheme === 'light' || theme === 'light'
               ? '/preview-light.webp'
@@ -91,7 +90,7 @@ export default function Landingpage() {
 
       <Card className='grid-rows-auto m-5 grid grid-cols-1 md:w-9/12 md:grid-cols-2'>
         <CardHeader className='col-start-1 row-start-1 flex w-full flex-col gap-3 p-10'>
-          <CardDescription className='mb-2 font-semibold text-primary'>
+          <CardDescription className='text-primary mb-2 font-semibold'>
             A space for effective feedback
           </CardDescription>
           <CardTitle className='flex items-center justify-start gap-6'>
@@ -159,7 +158,7 @@ export default function Landingpage() {
 
       <Card className='grid-rows-auto m-5 grid grid-cols-1 md:w-9/12 md:grid-cols-2'>
         <CardHeader className='col-start-2 row-start-1 flex w-full flex-col gap-3 p-10'>
-          <CardDescription className='mb-2 font-semibold text-primary'>
+          <CardDescription className='text-primary mb-2 font-semibold'>
             A resource for continuous improvement
           </CardDescription>
           <CardTitle className='flex items-center justify-start gap-6'>
@@ -241,8 +240,8 @@ export default function Landingpage() {
                 Standard
               </span>
             </CardTitle>
-            <CardDescription className='prose flex items-center justify-between gap-1 text-foreground'>
-              <span className='scroll-m-20 py-1 text-4xl font-semibold tracking-tight text-primary'>
+            <CardDescription className='prose text-foreground flex items-center justify-between gap-1'>
+              <span className='text-primary scroll-m-20 py-1 text-4xl font-semibold tracking-tight'>
                 Free
               </span>
               <span className='italic'>no credit card required</span>
@@ -250,7 +249,7 @@ export default function Landingpage() {
             <Button onClick={() => router.push('/dashboard')}>
               Get started for free
             </Button>
-            <div className='prose text-lg text-foreground'>
+            <div className='prose text-foreground text-lg'>
               <ul>
                 <li>Create 1 retrospective for free</li>
                 <li>3 month access to past retrospectives</li>
@@ -275,12 +274,12 @@ export default function Landingpage() {
               className='flex flex-col items-center justify-between gap-4 sm:flex-row'
             >
               <TabsContent value={StripeBillingInterval.MONTHLY}>
-                <span className='scroll-m-20 py-5 text-4xl font-semibold tracking-tight text-primary'>
+                <span className='text-primary scroll-m-20 py-5 text-4xl font-semibold tracking-tight'>
                   2.99€
                 </span>
               </TabsContent>
               <TabsContent value={StripeBillingInterval.YEARLY}>
-                <span className='scroll-m-20 text-4xl font-semibold tracking-tight text-primary'>
+                <span className='text-primary scroll-m-20 text-4xl font-semibold tracking-tight'>
                   29€
                 </span>
               </TabsContent>
@@ -317,7 +316,7 @@ export default function Landingpage() {
             >
               Get Retroloop Unlimited
             </Button>
-            <div className='prose text-lg text-foreground'>
+            <div className='prose text-foreground text-lg'>
               <ul>
                 <li>Create unlimited retrospectives</li>
                 <li>Unlimited access to past retrospectives</li>

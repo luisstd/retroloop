@@ -6,7 +6,7 @@ import { Field, FieldProps, Form, Formik } from 'formik'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -15,8 +15,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/app/ui/dialog/dialog'
-import { Textarea } from '@/app/ui/textarea/textarea'
+} from '@/app/ui/dialog'
+import { Textarea } from '@/app/ui/textarea'
 import { FeedbackCreateInputSchema } from '@/schemas/feedback'
 import { FeedbackCreateInput } from '@/types/feedback'
 

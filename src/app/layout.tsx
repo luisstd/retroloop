@@ -4,7 +4,7 @@ import { headers } from 'next/headers'
 
 import { Menu } from '@/app/components/menu/menu'
 import { Providers } from '@/app/providers'
-import { Toaster } from '@/app/ui/toast/toaster'
+import { Toaster } from '@/app/ui/toaster'
 import { getServerAuthSession } from '@/server/auth'
 import { font } from '@/styles/fonts'
 import { TRPCReactProvider } from '@/trpc/react'
@@ -42,8 +42,8 @@ export default async function RootLayout({
       <body suppressHydrationWarning className={font.className}>
         <Providers session={session}>
           <TRPCReactProvider headers={headers()}>
-            <main className='relative mx-auto flex w-screen max-w-screen-2xl flex-col items-center'>
-              <div className='opacity-gradient pattern-dots absolute -z-50 h-full min-h-screen w-screen pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2' />
+            <main className='relative mx-auto flex w-screen max-w-(--breakpoint-2xl) flex-col items-center'>
+              <div className='opacity-gradient absolute -z-50 h-full min-h-screen w-screen' />
               <Menu />
               {children}
               <Toaster />
