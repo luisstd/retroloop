@@ -5,12 +5,7 @@ import { User } from '@prisma/client'
 import { Loader } from '@/app/components/loader/loader'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { TeamFallback } from '@/app/dashboard/team/components/team-fallback'
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card'
 import { api } from '@/trpc/react'
 
 export function Team() {
@@ -28,7 +23,7 @@ export function Team() {
             {user.role}
           </CardDescription>
         </CardHeader>
-        <div className='pattern-cross pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-4 h-28' />
+        <div className='h-28' />
       </Card>
     ))
   ) : (

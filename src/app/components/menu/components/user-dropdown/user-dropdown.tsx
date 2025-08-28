@@ -4,11 +4,7 @@ import { IconUserCircle } from '@tabler/icons-react'
 import { signOut, useSession } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/app/ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '@/app/ui/popover'
 
 export function UserDropdown() {
   const { data: session } = useSession()

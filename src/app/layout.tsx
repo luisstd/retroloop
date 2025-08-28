@@ -43,7 +43,7 @@ export default async function RootLayout({
         <Providers session={session}>
           <TRPCReactProvider headers={headers()}>
             <main className='relative mx-auto flex w-screen max-w-(--breakpoint-2xl) flex-col items-center'>
-              <div className='opacity-gradient pattern-dots pattern-bg-transparent pattern-foreground pattern-opacity-5 pattern-size-2 absolute -z-50 h-full min-h-screen w-screen' />
+              <div className='opacity-gradient absolute -z-50 h-full min-h-screen w-screen' />
               <Menu />
               {children}
               <Toaster />

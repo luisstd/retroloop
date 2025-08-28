@@ -3,7 +3,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @import 'tw-animate-css';
-@plugin 'tailwindcss-bg-patterns';
 @plugin '@tailwindcss/typography';
 
 :root {
