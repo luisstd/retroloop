@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from '@/app/ui/navigation-menu/navigation-menu'
+} from '@/app/ui/navigation-menu'
 import { cn } from '@/utils/cn'
 
 export function Footer() {

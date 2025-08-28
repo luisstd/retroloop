@@ -6,9 +6,9 @@ import { useSession } from 'next-auth/react'
 import { DeleteDialog } from '@/app/components/dialog/delete-dialog/delete-dialog'
 import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
 import { FeedbackDialog } from '@/app/retro/phase/write/components/feedback-collector/components/feedback-dialog'
-import { Card } from '@/app/ui/card/card'
-import { Skeleton } from '@/app/ui/skeleton/skeleton'
-import { useToast } from '@/app/ui/toast/use-toast'
+import { Card } from '@/app/ui/card'
+import { Skeleton } from '@/app/ui/skeleton'
+import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 import { FeedbackCreateInput } from '@/types/feedback'
 
@@ -90,9 +90,9 @@ export function FeedbackCollector({
 
       {isLoading && (
         <>
-          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-[100rem] min-w-full max-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
         </>
       )}
 
@@ -102,7 +102,7 @@ export function FeedbackCollector({
             (item: Feedback) =>
               item.type === itemType && (
                 <li key={item.id}>
-                  <Card className='m-2 mx-auto flex w-[100rem] min-w-full max-w-full items-center justify-between break-words p-4'>
+                  <Card className='m-2 mx-auto flex w-400 max-w-full min-w-full items-center justify-between p-4 break-words'>
                     <p>{item.content}</p>
 
                     <div className='flex flex-row items-center'>

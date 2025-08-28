@@ -10,10 +10,10 @@ import {
 } from 'date-fns'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@/app/ui/button/button'
-import { Card } from '@/app/ui/card/card'
-import { Input } from '@/app/ui/input/input'
-import { useToast } from '@/app/ui/toast/use-toast'
+import { Button } from '@/app/ui/button'
+import { Card } from '@/app/ui/card'
+import { Input } from '@/app/ui/input'
+import { useToast } from '@/app/ui/use-toast'
 
 type RetroTimerProps = {
   selectedRetro: Retrospective

@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
-import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar'
 import {
   Tooltip,
   TooltipContent,
@@ -64,12 +64,12 @@ export function AvatarStack() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
-              <Avatar className='h-8 w-8 ring-2 ring-background'>
+              <Avatar className='ring-background h-8 w-8 ring-2'>
                 <AvatarImage
                   alt='User avatar'
                   src={self.profileData?.image as string}
                 />
-                <AvatarFallback className='flex h-8 w-8 items-center justify-center bg-primary font-bold text-primary-foreground'>
+                <AvatarFallback className='bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-bold'>
                   {getInitials(self)}
                 </AvatarFallback>
               </Avatar>
@@ -85,12 +85,12 @@ export function AvatarStack() {
         <TooltipProvider key={member.clientId}>
           <Tooltip>
             <TooltipTrigger>
-              <Avatar className='h-8 w-8 ring-2 ring-background'>
+              <Avatar className='ring-background h-8 w-8 ring-2'>
                 <AvatarImage
                   alt='User avatar'
                   src={member.profileData?.image as string}
                 />
-                <AvatarFallback className='flex h-8 w-8 items-center justify-center bg-primary font-bold text-primary-foreground'>
+                <AvatarFallback className='bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center font-bold'>
                   {getInitials(member)}
                 </AvatarFallback>
               </Avatar>
@@ -106,8 +106,8 @@ export function AvatarStack() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
-              <Avatar className='h-8 w-8 ring-2 ring-background'>
-                <AvatarFallback className='flex h-8 w-8 items-center justify-center bg-muted font-medium text-muted-foreground'>
+              <Avatar className='ring-background h-8 w-8 ring-2'>
+                <AvatarFallback className='bg-muted text-muted-foreground flex h-8 w-8 items-center justify-center font-medium'>
                   +{remainingCount}
                 </AvatarFallback>
               </Avatar>

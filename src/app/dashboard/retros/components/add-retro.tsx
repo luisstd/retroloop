@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -13,9 +13,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/app/ui/dialog/dialog'
-import { Input } from '@/app/ui/input/input'
-import { Label } from '@/app/ui/label/label'
+} from '@/app/ui/dialog'
+import { Input } from '@/app/ui/input'
+import { Label } from '@/app/ui/label'
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
 import { api } from '@/trpc/react'
 import { RetrospectiveCreateInput } from '@/types/retrospective'
@@ -36,14 +36,14 @@ const RetroLimitReached = () => {
       <DialogHeader>
         <DialogTitle>Retrospective limit reached</DialogTitle>
         <DialogDescription>
-          You have reached the limit of 1 retrospective for the Standard plan.
+          You have reached the limit of 3 retrospectives for the free plan.
           Upgrade to Unlimited to create more.
         </DialogDescription>
       </DialogHeader>
       <Button
         onClick={async () => {
           const { checkoutUrl } = await createCheckoutSession(
-            StripeBillingInterval.MONTHLY,
+            StripeBillingInterval.YEARLY,
           )
           if (checkoutUrl) {
             router.push(checkoutUrl)

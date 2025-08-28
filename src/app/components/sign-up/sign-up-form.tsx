@@ -3,7 +3,7 @@
 import { Field, Form, Formik } from 'formik'
 import { useSession } from 'next-auth/react'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   Card,
   CardContent,
@@ -11,9 +11,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/app/ui/card/card'
-import { Input } from '@/app/ui/input/input'
-import { Label } from '@/app/ui/label/label'
+} from '@/app/ui/card'
+import { Input } from '@/app/ui/input'
+import { Label } from '@/app/ui/label'
 import { api } from '@/trpc/react'
 import { UserSession } from '@/types/user'
 
@@ -70,7 +70,7 @@ export function SignUpForm() {
                       name='email'
                       required
                       disabled={data.user?.email}
-                      className={`${data.user?.email ? 'italic text-muted-foreground' : ''}`}
+                      className={`${data.user?.email ? 'text-muted-foreground italic' : ''}`}
                     />
                   </fieldset>
                 </CardContent>

@@ -15,14 +15,33 @@ const nextConfig = withPlausibleProxy()({
 })
 
 const sentryConfig = {
-  hideSourceMaps: true,
+  hideSourceMaps: false,
   widenClientFileUpload: true,
   transpileClientSDK: true,
   release: `retroloop@${packageJson.version}`,
-  silent: true,
+  setCommits: {
+    auto: true,
+    ignoreMissing: true,
+    ignoreEmpty: true,
+  },
+  deploy: {
+    env: process.env.NODE_ENV,
+  },
+  silent: process.env.NODE_ENV !== 'development',
+  dryRun: false,
   org: process.env.SENTRY_ORG,
   project: process.env.SENTRY_PROJECT,
   authToken: process.env.SENTRY_AUTH_TOKEN,
+  sourcemaps: {
+    assets: ['.next/static/chunks/**', '.next/server/**'],
+    ignore: ['node_modules/**'],
+    deleteFilesAfterUpload:
+      process.env.NODE_ENV === 'production' ? ['**/*.map'] : [],
+  },
+  tunnelRoute: '/monitoring',
+  webpack: {
+    devtool: 'hidden-source-map',
+  },
 }
 
 module.exports = withSentryConfig(nextConfig, sentryConfig)

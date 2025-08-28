@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -12,10 +12,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/app/ui/dialog/dialog'
-import { Input } from '@/app/ui/input/input'
-import { Label } from '@/app/ui/label/label'
-import { useToast } from '@/app/ui/toast/use-toast'
+} from '@/app/ui/dialog'
+import { Input } from '@/app/ui/input'
+import { Label } from '@/app/ui/label'
+import { useToast } from '@/app/ui/use-toast'
 
 type InviteDialogProps = {
   ctaCopy: string

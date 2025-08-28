@@ -13,29 +13,19 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
-import { useState } from 'react'
 
 import { Footer } from '@/app/components/footer/footer'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
-import { Badge } from '@/app/ui/badge/badge'
-import { Button } from '@/app/ui/button/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/ui/tabs/tabs'
+import { Badge } from '@/app/ui/badge'
+import { Button } from '@/app/ui/button'
+import { Card, CardHeader, CardTitle } from '@/app/ui/card'
+import { Separator } from '@/app/ui/separator'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
-
-import { Separator } from './ui/separator/separator'
 
 export default function Landingpage() {
   const { data: session, status } = useSession()
   const { resolvedTheme, theme } = useTheme()
-  const [selectedPlan, setSelectedPlan] = useState(StripeBillingInterval.YEARLY)
   const router = useRouter()
 
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
@@ -45,289 +35,234 @@ export default function Landingpage() {
 
   return (
     <div className='flex w-full flex-col items-center'>
-      <section className='row-start-1 m-5 flex flex-col items-center gap-7 px-2 sm:mt-12'>
-        <h1 className='scroll-m-20 pb-2 text-center text-4xl font-semibold tracking-tight first:mt-0 md:text-5xl'>
-          Agile retrospectives made easy
-        </h1>
-        <p className='pb-2 text-center text-xl text-muted-foreground md:text-2xl'>
-          Enable effective feedback across remote & hybrid teams
-        </p>
-        <div className='flex flex-col items-center gap-4 sm:flex-row'>
-          <InviteDialog
-            ctaCopy='Invite a team member'
-            ctaVariant='secondary'
-            dialogTitle='Send an invite link'
-            dialogDescription='Invite someone by sending them a login link'
-            iconVariant='send'
-          />
-          <Link href={'/dashboard'} className='w-full'>
-            <Button className='flex w-full items-center'>
-              Start a feedback session
-              <IconArrowRight size={18} className='ml-2' />
-            </Button>
-          </Link>
+      <section className='flex flex-col items-center gap-8 px-6 py-16 md:py-24'>
+        <div className='max-w-4xl text-center'>
+          <h1 className='mb-6 text-4xl font-bold tracking-tight md:text-6xl'>
+            Agile retrospectives made easy
+          </h1>
+          <p className='text-muted-foreground mb-8 text-xl md:text-2xl'>
+            Enable effective feedback across remote & hybrid teams
+          </p>
+          <div className='flex flex-col items-center gap-4 sm:flex-row sm:justify-center'>
+            <Link href={'/dashboard'} className='w-full sm:w-52'>
+              <Button
+                size='lg'
+                className='flex h-11 w-full items-center justify-center gap-2'
+              >
+                Start your first retro
+                <IconArrowRight size={18} />
+              </Button>
+            </Link>
+            <div className='w-full sm:w-52 [&>button]:h-11 [&>button]:w-full [&>button]:text-sm'>
+              <InviteDialog
+                ctaCopy='Invite teammates'
+                ctaVariant='outline'
+                dialogTitle='Send an invite link'
+                dialogDescription='Invite someone by sending them a login link'
+                iconVariant='none'
+              />
+            </div>
+          </div>
         </div>
-        <Image
-          className='hidden sm:block sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl'
-          src={
-            resolvedTheme === 'light' || theme === 'light'
-              ? '/preview-light.webp'
-              : '/preview-dark.webp'
-          }
-          alt='Retroloop preview'
-          title='Retroloop preview'
-          width={1920}
-          height={1080}
-          priority
-        />
+        <div className='mt-12 w-full max-w-5xl'>
+          <Image
+            className='w-full'
+            src={
+              resolvedTheme === 'light' || theme === 'light'
+                ? '/preview-light.webp'
+                : '/preview-dark.webp'
+            }
+            alt='Retroloop preview'
+            title='Retroloop preview'
+            width={1920}
+            height={1080}
+            priority
+          />
+        </div>
       </section>
 
-      <h2
-        className='my-2 mt-8 scroll-m-20 text-3xl font-semibold tracking-tight'
-        id='features'
-      >
-        Features
-      </h2>
-
-      <Card className='grid-rows-auto m-5 grid grid-cols-1 md:w-9/12 md:grid-cols-2'>
-        <CardHeader className='col-start-1 row-start-1 flex w-full flex-col gap-3 p-10'>
-          <CardDescription className='mb-2 font-semibold text-primary'>
-            A space for effective feedback
-          </CardDescription>
-          <CardTitle className='flex items-center justify-start gap-6'>
-            <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
-              Simplify your retrospectives
-            </span>
-          </CardTitle>
-          <p className='prose text-foreground'>
-            Retroloop makes it easy for any team, in any field, to streamline
-            their feedback process. Get set up in just a few minutes, quickly
-            identify what needs improvement and start seeing real results from
-            the start.
+      <section className='w-full max-w-7xl px-6 py-16' id='features'>
+        <div className='mb-16 text-center'>
+          <h2 className='mb-4 text-3xl font-bold tracking-tight md:text-4xl'>
+            Everything you need for effective retrospectives
+          </h2>
+          <p className='text-muted-foreground mx-auto max-w-2xl text-xl'>
+            Simple, powerful features that help teams reflect, improve, and grow
+            together
           </p>
+        </div>
 
-          <Link href={'/dashboard'} className='w-full sm:w-auto sm:self-center'>
-            <Button variant='outline' className='m-5 mx-auto w-full sm:w-auto'>
-              Start retrospective
-            </Button>
-          </Link>
-        </CardHeader>
-
-        <CardContent className='flex w-full flex-col items-center gap-6 p-10 md:col-start-2 md:row-start-1'>
-          <div className='text-start'>
-            <div className='mb-1 flex items-center gap-2'>
-              <IconLogin size={32} className='text-primary' />
-              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Seamless login
-              </h3>
+        <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
+          <div className='flex flex-col items-start gap-4'>
+            <div className='flex items-center gap-3'>
+              <div className='bg-primary/10 rounded-lg p-3'>
+                <IconLogin size={24} className='text-primary' />
+              </div>
+              <h3 className='text-xl font-semibold'>Seamless login</h3>
             </div>
-            <p className='prose text-foreground'>
-              Get started quickly via e-mail login or an OAuth provider of your
-              choice. Access Retroloop quickly and start your feedback sessions
-              without any hassle.
+            <p className='text-muted-foreground leading-relaxed'>
+              Get started quickly via email or OAuth. Access Retroloop instantly
+              and begin your feedback sessions without hassle.
             </p>
           </div>
 
-          <div className='text-start'>
-            <div className='mb-1 flex items-center gap-2'>
-              <IconHourglass size={32} className='text-primary' />
-              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Real-time functionality
-              </h3>
+          <div className='flex flex-col items-start gap-4'>
+            <div className='flex items-center gap-3'>
+              <div className='bg-primary/10 rounded-lg p-3'>
+                <IconHourglass size={24} className='text-primary' />
+              </div>
+              <h3 className='text-xl font-semibold'>Real-time sync</h3>
             </div>
-            <p className='prose text-foreground'>
-              Keep your retrospectives on track with a timer synchronized
-              between all participants, perfect for timeboxing discussions.
+            <p className='text-muted-foreground leading-relaxed'>
+              Keep retrospectives on track with synchronized timers between all
+              participants, perfect for timeboxing discussions.
             </p>
           </div>
 
-          <div className='text-start'>
-            <div className='mb-1 flex items-center gap-2'>
-              <IconRepeat size={32} className='text-primary' />
-              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Intuitive user interface
-              </h3>
+          <div className='flex flex-col items-start gap-4'>
+            <div className='flex items-center gap-3'>
+              <div className='bg-primary/10 rounded-lg p-3'>
+                <IconRepeat size={24} className='text-primary' />
+              </div>
+              <h3 className='text-xl font-semibold'>Intuitive interface</h3>
             </div>
-            <p className='prose text-foreground'>
-              Navigate with ease using a clean, simple interface that&apos;s
-              intuitive for everyone. Gather feedback easily and make every
-              retrospective straightforward and productive.
+            <p className='text-muted-foreground leading-relaxed'>
+              Navigate with ease using a clean, simple interface that makes
+              every retrospective straightforward and productive.
             </p>
           </div>
-        </CardContent>
-      </Card>
 
-      <Card className='grid-rows-auto m-5 grid grid-cols-1 md:w-9/12 md:grid-cols-2'>
-        <CardHeader className='col-start-2 row-start-1 flex w-full flex-col gap-3 p-10'>
-          <CardDescription className='mb-2 font-semibold text-primary'>
-            A resource for continuous improvement
-          </CardDescription>
-          <CardTitle className='flex items-center justify-start gap-6'>
-            <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
-              Get actionable feedback
-            </span>
-          </CardTitle>
-          <p className='prose text-foreground'>
-            Leverage Retroloop to identify opportunities for growth, streamline
-            processes, and foster a culture of continuous improvement.
-          </p>
-
-          <div className='w-full p-5 sm:w-auto sm:self-center'>
-            <InviteDialog
-              ctaCopy='Invite a team member'
-              ctaVariant='outline'
-              dialogTitle='Send an invite link'
-              dialogDescription='Invite someone by sending them a login link'
-              iconVariant='none'
-            />
-          </div>
-        </CardHeader>
-
-        <CardContent className='col-start-2 row-start-2 flex flex-col items-center gap-6 p-10 md:col-start-1 md:row-start-1'>
-          <div className='m text-start'>
-            <div className='mb-1 flex items-center gap-2'>
-              <IconBulb size={32} className='text-primary' />
-              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Helpful insights
-              </h3>
+          <div className='flex flex-col items-start gap-4'>
+            <div className='flex items-center gap-3'>
+              <div className='bg-primary/10 rounded-lg p-3'>
+                <IconBulb size={24} className='text-primary' />
+              </div>
+              <h3 className='text-xl font-semibold'>Actionable insights</h3>
             </div>
-            <p className='prose text-foreground'>
+            <p className='text-muted-foreground leading-relaxed'>
               Transform feedback into concrete action items that drive
-              meaningful change and help your team get better.
+              meaningful change and help your team improve.
             </p>
           </div>
 
-          <div className='text-start'>
-            <div className='mb-1 flex items-center gap-2'>
-              <IconUsers size={32} className='text-primary' />
-              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Built for modern teams
-              </h3>
+          <div className='flex flex-col items-start gap-4'>
+            <div className='flex items-center gap-3'>
+              <div className='bg-primary/10 rounded-lg p-3'>
+                <IconUsers size={24} className='text-primary' />
+              </div>
+              <h3 className='text-xl font-semibold'>Built for teams</h3>
             </div>
-            <p className='prose text-foreground'>
-              Retroloop is designed to support the diverse needs of today&apos;s
-              agile teams, with a focus on simplicity, effectiveness, and
-              collaboration.
+            <p className='text-muted-foreground leading-relaxed'>
+              Designed for modern agile teams with a focus on simplicity,
+              effectiveness, and seamless collaboration.
             </p>
           </div>
 
-          <div className='text-start'>
-            <div className='mb-1 flex items-center gap-2'>
-              <IconAffiliate size={32} className='text-primary' />
-              <h3 className='scroll-m-20 text-lg font-semibold tracking-tight'>
-                Transparent & collaborative
-              </h3>
+          <div className='flex flex-col items-start gap-4'>
+            <div className='flex items-center gap-3'>
+              <div className='bg-primary/10 rounded-lg p-3'>
+                <IconAffiliate size={24} className='text-primary' />
+              </div>
+              <h3 className='text-xl font-semibold'>Transparent process</h3>
             </div>
-            <p className='prose text-foreground'>
-              Encourage open communication and collaboration by making your
-              retrospectives transparent and inclusive for every team member.
+            <p className='text-muted-foreground leading-relaxed'>
+              Encourage open communication by making retrospectives transparent
+              and inclusive for every team member.
             </p>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
 
-      <h2
-        className='my-5 hidden scroll-m-20 text-3xl font-semibold tracking-tight'
-        id='pricing'
-      >
-        Pricing
-      </h2>
+      <section className='w-full max-w-4xl px-6 py-16' id='pricing'>
+        <div className='mb-12 text-center'>
+          <h2 className='mb-4 text-3xl font-bold tracking-tight md:text-4xl'>
+            Simple, transparent pricing
+          </h2>
+          <p className='text-muted-foreground text-xl'>
+            Start free, upgrade when you need more
+          </p>
+        </div>
 
-      <div className='flex w-full flex-col items-center justify-center md:w-10/12 md:flex-row'>
-        <Card className='m-5'>
-          <CardHeader className='flex flex-col gap-3 p-10'>
-            <CardTitle className='flex items-center justify-start gap-6'>
-              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
-                Standard
-              </span>
-            </CardTitle>
-            <CardDescription className='prose flex items-center justify-between gap-1 text-foreground'>
-              <span className='scroll-m-20 py-1 text-4xl font-semibold tracking-tight text-primary'>
-                Free
-              </span>
-              <span className='italic'>no credit card required</span>
-            </CardDescription>
-            <Button onClick={() => router.push('/dashboard')}>
-              Get started for free
-            </Button>
-            <div className='prose text-lg text-foreground'>
-              <ul>
-                <li>Create 1 retrospective for free</li>
+        <div className='flex flex-col items-stretch justify-center gap-6 md:flex-row'>
+          <Card className='flex-1 shadow-xs'>
+            <CardHeader className='flex h-full flex-col p-8 text-center'>
+              <div>
+                <CardTitle className='mb-2'>
+                  <span className='text-muted-foreground text-2xl font-bold'>
+                    Free
+                  </span>
+                </CardTitle>
+                <div className='mb-6'>
+                  <span className='text-primary text-4xl font-bold'>0€</span>
+                </div>
+                <Button
+                  variant='outline'
+                  size='lg'
+                  className='mb-2 w-full'
+                  onClick={() => router.push('/dashboard')}
+                >
+                  Get started for free
+                </Button>
+                <p className='text-muted-foreground mb-6 text-xs'>
+                  No credit card required
+                </p>
+              </div>
+              <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
+                <li>Create 3 retrospectives for free</li>
                 <li>3 month access to past retrospectives</li>
               </ul>
-            </div>
-          </CardHeader>
-        </Card>
-        <Card className='m-5'>
-          <CardHeader className='flex flex-col gap-3 p-10'>
-            <CardTitle className='flex items-center justify-between gap-6'>
-              <span className='scroll-m-20 text-3xl font-semibold tracking-tight'>
-                Unlimited
-              </span>
-              {selectedPlan === StripeBillingInterval.YEARLY && (
-                <Badge variant='outline' className='text-sm'>
-                  Save 20%
-                </Badge>
-              )}
-            </CardTitle>
-            <Tabs
-              defaultValue={selectedPlan}
-              className='flex flex-col items-center justify-between gap-4 sm:flex-row'
-            >
-              <TabsContent value={StripeBillingInterval.MONTHLY}>
-                <span className='scroll-m-20 py-5 text-4xl font-semibold tracking-tight text-primary'>
-                  2.99€
-                </span>
-              </TabsContent>
-              <TabsContent value={StripeBillingInterval.YEARLY}>
-                <span className='scroll-m-20 text-4xl font-semibold tracking-tight text-primary'>
-                  29€
-                </span>
-              </TabsContent>
-              <TabsList>
-                <TabsTrigger
-                  value={StripeBillingInterval.MONTHLY}
-                  onClick={() => setSelectedPlan(StripeBillingInterval.MONTHLY)}
-                >
-                  Monthly
-                </TabsTrigger>
-                <TabsTrigger
-                  value={StripeBillingInterval.YEARLY}
-                  onClick={() => setSelectedPlan(StripeBillingInterval.YEARLY)}
-                >
-                  Yearly
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-            <Button
-              onClick={
-                !isSignedUp
-                  ? () => signIn()
-                  : async () => {
-                      const plan =
-                        selectedPlan === StripeBillingInterval.YEARLY
-                          ? StripeBillingInterval.YEARLY
-                          : StripeBillingInterval.MONTHLY
-                      const { checkoutUrl } = await createCheckoutSession(plan)
-                      if (checkoutUrl) {
-                        router.push(checkoutUrl)
-                      }
-                    }
-              }
-            >
-              Get Retroloop Unlimited
-            </Button>
-            <div className='prose text-lg text-foreground'>
-              <ul>
-                <li>Create unlimited retrospectives</li>
-                <li>Unlimited access to past retrospectives</li>
-              </ul>
-            </div>
-          </CardHeader>
-        </Card>
-      </div>
+            </CardHeader>
+          </Card>
 
-      <Separator className='my-10' />
+          <Card className='relative flex-1 shadow-xs'>
+            <div className='absolute -top-2 left-1/2 -translate-x-1/2'>
+              <Badge
+                variant='outline'
+                className='bg-background px-3 py-1 text-xs'
+              >
+                Support Development
+              </Badge>
+            </div>
+            <CardHeader className='flex h-full flex-col p-8 text-center'>
+              <div>
+                <CardTitle className='mb-2'>
+                  <span className='text-2xl font-bold'>Unlimited</span>
+                </CardTitle>
+                <div className='mb-6'>
+                  <span className='text-primary text-4xl font-bold'>10€</span>
+                  <span className='text-muted-foreground ml-1 text-sm'>
+                    /year
+                  </span>
+                </div>
+                <Button
+                  size='lg'
+                  className='mb-6 w-full'
+                  onClick={
+                    !isSignedUp
+                      ? () => signIn()
+                      : async () => {
+                          const { checkoutUrl } = await createCheckoutSession(
+                            StripeBillingInterval.YEARLY,
+                          )
+                          if (checkoutUrl) {
+                            router.push(checkoutUrl)
+                          }
+                        }
+                  }
+                >
+                  Get Retroloop Unlimited
+                </Button>
+              </div>
+              <ul className='text-muted-foreground mt-auto space-y-2 text-sm'>
+                <li>Create unlimited retrospectives</li>
+                <li>Access all past retrospectives</li>
+              </ul>
+            </CardHeader>
+          </Card>
+        </div>
+      </section>
+
+      <Separator className='my-16' />
 
       <Footer />
     </div>

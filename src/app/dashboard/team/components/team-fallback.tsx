@@ -7,7 +7,7 @@ export function TeamFallback() {
       <h3 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
         Your team members will show up here
       </h3>
-      <p className='text-lg text-muted-foreground'>
+      <p className='text-muted-foreground text-lg'>
         Anyone who collaborated in a retrospective with you will be added to
         your dashboard
       </p>

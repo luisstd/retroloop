@@ -3,7 +3,6 @@
 This software and its source code are made available to the public for viewing and learning purposes only.
 
 - **You are allowed to**:
-
   - View the source code for personal, educational, or research purposes.
   - Use the software for personal, non-commercial purposes.
 

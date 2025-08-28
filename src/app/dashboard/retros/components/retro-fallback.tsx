@@ -9,7 +9,7 @@ export function RetroFallback() {
         Your retrospectives will show up here
       </h3>
 
-      <p className='text-lg text-muted-foreground'>
+      <p className='text-muted-foreground text-lg'>
         Any retro you join or create will be added to your dashboard
       </p>
     </div>

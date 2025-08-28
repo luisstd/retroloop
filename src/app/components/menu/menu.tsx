@@ -16,7 +16,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
   NavigationMenuViewport,
-} from '@/app/ui/navigation-menu/navigation-menu'
+} from '@/app/ui/navigation-menu'
 import { cn } from '@/utils/cn'
 
 export function Menu() {
@@ -27,7 +27,7 @@ export function Menu() {
 
   return (
     <div className='min-w-full'>
-      <NavigationMenu className='m-5 flex max-w-none items-center gap-2 rounded-full border-2 bg-background p-1 text-xl shadow-sm sm:gap-10 md:mx-auto md:max-w-max'>
+      <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-2 rounded-full border-2 p-1 text-xl shadow-xs sm:gap-10 md:mx-auto md:max-w-max'>
         <NavigationMenuList>
           <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>
             <Link href='/' legacyBehavior passHref>

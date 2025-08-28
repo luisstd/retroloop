@@ -7,8 +7,8 @@ import { Loader } from '@/app/components/loader/loader'
 import { AddRetro } from '@/app/dashboard/retros/components/add-retro'
 import { RetroCard } from '@/app/dashboard/retros/components/retro-card'
 import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
-import { Card, CardTitle } from '@/app/ui/card/card'
-import { useToast } from '@/app/ui/toast/use-toast'
+import { Card, CardTitle } from '@/app/ui/card'
+import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 import {
   RetrospectiveCreateInput,
@@ -67,13 +67,13 @@ export function Retros({ userId }: RetrosProps) {
     if (!retrospectives) return
     if (!accountType) return
 
-    if (retrospectives.length >= 1 && accountType === AccountType.Standard) {
+    if (retrospectives.length >= 3 && accountType === AccountType.Standard) {
       setIsLimitReached(true)
     }
   }, [retrospectives, accountType])
 
   return (
-    <Card className='w-full bg-background p-10 shadow-sm'>
+    <Card className='bg-background w-full p-10 shadow-xs'>
       <div className='flex flex-row items-baseline justify-between'>
         <CardTitle className='p-5 text-center'>RETROS</CardTitle>
 
