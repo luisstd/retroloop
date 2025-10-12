@@ -10,12 +10,6 @@ Sentry.init({
   debug: process.env.NODE_ENV === 'development',
   tracesSampleRate: 1.0,
   profilesSampleRate: 1.0,
-  tracePropagationTargets: [
-    'localhost',
-    /^https:\/\/.*\.retroloop\.app/,
-    /^https:\/\/retroloop\.app/,
-    /^\/api/,
-  ],
   replaysOnErrorSampleRate: 1.0,
   replaysSessionSampleRate: 1.0,
   sendDefaultPii: false,
