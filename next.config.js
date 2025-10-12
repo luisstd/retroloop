@@ -12,9 +12,6 @@ const nextConfig = withPlausibleProxy()({
   publicRuntimeConfig: {
     version: packageJson.version,
   },
-  experimental: {
-    instrumentationHook: true,
-  },
 })
 
 const sentryConfig = {
