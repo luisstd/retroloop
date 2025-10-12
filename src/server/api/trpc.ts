@@ -100,6 +100,12 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
  */
 export const createTRPCRouter = t.router
 
+const sentryMiddleware = t.middleware(
+  trpcMiddleware({
+    attachRpcInput: true,
+  }),
+)
+
 /**
  * Public (unauthenticated) procedure
  *
@@ -107,7 +113,7 @@ export const createTRPCRouter = t.router
  * guarantee that a user querying is authorized, but you can still access user session data if they
  * are logged in.
  */
-export const publicProcedure = t.procedure
+export const publicProcedure = t.procedure.use(sentryMiddleware)
 
 /** Reusable middleware that enforces users are logged in before running the procedure. */
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
@@ -121,12 +127,6 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
     },
   })
 })
-
-const sentryMiddleware = t.middleware(
-  trpcMiddleware({
-    attachRpcInput: true,
-  }),
-)
 
 const finalMiddleware = sentryMiddleware.unstable_pipe(enforceUserIsAuthed)
 
