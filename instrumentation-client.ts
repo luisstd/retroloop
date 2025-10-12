@@ -1,13 +1,15 @@
 import * as Sentry from '@sentry/nextjs'
 
-const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN
+import packageJson from './package.json'
+
+const SENTRY_DSN = process.env.NEXT_PUBLIC_SENTRY_DSN
 
 Sentry.init({
   dsn: SENTRY_DSN,
   environment: process.env.NODE_ENV,
   debug: process.env.NODE_ENV === 'development',
-  tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
-  profilesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
+  tracesSampleRate: 1.0,
+  profilesSampleRate: 1.0,
   tracePropagationTargets: [
     'localhost',
     /^https:\/\/.*\.retroloop\.app/,
@@ -15,9 +17,9 @@ Sentry.init({
     /^\/api/,
   ],
   replaysOnErrorSampleRate: 1.0,
-  replaysSessionSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 0.5,
-  sendDefaultPii: true,
-  release: `retroloop@${process.env.npm_package_version}`,
+  replaysSessionSampleRate: 1.0,
+  sendDefaultPii: false,
+  release: `retroloop@${packageJson.version}`,
 
   integrations: [
     Sentry.browserTracingIntegration({
@@ -132,7 +134,7 @@ Sentry.init({
     contexts: {
       app: {
         name: 'Retroloop',
-        version: process.env.npm_package_version,
+        version: packageJson.version,
       },
     },
   },
