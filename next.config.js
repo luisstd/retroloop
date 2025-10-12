@@ -15,9 +15,6 @@ const nextConfig = withPlausibleProxy()({
 })
 
 const sentryConfig = {
-  hideSourceMaps: false,
-  widenClientFileUpload: true,
-  transpileClientSDK: true,
   release: `retroloop@${packageJson.version}`,
   setCommits: {
     auto: true,
