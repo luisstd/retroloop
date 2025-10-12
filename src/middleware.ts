@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
         pathname: request.nextUrl.pathname,
         search: request.nextUrl.search,
         userAgent: request.headers.get('user-agent'),
-        ip: request.ip || request.headers.get('x-forwarded-for'),
+        ip: request.headers.get('x-forwarded-for'),
       })
 
       if (request.nextUrl.pathname.startsWith('/api/')) {
@@ -37,5 +37,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|monitoring).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 }

@@ -12,16 +12,12 @@ const nextConfig = withPlausibleProxy()({
   publicRuntimeConfig: {
     version: packageJson.version,
   },
-  experimental: {
-    instrumentationHook: true,
-  },
 })
 
 const sentryConfig = {
-  hideSourceMaps: false,
-  widenClientFileUpload: true,
-  transpileClientSDK: true,
-  release: `retroloop@${packageJson.version}`,
+  release: {
+    name: `retroloop@${packageJson.version}`,
+  },
   setCommits: {
     auto: true,
     ignoreMissing: true,
@@ -30,7 +26,6 @@ const sentryConfig = {
   deploy: {
     env: process.env.NODE_ENV,
   },
-  silent: process.env.NODE_ENV !== 'development',
   dryRun: false,
   org: process.env.SENTRY_ORG,
   project: process.env.SENTRY_PROJECT,
@@ -41,10 +36,10 @@ const sentryConfig = {
     deleteFilesAfterUpload:
       process.env.NODE_ENV === 'production' ? ['**/*.map'] : [],
   },
-  tunnelRoute: '/monitoring',
   webpack: {
     devtool: 'hidden-source-map',
   },
+  telemetry: false,
 }
 
 module.exports = withSentryConfig(nextConfig, sentryConfig)

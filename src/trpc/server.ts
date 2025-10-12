@@ -19,8 +19,8 @@ export const api = createTRPCProxyClient<AppRouter>({
     }),
     unstable_httpBatchStreamLink({
       url: getUrl(),
-      headers() {
-        const heads = new Map(headers())
+      async headers() {
+        const heads = new Map(await headers())
         heads.set('x-trpc-source', 'rsc')
         return Object.fromEntries(heads)
       },

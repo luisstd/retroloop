@@ -47,12 +47,12 @@ export function RetroCard({
           <p className='flex items-center gap-2'>
             <IconUser size={18} />
             {retrospective.participants.length}
-            <p>Participants</p>
+            <span>Participants</span>
           </p>
           <p className='flex items-center gap-2'>
             <MessageCircle size={18} />
             {retrospective.items.length}
-            <p>Feedback items</p>
+            <span>Feedback items</span>
           </p>
         </div>
         <Button
