@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useSession } from 'next-auth/react'
@@ -34,8 +33,8 @@ export function Menu() {
               asChild
             >
               <Link href='/'>
-                <Image
-                  src='/logo-transparent.png'
+                <img
+                  src='/logo.svg'
                   alt='Retroloop logo'
                   width={48}
                   height={48}

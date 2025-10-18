@@ -15,6 +15,7 @@ type InviteDialogProps = {
   dialogTitle: string
   dialogDescription: string
   iconVariant: 'send' | 'plus' | 'none'
+  fullWidth?: boolean
 }
 
 export function InviteDialog({
@@ -23,13 +24,17 @@ export function InviteDialog({
   dialogTitle,
   dialogDescription,
   iconVariant,
+  fullWidth = false,
 }: InviteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <Button className='flex gap-1' variant={ctaVariant}>
+        <Button
+          className={`flex ${fullWidth ? 'w-full' : ''} justify-center gap-1`}
+          variant={ctaVariant}
+        >
           {ctaCopy}
           {iconVariant === 'none' ? null : iconVariant === 'send' ? (
             <IconSend size={18} />

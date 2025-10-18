@@ -19,7 +19,6 @@ import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
-import { Separator } from '@/app/ui/separator'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
 
@@ -62,6 +61,7 @@ export default function Landingpage() {
                 dialogTitle='Send an invite link'
                 dialogDescription='Invite someone by sending them a login link'
                 iconVariant='none'
+                fullWidth={true}
               />
             </div>
           </div>
@@ -94,10 +94,10 @@ export default function Landingpage() {
           </p>
         </div>
 
-        <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
-          <div className='flex flex-col items-start gap-4'>
+        <div className='grid justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='rounded border-2 bg-primary/10 p-3'>
                 <IconLogin size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Seamless login</h3>
@@ -108,9 +108,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='rounded border-2 bg-primary/10 p-3'>
                 <IconHourglass size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Real-time sync</h3>
@@ -121,9 +121,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='rounded border-2 bg-primary/10 p-3'>
                 <IconRepeat size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Intuitive interface</h3>
@@ -134,9 +134,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='rounded border-2 bg-primary/10 p-3'>
                 <IconBulb size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Actionable insights</h3>
@@ -147,9 +147,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='rounded border-2 bg-primary/10 p-3'>
                 <IconUsers size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Built for teams</h3>
@@ -160,9 +160,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='rounded border-2 bg-primary/10 p-3'>
                 <IconAffiliate size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Transparent process</h3>
@@ -190,7 +190,7 @@ export default function Landingpage() {
             <Card.Header className='flex h-full flex-col p-8 text-center'>
               <div>
                 <Card.Title className='mb-2'>
-                  <span className='text-muted-foreground text-2xl font-bold'>
+                  <span className='text-2xl font-bold'>
                     Free
                   </span>
                 </Card.Title>
@@ -200,7 +200,7 @@ export default function Landingpage() {
                 <Button
                   variant='outline'
                   size='lg'
-                  className='mb-2 w-full'
+                  className='mb-6 w-full'
                   onClick={() => router.push('/dashboard')}
                 >
                   Get started for free
@@ -263,8 +263,6 @@ export default function Landingpage() {
           </Card>
         </div>
       </section>
-
-      <Separator className='my-16' />
 
       <Footer />
     </div>
