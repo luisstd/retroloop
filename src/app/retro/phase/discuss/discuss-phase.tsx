@@ -23,7 +23,7 @@ type DiscussPhaseProps = {
 type ViewType = 'carousel' | 'grid'
 
 export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
-  const [view, setView] = useState<ViewType>('carousel')
+  const [view, setView] = useState<ViewType>('grid')
 
   const { data: feedback, isLoading } =
     api.feedback.getAllByRetroIdSorted.useQuery(selectedRetro.id)
@@ -56,19 +56,21 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
   )
 
   const CarouselView = () => (
-    <Carousel className='w-full'>
-      <CarouselContent>
-        {feedback?.map((item, index) => (
-          <CarouselItem key={item.id}>
-            <div className='px-4'>
-              <FeedbackCard item={item} index={index} total={feedback.length} />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className='px-16'>
+      <Carousel className='mx-auto w-full max-w-3xl'>
+        <CarouselContent>
+          {feedback?.map((item, index) => (
+            <CarouselItem key={item.id}>
+              <div className='px-4'>
+                <FeedbackCard item={item} index={index} total={feedback.length} />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
   )
 
   const GridView = () => (
@@ -82,23 +84,19 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
   )
 
   return (
-    <div
-      className={`${
-        view === 'grid' ? 'col-span-full mx-auto w-full' : 'col-start-2 w-full'
-      }`}
-    >
+    <div className='col-span-full w-full'>
       <div className='mb-6 flex items-center justify-between px-4'>
         <h2 className='text-2xl font-bold'>Discussion Items</h2>
         <Tabs
-          selectedIndex={view === 'carousel' ? 0 : 1}
-          onChange={(index) => setView(index === 0 ? 'carousel' : 'grid')}
+          selectedIndex={view === 'grid' ? 0 : 1}
+          onChange={(index) => setView(index === 0 ? 'grid' : 'carousel')}
         >
           <TabsTriggerList className='grid w-24 grid-cols-2'>
             <TabsTrigger>
-              <IconSlideshow className='h-4 w-4' />
+              <IconLayoutGrid className='h-4 w-4' />
             </TabsTrigger>
             <TabsTrigger>
-              <IconLayoutGrid className='h-4 w-4' />
+              <IconSlideshow className='h-4 w-4' />
             </TabsTrigger>
           </TabsTriggerList>
         </Tabs>
@@ -106,7 +104,7 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
 
       {isLoading && <Loader isLoading fullHeight />}
 
-      <div className='mt-6'>
+      <div className='mt-6 pb-8'>
         {feedback && view === 'carousel' ? <CarouselView /> : <GridView />}
       </div>
     </div>
