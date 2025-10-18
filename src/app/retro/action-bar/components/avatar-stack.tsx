@@ -5,12 +5,7 @@ import { useEffect } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/app/ui/tooltip'
+import { Tooltip } from '@/app/ui/tooltip'
 
 export function AvatarStack() {
   const { data: session } = useSession()
@@ -61,9 +56,9 @@ export function AvatarStack() {
   return (
     <div className='inline-flex items-center -space-x-2'>
       {self && (
-        <TooltipProvider>
+        <Tooltip.Provider>
           <Tooltip>
-            <TooltipTrigger>
+            <Tooltip.Trigger>
               <Avatar className='ring-background h-8 w-8 ring-2'>
                 <AvatarImage
                   alt='User avatar'
@@ -73,18 +68,18 @@ export function AvatarStack() {
                   {getInitials(self)}
                 </AvatarFallback>
               </Avatar>
-            </TooltipTrigger>
-            <TooltipContent>
+            </Tooltip.Trigger>
+            <Tooltip.Content>
               <p>{self.profileData?.name as string} (You)</p>
-            </TooltipContent>
+            </Tooltip.Content>
           </Tooltip>
-        </TooltipProvider>
+        </Tooltip.Provider>
       )}
 
       {visibleMembers.map((member) => (
-        <TooltipProvider key={member.clientId}>
+        <Tooltip.Provider key={member.clientId}>
           <Tooltip>
-            <TooltipTrigger>
+            <Tooltip.Trigger>
               <Avatar className='ring-background h-8 w-8 ring-2'>
                 <AvatarImage
                   alt='User avatar'
@@ -94,32 +89,32 @@ export function AvatarStack() {
                   {getInitials(member)}
                 </AvatarFallback>
               </Avatar>
-            </TooltipTrigger>
-            <TooltipContent>
+            </Tooltip.Trigger>
+            <Tooltip.Content>
               <p>{member.profileData?.name as string}</p>
-            </TooltipContent>
+            </Tooltip.Content>
           </Tooltip>
-        </TooltipProvider>
+        </Tooltip.Provider>
       ))}
 
       {remainingCount > 0 && (
-        <TooltipProvider>
+        <Tooltip.Provider>
           <Tooltip>
-            <TooltipTrigger>
+            <Tooltip.Trigger>
               <Avatar className='ring-background h-8 w-8 ring-2'>
                 <AvatarFallback className='bg-muted text-muted-foreground flex h-8 w-8 items-center justify-center font-medium'>
                   +{remainingCount}
                 </AvatarFallback>
               </Avatar>
-            </TooltipTrigger>
-            <TooltipContent>
+            </Tooltip.Trigger>
+            <Tooltip.Content>
               <p>
                 {remainingCount} more{' '}
                 {remainingCount === 1 ? 'participant' : 'participants'}
               </p>
-            </TooltipContent>
+            </Tooltip.Content>
           </Tooltip>
-        </TooltipProvider>
+        </Tooltip.Provider>
       )}
     </div>
   )
