@@ -5,14 +5,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
 import { Button } from '@/app/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuTrigger,
-} from '@/app/ui/dropdown-menu'
+import { Menu } from '@/app/ui/dropdown-menu'
 
 export function ThemeDropdown() {
   const [mounted, setMounted] = useState(false)
@@ -26,58 +19,54 @@ export function ThemeDropdown() {
     return null
   }
   return (
-    <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button size='icon' variant='outline' aria-label='Select theme'>
-            {resolvedTheme === 'light' && theme === 'light' ? (
-              <IconSun size={24} className='text-blue-400' />
-            ) : resolvedTheme === 'light' ? (
-              <IconSun size={24} />
-            ) : resolvedTheme === 'dark' && theme === 'dark' ? (
-              <IconMoon size={24} className='text-blue-300' />
-            ) : resolvedTheme === 'dark' ? (
-              <IconMoon size={24} />
-            ) : (
-              <IconDeviceLaptop size={24} />
-            )}
-          </Button>
-        </DropdownMenuTrigger>
+    <Menu>
+      <Menu.Trigger asChild>
+        <Button size='icon' variant='outline' aria-label='Select theme'>
+          {resolvedTheme === 'light' && theme === 'light' ? (
+            <IconSun size={24} className='text-blue-400' />
+          ) : resolvedTheme === 'light' ? (
+            <IconSun size={24} />
+          ) : resolvedTheme === 'dark' && theme === 'dark' ? (
+            <IconMoon size={24} className='text-blue-300' />
+          ) : resolvedTheme === 'dark' ? (
+            <IconMoon size={24} />
+          ) : (
+            <IconDeviceLaptop size={24} />
+          )}
+        </Button>
+      </Menu.Trigger>
 
-        <DropdownMenuPortal>
-          <DropdownMenuContent aria-label='Dark/Light/System Mode Selection'>
-            <DropdownMenuLabel>Theme</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => setTheme('light')}
-              className={`flex items-center gap-1 ${
-                theme === 'light' ? 'font-bold' : 'font-normal'
-              }`}
-            >
-              <IconSun size={22} />
-              <span>Light</span>
-            </DropdownMenuItem>
+      <Menu.Content aria-label='Dark/Light/System Mode Selection'>
+        <div className='px-2 py-1.5 text-sm font-semibold'>Theme</div>
+        <Menu.Item
+          onClick={() => setTheme('light')}
+          className={`flex items-center gap-1 ${
+            theme === 'light' ? 'font-bold' : 'font-normal'
+          }`}
+        >
+          <IconSun size={22} />
+          <span>Light</span>
+        </Menu.Item>
 
-            <DropdownMenuItem
-              onClick={() => setTheme('dark')}
-              className={`flex items-center gap-1 ${
-                theme === 'dark' ? 'font-bold' : 'font-normal'
-              }`}
-            >
-              <IconMoon size={22} />
-              <span>Dark</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => setTheme('system')}
-              className={`flex items-center gap-1 ${
-                theme === 'system' ? 'font-bold' : 'font-normal'
-              }`}
-            >
-              <IconDeviceLaptop size={22} />
-              <span>System</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenuPortal>
-      </DropdownMenu>
-    </>
+        <Menu.Item
+          onClick={() => setTheme('dark')}
+          className={`flex items-center gap-1 ${
+            theme === 'dark' ? 'font-bold' : 'font-normal'
+          }`}
+        >
+          <IconMoon size={22} />
+          <span>Dark</span>
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => setTheme('system')}
+          className={`flex items-center gap-1 ${
+            theme === 'system' ? 'font-bold' : 'font-normal'
+          }`}
+        >
+          <IconDeviceLaptop size={22} />
+          <span>System</span>
+        </Menu.Item>
+      </Menu.Content>
+    </Menu>
   )
 }
