@@ -14,6 +14,7 @@ import {
 } from '@/app/ui/carousel'
 import { Tabs, TabsTrigger, TabsTriggerList } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
+import { cn } from '@/utils/cn'
 import { getFeedbackType } from '@/utils/utils'
 
 type DiscussPhaseProps = {
@@ -26,7 +27,11 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
   const [view, setView] = useState<ViewType>('grid')
 
   const { data: feedback, isLoading } =
-    api.feedback.getAllByRetroIdSorted.useQuery(selectedRetro.id)
+    api.feedback.getAllByRetroIdSorted.useQuery(selectedRetro.id, {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    })
 
   const FeedbackCard = ({
     item,
@@ -37,44 +42,60 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
     index?: number
     total?: number
   }) => (
-    <Card className='flex min-h-72 w-full flex-col justify-between p-5 break-words'>
-      <Card.Title className='flex flex-row items-center justify-between'>
-        Feedback <Badge variant='secondary'>{getFeedbackType(item.type)}</Badge>
-      </Card.Title>
-      <Card.Description className='prose text-base'>
+    <Card className='flex min-h-72 w-full flex-col justify-start gap-4 p-5 break-words'>
+      <div className='flex flex-row items-center justify-between'>
+        <Badge
+          variant='secondary'
+          className={cn(
+            'text-lg font-semibold',
+            item.type === 'success' &&
+              'bg-green-100 text-green-800 border-green-300 dark:bg-green-900/30 dark:text-green-300 dark:border-green-700',
+            item.type === 'improvement' &&
+              'bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-700',
+            item.type === 'action' &&
+              'bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-700',
+          )}
+        >
+          {getFeedbackType(item.type)}
+        </Badge>
+        <Badge className='text-lg font-semibold'>+{item.votes}</Badge>
+      </div>
+
+      <Card.Description className='prose text-lg leading-relaxed mt-2'>
         {item.content}
       </Card.Description>
-      <div className='flex flex-row items-center justify-between'>
-        <Badge className='text-base font-semibold'>+{item.votes}</Badge>
-        {index !== undefined && total !== undefined && (
-          <Card.Description className='self-end justify-self-end px-5 text-base'>
-            {`${index + 1}/${total}`}
-          </Card.Description>
-        )}
-      </div>
+
+      {index !== undefined && total !== undefined && (
+        <Card.Description className='self-end text-sm text-muted-foreground'>
+          {`${index + 1}/${total}`}
+        </Card.Description>
+      )}
     </Card>
   )
 
-  const CarouselView = () => (
-    <div className='px-16'>
-      <Carousel className='mx-auto w-full max-w-3xl'>
-        <CarouselContent>
-          {feedback?.map((item, index) => (
-            <CarouselItem key={item.id}>
-              <div className='px-4'>
-                <FeedbackCard
-                  item={item}
-                  index={index}
-                  total={feedback.length}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div>
+  const CarouselView = React.useMemo(
+    () => (
+      <div className='px-16 pb-12'>
+        <Carousel className='mx-auto w-full max-w-2xl'>
+          <CarouselContent>
+            {feedback?.map((item, index) => (
+              <CarouselItem key={item.id}>
+                <div className='px-4 pb-4'>
+                  <FeedbackCard
+                    item={item}
+                    index={index}
+                    total={feedback.length}
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+    ),
+    [feedback],
   )
 
   const GridView = () => (
@@ -109,7 +130,7 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
       {isLoading && <Loader isLoading fullHeight />}
 
       <div className='mt-6 pb-8'>
-        {feedback && view === 'carousel' ? <CarouselView /> : <GridView />}
+        {feedback && view === 'carousel' ? CarouselView : <GridView />}
       </div>
     </div>
   )
