@@ -13,8 +13,8 @@ export function UserDropdown() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant='ghost'
           size='icon'
+          variant='outline'
           className='rounded-l-md rounded-r-3xl'
           aria-label='Authentication status'
         >

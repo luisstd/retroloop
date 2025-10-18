@@ -29,7 +29,7 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
       <DialogTrigger asChild>
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           className='mx-1'
           aria-label='Edit item'
         >

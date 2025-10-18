@@ -9,12 +9,11 @@ import { LoginButton } from '@/app/components/menu/components/login-button/login
 import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
 import { ThemeDropdown } from '@/app/components/menu/components/theme-dropdown/theme-dropdown'
 import { UserDropdown } from '@/app/components/menu/components/user-dropdown/user-dropdown'
+import { Button } from '@/app/ui/button'
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
   NavigationMenuViewport,
 } from '@/app/ui/navigation-menu'
 import { cn } from '@/utils/cn'
@@ -30,10 +29,10 @@ export function Menu() {
       <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-2 rounded-full border-2 p-1 text-xl shadow-xs sm:gap-10 md:mx-auto md:max-w-max'>
         <NavigationMenuList>
           <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>
-            <Link href='/' legacyBehavior passHref>
-              <NavigationMenuLink
+            <Link href='/'>
+              <Button
+                variant='link'
                 className={cn(
-                  navigationMenuTriggerStyle(),
                   'flex cursor-pointer items-center rounded-l-3xl rounded-r-md',
                 )}
                 aria-label='Landingpage'
@@ -50,7 +49,7 @@ export function Menu() {
                     Retroloop
                   </span>
                 )}
-              </NavigationMenuLink>
+              </Button>
             </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -58,44 +57,48 @@ export function Menu() {
         <NavigationMenuList className='hidden sm:flex'>
           <NavigationMenuItem>
             {isLandingPage ? (
-              <Link href='#features' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+              <Link href='#features'>
+                <Button
+                  variant='link'
+                  className='cursor-pointer'
                   aria-label='Features'
                 >
                   Features
-                </NavigationMenuLink>
+                </Button>
               </Link>
             ) : (
-              <Link href='/dashboard' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+              <Link href='/dashboard'>
+                <Button
+                  variant='link'
+                  className='cursor-pointer'
                   aria-label='Dashboard'
                 >
                   Dashboard
-                </NavigationMenuLink>
+                </Button>
               </Link>
             )}
           </NavigationMenuItem>
 
           <NavigationMenuItem aria-label=''>
             {isLandingPage ? (
-              <Link href='#pricing' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+              <Link href='#pricing'>
+                <Button
+                  variant='link'
+                  className='cursor-pointer'
                   aria-label='Pricing'
                 >
                   Pricing
-                </NavigationMenuLink>
+                </Button>
               </Link>
             ) : (
-              <Link href='/profile' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
+              <Link href='/profile'>
+                <Button
+                  variant='link'
+                  className='cursor-pointer'
                   aria-label='Profile'
                 >
                   Profile
-                </NavigationMenuLink>
+                </Button>
               </Link>
             )}
           </NavigationMenuItem>

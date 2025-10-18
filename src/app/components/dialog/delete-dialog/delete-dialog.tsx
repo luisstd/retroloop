@@ -33,7 +33,7 @@ export function DeleteDialog({
       <AlertDialogTrigger asChild>
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           className='mx-1'
           aria-label='Delete item'
         >

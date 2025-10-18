@@ -122,7 +122,7 @@ export function RetroTimer({
       {isTimerRunning ? (
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           onClick={handleStopTimer}
           aria-label='Reset timer'
         >
@@ -131,7 +131,7 @@ export function RetroTimer({
       ) : (
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           onClick={handleStartTimer}
           aria-label='Start timer'
         >

@@ -52,7 +52,7 @@ export function RetroCard({
         <Button
           variant='link'
           size='lg'
-          className='self-end justify-self-end pr-0'
+          className='self-end justify-self-end'
         >
           <Link
             className='flex items-center'

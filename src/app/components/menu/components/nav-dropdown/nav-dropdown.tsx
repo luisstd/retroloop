@@ -12,7 +12,6 @@ import {
   DropdownMenuPortal,
   DropdownMenuTrigger,
 } from '@/app/ui/dropdown-menu'
-import { NavigationMenuLink } from '@/app/ui/navigation-menu'
 
 export function NavigationDropdown() {
   const currentPage = usePathname()
@@ -25,7 +24,7 @@ export function NavigationDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className='sm:hidden'>
-        <Button variant='ghost' size='icon' aria-label='Navigation dropdown'>
+        <Button size='icon' variant='outline' aria-label='Navigation dropdown'>
           <IconMenu2 size={24} />
         </Button>
       </DropdownMenuTrigger>
@@ -35,20 +34,20 @@ export function NavigationDropdown() {
           <DropdownMenuItem
             className={`flex ${currentPage === '/dashboard' ? 'font-bold' : 'font-normal'}`}
           >
-            <Link href='/dashboard' legacyBehavior passHref>
-              <NavigationMenuLink aria-label='Dashboard'>
+            <Link href='/dashboard'>
+              <Button variant='link' aria-label='Dashboard'>
                 Dashboard
-              </NavigationMenuLink>
+              </Button>
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem
             className={`flex ${currentPage === '/profile' ? 'font-bold' : 'font-normal'}`}
           >
-            <Link href='/profile' legacyBehavior passHref>
-              <NavigationMenuLink aria-label='Profile'>
+            <Link href='/profile'>
+              <Button variant='link' aria-label='Profile'>
                 Profile
-              </NavigationMenuLink>
+              </Button>
             </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>

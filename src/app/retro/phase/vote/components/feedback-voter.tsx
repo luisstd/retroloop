@@ -91,7 +91,7 @@ export function FeedbackVoter({
                       {!hasVoted(item, userId) && (
                         <Button
                           size='icon'
-                          variant='ghost'
+                          variant='outline'
                           onClick={() => {
                             handleEditFeedback({
                               ...item,

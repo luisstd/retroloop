@@ -40,8 +40,8 @@ export function FeedbackDialog({
       <DialogTrigger className='justify-self-end' asChild>
         <Button
           size='icon'
+          variant='outline'
           className='mx-2'
-          variant='ghost'
           aria-label='Add item'
           data-testid='add-item-button'
         >

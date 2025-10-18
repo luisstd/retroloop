@@ -47,7 +47,7 @@ export default function Landingpage() {
             <Link href={'/dashboard'} className='w-full sm:w-52'>
               <Button
                 size='lg'
-                className='flex h-11 w-full items-center justify-center gap-2'
+                className='flex w-full items-center justify-center gap-2'
               >
                 Start your first retro
                 <IconArrowRight size={18} />

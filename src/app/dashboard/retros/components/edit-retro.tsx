@@ -31,7 +31,7 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
       <DialogTrigger asChild>
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           aria-label='Edit retrospective button'
         >
           <IconDots size={18} className='text-muted-foreground' />
