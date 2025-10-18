@@ -4,15 +4,7 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 
 import { Button } from '@/app/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/app/ui/dialog'
+import { Dialog } from '@/app/ui/dialog'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
 import { useToast } from '@/app/ui/use-toast'
@@ -38,7 +30,7 @@ export function InviteDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
+      <Dialog.Trigger asChild>
         <Button className='flex gap-1' variant={ctaVariant}>
           {ctaCopy}
           {iconVariant === 'none' ? null : iconVariant === 'send' ? (
@@ -47,13 +39,13 @@ export function InviteDialog({
             <IconPlus size={18} />
           )}
         </Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>{dialogTitle}</DialogTitle>
-          <DialogDescription>{dialogDescription}</DialogDescription>
-        </DialogHeader>
+      <Dialog.Content size='lg'>
+        <Dialog.Header>
+          <span>{dialogTitle}</span>
+        </Dialog.Header>
+        <Dialog.Description>{dialogDescription}</Dialog.Description>
 
         <Formik
           initialValues={{
@@ -70,7 +62,7 @@ export function InviteDialog({
           }}
         >
           <Form className='flex flex-col gap-10'>
-            <fieldset className='flex flex-col gap-2'>
+            <fieldset className='flex flex-col gap-2 px-4'>
               <Label htmlFor='email'>E-Mail</Label>
               <Field
                 as={Input}
@@ -80,14 +72,14 @@ export function InviteDialog({
               />
             </fieldset>
 
-            <DialogFooter>
+            <Dialog.Footer>
               <Button type='submit' aria-label='Send invite'>
                 Send invite
               </Button>
-            </DialogFooter>
+            </Dialog.Footer>
           </Form>
         </Formik>
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   )
 }
