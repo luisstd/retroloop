@@ -49,11 +49,11 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
           className={cn(
             'text-lg font-semibold',
             item.type === 'success' &&
-              'border-green-300 bg-green-100 text-green-800 dark:border-green-700 dark:bg-green-900/30 dark:text-green-300',
+              'border-success bg-success-muted text-success-muted-foreground',
             item.type === 'improvement' &&
-              'border-amber-300 bg-amber-100 text-amber-800 dark:border-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+              'border-warning bg-warning-muted text-warning-muted-foreground',
             item.type === 'action' &&
-              'border-blue-300 bg-blue-100 text-blue-800 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+              'border-info bg-info-muted text-info-muted-foreground',
           )}
         >
           {getFeedbackType(item.type)}
