@@ -1,4 +1,20 @@
+import type { Metadata } from 'next'
+
 import { Card } from '@/app/ui/card'
+
+export const metadata: Metadata = {
+  title: 'Retrospective - Retroloop',
+  description: 'Agile retrospective session',
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+}
 
 export default function RetroLayout({
   children,

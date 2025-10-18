@@ -1,42 +1,33 @@
 import { MetadataRoute } from 'next'
 
+/**
+ * Sitemap configuration for Retroloop
+ * Only includes public pages - authenticated pages are excluded
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://retroloop.io'
+
   return [
     {
-      url: 'https://retroloop.io',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
+      url: baseUrl,
+      changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://retroloop.io/privacy',
-      lastModified: new Date(),
+      url: `${baseUrl}/privacy`,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.6,
     },
     {
-      url: 'https://retroloop.io/terms',
-      lastModified: new Date(),
+      url: `${baseUrl}/terms`,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.6,
     },
     {
-      url: 'https://retroloop.io/imprint',
-      lastModified: new Date(),
+      url: `${baseUrl}/imprint`,
       changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://retroloop.io/dashboard',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: 'https://retroloop.io/profile',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.6,
     },
   ]
 }
