@@ -23,7 +23,7 @@ export function Menu() {
 
   return (
     <div className='min-w-full'>
-      <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-3 rounded-full border-2 p-3 shadow-xs sm:gap-6 md:mx-auto md:max-w-max'>
+      <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-3 rounded-full border-2 p-3 shadow-xs sm:gap-6 md:mx-auto md:w-fit'>
         <NavigationMenuList className='w-full justify-between gap-3 sm:w-auto sm:justify-center sm:gap-6'>
           <NavigationMenuItem className='flex items-center text-center font-bold'>
             <Button
@@ -33,26 +33,18 @@ export function Menu() {
               asChild
             >
               <Link href='/'>
-                <img
-                  src='/logo.svg'
-                  alt='Retroloop logo'
-                  width={48}
-                  height={48}
-                />
-                {isLandingPage && (
-                  <span className='hidden text-xl sm:block'>Retroloop</span>
-                )}
+                <span className='text-xl font-bold'>Retroloop</span>
               </Link>
             </Button>
           </NavigationMenuItem>
 
           <NavigationMenuItem className='hidden sm:flex'>
             {isLandingPage ? (
-              <Button variant='link' aria-label='Features' asChild>
+              <Button variant='link' aria-label='Features' className='w-28 justify-center' asChild>
                 <Link href='#features'>Features</Link>
               </Button>
             ) : (
-              <Button variant='link' aria-label='Dashboard' asChild>
+              <Button variant='link' aria-label='Dashboard' className='w-28 justify-center' asChild>
                 <Link href='/dashboard'>Dashboard</Link>
               </Button>
             )}
@@ -60,11 +52,11 @@ export function Menu() {
 
           <NavigationMenuItem className='hidden sm:flex'>
             {isLandingPage ? (
-              <Button variant='link' aria-label='Pricing' asChild>
+              <Button variant='link' aria-label='Pricing' className='w-24 justify-center' asChild>
                 <Link href='#pricing'>Pricing</Link>
               </Button>
             ) : (
-              <Button variant='link' aria-label='Profile' asChild>
+              <Button variant='link' aria-label='Profile' className='w-24 justify-center' asChild>
                 <Link href='/profile'>Profile</Link>
               </Button>
             )}
