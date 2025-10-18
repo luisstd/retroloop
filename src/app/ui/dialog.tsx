@@ -78,14 +78,18 @@ const dialogVariants = cva(
 )
 
 interface IDialogContentProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends Omit<
+      React.ComponentPropsWithoutRef<typeof ReactDialog.Content>,
+      'className'
+    >,
     VariantProps<typeof dialogVariants> {
   overlay?: IDialogBackgroupProps
+  className?: string
 }
 
 const DialogContent = React.forwardRef<HTMLDivElement, IDialogContentProps>(
   function DialogContent(inputProps: IDialogContentProps, forwardedRef) {
-    const { children, size = 'auto', className, overlay, ...props } = inputProps
+    const { children, size, className, overlay, ...props } = inputProps
 
     return (
       <ReactDialog.Portal>
