@@ -79,11 +79,13 @@ export default function Profile() {
     <>
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
-      <Card className='bg-background w-full p-10 shadow-xs'>
-        <Card.Header className='flex flex-row items-baseline justify-between'>
-          <Card.Title>PROFILE</Card.Title>
-          <Badge>Version {packageInfo.version}</Badge>
-        </Card.Header>
+      <Card className='bg-background min-h-[400px] w-full p-10 shadow-xs'>
+        <div className='flex flex-row items-baseline justify-between'>
+          <Card.Title className='p-5 text-center'>PROFILE</Card.Title>
+          <div className='flex w-full justify-end'>
+            <Badge>Version {packageInfo.version}</Badge>
+          </div>
+        </div>
 
         {isLoading ? (
           <Loader isLoading={isLoading} />

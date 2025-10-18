@@ -75,6 +75,10 @@
   --border: #2e2e32;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -70,7 +70,7 @@ export function Retros({ userId }: RetrosProps) {
   }, [retrospectives, accountType])
 
   return (
-    <Card className='bg-background w-full p-10 shadow-xs'>
+    <Card className='bg-background min-h-[400px] w-full p-10 shadow-xs'>
       <div className='flex flex-row items-baseline justify-between'>
         <Card.Title className='p-5 text-center'>RETROS</Card.Title>
 
