@@ -12,7 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/app/ui/carousel'
-import { Tabs, TabsList, TabsTrigger } from '@/app/ui/tabs'
+import { Tabs, TabsTrigger,TabsTriggerList } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
 import { getFeedbackType } from '@/utils/utils'
 
@@ -89,15 +89,18 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
     >
       <div className='mb-6 flex items-center justify-between px-4'>
         <h2 className='text-2xl font-bold'>Discussion Items</h2>
-        <Tabs defaultValue={view} onValueChange={(v) => setView(v as ViewType)}>
-          <TabsList className='grid w-24 grid-cols-2'>
-            <TabsTrigger value='carousel'>
+        <Tabs
+          selectedIndex={view === 'carousel' ? 0 : 1}
+          onChange={(index) => setView(index === 0 ? 'carousel' : 'grid')}
+        >
+          <TabsTriggerList className='grid w-24 grid-cols-2'>
+            <TabsTrigger>
               <IconSlideshow className='h-4 w-4' />
             </TabsTrigger>
-            <TabsTrigger value='grid'>
+            <TabsTrigger>
               <IconLayoutGrid className='h-4 w-4' />
             </TabsTrigger>
-          </TabsList>
+          </TabsTriggerList>
         </Tabs>
       </div>
 
