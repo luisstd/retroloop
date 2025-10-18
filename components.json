@@ -12,10 +12,13 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/app/components",
+    "components": "@/app/ui",
     "utils": "@/utils/cn",
     "ui": "@/app/ui",
     "lib": "@/utils",
     "hooks": "@/hooks"
+  },
+  "registries": {
+    "@retroui": "https://retroui.dev/r/{name}.json"
   }
 }
