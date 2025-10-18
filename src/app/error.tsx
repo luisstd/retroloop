@@ -13,13 +13,7 @@ import NextErrorComponent, { type ErrorProps } from 'next/error'
 import { useEffect } from 'react'
 
 import { Button } from '@/app/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 
 const CustomErrorComponent: NextPage<
   ErrorProps & { hasGetInitialPropsRun?: boolean; err?: Error }
@@ -37,19 +31,19 @@ const CustomErrorComponent: NextPage<
   return (
     <div className='flex min-h-screen items-center justify-center p-4'>
       <Card className='w-full max-w-md'>
-        <CardHeader>
-          <CardTitle className='text-center text-2xl font-bold'>
+        <Card.Header>
+          <Card.Title className='text-center text-2xl font-bold'>
             {statusCode ? `Error ${statusCode}` : 'Application Error'}
-          </CardTitle>
-          <CardDescription className='text-center'>
+          </Card.Title>
+          <Card.Description className='text-center'>
             {isClientError &&
               'The requested page could not be found or accessed.'}
             {isServerError &&
               'A server error occurred. Our team has been notified.'}
             {!statusCode && 'An unexpected error occurred on the client side.'}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className='space-y-4'>
+          </Card.Description>
+        </Card.Header>
+        <Card.Content className='space-y-4'>
           <div className='flex flex-col gap-2'>
             <Button onClick={() => window.location.reload()} className='w-full'>
               Reload Page
@@ -62,7 +56,7 @@ const CustomErrorComponent: NextPage<
               Go Back
             </Button>
             <Button
-              variant='ghost'
+              variant='outline'
               onClick={() => Sentry.showReportDialog()}
               className='w-full'
             >
@@ -78,7 +72,7 @@ const CustomErrorComponent: NextPage<
               <pre className='mt-2 overflow-auto text-xs'>{err.stack}</pre>
             </details>
           )}
-        </CardContent>
+        </Card.Content>
       </Card>
     </div>
   )

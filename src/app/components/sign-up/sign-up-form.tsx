@@ -4,14 +4,7 @@ import { Field, Form, Formik } from 'formik'
 import { useSession } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
 import { api } from '@/trpc/react'
@@ -47,14 +40,14 @@ export function SignUpForm() {
           >
             <Card className='mx-5 sm:mx-0'>
               <Form>
-                <CardHeader>
-                  <CardTitle>Complete login</CardTitle>
-                  <CardDescription>
+                <Card.Header>
+                  <Card.Title>Complete login</Card.Title>
+                  <Card.Description>
                     Please fill out the missing information for your account
-                  </CardDescription>
-                </CardHeader>
+                  </Card.Description>
+                </Card.Header>
 
-                <CardContent>
+                <Card.Content>
                   <fieldset className='flex flex-col gap-4'>
                     <Label htmlFor='name' className='font-bold'>
                       Name
@@ -73,13 +66,13 @@ export function SignUpForm() {
                       className={`${data.user?.email ? 'text-muted-foreground italic' : ''}`}
                     />
                   </fieldset>
-                </CardContent>
+                </Card.Content>
 
-                <CardFooter>
+                <Card.Content>
                   <Button type='submit' aria-label='Save'>
                     Continue
                   </Button>
-                </CardFooter>
+                </Card.Content>
               </Form>
             </Card>
           </Formik>

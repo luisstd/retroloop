@@ -8,13 +8,7 @@ import * as Sentry from '@sentry/nextjs'
 import { useEffect } from 'react'
 
 import { Button } from '@/app/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 
 interface GlobalErrorProps {
   error: Error & { digest?: string }
@@ -43,16 +37,16 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
       <body>
         <div className='bg-background flex min-h-screen items-center justify-center p-4'>
           <Card className='w-full max-w-lg'>
-            <CardHeader>
-              <CardTitle className='text-destructive text-center text-2xl font-bold'>
+            <Card.Header>
+              <Card.Title className='text-destructive text-center text-2xl font-bold'>
                 Critical Application Error
-              </CardTitle>
-              <CardDescription className='text-center'>
+              </Card.Title>
+              <Card.Description className='text-center'>
                 A critical error occurred that prevented the application from
                 functioning properly. Our team has been automatically notified.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className='space-y-4'>
+              </Card.Description>
+            </Card.Header>
+            <Card.Content className='space-y-4'>
               <div className='bg-destructive/10 border-destructive/20 rounded-md border p-4'>
                 <p className='text-destructive text-sm font-medium'>
                   Error Information
@@ -77,7 +71,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
                   Go to Homepage
                 </Button>
                 <Button
-                  variant='ghost'
+                  variant='outline'
                   onClick={() =>
                     Sentry.showReportDialog({
                       title: 'Critical Error Report',
@@ -109,7 +103,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
                   </div>
                 </details>
               )}
-            </CardContent>
+            </Card.Content>
           </Card>
         </div>
       </body>

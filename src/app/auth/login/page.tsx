@@ -4,13 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
 
@@ -21,14 +15,14 @@ export default function Login() {
   return (
     <section className='mx-auto grid h-screen place-items-center'>
       <Card className='mx-5 sm:mx-0'>
-        <CardHeader>
-          <CardTitle>Sign in</CardTitle>
-          <CardDescription>
+        <Card.Header>
+          <Card.Title>Sign in</Card.Title>
+          <Card.Description>
             Sign in to Retroloop via e-mail link or using one of the providers
             below
-          </CardDescription>
-        </CardHeader>
-        <CardContent className='flex flex-col items-center gap-4'>
+          </Card.Description>
+        </Card.Header>
+        <Card.Content className='flex flex-col items-center gap-4'>
           <div className='mx-auto flex w-full flex-col justify-between gap-3 sm:flex-row sm:gap-6'>
             <Button
               onClick={() => signIn('github', { callbackUrl })}
@@ -108,7 +102,7 @@ export default function Login() {
               </div>
             </Form>
           </Formik>
-        </CardContent>
+        </Card.Content>
       </Card>
     </section>
   )
