@@ -49,11 +49,7 @@ export function RetroCard({
             <span>Feedback items</span>
           </p>
         </div>
-        <Button
-          variant='link'
-          size='lg'
-          className='self-end justify-self-end'
-        >
+        <Button variant='link' size='lg' className='self-end justify-self-end'>
           <Link
             className='flex items-center'
             href={{

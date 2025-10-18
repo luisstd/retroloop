@@ -104,7 +104,7 @@ export function Menu() {
           </NavigationMenuItem>
         </NavigationMenuList>
 
-        <div className='flex flex-row gap-2 mx-2'>
+        <div className='mx-2 flex flex-row gap-2'>
           <NavigationDropdown />
           <ThemeDropdown />
           {session?.user ? <UserDropdown /> : <LoginButton />}
