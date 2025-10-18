@@ -1,5 +1,4 @@
-import { useTheme } from 'next-themes'
-import { GridLoader } from 'react-spinners'
+import { Loader as UILoader } from '@/app/ui/loader'
 
 type LoaderProps = {
   isLoading: boolean
@@ -7,18 +6,13 @@ type LoaderProps = {
 }
 
 export function Loader({ isLoading, fullHeight }: LoaderProps) {
-  const { resolvedTheme } = useTheme()
+  if (!isLoading) return null
 
   return (
     <div
-      className={`grid w-full place-items-center ${fullHeight && 'h-screen'}`}
+      className={`grid w-full place-items-center ${fullHeight ? 'h-screen' : 'min-h-[200px] py-8'}`}
     >
-      <GridLoader
-        color={resolvedTheme === 'light' ? 'black' : 'white'}
-        loading={isLoading}
-        size={15}
-        aria-label='Loading Spinner'
-      />
+      <UILoader size='lg' />
     </div>
   )
 }
