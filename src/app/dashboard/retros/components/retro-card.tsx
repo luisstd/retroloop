@@ -23,7 +23,7 @@ export function RetroCard({
   return (
     <Card
       key={retrospective.id}
-      className='hover:ring-primary dark:hover:ring-secondary h-full w-full shadow-xs transition duration-200 ease-in-out hover:ring-2 hover:ring-offset-2'
+      className='h-full w-full shadow-xs transition hover:shadow-md'
     >
       <Card.Header>
         <Card.Title className='flex items-baseline justify-between'>
@@ -36,8 +36,8 @@ export function RetroCard({
         <Card.Description>{formatDate(retrospective.date)}</Card.Description>
       </Card.Header>
 
-      <Card.Content className='text-muted-foreground flex justify-between'>
-        <div className='flex flex-col gap-2 text-sm'>
+      <div className='flex flex-col gap-4 p-4'>
+        <div className='text-card-foreground flex flex-col gap-2 text-sm'>
           <p className='flex items-center gap-2'>
             <IconUser size={18} />
             {retrospective.participants.length}
@@ -49,23 +49,24 @@ export function RetroCard({
             <span>Feedback items</span>
           </p>
         </div>
-        <Button variant='link' size='lg' className='self-end justify-self-end'>
-          <Link
-            className='flex items-center'
-            href={{
-              pathname: '/retro',
-              query: {
-                id: retrospective.id,
-                name: retrospective.name,
-              },
-            }}
-            aria-label='Go to retro view'
-          >
-            Open
-            <IconArrowRight size={18} />
-          </Link>
-        </Button>
-      </Card.Content>
+
+        <Link
+          href={{
+            pathname: '/retro',
+            query: {
+              id: retrospective.id,
+              name: retrospective.name,
+            },
+          }}
+          aria-label='Open retro'
+          className='w-full'
+        >
+          <Button variant='default' className='w-full'>
+            Open Retro
+            <IconArrowRight size={18} className='ml-1' />
+          </Button>
+        </Link>
+      </div>
     </Card>
   )
 }

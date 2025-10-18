@@ -15,7 +15,7 @@ export function Team() {
     users.map((user: User) => (
       <Card
         key={user.id}
-        className='h-full w-full shadow-xs transition ease-in-out hover:scale-105'
+        className='h-full w-full cursor-default shadow-xs transition hover:shadow-sm'
       >
         <Card.Header>
           <Card.Title>{user.name}</Card.Title>
@@ -23,7 +23,6 @@ export function Team() {
             {user.role}
           </Card.Description>
         </Card.Header>
-        <div className='h-24' />
       </Card>
     ))
   ) : (
