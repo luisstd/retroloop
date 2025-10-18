@@ -14,7 +14,7 @@ import { DeleteUserDialog } from '@/app/profile/delete-user-dialog'
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar'
 import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
-import { Card, CardHeader, CardTitle } from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
 import { useToast } from '@/app/ui/use-toast'
@@ -83,10 +83,10 @@ export default function Profile() {
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
       <Card className='bg-background w-full p-10 shadow-xs'>
-        <CardHeader className='flex flex-row items-baseline justify-between'>
-          <CardTitle>PROFILE</CardTitle>
+        <Card.Header className='flex flex-row items-baseline justify-between'>
+          <Card.Title>PROFILE</Card.Title>
           <Badge>Version {packageInfo.version}</Badge>
-        </CardHeader>
+        </Card.Header>
 
         {isLoading ? (
           <Loader isLoading={isLoading} />

@@ -5,7 +5,7 @@ import { User } from '@prisma/client'
 import { Loader } from '@/app/components/loader/loader'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { TeamFallback } from '@/app/dashboard/team/components/team-fallback'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import { api } from '@/trpc/react'
 
 export function Team() {
@@ -17,12 +17,12 @@ export function Team() {
         key={user.id}
         className='h-full w-full shadow-xs transition ease-in-out hover:scale-105'
       >
-        <CardHeader>
-          <CardTitle>{user.name}</CardTitle>
-          <CardDescription className='mt-2 text-lg'>
+        <Card.Header>
+          <Card.Title>{user.name}</Card.Title>
+          <Card.Description className='mt-2 text-lg'>
             {user.role}
-          </CardDescription>
-        </CardHeader>
+          </Card.Description>
+        </Card.Header>
         <div className='h-28' />
       </Card>
     ))
@@ -33,7 +33,7 @@ export function Team() {
   return (
     <Card className='bg-background w-full p-10 shadow-xs'>
       <div className='flex flex-row items-baseline justify-between'>
-        <CardTitle className='p-5 text-center'>TEAM</CardTitle>
+        <Card.Title className='p-5 text-center'>TEAM</Card.Title>
         <div className='flex w-full justify-end'>
           <InviteDialog
             ctaCopy='Invite'

@@ -4,13 +4,7 @@ import Link from 'next/link'
 
 import { EditRetro } from '@/app/dashboard/retros/components/edit-retro'
 import { Button } from '@/app/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import {
   RetrospectiveUpdateInput,
   RetrospectiveWithRelations,
@@ -31,18 +25,18 @@ export function RetroCard({
       key={retrospective.id}
       className='hover:ring-primary dark:hover:ring-secondary h-full w-full shadow-xs transition duration-200 ease-in-out hover:ring-2 hover:ring-offset-2'
     >
-      <CardHeader>
-        <CardTitle className='flex items-baseline justify-between'>
+      <Card.Header>
+        <Card.Title className='flex items-baseline justify-between'>
           {retrospective.name}
           <EditRetro
             handleEditRetro={handleUpdateRetro}
             retrospective={retrospective}
           />
-        </CardTitle>
-        <CardDescription>{formatDate(retrospective.date)}</CardDescription>
-      </CardHeader>
+        </Card.Title>
+        <Card.Description>{formatDate(retrospective.date)}</Card.Description>
+      </Card.Header>
 
-      <CardContent className='text-muted-foreground flex justify-between'>
+      <Card.Content className='text-muted-foreground flex justify-between'>
         <div className='flex flex-col gap-2 text-sm'>
           <p className='flex items-center gap-2'>
             <IconUser size={18} />
@@ -75,7 +69,7 @@ export function RetroCard({
             <IconArrowRight size={18} />
           </Link>
         </Button>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

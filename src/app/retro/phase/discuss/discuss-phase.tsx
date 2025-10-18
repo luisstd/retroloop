@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
 import { Badge } from '@/app/ui/badge'
-import { Card, CardDescription, CardTitle } from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import {
   Carousel,
   CarouselContent,
@@ -38,18 +38,18 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
     total?: number
   }) => (
     <Card className='flex min-h-72 w-full flex-col justify-between p-5 break-words'>
-      <CardTitle className='flex flex-row items-center justify-between'>
+      <Card.Title className='flex flex-row items-center justify-between'>
         Feedback <Badge variant='secondary'>{getFeedbackType(item.type)}</Badge>
-      </CardTitle>
-      <CardDescription className='prose text-lg'>
+      </Card.Title>
+      <Card.Description className='prose text-lg'>
         {item.content}
-      </CardDescription>
+      </Card.Description>
       <div className='flex flex-row items-center justify-between'>
         <Badge className='text-lg font-bold'>+{item.votes}</Badge>
         {index !== undefined && total !== undefined && (
-          <CardDescription className='self-end justify-self-end px-5 text-lg'>
+          <Card.Description className='self-end justify-self-end px-5 text-lg'>
             {`${index + 1}/${total}`}
-          </CardDescription>
+          </Card.Description>
         )}
       </div>
     </Card>

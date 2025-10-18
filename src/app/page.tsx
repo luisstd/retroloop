@@ -18,7 +18,7 @@ import { Footer } from '@/app/components/footer/footer'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
-import { Card, CardHeader, CardTitle } from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import { Separator } from '@/app/ui/separator'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
@@ -185,13 +185,13 @@ export default function Landingpage() {
 
         <div className='flex flex-col items-stretch justify-center gap-6 md:flex-row'>
           <Card className='flex-1 shadow-xs'>
-            <CardHeader className='flex h-full flex-col p-8 text-center'>
+            <Card.Header className='flex h-full flex-col p-8 text-center'>
               <div>
-                <CardTitle className='mb-2'>
+                <Card.Title className='mb-2'>
                   <span className='text-muted-foreground text-2xl font-bold'>
                     Free
                   </span>
-                </CardTitle>
+                </Card.Title>
                 <div className='mb-6'>
                   <span className='text-primary text-4xl font-bold'>0€</span>
                 </div>
@@ -211,7 +211,7 @@ export default function Landingpage() {
                 <li>Create 3 retrospectives for free</li>
                 <li>3 month access to past retrospectives</li>
               </ul>
-            </CardHeader>
+            </Card.Header>
           </Card>
 
           <Card className='relative flex-1 shadow-xs'>
@@ -223,11 +223,11 @@ export default function Landingpage() {
                 Support Development
               </Badge>
             </div>
-            <CardHeader className='flex h-full flex-col p-8 text-center'>
+            <Card.Header className='flex h-full flex-col p-8 text-center'>
               <div>
-                <CardTitle className='mb-2'>
+                <Card.Title className='mb-2'>
                   <span className='text-2xl font-bold'>Unlimited</span>
-                </CardTitle>
+                </Card.Title>
                 <div className='mb-6'>
                   <span className='text-primary text-4xl font-bold'>10€</span>
                   <span className='text-muted-foreground ml-1 text-sm'>
@@ -257,7 +257,7 @@ export default function Landingpage() {
                 <li>Create unlimited retrospectives</li>
                 <li>Access all past retrospectives</li>
               </ul>
-            </CardHeader>
+            </Card.Header>
           </Card>
         </div>
       </section>

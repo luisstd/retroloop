@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Button } from '@/app/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
@@ -35,12 +35,12 @@ const NewsletterSignup = () => {
 
   return (
     <Card className='m-5 max-w-lg p-5'>
-      <CardHeader>
-        <CardTitle className='text-center text-2xl font-bold'>
+      <Card.Header>
+        <Card.Title className='text-center text-2xl font-bold'>
           Subscribe to stay up to date with product updates
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+        </Card.Title>
+      </Card.Header>
+      <Card.Content>
         <Formik
           initialValues={{ email: '' }}
           validationSchema={toFormikValidationSchema(emailSchema)}
@@ -71,7 +71,7 @@ const NewsletterSignup = () => {
             </Button>
           </Form>
         </Formik>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

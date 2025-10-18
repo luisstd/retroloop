@@ -7,7 +7,7 @@ import { Loader } from '@/app/components/loader/loader'
 import { AddRetro } from '@/app/dashboard/retros/components/add-retro'
 import { RetroCard } from '@/app/dashboard/retros/components/retro-card'
 import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
-import { Card, CardTitle } from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 import {
@@ -75,7 +75,7 @@ export function Retros({ userId }: RetrosProps) {
   return (
     <Card className='bg-background w-full p-10 shadow-xs'>
       <div className='flex flex-row items-baseline justify-between'>
-        <CardTitle className='p-5 text-center'>RETROS</CardTitle>
+        <Card.Title className='p-5 text-center'>RETROS</Card.Title>
 
         {!isLoading && (
           <div className='flex w-full justify-end'>
