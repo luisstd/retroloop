@@ -67,19 +67,22 @@ export default function Landingpage() {
           </div>
         </div>
         <div className='mt-12 w-full max-w-5xl'>
-          <Image
-            className='w-full'
-            src={
-              resolvedTheme === 'light' || theme === 'light'
-                ? '/preview-light.webp'
-                : '/preview-dark.webp'
-            }
-            alt='Retroloop preview'
-            title='Retroloop preview'
-            width={1920}
-            height={1080}
-            priority
-          />
+          <div className='overflow-hidden rounded border-2 shadow-lg transition-all duration-300 hover:translate-y-[-2px] hover:shadow-xl'>
+            <Image
+              className='w-full'
+              src={
+                resolvedTheme === 'light' || theme === 'light'
+                  ? '/preview-light.webp'
+                  : '/preview-dark.webp'
+              }
+              alt='Retroloop retrospective interface showing feedback collection and collaboration features'
+              title='Retroloop preview'
+              width={1920}
+              height={1080}
+              quality={95}
+              priority
+            />
+          </div>
         </div>
       </section>
 
