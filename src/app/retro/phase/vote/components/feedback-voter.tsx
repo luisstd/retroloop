@@ -66,9 +66,9 @@ export function FeedbackVoter({
 
       {isLoading && (
         <>
-          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-400 max-w-full min-w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-full items-center justify-between p-4' />
+          <Skeleton className='m-2 mx-auto flex h-16 w-full items-center justify-between p-4' />
         </>
       )}
 
@@ -78,7 +78,7 @@ export function FeedbackVoter({
             (item: Feedback) =>
               item.type === itemType && (
                 <li key={item.id}>
-                  <Card className='m-2 mx-auto flex w-400 max-w-full min-w-full items-center justify-between p-4 break-words'>
+                  <Card className='m-2 mx-auto flex w-full items-center justify-between p-4 break-words'>
                     <p>{item.content}</p>
 
                     <div className='flex flex-row items-center'>

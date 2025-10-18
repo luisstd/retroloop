@@ -23,7 +23,7 @@ export function Team() {
             {user.role}
           </Card.Description>
         </Card.Header>
-        <div className='h-28' />
+        <div className='h-24' />
       </Card>
     ))
   ) : (

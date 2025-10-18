@@ -12,7 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/app/ui/carousel'
-import { Tabs, TabsTrigger,TabsTriggerList } from '@/app/ui/tabs'
+import { Tabs, TabsTrigger, TabsTriggerList } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
 import { getFeedbackType } from '@/utils/utils'
 
@@ -62,7 +62,11 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
           {feedback?.map((item, index) => (
             <CarouselItem key={item.id}>
               <div className='px-4'>
-                <FeedbackCard item={item} index={index} total={feedback.length} />
+                <FeedbackCard
+                  item={item}
+                  index={index}
+                  total={feedback.length}
+                />
               </div>
             </CarouselItem>
           ))}

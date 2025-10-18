@@ -23,11 +23,11 @@ export function ThemeDropdown() {
       <Menu.Trigger asChild>
         <Button size='icon' variant='outline' aria-label='Select theme'>
           {resolvedTheme === 'light' && theme === 'light' ? (
-            <IconSun size={24} className='text-blue-400' />
+            <IconSun size={24} className='text-primary' />
           ) : resolvedTheme === 'light' ? (
             <IconSun size={24} />
           ) : resolvedTheme === 'dark' && theme === 'dark' ? (
-            <IconMoon size={24} className='text-blue-300' />
+            <IconMoon size={24} className='text-primary' />
           ) : resolvedTheme === 'dark' ? (
             <IconMoon size={24} />
           ) : (
