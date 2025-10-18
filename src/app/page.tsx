@@ -45,15 +45,12 @@ export default function Landingpage() {
           </p>
           <div className='flex flex-col items-center gap-4 sm:flex-row sm:justify-center'>
             <Link href={'/dashboard'} className='w-full sm:w-52'>
-              <Button
-                size='lg'
-                className='flex w-full items-center justify-center gap-2'
-              >
-                Start your first retro
+              <Button className='flex w-full items-center justify-center gap-2'>
+                Start Retro
                 <IconArrowRight size={18} />
               </Button>
             </Link>
-            <div className='w-full sm:w-52 [&>button]:h-11 [&>button]:w-full [&>button]:text-sm'>
+            <div className='w-full sm:w-52'>
               <InviteDialog
                 ctaCopy='Invite teammates'
                 ctaVariant='outline'

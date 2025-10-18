@@ -26,7 +26,7 @@ export function Menu() {
 
   return (
     <div className='min-w-full'>
-      <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-2 rounded-full border-2 p-1 text-xl shadow-xs sm:gap-10 md:mx-auto md:max-w-max'>
+      <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-2 rounded-full border-2 p-2 text-xl shadow-xs sm:gap-10 md:mx-auto md:max-w-max'>
         <NavigationMenuList>
           <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>
             <Link href='/'>
@@ -104,7 +104,7 @@ export function Menu() {
           </NavigationMenuItem>
         </NavigationMenuList>
 
-        <div>
+        <div className='flex flex-row gap-2 mx-2'>
           <NavigationDropdown />
           <ThemeDropdown />
           {session?.user ? <UserDropdown /> : <LoginButton />}
