@@ -116,7 +116,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.1.7",
-    "jsdom": "^26.1.0",
+    "jsdom": "^27.0.0",
     "knip": "^5.64.3",
     "lint-staged": "^15.5.2",
     "pnpm": "10.4.1",
