@@ -35,13 +35,13 @@ const CustomErrorComponent: NextPage<
           <Card.Title className='text-center text-2xl font-bold'>
             {statusCode ? `Error ${statusCode}` : 'Application Error'}
           </Card.Title>
-          <Card.Description className='text-center'>
+          <p className='text-card-foreground text-center'>
             {isClientError &&
               'The requested page could not be found or accessed.'}
             {isServerError &&
               'A server error occurred. Our team has been notified.'}
             {!statusCode && 'An unexpected error occurred on the client side.'}
-          </Card.Description>
+          </p>
         </Card.Header>
         <Card.Content className='space-y-4'>
           <div className='flex flex-col gap-2'>

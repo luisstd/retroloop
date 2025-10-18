@@ -61,9 +61,9 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
         <Badge className='text-lg font-semibold'>+{item.votes}</Badge>
       </div>
 
-      <Card.Description className='prose mt-2 text-lg leading-relaxed'>
+      <p className='prose text-card-foreground mt-2 text-lg leading-relaxed'>
         {item.content}
-      </Card.Description>
+      </p>
 
       {index !== undefined && total !== undefined && (
         <Card.Description className='text-muted-foreground self-end text-sm'>

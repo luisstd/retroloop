@@ -81,13 +81,13 @@
 }
 
 .dark {
-  --background: oklch(0.15 0.01 264);
+  --background: oklch(0.17 0.015 264);
   --foreground: oklch(0.95 0.01 264);
-  --card: oklch(0.18 0.01 264);
+  --card: oklch(0.22 0.015 264);
   --card-foreground: oklch(0.92 0.01 264);
-  --primary: oklch(0.68 0.18 270);
-  --primary-hover: oklch(0.6 0.2 270);
-  --primary-foreground: oklch(0.15 0.01 264);
+  --primary: oklch(0.62 0.2 270);
+  --primary-hover: oklch(0.56 0.22 270);
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.22 0.01 264);
   --secondary-foreground: oklch(0.92 0.01 264);
   --muted: oklch(0.32 0.06 280);

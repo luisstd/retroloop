@@ -79,9 +79,9 @@ export function FeedbackVoter({
               item.type === itemType && (
                 <li key={item.id}>
                   <Card className='flex w-full items-center justify-between p-5 break-words'>
-                    <Card.Description className='text-base'>
+                    <p className='text-card-foreground text-base'>
                       {item.content}
-                    </Card.Description>
+                    </p>
 
                     <div className='flex flex-row items-center gap-2'>
                       {item.votes ? (

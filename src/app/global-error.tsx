@@ -41,10 +41,10 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
               <Card.Title className='text-destructive text-center text-2xl font-bold'>
                 Critical Application Error
               </Card.Title>
-              <Card.Description className='text-center'>
+              <p className='text-card-foreground text-center'>
                 A critical error occurred that prevented the application from
                 functioning properly. Our team has been automatically notified.
-              </Card.Description>
+              </p>
             </Card.Header>
             <Card.Content className='space-y-4'>
               <div className='bg-destructive/10 border-destructive/20 rounded-md border p-4'>
