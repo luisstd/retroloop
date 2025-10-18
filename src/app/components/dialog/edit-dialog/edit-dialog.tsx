@@ -6,14 +6,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import { useState } from 'react'
 
 import { Button } from '@/app/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/app/ui/dialog'
+import { Dialog } from '@/app/ui/dialog'
 import { Textarea } from '@/app/ui/textarea'
 
 type EditDialogProps = {
@@ -26,21 +19,24 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
+      <Dialog.Trigger asChild>
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           className='mx-1'
           aria-label='Edit item'
         >
           <IconPencil size={16} />
         </Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <DialogContent onPointerDownOutside={(event) => event.preventDefault()}>
-        <DialogHeader>
-          <DialogTitle>Edit feedback</DialogTitle>
-        </DialogHeader>
+      <Dialog.Content
+        size='lg'
+        onPointerDownOutside={(event) => event.preventDefault()}
+      >
+        <Dialog.Header>
+          <span>Edit feedback</span>
+        </Dialog.Header>
         <Formik
           initialValues={cloneDeep(itemToEdit)}
           onSubmit={(values) => {
@@ -49,7 +45,7 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
           }}
         >
           <Form>
-            <fieldset className='mb-5'>
+            <fieldset className='mb-5 px-4'>
               <Field id='content' name='content' className='h-full w-full'>
                 {({ field }: FieldProps) => (
                   <Textarea
@@ -61,14 +57,14 @@ export function EditDialog({ itemToEdit, editHandler }: EditDialogProps) {
               </Field>
             </fieldset>
 
-            <DialogFooter>
+            <Dialog.Footer>
               <Button type='submit' aria-label='Save'>
                 Update
               </Button>
-            </DialogFooter>
+            </Dialog.Footer>
           </Form>
         </Formik>
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   )
 }

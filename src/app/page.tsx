@@ -18,8 +18,7 @@ import { Footer } from '@/app/components/footer/footer'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
-import { Card, CardHeader, CardTitle } from '@/app/ui/card'
-import { Separator } from '@/app/ui/separator'
+import { Card } from '@/app/ui/card'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
 
@@ -44,40 +43,46 @@ export default function Landingpage() {
             Enable effective feedback across remote & hybrid teams
           </p>
           <div className='flex flex-col items-center gap-4 sm:flex-row sm:justify-center'>
-            <Link href={'/dashboard'} className='w-full sm:w-52'>
+            <div className='w-full sm:w-52'>
               <Button
-                size='lg'
-                className='flex h-11 w-full items-center justify-center gap-2'
+                className='flex w-full items-center justify-center gap-2'
+                asChild
               >
-                Start your first retro
-                <IconArrowRight size={18} />
+                <Link href='/dashboard'>
+                  Start Retro
+                  <IconArrowRight size={18} />
+                </Link>
               </Button>
-            </Link>
-            <div className='w-full sm:w-52 [&>button]:h-11 [&>button]:w-full [&>button]:text-sm'>
+            </div>
+            <div className='w-full sm:w-52'>
               <InviteDialog
                 ctaCopy='Invite teammates'
                 ctaVariant='outline'
                 dialogTitle='Send an invite link'
                 dialogDescription='Invite someone by sending them a login link'
                 iconVariant='none'
+                fullWidth={true}
               />
             </div>
           </div>
         </div>
         <div className='mt-12 w-full max-w-5xl'>
-          <Image
-            className='w-full'
-            src={
-              resolvedTheme === 'light' || theme === 'light'
-                ? '/preview-light.webp'
-                : '/preview-dark.webp'
-            }
-            alt='Retroloop preview'
-            title='Retroloop preview'
-            width={1920}
-            height={1080}
-            priority
-          />
+          <div className='overflow-hidden rounded border-2 shadow-lg transition-all duration-300 hover:translate-y-[-2px] hover:shadow-xl'>
+            <Image
+              className='w-full'
+              src={
+                resolvedTheme === 'light' || theme === 'light'
+                  ? '/preview-light.webp'
+                  : '/preview-dark.webp'
+              }
+              alt='Retroloop retrospective interface showing feedback collection and collaboration features'
+              title='Retroloop preview'
+              width={1920}
+              height={1080}
+              quality={95}
+              priority
+            />
+          </div>
         </div>
       </section>
 
@@ -92,10 +97,10 @@ export default function Landingpage() {
           </p>
         </div>
 
-        <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
-          <div className='flex flex-col items-start gap-4'>
+        <div className='grid justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='bg-primary/10 rounded border-2 p-3'>
                 <IconLogin size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Seamless login</h3>
@@ -106,9 +111,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='bg-primary/10 rounded border-2 p-3'>
                 <IconHourglass size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Real-time sync</h3>
@@ -119,9 +124,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='bg-primary/10 rounded border-2 p-3'>
                 <IconRepeat size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Intuitive interface</h3>
@@ -132,9 +137,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='bg-primary/10 rounded border-2 p-3'>
                 <IconBulb size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Actionable insights</h3>
@@ -145,9 +150,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='bg-primary/10 rounded border-2 p-3'>
                 <IconUsers size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Built for teams</h3>
@@ -158,9 +163,9 @@ export default function Landingpage() {
             </p>
           </div>
 
-          <div className='flex flex-col items-start gap-4'>
+          <div className='flex max-w-sm flex-col items-start gap-4'>
             <div className='flex items-center gap-3'>
-              <div className='bg-primary/10 rounded-lg p-3'>
+              <div className='bg-primary/10 rounded border-2 p-3'>
                 <IconAffiliate size={24} className='text-primary' />
               </div>
               <h3 className='text-xl font-semibold'>Transparent process</h3>
@@ -185,20 +190,18 @@ export default function Landingpage() {
 
         <div className='flex flex-col items-stretch justify-center gap-6 md:flex-row'>
           <Card className='flex-1 shadow-xs'>
-            <CardHeader className='flex h-full flex-col p-8 text-center'>
+            <Card.Header className='flex h-full flex-col p-8 text-center'>
               <div>
-                <CardTitle className='mb-2'>
-                  <span className='text-muted-foreground text-2xl font-bold'>
-                    Free
-                  </span>
-                </CardTitle>
+                <Card.Title className='mb-2'>
+                  <span className='text-2xl font-bold'>Free</span>
+                </Card.Title>
                 <div className='mb-6'>
                   <span className='text-primary text-4xl font-bold'>0€</span>
                 </div>
                 <Button
                   variant='outline'
                   size='lg'
-                  className='mb-2 w-full'
+                  className='mb-6 w-full'
                   onClick={() => router.push('/dashboard')}
                 >
                   Get started for free
@@ -211,7 +214,7 @@ export default function Landingpage() {
                 <li>Create 3 retrospectives for free</li>
                 <li>3 month access to past retrospectives</li>
               </ul>
-            </CardHeader>
+            </Card.Header>
           </Card>
 
           <Card className='relative flex-1 shadow-xs'>
@@ -223,11 +226,11 @@ export default function Landingpage() {
                 Support Development
               </Badge>
             </div>
-            <CardHeader className='flex h-full flex-col p-8 text-center'>
+            <Card.Header className='flex h-full flex-col p-8 text-center'>
               <div>
-                <CardTitle className='mb-2'>
+                <Card.Title className='mb-2'>
                   <span className='text-2xl font-bold'>Unlimited</span>
-                </CardTitle>
+                </Card.Title>
                 <div className='mb-6'>
                   <span className='text-primary text-4xl font-bold'>10€</span>
                   <span className='text-muted-foreground ml-1 text-sm'>
@@ -257,12 +260,10 @@ export default function Landingpage() {
                 <li>Create unlimited retrospectives</li>
                 <li>Access all past retrospectives</li>
               </ul>
-            </CardHeader>
+            </Card.Header>
           </Card>
         </div>
       </section>
-
-      <Separator className='my-16' />
 
       <Footer />
     </div>

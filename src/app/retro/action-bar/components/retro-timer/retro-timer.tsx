@@ -9,11 +9,11 @@ import {
   isFuture,
 } from 'date-fns'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
-import { useToast } from '@/app/ui/use-toast'
 
 type RetroTimerProps = {
   selectedRetro: Retrospective
@@ -28,7 +28,6 @@ export function RetroTimer({
   channel,
   timerDisplay,
 }: RetroTimerProps) {
-  const { toast } = useToast()
   const [minutes, setMinutes] = useState(0)
   const [isTimerRunning, setIsTimerRunning] = useState(false)
 
@@ -69,8 +68,7 @@ export function RetroTimer({
 
   function handleStartTimer() {
     updateTimer(minutes)
-    toast({
-      title: 'Timer started',
+    toast('Timer started', {
       description: `Timer set to ${minutes} minutes`,
     })
   }
@@ -80,8 +78,7 @@ export function RetroTimer({
       ...selectedRetro,
       timerExpiration: new Date(),
     })
-    toast({
-      title: 'Timer stopped',
+    toast('Timer stopped', {
       description: 'Timer has been reset',
     })
   }
@@ -96,13 +93,13 @@ export function RetroTimer({
 
   return (
     <Card className='flex h-full w-full items-center justify-center gap-3 p-3'>
-      <IconAlarm size={32} />
+      <IconAlarm size={24} />
 
-      <h1 className='text-2xl font-bold'>Timer</h1>
+      <h1 className='text-xl font-bold'>Timer</h1>
 
-      <div className='mx-2 flex gap-2 text-center text-2xl'>
+      <div className='mx-2 flex gap-2 text-center text-base'>
         {isTimerRunning ? (
-          <span className='text-3xl tabular-nums'>{timerDisplay}</span>
+          <span className='text-2xl tabular-nums'>{timerDisplay}</span>
         ) : (
           <>
             <Input
@@ -112,6 +109,7 @@ export function RetroTimer({
               maxLength={2}
               size={2}
               placeholder='00'
+              className='w-16 px-2 py-1 text-base'
               onChange={(e) => setMinutes(Number(e.currentTarget.value))}
             />
             <span className='self-center'>min</span>
@@ -122,7 +120,7 @@ export function RetroTimer({
       {isTimerRunning ? (
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           onClick={handleStopTimer}
           aria-label='Reset timer'
         >
@@ -131,7 +129,7 @@ export function RetroTimer({
       ) : (
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           onClick={handleStartTimer}
           aria-label='Start timer'
         >

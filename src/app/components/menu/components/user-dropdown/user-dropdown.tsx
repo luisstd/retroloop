@@ -4,32 +4,31 @@ import { IconUserCircle } from '@tabler/icons-react'
 import { signOut, useSession } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/app/ui/popover'
+import { Popover } from '@/app/ui/popover'
 
 export function UserDropdown() {
   const { data: session } = useSession()
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <Popover.Trigger asChild>
         <Button
-          variant='ghost'
           size='icon'
-          className='rounded-l-md rounded-r-3xl'
+          variant='outline'
           aria-label='Authentication status'
         >
           <IconUserCircle size={24} />
         </Button>
-      </PopoverTrigger>
+      </Popover.Trigger>
 
-      <PopoverContent className='flex w-max flex-col items-center gap-1'>
+      <Popover.Content className='flex w-max flex-col items-center gap-1'>
         <div>
           Logged in as
           <br />
           <strong>{session?.user?.name}</strong>
         </div>
         <Button onClick={() => signOut()}>Logout</Button>
-      </PopoverContent>
+      </Popover.Content>
     </Popover>
   )
 }

@@ -14,7 +14,7 @@ export function VotePhase({ selectedRetro }: VotePhaseProps) {
     <>
       {selectedRetro && (
         <>
-          <Card className='col-start-1 row-span-6 row-start-2 h-full max-w-full min-w-full px-2 lg:min-h-screen'>
+          <Card className='col-start-1 row-span-6 row-start-2 h-full w-full px-4 py-6 lg:min-h-screen'>
             <FeedbackVoter
               retrospective={selectedRetro}
               itemType='success'
@@ -22,7 +22,7 @@ export function VotePhase({ selectedRetro }: VotePhaseProps) {
             />
           </Card>
 
-          <Card className='col-start-2 row-span-6 row-start-2 h-full max-w-full min-w-full px-2 lg:min-h-screen'>
+          <Card className='col-start-2 row-span-6 row-start-2 h-full w-full px-4 py-6 lg:min-h-screen'>
             <FeedbackVoter
               retrospective={selectedRetro}
               itemType='improvement'
@@ -30,7 +30,7 @@ export function VotePhase({ selectedRetro }: VotePhaseProps) {
             />
           </Card>
 
-          <Card className='col-start-3 row-span-6 row-start-2 h-full max-w-full min-w-full px-2 lg:min-h-screen'>
+          <Card className='col-start-3 row-span-6 row-start-2 h-full w-full px-4 py-6 lg:min-h-screen'>
             <FeedbackVoter
               retrospective={selectedRetro}
               itemType='action'
