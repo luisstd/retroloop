@@ -8,9 +8,9 @@ import React, { HTMLAttributes, ReactNode } from 'react'
 
 import { cn } from '@/utils/cn'
 
-const Dialog = (props: React.ComponentPropsWithoutRef<typeof ReactDialog.Root>) => (
-  <ReactDialog.Root modal={false} {...props} />
-)
+const Dialog = (
+  props: React.ComponentPropsWithoutRef<typeof ReactDialog.Root>,
+) => <ReactDialog.Root modal={false} {...props} />
 const DialogTrigger = ReactDialog.Trigger
 
 const overlayVariants = cva(

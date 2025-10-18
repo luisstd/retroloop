@@ -30,7 +30,12 @@ export function DeleteUserDialog({
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <Button variant='destructive'>Delete Account</Button>
+        <Button
+          variant='outline'
+          className='border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground w-full'
+        >
+          Delete Account
+        </Button>
       </AlertDialogTrigger>
 
       <AlertDialogContent>

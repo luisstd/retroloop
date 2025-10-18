@@ -37,6 +37,9 @@ export default function Profile() {
   const { mutate: updateUser } = api.user.edit.useMutation({
     onSuccess: () => {
       refetch()
+      toast('Profile updated', {
+        description: 'Your profile was successfully updated',
+      })
     },
   })
 
@@ -53,9 +56,6 @@ export default function Profile() {
 
   const handleSubmit = (input: UserUpdateInput): void => {
     updateUser(input)
-    toast('Profile updated', {
-      description: 'Your profile was successfully updated',
-    })
   }
 
   const handleDelete = (input: User): void => {
@@ -80,11 +80,9 @@ export default function Profile() {
       {session.user.email && <Feedback userEmail={session.user.email} />}
 
       <Card className='bg-background min-h-[400px] w-full p-10 shadow-xs'>
-        <div className='flex flex-row items-baseline justify-between'>
+        <div className='mb-6 flex flex-row items-baseline justify-between'>
           <Card.Title className='p-5 text-center'>PROFILE</Card.Title>
-          <div className='flex w-full justify-end'>
-            <Badge>Version {packageInfo.version}</Badge>
-          </div>
+          <Badge>Version {packageInfo.version}</Badge>
         </div>
 
         {isLoading ? (
@@ -103,70 +101,87 @@ export default function Profile() {
             }}
             onSubmit={(values) => handleSubmit(values)}
           >
-            <Form className='mx-auto w-10/12'>
-              <div className='flex flex-col items-center justify-around gap-5 sm:flex-row sm:items-end sm:gap-0'>
-                <section className='flex flex-col items-center gap-2'>
+            <Form className='w-full'>
+              <div className='flex flex-col items-center justify-center gap-8 sm:flex-row sm:items-start sm:gap-12'>
+                <section className='flex flex-col items-center gap-6'>
                   <Avatar className='h-32 w-32'>
                     <AvatarImage src={user.image || ''} alt='User Avatar' />
                     <AvatarFallback className='h-32 w-32'>
                       <IconUserCircle size={64} />
                     </AvatarFallback>
                   </Avatar>
-                  <div className='flex flex-col items-center gap-2'>
-                    <Label>User since</Label>
-                    <Badge variant='outline'>
-                      {formatDate(user.createdAt)}
-                    </Badge>
+                  <div className='flex flex-col items-center gap-4'>
+                    <div className='flex flex-row gap-6'>
+                      <div className='flex flex-col items-center gap-2'>
+                        <Label className='text-muted-foreground text-sm'>
+                          User since
+                        </Label>
+                        <Badge variant='outline'>
+                          {formatDate(user.createdAt)}
+                        </Badge>
+                      </div>
 
-                    <Label>Account type</Label>
-                    <Badge variant='outline'>
-                      {getAccountType(user.stripeSubscriptionStatus)}
-                    </Badge>
+                      <div className='flex flex-col items-center gap-2'>
+                        <Label className='text-muted-foreground text-sm'>
+                          Account type
+                        </Label>
+                        <Badge>
+                          {getAccountType(user.stripeSubscriptionStatus)}
+                        </Badge>
+                      </div>
+                    </div>
 
-                    <div className='flex flex-col gap-2'>
-                      {getAccountType(user.stripeSubscriptionStatus) ===
-                      AccountType.Standard ? (
-                        <Button
-                          type='button'
-                          variant='outline'
-                          onClick={async () => {
-                            const { checkoutUrl } = await createCheckoutSession(
-                              StripeBillingInterval.YEARLY,
-                            )
-                            if (checkoutUrl) {
-                              router.push(checkoutUrl)
-                            }
-                          }}
-                        >
-                          Upgrade account
-                        </Button>
-                      ) : (
-                        <Button
-                          type='button'
-                          variant='outline'
-                          onClick={async () => {
-                            const { billingPortalUrl } =
-                              await createBillingPortalSession()
-                            if (billingPortalUrl) {
-                              router.push(billingPortalUrl)
-                            }
-                          }}
-                        >
-                          Manage subscription
-                        </Button>
-                      )}
+                    <div className='mt-2 flex flex-col gap-4'>
+                      <div className='w-full'>
+                        {getAccountType(user.stripeSubscriptionStatus) ===
+                        AccountType.Standard ? (
+                          <Button
+                            type='button'
+                            variant='outline'
+                            className='w-full'
+                            onClick={async () => {
+                              const { checkoutUrl } =
+                                await createCheckoutSession(
+                                  StripeBillingInterval.YEARLY,
+                                )
+                              if (checkoutUrl) {
+                                router.push(checkoutUrl)
+                              }
+                            }}
+                          >
+                            Upgrade account
+                          </Button>
+                        ) : (
+                          <Button
+                            type='button'
+                            variant='outline'
+                            className='w-full'
+                            onClick={async () => {
+                              const { billingPortalUrl } =
+                                await createBillingPortalSession()
+                              if (billingPortalUrl) {
+                                router.push(billingPortalUrl)
+                              }
+                            }}
+                          >
+                            Manage subscription
+                          </Button>
+                        )}
+                      </div>
 
                       {user && (
-                        <DeleteUserDialog
-                          itemToDelete={user}
-                          deleteHandler={handleDelete}
-                        />
+                        <div className='w-full'>
+                          <DeleteUserDialog
+                            itemToDelete={user}
+                            deleteHandler={handleDelete}
+                          />
+                        </div>
                       )}
                     </div>
                   </div>
                 </section>
 
-                <section className='flex flex-col gap-5'>
+                <section className='flex w-full max-w-md flex-col gap-6'>
                   <fieldset className='flex flex-col items-start gap-2'>
                     <Label htmlFor='name'>Name</Label>
                     <Field
@@ -189,7 +204,9 @@ export default function Profile() {
                     />
                   </fieldset>
 
-                  <Button type='submit'>Submit</Button>
+                  <Button type='submit' className='mt-2'>
+                    Save changes
+                  </Button>
                 </section>
               </div>
             </Form>

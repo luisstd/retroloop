@@ -49,11 +49,11 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
           className={cn(
             'text-lg font-semibold',
             item.type === 'success' &&
-              'bg-green-100 text-green-800 border-green-300 dark:bg-green-900/30 dark:text-green-300 dark:border-green-700',
+              'border-green-300 bg-green-100 text-green-800 dark:border-green-700 dark:bg-green-900/30 dark:text-green-300',
             item.type === 'improvement' &&
-              'bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-700',
+              'border-amber-300 bg-amber-100 text-amber-800 dark:border-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
             item.type === 'action' &&
-              'bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-700',
+              'border-blue-300 bg-blue-100 text-blue-800 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
           )}
         >
           {getFeedbackType(item.type)}
@@ -61,12 +61,12 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
         <Badge className='text-lg font-semibold'>+{item.votes}</Badge>
       </div>
 
-      <Card.Description className='prose text-lg leading-relaxed mt-2'>
+      <Card.Description className='prose mt-2 text-lg leading-relaxed'>
         {item.content}
       </Card.Description>
 
       {index !== undefined && total !== undefined && (
-        <Card.Description className='self-end text-sm text-muted-foreground'>
+        <Card.Description className='text-muted-foreground self-end text-sm'>
           {`${index + 1}/${total}`}
         </Card.Description>
       )}
