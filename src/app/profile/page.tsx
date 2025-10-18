@@ -194,7 +194,7 @@ export default function Profile() {
                   </fieldset>
 
                   <fieldset className='flex flex-col items-start gap-2'>
-                    <Label htmlFor='email'>E-Mail</Label>
+                    <Label htmlFor='email'>Email</Label>
                     <Field
                       as={Input}
                       id='email'

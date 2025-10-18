@@ -40,11 +40,21 @@ export function Menu() {
 
           <NavigationMenuItem className='hidden sm:flex'>
             {isLandingPage ? (
-              <Button variant='link' aria-label='Features' className='w-28 justify-center' asChild>
+              <Button
+                variant='link'
+                aria-label='Features'
+                className='w-28 justify-center'
+                asChild
+              >
                 <Link href='#features'>Features</Link>
               </Button>
             ) : (
-              <Button variant='link' aria-label='Dashboard' className='w-28 justify-center' asChild>
+              <Button
+                variant='link'
+                aria-label='Dashboard'
+                className='w-28 justify-center'
+                asChild
+              >
                 <Link href='/dashboard'>Dashboard</Link>
               </Button>
             )}
@@ -52,11 +62,21 @@ export function Menu() {
 
           <NavigationMenuItem className='hidden sm:flex'>
             {isLandingPage ? (
-              <Button variant='link' aria-label='Pricing' className='w-24 justify-center' asChild>
+              <Button
+                variant='link'
+                aria-label='Pricing'
+                className='w-24 justify-center'
+                asChild
+              >
                 <Link href='#pricing'>Pricing</Link>
               </Button>
             ) : (
-              <Button variant='link' aria-label='Profile' className='w-24 justify-center' asChild>
+              <Button
+                variant='link'
+                aria-label='Profile'
+                className='w-24 justify-center'
+                asChild
+              >
                 <Link href='/profile'>Profile</Link>
               </Button>
             )}

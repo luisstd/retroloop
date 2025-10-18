@@ -65,7 +65,7 @@ export function InviteDialog({
         >
           <Form className='flex flex-col gap-10'>
             <fieldset className='flex flex-col gap-2 px-4'>
-              <Label htmlFor='email'>E-Mail</Label>
+              <Label htmlFor='email'>Email</Label>
               <Field
                 as={Input}
                 id='email'

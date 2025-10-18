@@ -50,7 +50,7 @@ export default async function RootLayout({
             </a>
             <main
               id='main-content'
-              className='relative mx-auto flex w-full max-w-(--breakpoint-2xl) flex-col items-center'
+              className='relative mx-auto flex h-screen w-full max-w-(--breakpoint-2xl) flex-col items-center'
             >
               <div className='opacity-gradient absolute -z-50 h-full min-h-screen w-full' />
               <Menu />

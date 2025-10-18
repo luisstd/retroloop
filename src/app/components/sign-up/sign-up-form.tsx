@@ -55,7 +55,7 @@ export function SignUpForm() {
                     <Field as={Input} id='name' name='name' required />
 
                     <Label htmlFor='name' className='font-bold'>
-                      E-Mail
+                      Email
                     </Label>
                     <Field
                       as={Input}

@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className='mt-16 w-full'>
-      <div className='relative left-1/2 right-1/2 -mx-[50vw] w-screen border-t-2 bg-muted/30'>
+      <div className='bg-muted/30 relative right-1/2 left-1/2 -mx-[50vw] w-screen border-t-2'>
         <div className='mx-auto flex max-w-7xl flex-col gap-8 px-6 py-12 md:py-16'>
           <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
             {/* Left Column - Open Source */}
