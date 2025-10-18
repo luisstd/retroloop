@@ -8,7 +8,9 @@ import React, { HTMLAttributes, ReactNode } from 'react'
 
 import { cn } from '@/utils/cn'
 
-const Dialog = ReactDialog.Root
+const Dialog = (props: React.ComponentPropsWithoutRef<typeof ReactDialog.Root>) => (
+  <ReactDialog.Root modal={false} {...props} />
+)
 const DialogTrigger = ReactDialog.Trigger
 
 const overlayVariants = cva(
@@ -40,7 +42,7 @@ const DialogBackdrop = React.forwardRef<HTMLDivElement, IDialogBackgroupProps>(
     const { variant = 'default', className, ...props } = inputProps
 
     return (
-      <ReactDialog.Overlay
+      <div
         className={cn(overlayVariants({ variant }), className)}
         ref={forwardedRef}
         {...props}
