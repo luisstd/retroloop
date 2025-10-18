@@ -26,7 +26,7 @@ export function PhaseIndicator({
   const isDiscussingPhase = retrospective.phase === RetroPhase.DISCUSSING
 
   return (
-    <Card className='flex w-full flex-row justify-around p-3'>
+    <Card className='flex h-full w-full flex-row justify-around p-3'>
       <Button
         variant={isWritingPhase ? 'default' : 'outline'}
         className={`text-md ${!isWritingPhase && 'text-muted-foreground'}`}
