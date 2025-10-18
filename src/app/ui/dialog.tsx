@@ -51,7 +51,7 @@ const DialogBackdrop = React.forwardRef<HTMLDivElement, IDialogBackgroupProps>(
 DialogBackdrop.displayName = 'DialogBackdrop'
 
 const dialogVariants = cva(
-  `fixed left-[50%] top-[50%] z-50 grid rounded overflow-hidden w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-2 bg-background shadow-lg duration-200
+  `fixed left-[50%] top-[50%] z-50 grid rounded overflow-hidden w-[calc(100%-2rem)] sm:w-full mx-auto translate-x-[-50%] translate-y-[-50%] gap-4 border-2 bg-background shadow-lg duration-200
   data-[state=open]:animate-in
   data-[state=open]:fade-in-0
   data-[state=open]:zoom-in-95
@@ -61,19 +61,16 @@ const dialogVariants = cva(
   {
     variants: {
       size: {
-        auto: 'max-w-fit',
-        sm: 'lg:max-w-[30%]',
-        md: 'lg:max-w-[40%]',
-        lg: 'lg:max-w-[50%]',
-        xl: 'lg:max-w-[60%]',
-        '2xl': 'lg:max-w-[70%]',
-        '3xl': 'lg:max-w-[80%]',
-        '4xl': 'lg:max-w-[90%]',
-        screen: 'max-w-[100%]',
+        sm: 'max-w-sm',
+        md: 'max-w-md',
+        lg: 'max-w-lg',
+        xl: 'max-w-xl',
+        '2xl': 'max-w-2xl',
+        '3xl': 'max-w-3xl',
       },
     },
     defaultVariants: {
-      size: 'auto',
+      size: 'md',
     },
   },
 )

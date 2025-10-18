@@ -31,7 +31,7 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
         </Button>
       </Dialog.Trigger>
 
-      <Dialog.Content size='lg'>
+      <Dialog.Content size='md'>
         <Dialog.Header>
           <span>Update retrospective</span>
         </Dialog.Header>

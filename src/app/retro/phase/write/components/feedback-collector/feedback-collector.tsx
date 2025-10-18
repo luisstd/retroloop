@@ -72,8 +72,8 @@ export function FeedbackCollector({
 
   return (
     <>
-      <div className='flex flex-row items-center pb-3'>
-        <h2 className='m-2 mr-auto p-2 text-xl font-bold'>{title}</h2>
+      <div className='mb-6 flex flex-row items-center'>
+        <h2 className='mr-auto text-2xl font-bold'>{title}</h2>
         {userId && (
           <FeedbackDialog
             retrospective={retrospective}
@@ -85,21 +85,23 @@ export function FeedbackCollector({
       </div>
 
       {isLoading && (
-        <>
-          <Skeleton className='m-2 mx-auto flex h-16 w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-full items-center justify-between p-4' />
-          <Skeleton className='m-2 mx-auto flex h-16 w-full items-center justify-between p-4' />
-        </>
+        <div className='space-y-2'>
+          <Skeleton className='flex h-16 w-full items-center justify-between p-5' />
+          <Skeleton className='flex h-16 w-full items-center justify-between p-5' />
+          <Skeleton className='flex h-16 w-full items-center justify-between p-5' />
+        </div>
       )}
 
-      <ul>
+      <ul className='space-y-2'>
         {feedback &&
           feedback.map(
             (item: Feedback) =>
               item.type === itemType && (
                 <li key={item.id}>
-                  <Card className='m-2 mx-auto flex w-full items-center justify-between p-4 break-words'>
-                    <p>{item.content}</p>
+                  <Card className='flex w-full items-center justify-between p-5 break-words'>
+                    <Card.Description className='text-base'>
+                      {item.content}
+                    </Card.Description>
 
                     <div className='flex flex-row items-center'>
                       <EditDialog

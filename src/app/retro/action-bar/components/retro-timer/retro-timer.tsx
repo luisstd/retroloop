@@ -93,13 +93,13 @@ export function RetroTimer({
 
   return (
     <Card className='flex h-full w-full items-center justify-center gap-3 p-3'>
-      <IconAlarm size={32} />
+      <IconAlarm size={24} />
 
-      <h1 className='text-2xl font-bold'>Timer</h1>
+      <h1 className='text-xl font-bold'>Timer</h1>
 
-      <div className='mx-2 flex gap-2 text-center text-2xl'>
+      <div className='mx-2 flex gap-2 text-center text-base'>
         {isTimerRunning ? (
-          <span className='text-3xl tabular-nums'>{timerDisplay}</span>
+          <span className='text-2xl tabular-nums'>{timerDisplay}</span>
         ) : (
           <>
             <Input
@@ -109,6 +109,7 @@ export function RetroTimer({
               maxLength={2}
               size={2}
               placeholder='00'
+              className='w-16 px-2 py-1 text-base'
               onChange={(e) => setMinutes(Number(e.currentTarget.value))}
             />
             <span className='self-center'>min</span>

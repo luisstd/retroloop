@@ -16,7 +16,7 @@ export function Feedback({ userEmail }: FeedbackButtonProps) {
       <Button
         variant='outline'
         size='sm'
-        className='fixed bottom-5 right-5 z-40 hidden md:flex'
+        className='bg-background fixed right-5 bottom-5 z-50 hidden md:flex'
         aria-label='Send feedback'
       >
         Feedback

@@ -24,7 +24,7 @@ const RetroLimitReached = () => {
     api.stripe.createCheckoutSession.useMutation()
 
   return (
-    <Dialog.Content size='lg'>
+    <Dialog.Content size='md'>
       <Dialog.Header>
         <span>Retrospective limit reached</span>
       </Dialog.Header>
@@ -65,7 +65,7 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
       {isLimitReached ? (
         <RetroLimitReached />
       ) : (
-        <Dialog.Content size='lg'>
+        <Dialog.Content size='md'>
           <Dialog.Header>
             <span>Start retrospective</span>
           </Dialog.Header>

@@ -39,7 +39,7 @@ export function InviteDialog({
         </Button>
       </Dialog.Trigger>
 
-      <Dialog.Content size='lg'>
+      <Dialog.Content size='md'>
         <Dialog.Header>
           <span>{dialogTitle}</span>
         </Dialog.Header>

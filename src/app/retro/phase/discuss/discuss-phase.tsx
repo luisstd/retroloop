@@ -41,13 +41,13 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
       <Card.Title className='flex flex-row items-center justify-between'>
         Feedback <Badge variant='secondary'>{getFeedbackType(item.type)}</Badge>
       </Card.Title>
-      <Card.Description className='prose text-lg'>
+      <Card.Description className='prose text-base'>
         {item.content}
       </Card.Description>
       <div className='flex flex-row items-center justify-between'>
-        <Badge className='text-lg font-bold'>+{item.votes}</Badge>
+        <Badge className='text-base font-semibold'>+{item.votes}</Badge>
         {index !== undefined && total !== undefined && (
-          <Card.Description className='self-end justify-self-end px-5 text-lg'>
+          <Card.Description className='self-end justify-self-end px-5 text-base'>
             {`${index + 1}/${total}`}
           </Card.Description>
         )}

@@ -5,7 +5,9 @@ import React, { ComponentPropsWithoutRef } from 'react'
 
 import { cn } from '@/utils/cn'
 
-const Menu = DropdownMenu.Root
+const Menu = (props: ComponentPropsWithoutRef<typeof DropdownMenu.Root>) => (
+  <DropdownMenu.Root modal={false} {...props} />
+)
 const Trigger = DropdownMenu.Trigger
 
 interface IMenuContent

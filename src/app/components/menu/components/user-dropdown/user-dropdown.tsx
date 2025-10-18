@@ -15,7 +15,6 @@ export function UserDropdown() {
         <Button
           size='icon'
           variant='outline'
-          className='rounded-l-md rounded-r-3xl'
           aria-label='Authentication status'
         >
           <IconUserCircle size={24} />

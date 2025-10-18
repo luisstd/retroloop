@@ -52,7 +52,6 @@ export function ActionButtons({
         aria-label='Start Retro'
         className='flex gap-1'
         onClick={handleCopy}
-        size={'sm'}
       >
         Copy link
         <IconCopy />
