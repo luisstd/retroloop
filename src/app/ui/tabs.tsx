@@ -36,7 +36,7 @@ const TabsTrigger = ({ children, className, ...props }: ITabsTrigger) => {
   return (
     <Tab
       className={cn(
-        'data-selected:border-border data-selected:bg-primary data-selected:text-primary-foreground flex items-center justify-center rounded-md border-2 border-transparent p-2 focus:outline-hidden data-selected:font-semibold',
+        'data-selected:border-border data-selected:bg-primary data-selected:text-primary-foreground focus-visible:ring-primary flex items-center justify-center rounded-md border-2 border-transparent p-2 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 data-selected:font-semibold',
         className,
       )}
       {...props}

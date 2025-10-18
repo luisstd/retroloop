@@ -42,7 +42,16 @@ export default async function RootLayout({
       <body suppressHydrationWarning className={font.className}>
         <Providers session={session}>
           <TRPCReactProvider headers={await headers()}>
-            <main className='relative mx-auto flex w-full max-w-(--breakpoint-2xl) flex-col items-center'>
+            <a
+              href='#main-content'
+              className='focus-visible:bg-primary focus-visible:text-primary-foreground sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:rounded focus-visible:px-4 focus-visible:py-2 focus-visible:shadow-md'
+            >
+              Skip to main content
+            </a>
+            <main
+              id='main-content'
+              className='relative mx-auto flex w-full max-w-(--breakpoint-2xl) flex-col items-center'
+            >
               <div className='opacity-gradient absolute -z-50 h-full min-h-screen w-full' />
               <Menu />
               {children}

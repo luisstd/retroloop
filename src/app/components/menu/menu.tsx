@@ -26,13 +26,14 @@ export function Menu() {
     <div className='min-w-full'>
       <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-3 rounded-full border-2 p-3 shadow-xs sm:gap-6 md:mx-auto md:max-w-max'>
         <NavigationMenuList className='w-full justify-between gap-3 sm:w-auto sm:justify-center sm:gap-6'>
-          <NavigationMenuItem className='flex cursor-pointer items-center text-center font-bold'>
-            <Link href='/'>
-              <Button
-                variant='link'
-                className='flex cursor-pointer items-center gap-2'
-                aria-label='Landingpage'
-              >
+          <NavigationMenuItem className='flex items-center text-center font-bold'>
+            <Button
+              variant='link'
+              className='flex items-center gap-2'
+              aria-label='Landingpage'
+              asChild
+            >
+              <Link href='/'>
                 <Image
                   src='/logo-transparent.png'
                   alt='Retroloop logo'
@@ -42,55 +43,31 @@ export function Menu() {
                 {isLandingPage && (
                   <span className='hidden text-xl sm:block'>Retroloop</span>
                 )}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </NavigationMenuItem>
 
           <NavigationMenuItem className='hidden sm:flex'>
             {isLandingPage ? (
-              <Link href='#features'>
-                <Button
-                  variant='link'
-                  className='cursor-pointer'
-                  aria-label='Features'
-                >
-                  Features
-                </Button>
-              </Link>
+              <Button variant='link' aria-label='Features' asChild>
+                <Link href='#features'>Features</Link>
+              </Button>
             ) : (
-              <Link href='/dashboard'>
-                <Button
-                  variant='link'
-                  className='cursor-pointer'
-                  aria-label='Dashboard'
-                >
-                  Dashboard
-                </Button>
-              </Link>
+              <Button variant='link' aria-label='Dashboard' asChild>
+                <Link href='/dashboard'>Dashboard</Link>
+              </Button>
             )}
           </NavigationMenuItem>
 
           <NavigationMenuItem className='hidden sm:flex'>
             {isLandingPage ? (
-              <Link href='#pricing'>
-                <Button
-                  variant='link'
-                  className='cursor-pointer'
-                  aria-label='Pricing'
-                >
-                  Pricing
-                </Button>
-              </Link>
+              <Button variant='link' aria-label='Pricing' asChild>
+                <Link href='#pricing'>Pricing</Link>
+              </Button>
             ) : (
-              <Link href='/profile'>
-                <Button
-                  variant='link'
-                  className='cursor-pointer'
-                  aria-label='Profile'
-                >
-                  Profile
-                </Button>
-              </Link>
+              <Button variant='link' aria-label='Profile' asChild>
+                <Link href='/profile'>Profile</Link>
+              </Button>
             )}
           </NavigationMenuItem>
 

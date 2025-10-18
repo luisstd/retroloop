@@ -50,22 +50,21 @@ export function RetroCard({
           </p>
         </div>
 
-        <Link
-          href={{
-            pathname: '/retro',
-            query: {
-              id: retrospective.id,
-              name: retrospective.name,
-            },
-          }}
-          aria-label='Open retro'
-          className='w-full'
-        >
-          <Button variant='default' className='w-full'>
+        <Button variant='default' className='w-full' asChild>
+          <Link
+            href={{
+              pathname: '/retro',
+              query: {
+                id: retrospective.id,
+                name: retrospective.name,
+              },
+            }}
+            aria-label='Open retro'
+          >
             Open Retro
             <IconArrowRight size={18} className='ml-1' />
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </Card>
   )

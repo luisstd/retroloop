@@ -117,10 +117,10 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
           onChange={(index) => setView(index === 0 ? 'grid' : 'carousel')}
         >
           <TabsTriggerList className='grid w-24 grid-cols-2'>
-            <TabsTrigger>
+            <TabsTrigger aria-label='Grid view'>
               <IconLayoutGrid className='h-4 w-4' />
             </TabsTrigger>
-            <TabsTrigger>
+            <TabsTrigger aria-label='Carousel view'>
               <IconSlideshow className='h-4 w-4' />
             </TabsTrigger>
           </TabsTriggerList>

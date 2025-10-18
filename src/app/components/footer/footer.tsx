@@ -18,25 +18,19 @@ export function Footer() {
       <NavigationMenu className='p-5'>
         <NavigationMenuList className='flex items-center gap-2'>
           <NavigationMenuItem>
-            <Link href='/privacy'>
-              <Button variant='link' className='cursor-pointer'>
-                Privacy
-              </Button>
-            </Link>
+            <Button variant='link' asChild>
+              <Link href='/privacy'>Privacy</Link>
+            </Button>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href='/imprint'>
-              <Button variant='link' className='cursor-pointer'>
-                Imprint
-              </Button>
-            </Link>
+            <Button variant='link' asChild>
+              <Link href='/imprint'>Imprint</Link>
+            </Button>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href='/terms'>
-              <Button variant='link' className='cursor-pointer'>
-                Terms
-              </Button>
-            </Link>
+            <Button variant='link' asChild>
+              <Link href='/terms'>Terms</Link>
+            </Button>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

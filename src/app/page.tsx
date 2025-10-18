@@ -44,12 +44,17 @@ export default function Landingpage() {
             Enable effective feedback across remote & hybrid teams
           </p>
           <div className='flex flex-col items-center gap-4 sm:flex-row sm:justify-center'>
-            <Link href={'/dashboard'} className='w-full sm:w-52'>
-              <Button className='flex w-full items-center justify-center gap-2'>
-                Start Retro
-                <IconArrowRight size={18} />
+            <div className='w-full sm:w-52'>
+              <Button
+                className='flex w-full items-center justify-center gap-2'
+                asChild
+              >
+                <Link href='/dashboard'>
+                  Start Retro
+                  <IconArrowRight size={18} />
+                </Link>
               </Button>
-            </Link>
+            </div>
             <div className='w-full sm:w-52'>
               <InviteDialog
                 ctaCopy='Invite teammates'
