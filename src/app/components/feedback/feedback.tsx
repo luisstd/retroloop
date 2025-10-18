@@ -14,11 +14,12 @@ export function Feedback({ userEmail }: FeedbackButtonProps) {
   return (
     <FeedbackFish projectId={PROJECT_ID} userId={userEmail}>
       <Button
-        variant='secondary'
-        className='fixed right-28 bottom-5 z-40'
+        variant='outline'
+        size='sm'
+        className='fixed bottom-5 right-5 z-40 hidden md:flex'
         aria-label='Send feedback'
       >
-        Send feedback
+        Feedback
       </Button>
     </FeedbackFish>
   )
