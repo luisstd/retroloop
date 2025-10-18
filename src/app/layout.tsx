@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 
+import type { Metadata, Viewport } from 'next'
 import { headers } from 'next/headers'
 
 import { Menu } from '@/app/components/menu/menu'
@@ -9,7 +10,7 @@ import { getServerAuthSession } from '@/server/auth'
 import { font } from '@/styles/fonts'
 import { TRPCReactProvider } from '@/trpc/react'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Retroloop - Agile retrospectives made easy',
   description:
     'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
@@ -27,7 +28,29 @@ export const metadata = {
     title: 'Retroloop - Agile retrospectives made easy',
     description:
       'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
+    siteName: 'Retroloop',
+    images: [
+      {
+        url: '/og.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Retroloop - Agile retrospectives made easy',
+      },
+    ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Retroloop - Agile retrospectives made easy',
+    description:
+      'Retroloop is a simple, open-source tool for facilitating agile retrospectives',
+    images: ['/og.webp'],
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#18181b',
 }
 
 export default async function RootLayout({

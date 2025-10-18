@@ -1,3 +1,19 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Dashboard - Retroloop',
+  description: 'Manage your retrospectives and team',
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+}
+
 export default async function DashboardLayout({
   children,
 }: {
