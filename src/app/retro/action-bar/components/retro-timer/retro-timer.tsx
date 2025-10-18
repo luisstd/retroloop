@@ -9,11 +9,11 @@ import {
   isFuture,
 } from 'date-fns'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
-import { useToast } from '@/app/ui/use-toast'
 
 type RetroTimerProps = {
   selectedRetro: Retrospective
@@ -28,7 +28,6 @@ export function RetroTimer({
   channel,
   timerDisplay,
 }: RetroTimerProps) {
-  const { toast } = useToast()
   const [minutes, setMinutes] = useState(0)
   const [isTimerRunning, setIsTimerRunning] = useState(false)
 
@@ -69,8 +68,7 @@ export function RetroTimer({
 
   function handleStartTimer() {
     updateTimer(minutes)
-    toast({
-      title: 'Timer started',
+    toast('Timer started', {
       description: `Timer set to ${minutes} minutes`,
     })
   }
@@ -80,8 +78,7 @@ export function RetroTimer({
       ...selectedRetro,
       timerExpiration: new Date(),
     })
-    toast({
-      title: 'Timer stopped',
+    toast('Timer stopped', {
       description: 'Timer has been reset',
     })
   }

@@ -3,10 +3,10 @@
 import { Retrospective } from '@prisma/client'
 import { IconCopy } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 import { PhaseSwitchDialog } from '@/app/retro/action-bar/components/action-buttons/phase-switch-dialog'
 import { Button } from '@/app/ui/button'
-import { toast } from '@/app/ui/use-toast'
 import { useFullUrl } from '@/utils/utils'
 
 type ActionButtonsProps = {
@@ -23,8 +23,7 @@ export function ActionButtons({
 
   function handleCopy() {
     navigator.clipboard.writeText(fullUrl)
-    toast({
-      title: 'Copied retrospective link to clipboard',
+    toast('Copied retrospective link to clipboard', {
       description: 'Anyone with this link can join your retrospective',
     })
   }

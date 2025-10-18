@@ -2,12 +2,12 @@ import { IconPlus, IconSend } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 import { Button } from '@/app/ui/button'
 import { Dialog } from '@/app/ui/dialog'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
-import { useToast } from '@/app/ui/use-toast'
 
 type InviteDialogProps = {
   ctaCopy: string
@@ -25,8 +25,6 @@ export function InviteDialog({
   iconVariant,
 }: InviteDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
-
-  const { toast } = useToast()
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -54,8 +52,7 @@ export function InviteDialog({
           onSubmit={(values) => {
             signIn('email', { ...values, redirect: false })
             setIsOpen(false)
-            toast({
-              title: 'Successfully sent login link',
+            toast('Successfully sent login link', {
               description:
                 'The recipient can now login with the link sent to their email',
             })

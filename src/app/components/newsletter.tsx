@@ -1,11 +1,11 @@
 import { Field, FieldProps, Form, Formik } from 'formik'
+import { toast } from 'sonner'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
-import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 
 const emailSchema = z.object({
@@ -13,17 +13,14 @@ const emailSchema = z.object({
 })
 
 const NewsletterSignup = () => {
-  const { toast } = useToast()
   const { mutate: subscribeNewsletter } = api.newsletter.subscribe.useMutation({
     onSuccess: () => {
-      toast({
-        title: 'Subscribed to newsletter',
+      toast('Subscribed to newsletter', {
         description: 'You will receive updates about Retroloop',
       })
     },
     onError: (error) => {
-      toast({
-        title: error.message,
+      toast(error.message, {
         description: 'Please try again',
       })
     },

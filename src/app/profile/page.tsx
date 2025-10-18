@@ -5,6 +5,7 @@ import { Field, Form, Formik } from 'formik'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import packageInfo from 'package.json'
+import { toast } from 'sonner'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Feedback } from '@/app/components/feedback/feedback'
@@ -17,7 +18,6 @@ import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
-import { useToast } from '@/app/ui/use-toast'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
@@ -29,7 +29,6 @@ export default function Profile() {
   const pathname = usePathname()
   const router = useRouter()
   const searchParams = useSearchParams()
-  const { toast } = useToast()
   const isAuthenticated = status === 'authenticated'
   const isSignedUp = status === 'authenticated' && session?.user?.name !== null
 
@@ -54,16 +53,14 @@ export default function Profile() {
 
   const handleSubmit = (input: UserUpdateInput): void => {
     updateUser(input)
-    toast({
-      title: 'Profile updated',
+    toast('Profile updated', {
       description: 'Your profile was successfully updated',
     })
   }
 
   const handleDelete = (input: User): void => {
     deleteUser(input)
-    toast({
-      title: 'Account deleted',
+    toast('Account deleted', {
       description: 'Your account was successfully deleted',
     })
   }

@@ -2,13 +2,13 @@
 
 import { User } from '@prisma/client'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import { Loader } from '@/app/components/loader/loader'
 import { AddRetro } from '@/app/dashboard/retros/components/add-retro'
 import { RetroCard } from '@/app/dashboard/retros/components/retro-card'
 import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
 import { Card } from '@/app/ui/card'
-import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 import {
   RetrospectiveCreateInput,
@@ -22,7 +22,6 @@ type RetrosProps = {
 }
 
 export function Retros({ userId }: RetrosProps) {
-  const { toast } = useToast()
   const [isLimitReached, setIsLimitReached] = useState(false)
   const { data: user } = api.user.getLoggedIn.useQuery()
   const accountType = getAccountType(user?.stripeSubscriptionStatus || null)
@@ -49,16 +48,14 @@ export function Retros({ userId }: RetrosProps) {
 
   const handleAddRetro = (input: RetrospectiveCreateInput) => {
     addRetro(input)
-    toast({
-      title: 'Retrospective created',
+    toast('Retrospective created', {
       description: 'Your retro was successfully created',
     })
   }
 
   const handleUpdateRetro = (input: RetrospectiveUpdateInput) => {
     updateRetro(input)
-    toast({
-      title: 'Retrospective updated',
+    toast('Retrospective updated', {
       description: 'Your retro was successfully updated',
     })
   }

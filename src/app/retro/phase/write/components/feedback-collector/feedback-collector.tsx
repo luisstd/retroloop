@@ -2,13 +2,13 @@
 
 import { Feedback, Retrospective } from '@prisma/client'
 import { useSession } from 'next-auth/react'
+import { toast } from 'sonner'
 
 import { DeleteDialog } from '@/app/components/dialog/delete-dialog/delete-dialog'
 import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
 import { FeedbackDialog } from '@/app/retro/phase/write/components/feedback-collector/components/feedback-dialog'
 import { Card } from '@/app/ui/card'
 import { Skeleton } from '@/app/ui/skeleton'
-import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 import { FeedbackCreateInput } from '@/types/feedback'
 
@@ -24,7 +24,6 @@ export function FeedbackCollector({
   itemType,
 }: FeedbackCollectorProps) {
   const { data: session } = useSession()
-  const { toast } = useToast()
   const userId = session?.user?.id
 
   const {
@@ -52,24 +51,21 @@ export function FeedbackCollector({
 
   function handleAddFeedback(input: FeedbackCreateInput): void {
     addFeedback(input)
-    toast({
-      title: 'Feedback added',
+    toast('Feedback added', {
       description: 'Your feedback was successfully added.',
     })
   }
 
   function handleEditFeedback(input: Feedback): void {
     updateFeedback(input)
-    toast({
-      title: 'Feedback updated',
+    toast('Feedback updated', {
       description: 'Your feedback was successfully updated.',
     })
   }
 
   function handleDeleteFeedback(input: Feedback['id']): void {
     deleteFeedback(input)
-    toast({
-      title: 'Feedback deleted',
+    toast('Feedback deleted', {
       description: 'Your feedback was successfully deleted.',
     })
   }

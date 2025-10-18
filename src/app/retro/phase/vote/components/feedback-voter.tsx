@@ -3,13 +3,13 @@
 import { Feedback, Retrospective } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
+import { toast } from 'sonner'
 
 import { Loader } from '@/app/components/loader/loader'
 import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Skeleton } from '@/app/ui/skeleton'
-import { useToast } from '@/app/ui/use-toast'
 import { api } from '@/trpc/react'
 import { UserSession } from '@/types/user'
 
@@ -24,7 +24,6 @@ export function FeedbackVoter({
   retrospective,
   itemType,
 }: FeedbackVoterProps) {
-  const { toast } = useToast()
   const { data: session } = useSession()
   const {
     data: feedback,
@@ -46,8 +45,7 @@ export function FeedbackVoter({
 
   const handleEditFeedback = (input: Feedback): void => {
     updateFeedback(input)
-    toast({
-      title: 'Vote added',
+    toast('Vote added', {
       description: 'Your vote has been added',
     })
   }
