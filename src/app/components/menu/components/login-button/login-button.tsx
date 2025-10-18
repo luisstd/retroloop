@@ -8,13 +8,12 @@ import { Button } from '@/app/ui/button'
 export function LoginButton() {
   return (
     <Button
-      variant='ghost'
-      size='sm'
+      variant='outline'
+      size='icon'
       onClick={() => signIn()}
-      className='rounded-l-md rounded-r-3xl'
+      aria-label='Login'
     >
-      <IconLogin size={24} className='cursor-pointer' />
-      Login
+      <IconLogin size={24} />
     </Button>
   )
 }

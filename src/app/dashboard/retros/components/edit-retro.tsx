@@ -5,14 +5,7 @@ import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Button } from '@/app/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/app/ui/dialog'
+import { Dialog } from '@/app/ui/dialog'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
@@ -28,20 +21,20 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
+      <Dialog.Trigger asChild>
         <Button
           size='icon'
-          variant='ghost'
+          variant='outline'
           aria-label='Edit retrospective button'
         >
           <IconDots size={18} className='text-muted-foreground' />
         </Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Update retrospective</DialogTitle>
-        </DialogHeader>
+      <Dialog.Content size='md'>
+        <Dialog.Header>
+          <span>Update retrospective</span>
+        </Dialog.Header>
 
         <Formik
           validationSchema={toFormikValidationSchema(
@@ -56,7 +49,7 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
           }}
         >
           <Form className='flex flex-col gap-5'>
-            <fieldset>
+            <fieldset className='px-4'>
               <Label htmlFor='name'>Retro Name</Label>
 
               <Field
@@ -67,14 +60,14 @@ export function EditRetro({ handleEditRetro, retrospective }: EditRetroProps) {
               />
             </fieldset>
 
-            <DialogFooter>
+            <Dialog.Footer>
               <Button type='submit' aria-label='Start Retro'>
                 Update retro
               </Button>
-            </DialogFooter>
+            </Dialog.Footer>
           </Form>
         </Formik>
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   )
 }

@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useSession } from 'next-auth/react'
@@ -9,15 +8,12 @@ import { LoginButton } from '@/app/components/menu/components/login-button/login
 import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
 import { ThemeDropdown } from '@/app/components/menu/components/theme-dropdown/theme-dropdown'
 import { UserDropdown } from '@/app/components/menu/components/user-dropdown/user-dropdown'
+import { Button } from '@/app/ui/button'
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from '@/app/ui/navigation-menu'
-import { cn } from '@/utils/cn'
 
 export function Menu() {
   const { data: session } = useSession()
@@ -27,87 +23,81 @@ export function Menu() {
 
   return (
     <div className='min-w-full'>
-      <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-2 rounded-full border-2 p-1 text-xl shadow-xs sm:gap-10 md:mx-auto md:max-w-max'>
-        <NavigationMenuList>
-          <NavigationMenuItem className='items-top flex cursor-pointer text-center text-2xl font-bold italic sm:text-3xl'>
-            <Link href='/' legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  'flex cursor-pointer items-center rounded-l-3xl rounded-r-md',
-                )}
-                aria-label='Landingpage'
+      <NavigationMenu className='bg-background m-5 flex max-w-none items-center gap-3 rounded-full border-2 p-3 shadow-xs sm:gap-6 md:mx-auto md:w-fit'>
+        <NavigationMenuList className='w-full justify-between gap-3 sm:w-auto sm:justify-center sm:gap-6'>
+          <NavigationMenuItem className='flex items-center text-center font-bold'>
+            <Button
+              variant='link'
+              className='flex items-center gap-2'
+              aria-label='Landingpage'
+              asChild
+            >
+              <Link href='/'>
+                <span className='text-xl font-bold'>Retroloop</span>
+              </Link>
+            </Button>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem className='hidden sm:flex'>
+            {isLandingPage ? (
+              <Button
+                variant='link'
+                aria-label='Features'
+                className='w-28 justify-center'
+                asChild
               >
-                <Image
-                  className={isLandingPage ? 'hidden sm:block' : 'block'}
-                  src='/logo-transparent.png'
-                  alt='Retroloop logo'
-                  width={isLandingPage ? 45 : 55}
-                  height={isLandingPage ? 45 : 55}
-                />
-                {isLandingPage && (
-                  <span className='text-md not-italic sm:text-xl'>
-                    Retroloop
-                  </span>
-                )}
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-
-        <NavigationMenuList className='hidden sm:flex'>
-          <NavigationMenuItem>
-            {isLandingPage ? (
-              <Link href='#features' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  aria-label='Features'
-                >
-                  Features
-                </NavigationMenuLink>
-              </Link>
+                <Link href='#features'>Features</Link>
+              </Button>
             ) : (
-              <Link href='/dashboard' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  aria-label='Dashboard'
-                >
-                  Dashboard
-                </NavigationMenuLink>
-              </Link>
+              <Button
+                variant='link'
+                aria-label='Dashboard'
+                className='w-28 justify-center'
+                asChild
+              >
+                <Link href='/dashboard'>Dashboard</Link>
+              </Button>
             )}
           </NavigationMenuItem>
 
-          <NavigationMenuItem aria-label=''>
+          <NavigationMenuItem className='hidden sm:flex'>
             {isLandingPage ? (
-              <Link href='#pricing' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  aria-label='Pricing'
-                >
-                  Pricing
-                </NavigationMenuLink>
-              </Link>
+              <Button
+                variant='link'
+                aria-label='Pricing'
+                className='w-24 justify-center'
+                asChild
+              >
+                <Link href='#pricing'>Pricing</Link>
+              </Button>
             ) : (
-              <Link href='/profile' legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                  aria-label='Profile'
-                >
-                  Profile
-                </NavigationMenuLink>
-              </Link>
+              <Button
+                variant='link'
+                aria-label='Profile'
+                className='w-24 justify-center'
+                asChild
+              >
+                <Link href='/profile'>Profile</Link>
+              </Button>
             )}
           </NavigationMenuItem>
+
+          <div className='flex items-center gap-2 sm:gap-6'>
+            <NavigationMenuItem>
+              <NavigationDropdown />
+            </NavigationMenuItem>
+
+            <div className='flex items-center gap-2 pr-2'>
+              <NavigationMenuItem>
+                <ThemeDropdown />
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                {session?.user ? <UserDropdown /> : <LoginButton />}
+              </NavigationMenuItem>
+            </div>
+          </div>
         </NavigationMenuList>
-
-        <div>
-          <NavigationDropdown />
-          <ThemeDropdown />
-          {session?.user ? <UserDropdown /> : <LoginButton />}
-        </div>
-
-        <NavigationMenuViewport />
       </NavigationMenu>
     </div>
   )

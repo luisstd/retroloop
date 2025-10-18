@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
 import { Badge } from '@/app/ui/badge'
-import { Card, CardDescription, CardTitle } from '@/app/ui/card'
+import { Card } from '@/app/ui/card'
 import {
   Carousel,
   CarouselContent,
@@ -12,8 +12,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/app/ui/carousel'
-import { Tabs, TabsList, TabsTrigger } from '@/app/ui/tabs'
+import { Tabs, TabsTrigger, TabsTriggerList } from '@/app/ui/tabs'
 import { api } from '@/trpc/react'
+import { cn } from '@/utils/cn'
 import { getFeedbackType } from '@/utils/utils'
 
 type DiscussPhaseProps = {
@@ -23,10 +24,14 @@ type DiscussPhaseProps = {
 type ViewType = 'carousel' | 'grid'
 
 export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
-  const [view, setView] = useState<ViewType>('carousel')
+  const [view, setView] = useState<ViewType>('grid')
 
   const { data: feedback, isLoading } =
-    api.feedback.getAllByRetroIdSorted.useQuery(selectedRetro.id)
+    api.feedback.getAllByRetroIdSorted.useQuery(selectedRetro.id, {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    })
 
   const FeedbackCard = ({
     item,
@@ -37,38 +42,60 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
     index?: number
     total?: number
   }) => (
-    <Card className='flex min-h-72 w-full flex-col justify-between p-5 break-words'>
-      <CardTitle className='flex flex-row items-center justify-between'>
-        Feedback <Badge variant='secondary'>{getFeedbackType(item.type)}</Badge>
-      </CardTitle>
-      <CardDescription className='prose text-lg'>
-        {item.content}
-      </CardDescription>
+    <Card className='flex min-h-72 w-full flex-col justify-start gap-4 p-5 break-words'>
       <div className='flex flex-row items-center justify-between'>
-        <Badge className='text-lg font-bold'>+{item.votes}</Badge>
-        {index !== undefined && total !== undefined && (
-          <CardDescription className='self-end justify-self-end px-5 text-lg'>
-            {`${index + 1}/${total}`}
-          </CardDescription>
-        )}
+        <Badge
+          variant='secondary'
+          className={cn(
+            'text-lg font-semibold',
+            item.type === 'success' &&
+              'border-success bg-success-muted text-success-muted-foreground',
+            item.type === 'improvement' &&
+              'border-warning bg-warning-muted text-warning-muted-foreground',
+            item.type === 'action' &&
+              'border-info bg-info-muted text-info-muted-foreground',
+          )}
+        >
+          {getFeedbackType(item.type)}
+        </Badge>
+        <Badge className='text-lg font-semibold'>+{item.votes}</Badge>
       </div>
+
+      <p className='prose text-card-foreground mt-2 text-lg leading-relaxed'>
+        {item.content}
+      </p>
+
+      {index !== undefined && total !== undefined && (
+        <Card.Description className='text-muted-foreground self-end text-sm'>
+          {`${index + 1}/${total}`}
+        </Card.Description>
+      )}
     </Card>
   )
 
-  const CarouselView = () => (
-    <Carousel className='w-full'>
-      <CarouselContent>
-        {feedback?.map((item, index) => (
-          <CarouselItem key={item.id}>
-            <div className='px-4'>
-              <FeedbackCard item={item} index={index} total={feedback.length} />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+  const CarouselView = React.useMemo(
+    () => (
+      <div className='px-16 pb-12'>
+        <Carousel className='mx-auto w-full max-w-2xl'>
+          <CarouselContent>
+            {feedback?.map((item, index) => (
+              <CarouselItem key={item.id}>
+                <div className='px-4 pb-4'>
+                  <FeedbackCard
+                    item={item}
+                    index={index}
+                    total={feedback.length}
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+    ),
+    [feedback],
   )
 
   const GridView = () => (
@@ -82,29 +109,28 @@ export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
   )
 
   return (
-    <div
-      className={`${
-        view === 'grid' ? 'col-span-full mx-auto w-full' : 'col-start-2 w-full'
-      }`}
-    >
+    <div className='col-span-full w-full'>
       <div className='mb-6 flex items-center justify-between px-4'>
         <h2 className='text-2xl font-bold'>Discussion Items</h2>
-        <Tabs defaultValue={view} onValueChange={(v) => setView(v as ViewType)}>
-          <TabsList className='grid w-24 grid-cols-2'>
-            <TabsTrigger value='carousel'>
-              <IconSlideshow className='h-4 w-4' />
-            </TabsTrigger>
-            <TabsTrigger value='grid'>
+        <Tabs
+          selectedIndex={view === 'grid' ? 0 : 1}
+          onChange={(index) => setView(index === 0 ? 'grid' : 'carousel')}
+        >
+          <TabsTriggerList className='grid w-24 grid-cols-2'>
+            <TabsTrigger aria-label='Grid view'>
               <IconLayoutGrid className='h-4 w-4' />
             </TabsTrigger>
-          </TabsList>
+            <TabsTrigger aria-label='Carousel view'>
+              <IconSlideshow className='h-4 w-4' />
+            </TabsTrigger>
+          </TabsTriggerList>
         </Tabs>
       </div>
 
       {isLoading && <Loader isLoading fullHeight />}
 
-      <div className='mt-6'>
-        {feedback && view === 'carousel' ? <CarouselView /> : <GridView />}
+      <div className='mt-6 pb-8'>
+        {feedback && view === 'carousel' ? CarouselView : <GridView />}
       </div>
     </div>
   )

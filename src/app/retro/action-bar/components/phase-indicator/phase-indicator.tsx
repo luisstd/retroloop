@@ -26,34 +26,42 @@ export function PhaseIndicator({
   const isDiscussingPhase = retrospective.phase === RetroPhase.DISCUSSING
 
   return (
-    <Card className='flex w-full flex-row justify-around p-3'>
+    <Card className='flex h-full w-full flex-row justify-around p-3'>
       <Button
-        variant={isWritingPhase ? null : 'ghost'}
-        className={`text-md ${isWritingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        variant={isWritingPhase ? 'default' : 'outline'}
+        className={`text-md ${!isWritingPhase && 'text-muted-foreground'}`}
         onClick={() =>
           !isWritingPhase &&
           handleUpdateRetro({ ...retrospective, phase: RetroPhase.WRITING })
         }
+        aria-current={isWritingPhase ? 'true' : undefined}
+        disabled={isWritingPhase}
       >
         [01] Write
       </Button>
 
       <Button
-        variant={isWritingPhase || isVotingPhase ? null : 'ghost'}
-        className={`text-md ${isVotingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        variant={isVotingPhase ? 'default' : 'outline'}
+        className={`text-md ${!isVotingPhase && 'text-muted-foreground'}`}
         onClick={() =>
-          !(isWritingPhase || isVotingPhase) &&
+          !isVotingPhase &&
           handleUpdateRetro({ ...retrospective, phase: RetroPhase.VOTING })
         }
+        aria-current={isVotingPhase ? 'true' : undefined}
+        disabled={isVotingPhase}
       >
         [02] Vote
       </Button>
 
       <Button
-        variant={
-          isWritingPhase || isVotingPhase || isDiscussingPhase ? null : 'ghost'
+        variant={isDiscussingPhase ? 'default' : 'outline'}
+        className={`text-md ${!isDiscussingPhase && 'text-muted-foreground'}`}
+        onClick={() =>
+          !isDiscussingPhase &&
+          handleUpdateRetro({ ...retrospective, phase: RetroPhase.DISCUSSING })
         }
-        className={`text-md ${isDiscussingPhase ? 'cursor-default' : 'text-muted-foreground'}`}
+        aria-current={isDiscussingPhase ? 'true' : undefined}
+        disabled={isDiscussingPhase}
       >
         [03] Discuss
       </Button>

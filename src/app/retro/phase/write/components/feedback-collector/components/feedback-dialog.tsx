@@ -7,15 +7,7 @@ import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Button } from '@/app/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/app/ui/dialog'
+import { Dialog } from '@/app/ui/dialog'
 import { Textarea } from '@/app/ui/textarea'
 import { FeedbackCreateInputSchema } from '@/schemas/feedback'
 import { FeedbackCreateInput } from '@/types/feedback'
@@ -37,30 +29,31 @@ export function FeedbackDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger className='justify-self-end' asChild>
+      <Dialog.Trigger className='justify-self-end' asChild>
         <Button
           size='icon'
+          variant='outline'
           className='mx-2'
-          variant='ghost'
           aria-label='Add item'
           data-testid='add-item-button'
         >
           <IconPlus size={26} />
         </Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <DialogContent
+      <Dialog.Content
+        size='lg'
         onPointerDownOutside={(event) => event.preventDefault()}
         data-testid='dialog-content'
       >
-        <DialogHeader>
-          <DialogTitle>Add feedback</DialogTitle>
-          <DialogDescription>
-            {itemType === 'success' ? 'What went well?' : null}
-            {itemType === 'improvement' ? 'What could we improve?' : null}
-            {itemType === 'action' ? 'What should we start doing?' : null}
-          </DialogDescription>
-        </DialogHeader>
+        <Dialog.Header>
+          <span>Add feedback</span>
+        </Dialog.Header>
+        <Dialog.Description>
+          {itemType === 'success' ? 'What went well?' : null}
+          {itemType === 'improvement' ? 'What could we improve?' : null}
+          {itemType === 'action' ? 'What should we start doing?' : null}
+        </Dialog.Description>
 
         <Formik
           validationSchema={toFormikValidationSchema(FeedbackCreateInputSchema)}
@@ -78,7 +71,7 @@ export function FeedbackDialog({
           }}
         >
           <Form>
-            <fieldset className='mb-5'>
+            <fieldset className='mb-5 px-4'>
               <Field id='content' name='content' className='h-full w-full'>
                 {({ field }: FieldProps) => (
                   <Textarea
@@ -90,14 +83,14 @@ export function FeedbackDialog({
               </Field>
             </fieldset>
 
-            <DialogFooter>
+            <Dialog.Footer>
               <Button type='submit' aria-label='Save'>
                 Save
               </Button>
-            </DialogFooter>
+            </Dialog.Footer>
           </Form>
         </Formik>
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   )
 }

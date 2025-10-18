@@ -5,15 +5,7 @@ import { useState } from 'react'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Button } from '@/app/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/app/ui/dialog'
+import { Dialog } from '@/app/ui/dialog'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
 import { RetrospectiveCreateInputSchema } from '@/schemas/retrospective'
@@ -32,27 +24,29 @@ const RetroLimitReached = () => {
     api.stripe.createCheckoutSession.useMutation()
 
   return (
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Retrospective limit reached</DialogTitle>
-        <DialogDescription>
-          You have reached the limit of 3 retrospectives for the free plan.
-          Upgrade to Unlimited to create more.
-        </DialogDescription>
-      </DialogHeader>
-      <Button
-        onClick={async () => {
-          const { checkoutUrl } = await createCheckoutSession(
-            StripeBillingInterval.YEARLY,
-          )
-          if (checkoutUrl) {
-            router.push(checkoutUrl)
-          }
-        }}
-      >
-        Upgrade subscription
-      </Button>
-    </DialogContent>
+    <Dialog.Content size='md'>
+      <Dialog.Header>
+        <span>Retrospective limit reached</span>
+      </Dialog.Header>
+      <Dialog.Description>
+        You have reached the limit of 3 retrospectives for the free plan.
+        Upgrade to Unlimited to create more.
+      </Dialog.Description>
+      <div className='px-4'>
+        <Button
+          onClick={async () => {
+            const { checkoutUrl } = await createCheckoutSession(
+              StripeBillingInterval.YEARLY,
+            )
+            if (checkoutUrl) {
+              router.push(checkoutUrl)
+            }
+          }}
+        >
+          Upgrade subscription
+        </Button>
+      </div>
+    </Dialog.Content>
   )
 }
 
@@ -61,23 +55,23 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
+      <Dialog.Trigger asChild>
         <Button className='flex gap-1'>
           Start Retro
           <IconPlus size={18} />
         </Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
       {isLimitReached ? (
         <RetroLimitReached />
       ) : (
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Start retrospective</DialogTitle>
-            <DialogDescription>
-              Create a new retrospective by giving it a name.
-            </DialogDescription>
-          </DialogHeader>
+        <Dialog.Content size='md'>
+          <Dialog.Header>
+            <span>Start retrospective</span>
+          </Dialog.Header>
+          <Dialog.Description>
+            Create a new retrospective by giving it a name.
+          </Dialog.Description>
 
           <Formik
             validationSchema={toFormikValidationSchema(
@@ -95,7 +89,7 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
             }}
           >
             <Form className='flex flex-col gap-10'>
-              <fieldset className='flex flex-col gap-2'>
+              <fieldset className='flex flex-col gap-2 px-4'>
                 <Label htmlFor='name'>Retro Name</Label>
                 <Field
                   id='name'
@@ -105,14 +99,14 @@ export function AddRetro({ handleAddRetro, isLimitReached }: AddRetroProps) {
                 />
               </fieldset>
 
-              <DialogFooter>
+              <Dialog.Footer>
                 <Button type='submit' aria-label='Start Retro'>
                   Start Retro
                 </Button>
-              </DialogFooter>
+              </Dialog.Footer>
             </Form>
           </Formik>
-        </DialogContent>
+        </Dialog.Content>
       )}
     </Dialog>
   )
