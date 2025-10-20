@@ -3,7 +3,8 @@ import { SpaceProvider } from '@ably/spaces/react'
 import { ChannelProvider } from 'ably/react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { toast } from 'sonner'
 
 import { Feedback } from '@/app/components/feedback/feedback'
 import { Loader } from '@/app/components/loader/loader'
@@ -12,6 +13,7 @@ import { DiscussPhase } from '@/app/retro/phase/discuss/discuss-phase'
 import { VotePhase } from '@/app/retro/phase/vote/vote-phase'
 import { WritePhase } from '@/app/retro/phase/write/write-phase'
 import { api } from '@/trpc/react'
+import { PHASE_NAMES, RetroPhase } from '@/types/retrospective'
 
 export default function Retro() {
   const { data: session, status } = useSession()
@@ -36,6 +38,40 @@ export default function Retro() {
   const { mutate: addParticipant } =
     api.retrospective.addParticipant.useMutation()
 
+  // Personal phase view state - decoupled from shared phase
+  const [userPhaseView, setUserPhaseView] = useState<string>(
+    selectedRetro?.phase ?? RetroPhase.WRITING,
+  )
+
+  const previousSharedPhaseRef = useRef<string | undefined>(undefined)
+
+  useEffect(() => {
+    if (selectedRetro?.phase) {
+      const currentSharedPhase = selectedRetro.phase
+
+      if (previousSharedPhaseRef.current === undefined) {
+        previousSharedPhaseRef.current = currentSharedPhase
+        setUserPhaseView(currentSharedPhase)
+        return
+      }
+
+      if (previousSharedPhaseRef.current !== currentSharedPhase) {
+        const phaseName =
+          PHASE_NAMES[currentSharedPhase as RetroPhase] || currentSharedPhase
+        toast.info(`Group moved to ${phaseName} phase`, {
+          description: 'Click "Return to Group" to sync with everyone',
+          duration: 5000,
+        })
+
+        if (previousSharedPhaseRef.current === userPhaseView) {
+          setUserPhaseView(currentSharedPhase)
+        }
+
+        previousSharedPhaseRef.current = currentSharedPhase
+      }
+    }
+  }, [selectedRetro?.phase, userPhaseView])
+
   useEffect(() => {
     if (retroId && userId) {
       addParticipant({ retroId, userId })
@@ -54,14 +90,16 @@ export default function Retro() {
         <RetroActionBar
           selectedRetro={selectedRetro}
           refetchRetro={refetchRetro}
+          userPhaseView={userPhaseView}
+          setUserPhaseView={setUserPhaseView}
         />
-        {selectedRetro.phase === 'WRITING' && (
+        {userPhaseView === RetroPhase.WRITING && (
           <WritePhase selectedRetro={selectedRetro} />
         )}
-        {selectedRetro.phase === 'VOTING' && (
+        {userPhaseView === RetroPhase.VOTING && (
           <VotePhase selectedRetro={selectedRetro} />
         )}
-        {selectedRetro.phase === 'DISCUSSING' && (
+        {userPhaseView === RetroPhase.DISCUSSING && (
           <DiscussPhase selectedRetro={selectedRetro} />
         )}
         {session?.user?.email && <Feedback userEmail={session.user.email} />}

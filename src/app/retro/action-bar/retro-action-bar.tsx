@@ -13,11 +13,15 @@ import { api } from '@/trpc/react'
 type RetroActionBarProps = {
   selectedRetro: Retrospective
   refetchRetro: () => void
+  userPhaseView: string
+  setUserPhaseView: (phase: string) => void
 }
 
 export function RetroActionBar({
   selectedRetro,
   refetchRetro,
+  userPhaseView,
+  setUserPhaseView,
 }: RetroActionBarProps) {
   const [timerDisplay, setTimerDisplay] = useState('00:00')
   const { channel } = useChannel(
@@ -44,7 +48,8 @@ export function RetroActionBar({
         <>
           <PhaseIndicator
             retrospective={selectedRetro}
-            handleUpdateRetro={handleUpdateRetro}
+            userPhaseView={userPhaseView}
+            setUserPhaseView={setUserPhaseView}
           />
           <RetroTimer
             selectedRetro={selectedRetro}
