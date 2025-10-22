@@ -37,6 +37,9 @@ export const retrospectiveRouter = createTRPCRouter({
       where: {
         id: input,
       },
+      include: {
+        participants: true,
+      },
     })
   }),
   add: protectedProcedure

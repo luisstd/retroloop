@@ -2,6 +2,7 @@
 
 import { Retrospective } from '@prisma/client'
 import { useChannel } from 'ably/react'
+import { isFuture } from 'date-fns'
 import { useState } from 'react'
 
 import { ActionButtons } from '@/app/retro/action-bar/components/action-buttons/action-buttons'
@@ -13,11 +14,15 @@ import { api } from '@/trpc/react'
 type RetroActionBarProps = {
   selectedRetro: Retrospective
   refetchRetro: () => void
+  userPhaseView: string
+  setUserPhaseView: (phase: string) => void
 }
 
 export function RetroActionBar({
   selectedRetro,
   refetchRetro,
+  userPhaseView,
+  setUserPhaseView,
 }: RetroActionBarProps) {
   const [timerDisplay, setTimerDisplay] = useState('00:00')
   const { channel } = useChannel(
@@ -38,13 +43,17 @@ export function RetroActionBar({
     updateRetro(input)
   }
 
+  const isTimerRunning =
+    selectedRetro.timerExpiration && isFuture(selectedRetro.timerExpiration)
+
   return (
     <>
       {selectedRetro && (
         <>
           <PhaseIndicator
             retrospective={selectedRetro}
-            handleUpdateRetro={handleUpdateRetro}
+            userPhaseView={userPhaseView}
+            setUserPhaseView={setUserPhaseView}
           />
           <RetroTimer
             selectedRetro={selectedRetro}
@@ -58,6 +67,7 @@ export function RetroActionBar({
             <ActionButtons
               retrospective={selectedRetro}
               handleUpdateRetro={handleUpdateRetro}
+              isTimerRunning={!!isTimerRunning}
             />
           </div>
         </>

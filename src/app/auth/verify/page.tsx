@@ -1,6 +1,6 @@
 'use client'
 import { IconMailFast } from '@tabler/icons-react'
-import { signIn } from 'next-auth/react'
+import Link from 'next/link'
 
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
@@ -17,8 +17,8 @@ export default function VerifyRequest() {
         </Card.Header>
         <Card.Content className='flex flex-col items-center gap-6 p-6 pt-4'>
           <IconMailFast size={80} />
-          <Button variant='link' onClick={() => signIn()}>
-            Back to sign-in
+          <Button variant='link' asChild>
+            <Link href='/auth/login'>Back to sign-in</Link>
           </Button>
         </Card.Content>
       </Card>

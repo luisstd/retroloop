@@ -13,6 +13,7 @@ import {
   CarouselPrevious,
 } from '@/app/ui/carousel'
 import { Tabs, TabsTrigger, TabsTriggerList } from '@/app/ui/tabs'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 import { cn } from '@/utils/cn'
 import { getFeedbackType } from '@/utils/utils'
@@ -25,9 +26,12 @@ type ViewType = 'carousel' | 'grid'
 
 export function DiscussPhase({ selectedRetro }: DiscussPhaseProps) {
   const [view, setView] = useState<ViewType>('grid')
+  const { data: session, isPending } = useSession()
+  const isAuthenticated = !!session?.user
 
   const { data: feedback, isLoading } =
     api.feedback.getAllByRetroIdSorted.useQuery(selectedRetro.id, {
+      enabled: isAuthenticated && !isPending,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchOnReconnect: false,

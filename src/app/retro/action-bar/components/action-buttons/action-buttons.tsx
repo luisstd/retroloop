@@ -7,16 +7,19 @@ import { toast } from 'sonner'
 
 import { PhaseSwitchDialog } from '@/app/retro/action-bar/components/action-buttons/phase-switch-dialog'
 import { Button } from '@/app/ui/button'
+import { RetroPhase } from '@/types/retrospective'
 import { useFullUrl } from '@/utils/utils'
 
 type ActionButtonsProps = {
   retrospective: Retrospective
   handleUpdateRetro: (input: Retrospective) => void
+  isTimerRunning: boolean
 }
 
 export function ActionButtons({
   retrospective,
   handleUpdateRetro,
+  isTimerRunning,
 }: ActionButtonsProps) {
   const router = useRouter()
   const fullUrl = useFullUrl()
@@ -29,22 +32,27 @@ export function ActionButtons({
   }
 
   function handleNextPhase() {
-    retrospective.phase === 'WRITING' &&
+    retrospective.phase === RetroPhase.WRITING &&
       handleUpdateRetro({
         ...retrospective,
         id: retrospective.id,
-        phase: 'VOTING',
+        phase: RetroPhase.VOTING,
       })
 
-    retrospective.phase === 'VOTING' &&
+    retrospective.phase === RetroPhase.VOTING &&
       handleUpdateRetro({
         ...retrospective,
         id: retrospective.id,
-        phase: 'DISCUSSING',
+        phase: RetroPhase.DISCUSSING,
       })
 
-    retrospective.phase === 'DISCUSSING' && router.push(`/dashboard`)
+    retrospective.phase === RetroPhase.DISCUSSING && router.push(`/dashboard`)
   }
+
+  const participantCount =
+    'participants' in retrospective
+      ? (retrospective as { participants?: unknown[] }).participants?.length
+      : undefined
 
   return (
     <div className='flex gap-2'>
@@ -60,6 +68,8 @@ export function ActionButtons({
       <PhaseSwitchDialog
         phaseSwitchHandler={handleNextPhase}
         phase={retrospective.phase}
+        participantCount={participantCount}
+        isTimerRunning={isTimerRunning}
       />
     </div>
   )

@@ -2,8 +2,8 @@
 import { SpaceProvider } from '@ably/spaces/react'
 import { ChannelProvider } from 'ably/react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useSession } from 'next-auth/react'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { toast } from 'sonner'
 
 import { Feedback } from '@/app/components/feedback/feedback'
 import { Loader } from '@/app/components/loader/loader'
@@ -11,15 +11,17 @@ import { RetroActionBar } from '@/app/retro/action-bar/retro-action-bar'
 import { DiscussPhase } from '@/app/retro/phase/discuss/discuss-phase'
 import { VotePhase } from '@/app/retro/phase/vote/vote-phase'
 import { WritePhase } from '@/app/retro/phase/write/write-phase'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
+import { PHASE_NAMES, RetroPhase } from '@/types/retrospective'
 
 export default function Retro() {
-  const { data: session, status } = useSession()
+  const { data: session, isPending } = useSession()
   const searchParams = useSearchParams()
 
   const pathname = usePathname()
   const router = useRouter()
-  const isAuthenticated = status === 'authenticated'
+  const isAuthenticated = !!session?.user
 
   const userId = session?.user?.id
   const retroId = searchParams.get('id')
@@ -29,6 +31,7 @@ export default function Retro() {
     isLoading: isRetroLoading,
     refetch: refetchRetro,
   } = api.retrospective.getById.useQuery(retroId as string, {
+    enabled: isAuthenticated && !isPending,
     refetchInterval: 3000,
     refetchIntervalInBackground: true,
   })
@@ -36,16 +39,55 @@ export default function Retro() {
   const { mutate: addParticipant } =
     api.retrospective.addParticipant.useMutation()
 
+  const [userPhaseView, setUserPhaseView] = useState<string>(
+    selectedRetro?.phase ?? RetroPhase.WRITING,
+  )
+
+  const previousSharedPhaseRef = useRef<string | undefined>(undefined)
+
+  useEffect(() => {
+    if (selectedRetro?.phase) {
+      const currentSharedPhase = selectedRetro.phase
+
+      if (previousSharedPhaseRef.current === undefined) {
+        previousSharedPhaseRef.current = currentSharedPhase
+        setUserPhaseView(currentSharedPhase)
+        return
+      }
+
+      if (previousSharedPhaseRef.current !== currentSharedPhase) {
+        if (previousSharedPhaseRef.current === userPhaseView) {
+          setUserPhaseView(currentSharedPhase)
+        } else {
+          const phaseName =
+            PHASE_NAMES[currentSharedPhase as RetroPhase] || currentSharedPhase
+          toast.info(`Group moved to ${phaseName} phase`, {
+            description: 'Click "Return to Group" to sync with everyone',
+            duration: 5000,
+          })
+        }
+
+        previousSharedPhaseRef.current = currentSharedPhase
+      }
+    }
+  }, [selectedRetro?.phase, userPhaseView])
+
   useEffect(() => {
     if (retroId && userId) {
       addParticipant({ retroId, userId })
     }
   }, [userId, retroId, addParticipant])
 
-  if (!isAuthenticated) {
-    const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
-    const callbackURL = encodeURIComponent(currentUrl)
-    router.push(`/auth/login?callbackurl=${callbackURL}`)
+  useEffect(() => {
+    if (!isPending && !isAuthenticated) {
+      const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
+      const callbackURL = encodeURIComponent(currentUrl)
+      router.push(`/auth/login?callbackurl=${callbackURL}`)
+    }
+  }, [isPending, isAuthenticated, router, pathname, searchParams])
+
+  if (isPending || !isAuthenticated) {
+    return null
   }
 
   return selectedRetro ? (
@@ -54,14 +96,16 @@ export default function Retro() {
         <RetroActionBar
           selectedRetro={selectedRetro}
           refetchRetro={refetchRetro}
+          userPhaseView={userPhaseView}
+          setUserPhaseView={setUserPhaseView}
         />
-        {selectedRetro.phase === 'WRITING' && (
+        {userPhaseView === RetroPhase.WRITING && (
           <WritePhase selectedRetro={selectedRetro} />
         )}
-        {selectedRetro.phase === 'VOTING' && (
+        {userPhaseView === RetroPhase.VOTING && (
           <VotePhase selectedRetro={selectedRetro} />
         )}
-        {selectedRetro.phase === 'DISCUSSING' && (
+        {userPhaseView === RetroPhase.DISCUSSING && (
           <DiscussPhase selectedRetro={selectedRetro} />
         )}
         {session?.user?.email && <Feedback userEmail={session.user.email} />}
