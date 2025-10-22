@@ -27,13 +27,13 @@ export function PhaseIndicator({
   const groupPhaseName =
     PHASE_NAMES[retrospective.phase as RetroPhase] || retrospective.phase
 
-  const phaseOrder = {
+  const phaseOrder: Record<RetroPhase, number> = {
     [RetroPhase.WRITING]: 1,
     [RetroPhase.VOTING]: 2,
     [RetroPhase.DISCUSSING]: 3,
   }
 
-  const groupPhaseOrder = phaseOrder[retrospective.phase as RetroPhase] || 0
+  const groupPhaseOrder = phaseOrder[retrospective.phase as RetroPhase]
 
   const isVotingAhead =
     phaseOrder[RetroPhase.VOTING] > groupPhaseOrder && !isVotingPhase
