@@ -3,8 +3,8 @@ import { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useSession } from 'next-auth/react'
 import packageInfo from 'package.json'
+import { useEffect } from 'react'
 import { toast } from 'sonner'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -18,6 +18,7 @@ import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
+import { useSession } from '@/lib/auth-client'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
@@ -25,14 +26,20 @@ import { UserUpdateInput } from '@/types/user'
 import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
 export default function Profile() {
-  const { data: session, status } = useSession()
+  const { data: session, isPending } = useSession()
   const pathname = usePathname()
   const router = useRouter()
   const searchParams = useSearchParams()
-  const isAuthenticated = status === 'authenticated'
-  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+  const isAuthenticated = !!session?.user
+  const isSignedUp = !!session?.user && !!session?.user?.name
 
-  const { data: user, isLoading, refetch } = api.user.getLoggedIn.useQuery()
+  const {
+    data: user,
+    isLoading,
+    refetch,
+  } = api.user.getLoggedIn.useQuery(undefined, {
+    enabled: isAuthenticated && !isPending,
+  })
 
   const { mutate: updateUser } = api.user.edit.useMutation({
     onSuccess: () => {
@@ -65,10 +72,16 @@ export default function Profile() {
     })
   }
 
-  if (!isAuthenticated) {
-    const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
-    const callbackURL = encodeURIComponent(currentUrl)
-    router.push(`/auth/login?callbackurl=${callbackURL}`)
+  useEffect(() => {
+    if (!isPending && !isAuthenticated) {
+      const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
+      const callbackURL = encodeURIComponent(currentUrl)
+      router.push(`/auth/login?callbackurl=${callbackURL}`)
+    }
+  }, [isPending, isAuthenticated, router, pathname, searchParams])
+
+  if (isPending || !isAuthenticated) {
+    return null
   }
 
   if (!isSignedUp) {
@@ -77,7 +90,7 @@ export default function Profile() {
 
   return (
     <>
-      {session.user.email && <Feedback userEmail={session.user.email} />}
+      {session?.user?.email && <Feedback userEmail={session.user.email} />}
 
       <Card className='bg-background min-h-[400px] w-full p-10 shadow-xs'>
         <div className='mb-6 flex flex-row items-baseline justify-between'>

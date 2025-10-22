@@ -1,5 +1,4 @@
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
-import { signOut } from 'next-auth/react'
 import {
   afterEach,
   beforeAll,
@@ -11,8 +10,9 @@ import {
 } from 'vitest'
 
 import { UserDropdown } from '@/app/components/menu/components/user-dropdown/user-dropdown'
+import { signOut } from '@/lib/auth-client'
 
-vi.mock('next-auth/react', () => ({
+vi.mock('@/lib/auth-client', () => ({
   signOut: vi.fn(),
   useSession: vi.fn(),
 }))
@@ -33,7 +33,7 @@ test('UserDropdown', () => {
 
     beforeAll(() => {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      useSessionMock = vi.spyOn(require('next-auth/react'), 'useSession')
+      useSessionMock = vi.spyOn(require('@/lib/auth-client'), 'useSession')
       useSessionMock.mockReturnValue({
         data: { session: { user: { name: 'John Doe' } } },
       })

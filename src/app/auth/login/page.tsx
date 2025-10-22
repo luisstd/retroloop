@@ -1,16 +1,17 @@
 'use client'
 import { Field, Form, Formik } from 'formik'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
+import { signIn } from '@/lib/auth-client'
 
 export default function Login() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackurl') || undefined
   const [ssoLoading, setSsoLoading] = useState<'github' | 'google' | null>(null)
@@ -27,9 +28,12 @@ export default function Login() {
             <Button
               variant='outline'
               size='lg'
-              onClick={() => {
+              onClick={async () => {
                 setSsoLoading('github')
-                signIn('github', { callbackUrl })
+                await signIn.social({
+                  provider: 'github',
+                  callbackURL: callbackUrl,
+                })
               }}
               disabled={ssoLoading !== null}
               className='w-full'
@@ -50,9 +54,12 @@ export default function Login() {
             <Button
               variant='outline'
               size='lg'
-              onClick={() => {
+              onClick={async () => {
                 setSsoLoading('google')
-                signIn('google', { callbackUrl })
+                await signIn.social({
+                  provider: 'google',
+                  callbackURL: callbackUrl,
+                })
               }}
               disabled={ssoLoading !== null}
               className='w-full'
@@ -100,8 +107,12 @@ export default function Login() {
 
           <Formik
             initialValues={{ email: '' }}
-            onSubmit={(values) => {
-              signIn('email', { callbackUrl, email: values.email })
+            onSubmit={async (values) => {
+              await signIn.magicLink({
+                email: values.email,
+                callbackURL: callbackUrl,
+              })
+              router.push('/auth/verify')
             }}
           >
             {({ isSubmitting }) => (

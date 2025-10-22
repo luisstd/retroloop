@@ -1,24 +1,31 @@
 'use client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useSession } from 'next-auth/react'
+import { useEffect } from 'react'
 
 import { Feedback } from '@/app/components/feedback/feedback'
 import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
 import { Retros } from '@/app/dashboard/retros/retros'
 import { Team } from '@/app/dashboard/team/team'
+import { useSession } from '@/lib/auth-client'
 
 export default function Dashboard() {
-  const { data: session, status } = useSession()
+  const { data: session, isPending } = useSession()
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const isAuthenticated = status === 'authenticated'
-  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+  const isAuthenticated = !!session?.user
+  const isSignedUp = !!session?.user?.name
 
-  if (!isAuthenticated) {
-    const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
-    const callbackURL = encodeURIComponent(currentUrl)
-    router.push(`/auth/login?callbackurl=${callbackURL}`)
+  useEffect(() => {
+    if (!isPending && !isAuthenticated) {
+      const currentUrl = `${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
+      const callbackURL = encodeURIComponent(currentUrl)
+      router.push(`/auth/login?callbackurl=${callbackURL}`)
+    }
+  }, [isPending, isAuthenticated, router, pathname, searchParams])
+
+  if (isPending || !isAuthenticated) {
+    return null
   }
 
   if (!isSignedUp) {
@@ -27,8 +34,8 @@ export default function Dashboard() {
 
   return (
     <>
-      {session.user.email && <Feedback userEmail={session.user.email} />}
-      <Retros userId={session.user.id} />
+      {session?.user?.email && <Feedback userEmail={session.user.email} />}
+      {session?.user?.id && <Retros userId={session.user.id} />}
       <Team />
     </>
   )

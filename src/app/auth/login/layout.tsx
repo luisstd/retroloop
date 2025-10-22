@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
+import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import Login from '@/app/auth/login/page'
-import { getServerAuthSession } from '@/server/auth'
+import { auth } from '@/lib/auth'
 
 export const metadata: Metadata = {
   title: 'Login - Retroloop',
@@ -18,7 +19,9 @@ export const metadata: Metadata = {
 }
 
 export default async function LoginLayout() {
-  const session = await getServerAuthSession()
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
 
   if (session) {
     redirect('/dashboard')
