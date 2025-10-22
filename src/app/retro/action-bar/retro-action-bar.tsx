@@ -2,6 +2,7 @@
 
 import { Retrospective } from '@prisma/client'
 import { useChannel } from 'ably/react'
+import { isFuture } from 'date-fns'
 import { useState } from 'react'
 
 import { ActionButtons } from '@/app/retro/action-bar/components/action-buttons/action-buttons'
@@ -42,6 +43,9 @@ export function RetroActionBar({
     updateRetro(input)
   }
 
+  const isTimerRunning =
+    selectedRetro.timerExpiration && isFuture(selectedRetro.timerExpiration)
+
   return (
     <>
       {selectedRetro && (
@@ -63,6 +67,7 @@ export function RetroActionBar({
             <ActionButtons
               retrospective={selectedRetro}
               handleUpdateRetro={handleUpdateRetro}
+              isTimerRunning={!!isTimerRunning}
             />
           </div>
         </>

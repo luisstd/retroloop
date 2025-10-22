@@ -38,7 +38,6 @@ export default function Retro() {
   const { mutate: addParticipant } =
     api.retrospective.addParticipant.useMutation()
 
-  // Personal phase view state - decoupled from shared phase
   const [userPhaseView, setUserPhaseView] = useState<string>(
     selectedRetro?.phase ?? RetroPhase.WRITING,
   )
@@ -56,15 +55,15 @@ export default function Retro() {
       }
 
       if (previousSharedPhaseRef.current !== currentSharedPhase) {
-        const phaseName =
-          PHASE_NAMES[currentSharedPhase as RetroPhase] || currentSharedPhase
-        toast.info(`Group moved to ${phaseName} phase`, {
-          description: 'Click "Return to Group" to sync with everyone',
-          duration: 5000,
-        })
-
         if (previousSharedPhaseRef.current === userPhaseView) {
           setUserPhaseView(currentSharedPhase)
+        } else {
+          const phaseName =
+            PHASE_NAMES[currentSharedPhase as RetroPhase] || currentSharedPhase
+          toast.info(`Group moved to ${phaseName} phase`, {
+            description: 'Click "Return to Group" to sync with everyone',
+            duration: 5000,
+          })
         }
 
         previousSharedPhaseRef.current = currentSharedPhase

@@ -13,11 +13,13 @@ import { useFullUrl } from '@/utils/utils'
 type ActionButtonsProps = {
   retrospective: Retrospective
   handleUpdateRetro: (input: Retrospective) => void
+  isTimerRunning: boolean
 }
 
 export function ActionButtons({
   retrospective,
   handleUpdateRetro,
+  isTimerRunning,
 }: ActionButtonsProps) {
   const router = useRouter()
   const fullUrl = useFullUrl()
@@ -67,6 +69,7 @@ export function ActionButtons({
         phaseSwitchHandler={handleNextPhase}
         phase={retrospective.phase}
         participantCount={participantCount}
+        isTimerRunning={isTimerRunning}
       />
     </div>
   )
