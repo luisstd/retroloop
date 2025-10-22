@@ -36,12 +36,14 @@ export function PhaseSwitchDialog({
       <Dialog.Content size='lg'>
         <Dialog.Header>
           <span className='text-xl font-semibold'>
-            {isLastPhase ? 'Finish retro?' : `Move everyone to ${nextPhaseName}?`}
+            {isLastPhase
+              ? 'Finish retro?'
+              : `Move everyone to ${nextPhaseName}?`}
           </span>
         </Dialog.Header>
         <div className='space-y-3 px-4 pt-2'>
           {isLastPhase ? (
-            <p className='text-base text-muted-foreground'>
+            <p className='text-muted-foreground text-base'>
               Leaving the retro view will take you back to the dashboard
             </p>
           ) : (
@@ -51,7 +53,7 @@ export function PhaseSwitchDialog({
                 <strong>{nextPhaseName}</strong> phase.
               </p>
               {participantCount !== undefined && participantCount > 1 && (
-                <div className='flex items-center gap-2 text-sm text-muted-foreground'>
+                <div className='text-muted-foreground flex items-center gap-2 text-sm'>
                   <IconUsers size={16} />
                   <span>
                     {participantCount}{' '}

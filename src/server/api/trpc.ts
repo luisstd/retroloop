@@ -13,7 +13,7 @@ import { type NextRequest } from 'next/server'
 import superjson from 'superjson'
 import { ZodError } from 'zod'
 
-import { getServerAuthSession } from '@/server/auth'
+import { auth } from '@/lib/auth'
 import { db } from '@/server/db'
 import { stripe } from '@/server/stripe/client'
 
@@ -40,7 +40,9 @@ interface CreateContextOptions {
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
 export const createInnerTRPCContext = async (opts: CreateContextOptions) => {
-  const session = await getServerAuthSession()
+  const session = await auth.api.getSession({
+    headers: opts.headers,
+  })
 
   return {
     session,

@@ -9,6 +9,7 @@ import { AddRetro } from '@/app/dashboard/retros/components/add-retro'
 import { RetroCard } from '@/app/dashboard/retros/components/retro-card'
 import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
 import { Card } from '@/app/ui/card'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 import {
   RetrospectiveCreateInput,
@@ -23,7 +24,12 @@ type RetrosProps = {
 
 export function Retros({ userId }: RetrosProps) {
   const [isLimitReached, setIsLimitReached] = useState(false)
-  const { data: user } = api.user.getLoggedIn.useQuery()
+  const { data: session, isPending } = useSession()
+  const isAuthenticated = !!session?.user
+
+  const { data: user } = api.user.getLoggedIn.useQuery(undefined, {
+    enabled: isAuthenticated && !isPending,
+  })
   const accountType = getAccountType(user?.stripeSubscriptionStatus || null)
 
   const {

@@ -2,7 +2,6 @@
 
 import { Feedback, Retrospective } from '@prisma/client'
 import { IconThumbUp } from '@tabler/icons-react'
-import { useSession } from 'next-auth/react'
 import { toast } from 'sonner'
 
 import { Loader } from '@/app/components/loader/loader'
@@ -10,6 +9,7 @@ import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Skeleton } from '@/app/ui/skeleton'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 import { UserSession } from '@/types/user'
 
@@ -24,12 +24,15 @@ export function FeedbackVoter({
   retrospective,
   itemType,
 }: FeedbackVoterProps) {
-  const { data: session } = useSession()
+  const { data: session, isPending } = useSession()
+  const isAuthenticated = !!session?.user
+
   const {
     data: feedback,
     isLoading,
     refetch,
   } = api.feedback.getAllByRetroId.useQuery(retrospective.id, {
+    enabled: isAuthenticated && !isPending,
     refetchInterval: 500,
     refetchIntervalInBackground: true,
     cacheTime: 0,

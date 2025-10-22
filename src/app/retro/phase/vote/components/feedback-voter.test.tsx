@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { FeedbackVoter } from '@/app/retro/phase/vote/components/feedback-voter'
 import { api } from '@/trpc/react'
 
-vi.mock('next-auth/react', () => ({
+vi.mock('@/lib/auth-client', () => ({
   useSession: vi.fn(),
 }))
 

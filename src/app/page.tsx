@@ -11,7 +11,6 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { signIn, useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 
 import { Footer } from '@/app/components/footer/footer'
@@ -19,15 +18,16 @@ import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { Badge } from '@/app/ui/badge'
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
 
 export default function Landingpage() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const { resolvedTheme, theme } = useTheme()
   const router = useRouter()
 
-  const isSignedUp = status === 'authenticated' && session?.user?.name !== null
+  const isSignedUp = !!session?.user && !!session?.user?.name
 
   const { mutateAsync: createCheckoutSession } =
     api.stripe.createCheckoutSession.useMutation()
@@ -242,7 +242,7 @@ export default function Landingpage() {
                   className='mb-6 w-full'
                   onClick={
                     !isSignedUp
-                      ? () => signIn()
+                      ? () => router.push('/auth/login')
                       : async () => {
                           const { checkoutUrl } = await createCheckoutSession(
                             StripeBillingInterval.YEARLY,
