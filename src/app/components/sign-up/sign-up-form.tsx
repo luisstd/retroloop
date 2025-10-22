@@ -1,12 +1,12 @@
 'use client'
 
 import { Field, Form, Formik } from 'formik'
-import { useSession } from 'next-auth/react'
 
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 import { UserSession } from '@/types/user'
 

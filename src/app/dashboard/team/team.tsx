@@ -6,10 +6,16 @@ import { Loader } from '@/app/components/loader/loader'
 import { InviteDialog } from '@/app/dashboard/team/components/invite-dialog'
 import { TeamFallback } from '@/app/dashboard/team/components/team-fallback'
 import { Card } from '@/app/ui/card'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 
 export function Team() {
-  const { data: users, isLoading } = api.user.getAll.useQuery()
+  const { data: session, isPending } = useSession()
+  const isAuthenticated = !!session?.user
+
+  const { data: users, isLoading } = api.user.getAll.useQuery(undefined, {
+    enabled: isAuthenticated && !isPending,
+  })
 
   const content = users?.length ? (
     users.map((user: User) => (

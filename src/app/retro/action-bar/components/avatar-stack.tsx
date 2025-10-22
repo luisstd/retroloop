@@ -1,11 +1,11 @@
 import { SpaceMember } from '@ably/spaces'
 import { useMembers } from '@ably/spaces/react'
-import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 
 import { Loader } from '@/app/components/loader/loader'
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar'
 import { Tooltip } from '@/app/ui/tooltip'
+import { useSession } from '@/lib/auth-client'
 
 export function AvatarStack() {
   const { data: session } = useSession()

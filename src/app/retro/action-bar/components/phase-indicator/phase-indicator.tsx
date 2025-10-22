@@ -32,7 +32,9 @@ export function PhaseIndicator({
         <Button
           variant={isWritingPhase ? 'default' : 'outline'}
           className={`text-md ${!isWritingPhase && 'text-muted-foreground'}`}
-          onClick={() => !isWritingPhase && setUserPhaseView(RetroPhase.WRITING)}
+          onClick={() =>
+            !isWritingPhase && setUserPhaseView(RetroPhase.WRITING)
+          }
           aria-current={isWritingPhase ? 'true' : undefined}
           disabled={isWritingPhase}
         >

@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useSession } from 'next-auth/react'
 
 import { LoginButton } from '@/app/components/menu/components/login-button/login-button'
 import { NavigationDropdown } from '@/app/components/menu/components/nav-dropdown/nav-dropdown'
@@ -14,6 +13,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from '@/app/ui/navigation-menu'
+import { useSession } from '@/lib/auth-client'
 
 export function Menu() {
   const { data: session } = useSession()

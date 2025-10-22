@@ -6,7 +6,6 @@ import { headers } from 'next/headers'
 import { Menu } from '@/app/components/menu/menu'
 import { Providers } from '@/app/providers'
 import { Toaster } from '@/app/ui/toast'
-import { getServerAuthSession } from '@/server/auth'
 import { font } from '@/styles/fonts'
 import { TRPCReactProvider } from '@/trpc/react'
 
@@ -58,12 +57,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const session = await getServerAuthSession()
-
   return (
     <html lang='en' suppressHydrationWarning>
       <body suppressHydrationWarning className={font.className}>
-        <Providers session={session}>
+        <Providers>
           <TRPCReactProvider headers={await headers()}>
             <a
               href='#main-content'

@@ -1,7 +1,6 @@
 'use client'
 
 import { Feedback, Retrospective } from '@prisma/client'
-import { useSession } from 'next-auth/react'
 import { toast } from 'sonner'
 
 import { DeleteDialog } from '@/app/components/dialog/delete-dialog/delete-dialog'
@@ -9,6 +8,7 @@ import { EditDialog } from '@/app/components/dialog/edit-dialog/edit-dialog'
 import { FeedbackDialog } from '@/app/retro/phase/write/components/feedback-collector/components/feedback-dialog'
 import { Card } from '@/app/ui/card'
 import { Skeleton } from '@/app/ui/skeleton'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 import { FeedbackCreateInput } from '@/types/feedback'
 
@@ -23,14 +23,17 @@ export function FeedbackCollector({
   retrospective,
   itemType,
 }: FeedbackCollectorProps) {
-  const { data: session } = useSession()
+  const { data: session, isPending } = useSession()
+  const isAuthenticated = !!session?.user
   const userId = session?.user?.id
 
   const {
     data: feedback,
     isLoading,
     refetch,
-  } = api.feedback.getAllByRetroIdFiltered.useQuery(retrospective.id)
+  } = api.feedback.getAllByRetroIdFiltered.useQuery(retrospective.id, {
+    enabled: isAuthenticated && !isPending,
+  })
 
   const { mutate: addFeedback } = api.feedback.add.useMutation({
     onSuccess: () => {
