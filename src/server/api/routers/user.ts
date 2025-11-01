@@ -43,11 +43,12 @@ export const userRouter = createTRPCRouter({
   edit: protectedProcedure
     .input(UserUpdateInputSchema)
     .mutation(({ ctx, input }) => {
+      const { id, ...data } = input
       return ctx.db.user.update({
         where: {
-          id: input.id,
+          id,
         },
-        data: input,
+        data,
       })
     }),
   delete: protectedProcedure
