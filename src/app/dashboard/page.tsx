@@ -7,6 +7,7 @@ import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
 import { Retros } from '@/app/dashboard/retros/retros'
 import { Team } from '@/app/dashboard/team/team'
 import { useSession } from '@/lib/auth-client'
+import { api } from '@/trpc/react'
 
 export default function Dashboard() {
   const { data: session, isPending } = useSession()
@@ -14,7 +15,16 @@ export default function Dashboard() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const isAuthenticated = !!session?.user
-  const isSignedUp = !!session?.user?.name
+
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    refetch: refetchUser,
+  } = api.user.getLoggedIn.useQuery(undefined, {
+    enabled: isAuthenticated && !isPending,
+  })
+
+  const isSignedUp = !!user?.name
 
   useEffect(() => {
     if (!isPending && !isAuthenticated) {
@@ -24,18 +34,18 @@ export default function Dashboard() {
     }
   }, [isPending, isAuthenticated, router, pathname, searchParams])
 
-  if (isPending || !isAuthenticated) {
+  if (isPending || !isAuthenticated || isUserLoading) {
     return null
   }
 
   if (!isSignedUp) {
-    return <SignUpForm />
+    return <SignUpForm onSuccess={refetchUser} />
   }
 
   return (
     <>
-      {session?.user?.email && <Feedback userEmail={session.user.email} />}
-      {session?.user?.id && <Retros userId={session.user.id} />}
+      {user.email && <Feedback userEmail={user.email} />}
+      <Retros userId={user.id} />
       <Team />
     </>
   )

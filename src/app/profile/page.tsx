@@ -1,5 +1,5 @@
 'use client'
-import { User } from '@prisma/client'
+import type { User } from '@prisma/client'
 import { IconUserCircle } from '@tabler/icons-react'
 import { Field, Form, Formik } from 'formik'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -9,7 +9,6 @@ import { toast } from 'sonner'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Feedback } from '@/app/components/feedback/feedback'
-import { Loader } from '@/app/components/loader/loader'
 import { SignUpForm } from '@/app/components/sign-up/sign-up-form'
 import { DeleteUserDialog } from '@/app/profile/delete-user-dialog'
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar'
@@ -22,7 +21,7 @@ import { useSession } from '@/lib/auth-client'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
 import { StripeBillingInterval } from '@/types/stripe-plan'
-import { UserUpdateInput } from '@/types/user'
+import type { UserUpdateInput } from '@/types/user'
 import { AccountType, formatDate, getAccountType } from '@/utils/utils'
 
 export default function Profile() {
@@ -31,7 +30,6 @@ export default function Profile() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const isAuthenticated = !!session?.user
-  const isSignedUp = !!session?.user && !!session?.user?.name
 
   const {
     data: user,
@@ -40,6 +38,8 @@ export default function Profile() {
   } = api.user.getLoggedIn.useQuery(undefined, {
     enabled: isAuthenticated && !isPending,
   })
+
+  const isSignedUp = !!user?.name
 
   const { mutate: updateUser } = api.user.edit.useMutation({
     onSuccess: () => {
@@ -80,12 +80,12 @@ export default function Profile() {
     }
   }, [isPending, isAuthenticated, router, pathname, searchParams])
 
-  if (isPending || !isAuthenticated) {
+  if (isPending || !isAuthenticated || isLoading) {
     return null
   }
 
   if (!isSignedUp) {
-    return <SignUpForm />
+    return <SignUpForm onSuccess={refetch} />
   }
 
   return (
@@ -98,19 +98,14 @@ export default function Profile() {
           <Badge>Version {packageInfo.version}</Badge>
         </div>
 
-        {isLoading ? (
-          <Loader isLoading={isLoading} />
-        ) : user ? (
+        {user ? (
           <Formik
             validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
             initialValues={{
-              id: user?.id || '',
-              name: user?.name || '',
-              email: user?.email || '',
-              image: user?.image || '',
-              role: user?.role || '',
-              createdAt: user?.createdAt,
-              emailVerified: user?.emailVerified,
+              id: user.id,
+              name: user.name || '',
+              email: user.email,
+              image: user.image || undefined,
             }}
             onSubmit={(values) => handleSubmit(values)}
           >
