@@ -1,5 +1,29 @@
 # Changelog
 
+## [3.0.0](https://github.com/luisstd/retroloop/compare/v2.0.1...v3.0.0) (2025-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to better-auth
+
+### Features
+
+* implement accessibility improvements ([1720057](https://github.com/luisstd/retroloop/commit/17200573603b683a94b406fb9620ad65f04f29be))
+* implement new phase switching experience ([4522bd3](https://github.com/luisstd/retroloop/commit/4522bd3cdabc52281b05bfcd2fd7e28c856197bf))
+* migrate to better-auth ([daa6101](https://github.com/luisstd/retroloop/commit/daa61011a6474e8f675136b81374b021975ce2da))
+* update preview images ([0bd1a4b](https://github.com/luisstd/retroloop/commit/0bd1a4b1d1be6513c7befbd614dfa7294bf8d9c5))
+
+
+### Bug Fixes
+
+* add missing updatedAt field for better-auth ([a173304](https://github.com/luisstd/retroloop/commit/a173304c081fa84d7d36035bc26e182e7f42869c))
+* deprecate unused fields on account model ([57849d2](https://github.com/luisstd/retroloop/commit/57849d27628ce2f3a86cecb5e1171e73f6b51d0b))
+* fix sign-up form username check ([082a761](https://github.com/luisstd/retroloop/commit/082a7613ace94c48da96e60eaa13ef20f57c747f))
+* fix user onboarding form validation ([3945dfa](https://github.com/luisstd/retroloop/commit/3945dfa42ae3baa802e231d8dea7edf240779cf6))
+* map emailVerified to boolean type ([019cf01](https://github.com/luisstd/retroloop/commit/019cf015b23f1e6b40f9c20a55f9242eb68a37b1))
+* update layout shift in discuss view ([6acefa1](https://github.com/luisstd/retroloop/commit/6acefa1f5c0b1d57af8adb7adef7e54b71f0d7a7))
+
 ## [2.0.1](https://github.com/luisstd/retroloop/compare/v2.0.0...v2.0.1) (2025-03-15)
 
 
