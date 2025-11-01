@@ -9,6 +9,7 @@ export const UserUpdateInputSchema = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string(),
+  image: z.string().optional(),
 })
 
 export const UserSessionSchema = z.object({
