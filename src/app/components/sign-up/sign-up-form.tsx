@@ -1,25 +1,36 @@
 'use client'
 
 import { Field, Form, Formik } from 'formik'
+import { toast } from 'sonner'
+import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 import { Button } from '@/app/ui/button'
 import { Card } from '@/app/ui/card'
 import { Input } from '@/app/ui/input'
 import { Label } from '@/app/ui/label'
 import { useSession } from '@/lib/auth-client'
+import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
-import { UserSession } from '@/types/user'
+import type { UserUpdateInput } from '@/types/user'
 
-export function SignUpForm() {
+interface SignUpFormProps {
+  onSuccess?: () => void
+}
+
+export function SignUpForm({ onSuccess }: SignUpFormProps) {
   const { data } = useSession()
 
   const mutation = api.user.edit.useMutation({
     onSuccess: () => {
-      window.location.href = '/dashboard'
+      onSuccess?.()
+    },
+    onError: (error) => {
+      console.error('Failed to update user:', error)
+      toast.error('Failed to save your information. Please try again.')
     },
   })
 
-  function handleSubmit(input: UserSession): void {
+  function handleSubmit(input: UserUpdateInput): void {
     mutation.mutate(input)
   }
 
@@ -28,15 +39,14 @@ export function SignUpForm() {
       {data ? (
         <section className='mx-auto grid h-screen place-items-center'>
           <Formik
+            validationSchema={toFormikValidationSchema(UserUpdateInputSchema)}
             initialValues={{
               id: data.user?.id || '',
               email: data.user?.email || '',
               name: data.user?.name || '',
-              image: data.user?.image || '',
+              image: data.user?.image || undefined,
             }}
-            onSubmit={(values) => {
-              handleSubmit(values)
-            }}
+            onSubmit={handleSubmit}
           >
             <Card className='mx-5 sm:mx-0'>
               <Form>
@@ -52,9 +62,15 @@ export function SignUpForm() {
                     <Label htmlFor='name' className='font-bold'>
                       Name
                     </Label>
-                    <Field as={Input} id='name' name='name' required />
+                    <Field
+                      as={Input}
+                      id='name'
+                      name='name'
+                      required
+                      placeholder='Enter your name'
+                    />
 
-                    <Label htmlFor='name' className='font-bold'>
+                    <Label htmlFor='email' className='font-bold'>
                       Email
                     </Label>
                     <Field
@@ -69,8 +85,12 @@ export function SignUpForm() {
                 </Card.Content>
 
                 <Card.Content>
-                  <Button type='submit' aria-label='Save'>
-                    Continue
+                  <Button
+                    type='submit'
+                    aria-label='Save'
+                    disabled={mutation.isPending}
+                  >
+                    {mutation.isPending ? 'Saving...' : 'Continue'}
                   </Button>
                 </Card.Content>
               </Form>

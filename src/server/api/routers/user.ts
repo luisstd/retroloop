@@ -42,8 +42,13 @@ export const userRouter = createTRPCRouter({
     }),
   edit: protectedProcedure
     .input(UserUpdateInputSchema)
-    .mutation(({ ctx, input }) => {
+    .mutation(async ({ ctx, input }) => {
       const { id, ...data } = input
+
+      if (id !== ctx.session?.user?.id) {
+        throw new Error('Unauthorized: Cannot update another user')
+      }
+
       return ctx.db.user.update({
         where: {
           id,
