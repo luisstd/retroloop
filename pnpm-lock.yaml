@@ -127,13 +127,13 @@ importers:
         version: 4.42.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@trpc/client':
         specifier: ^10.45.2
-        version: 10.45.2(@trpc/server@10.45.2)
+        version: 10.45.2(@trpc/server@10.45.3)
       '@trpc/react-query':
         specifier: ^10.45.2
-        version: 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@trpc/server':
-        specifier: ^10.45.2
-        version: 10.45.2
+        specifier: ^10.45.3
+        version: 10.45.3
       ably:
         specifier: ^2.14.0
         version: 2.14.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2881,8 +2881,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@trpc/server@10.45.2':
-    resolution: {integrity: sha512-wOrSThNNE4HUnuhJG6PfDRp4L2009KDVxsd+2VYH8ro6o/7/jwYZ8Uu5j+VaW+mOmc8EHerHzGcdbGNQSAUPgg==}
+  '@trpc/server@10.45.3':
+    resolution: {integrity: sha512-CVZM42FdGwqYQxV7vSRwb//AF8REfV60S/fUnwx7xqCnnSDus0FW/UuAOW4eQJ30RQlOPy4MYU8B3dbTAx85Ew==}
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -3499,8 +3499,8 @@ packages:
     resolution: {integrity: sha512-zoKGUdu6vb2jd3YOq0nnhEDQVbPcHhco3UImJrv5dSkvxTc2pl2WjOPsjZXDwPDSl5eghIMuY3R6J9NDKF3KcQ==}
     hasBin: true
 
-  baseline-browser-mapping@2.9.7:
-    resolution: {integrity: sha512-k9xFKplee6KIio3IDbwj+uaCLpqzOwakOgmqzPezM0sFJlFKcg30vk2wOiAJtkTSfx0SSQDSe8q+mWA/fSH5Zg==}
+  baseline-browser-mapping@2.9.8:
+    resolution: {integrity: sha512-Y1fOuNDowLfgKOypdc9SPABfoWXuZHBOyCS4cD52IeZBhr4Md6CLLs6atcxVrzRmQ06E7hSlm5bHHApPKR/byA==}
     hasBin: true
 
   better-auth@1.3.28:
@@ -6475,8 +6475,8 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
-  update-browserslist-db@1.2.2:
-    resolution: {integrity: sha512-E85pfNzMQ9jpKkA7+TJAi4TJN+tBCuWh5rUcS/sv6cFi+1q9LYDwDI5dpUL0u/73EElyQ8d3TEaeW4sPedBqYA==}
+  update-browserslist-db@1.2.3:
+    resolution: {integrity: sha512-Js0m9cx+qOgDxo0eMiFGEueWztz+d4+M3rGlmKPT+T4IS/jP4ylw3Nwpu6cpTTP8R1MAC1kF4VbdLt3ARf209w==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -9370,19 +9370,19 @@ snapshots:
       '@types/react': 19.0.10
       '@types/react-dom': 19.0.4(@types/react@19.0.10)
 
-  '@trpc/client@10.45.2(@trpc/server@10.45.2)':
+  '@trpc/client@10.45.2(@trpc/server@10.45.3)':
     dependencies:
-      '@trpc/server': 10.45.2
+      '@trpc/server': 10.45.3
 
-  '@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@tanstack/react-query': 4.42.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@trpc/client': 10.45.2(@trpc/server@10.45.2)
-      '@trpc/server': 10.45.2
+      '@trpc/client': 10.45.2(@trpc/server@10.45.3)
+      '@trpc/server': 10.45.3
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@trpc/server@10.45.2': {}
+  '@trpc/server@10.45.3': {}
 
   '@tsconfig/node10@1.0.11': {}
 
@@ -10086,7 +10086,7 @@ snapshots:
 
   baseline-browser-mapping@2.8.19: {}
 
-  baseline-browser-mapping@2.9.7: {}
+  baseline-browser-mapping@2.9.8: {}
 
   better-auth@1.3.28(better-sqlite3@12.4.1)(next@15.4.10(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
@@ -10168,11 +10168,11 @@ snapshots:
 
   browserslist@4.28.1:
     dependencies:
-      baseline-browser-mapping: 2.9.7
+      baseline-browser-mapping: 2.9.8
       caniuse-lite: 1.0.30001760
       electron-to-chromium: 1.5.267
       node-releases: 2.0.27
-      update-browserslist-db: 1.2.2(browserslist@4.28.1)
+      update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
   buffer-from@1.1.2: {}
 
@@ -13338,7 +13338,7 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  update-browserslist-db@1.2.2(browserslist@4.28.1):
+  update-browserslist-db@1.2.3(browserslist@4.28.1):
     dependencies:
       browserslist: 4.28.1
       escalade: 3.2.0
