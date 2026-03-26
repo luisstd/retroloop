@@ -1,6 +1,5 @@
 'use client'
 import { Field, Form, Formik } from 'formik'
-import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -138,23 +137,6 @@ export default function Login() {
                   >
                     {isSubmitting ? 'Sending...' : 'Continue with Email'}
                   </Button>
-                  <p className='text-muted-foreground mt-2 text-center text-xs'>
-                    By continuing, you agree to our{' '}
-                    <Link
-                      href='/terms'
-                      className='hover:text-foreground underline'
-                    >
-                      Terms of Service
-                    </Link>{' '}
-                    and{' '}
-                    <Link
-                      href='/privacy'
-                      className='hover:text-foreground underline'
-                    >
-                      Privacy Policy
-                    </Link>
-                    .
-                  </p>
                 </div>
               </Form>
             )}

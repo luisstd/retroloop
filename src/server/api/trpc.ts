@@ -15,7 +15,6 @@ import { ZodError } from 'zod'
 
 import { auth } from '@/lib/auth'
 import { db } from '@/server/db'
-import { stripe } from '@/server/stripe/client'
 
 /**
  * 1. CONTEXT
@@ -48,7 +47,6 @@ export const createInnerTRPCContext = async (opts: CreateContextOptions) => {
     session,
     headers: opts.headers,
     db,
-    stripe,
   }
 }
 

@@ -1,4 +1,4 @@
-import { Feedback, StripeSubscriptionStatus, User } from '@prisma/client'
+import { Feedback } from '@prisma/client'
 import { format, Locale } from 'date-fns'
 import { de, enUS, fr } from 'date-fns/locale'
 import { usePathname, useSearchParams } from 'next/navigation'
@@ -14,25 +14,6 @@ const formatDate = (date: Date): string => {
   const userLocale = navigator.language || 'en-US'
   const locale: Locale = locales[userLocale] || enUS
   return format(date, 'PP', { locale })
-}
-
-enum AccountType {
-  Unlimited = 'Unlimited',
-  Standard = 'Standard',
-}
-
-const getAccountType = (
-  subscriptionStatus: User['stripeSubscriptionStatus'],
-) => {
-  if (
-    subscriptionStatus &&
-    subscriptionStatus ===
-      (StripeSubscriptionStatus.active || StripeSubscriptionStatus.trialing)
-  ) {
-    return AccountType.Unlimited
-  } else {
-    return AccountType.Standard
-  }
 }
 
 const getFeedbackType = (type: Feedback['type']) => {
@@ -62,4 +43,4 @@ const useFullUrl = () => {
   return fullUrl
 }
 
-export { AccountType, formatDate, getAccountType, getFeedbackType, useFullUrl }
+export { formatDate, getFeedbackType, useFullUrl }
