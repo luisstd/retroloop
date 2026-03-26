@@ -57,10 +57,6 @@ To create coverage files manually, run the following command
 - [Prisma](https://www.prisma.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 
-## Feedback
-
-If you have any feedback, please use the feedback widget, open an issue or reach out at <contact@noisia.co>
-
 ## Contributing
 
 Everyone is welcome to improve this project. See [CONTRIBUTING](https://github.com/luisstd/retroloop/blob/dev/CONTRIBUTING.md)

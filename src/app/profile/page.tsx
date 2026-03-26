@@ -20,9 +20,8 @@ import { Label } from '@/app/ui/label'
 import { useSession } from '@/lib/auth-client'
 import { UserUpdateInputSchema } from '@/schemas/user'
 import { api } from '@/trpc/react'
-import { StripeBillingInterval } from '@/types/stripe-plan'
 import type { UserUpdateInput } from '@/types/user'
-import { AccountType, formatDate, getAccountType } from '@/utils/utils'
+import { formatDate } from '@/utils/utils'
 
 export default function Profile() {
   const { data: session, isPending } = useSession()
@@ -55,11 +54,6 @@ export default function Profile() {
       window.location.href = '/'
     },
   })
-
-  const { mutateAsync: createCheckoutSession } =
-    api.stripe.createCheckoutSession.useMutation()
-  const { mutateAsync: createBillingPortalSession } =
-    api.stripe.createBillingPortalSession.useMutation()
 
   const handleSubmit = (input: UserUpdateInput): void => {
     updateUser(input)
@@ -119,71 +113,21 @@ export default function Profile() {
                     </AvatarFallback>
                   </Avatar>
                   <div className='flex flex-col items-center gap-4'>
-                    <div className='flex flex-row gap-6'>
-                      <div className='flex flex-col items-center gap-2'>
-                        <Label className='text-muted-foreground text-sm'>
-                          User since
-                        </Label>
-                        <Badge variant='outline'>
-                          {formatDate(user.createdAt)}
-                        </Badge>
-                      </div>
-
-                      <div className='flex flex-col items-center gap-2'>
-                        <Label className='text-muted-foreground text-sm'>
-                          Account type
-                        </Label>
-                        <Badge>
-                          {getAccountType(user.stripeSubscriptionStatus)}
-                        </Badge>
-                      </div>
+                    <div className='flex flex-col items-center gap-2'>
+                      <Label className='text-muted-foreground text-sm'>
+                        User since
+                      </Label>
+                      <Badge variant='outline'>
+                        {formatDate(user.createdAt)}
+                      </Badge>
                     </div>
 
-                    <div className='mt-2 flex flex-col gap-4'>
-                      <div className='w-full'>
-                        {getAccountType(user.stripeSubscriptionStatus) ===
-                        AccountType.Standard ? (
-                          <Button
-                            type='button'
-                            variant='outline'
-                            className='w-full'
-                            onClick={async () => {
-                              const { checkoutUrl } =
-                                await createCheckoutSession(
-                                  StripeBillingInterval.YEARLY,
-                                )
-                              if (checkoutUrl) {
-                                router.push(checkoutUrl)
-                              }
-                            }}
-                          >
-                            Upgrade account
-                          </Button>
-                        ) : (
-                          <Button
-                            type='button'
-                            variant='outline'
-                            className='w-full'
-                            onClick={async () => {
-                              const { billingPortalUrl } =
-                                await createBillingPortalSession()
-                              if (billingPortalUrl) {
-                                router.push(billingPortalUrl)
-                              }
-                            }}
-                          >
-                            Manage subscription
-                          </Button>
-                        )}
-                      </div>
-
+                    <div className='mt-2'>
                       {user && (
-                        <div className='w-full'>
-                          <DeleteUserDialog
-                            itemToDelete={user}
-                            deleteHandler={handleDelete}
-                          />
-                        </div>
+                        <DeleteUserDialog
+                          itemToDelete={user}
+                          deleteHandler={handleDelete}
+                        />
                       )}
                     </div>
                   </div>

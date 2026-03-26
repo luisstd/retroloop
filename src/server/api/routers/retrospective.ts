@@ -1,4 +1,3 @@
-import { sub } from 'date-fns'
 import { z } from 'zod'
 
 import {
@@ -12,19 +11,13 @@ export const retrospectiveRouter = createTRPCRouter({
     .input(
       z.object({
         userId: z.string(),
-        accountType: z.string(),
       }),
     )
     .query(async ({ ctx, input }) => {
-      const filters = {
-        participants: { some: { id: input.userId } },
-        ...(input.accountType === 'Standard' && {
-          date: { gt: sub(new Date(), { days: 90 }) },
-        }),
-      }
-
       return ctx.db.retrospective.findMany({
-        where: filters,
+        where: {
+          participants: { some: { id: input.userId } },
+        },
         include: {
           items: true,
           participants: true,

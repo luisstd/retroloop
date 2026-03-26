@@ -61,16 +61,7 @@ export function Menu() {
           </NavigationMenuItem>
 
           <NavigationMenuItem className='hidden sm:flex'>
-            {isLandingPage ? (
-              <Button
-                variant='link'
-                aria-label='Pricing'
-                className='w-24 justify-center'
-                asChild
-              >
-                <Link href='#pricing'>Pricing</Link>
-              </Button>
-            ) : (
+            {!isLandingPage && (
               <Button
                 variant='link'
                 aria-label='Profile'

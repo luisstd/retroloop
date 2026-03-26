@@ -1,7 +1,6 @@
 'use client'
 
 import { User } from '@prisma/client'
-import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 import { Loader } from '@/app/components/loader/loader'
@@ -9,37 +8,24 @@ import { AddRetro } from '@/app/dashboard/retros/components/add-retro'
 import { RetroCard } from '@/app/dashboard/retros/components/retro-card'
 import { RetroFallback } from '@/app/dashboard/retros/components/retro-fallback'
 import { Card } from '@/app/ui/card'
-import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 import {
   RetrospectiveCreateInput,
   RetrospectiveUpdateInput,
   RetrospectiveWithRelations,
 } from '@/types/retrospective'
-import { AccountType, getAccountType } from '@/utils/utils'
 
 type RetrosProps = {
   userId: User['id']
 }
 
 export function Retros({ userId }: RetrosProps) {
-  const [isLimitReached, setIsLimitReached] = useState(false)
-  const { data: session, isPending } = useSession()
-  const isAuthenticated = !!session?.user
-
-  const { data: user } = api.user.getLoggedIn.useQuery(undefined, {
-    enabled: isAuthenticated && !isPending,
-  })
-  const accountType = getAccountType(user?.stripeSubscriptionStatus || null)
 
   const {
     data: retrospectives,
     refetch,
     isLoading,
-  } = api.retrospective.getAll.useQuery(
-    { userId, accountType },
-    { enabled: !!accountType },
-  )
+  } = api.retrospective.getAll.useQuery({ userId })
 
   const { mutate: addRetro } = api.retrospective.add.useMutation({
     onSuccess: async () => {
@@ -66,15 +52,6 @@ export function Retros({ userId }: RetrosProps) {
     })
   }
 
-  useEffect(() => {
-    if (!retrospectives) return
-    if (!accountType) return
-
-    if (retrospectives.length >= 3 && accountType === AccountType.Standard) {
-      setIsLimitReached(true)
-    }
-  }, [retrospectives, accountType])
-
   return (
     <Card className='bg-background min-h-[400px] w-full p-10 shadow-xs'>
       <div className='flex flex-row items-baseline justify-between'>
@@ -82,10 +59,7 @@ export function Retros({ userId }: RetrosProps) {
 
         {!isLoading && (
           <div className='flex w-full justify-end'>
-            <AddRetro
-              handleAddRetro={handleAddRetro}
-              isLimitReached={isLimitReached}
-            />
+            <AddRetro handleAddRetro={handleAddRetro} />
           </div>
         )}
       </div>
