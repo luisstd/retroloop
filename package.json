@@ -25,7 +25,7 @@
     "@ably/spaces": "^0.4.0",
     "@feedback-fish/react": "^1.2.2",
     "@headlessui/react": "^2.2.9",
-    "@hookform/resolvers": "^5.2.2",
+    "@hookform/resolvers": "^5.9.1",
     "@prisma/client": "^6.18.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
